@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  webhook:
+    env_file:
+      - api/.env
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - "9000:9000"
