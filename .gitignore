@@ -2,4 +2,5 @@
 .idea
 .yarn/cache
 .yarn/install-state.gz
-api/dist
+**/dist
+**/.env
