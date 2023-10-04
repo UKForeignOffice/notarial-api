@@ -6,9 +6,10 @@
     "api"
   ],
   "scripts": {
-    "api": "yarn workspaces focus @notarialApi/api"
+    "api": "yarn workspace @notarialapi/api"
   },
   "dependencies": {
+    "config": "^3.3.9",
     "typescript": "^5.2.2"
   }
 }
