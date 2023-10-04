@@ -1,0 +1,14 @@
+{
+  "name": "notarial-api",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "api"
+  ],
+  "scripts": {
+    "api": "yarn workspaces focus @notarialApi/api"
+  },
+  "dependencies": {
+    "typescript": "^5.2.2"
+  }
+}
