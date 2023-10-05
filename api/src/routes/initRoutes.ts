@@ -3,7 +3,7 @@ import {ocrEmailRouter} from "./ocr-email/router";
 
 const router = Router();
 
-router.use(ocrEmailRouter);
+router.use("/ocr-email", ocrEmailRouter);
 export function initRoutes(server: Express){
     server.use(router);
 }
