@@ -1,5 +1,5 @@
 import {createServer} from "./server";
-import config from "./initConfig";
+import config from "config";
 import {logger} from "./services";
 
 async function initApp(): Promise<void> {
