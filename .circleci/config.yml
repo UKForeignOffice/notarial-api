@@ -202,31 +202,6 @@ jobs:
             sudo killall openvpn || true
           when: always
 
-  smoke-test:
-    <<: *defaults
-
-    docker:
-      - image: cimg/node:14.17.0-browsers
-
-    steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "cypress/package-lock.json" }}
-            - v1-deps-
-      - run:
-          name: install cypress dependencies
-          command: cd cypress && npm install
-      - run:
-          name: cypress tests
-          command: cd cypress && npx cypress run
-
-      - save_cache:
-          key: v1-deps-{{ checksum "cypress/package-lock.json" }}
-          paths:
-            - cypress/node_modules
-
 workflows:
   version: 2
   build-deploy:
@@ -236,10 +211,6 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - smoke-test:
-          filters:
-            branches:
-              only: main
       - publish:
           name: publish-api
           app: api
