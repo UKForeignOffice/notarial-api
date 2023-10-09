@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "config": "^3.3.9",
+    "express-rate-limit": "^7.1.0",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
