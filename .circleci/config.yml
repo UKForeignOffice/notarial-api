@@ -11,6 +11,34 @@ defaults: &defaults
 
 
 jobs:
+  test:
+    <<: *defaults
+
+    docker:
+      - image: cimg/node:18.15.0-browsers
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-deps-{{ checksum "yarn.lock" }}
+            - v1-deps-
+
+      - run: yarn install
+
+      - run:
+          name: Lint
+          command: yarn lint
+
+      - run:
+          name: Run tests
+          command: yarn test
+
+      - save_cache:
+          key: v1-deps-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
 
   publish:
     <<: *defaults

@@ -6,7 +6,9 @@
     "api"
   ],
   "scripts": {
-    "api": "yarn workspace @notarialapi/api"
+    "api": "yarn workspace @notarialapi/api",
+    "lint": "yarn workspaces foreach run lint",
+    "test": "yarn workspaces foreach run test"
   },
   "dependencies": {
     "config": "^3.3.9",
