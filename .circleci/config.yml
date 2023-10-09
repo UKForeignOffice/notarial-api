@@ -232,6 +232,14 @@ workflows:
   build-deploy:
     jobs:
 
+      - test:
+          filters:
+            tags:
+              only: /.*/
+      - smoke-test:
+          filters:
+            branches:
+              only: main
       - publish:
           name: publish-api
           app: api
