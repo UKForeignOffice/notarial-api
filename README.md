@@ -30,6 +30,9 @@ docker compose down
 docker compose -d --build
 ```
 
+### Formatting
+This project uses ESLint and Prettier to ensure consistent formatting. It is recommended that you add and turn on the prettier plugin for your IDE, and reformat on save.
+
 
 ## CI/CD
 There is a CI/CD pipeline currently set up for deploying new versions of the project to test environments. For more information, please refer to the [CI/CD docs](https://github.com/UKForeignOffice/notarial-api/blob/main/docs/ci.md)
