@@ -1,6 +1,5 @@
 import { Express, Router } from "express";
 import { ocrEmailRouter } from "./ocr-email/router";
-import { logger } from "../services";
 
 const router = Router();
 
