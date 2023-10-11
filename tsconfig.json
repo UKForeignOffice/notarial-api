@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
     /* Basic Options */
-    "target": "ES2015",
-    "module": "commonjs",
+    "lib": ["es2023"],
+    "target": "es2022",
+    "skipLibCheck": true,
+    "module": "node16",
     "allowJs": true,
     "checkJs": false,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "jsx": "react",
     "resolveJsonModule": true,
 
 
@@ -27,13 +28,11 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Module Resolution Options */
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
 
-    /* Libs */
-    "lib": ["es2019"]
   },
   "exclude": ["node_modules"],
 }

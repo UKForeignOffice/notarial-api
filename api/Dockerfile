@@ -4,11 +4,6 @@
 # It also configures the non-root user that will be given permission to copied files/folders in every subsequent stages
 FROM node:18-alpine AS base
 RUN npm install -g npm@latest && \
-    mkdir -p /usr/src/app && \
-    addgroup -g 1001 appuser && \
-    adduser -S -u 1001 -G appuser appuser && \
-    chown -R appuser:appuser /usr/src/app && \
-    chmod -R +x  /usr/src/app && \
     apk update && \
     apk upgrade && \
     apk add --no-cache bash git
@@ -17,14 +12,26 @@ RUN npm install -g npm@latest && \
 # Stage 2
 # Build stage
 # In this layer we build the api server
-FROM dependencies AS build-webhook
+FROM base AS build
 WORKDIR /usr/src/app
-COPY --chown=appuser:appuser ./api/package.json ./api/tsconfig.json ./api/nodemon.json ./api/
-COPY --chown=appuser:appuser ./api/config ./api/config
+COPY . .
 RUN yarn workspaces focus @notarialapi/api
-COPY --chown=appuser:appuser ./api/src ./api/src/
 RUN yarn api build
+# reinstall only production deps
+RUN yarn workspaces focus @notarialapi/api --production
 
-USER 1001
+
+# ----------------------------
+# Stage 3
+# Build stage
+# In this layer we copy the built output from stage 2, ensuring the docker image is as light as possible
+FROM base AS dist
+WORKDIR /usr/dist/app
+COPY .yarn .yarn
+COPY --from=build /usr/src/app/node_modules node_modules
+COPY --from=build /usr/src/app/api/config config
+COPY --from=build /usr/src/app/api/dist dist
+
+USER node
 EXPOSE 9000
-CMD [ "yarn", "api", "start" ]
+CMD [ "node", "dist/index.js" ]
