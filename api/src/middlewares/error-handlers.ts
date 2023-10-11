@@ -13,7 +13,7 @@ export class HttpException extends Error {
   status: number;
   code?: string;
 }
-export const configureErrorHandlers = (server: Express) => {
+export function configureErrorHandlers(server: Express) {
   server.use((req: Request, res: Response) => {
     logger.warn("404 Not found", { path: req.path });
     res.status(404).send({
@@ -23,16 +23,11 @@ export const configureErrorHandlers = (server: Express) => {
 
   server.use(
     (err: HttpException, _req: Request, res: Response, _next: NextFunction) => {
-      logger.error([`${err.status} Error`], err.message);
+      logger.error(err.message);
       res.status("status" in err ? err.status : 500);
-      res.send(getErrorMessage(err.message));
+      res.send(`This request could not be processed -- ${err.message}`);
     }
   );
-};
-
-function getErrorMessage(message: string) {
-  let baseError = "This request could not be processed";
-  return `${baseError} - ${message ?? baseError}`;
 }
 
 export function rateLimitExceededErrorHandler(
