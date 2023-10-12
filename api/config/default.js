@@ -1,4 +1,5 @@
 module.exports = {
-    port: "9000",
-    env: "development"
-}
+  port: "9000",
+  env: "development",
+  s3Bucket: "",
+};

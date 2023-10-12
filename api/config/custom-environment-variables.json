@@ -1,4 +1,5 @@
 {
   "port": "PORT",
-  "env": "NODE_ENV"
+  "env": "NODE_ENV",
+  "s3Bucket": "S3_BUCKET_NAME"
 }
