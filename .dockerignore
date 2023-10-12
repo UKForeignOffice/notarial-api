@@ -10,6 +10,8 @@
 .yarn/build-state.yml
 .yarn/install-state.gz
 *.jest.*
+*.test.*
 jest
 README.md
+/api/src/__mocks__/
 docs

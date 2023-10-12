@@ -17,6 +17,9 @@ jobs:
     docker:
       - image: cimg/node:18.15.0-browsers
 
+    environment:
+      NODE_ENV: "test"
+
     steps:
       - checkout
 
@@ -193,7 +196,7 @@ jobs:
 
       - kubernetes/update-container-image:
           namespace: << parameters.namespace >>
-          container-image-updates: notarial-forms=523508197323.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-api:$DOCKER_TAG
+          container-image-updates: notarial-api=523508197323.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-api:$DOCKER_TAG
           resource-name: deployment/notarial-api
 
       - run:
@@ -206,27 +209,36 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - test
-#      - publish:
-#          name: publish-api
-#          app: api
-#          filters:
-#            branches:
-#              only:
-#                - deploy-test
-#          context:
-#            - VPN
-#            - AWS
-#
-#      - deploy:
-#          name: deploy-test
-#          namespace: fco-forms-test
-#          context:
-#            - VPN
-#            - AWS
-#          requires:
-#            - publish-api
-#          filters:
-#            branches:
-#              only:
-#                - deploy-test
+      - test:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: /.*/
+      - publish:
+          name: publish-api
+          app: api
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              only:
+                - deploy-test
+          context:
+            - VPN
+            - AWS
+
+      - deploy:
+          name: deploy-test
+          namespace: fco-forms-test
+          context:
+            - VPN
+            - AWS
+          requires:
+            - publish-api
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              only:
+                - deploy-test
