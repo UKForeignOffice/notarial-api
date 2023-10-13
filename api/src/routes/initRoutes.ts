@@ -1,9 +1,9 @@
 import { Express, Router } from "express";
-import { ocrEmailRouter } from "./ocr-email/router";
+import { emailRouter } from "./email/router";
 
 const router = Router();
 
-router.use("/ocr-email", ocrEmailRouter);
+router.use("/email", emailRouter);
 router.get("/health-check", (_req, res) => {
   res.send({
     uptime: process.uptime(),
