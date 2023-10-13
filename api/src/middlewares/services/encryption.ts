@@ -1,7 +1,7 @@
 import config from "config";
 import * as crypto from "crypto";
 
-export class EncryptService {
+export class EncryptionService {
   password: string;
 
   constructor() {
