@@ -826,6 +826,7 @@ __metadata:
     express-rate-limit: ^7.1.0
     nodemon: ^3.0.1
     pino: ^8.15.4
+    pino-http: ^8.5.0
     prettier: ^3.0.3
     typescript: ^5.2.2
   languageName: unknown
@@ -2607,6 +2608,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"get-caller-file@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "get-caller-file@npm:2.0.5"
+  checksum: b9769a836d2a98c3ee734a88ba712e62703f1df31b94b784762c433c27a386dd6029ff55c2a920c392e33657d80191edbf18c61487e198844844516f843496b9
+  languageName: node
+  linkType: hard
+
 "get-intrinsic@npm:^1.0.2":
   version: 1.2.1
   resolution: "get-intrinsic@npm:1.2.1"
@@ -3672,6 +3680,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pino-http@npm:^8.5.0":
+  version: 8.5.0
+  resolution: "pino-http@npm:8.5.0"
+  dependencies:
+    get-caller-file: ^2.0.5
+    pino: ^8.0.0
+    pino-std-serializers: ^6.0.0
+    process-warning: ^2.0.0
+  checksum: fa166bf5bb39de4708c5992a529b0a91fd42fe4456b8135616601878f1bfc7e3f7e0c74d38ee8b63adc78e2d493da5906f3f4d5c6f37b1f3ff54672f0003b840
+  languageName: node
+  linkType: hard
+
 "pino-std-serializers@npm:^6.0.0":
   version: 6.2.2
   resolution: "pino-std-serializers@npm:6.2.2"
@@ -3679,7 +3699,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino@npm:^8.15.4":
+"pino@npm:^8.0.0, pino@npm:^8.15.4":
   version: 8.16.0
   resolution: "pino@npm:8.16.0"
   dependencies:
