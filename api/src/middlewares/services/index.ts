@@ -1,2 +1,2 @@
-export { S3Service } from "./s3";
+export { UploadService } from "./upload";
 export { EncryptionService } from "./encryption";

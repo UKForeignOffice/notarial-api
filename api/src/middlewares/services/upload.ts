@@ -1,39 +1,31 @@
-import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import config from "config";
 import logger, { Logger } from "pino";
+import axios from "axios";
 
-export class S3Service {
+export class UploadService {
   bucketName: string;
-  client: S3Client;
   logger: Logger;
 
   constructor() {
     this.bucketName = config.get("s3Bucket");
-    this.client = new S3Client({});
     this.logger = logger().child({ service: "S3" });
   }
 
-  async getObject(url: string): Promise<Uint8Array | void> {
+  async getObject(url: string): Promise<ArrayBuffer | void> {
     try {
       if (!this.bucketName) {
         this.logger.error(["S001"], "No bucket name has been set");
         return;
       }
-      const objectName = url.split("/").at(-1);
 
-      const fileRes = await this.client.send(
-        new GetObjectCommand({
-          Bucket: this.bucketName,
-          Key: objectName,
-        })
-      );
+      const fileRes = await axios.get(url);
 
-      if (!fileRes.Body) {
+      if (!fileRes.data) {
         this.logger.error(["S002"], "File could not be found");
         return;
       }
 
-      return await fileRes.Body.transformToByteArray();
+      return await (fileRes.data as Blob).arrayBuffer();
     } catch (e) {
       this.logger.error(["S003"], `Unknown error: ${(e as Error).message}`);
       return;
