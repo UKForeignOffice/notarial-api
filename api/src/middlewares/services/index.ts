@@ -1,2 +1,2 @@
-export { UploadService } from "./upload";
+export { FileService } from "./file";
 export { EncryptionService } from "./encryption";

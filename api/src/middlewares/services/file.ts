@@ -2,7 +2,7 @@ import config from "config";
 import logger, { Logger } from "pino";
 import axios from "axios";
 
-export class UploadService {
+export class FileService {
   bucketName: string;
   logger: Logger;
 

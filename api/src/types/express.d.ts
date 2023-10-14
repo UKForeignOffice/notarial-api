@@ -1,10 +1,10 @@
-import { S3Service, EncryptionService } from "../middlewares/services";
+import { EncryptionService, FileService } from "../middlewares/services";
 
 declare global {
   namespace Express {
     interface Locals {
       services: {
-        s3Service: S3Service;
+        fileService: FileService;
         encryptionService: EncryptionService;
       };
       Response: {
