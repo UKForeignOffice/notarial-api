@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  webhook:
+  api:
     env_file:
       - api/.env
     build:
