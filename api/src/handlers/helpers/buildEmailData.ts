@@ -12,6 +12,11 @@ export function buildEmailData(
   formBody: FormDataBody
 ) {
   const [uploadFields, otherFields] = getAllInputsFromForm(formBody);
+  if (!uploadFields && !otherFields) {
+    return {
+      errors: new Error("Malformed form data: No questions property found"),
+    };
+  }
   return {
     uploadFields,
     templateData: dataInputMap[type](otherFields),

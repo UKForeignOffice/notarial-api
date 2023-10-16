@@ -17,7 +17,7 @@ export function getAllInputsFromForm(formData: FormDataBody) {
         ];
       },
       [{}, {}]
-    ) ?? undefined
+    ) ?? [undefined, undefined]
   );
 }
 

@@ -4,8 +4,16 @@ import { buildEmailData } from "../../helpers/buildEmailData";
 
 export async function post(req: Request, res: Response, next: NextFunction) {
   try {
-    req.log.info(["/email", "request body"], req.body);
-    const [uploadFields, inputData] = buildEmailData("affirmation", req.body);
+    req.log.info(["/email/affirmation", "request body"], req.body);
+    const { uploadFields, templateData, errors } = buildEmailData(
+      "affirmation",
+      req.body
+    );
+
+    if (errors) {
+      const error = new HttpException(400, "W001", errors.message);
+      next(error);
+    }
 
     res.status(200).send("Request successful");
   } catch (err) {
