@@ -1,6 +1,6 @@
 import { Application, json } from "express";
 import pino from "pino-http";
-import { EncryptionService, FileService } from "./services";
+import { EncryptionService, FileService, SESService } from "./services";
 
 export function initMiddleware(server: Application) {
   server.use(pino());
@@ -8,5 +8,6 @@ export function initMiddleware(server: Application) {
   server.locals.services = {
     fileService: new FileService(),
     encryptionService: new EncryptionService(),
+    sesService: new SESService(),
   };
 }

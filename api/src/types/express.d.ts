@@ -1,4 +1,8 @@
-import { EncryptionService, FileService } from "../middlewares/services";
+import {
+  EncryptionService,
+  FileService,
+  SESService,
+} from "../middlewares/services";
 
 declare global {
   namespace Express {
@@ -6,6 +10,7 @@ declare global {
       services: {
         fileService: FileService;
         encryptionService: EncryptionService;
+        sesService: SESService;
       };
       Response: {
         app: {
