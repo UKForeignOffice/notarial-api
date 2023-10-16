@@ -3,4 +3,5 @@ import * as emailHandlers from "../../handlers/email";
 
 export const emailRouter = Router();
 
-emailRouter.post("/", emailHandlers.post);
+emailRouter.post("/affirmation", emailHandlers.affirmationPost);
+emailRouter.post("/cni", emailHandlers.cniPost);
