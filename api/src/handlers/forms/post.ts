@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
-import { HttpException } from "../../middlewares/error-handlers";
-import { buildEmailData } from "../helpers/buildEmailData";
-import { convertTemplateToHtml } from "../helpers/convertTemplateToHtml";
-import { CNIStructuredDataInput } from "../helpers/structureInputData/cni";
-import { retrieveAndEncryptFiles } from "../helpers/retrieveAndEncryptFiles";
+// import { HttpException } from "../../middlewares/error-handlers";
+// import { buildEmailData } from "../helpers/buildEmailData";
+// import { convertTemplateToHtml } from "../helpers/convertTemplateToHtml";
+// import { CNIStructuredDataInput } from "../helpers/structureInputData/cni";
+// import { retrieveAndEncryptFiles } from "../helpers/retrieveAndEncryptFiles";
 
-export async function post(req: Request, res: Response, next: NextFunction) {
+export async function post(_req: Request, res: Response, _next: NextFunction) {
   // const { uploadFields, templateData, errors } = buildEmailData(
   //   "cni",
   //   req.body
