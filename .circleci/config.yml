@@ -9,8 +9,6 @@ orbs:
 defaults: &defaults
   working_directory: ~/repo
 
-
-
 jobs:
   test:
     <<: *defaults
