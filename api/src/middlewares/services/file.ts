@@ -8,7 +8,7 @@ export class FileService {
     this.logger = logger().child({ service: "File" });
   }
 
-  async getObject(url: string): Promise<ArrayBuffer | void> {
+  async getFile(url: string): Promise<ArrayBuffer | void> {
     try {
       const fileRes = await axios.get(url);
 

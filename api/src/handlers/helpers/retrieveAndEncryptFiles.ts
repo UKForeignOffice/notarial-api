@@ -12,7 +12,7 @@ export async function retrieveAndEncryptFiles(
       return;
     }
     return new Promise(async (resolve, reject) => {
-      const file = await fileService.getObject(url as string);
+      const file = await fileService.getFile(url as string);
       if (!file) {
         reject(`No file found at url ${url}`);
       }
