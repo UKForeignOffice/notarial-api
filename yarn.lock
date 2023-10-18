@@ -3716,6 +3716,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "notarial-api@workspace:."
   dependencies:
+    dotenv: ^16.3.1
     eslint: ^8.50.0
     eslint-config-prettier: ^9.0.0
     eslint-plugin-prettier: ^5.0.0
