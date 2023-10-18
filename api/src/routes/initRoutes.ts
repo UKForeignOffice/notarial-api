@@ -1,9 +1,9 @@
 import { Express, Router } from "express";
-import { emailRouter } from "./email/router";
+import { formRouter } from "./forms/router";
 
 const router = Router();
 
-router.use("/email", emailRouter);
+router.use("/forms", formRouter);
 router.get("/health-check", (_req, res) => {
   res.send({
     uptime: process.uptime(),
