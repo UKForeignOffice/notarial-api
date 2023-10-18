@@ -1,5 +1,7 @@
 {
   "port": "PORT",
   "env": "NODE_ENV",
-  "documentPassword": "DOCUMENT_PASSWORD"
+  "documentPassword": "DOCUMENT_PASSWORD",
+  "affirmationTemplate": "AFFIRMATION_TEMPLATE_ID",
+  "cniTemplate": "CNI_TEMPLATE_ID"
 }
