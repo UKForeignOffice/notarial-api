@@ -206,31 +206,26 @@ workflows:
   build-deploy:
     jobs:
       - test
-
-      - publish:
-          name: publish-api
-          app: api
-          filters:
-            tags:
-              only: /v[0-9]+(\.[0-9]+)*/
-            branches:
-              only:
-                - deploy-test
-          context:
-            - VPN
-            - AWS
-
-      - deploy:
-          name: deploy-test
-          namespace: fco-forms-test
-          context:
-            - VPN
-            - AWS
-          requires:
-            - publish-api
-          filters:
-            tags:
-              only: /v[0-9]+(\.[0-9]+)*/
-            branches:
-              only:
-                - deploy-test
+#      - publish:
+#          name: publish-api
+#          app: api
+#          filters:
+#            branches:
+#              only:
+#                - deploy-test
+#          context:
+#            - VPN
+#            - AWS
+#
+#      - deploy:
+#          name: deploy-test
+#          namespace: fco-forms-test
+#          context:
+#            - VPN
+#            - AWS
+#          requires:
+#            - publish-api
+#          filters:
+#            branches:
+#              only:
+#                - deploy-test
