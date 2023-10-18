@@ -9,7 +9,6 @@ orbs:
 defaults: &defaults
   working_directory: ~/repo
 
-
 jobs:
   test:
     <<: *defaults
@@ -207,6 +206,7 @@ workflows:
   build-deploy:
     jobs:
       - test
+
       - publish:
           name: publish-api
           app: api
