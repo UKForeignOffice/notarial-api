@@ -206,11 +206,7 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-
-      - test:
-          filters:
-            tags:
-              only: /.*/
+      - test
       - publish:
           name: publish-api
           app: api
@@ -218,7 +214,8 @@ workflows:
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
             branches:
-              ignore: /.*/
+              only:
+                - deploy-test
           context:
             - VPN
             - AWS
@@ -235,6 +232,5 @@ workflows:
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
             branches:
-              ignore: /.*/
               only:
                 - deploy-test
