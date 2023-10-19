@@ -22,7 +22,7 @@ export function configureErrorHandlers(server: Express) {
 
   server.use(
     (err: HttpException, req: Request, res: Response, _next: NextFunction) => {
-      req.log.error([err.code], err.message);
+      req.log.error(err.message);
       res.status("status" in err ? err.status : 500);
       res.send(`This request could not be processed -- ${err.message}`);
     }
