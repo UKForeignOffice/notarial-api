@@ -1,11 +1,10 @@
 import { InputFields } from "./getAllInputsFromForm";
-import { EncryptionService, FileService } from "../../middlewares/services";
+import { FileService } from "../../middlewares/services";
 import { MailAttachments } from "../../types/MailAttachments";
 
 export async function retrieveAndEncryptFiles(
   uploadFields: InputFields,
-  fileService: FileService,
-  encryptionService: EncryptionService
+  fileService: FileService
 ): Promise<MailAttachments> {
   const filePromises = Object.values(uploadFields).map(async (url) => {
     if (!url) {
@@ -16,7 +15,7 @@ export async function retrieveAndEncryptFiles(
       if (!file) {
         reject(`No file found at url ${url}`);
       }
-      resolve(encryptionService.encryptFile(file as ArrayBuffer));
+      resolve(fileService.encryptFile(file as ArrayBuffer));
     });
   });
   const files = await Promise.all(filePromises);

@@ -26,18 +26,14 @@ export async function post(req: Request, res: Response, next: NextFunction) {
     next(error);
   }
 
-  const { fileService, encryptionService } = res.locals.app.services;
+  const { fileService } = res.locals.app.services;
 
   const compiledTemplate = convertTemplateToHtml(
     templateData as CNIStructuredDataInput
   );
   let attachments = {};
   if (uploadFields) {
-    attachments = await retrieveAndEncryptFiles(
-      uploadFields,
-      fileService,
-      encryptionService
-    );
+    attachments = await retrieveAndEncryptFiles(uploadFields, fileService);
   }
 
   req.log.info(["attachments"], JSON.stringify(attachments));
