@@ -1,6 +1,6 @@
 import logger, { Logger } from "pino";
 import axios from "axios";
-import crypto from "crypto";
+// import crypto from "crypto";
 import config from "config";
 
 export class FileService {
@@ -28,14 +28,14 @@ export class FileService {
     }
   }
 
-  encryptFile(file: ArrayBuffer) {
-    const hash = crypto.createHash("sha256");
-    hash.update(this.password);
-    const key = hash.digest();
-    const iv = crypto.randomBytes(16);
-    const cipher = crypto.createCipheriv("aes-256-ocb", key, iv);
-    const encryptedFile = cipher.update(new Uint8Array(file));
-    cipher.final();
-    return encryptedFile;
-  }
+  // encryptFile(file: ArrayBuffer) {
+  //   const hash = crypto.createHash("sha256");
+  //   hash.update(this.password);
+  //   const key = hash.digest();
+  //   const iv = crypto.randomBytes(16);
+  //   const cipher = crypto.createCipheriv("aes-256-ocb", key, iv);
+  //   const encryptedFile = cipher.update(new Uint8Array(file));
+  //   cipher.final();
+  //   return encryptedFile;
+  // }
 }
