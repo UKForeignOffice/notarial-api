@@ -11,6 +11,8 @@ const uploadFieldNames = ["uploadField1", "uploadField2"];
 export async function post(req: Request, res: Response, next: NextFunction) {
   const fields = buildEmailData(req.body);
 
+  // const formType = req.body.metadata.type;
+
   if (!fields) {
     const error = new HttpException(
       400,
