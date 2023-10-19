@@ -1,23 +1,17 @@
 import { NextFunction, Request, Response } from "express";
 import { HttpException } from "../../middlewares/error-handlers";
 import { buildEmailData } from "../helpers/buildEmailData";
-import { convertTemplateToHtml } from "../helpers/convertTemplateToHtml";
-import { CNIStructuredDataInput } from "../helpers/structureInputData/cni";
-import { retrieveAndEncryptFiles } from "../helpers/retrieveAndEncryptFiles";
+// import { convertTemplateToHtml } from "../helpers/convertTemplateToHtml";
+// import { CNIStructuredDataInput } from "../helpers/structureInputData/cni";
+// import { getFilePromise } from "../helpers/getFilePromise";
 import { ERRORS as globalErrors } from "../../errors";
 
+const uploadFieldNames = ["uploadField1", "uploadField2"];
+
 export async function post(req: Request, res: Response, next: NextFunction) {
-  const { uploadFields, templateData, errors } = buildEmailData(
-    "cni",
-    req.body
-  );
+  const fields = buildEmailData(req.body);
 
-  if (errors) {
-    const error = new HttpException(400, "W001", errors.message);
-    next(error);
-  }
-
-  if (!templateData) {
+  if (!fields) {
     const error = new HttpException(
       400,
       "W001",
@@ -26,18 +20,37 @@ export async function post(req: Request, res: Response, next: NextFunction) {
     next(error);
   }
 
-  const { fileService } = res.locals.app.services;
-
-  const compiledTemplate = convertTemplateToHtml(
-    templateData as CNIStructuredDataInput
-  );
-  let attachments = {};
-  if (uploadFields) {
-    attachments = await retrieveAndEncryptFiles(uploadFields, fileService);
+  if (fields.errors) {
+    const error = new HttpException(
+      400,
+      "W001",
+      (fields.errors as Error).message
+    );
+    next(error);
   }
 
+  const { fileService } = res.locals.app.services;
+
+  // const compiledTemplate = convertTemplateToHtml(
+  //   templateData as CNIStructuredDataInput
+  // );
+  const filePromises: Promise<ArrayBuffer>[] = uploadFieldNames.map(
+    (fieldName) =>
+      new Promise(async () => {
+        return await fileService.getFile(fields[fieldName].answer);
+      })
+  );
+
+  const files = await Promise.all(filePromises);
+  const attachments = Object.keys(uploadFieldNames).reduce(
+    (acc, curr, currentIndex) => ({
+      ...acc,
+      [curr]: files[currentIndex],
+    }),
+    {}
+  );
   req.log.info(["attachments"], JSON.stringify(attachments));
-  req.log.info(["template"], JSON.stringify(compiledTemplate));
+  // req.log.info(["template"], JSON.stringify(compiledTemplate));
 
   res.status(200).send("Request successful");
 }
