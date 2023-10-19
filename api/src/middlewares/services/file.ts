@@ -1,7 +1,9 @@
 import logger, { Logger } from "pino";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 // import crypto from "crypto";
 import config from "config";
+import { ERRORS } from "../../errors";
+import { HttpException } from "../error-handlers";
 
 export class FileService {
   logger: Logger;
@@ -13,19 +15,26 @@ export class FileService {
   }
 
   async getFile(url: string): Promise<ArrayBuffer | void> {
-    try {
-      const fileRes = await axios.get(url);
+    const fileRes = await axios.get(url).catch(this.handleFetchError);
 
-      if (!fileRes.data) {
-        this.logger.error(["F001"], "File could not be found");
-        return;
-      }
-
-      return await (fileRes.data as Blob).arrayBuffer();
-    } catch (e) {
-      this.logger.error(["F002"], `Unknown error: ${(e as Error).message}`);
+    if (!fileRes?.data) {
+      this.logger.error(ERRORS.file.EMPTY_RES);
       return;
     }
+
+    return await (fileRes?.data as Blob).arrayBuffer();
+  }
+
+  handleFetchError(err: Error | AxiosError) {
+    if ("response" in err && err.response) {
+      if (err.response.status === 404) {
+        throw new HttpException(500, "500", ERRORS.file.NOT_FOUND);
+      }
+      if (err.response.status === 500) {
+        throw new HttpException(500, "500", ERRORS.file.API_ERROR);
+      }
+    }
+    throw new Error(err.message);
   }
 
   // encryptFile(file: ArrayBuffer) {
