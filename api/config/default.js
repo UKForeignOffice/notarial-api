@@ -10,4 +10,5 @@ module.exports = {
   documentPassword: "Sup3rS3cr3tP4ssw0rd",
   affirmationTemplate: "",
   cniTemplate: "",
+  submissionAddress: "",
 };
