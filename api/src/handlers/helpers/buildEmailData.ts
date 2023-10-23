@@ -1,18 +1,16 @@
 import { getAllInputsFromForm } from "./getAllInputsFromForm";
 import { FormDataBody } from "../../types";
-// import { getAffirmationStructuredDataInput } from "./structureInputData/affirmation";
-// import { getCNIStructuredDataInput } from "./structureInputData/cni";
-//
-// const dataInputMap = {
-//   affirmation: getAffirmationStructuredDataInput,
-//   cni: getCNIStructuredDataInput,
-// };
-export function buildEmailData(formBody: FormDataBody) {
+import { getTemplateDataFromInputs } from "./getTemplateDataFromInputs";
+export function buildEmailData(
+  formBody: FormDataBody,
+  formType: "cni" | "affirmation"
+) {
   const fields = getAllInputsFromForm(formBody);
   if (!fields) {
     return {
       errors: new Error("Malformed form data: No questions property found"),
     };
   }
-  return fields;
+  const templateData = getTemplateDataFromInputs(fields, formType);
+  return templateData;
 }
