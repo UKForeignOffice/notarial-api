@@ -9,9 +9,8 @@ import { ERRORS as globalErrors } from "../../errors";
 const uploadFieldNames = ["uploadField1", "uploadField2"];
 
 export async function post(req: Request, res: Response, next: NextFunction) {
-  const fields = buildEmailData(req.body);
-
-  // const formType = req.body.metadata.type;
+  const formType = req.body.metadata.type;
+  const fields = buildEmailData(req.body, formType);
 
   if (!fields) {
     const error = new HttpException(
@@ -33,9 +32,6 @@ export async function post(req: Request, res: Response, next: NextFunction) {
 
   const { fileService } = res.locals.app.services;
 
-  // const compiledTemplate = convertTemplateToHtml(
-  //   templateData as CNIStructuredDataInput
-  // );
   const filePromises: Promise<ArrayBuffer>[] = uploadFieldNames.map(
     (fieldName) =>
       new Promise(async () => {
@@ -52,7 +48,6 @@ export async function post(req: Request, res: Response, next: NextFunction) {
     {}
   );
   req.log.info(["attachments"], JSON.stringify(attachments));
-  // req.log.info(["template"], JSON.stringify(compiledTemplate));
 
   res.status(200).send("Request successful");
 }
