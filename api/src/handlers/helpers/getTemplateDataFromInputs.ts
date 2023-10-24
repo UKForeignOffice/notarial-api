@@ -3,11 +3,11 @@ import { AffirmationFieldList, fieldLists } from "./fieldLists";
 import { YesNoMap } from "./fieldLists/common";
 import { CNIFieldList } from "./fieldLists/cni";
 
-type AffirmationTemplateData = Record<
+export type AffirmationTemplateData = Record<
   AffirmationFieldList | "uploads",
   string | File[]
 >;
-type CNITemplateData = Record<CNIFieldList | "uploads", string>;
+export type CNITemplateData = Record<CNIFieldList | "uploads", string>;
 type Errors = {
   errors: Error;
 };
