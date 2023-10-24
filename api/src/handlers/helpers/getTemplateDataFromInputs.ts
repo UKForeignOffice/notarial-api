@@ -1,11 +1,21 @@
 import { InputFields } from "./getAllInputsFromForm";
-import { fieldLists } from "./fieldLists";
+import { AffirmationFieldList, fieldLists } from "./fieldLists";
 import { YesNoMap } from "./fieldLists/common";
+import { CNIFieldList } from "./fieldLists/cni";
+
+type AffirmationTemplateData = Record<
+  AffirmationFieldList | "uploads",
+  string | File[]
+>;
+type CNITemplateData = Record<CNIFieldList | "uploads", string>;
+type Errors = {
+  errors: Error;
+};
 
 export function getTemplateDataFromInputs(
   inputs: InputFields,
   formType: "cni" | "affirmation"
-) {
+): AffirmationTemplateData | CNITemplateData | Errors {
   const formFields = fieldLists[formType];
   const templateData = {};
   for (const field of formFields) {
@@ -24,5 +34,5 @@ export function getTemplateDataFromInputs(
     }
     templateData[field] = answer;
   }
-  return templateData;
+  return templateData as AffirmationTemplateData | CNITemplateData;
 }
