@@ -9,7 +9,9 @@ export type CNITemplateData = Record<CNIFieldList, string>;
 
 export interface TemplateData {
   templateVars: Partial<AffirmationTemplateData | CNITemplateData>;
-  uploads: string[];
+  uploads: {
+    [key: string]: string;
+  };
 }
 
 export function getTemplateDataFromInputs(
@@ -19,7 +21,7 @@ export function getTemplateDataFromInputs(
   const formFields = fieldLists[formType];
   let templateData: TemplateData = {
     templateVars: {},
-    uploads: [],
+    uploads: {},
   };
   for (const field of formFields) {
     if (!inputs[field]) {
@@ -29,7 +31,7 @@ export function getTemplateDataFromInputs(
     }
     let answer = inputs[field].answer;
     if (inputs[field].type === "uploadField") {
-      templateData.uploads.push(inputs[field].answer as string);
+      templateData.uploads[field] = inputs[field].answer as string;
       continue;
     }
     if (inputs[field].type === "yesNoField") {
