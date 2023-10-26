@@ -72,5 +72,8 @@ export async function post(req: Request, res: Response, next: NextFunction) {
 
   req.log.info(["Email sent successfully"], emailRes as any);
 
-  res.status(200).send("Request successful");
+  res.status(200).send({
+    message: "Email sent successfully",
+    reference: "PYE-1234",
+  });
 }
