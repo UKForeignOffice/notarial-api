@@ -2,22 +2,25 @@ import { InputFields } from "./getAllInputsFromForm";
 import { AffirmationFieldList, fieldLists } from "./fieldLists";
 import { YesNoMap } from "./fieldLists/common";
 import { CNIFieldList } from "./fieldLists/cni";
+import { Errors } from "./buildEmailData";
 
-export type AffirmationTemplateData = Record<
-  AffirmationFieldList | "uploads",
-  string | File[]
->;
-export type CNITemplateData = Record<CNIFieldList | "uploads", string>;
-type Errors = {
-  errors: Error;
-};
+export type AffirmationTemplateData = Record<AffirmationFieldList, string>;
+export type CNITemplateData = Record<CNIFieldList, string>;
+
+export interface TemplateData {
+  templateVars: Partial<AffirmationTemplateData | CNITemplateData>;
+  uploads: string[];
+}
 
 export function getTemplateDataFromInputs(
   inputs: InputFields,
   formType: "cni" | "affirmation"
-): AffirmationTemplateData | CNITemplateData | Errors {
+): TemplateData | Errors {
   const formFields = fieldLists[formType];
-  const templateData = {};
+  let templateData: TemplateData = {
+    templateVars: {},
+    uploads: [],
+  };
   for (const field of formFields) {
     if (!inputs[field]) {
       return {
@@ -26,13 +29,13 @@ export function getTemplateDataFromInputs(
     }
     let answer = inputs[field].answer;
     if (inputs[field].type === "uploadField") {
-      // add file to array
+      templateData.uploads.push(inputs[field].answer as string);
       continue;
     }
     if (inputs[field].type === "yesNoField") {
       answer = YesNoMap[inputs[field].answer.toString()];
     }
-    templateData[field] = answer;
+    templateData.templateVars[field] = answer;
   }
-  return templateData as AffirmationTemplateData | CNITemplateData;
+  return templateData;
 }

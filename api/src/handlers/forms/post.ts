@@ -21,7 +21,7 @@ export async function post(req: Request, res: Response, next: NextFunction) {
     next(error);
   }
 
-  if (fields.errors) {
+  if ("errors" in fields) {
     const error = new HttpException(
       400,
       "W001",
