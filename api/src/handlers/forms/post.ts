@@ -1,9 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { HttpException } from "../../middlewares/error-handlers";
 import { buildEmailData } from "../helpers/buildEmailData";
-// import { convertTemplateToHtml } from "../helpers/convertTemplateToHtml";
-// import { CNIStructuredDataInput } from "../helpers/structureInputData/cni";
-// import { getFilePromise } from "../helpers/getFilePromise";
 import { ERRORS as globalErrors } from "../../errors";
 import { TemplateData } from "../helpers/getTemplateDataFromInputs";
 
@@ -31,7 +28,7 @@ export async function post(req: Request, res: Response, next: NextFunction) {
 
   const { uploads, templateVars } = fields as TemplateData;
 
-  const { fileService } = res.locals.app.services;
+  const { fileService, sesService } = res.locals.app.services;
 
   const filePromises: Promise<ArrayBuffer>[] = [];
 
@@ -52,7 +49,28 @@ export async function post(req: Request, res: Response, next: NextFunction) {
     {}
   );
 
-  req.log.info(["attachments"], JSON.stringify(attachments));
+  const template = await sesService.getTemplate(formType);
+  if (!template) {
+    next();
+  }
+
+  const builtEmail = await sesService.buildEmail(
+    template,
+    templateVars,
+    attachments
+  );
+
+  if (builtEmail.errors) {
+    next();
+  }
+
+  const emailRes = await sesService.sendEmail(builtEmail);
+
+  if (!res) {
+    next();
+  }
+
+  req.log.info(["Email sent successfully"], emailRes as any);
 
   res.status(200).send("Request successful");
 }
