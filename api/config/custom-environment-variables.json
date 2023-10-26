@@ -4,5 +4,6 @@
   "documentPassword": "DOCUMENT_PASSWORD",
   "affirmationTemplate": "AFFIRMATION_TEMPLATE_ID",
   "cniTemplate": "CNI_TEMPLATE_ID",
-  "submissionEmail": "SUBMISSION_EMAIL_ADDRESS"
+  "submissionEmail": "SUBMISSION_EMAIL_ADDRESS",
+  "senderEmail": "SENDER_EMAIL_ADDRESS"
 }
