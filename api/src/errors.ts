@@ -13,9 +13,13 @@ export const ERRORS = {
     NO_TEMPLATE: "E001 - no template id was set for the specified form",
     TEMPLATE_NOT_FOUND:
       "E002 - no template with the specified id could be found",
-    EMPTY_RES: "E002 - The email service did not return a response",
-    BAD_REQUEST: "E003 - The email data being sent was malformed",
-    API_ERROR: "E004 - The email service returned an error",
+    TEMPLATE_PART_MISSING:
+      "E003 - the template subject line or body were missing",
+    TEMPLATE_VAR_MISSING:
+      "E004 - a required variable was missing from the template data",
+    EMPTY_RES: "E005 - The email service did not return a response",
+    BAD_REQUEST: "E006 - The email data being sent was malformed",
+    API_ERROR: "E007 - The email service returned an error",
     UNKNOWN: "E999 - There was an unknown error sending the email",
   },
 };
