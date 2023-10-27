@@ -12,6 +12,7 @@ import {
   AffirmationTemplateData,
   CNITemplateData,
 } from "../../handlers/helpers/getTemplateDataFromInputs";
+import { ses } from "../../SESClient";
 
 export class SESService {
   templates: {
@@ -25,25 +26,31 @@ export class SESService {
     this.templates.affirmation = config.get("affirmationTemplate");
     this.templates.cni = config.get("cniTemplate");
     this.logger = logger().child({ service: "SES" });
-    this.ses = new SESClient();
+    this.ses = ses;
   }
 
   async getTemplate(type: "cni" | "affirmation") {
-    if (!this.templates[type]) {
-      this.logger.error(ERRORS.ses.NO_TEMPLATE);
-      return;
-    }
-    const { Template } = await this.ses.send(
-      new GetTemplateCommand({
-        TemplateName: this.templates[type],
-      })
-    );
+    try {
+      if (!this.templates[type]) {
+        this.logger.error(ERRORS.ses.NO_TEMPLATE);
+        return;
+      }
+      const templateData = await this.ses.send(
+        new GetTemplateCommand({
+          TemplateName: this.templates[type],
+        })
+      );
 
-    if (!Template) {
-      this.logger.error(ERRORS.ses.TEMPLATE_NOT_FOUND);
-      return;
+      if (!templateData?.Template) {
+        this.logger.error(ERRORS.ses.TEMPLATE_NOT_FOUND);
+        return;
+      }
+      return templateData.Template;
+    } catch (err) {
+      console.log("handling the error");
+      this.handleSESError(err as Error);
     }
-    return Template;
+    return;
   }
 
   buildEmail(
