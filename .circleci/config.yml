@@ -206,13 +206,14 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-
       - test:
           filters:
             tags:
               only: /.*/
             branches:
               only: /.*/
+          environment:
+            NODE_ENV: "test"
       - publish:
           name: publish-api
           app: api
