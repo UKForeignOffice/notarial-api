@@ -17,6 +17,9 @@ jobs:
     docker:
       - image: cimg/node:18.15.0-browsers
 
+    environment:
+      NODE_ENV: "test"
+
     steps:
       - checkout
 
@@ -212,8 +215,6 @@ workflows:
               only: /.*/
             branches:
               only: /.*/
-          environment:
-            NODE_ENV: "test"
       - publish:
           name: publish-api
           app: api
