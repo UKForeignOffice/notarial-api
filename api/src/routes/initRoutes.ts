@@ -6,12 +6,7 @@ const router = Router();
 
 router.use("/forms", formRouter);
 router.get("/health-check", (_req, res) => {
-  throw new ApplicationError(
-    "ses",
-    "TEMPLATE_NOT_FOUND",
-    500,
-    "some custom message"
-  );
+  throw new ApplicationError("ses", "TEMPLATE_NOT_FOUND", 500, "some custom message");
 
   // res.send({
   //   uptime: process.uptime(),
