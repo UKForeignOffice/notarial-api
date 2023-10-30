@@ -1,5 +1,4 @@
 import { ErrorCode, ERRORS, ErrorTypes } from "./errors";
-import { HttpStatusCode } from "axios";
 
 type ApplicationErrorOptions = {
   isOperational: boolean;
