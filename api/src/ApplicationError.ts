@@ -12,7 +12,7 @@ const defaultOptions: ApplicationErrorOptions = {
 
 export class ApplicationError extends Error {
   httpStatusCode: number;
-  code: string;
+  code: ErrorCode;
   isOperational: boolean = true;
   exposeToClient: boolean = false;
 
