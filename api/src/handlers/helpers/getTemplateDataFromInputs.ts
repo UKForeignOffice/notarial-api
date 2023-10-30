@@ -1,4 +1,4 @@
-import { InputFields } from "./getAllInputsFromForm";
+import { InputFields } from "./fieldHashMapFromFormData";
 import { AffirmationFieldList, fieldLists } from "./fieldLists";
 import { YesNoMap } from "./fieldLists/common";
 import { CNIFieldList } from "./fieldLists/cni";
