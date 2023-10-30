@@ -13,6 +13,7 @@ import {
   CNITemplateData,
 } from "../../handlers/helpers/getTemplateDataFromInputs";
 import { ses } from "../../SESClient";
+import { ApplicationError } from "../../ApplicationError";
 
 export class SESService {
   templates: {
@@ -28,29 +29,31 @@ export class SESService {
     this.logger = logger().child({ service: "SES" });
     this.ses = ses;
   }
-
   async getTemplate(type: "cni" | "affirmation") {
-    try {
-      if (!this.templates[type]) {
-        this.logger.error(ERRORS.ses.NO_TEMPLATE);
-        return;
-      }
-      const templateData = await this.ses.send(
-        new GetTemplateCommand({
-          TemplateName: this.templates[type],
-        })
-      );
+    const getTemplateCommand = new GetTemplateCommand({
+      TemplateName: this.templates[type],
+    });
 
-      if (!templateData?.Template) {
-        this.logger.error(ERRORS.ses.TEMPLATE_NOT_FOUND);
-        return;
-      }
+    try {
+      const templateData = await this.ses.send(getTemplateCommand);
       return templateData.Template;
-    } catch (err) {
-      console.log("handling the error");
-      this.handleSESError(err as Error);
+    } catch (e: Error | any) {
+      this.logger.error(e);
+      if (e.name === "TemplateDoesNotExistException") {
+        return Promise.reject(
+          new ApplicationError(
+            "ses",
+            "TEMPLATE_NOT_FOUND",
+            500,
+            ERRORS.ses.NO_TEMPLATE,
+            {
+              isOperational: true,
+              exposeToClient: false,
+            }
+          )
+        );
+      }
     }
-    return;
   }
 
   buildEmail(

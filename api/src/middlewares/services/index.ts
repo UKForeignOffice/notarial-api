@@ -1,2 +1,2 @@
 export { FileService } from "./file";
-export { SESService } from "./ses";
+export { SESService } from "./SESService";
