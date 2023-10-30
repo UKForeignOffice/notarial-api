@@ -1,40 +1,59 @@
 import { Express, NextFunction, Request, Response } from "express";
+import { ApplicationError } from "../ApplicationError";
+import { ERRORS } from "../errors";
+import logger from "pino";
+const stackLogger = logger();
 
-export class HttpException extends Error {
-  constructor(status: number, code: string, message: string) {
-    super(message);
-    this.name = "HttpException";
-    this.status = status;
-    this.code = code;
-    this.message = message;
-  }
-
-  status: number;
-  code?: string;
-}
-export function configureErrorHandlers(server: Express) {
-  server.use((req: Request, res: Response) => {
-    req.log.warn("404 Not found", { path: req.path });
-    res.status(404).send({
-      error: "The requested resource is unavailable",
-    });
-  });
-
-  server.use(
-    (err: HttpException, req: Request, res: Response, _next: NextFunction) => {
-      req.log.error(err.message);
-      res.status("status" in err ? err.status : 500);
-      res.send(`This request could not be processed -- ${err.message}`);
-    }
-  );
-}
-
-export function rateLimitExceededErrorHandler(
+function errorLogger(
+  error: Error,
   req: Request,
   _res: Response,
   next: NextFunction
 ) {
-  req.log.error("429 rate limit exceeded", { path: req.path });
-  const err = new HttpException(429, "429", "Rate limit exceeded");
-  next(err);
+  if (error instanceof ApplicationError) {
+    const { name, code } = error;
+    const summary = `${ERRORS[name][code]}`;
+    req.log.error(`${name} ${code} ${summary}`, error);
+    stackLogger.error(error);
+    next(error);
+    return;
+  }
+  req.log.error(error);
+  next(error);
+}
+function errorHandler(
+  error: Error,
+  _req: Request,
+  res: Response,
+  _next: NextFunction
+) {
+  res.status(500);
+  if (error instanceof ApplicationError) {
+    res.status(error.httpStatusCode);
+
+    if (!error.exposeToClient) {
+      return;
+    }
+
+    res.send({
+      error: error.code,
+      message: error.message,
+    });
+
+    return;
+  }
+
+  res.send(`This request could not be processed -- ${error.message}`);
+}
+
+function notFoundHandler(req: Request, res: Response) {
+  req.log.warn("404 Not found", { path: req.path });
+  res.status(404).send({
+    error: "The requested resource is unavailable",
+  });
+}
+
+export function configureErrorHandlers(server: Express) {
+  server.use(errorLogger, errorHandler);
+  server.use(notFoundHandler);
 }
