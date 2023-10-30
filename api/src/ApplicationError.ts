@@ -16,13 +16,7 @@ export class ApplicationError extends Error {
   isOperational: boolean = true;
   exposeToClient: boolean = false;
 
-  constructor(
-    name: ErrorTypes,
-    code: ErrorCode,
-    httpStatusCode: number,
-    message?: string,
-    options?: Partial<ApplicationErrorOptions>
-  ) {
+  constructor(name: ErrorTypes, code: ErrorCode, httpStatusCode: number, message?: string, options?: Partial<ApplicationErrorOptions>) {
     super(message);
     this.name = name;
     this.httpStatusCode = httpStatusCode;
