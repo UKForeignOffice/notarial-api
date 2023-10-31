@@ -1,8 +1,4 @@
-import { Request, Response } from "express";
-import { FormDataBody } from "../../types";
-import { FileService, SESService, SubmitService } from "../../middlewares/services";
-
-const testData = {
+export const testData = {
   name: "Prove Your Eligibility to a Foreign Government affirmation",
   questions: [
     {
@@ -307,34 +303,3 @@ const testData = {
     paymentSkipped: false,
   },
 };
-export async function post(req: Request, res: Response) {
-  const { submitService } = res.locals.app.services;
-
-  const submission = req.body as FormDataBody;
-  await submitService.submitForm(submission);
-
-  req.log.info(["Email sent successfully"] as any);
-
-  res.status(200).send({
-    message: "Email sent successfully",
-    reference: "PYE-1234",
-  });
-}
-export async function get(req: Request, res: Response) {
-  const fileService = new FileService();
-  const sesService = new SESService({ fileService });
-  const submitService = new SubmitService({
-    fileService,
-    emailService: sesService,
-  });
-
-  // const submission = req.body as FormDataBody;
-  await submitService.submitForm(testData);
-
-  req.log.info(["Email sent successfully"] as any);
-
-  res.status(200).send({
-    message: "Email sent successfully",
-    reference: "PYE-1234",
-  });
-}

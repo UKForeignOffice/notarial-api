@@ -39,10 +39,16 @@ export class SESService {
     const message = createMimeMessage();
     message.setSender({
       name: "Getting Married Abroad Service",
-      addr: config.get("senderEmail"),
+      addr: "pye@cautionyourblast.com",
     });
+    console.log(message);
     message.setSubject(subject);
-    message.setMessage("text/html", body);
+
+    // @ts-ignore
+    message.addMessage({
+      contentType: "text/html",
+      data: body,
+    });
     message.setRecipient(config.get("submissionAddress"));
 
     try {
@@ -76,8 +82,16 @@ export class SESService {
     this.logger.error(err);
   }
 
-  private static createTemplate(name) {
-    const templateFile = fs.readFileSync(path.join(__dirname, name)).toString("utf-8");
-    return handlebars.compile(templateFile);
+  private static createTemplate(name: string) {
+    // const templateFile = fs.readFileSync(path.join(__dirname, name)).toString("utf-8");
+    return handlebars.compile(
+      `
+    <ul>
+    {{#each questions}}
+        <li>{{this.title}}: {{this.answer}}</li>
+    {{/each}}
+</ul>
+`
+    );
   }
 }
