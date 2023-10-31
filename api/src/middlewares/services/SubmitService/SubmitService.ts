@@ -30,6 +30,6 @@ export class SubmitService {
       attachments: fileFields,
     });
 
-    await this.emailService.sendEmail(submission);
+    return await this.emailService.sendEmail(submission);
   }
 }
