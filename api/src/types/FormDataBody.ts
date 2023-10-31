@@ -5,6 +5,8 @@ export interface FormDataBody {
   questions: FormQuestion[];
   metadata: {
     paymentSkipped: boolean;
+    type: "oath" | "cni";
+    [key: string]: any;
   };
   fees?: {
     paymentReference: string;

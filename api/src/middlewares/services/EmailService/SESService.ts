@@ -1,42 +1,58 @@
 import logger, { Logger } from "pino";
 import config from "config";
 import { SendRawEmailCommand, SESClient, Template } from "@aws-sdk/client-ses";
-import { createMimeMessage } from "mimetext";
+import { createMimeMessage, MIMEType } from "mimetext";
 import { AffirmationTemplateData, CNITemplateData } from "../../../handlers/helpers/getTemplateDataFromInputs";
 import { ses } from "../../../SESClient";
+import { FileService } from "../file";
+import { FormField } from "../../../types/FormField";
+import * as handlebars from "handlebars";
+import * as fs from "fs";
+import { ApplicationError } from "../../../ApplicationError";
 
 export class SESService {
-  templates: {
-    cni?: string;
-    affirmation?: string;
-  } = {};
   logger: Logger;
   ses: SESClient;
+  fileService: FileService;
+  templates: any;
 
-  constructor() {
-    this.templates.affirmation = config.get("affirmationTemplate");
-    this.templates.cni = config.get("cniTemplate");
+  constructor({ fileService }) {
     this.logger = logger().child({ service: "SES" });
     this.ses = ses;
+    this.fileService = fileService;
+    this.templates = {
+      oath: SESService.createTemplate("oathSubmissionTemplate"),
+    };
   }
 
-  buildEmail(template: Template, fields: AffirmationTemplateData | CNITemplateData, uploads: object) {
+  buildOathEmailBody(fields: FormField[]) {
+    return this.templates.oath({
+      questions: fields,
+    });
+  }
+
+  buildCNIEmailBody() {
+    throw new ApplicationError("ses", "NO_TEMPLATE", 500);
+  }
+
+  async buildEmailWithAttachments({ subject, body, attachments }: { subject: string; body: string; attachments: FormField[] }) {
     const message = createMimeMessage();
     message.setSender({
       name: "Getting Married Abroad Service",
       addr: config.get("senderEmail"),
     });
+    message.setSubject(subject);
+    message.setMessage("text/html", body);
     message.setRecipient(config.get("submissionAddress"));
+
     try {
-      message.setSubject(this.interpolateVars(template.SubjectPart, fields));
-      for (const [field, file] of Object.entries(uploads)) {
-        message.setAttachment(field, "application/pdf", file.toString());
+      for (const attachment of attachments) {
+        const file = await this.fileService.getFile(attachment.answer as string);
+        const fileType = file.type as MIMEType;
+        message.setAttachment(attachment.key, fileType, await file.text());
       }
-      message.setMessage("text/html", this.interpolateVars(template.HtmlPart, fields));
     } catch (err) {
-      return {
-        errors: err as Error,
-      };
+      // throw file error
     }
     return message.asRaw();
   }
@@ -58,5 +74,10 @@ export class SESService {
 
   handleSESError(err: Error) {
     this.logger.error(err);
+  }
+
+  private static createTemplate(name) {
+    const templateFile = fs.readFileSync(name).toString("utf-8");
+    return handlebars.compile(templateFile);
   }
 }
