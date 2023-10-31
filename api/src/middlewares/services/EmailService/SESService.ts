@@ -1,8 +1,7 @@
 import logger, { Logger } from "pino";
 import config from "config";
-import { SendRawEmailCommand, SESClient, Template } from "@aws-sdk/client-ses";
+import { SendRawEmailCommand, SESClient } from "@aws-sdk/client-ses";
 import { createMimeMessage, MIMEType } from "mimetext";
-import { AffirmationTemplateData, CNITemplateData } from "../../../handlers/helpers/getTemplateDataFromInputs";
 import { ses } from "../../../SESClient";
 import { FileService } from "../file";
 import { FormField } from "../../../types/FormField";
