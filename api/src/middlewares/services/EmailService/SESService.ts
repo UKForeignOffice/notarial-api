@@ -8,6 +8,7 @@ import { FormField } from "../../../types/FormField";
 import * as handlebars from "handlebars";
 import * as fs from "fs";
 import { ApplicationError } from "../../../ApplicationError";
+import * as path from "path";
 
 export class SESService {
   logger: Logger;
@@ -20,7 +21,7 @@ export class SESService {
     this.ses = ses;
     this.fileService = fileService;
     this.templates = {
-      oath: SESService.createTemplate("oathSubmissionTemplate"),
+      oath: SESService.createTemplate("oathSubmissionTemplate.hbs"),
     };
   }
 
@@ -76,7 +77,7 @@ export class SESService {
   }
 
   private static createTemplate(name) {
-    const templateFile = fs.readFileSync(name).toString("utf-8");
+    const templateFile = fs.readFileSync(path.join(__dirname, name)).toString("utf-8");
     return handlebars.compile(templateFile);
   }
 }

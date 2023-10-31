@@ -1,5 +1,5 @@
 <ul>
-    {{#each question}}
-        <li>{{interest}}</li>
+    {{#each questions}}
+        <li>{{this.title}}: {{this.answer}}</li>
     {{/each}}
 </ul>

@@ -1,3 +1,7 @@
+import { SESService } from "../SESService";
+import { flattenQuestions } from "../../../../handlers/forms/helpers/flattenQuestions";
+import { isNotFieldType } from "../../../../utils/isNotFieldType";
+
 const testData = {
   name: "Prove Your Eligibility to a Foreign Government affirmation",
   questions: [
@@ -304,4 +308,11 @@ const testData = {
   },
 };
 
-test.todo("");
+const emailService = new SESService({ fileService: {} });
+
+test("template renders", () => {
+  const formFields = flattenQuestions(testData.questions);
+  const allOtherFields = formFields.filter(isNotFieldType("file"));
+  const emailBody = emailService.buildOathEmailBody(allOtherFields);
+  expect(emailBody.includes("<li>Maiden name: Baz</li>"));
+});
