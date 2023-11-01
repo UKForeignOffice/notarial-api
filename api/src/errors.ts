@@ -17,7 +17,7 @@
 /**
  * Category of the error - this is likely to match the service it came from
  */
-export type ErrorTypes = "WEBHOOK" | "FILE" | "SES";
+export type ErrorTypes = "WEBHOOK" | "FILE" | "SES" | "GENERIC";
 
 /**
  * Error code for the matching ErrorType.
@@ -34,7 +34,7 @@ type SESErrorCode =
   | "API_ERROR"
   | "UNKNOWN";
 
-type GenericErrorCode = "UNKNOWN";
+type GenericErrorCode = "UNKNOWN" | "RATE_LIMIT_EXCEEDED";
 
 /**
  * Union of all the different ErrorCode.
@@ -72,6 +72,7 @@ const SES: ErrorRecord<SESErrorCode> = {
 
 const GENERIC: ErrorRecord<GenericErrorCode> = {
   UNKNOWN: "Unknown error",
+  RATE_LIMIT_EXCEEDED: "Rate limit exceeded",
 };
 
 type ErrorRecords = {
