@@ -52,7 +52,6 @@ export class SESService implements EmailService {
     message.setRecipient(config.get("submissionAddress"));
     try {
       for (const attachment of attachments) {
-        // const file = new Blob();
         const { contentType, data } = await this.fileService.getFile(attachment.answer as string);
 
         // @ts-ignore - these types are wrong!
