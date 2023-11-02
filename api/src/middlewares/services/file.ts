@@ -13,7 +13,7 @@ export class FileService {
   }
 
   /**
-   * returns the contentYpe and
+   * returns the contentype and
    * @param url of the file you need to retrieve
    *
    */

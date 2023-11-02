@@ -43,7 +43,6 @@ export class SESService implements EmailService {
     });
     message.setSubject(subject);
 
-    // @ts-ignore - these types are wrong!
     message.addMessage({
       contentType: "text/html",
       data: body,
