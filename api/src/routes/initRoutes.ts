@@ -5,9 +5,6 @@ const router = Router();
 
 router.use("/forms", formRouter);
 
-// TODO: remove
-router.use("/ocr-email", formRouter);
-
 router.get("/health-check", (_req, res) => {
   res.send({
     uptime: process.uptime(),
