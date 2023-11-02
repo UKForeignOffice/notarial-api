@@ -1,6 +1,12 @@
 import rateLimit from "express-rate-limit";
-import { Express } from "express";
-import { rateLimitExceededErrorHandler } from "./error-handlers";
+import { Express, NextFunction, Request, Response } from "express";
+import { ApplicationError } from "../ApplicationError";
+import { HttpStatusCode } from "axios";
+
+export function rateLimitExceededErrorHandler(req: Request, _res: Response, next: NextFunction) {
+  req.log.error("429 rate limit exceeded", { path: req.path });
+  next(new ApplicationError("GENERIC", "RATE_LIMIT_EXCEEDED", HttpStatusCode.TooManyRequests));
+}
 
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000,

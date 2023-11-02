@@ -1,12 +1,13 @@
 import { createServer } from "./server";
 import config from "config";
-import { logger } from "./services";
+import logger from "pino";
 
+const initLogger = logger();
 async function initApp(): Promise<void> {
   const server = createServer();
 
   server.listen(config.get("port"), () => {
-    logger.info(
+    initLogger.info(
       `Server listening on PORT: ${config.get("port")}, NODE_ENV: ${config.get(
         "env"
       )}`
@@ -14,11 +15,11 @@ async function initApp(): Promise<void> {
   });
 
   process.on("exit", () => {
-    logger.info(`Server stopped`);
+    initLogger.info(`Server stopped`);
   });
 }
 
 initApp().catch((err) => {
-  logger.error(["Server initialisation error"], err);
+  initLogger.error(["Server initialisation error"], err);
   process.exit(1);
 });
