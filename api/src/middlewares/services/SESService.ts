@@ -33,7 +33,7 @@ export class SESService {
       this.logger.error(e);
       if (e.name === "TemplateDoesNotExistException") {
         return Promise.reject(
-          new ApplicationError("ses", "TEMPLATE_NOT_FOUND", 500, ERRORS.ses.NO_TEMPLATE, {
+          new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 500, ERRORS.SES.NO_TEMPLATE, {
             isOperational: true,
             exposeToClient: false,
           })
@@ -80,7 +80,7 @@ export class SESService {
 
   interpolateVars(string: string = "", vars: object) {
     if (!string) {
-      this.logger.error(ERRORS.ses.TEMPLATE_PART_MISSING);
+      this.logger.error(ERRORS.SES.TEMPLATE_PART_MISSING);
       throw new Error("No string was supplied");
     }
     const varsInString = [...string.matchAll(/\{\{[a-zA-Z0-9]*}}/g)];
@@ -89,7 +89,7 @@ export class SESService {
       const varRef = variable[0];
       const varValue = vars[varRef.slice(2, -2)];
       if (!varValue) {
-        this.logger.error(ERRORS.ses.TEMPLATE_VAR_MISSING);
+        this.logger.error(ERRORS.SES.TEMPLATE_VAR_MISSING);
         throw new Error(`Missing required variable: ${varRef}`);
       }
       parsedString = parsedString.replace(varRef, varValue);
@@ -98,6 +98,6 @@ export class SESService {
   }
 
   handleSESError(err: Error) {
-    return Promise.reject(new ApplicationError("ses", "UNKNOWN", 500, err.message));
+    return Promise.reject(new ApplicationError("SES", "UNKNOWN", 500, err.message));
   }
 }
