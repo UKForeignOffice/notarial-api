@@ -4,8 +4,9 @@ import { isNotFieldType } from "../../../../utils/isNotFieldType";
 import { AxiosError } from "axios";
 import { ApplicationError } from "../../../../ApplicationError";
 import { SESServiceException } from "@aws-sdk/client-ses";
+import { FormDataBody } from "../../../../types";
 
-const testData = {
+const testData: FormDataBody = {
   name: "Prove Your Eligibility to a Foreign Government affirmation",
   questions: [
     {
@@ -307,6 +308,7 @@ const testData = {
     },
   ],
   metadata: {
+    type: "oath",
     paymentSkipped: false,
   },
 };
