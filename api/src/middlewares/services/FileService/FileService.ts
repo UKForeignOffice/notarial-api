@@ -1,7 +1,7 @@
 import logger, { Logger } from "pino";
 import axios, { AxiosError } from "axios";
 import config from "config";
-import { ApplicationError } from "../../ApplicationError";
+import { ApplicationError } from "../../../ApplicationError";
 
 export class FileService {
   logger: Logger;
@@ -25,7 +25,7 @@ export class FileService {
         data,
       };
     } catch (e: AxiosError | Error | any) {
-      return Promise.reject(this.handleFetchError(e));
+      throw this.handleFetchError(e);
     }
   }
 

@@ -1,6 +1,6 @@
 import logger, { Logger } from "pino";
-import { FileService } from "../file";
-import { SESService } from "../EmailService/SESService";
+import { FileService } from "../FileService";
+import { SESService } from "../EmailService";
 import { FormDataBody } from "../../../types";
 import { flattenQuestions } from "../../../handlers/forms/helpers/flattenQuestions";
 import { isFieldType } from "../../../utils";
