@@ -7,7 +7,7 @@ import { FileService } from "../file";
 import { FormField } from "../../../types/FormField";
 import * as handlebars from "handlebars";
 import { ApplicationError } from "../../../ApplicationError";
-import { default as oathTemplate } from "./oathSubmissionTemplate";
+import { oath } from "./templates";
 import { EmailService } from "./EmailService";
 export class SESService implements EmailService {
   logger: Logger;
@@ -20,7 +20,7 @@ export class SESService implements EmailService {
     this.ses = ses;
     this.fileService = fileService;
     this.templates = {
-      oath: SESService.createTemplate(oathTemplate),
+      oath: SESService.createTemplate(oath),
     };
   }
 
