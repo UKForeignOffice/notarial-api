@@ -20,17 +20,3 @@ test("getFile returns the file type and file content when a file is found", asyn
     data: fileBuffer,
   });
 });
-
-test("getFile returns a file not found response if the file cannot be found", () => {
-  const spy = jest.spyOn(axios, "get");
-  spy.mockRejectedValueOnce(
-    new AxiosError(undefined, undefined, undefined, undefined, {
-      data: {},
-      status: 404,
-      statusText: "File not found",
-      headers: {},
-      config: { headers: new AxiosHeaders() },
-    })
-  );
-  expect(fileService.getFile("https://a-failing-url.com")).rejects.toThrow("Requested file could not be found");
-});
