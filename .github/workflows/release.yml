@@ -22,6 +22,6 @@ jobs:
         run: yarn install
 
       - name: Release 🚀
-        run: npx run release
+        run: npx release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
