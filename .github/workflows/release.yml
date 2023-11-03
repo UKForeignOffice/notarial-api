@@ -22,6 +22,9 @@ jobs:
         run: yarn install
 
       - name: Release 🚀
-        run: npx release patch
+        run: |
+          npx release patch
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
