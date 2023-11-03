@@ -3,7 +3,7 @@ import config from "config";
 import { SendRawEmailCommand, SESClient, SESServiceException } from "@aws-sdk/client-ses";
 import { createMimeMessage } from "mimetext";
 import { ses } from "../../../SESClient";
-import { FileService } from "../file";
+import { FileService } from "../FileService";
 import { FormField } from "../../../types/FormField";
 import * as handlebars from "handlebars";
 import { ApplicationError } from "../../../ApplicationError";

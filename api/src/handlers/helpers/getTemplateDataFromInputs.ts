@@ -14,10 +14,7 @@ export interface TemplateData {
   };
 }
 
-export function getTemplateDataFromInputs(
-  inputs: InputFields,
-  formType: "cni" | "affirmation"
-): TemplateData | Errors {
+export function getTemplateDataFromInputs(inputs: InputFields, formType: "cni" | "affirmation"): TemplateData | Errors {
   const formFields = fieldLists[formType];
   let templateData: TemplateData = {
     templateVars: {},
@@ -35,7 +32,7 @@ export function getTemplateDataFromInputs(
       continue;
     }
     if (inputs[field].type === "yesNoField") {
-      answer = YesNoMap[inputs[field].answer.toString()];
+      answer = YesNoMap[inputs[field].answer?.toString() ?? "false"];
     }
     templateData.templateVars[field] = answer;
   }
