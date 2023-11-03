@@ -21,10 +21,12 @@ jobs:
       - name: Install dependencies 👨🏻‍
         run: yarn install
 
-      - name: Release 🚀
+      - name: Set author
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          npx release patch
+
+      - name: Release 🚀
+        run: npx release patch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
