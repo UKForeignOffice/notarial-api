@@ -2578,7 +2578,7 @@ __metadata:
     mimetext: ^3.0.16
     nanoid: 3.3.4
     nodemon: ^3.0.1
-    pino: ^8.15.4
+    pino: ^8.16.2
     pino-http: ^8.5.0
     prettier: ^3.0.3
     typescript: ^5.2.2
@@ -9175,7 +9175,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino@npm:^8.0.0, pino@npm:^8.15.4":
+"pino@npm:^8.0.0":
   version: 8.16.0
   resolution: "pino@npm:8.16.0"
   dependencies:
@@ -9193,6 +9193,27 @@ __metadata:
   bin:
     pino: bin.js
   checksum: c3af0d1d80d0a7ec59530e6c3668895ac813762829ea0b7e316057370f58011d09e128e67289665652904367a1f27f87cca4e564eb3ff2a0d46219f12fcf896e
+  languageName: node
+  linkType: hard
+
+"pino@npm:^8.16.2":
+  version: 8.16.2
+  resolution: "pino@npm:8.16.2"
+  dependencies:
+    atomic-sleep: ^1.0.0
+    fast-redact: ^3.1.1
+    on-exit-leak-free: ^2.1.0
+    pino-abstract-transport: v1.1.0
+    pino-std-serializers: ^6.0.0
+    process-warning: ^2.0.0
+    quick-format-unescaped: ^4.0.3
+    real-require: ^0.2.0
+    safe-stable-stringify: ^2.3.1
+    sonic-boom: ^3.7.0
+    thread-stream: ^2.0.0
+  bin:
+    pino: bin.js
+  checksum: 78d194112f09f82471ec7e0022bc114ddb833375d60236be40ac55bf8a8ae26b88c8780d54912687c7cd6d0321ba5b1a78ffa89c5e9d5855ef849c3b9273c7ab
   languageName: node
   linkType: hard
 
