@@ -1,3 +1,3 @@
 export { FileService } from "./FileService";
-export { SESService } from "./EmailService";
+export { SESService, NotifyService } from "./EmailService";
 export { SubmitService } from "./SubmitService";

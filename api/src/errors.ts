@@ -17,7 +17,7 @@
 /**
  * Category of the error - this is likely to match the service it came from
  */
-export type ErrorTypes = "WEBHOOK" | "FILE" | "SES" | "GENERIC";
+export type ErrorTypes = "WEBHOOK" | "FILE" | "SES" | "NOTIFY" | "GENERIC";
 
 /**
  * Error code for the matching ErrorType.
@@ -33,13 +33,14 @@ type SESErrorCode =
   | "BAD_REQUEST"
   | "API_ERROR"
   | "UNKNOWN";
+type NotifyErrorCode = "NO_API_KEY";
 
 type GenericErrorCode = "UNKNOWN" | "RATE_LIMIT_EXCEEDED";
 
 /**
  * Union of all the different ErrorCode.
  */
-export type ErrorCode = WebhookErrorCode | FileErrorCode | SESErrorCode | GenericErrorCode;
+export type ErrorCode = WebhookErrorCode | FileErrorCode | SESErrorCode | NotifyErrorCode | GenericErrorCode;
 
 /**
  * {@ErrorRecord} uses `Record`, which means every key passed into the generic, must be implemented
@@ -70,6 +71,10 @@ const SES: ErrorRecord<SESErrorCode> = {
   UNKNOWN: "There was an unknown error sending the email",
 };
 
+const NOTIFY: ErrorRecord<NotifyErrorCode> = {
+  NO_API_KEY: "No Notify API key has been set",
+};
+
 const GENERIC: ErrorRecord<GenericErrorCode> = {
   UNKNOWN: "Unknown error",
   RATE_LIMIT_EXCEEDED: "Rate limit exceeded",
@@ -79,11 +84,13 @@ type ErrorRecords = {
   WEBHOOK: typeof WEBHOOK;
   FILE: typeof FILE;
   SES: typeof SES;
+  NOTIFY: typeof NOTIFY;
   GENERIC: typeof GENERIC;
 };
 export const ERRORS: ErrorRecords = {
   WEBHOOK,
   FILE,
   SES,
+  NOTIFY,
   GENERIC,
 };
