@@ -8,8 +8,9 @@ import { FormField } from "../../../types/FormField";
 import * as handlebars from "handlebars";
 import { ApplicationError } from "../../../ApplicationError";
 import * as templates from "./templates";
-import { EmailService } from "./EmailService";
-export class SESService implements EmailService {
+import { SESMailModel, StaffTemplate } from "./EmailService";
+
+export class SESService {
   logger: Logger;
   ses: SESClient;
   fileService: FileService;
@@ -22,6 +23,12 @@ export class SESService implements EmailService {
     this.templates = {
       oath: SESService.createTemplate(templates.oath),
     };
+  }
+
+  buildEmail(fields: FormField[], template: StaffTemplate) {
+    return this.templates[template]({
+      questions: fields,
+    });
   }
 
   buildOathEmailBody(fields: FormField[]) {
@@ -70,7 +77,7 @@ export class SESService implements EmailService {
   /**
    * @throws ApplicationError
    */
-  async sendEmail(message: string) {
+  async sendEmail(message: SESMailModel) {
     try {
       return await this.ses.send(
         new SendRawEmailCommand({
