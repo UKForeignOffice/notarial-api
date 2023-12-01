@@ -1,10 +1,10 @@
 export const standard = {
-  "oath.oathType": "",
-  "applicantDetails.firstName": "",
-  "appointmentLocation.post": "",
+  oathType: "",
+  firstName: "",
+  post: "",
   docsList: "",
   reference: "",
   andTranslated: false,
   additionalText: "",
-  "beforeYouStart.country": "",
+  country: "",
 };
