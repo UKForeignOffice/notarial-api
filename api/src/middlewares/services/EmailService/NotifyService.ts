@@ -1,20 +1,16 @@
-import { NotifyClient } from "notifications-node-client";
+import { NotifyClient, RequestError, SendEmailResponse } from "notifications-node-client";
 import config from "config";
 import pino, { Logger } from "pino";
 import { ApplicationError } from "../../../ApplicationError";
-import { FormField } from "../../../types/FormField";
-import { NotifyMailModel, UserTemplate } from "./EmailService";
-import { fieldsHashMap } from "./helpers";
-import * as additionalContexts from "./additionalContexts.json";
 
-const previousMarriageDocs = {
-  Divorced: "decree absolute",
-  "Dissolved civil partner": "final order",
-  Widowed: "late partner's death certificate",
-  "Surviving civil partner": "late partner's death certificate",
-  Annulled: "decree of nullity",
-};
-
+export interface NotifyMailModel {
+  template: string;
+  emailAddress: string;
+  options: {
+    personalisation: object;
+    reference: string;
+  };
+}
 export class NotifyService {
   notify: NotifyClient;
   logger: Logger;
@@ -28,27 +24,23 @@ export class NotifyService {
     this.notify = new NotifyClient(apiKey as string);
   }
 
-  buildEmail(formData: FormField[], template: UserTemplate) {}
-
-  sendEmail({ template, emailAddress, options }: NotifyMailModel) {
-    return this.notify.sendEmail(template, emailAddress, options);
+  async send({ template, emailAddress, options }: NotifyMailModel) {
+    try {
+      const response = await this.notify.sendEmail(template, emailAddress, options);
+      return response.data as SendEmailResponse;
+    } catch (e) {
+      this.handleError(e);
+    }
+    return;
   }
 
-  buildDocsList(formData: FormField[], payRef: string) {
-    const fields = fieldsHashMap(formData);
-    let docsList = ["your UK passport", "proof of address", "your partner’s passport or national identity card"];
-    if (fields.marriedBefore?.answer && fields.maritalStatus?.answer) {
-      docsList.push(`your ${previousMarriageDocs[fields.maritalStatus.answer as string]}`);
+  handleError(error: any) {
+    const { response = {} } = error;
+    const isNotifyError = "data" in response && response.data.errors;
+    if (isNotifyError) {
+      const notifyErrors = response.data.errors as RequestError[];
+      throw new ApplicationError("NOTIFY", "API_ERROR", 500, JSON.stringify(notifyErrors));
     }
-    if (fields.oathType.answer === "affidavit") {
-      docsList.push("religious book of your faith to swear upon");
-    }
-    if (!payRef) {
-      docsList.push("the equivalent of £50 in the local currency");
-    }
-    if (additionalContexts[fields.country?.answer as string].additionalDocs) {
-      docsList = docsList.concat(additionalContexts[fields.country?.answer as string].additionalDocs);
-    }
-    return docsList.map((doc) => `* ${doc}`).join("\n");
+    throw new ApplicationError("NOTIFY", "UNKNOWN", 500, error.message);
   }
 }
