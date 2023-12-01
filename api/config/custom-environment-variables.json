@@ -5,5 +5,8 @@
   "affirmationTemplate": "AFFIRMATION_TEMPLATE_ID",
   "cniTemplate": "CNI_TEMPLATE_ID",
   "submissionEmail": "SUBMISSION_EMAIL_ADDRESS",
-  "senderEmail": "SENDER_EMAIL_ADDRESS"
+  "senderEmail": "SENDER_EMAIL_ADDRESS",
+  "notifyApiKey": "NOTIFY_API_KEY",
+  "notifyTemplateStandard": "NOTIFY_TEMPLATE_STANDARD",
+  "notifyTemplateAdditionalInfo": "NOTIFY_TEMPLATE_ADDITIONAL_INFO"
 }
