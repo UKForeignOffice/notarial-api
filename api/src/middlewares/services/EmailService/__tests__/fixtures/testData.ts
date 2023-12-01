@@ -1,12 +1,4 @@
-import { SESService } from "../SESService";
-import { flattenQuestions } from "../../../../handlers/forms/helpers/flattenQuestions";
-import { isNotFieldType } from "../../../../utils/isNotFieldType";
-import { AxiosError } from "axios";
-import { ApplicationError } from "../../../../ApplicationError";
-import { SESServiceException } from "@aws-sdk/client-ses";
-import { FormDataBody } from "../../../../types";
-
-const testData: FormDataBody = {
+export const testData = {
   name: "Prove Your Eligibility to a Foreign Government affirmation",
   questions: [
     {
@@ -312,71 +304,3 @@ const testData: FormDataBody = {
     paymentSkipped: false,
   },
 };
-
-const fileService = {
-  getFile: jest.fn().mockResolvedValue({ data: Buffer.from("an image"), contentType: "image/jpeg" }),
-};
-
-const emailService = new SESService({
-  fileService,
-});
-
-const formFields = flattenQuestions(testData.questions);
-const allOtherFields = formFields.filter(isNotFieldType("file"));
-
-test("buildOathBody renders correctly", () => {
-  const emailBody = emailService.buildOathEmailBody(allOtherFields);
-  expect(emailBody.includes("<li>Maiden name: Baz</li>")).toBe(true);
-});
-
-test("buildCNIBody renders correctly", () => {
-  expect(emailService.buildCNIEmailBody).toThrow();
-});
-
-test("buildEmailWithAttachments returns valid raw email", async () => {
-  const emailBody = emailService.buildOathEmailBody(allOtherFields);
-
-  const email = await emailService.buildEmailWithAttachments({
-    subject: "some subject",
-    body: emailBody,
-    attachments: [
-      {
-        answer: "somewhere/123",
-        key: "favouriteEgg",
-        title: "Favourite egg",
-        type: "file",
-      },
-    ],
-  });
-  expect(email.includes("Date:")).toBeTruthy();
-  expect(email.includes("From:")).toBeTruthy();
-  expect(email.includes("Message-ID")).toBeTruthy();
-  expect(email.includes("Content-Type: text/html; charset=UTF-8")).toBeTruthy();
-  expect(email.includes('Content-Type: image/jpeg; name="Favourite egg')).toBeTruthy();
-  expect(email.includes('Content-Disposition: attachment; filename="Favourite egg"')).toBeTruthy();
-});
-
-test("buildEmailWithAttachments throws ApplicationError when fileService rejects", async () => {
-  fileService.getFile.mockRejectedValueOnce(new AxiosError("some axios error", "AXIOS_ERR"));
-  const emailBody = emailService.buildOathEmailBody(allOtherFields);
-  await expect(
-    emailService.buildEmailWithAttachments({
-      subject: "some subject",
-      body: emailBody,
-      attachments: [
-        {
-          answer: "somewhere/123",
-          key: "favouriteEgg",
-          title: "Favourite egg",
-          type: "file",
-        },
-      ],
-    })
-  ).rejects.toThrowError(ApplicationError);
-});
-
-test("sendEmail throws ApplicationError when SES rejects", () => {
-  const spy = jest.spyOn(emailService.ses, "send");
-  spy.mockRejectedValueOnce(new SESServiceException({ message: "some message" }));
-  expect(emailService.sendEmail("foo")).rejects.toThrowError(ApplicationError);
-});
