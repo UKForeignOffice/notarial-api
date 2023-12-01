@@ -6,10 +6,13 @@ import { createMimeMessage } from "mimetext";
 import config from "config";
 import { ApplicationError } from "../../../ApplicationError";
 import { FileService } from "../FileService";
+import * as additionalContexts from "./additionalContexts.json";
 
 export class StaffEmailService extends EmailService {
   templates: any;
   fileService: FileService;
+
+  declare provider: SESService;
   constructor({ sesService, fileService }) {
     super("SES", sesService);
     this.fileService = fileService;
@@ -20,8 +23,10 @@ export class StaffEmailService extends EmailService {
 
   buildEmail(fields: FormField[], template: "oath" | "cni", fileFields: FormField[], reference: string) {
     const emailBody = this.getEmailBody(fields, template);
+    const postField = fileFields.find((field) => field.key === "post");
+    const post = additionalContexts[(postField?.answer as string) ?? "default"].post;
     const emailParams = {
-      subject: `${template} - ${reference}`,
+      subject: `${template} | ${post} | ${reference}`,
       body: emailBody,
       attachments: fileFields,
     };
@@ -51,7 +56,6 @@ export class StaffEmailService extends EmailService {
     try {
       for (const attachment of attachments) {
         const { contentType, data } = await this.fileService.getFile(attachment.answer as string);
-
         message.addAttachment({
           filename: attachment.title,
           contentType,
@@ -65,7 +69,7 @@ export class StaffEmailService extends EmailService {
     return message.asRaw();
   }
 
-  sendEmail(formData: FormField[]) {
-    super.sendEmail(formData);
+  async sendEmail(message: string) {
+    return this.provider.send(message);
   }
 }
