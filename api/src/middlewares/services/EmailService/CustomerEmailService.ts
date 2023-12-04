@@ -17,18 +17,16 @@ const previousMarriageDocs = {
 export class CustomerEmailService extends EmailService {
   templateIds: {
     standard: string;
-    additionalInfoRequired: string;
   };
 
   declare provider: NotifyService;
   constructor({ notifyService }) {
     super("NOTIFY", notifyService);
-    if (!config.get("notifyTemplateStandard") || !config.get("notifyTemplateAdditionalInfo")) {
+    if (!config.get("notifyTemplateStandard")) {
       throw new ApplicationError("NOTIFY", "NO_TEMPLATE", 500);
     }
     this.templateIds = {
       standard: config.get("notifyTemplateStandard"),
-      additionalInfoRequired: config.get("notifyTemplateAdditionalInfo"),
     };
   }
 
