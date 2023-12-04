@@ -39,18 +39,20 @@ export class SubmitService {
 
     const reference = this.generateId();
 
-    const staffRes = await this.buildAndSendStaffEmail(allOtherFields, fileFields, reference);
+    const staffPromise = new Promise(async (resolve) => {
+      const staffRes = await this.buildAndSendStaffEmail(allOtherFields, fileFields, reference);
+      this.logger.info(`Reference ${reference} staff email sent successfully with SES message id: ${staffRes.MessageId}`);
+      resolve(staffRes);
+    });
 
-    this.logger.info(`Reference ${reference} staff email sent successfully with SES message id: ${staffRes.MessageId}`);
+    const customerPromise = new Promise(async (resolve) => {
+      const customerRes = await this.buildAndSendCustomerEmail(allOtherFields, reference, !!formData.fees?.paymentReference);
+      this.logger.info(`Reference ${reference} user email sent successfully with Notify id: ${customerRes?.id}`);
+      resolve(customerRes);
+    });
 
-    const customerRes = await this.buildAndSendCustomerEmail(allOtherFields, reference, !!formData.fees?.paymentReference);
+    const response = await Promise.all([staffPromise, customerPromise]);
 
-    this.logger.info(`Reference ${reference} user email sent successfully with Notify id: ${customerRes?.id}`);
-
-    const response = {
-      staffRes,
-      customerRes,
-    };
     return { response, reference };
   }
 

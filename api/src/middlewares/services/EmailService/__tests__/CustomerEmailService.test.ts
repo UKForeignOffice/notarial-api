@@ -24,8 +24,8 @@ test("buildEmail should return the correct personalisation", () => {
         docsList:
           "* your UK passport\n* proof of address\n* your partner’s passport or national identity card\n* your Turkish Residence Permit if you’ve been living in Turkey for 3 months or more",
         reference: "1234",
-        andTranslated: undefined,
-        additionalText: undefined,
+        translationNeeded: false,
+        bookingLink: "",
         country: "Turkey",
       },
       reference: "1234",

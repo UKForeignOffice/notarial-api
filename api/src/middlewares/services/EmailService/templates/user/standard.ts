@@ -4,9 +4,8 @@ export const standard = {
   post: "",
   docsList: "",
   reference: "",
-  andTranslated: false,
   additionalText: "",
   country: "",
   bookingLink: "",
-  translationNeeded: "",
+  translationNeeded: false,
 };
