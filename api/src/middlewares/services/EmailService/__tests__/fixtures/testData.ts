@@ -1,15 +1,38 @@
 export const testData = {
-  name: "Prove Your Eligibility to a Foreign Government affirmation",
+  name: "Digital Form Builder - Runner affirmation",
   questions: [
     {
-      category: "GIUBrH",
-      question: "Select a British embassy or consulate",
+      category: "beforeYouStart",
+      question: "Select the country you're getting married in",
+      fields: [{ key: "country", title: "Country", type: "list", answer: "Turkey" }],
+    },
+    {
+      category: "appointmentLocation",
+      question: "Select a British embassy or consulate in Turkey",
       fields: [
         {
-          key: "MHAYRo",
+          key: "post",
           title: "Select a location",
           type: "list",
-          answer: "Istanbul",
+          answer: "Istanbul Consulate General",
+        },
+      ],
+    },
+    {
+      category: "applicantMarriage",
+      question: "Place and date of marriage registration",
+      fields: [
+        {
+          key: "RlUFWc",
+          title: "Place of marriage",
+          type: "text",
+          answer: "test",
+        },
+        {
+          key: "kPGPUc",
+          title: "Date of marriage",
+          type: "monthYear",
+          answer: "2023-10",
         },
       ],
     },
@@ -17,99 +40,60 @@ export const testData = {
       question: "Have you been married or in a civil partnership before?",
       fields: [
         {
-          key: "brkQJy",
+          key: "marriedBefore",
           title: "Married or CP before?",
           type: "list",
-          answer: true,
+          answer: false,
         },
       ],
     },
     {
-      question: "What is your current marital status?",
+      category: "applicantNameChange",
+      question: "Have you ever changed your name?",
       fields: [
         {
-          key: "oNhRKo",
-          title: "Marital status",
+          key: "nameChangedNoMarriage",
+          title: "Name changed",
           type: "list",
-          answer: "Divorced",
+          answer: false,
         },
       ],
     },
     {
-      category: "sErzlA",
-      question: "Decree absolute",
-      fields: [
-        {
-          key: "gkxprY",
-          title: "Decree absolute",
-          type: "file",
-          answer: "http://documentupload:9000/v1/files/cd24ed8a-409c-4f65-b59e-86e49d634f36.png",
-        },
-      ],
-    },
-    {
-      category: "shGfJV",
-      question: "About your divorce",
-      fields: [
-        {
-          key: "vSlgqy",
-          title: "Date of issue of decree absolute",
-          type: "date",
-          answer: "2000-12-25",
-        },
-        {
-          key: "zXsOkJ",
-          title: "Place of issue of decree absolute",
-          type: "text",
-          answer: "Derby",
-        },
-      ],
-    },
-    {
-      category: "sErzlA",
+      category: "applicantDocs",
       question: "UK passport",
       fields: [
         {
           key: "IYkNwD",
           title: "UK passport",
           type: "file",
-          answer: "http://documentupload:9000/v1/files/9adc0833-2c00-491d-b0ea-3229024ea6a3.png",
+          answer: "http://localhost:9000/v1/files/5f4759e5-58d8-4b4d-9b9b-cc17dd6fd7fb.png",
         },
       ],
     },
     {
-      category: "WsLsJg",
-      question: "Full name",
+      category: "applicantDetails",
+      question: "Your full name",
       fields: [
         {
-          key: "sgfroO",
+          key: "firstName",
           title: "First name",
           type: "text",
-          answer: "Jen",
+          answer: "foo",
         },
-        {
-          key: "CNAsiH",
-          title: "Middle name",
-          type: "text",
-          answer: "middle",
-        },
-        {
-          key: "sQhPRP",
-          title: "Surname",
-          type: "text",
-          answer: "Duong",
-        },
+        { key: "CNAsiH", title: "Middle name", type: "text", answer: null },
+        { key: "sQhPRP", title: "Surname", type: "text", answer: "bar" },
       ],
     },
     {
-      category: "WsLsJg",
+      category: "applicantDetails",
       question: "UK passport details",
       fields: [
         {
           key: "KfBDDG",
           title: "Passport number",
           type: "text",
-          answer: "12312311",
+          answer: "12345789",
         },
         {
           key: "llZZFF",
@@ -121,49 +105,49 @@ export const testData = {
           key: "iNhNMn",
           title: "Date of birth",
           type: "date",
-          answer: "2000-12-25",
+          answer: "1998-01-19",
         },
         {
           key: "SgaocB",
           title: "Place of birth ",
           type: "text",
-          answer: "london",
+          answer: "test",
         },
         {
           key: "KuFQHL",
           title: "Male or female",
           type: "list",
-          answer: "Female",
+          answer: "Male",
         },
         {
           key: "QtsMpE",
           title: "Date of issue of passport",
           type: "date",
-          answer: "2016-12-25",
+          answer: "1998-01-19",
         },
       ],
     },
     {
-      category: "sErzlA",
+      category: "applicantDocs",
       question: "Proof of address",
       fields: [
         {
           key: "tZXpuQ",
           title: "Proof of address",
           type: "file",
-          answer: "http://documentupload:9000/v1/files/21054d8b-2069-4162-920c-31f4cbf81d5a.png",
+          answer: "http://localhost:9000/v1/files/f56f08a9-948e-4c98-8adb-78d5a3918012.jpg",
         },
       ],
     },
     {
-      category: "WsLsJg",
-      question: "Address",
+      category: "applicantDetails",
+      question: "Your address",
       fields: [
         {
           key: "ncyOTQ",
           title: "Address line 1",
           type: "text",
-          answer: "1 phipp street",
+          answer: "test",
         },
         {
           key: "svmzHm",
@@ -172,135 +156,197 @@ export const testData = {
           answer: null,
         },
         {
-          key: "xAQXXj",
-          title: "Address line 3 ",
-          type: "text",
-          answer: null,
-        },
-        {
           key: "nhkPTu",
           title: "Town or city",
           type: "text",
-          answer: "london",
+          answer: "test",
         },
         {
-          key: "IfqKmS",
-          title: "County or region",
+          key: "NdQYWv",
+          title: "Postcode or zip code",
           type: "text",
           answer: null,
         },
         {
-          key: "NdQYWv",
-          title: "Zipcode or postcode ",
-          type: "text",
-          answer: "ec2a4ps",
+          key: "mNwwxx",
+          title: "Country",
+          type: "list",
+          answer: "United Kingdom",
         },
       ],
     },
     {
-      category: "sErzlA",
+      category: "applicantPartner",
       question: "Partner's passport or national identity card",
       fields: [
         {
           key: "qFuyQg",
           title: "Partner's passport or identity card",
           type: "file",
-          answer: "http://documentupload:9000/v1/files/092161ad-afcf-4474-a5e7-4901bbc3185c.png",
+          answer: "http://localhost:9000/v1/files/949de5d0-1857-4185-9f2f-c9415c804629.jpg",
         },
       ],
     },
     {
-      category: "WsLsJg",
-      question: "Contact details",
+      category: "applicantPartner",
+      question: "Your partner's name and nationality",
       fields: [
         {
-          key: "applicantEmail",
-          title: "Email address",
+          key: "qMwAzf",
+          title: "Partner's first name",
           type: "text",
-          answer: "jen@cautionyourblast.com",
+          answer: "test",
         },
         {
-          key: "applicantPhone",
-          title: "Phone number",
+          key: "JtUIeu",
+          title: "Partner's middle name",
           type: "text",
-          answer: "123123",
+          answer: null,
+        },
+        {
+          key: "EApTtB",
+          title: "Partner's surname",
+          type: "text",
+          answer: "test",
+        },
+        {
+          key: "WIhpEs",
+          title: "Partner's nationality ",
+          type: "text",
+          answer: "test",
         },
       ],
     },
     {
-      category: "WsLsJg",
-      question: "Confirm your contact details",
-      fields: [],
-    },
-    {
-      category: "WsLsJg",
-      question: "Main occupation",
+      category: "applicantPartner",
+      question: "Your partner's address",
       fields: [
         {
-          key: "ZZHoIt",
-          title: "Occupation",
+          key: "OusegU",
+          title: "Address line 1",
           type: "text",
-          answer: "engineer",
+          answer: "test",
+        },
+        {
+          key: "NAPApe",
+          title: "Address line 2",
+          type: "text",
+          answer: null,
+        },
+        {
+          key: "ntkyCg",
+          title: "Town or city",
+          type: "text",
+          answer: "test",
+        },
+        {
+          key: "TCEzgh",
+          title: "Postcode or zip code",
+          type: "text",
+          answer: null,
+        },
+        {
+          key: "JLxfVp",
+          title: "Country",
+          type: "list",
+          answer: "United Kingdom",
         },
       ],
     },
     {
-      category: "UpLyUo",
+      category: "applicantDocs",
+      question: "Your birth certificate",
+      fields: [
+        {
+          key: "QzoKfc",
+          title: "Birth certificate",
+          type: "file",
+          answer: "http://localhost:9000/v1/files/c312106c-43be-4f98-a5e4-9fb529c5caac.jpg",
+        },
+      ],
+    },
+    {
+      category: "applicantParents",
       question: "Your father's details",
       fields: [
         {
           key: "AUPxcz",
           title: "Father's full name",
           type: "text",
-          answer: "Foo",
+          answer: "test",
         },
       ],
     },
     {
-      category: "WsLsJg",
+      category: "applicantParents",
       question: "Your mother's details",
       fields: [
         {
           key: "gnWqOi",
           title: "Mother's full name",
           type: "text",
-          answer: "Bar",
-        },
-        {
-          key: "bmWUyr",
-          title: "Maiden name",
-          type: "text",
-          answer: "Baz",
+          answer: "test",
         },
       ],
     },
     {
-      category: "YBdlSQ",
+      category: "applicantDetails",
+      question: "Your main occupation",
+      fields: [{ key: "ZZHoIt", title: "Occupation", type: "text", answer: "test" }],
+    },
+    {
+      category: "applicantDetails",
+      question: "Your contact details",
+      fields: [
+        {
+          key: "applicantPhone",
+          title: "Phone number",
+          type: "text",
+          answer: "+44 1234 567890",
+        },
+        {
+          key: "poVfrf",
+          title: "Confirm phone number",
+          type: "text",
+          answer: "+44 1234 566890",
+        },
+        {
+          key: "applicantEmail",
+          title: "Email address",
+          type: "text",
+          answer: "test@test.com",
+        },
+        {
+          key: "ZpAXwW",
+          title: "Confirm email address",
+          type: "text",
+          answer: "test@test.com",
+        },
+      ],
+    },
+    {
+      category: "oath",
       question: "Do you want to swear a religious or non-religious oath?",
       fields: [
         {
-          key: "OXteTH",
+          key: "oathType",
           title: "Type of oath",
           type: "list",
-          answer: "Affirmation (non-religious)",
+          answer: "affirmation",
         },
       ],
     },
     {
-      category: "IzAzlV",
-      question: "Pay for your application",
+      question: "Feedback",
       fields: [
         {
-          key: "ofpFsm",
-          title: "Payment type",
+          key: "emHOVk",
+          title: "Can our partner contact you for feedback to help improve this service?",
           type: "list",
-          answer: "In-person",
+          answer: false,
         },
       ],
     },
   ],
-  metadata: {
-    type: "oath",
-    paymentSkipped: false,
-  },
+  metadata: { paymentSkipped: false },
 };
