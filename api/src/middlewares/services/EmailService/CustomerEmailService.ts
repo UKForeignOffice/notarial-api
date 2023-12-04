@@ -35,12 +35,14 @@ export class CustomerEmailService extends EmailService {
     const fields = fieldsHashMap(formData);
     const docsList = this.buildDocsList(fields, paid);
     const country = fields["country"].answer;
+    const post = fields["post"]?.answer;
     const personalisationValues = {
       ...fields,
       docsList,
       paid,
       reference,
       ...additionalContexts[country as string],
+      ...(additionalContexts[post as string] ?? {}),
     };
     const personalisation = Object.keys(defaultTemplate).reduce((acc, curr) => {
       return {

@@ -7,4 +7,6 @@ export const standard = {
   andTranslated: false,
   additionalText: "",
   country: "",
+  bookingLink: "",
+  translationNeeded: "",
 };

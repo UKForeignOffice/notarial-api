@@ -1,7 +1,20 @@
 {
   "Turkey": {
+    "translationNeeded": false,
     "additionalDocs": [
       "your Turkish Residence Permit if you’ve been living in Turkey for 3 months or more"
     ]
+  },
+  "Istanbul Consulate General": {
+    "bookingLink": ""
+  },
+  "Ankara Embassy": {
+    "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=93&service=13"
+  },
+  "Izmir consulate": {
+    "bookingLink": ""
+  },
+  "Antalya vice consulate": {
+    "bookingLink": ""
   }
 }

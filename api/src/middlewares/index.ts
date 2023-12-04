@@ -8,7 +8,7 @@ export function initMiddleware(server: Application) {
   server.use(pino());
   server.use(json());
   const fileService = new FileService();
-  const sesService = new SESService({ fileService });
+  const sesService = new SESService();
   const notifyService = new NotifyService();
   const customerEmailService = new CustomerEmailService({ notifyService });
   const staffEmailService = new StaffEmailService({ sesService, fileService });
