@@ -19,6 +19,8 @@ jobs:
 
     environment:
       NODE_ENV: "test"
+      CNI_TEMPLATE_ID: "5678"
+      NOTIFY_TEMPLATE_STANDARD: "1234"
 
     steps:
       - checkout

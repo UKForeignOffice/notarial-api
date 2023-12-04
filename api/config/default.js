@@ -12,5 +12,4 @@ module.exports = {
   senderEmail: "pye@cautionyourblast.com",
   notifyApiKey: "",
   notifyTemplateStandard: "",
-  notifyTemplateAdditionalInfo: "",
 };
