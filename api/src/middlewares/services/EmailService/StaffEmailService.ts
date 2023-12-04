@@ -7,6 +7,7 @@ import config from "config";
 import { ApplicationError } from "../../../ApplicationError";
 import { FileService } from "../FileService";
 import * as additionalContexts from "./additionalContexts.json";
+import { fieldsHashMap } from "./helpers";
 
 export class StaffEmailService extends EmailService {
   templates: any;
@@ -23,8 +24,9 @@ export class StaffEmailService extends EmailService {
 
   buildEmail(fields: FormField[], template: "oath" | "cni", fileFields: FormField[], reference: string) {
     const emailBody = this.getEmailBody(fields, template);
-    const postField = fileFields.find((field) => field.key === "post");
-    const post = additionalContexts[(postField?.answer as string) ?? "default"].post;
+    const fieldsObj = fieldsHashMap(fields);
+    const postField = fieldsObj.post;
+    const post = postField?.answer ?? additionalContexts[fieldsObj.country.answer as string].post;
     const emailParams = {
       subject: `${template} | ${post} | ${reference}`,
       body: emailBody,
@@ -34,6 +36,9 @@ export class StaffEmailService extends EmailService {
   }
 
   getEmailBody(fields: FormField[], template: "oath" | "cni") {
+    if (template === "cni") {
+      throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 500, "CNI template has not been configured");
+    }
     return this.templates[template]({
       questions: fields,
     });

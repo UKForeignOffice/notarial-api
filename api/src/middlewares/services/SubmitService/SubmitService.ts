@@ -34,8 +34,6 @@ export class SubmitService {
     const { questions = [] } = formData;
     const formFields = flattenQuestions(questions);
 
-    console.log("The form fields: ", formFields);
-
     const fileFields = formFields.filter(isFieldType("file"));
     const allOtherFields = formFields.filter(isNotFieldType("file"));
 
