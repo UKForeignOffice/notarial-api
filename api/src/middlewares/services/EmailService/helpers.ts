@@ -1,4 +1,5 @@
 import { FormField } from "../../../types/FormField";
+import { FormQuestion } from "../../../types/FormQuestion";
 
 export function fieldsHashMap(fields: FormField[]): Record<string, FormField> {
   return fields.reduce(
@@ -17,4 +18,10 @@ export function getFileFields(fields: Record<string, FormField>) {
     }
     return [...acc];
   }, []);
+}
+
+export function flattenQuestions(questions: FormQuestion[]) {
+  return questions.flatMap(({ fields }) => {
+    return fields;
+  });
 }
