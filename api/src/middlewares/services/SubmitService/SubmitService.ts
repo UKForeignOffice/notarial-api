@@ -2,8 +2,8 @@ import logger, { Logger } from "pino";
 import { FileService } from "../FileService";
 import { FormDataBody } from "../../../types";
 import { flattenQuestions, fieldsHashMap } from "../helpers";
-import { FormField } from "../../../types/FormField";
 import { EmailServiceProvider } from "../EmailService/types";
+import { FieldHashMap } from "../../../types/FieldHashMap";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
@@ -31,7 +31,7 @@ export class SubmitService {
     const { questions = [] } = formData;
     const formFields = flattenQuestions(questions);
 
-    const formsObj: Record<string, FormField> = {
+    const formsObj: FieldHashMap = {
       ...fieldsHashMap(formFields),
       paid: {
         key: "paid",

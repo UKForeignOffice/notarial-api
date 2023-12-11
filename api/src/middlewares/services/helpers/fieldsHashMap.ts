@@ -1,6 +1,7 @@
 import { FormField } from "../../../types/FormField";
+import { FieldHashMap } from "../../../types/FieldHashMap";
 
-export function fieldsHashMap(fields: FormField[]): Record<string, FormField> {
+export function fieldsHashMap(fields: FormField[]): FieldHashMap {
   return fields.reduce(
     (map, currField) => ({
       ...map,

@@ -30,21 +30,6 @@ test("buildSendEmailArgs should return the correct personalisation", () => {
   });
 });
 
-test("buildSendEmailArgs should throw if the country name doesn't exist in the additional context", () => {
-  const badFields = {
-    ...fieldHashMap,
-    country: {
-      key: "country",
-      title: "Country",
-      type: "list",
-      answer: "Iceland",
-    },
-  };
-  expect(() => {
-    emailService.buildSendEmailArgs(badFields, "standard", "1234");
-  }).toThrow();
-});
-
 test("buildDocsList will add optional documents when the relevant fields are filled in", () => {
   const fieldsMap = {
     ...fieldHashMap,

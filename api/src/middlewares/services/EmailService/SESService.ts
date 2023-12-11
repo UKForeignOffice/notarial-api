@@ -11,6 +11,7 @@ import { createMimeMessage } from "mimetext";
 import config from "config";
 import { FileService } from "../FileService";
 import { getFileFields } from "../helpers";
+import { FieldHashMap } from "../../../types/FieldHashMap";
 
 export class SESService implements EmailServiceProvider {
   logger: Logger;
@@ -27,7 +28,7 @@ export class SESService implements EmailServiceProvider {
     };
   }
 
-  async send(fields: Record<string, FormField>, template: string, reference: string) {
+  async send(fields: FieldHashMap, template: string, reference: string) {
     const emailArgs = await this.buildSendEmailArgs(fields, template, reference);
     return this.sendEmail(emailArgs, reference);
   }
@@ -46,7 +47,7 @@ export class SESService implements EmailServiceProvider {
     }
   }
 
-  getEmailBody(fields: Record<string, FormField>, template: string) {
+  getEmailBody(fields: FieldHashMap, template: string) {
     if (template === "cni") {
       throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 500, "CNI template has not been configured");
     }
@@ -55,7 +56,7 @@ export class SESService implements EmailServiceProvider {
     });
   }
 
-  async buildSendEmailArgs(fields: Record<string, FormField>, template: string, reference: string): Promise<SendRawEmailCommand> {
+  async buildSendEmailArgs(fields: FieldHashMap, template: string, reference: string): Promise<SendRawEmailCommand> {
     const emailBody = this.getEmailBody(fields, template);
     const postField = fields.post;
     const post = postField?.answer ?? additionalContexts[fields.country.answer as string].post;
