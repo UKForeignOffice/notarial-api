@@ -1,9 +1,8 @@
 import logger, { Logger } from "pino";
 import { FileService } from "../FileService";
 import { FormDataBody } from "../../../types";
-import { flattenQuestions, fieldsHashMap } from "../helpers";
+import { flattenQuestions } from "../helpers";
 import { EmailServiceProvider } from "../EmailService/types";
-import { FieldHashMap } from "../../../types/FieldHashMap";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
@@ -31,21 +30,18 @@ export class SubmitService {
     const { questions = [] } = formData;
     const formFields = flattenQuestions(questions);
 
-    const formsObj: FieldHashMap = {
-      ...fieldsHashMap(formFields),
-      paid: {
-        key: "paid",
-        title: "paid",
-        type: "metadata",
-        answer: !!formData.fees?.paymentReference,
-      },
-    };
+    formFields.push({
+      key: "paid",
+      title: "paid",
+      type: "metadata",
+      answer: !!formData.fees?.paymentReference,
+    });
 
     const reference = this.generateId();
 
-    const staffPromise = this.staffEmailService.send(formsObj, "oath", reference);
+    const staffPromise = this.staffEmailService.send(formFields, "oath", reference);
 
-    const customerPromise = this.customerEmailService.send(formsObj, "standard", reference);
+    const customerPromise = this.customerEmailService.send(formFields, "standard", reference);
 
     const [staffRes, customerRes] = await Promise.all([staffPromise, customerPromise]);
 

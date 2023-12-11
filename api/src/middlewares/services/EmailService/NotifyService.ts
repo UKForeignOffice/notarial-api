@@ -5,7 +5,8 @@ import { ApplicationError } from "../../../ApplicationError";
 import * as additionalContexts from "./additionalContexts.json";
 import { EmailServiceProvider, NotifySendEmailArgs } from "./types";
 import * as templates from "./templates";
-import { FieldHashMap } from "../../../types/FieldHashMap";
+import { FormField } from "../../../types/FormField";
+import { answersHashMap } from "../helpers/answersHashMap";
 
 const previousMarriageDocs = {
   Divorced: "decree absolute",
@@ -34,7 +35,7 @@ export class NotifyService implements EmailServiceProvider {
     this.logger = pino().child({ service: "Notify" });
   }
 
-  async send(fields: FieldHashMap, template: string, reference: string) {
+  async send(fields: FormField[], template: string, reference: string) {
     const emailArgs = this.buildSendEmailArgs(fields, template, reference);
     return this.sendEmail(emailArgs, reference);
   }
@@ -50,9 +51,10 @@ export class NotifyService implements EmailServiceProvider {
     throw new ApplicationError("NOTIFY", "API_ERROR", 500, "No data was returned from the api");
   }
 
-  buildSendEmailArgs(fields: FieldHashMap, template: string, reference: string): NotifySendEmailArgs {
+  buildSendEmailArgs(fields: FormField[], template: string, reference: string): NotifySendEmailArgs {
+    const answers = answersHashMap(fields);
     const defaultTemplate = templates.user[template];
-    const personalisation = this.getPersonalisationForTemplate(fields, reference, fields.paid.answer as boolean, defaultTemplate);
+    const personalisation = this.getPersonalisationForTemplate(answers, reference, answers.paid as boolean, defaultTemplate);
     return {
       template: this.templates.standard,
       emailAddress: fields["emailAddress"].answer as string,
@@ -63,12 +65,12 @@ export class NotifyService implements EmailServiceProvider {
     };
   }
 
-  getPersonalisationForTemplate(fields: FieldHashMap, reference: string, paid: boolean, template: Record<string, string | boolean>) {
-    const docsList = this.buildDocsList(fields, paid);
-    const country = fields["country"].answer;
-    const post = fields["post"]?.answer;
+  getPersonalisationForTemplate(answers: Record<string, string | boolean>, reference: string, paid: boolean, template: Record<string, string | boolean>) {
+    const docsList = this.buildDocsList(answers, paid);
+    const country = answers["country"];
+    const post = answers["post"];
     const personalisationValues = {
-      ...fields,
+      ...answers,
       docsList,
       paid,
       reference,
@@ -78,7 +80,7 @@ export class NotifyService implements EmailServiceProvider {
     return Object.keys(template).reduce((acc, curr) => {
       return {
         ...acc,
-        [curr]: personalisationValues[curr]?.answer ?? personalisationValues[curr],
+        [curr]: personalisationValues[curr],
       };
     }, {});
   }
@@ -93,18 +95,18 @@ export class NotifyService implements EmailServiceProvider {
     throw new ApplicationError("NOTIFY", "UNKNOWN", 500, error.message);
   }
 
-  buildDocsList(fields: FieldHashMap, paid: boolean) {
+  buildDocsList(fields: Record<string, string | boolean>, paid: boolean) {
     const docsList = ["your UK passport", "proof of address", "your partner’s passport or national identity card"];
-    if (fields.maritalStatus?.answer) {
-      docsList.push(`your ${previousMarriageDocs[fields.maritalStatus.answer as string]}`);
+    if (fields.maritalStatus) {
+      docsList.push(`your ${previousMarriageDocs[fields.maritalStatus as string]}`);
     }
-    if (fields.oathType.answer === "affidavit") {
+    if (fields.oathType === "affidavit") {
       docsList.push("religious book of your faith to swear upon");
     }
     if (!paid) {
       docsList.push("the equivalent of £50 in the local currency");
     }
-    const country = fields.country.answer as string;
+    const country = fields.country as string;
     const additionalDocs = additionalContexts[country]?.additionalDocs ?? [];
     docsList.push(...additionalDocs);
     return docsList.map((doc) => `* ${doc}`).join("\n");

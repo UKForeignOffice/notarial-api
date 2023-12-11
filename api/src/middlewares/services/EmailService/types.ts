@@ -1,5 +1,5 @@
 import { SendEmailOptions } from "notifications-node-client";
-import { FieldHashMap } from "../../../types/FieldHashMap";
+import { FormField } from "../../../types/FormField";
 
 export interface NotifySendEmailArgs {
   template: string;
@@ -8,7 +8,7 @@ export interface NotifySendEmailArgs {
 }
 
 export interface EmailServiceProvider {
-  send: (fields: FieldHashMap, template: string, reference: string) => Promise<any>;
-  buildSendEmailArgs: (fields: FieldHashMap, template: string, reference: string) => any;
+  send: (fields: FormField[], template: string, reference: string) => Promise<any>;
+  buildSendEmailArgs: (fields: FormField[], template: string, reference: string) => any;
   sendEmail: (args: ReturnType<EmailServiceProvider["buildSendEmailArgs"]>, reference: string) => Promise<any>;
 }
