@@ -1,3 +1,3 @@
 export { flattenQuestions } from "./flattenQuestions";
-export { fieldsHashMap } from "./fieldsHashMap";
+export { answersHashMap } from "./answersHashMap";
 export { getFileFields } from "./getFileFields";

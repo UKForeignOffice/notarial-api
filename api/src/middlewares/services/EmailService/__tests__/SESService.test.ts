@@ -1,11 +1,10 @@
-import { flattenQuestions } from "../../helpers/flattenQuestions";
-import { isNotFieldType } from "../../../../utils/isNotFieldType";
+import { flattenQuestions } from "../../helpers";
 import { AxiosError } from "axios";
 import { ApplicationError } from "../../../../ApplicationError";
 import { testData } from "./fixtures";
 import { SESService } from "../SESService";
-import { fieldsHashMap } from "../../helpers";
 import { SendRawEmailCommand } from "@aws-sdk/client-ses";
+import { isNotFieldType } from "../../../../utils";
 
 const fileService = {
   getFile: jest.fn().mockResolvedValue({ data: Buffer.from("an image"), contentType: "image/jpeg" }),
@@ -15,16 +14,15 @@ const emailService = new SESService({ fileService });
 
 const formFields = flattenQuestions(testData.questions);
 const allOtherFields = formFields.filter(isNotFieldType("file"));
-const fieldHashMap = fieldsHashMap(allOtherFields);
 
 test("getEmailBody renders oath email correctly", () => {
-  const emailBody = emailService.getEmailBody(fieldHashMap, "oath");
+  const emailBody = emailService.getEmailBody(allOtherFields, "oath");
   expect(emailBody.includes("<li>First name: foo</li>")).toBe(true);
 });
 
 test("getEmailBody renders cni template correctly", () => {
   expect(() => {
-    emailService.getEmailBody(fieldHashMap, "cni");
+    emailService.getEmailBody(allOtherFields, "cni");
   }).toThrow();
 });
 

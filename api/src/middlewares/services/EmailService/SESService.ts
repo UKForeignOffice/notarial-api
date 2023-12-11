@@ -10,9 +10,7 @@ import { EmailServiceProvider } from "./types";
 import { createMimeMessage } from "mimetext";
 import config from "config";
 import { FileService } from "../FileService";
-import { getFileFields } from "../helpers";
-import { answersHashMap } from "../helpers/answersHashMap";
-import { AnswersHashMap } from "../../../types/AnswersHashMap";
+import { getFileFields, answersHashMap } from "../helpers";
 
 export class SESService implements EmailServiceProvider {
   logger: Logger;
@@ -48,7 +46,7 @@ export class SESService implements EmailServiceProvider {
     }
   }
 
-  getEmailBody(fields: AnswersHashMap, template: string) {
+  getEmailBody(fields: FormField[], template: string) {
     if (template === "cni") {
       throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 500, "CNI template has not been configured");
     }
@@ -59,7 +57,7 @@ export class SESService implements EmailServiceProvider {
 
   async buildSendEmailArgs(fields: FormField[], template: string, reference: string): Promise<SendRawEmailCommand> {
     const answers = answersHashMap(fields);
-    const emailBody = this.getEmailBody(answers, template);
+    const emailBody = this.getEmailBody(fields, template);
     const post = answers.post ?? additionalContexts[answers.country as string].post;
     const message = await this.buildEmailWithAttachments({
       subject: `${template} | ${post} | ${reference}`,

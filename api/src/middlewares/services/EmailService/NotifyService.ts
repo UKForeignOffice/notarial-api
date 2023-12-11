@@ -6,7 +6,8 @@ import * as additionalContexts from "./additionalContexts.json";
 import { EmailServiceProvider, NotifySendEmailArgs } from "./types";
 import * as templates from "./templates";
 import { FormField } from "../../../types/FormField";
-import { answersHashMap } from "../helpers/answersHashMap";
+import { answersHashMap } from "../helpers";
+import { AnswersHashMap } from "../../../types/AnswersHashMap";
 
 const previousMarriageDocs = {
   Divorced: "decree absolute",
@@ -57,7 +58,7 @@ export class NotifyService implements EmailServiceProvider {
     const personalisation = this.getPersonalisationForTemplate(answers, reference, answers.paid as boolean, defaultTemplate);
     return {
       template: this.templates.standard,
-      emailAddress: fields["emailAddress"].answer as string,
+      emailAddress: answers.emailAddress as string,
       options: {
         personalisation,
         reference: reference,
@@ -65,7 +66,7 @@ export class NotifyService implements EmailServiceProvider {
     };
   }
 
-  getPersonalisationForTemplate(answers: Record<string, string | boolean>, reference: string, paid: boolean, template: Record<string, string | boolean>) {
+  getPersonalisationForTemplate(answers: AnswersHashMap, reference: string, paid: boolean, template: Record<string, string | boolean>) {
     const docsList = this.buildDocsList(answers, paid);
     const country = answers["country"];
     const post = answers["post"];
@@ -95,7 +96,7 @@ export class NotifyService implements EmailServiceProvider {
     throw new ApplicationError("NOTIFY", "UNKNOWN", 500, error.message);
   }
 
-  buildDocsList(fields: Record<string, string | boolean>, paid: boolean) {
+  buildDocsList(fields: AnswersHashMap, paid: boolean) {
     const docsList = ["your UK passport", "proof of address", "your partner’s passport or national identity card"];
     if (fields.maritalStatus) {
       docsList.push(`your ${previousMarriageDocs[fields.maritalStatus as string]}`);
