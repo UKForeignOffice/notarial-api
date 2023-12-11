@@ -1,26 +1,23 @@
 import logger, { Logger } from "pino";
 import { FileService } from "../FileService";
 import { FormDataBody } from "../../../types";
-import { flattenQuestions } from "../helpers/flattenQuestions";
-import { isFieldType } from "../../../utils";
-import { isNotFieldType } from "../../../utils";
-import { CustomerEmailService } from "../EmailService/CustomerEmailService";
-import { StaffEmailService } from "../EmailService/StaffEmailService";
+import { flattenQuestions, fieldsHashMap } from "../helpers";
 import { FormField } from "../../../types/FormField";
+import { EmailServiceProvider } from "../EmailService/types";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
 export class SubmitService {
   logger: Logger;
   fileService: FileService;
-  customerEmailService: CustomerEmailService;
-  staffEmailService: StaffEmailService;
+  customerEmailService: EmailServiceProvider;
+  staffEmailService: EmailServiceProvider;
 
-  constructor({ fileService, customerEmailService, staffEmailService }) {
+  constructor({ fileService, notifyService, sesService }) {
     this.logger = logger().child({ service: "Submit" });
     this.fileService = fileService;
-    this.customerEmailService = customerEmailService;
-    this.staffEmailService = staffEmailService;
+    this.customerEmailService = notifyService;
+    this.staffEmailService = sesService;
   }
 
   generateId() {
@@ -34,35 +31,30 @@ export class SubmitService {
     const { questions = [] } = formData;
     const formFields = flattenQuestions(questions);
 
-    const fileFields = formFields.filter(isFieldType("file"));
-    const allOtherFields = formFields.filter(isNotFieldType("file"));
+    const formsObj: Record<string, FormField> = {
+      ...fieldsHashMap(formFields),
+      paid: {
+        key: "paid",
+        title: "paid",
+        type: "metadata",
+        answer: !!formData.fees?.paymentReference,
+      },
+    };
 
     const reference = this.generateId();
 
-    const staffPromise = new Promise(async (resolve) => {
-      const staffRes = await this.buildAndSendStaffEmail(allOtherFields, fileFields, reference);
-      this.logger.info(`Reference ${reference} staff email sent successfully with SES message id: ${staffRes.MessageId}`);
-      resolve(staffRes);
-    });
+    const staffPromise = this.staffEmailService.send(formsObj, "oath", reference);
 
-    const customerPromise = new Promise(async (resolve) => {
-      const customerRes = await this.buildAndSendCustomerEmail(allOtherFields, reference, !!formData.fees?.paymentReference);
-      this.logger.info(`Reference ${reference} user email sent successfully with Notify id: ${customerRes?.id}`);
-      resolve(customerRes);
-    });
+    const customerPromise = this.customerEmailService.send(formsObj, "standard", reference);
 
-    const response = await Promise.all([staffPromise, customerPromise]);
+    const [staffRes, customerRes] = await Promise.all([staffPromise, customerPromise]);
 
-    return { response, reference };
-  }
-
-  async buildAndSendStaffEmail(formData: FormField[], fileFields: FormField[], reference: string) {
-    const emailBody = await this.staffEmailService.buildEmail(formData, "oath", fileFields, reference);
-    return await this.staffEmailService.sendEmail(emailBody);
-  }
-
-  async buildAndSendCustomerEmail(formData: FormField[], reference: string, paid: boolean) {
-    const emailBody = this.customerEmailService.buildEmail(formData, reference, paid);
-    return await this.customerEmailService.sendEmail(emailBody);
+    return {
+      response: {
+        staff: staffRes,
+        customer: customerRes,
+      },
+      reference,
+    };
   }
 }
