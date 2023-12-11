@@ -23,13 +23,13 @@ export const testData = {
       question: "Place and date of marriage registration",
       fields: [
         {
-          key: "RlUFWc",
+          key: "placeOfMarriage",
           title: "Place of marriage",
           type: "text",
           answer: "test",
         },
         {
-          key: "kPGPUc",
+          key: "dateOfMarriage",
           title: "Date of marriage",
           type: "monthYear",
           answer: "2023-10",
@@ -81,8 +81,8 @@ export const testData = {
           type: "text",
           answer: "foo",
         },
-        { key: "CNAsiH", title: "Middle name", type: "text", answer: null },
-        { key: "sQhPRP", title: "Surname", type: "text", answer: "bar" },
+        { key: "middleName", title: "Middle name", type: "text", answer: null },
+        { key: "surname", title: "Surname", type: "text", answer: "bar" },
       ],
     },
     {
@@ -90,37 +90,37 @@ export const testData = {
       question: "UK passport details",
       fields: [
         {
-          key: "KfBDDG",
+          key: "passportNumber",
           title: "Passport number",
           type: "text",
           answer: "12345789",
         },
         {
-          key: "llZZFF",
+          key: "countryOfBirth",
           title: "Country of birth",
           type: "list",
           answer: "United Kingdom",
         },
         {
-          key: "iNhNMn",
+          key: "dateOfBirth",
           title: "Date of birth",
           type: "date",
           answer: "1998-01-19",
         },
         {
-          key: "SgaocB",
+          key: "placeOfBirth",
           title: "Place of birth ",
           type: "text",
           answer: "test",
         },
         {
-          key: "KuFQHL",
+          key: "sex",
           title: "Male or female",
           type: "list",
           answer: "Male",
         },
         {
-          key: "QtsMpE",
+          key: "passportDateOfIssue",
           title: "Date of issue of passport",
           type: "date",
           answer: "1998-01-19",
@@ -132,7 +132,7 @@ export const testData = {
       question: "Proof of address",
       fields: [
         {
-          key: "tZXpuQ",
+          key: "proofOfAddressFile",
           title: "Proof of address",
           type: "file",
           answer: "http://localhost:9000/v1/files/f56f08a9-948e-4c98-8adb-78d5a3918012.jpg",
@@ -144,31 +144,31 @@ export const testData = {
       question: "Your address",
       fields: [
         {
-          key: "ncyOTQ",
+          key: "addressLine1",
           title: "Address line 1",
           type: "text",
           answer: "test",
         },
         {
-          key: "svmzHm",
+          key: "addressLine2",
           title: "Address line 2 ",
           type: "text",
           answer: null,
         },
         {
-          key: "nhkPTu",
+          key: "city",
           title: "Town or city",
           type: "text",
           answer: "test",
         },
         {
-          key: "NdQYWv",
+          key: "postcode",
           title: "Postcode or zip code",
           type: "text",
           answer: null,
         },
         {
-          key: "mNwwxx",
+          key: "countryAddress",
           title: "Country",
           type: "list",
           answer: "United Kingdom",
@@ -180,7 +180,7 @@ export const testData = {
       question: "Partner's passport or national identity card",
       fields: [
         {
-          key: "qFuyQg",
+          key: "partnerPassportFile",
           title: "Partner's passport or identity card",
           type: "file",
           answer: "http://localhost:9000/v1/files/949de5d0-1857-4185-9f2f-c9415c804629.jpg",
@@ -192,25 +192,25 @@ export const testData = {
       question: "Your partner's name and nationality",
       fields: [
         {
-          key: "qMwAzf",
+          key: "partnerFirstName",
           title: "Partner's first name",
           type: "text",
           answer: "test",
         },
         {
-          key: "JtUIeu",
+          key: "partnerMiddleName",
           title: "Partner's middle name",
           type: "text",
           answer: null,
         },
         {
-          key: "EApTtB",
+          key: "partnerSurname",
           title: "Partner's surname",
           type: "text",
           answer: "test",
         },
         {
-          key: "WIhpEs",
+          key: "partnerNationality",
           title: "Partner's nationality ",
           type: "text",
           answer: "test",
@@ -222,31 +222,31 @@ export const testData = {
       question: "Your partner's address",
       fields: [
         {
-          key: "OusegU",
+          key: "partnerAddressLine1",
           title: "Address line 1",
           type: "text",
           answer: "test",
         },
         {
-          key: "NAPApe",
+          key: "partnerAddressLine2",
           title: "Address line 2",
           type: "text",
           answer: null,
         },
         {
-          key: "ntkyCg",
+          key: "partnerAddressCity",
           title: "Town or city",
           type: "text",
           answer: "test",
         },
         {
-          key: "TCEzgh",
+          key: "partnerAddressPostcode",
           title: "Postcode or zip code",
           type: "text",
           answer: null,
         },
         {
-          key: "JLxfVp",
+          key: "partnerAddressCountry",
           title: "Country",
           type: "list",
           answer: "United Kingdom",
@@ -258,7 +258,7 @@ export const testData = {
       question: "Your birth certificate",
       fields: [
         {
-          key: "QzoKfc",
+          key: "birthCertFile",
           title: "Birth certificate",
           type: "file",
           answer: "http://localhost:9000/v1/files/c312106c-43be-4f98-a5e4-9fb529c5caac.jpg",
@@ -270,7 +270,7 @@ export const testData = {
       question: "Your father's details",
       fields: [
         {
-          key: "AUPxcz",
+          key: "fatherFullName",
           title: "Father's full name",
           type: "text",
           answer: "test",
@@ -282,7 +282,7 @@ export const testData = {
       question: "Your mother's details",
       fields: [
         {
-          key: "gnWqOi",
+          key: "motherFullName",
           title: "Mother's full name",
           type: "text",
           answer: "test",
@@ -292,33 +292,21 @@ export const testData = {
     {
       category: "applicantDetails",
       question: "Your main occupation",
-      fields: [{ key: "ZZHoIt", title: "Occupation", type: "text", answer: "test" }],
+      fields: [{ key: "occupation", title: "Occupation", type: "text", answer: "test" }],
     },
     {
       category: "applicantDetails",
       question: "Your contact details",
       fields: [
         {
-          key: "applicantPhone",
+          key: "phoneNumber",
           title: "Phone number",
           type: "text",
           answer: "+44 1234 567890",
         },
         {
-          key: "poVfrf",
-          title: "Confirm phone number",
-          type: "text",
-          answer: "+44 1234 566890",
-        },
-        {
-          key: "applicantEmail",
+          key: "emailAddress",
           title: "Email address",
-          type: "text",
-          answer: "test@test.com",
-        },
-        {
-          key: "ZpAXwW",
-          title: "Confirm email address",
           type: "text",
           answer: "test@test.com",
         },
@@ -340,7 +328,7 @@ export const testData = {
       question: "Feedback",
       fields: [
         {
-          key: "emHOVk",
+          key: "feedback",
           title: "Can our partner contact you for feedback to help improve this service?",
           type: "list",
           answer: false,

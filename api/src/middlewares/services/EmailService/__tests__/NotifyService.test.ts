@@ -1,17 +1,13 @@
-import { CustomerEmailService } from "../CustomerEmailService";
-import { flattenQuestions } from "../../helpers/flattenQuestions";
+import { NotifyService } from "../NotifyService";
+import { flattenQuestions, fieldsHashMap } from "../../helpers";
 import { testData } from "./fixtures";
-import { fieldsHashMap } from "../helpers";
 
-const notifyService = {
-  send: jest.fn().mockResolvedValue({}),
-};
+const emailService = new NotifyService();
+const formFields = [{ key: "paid", type: "TextField", title: "paid", answer: true }, ...flattenQuestions(testData.questions)];
+const fieldHashMap = fieldsHashMap(formFields);
 
-const emailService = new CustomerEmailService({ notifyService });
-const formFields = flattenQuestions(testData.questions);
-
-test("buildEmail should return the correct personalisation", () => {
-  const emailParams = emailService.buildEmail(formFields, "1234", true);
+test("buildSendEmailArgs should return the correct personalisation", () => {
+  const emailParams = emailService.buildSendEmailArgs(fieldHashMap, "standard", "1234");
 
   expect(emailParams).toEqual({
     template: "1234",
@@ -27,28 +23,31 @@ test("buildEmail should return the correct personalisation", () => {
         translationNeeded: false,
         bookingLink: "",
         country: "Turkey",
+        additionalText: undefined,
       },
       reference: "1234",
     },
   });
 });
 
-test("buildEmail should throw if the country name doesn't exist in the additional context", () => {
-  const countryFieldIndex = formFields.findIndex((field) => field.key === "country");
-  const badFields = formFields.slice(0).splice(countryFieldIndex, 1, {
-    key: "country",
-    title: "Country",
-    type: "list",
-    answer: "Iceland",
-  });
+test("buildSendEmailArgs should throw if the country name doesn't exist in the additional context", () => {
+  const badFields = {
+    ...fieldHashMap,
+    country: {
+      key: "country",
+      title: "Country",
+      type: "list",
+      answer: "Iceland",
+    },
+  };
   expect(() => {
-    emailService.buildEmail(badFields, "1234", true);
+    emailService.buildSendEmailArgs(badFields, "standard", "1234");
   }).toThrow();
 });
 
 test("buildDocsList will add optional documents when the relevant fields are filled in", () => {
   const fieldsMap = {
-    ...fieldsHashMap(formFields),
+    ...fieldHashMap,
     marriedBefore: {
       key: "marriedBefore",
       title: "Married or CP before?",
