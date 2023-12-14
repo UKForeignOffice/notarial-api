@@ -3,7 +3,7 @@ import config from "config";
 import pino, { Logger } from "pino";
 import { ApplicationError } from "../../../ApplicationError";
 import * as additionalContexts from "./additionalContexts.json";
-import { EmailServiceProvider, NotifySendEmailArgs } from "./types";
+import { EmailServiceProvider, isUserEmailTemplate, NotifySendEmailArgs, UserEmailTemplate } from "./types";
 import * as templates from "./templates";
 import { FormField } from "../../../types/FormField";
 import { answersHashMap } from "../helpers";
@@ -19,7 +19,7 @@ const previousMarriageDocs = {
 export class NotifyService implements EmailServiceProvider {
   notify: NotifyClient;
   logger: Logger;
-  templates: Record<string, string>;
+  templates: Record<UserEmailTemplate, string>;
   constructor() {
     const apiKey = config.get("notifyApiKey");
     const standardTemplate = config.get("notifyTemplateStandard");
@@ -37,6 +37,9 @@ export class NotifyService implements EmailServiceProvider {
   }
 
   async send(fields: FormField[], template: string, reference: string) {
+    if (!isUserEmailTemplate(template)) {
+      throw new ApplicationError("NOTIFY", "TEMPLATE_NOT_FOUND", 400);
+    }
     const emailArgs = this.buildSendEmailArgs(fields, template, reference);
     return this.sendEmail(emailArgs, reference);
   }
@@ -44,15 +47,16 @@ export class NotifyService implements EmailServiceProvider {
   async sendEmail({ template, emailAddress, options }: NotifySendEmailArgs, reference: string) {
     try {
       const response = await this.notify.sendEmail(template, emailAddress, options);
-      this.logger.info(`Reference ${reference} user email sent successfully with Notify id: ${(response.data as SendEmailResponse).id}`);
+      const data = response.data as SendEmailResponse;
+      this.logger.info(`Reference ${reference} user email sent successfully with Notify id: ${data.id}`);
       return response.data as SendEmailResponse;
     } catch (e) {
       this.handleError(e);
+      return;
     }
-    throw new ApplicationError("NOTIFY", "API_ERROR", 500, "No data was returned from the api");
   }
 
-  buildSendEmailArgs(fields: FormField[], template: string, reference: string): NotifySendEmailArgs {
+  buildSendEmailArgs(fields: FormField[], template: UserEmailTemplate, reference: string): NotifySendEmailArgs {
     const answers = answersHashMap(fields);
     const defaultTemplate = templates.user[template];
     const personalisation = this.getPersonalisationForTemplate(answers, reference, answers.paid as boolean, defaultTemplate);

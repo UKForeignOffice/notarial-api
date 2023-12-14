@@ -1,3 +1,3 @@
-import oath from "./oath";
+import affirmation from "./affirmation";
 
-export { oath };
+export { affirmation };

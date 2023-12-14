@@ -6,7 +6,7 @@ import { ApplicationError } from "../../../ApplicationError";
 import { FormField } from "../../../types/FormField";
 import * as templates from "./templates";
 import * as additionalContexts from "./additionalContexts.json";
-import { EmailServiceProvider } from "./types";
+import { EmailServiceProvider, isStaffEmailTemplate, StaffEmailTemplate } from "./types";
 import { createMimeMessage } from "mimetext";
 import config from "config";
 import { FileService } from "../FileService";
@@ -16,18 +16,22 @@ export class SESService implements EmailServiceProvider {
   logger: Logger;
   ses: SESClient;
   fileService: FileService;
-  templates: any;
+  templates: Record<StaffEmailTemplate, HandlebarsTemplateDelegate>;
 
   constructor({ fileService }) {
     this.logger = logger().child({ service: "SES" });
     this.ses = ses;
     this.fileService = fileService;
     this.templates = {
-      oath: SESService.createTemplate(templates.staff.oath),
+      affirmation: SESService.createTemplate(templates.staff.affirmation),
+      cni: SESService.createTemplate(templates.staff.affirmation),
     };
   }
 
   async send(fields: FormField[], template: string, reference: string) {
+    if (!isStaffEmailTemplate(template)) {
+      throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 400);
+    }
     const emailArgs = await this.buildSendEmailArgs(fields, template, reference);
     return this.sendEmail(emailArgs, reference);
   }
@@ -35,18 +39,17 @@ export class SESService implements EmailServiceProvider {
   /**
    * @throws ApplicationError
    */
-  async sendEmail(message: SendRawEmailCommand, reference: string) {
+  private async sendEmail(message: SendRawEmailCommand, reference: string) {
     try {
       const response = await this.ses.send(message);
       this.logger.info(`Reference ${reference} staff email sent successfully with SES message id: ${response.MessageId}`);
       return response;
     } catch (err: SESServiceException | any) {
-      this.logger.error(err);
       throw new ApplicationError("SES", "API_ERROR", 400, err.message);
     }
   }
 
-  getEmailBody(fields: FormField[], template: string) {
+  private getEmailBody(fields: FormField[], template: StaffEmailTemplate) {
     if (template === "cni") {
       throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 500, "CNI template has not been configured");
     }
@@ -55,7 +58,7 @@ export class SESService implements EmailServiceProvider {
     });
   }
 
-  async buildSendEmailArgs(fields: FormField[], template: string, reference: string): Promise<SendRawEmailCommand> {
+  private async buildSendEmailArgs(fields: FormField[], template: StaffEmailTemplate, reference: string): Promise<SendRawEmailCommand> {
     const answers = answersHashMap(fields);
     const emailBody = this.getEmailBody(fields, template);
     const post = answers.post ?? additionalContexts[answers.country as string].post;
