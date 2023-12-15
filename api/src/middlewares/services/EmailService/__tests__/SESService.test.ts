@@ -16,7 +16,7 @@ const formFields = flattenQuestions(testData.questions);
 const allOtherFields = formFields.filter(isNotFieldType("file"));
 
 test("getEmailBody renders oath email correctly", () => {
-  const emailBody = emailService.getEmailBody(allOtherFields, "oath");
+  const emailBody = emailService.getEmailBody(allOtherFields, "affirmation");
   expect(emailBody.includes("<li>First name: foo</li>")).toBe(true);
 });
 
