@@ -1,2 +1,2 @@
-import oath from "./oath";
-export { oath };
+export * as staff from "./staff";
+export * as user from "./user";

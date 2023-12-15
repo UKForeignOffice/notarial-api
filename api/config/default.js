@@ -10,4 +10,6 @@ module.exports = {
   documentPassword: "Sup3rS3cr3tP4ssw0rd",
   submissionAddress: "pye@cautionyourblast.com",
   senderEmail: "pye@cautionyourblast.com",
+  notifyApiKey: "",
+  notifyTemplateStandard: "",
 };

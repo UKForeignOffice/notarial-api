@@ -1,22 +1,22 @@
 import logger, { Logger } from "pino";
 import { FileService } from "../FileService";
-import { SESService } from "../EmailService";
 import { FormDataBody } from "../../../types";
-import { flattenQuestions } from "../../../handlers/forms/helpers/flattenQuestions";
-import { isFieldType } from "../../../utils";
-import { isNotFieldType } from "../../../utils";
+import { flattenQuestions } from "../helpers";
+import { EmailServiceProvider } from "../EmailService/types";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
 export class SubmitService {
   logger: Logger;
   fileService: FileService;
-  emailService: SESService;
+  customerEmailService: EmailServiceProvider;
+  staffEmailService: EmailServiceProvider;
 
-  constructor({ fileService, emailService }) {
+  constructor({ fileService, notifyService, sesService }) {
     this.logger = logger().child({ service: "Submit" });
     this.fileService = fileService;
-    this.emailService = emailService;
+    this.customerEmailService = notifyService;
+    this.staffEmailService = sesService;
   }
 
   generateId() {
@@ -30,18 +30,27 @@ export class SubmitService {
     const { questions = [] } = formData;
     const formFields = flattenQuestions(questions);
 
-    const fileFields = formFields.filter(isFieldType("file"));
-    const allOtherFields = formFields.filter(isNotFieldType("file"));
-    const emailBody = this.emailService.buildOathEmailBody(allOtherFields);
-    const reference = this.generateId();
-    const submission = await this.emailService.buildEmailWithAttachments({
-      subject: `Oath - ${reference}`,
-      body: emailBody,
-      attachments: fileFields,
+    formFields.push({
+      key: "paid",
+      title: "paid",
+      type: "metadata",
+      answer: !!formData.fees?.paymentReference,
     });
 
-    const response = await this.emailService.sendEmail(submission);
-    this.logger.info(`Reference ${reference} sent successfully with SES message id: ${response.MessageId}`);
-    return { response, reference };
+    const reference = this.generateId();
+
+    const staffPromise = this.staffEmailService.send(formFields, "oath", reference);
+
+    const customerPromise = this.customerEmailService.send(formFields, "standard", reference);
+
+    const [staffRes, customerRes] = await Promise.all([staffPromise, customerPromise]);
+
+    return {
+      response: {
+        staff: staffRes,
+        customer: customerRes,
+      },
+      reference,
+    };
   }
 }
