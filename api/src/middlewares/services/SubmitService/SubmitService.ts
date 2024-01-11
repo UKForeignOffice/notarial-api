@@ -39,7 +39,7 @@ export class SubmitService {
 
     const reference = this.generateId();
 
-    const staffPromise = this.staffEmailService.send(formFields, "oath", reference);
+    const staffPromise = this.staffEmailService.send(formFields, "affirmation", reference);
 
     const customerPromise = this.customerEmailService.send(formFields, "standard", reference);
 
