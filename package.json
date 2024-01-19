@@ -3,10 +3,12 @@
   "version": "1.0.6",
   "private": true,
   "workspaces": [
-    "api"
+    "api",
+    "worker"
   ],
   "scripts": {
     "api": "yarn workspace @notarialapi/api",
+    "worker": "yarn workspace @notarialapi/worker",
     "lint": "yarn workspaces foreach run lint",
     "test": "yarn workspaces foreach run test",
     "release": "semantic-release"
