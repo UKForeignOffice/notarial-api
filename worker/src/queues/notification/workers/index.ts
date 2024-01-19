@@ -5,7 +5,7 @@ import { sesHandler } from "./sesHandler";
 import { notifyHandler } from "./notifyHandler";
 
 const logger = pino();
-const queue = "notifications";
+const queue = "notification";
 
 export async function setupSubmissionWorkers() {
   const consumer: PgBoss = await getConsumer();
