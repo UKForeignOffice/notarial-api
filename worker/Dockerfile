@@ -15,10 +15,10 @@ RUN npm install -g npm@latest && \
 FROM base AS build
 WORKDIR /usr/src/app
 COPY . .
-RUN yarn workspaces focus @forms-queue/worker
+RUN yarn workspaces focus @notarialapi/worker
 RUN yarn worker build
 # reinstall only production deps
-RUN yarn workspaces focus @forms-queue/worker --production
+RUN yarn workspaces focus @notarialapi/worker --production
 
 
 # ----------------------------
