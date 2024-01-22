@@ -1,1 +1,1 @@
-import "./queues/notification";
+import "./queues/notify";

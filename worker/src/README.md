@@ -1,31 +1,37 @@
-# Queue: `submission`
+# Queue: `notification`
 
 Workers
-- `submit`
+- `notifyHandler`
+- `sesHandler`
 
-## `submit`
-[submit]('./submit.ts')
+## `notifyHandler`
+[notifyHandler]('./queues/notify/workers/notifyHandler.ts')
 
-When a "submission" event is detected, this worker POSTs the data to `job.data.data.webhook_url`.
+When a message on the "notify" queue is detected, this worker sends a notify request.
 
-The source of this event is the runner, after a user has submitted a form. 
+The source of this event is notarial-api, after a user has submitted a form, and the data has been process by notarial-api.
+
+## `sesHandler`
+[sesHandler]('./queues/notify/workers/sesHandlerHandler.ts')
 
 ### Troubleshooting
 
 When tasks fail, the error emitted will automatically be added to the jobs table, and the error is logged.
 
-The log will look like:
-```
-{"level":50,"time":1704820757968,"pid":70068,"hostname":"HOST_NAME","jobId":"6aa3b250-4bc8-4fcb-9a15-7ca56551d04b","queue":"submission","worker":"submit","msg":"job: 6aa3b250-4bc8-4fcb-9a15-7ca56551d04b failed with ECONNREFUSED"}
-```
-
 If the logs are incomplete, further logging may be found on the database in the `output` column.
+
+To see all failed events
+
+```postgresql
+   
+select * from pgboss.job where name = 'notify' and state = 'failed';
+    
+```
 
 ```postgresql
     select data, output from pgboss.job where id = '6aa3b250-4bc8-4fcb-9a15-7ca56551d04b';
 ```
 
-`ECONNREFUSED` may be due to misconfigured webhook_url.
 
 Events can easily be retried by setting completedon = null, retrycount = 0, state = 'created'
 ```postgresql
