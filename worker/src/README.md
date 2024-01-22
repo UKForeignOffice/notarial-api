@@ -7,12 +7,14 @@ Workers
 ## `notifyHandler`
 [notifyHandler]('./queues/notify/workers/notifyHandler.ts')
 
-When a message on the "notify" queue is detected, this worker sends a notify request.
-
+When a message on the "notify" queue is detected, this worker sends a GOV.UK notify request.
 The source of this event is notarial-api, after a user has submitted a form, and the data has been process by notarial-api.
 
 ## `sesHandler`
-[sesHandler]('./queues/notify/workers/sesHandlerHandler.ts')
+[sesHandler]('./queues/notify/workers/sesHandler.ts')
+
+When a message on the "ses" queue is detected, this worker sends an SES message.
+The source of this event is notarial-api, after a user has submitted a form, and the data has been process by notarial-api.
 
 ### Troubleshooting
 
