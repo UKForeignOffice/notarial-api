@@ -12,7 +12,9 @@ export async function setupSubmissionWorkers() {
 
   logger.info({ queue }, `starting queue '${queue}' workers`);
 
-  logger.info({ queue }, `starting 'submitHandler' on ${queue} listeners`);
+  logger.info({ queue }, `starting 'sesHandler' on ${queue} listeners`);
   await consumer.work(queue, { newJobCheckInterval: 500 }, sesHandler);
+
+  logger.info({ queue }, `starting 'notifyHandler' on ${queue} listeners`);
   await consumer.work(queue, { newJobCheckInterval: 500 }, notifyHandler);
 }
