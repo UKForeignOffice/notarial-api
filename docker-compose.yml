@@ -6,5 +6,7 @@ services:
     build:
       context: .
       dockerfile: api/Dockerfile
-    ports:
-      - "9001:9001"
+  worker:
+    build:
+      context: .
+      dockerfile: worker/Dockerfile
