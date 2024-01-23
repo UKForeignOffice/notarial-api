@@ -36,14 +36,6 @@ function errorHandler(error: Error, _req: Request, res: Response, _next: NextFun
   res.send({ message: error.message });
 }
 
-function notFoundHandler(req: Request, res: Response) {
-  req.log.warn("404 Not found", { path: req.path });
-  res.status(404).send({
-    error: "The requested resource is unavailable",
-  });
-}
-
 export function configureErrorHandlers(server: Express) {
   server.use(errorLogger, errorHandler);
-  server.use(notFoundHandler);
 }
