@@ -63,7 +63,7 @@ export class SESService implements EmailServiceProvider {
     const emailBody = this.getEmailBody(fields, template);
     const post = answers.post ?? additionalContexts[answers.country as string].post;
     const message = await this.buildEmailWithAttachments({
-      subject: `${template} | ${post} | ${reference}`,
+      subject: `${template} application, ${post} – ${reference}`,
       body: emailBody,
       attachments: getFileFields(fields),
     });
