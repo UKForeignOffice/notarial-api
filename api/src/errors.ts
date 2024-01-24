@@ -22,7 +22,7 @@ export type ErrorTypes = "WEBHOOK" | "FILE" | "SES" | "NOTIFY" | "GENERIC";
 /**
  * Error code for the matching ErrorType.
  */
-type WebhookErrorCode = "EMPTY_PAYLOAD" | "EMPTY_TEMPLATE_DATA";
+type WebhookErrorCode = "VALIDATION" | "EMPTY_TEMPLATE_DATA";
 type FileErrorCode = "EMPTY_RES" | "API_ERROR" | "NOT_FOUND";
 type SESErrorCode =
   | "NO_TEMPLATE"
@@ -50,7 +50,7 @@ export type ErrorCode = WebhookErrorCode | FileErrorCode | SESErrorCode | Notify
 type ErrorRecord<T extends ErrorCode> = Record<T, string>;
 
 const WEBHOOK: ErrorRecord<WebhookErrorCode> = {
-  EMPTY_PAYLOAD: "Malformed form data: No questions property found",
+  VALIDATION: "Malformed form data: The supplied form data is invalid",
   EMPTY_TEMPLATE_DATA: "No template data was returned",
 };
 
