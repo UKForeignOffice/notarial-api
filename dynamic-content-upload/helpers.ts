@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { Conditions, Row } from "./types";
+import { Row } from "./types";
 
 /**
  * Validates the csv file to ensure all the required fields are present
@@ -52,9 +52,9 @@ function parseRowContent(row: Row) {
   return Object.entries(row).reduce(parseContent, {});
 }
 
-function parseContent(acc: Record<string, string>, [key, value]) {
+function parseContent(acc: Record<string, any>, [key, value]) {
   if (key === "type") value = value.toLowerCase();
-  if (value.includes("*")) value = bulletsToHtml(value);
+  if (value.includes("*")) value = bulletsToArray(value);
   if (value.includes("<br>")) value = breaksToHtml(value);
   acc[key] = value;
   return acc;
@@ -84,16 +84,8 @@ export function getRowObjects(rows: string[], fieldNames: string[], fieldNameMap
  * Converts a plain text string into a html bullet list. Bullets are defined in the plain text string by asterisks.
  * @param bulletList - The plain text string to be converted
  */
-export function bulletsToHtml(bulletList: string) {
-  return bulletList
-    .split("*")
-    .map((bullet) => {
-      if (bullet !== "") {
-        return `<li>${bullet}</li>`;
-      }
-      return "";
-    })
-    .join("");
+export function bulletsToArray(bulletList: string) {
+  return bulletList.split("*");
 }
 
 /**
@@ -118,79 +110,4 @@ export function breaksToHtml(text: string) {
  */
 export function getFileJson(path: string) {
   return JSON.parse(fs.readFileSync(path).toString());
-}
-
-function createConditionFromRow(name: string, row: Row, conditionConfig: Record<string, any>, index: number) {
-  return {
-    field: {
-      name: name,
-      type: conditionConfig.formField.type,
-      display: conditionConfig.formField.displayName,
-    },
-    operator: "is",
-    value: {
-      type: "Value",
-      value: row[conditionConfig.useField],
-      display: row[conditionConfig.useField],
-    },
-    coordinator: index && "or",
-  };
-}
-
-function getConditionsArray(rows: Row[]) {
-  return function (conditionConfig: Record<string, any>) {
-    return rows.map((row, index) => {
-      const name = conditionConfig.section ? `${conditionConfig.section}.${conditionConfig.formField.name}` : conditionConfig.formField.name;
-      return createConditionFromRow(name, row, conditionConfig, index);
-    });
-  };
-}
-
-/**
- * Given the rows of a csv, returns an array of condition values to be used for a condition in a form
- * based on the provided condition config
- * @param rows - the row objects of the csv
- * @param conditionConfig - the config used to determine whether a row should be added to the condition
- * @returns The supplied conditions object, with the new condition values
- */
-export function populateConditionsArray(rows: Row[], conditionConfig: Record<string, any>) {
-  const validRows = rows.filter((row) => conditionConfig.evaluateValue.includes(row[conditionConfig.evaluateField]));
-  return validRows.length > 0 && getConditionsArray(validRows)(conditionConfig);
-}
-
-export function getNewCondition(name: string, config: Record<string, any>, rowObjects: Row[]) {
-  return {
-    name: name,
-    displayName: config.defaultDisplayName,
-    value: {
-      name: config.defaultDisplayName,
-      conditions: populateConditionsArray(rowObjects, config),
-    },
-  };
-}
-
-/**
- * Takes the list of dynamically populated conditions for each form from the constants file, and updates them
- * with the dynamic content from the uploaded csv
- * @param form - The form config being edited
- * @param conditions - The conditions to be processed
- * @param rows - The rows of the csv to use for updating
- */
-export function processConditionsForForm(form: Record<string, any>, conditions: Conditions, rows: Row[]) {
-  const currentConditions = form.conditions;
-  Object.entries(conditions).forEach(([conditionName, config]) => {
-    const newCondition = getNewCondition(conditionName, config, rows);
-    if (!newCondition.value.conditions) {
-      return;
-    }
-
-    const conditionIndex = currentConditions.findIndex((condition) => condition.name === conditionName);
-
-    if (conditionIndex > -1) {
-      form.conditions.splice(conditionIndex, 1, newCondition);
-    } else {
-      form.conditions.push(newCondition);
-    }
-  });
-  return form;
 }
