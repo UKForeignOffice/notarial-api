@@ -41,7 +41,7 @@ export class SubmitService {
 
     const staffPromise = this.staffEmailService.send(formFields, "affirmation", reference);
 
-    const customerPromise = this.customerEmailService.send(formFields, "standard", reference);
+    const customerPromise = this.customerEmailService.send(formFields, "userConfirmation", reference);
 
     const [staffRes, customerRes] = await Promise.all([staffPromise, customerPromise]);
 

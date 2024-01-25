@@ -1,2 +1,2 @@
-export * as staff from "./staff";
-export * as user from "./user";
+export * as ses from "./ses";
+export * as notify from "./notify";

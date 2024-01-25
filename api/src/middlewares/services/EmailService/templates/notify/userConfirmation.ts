@@ -1,5 +1,4 @@
-export const standard = {
-  oathType: undefined,
+export const userConfirmation = {
   firstName: undefined,
   post: undefined,
   docsList: "",

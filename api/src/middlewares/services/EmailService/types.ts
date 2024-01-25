@@ -1,5 +1,6 @@
 import { SendEmailOptions } from "notifications-node-client";
 import { FormField } from "../../../types/FormField";
+import { notify } from "./templates";
 
 export interface NotifySendEmailArgs {
   template: string;
@@ -13,9 +14,11 @@ export function isStaffEmailTemplate(template: string): template is StaffEmailTe
   return template === "affirmation" || template === "cni";
 }
 
-export type UserEmailTemplate = "standard";
+export type NotifyEmailTemplate = "userConfirmation" | "postNotification";
 
-export function isUserEmailTemplate(template: string): template is UserEmailTemplate {
+export type NotifyPersonalisation = typeof notify.userConfirmation | typeof notify.postNotification;
+
+export function isNotifyEmailTemplate(template: string): template is NotifyEmailTemplate {
   return template === "standard";
 }
 
