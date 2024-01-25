@@ -70,7 +70,7 @@ export class NotifyService implements EmailServiceProvider {
     };
   }
 
-  getPersonalisationForTemplate(answers: AnswersHashMap, reference: string, paid: boolean, template: Record<string, string | boolean>) {
+  getPersonalisationForTemplate(answers: AnswersHashMap, reference: string, paid: boolean, template: Record<string, string | boolean | undefined>) {
     const docsList = this.buildDocsList(answers, paid);
     const country = answers["country"];
     const post = answers["post"];
@@ -82,12 +82,17 @@ export class NotifyService implements EmailServiceProvider {
       ...(additionalContexts[country as string] ?? {}),
       ...(additionalContexts[post as string] ?? {}),
     };
-    return Object.keys(template).reduce((acc, curr) => {
+    const mapPersonalisationValuesToKeys = this.mapPersonalisationValues(personalisationValues);
+    return Object.entries(template).reduce(mapPersonalisationValuesToKeys, {});
+  }
+
+  mapPersonalisationValues(personalisationValues: Record<string, string | boolean>) {
+    return function (acc: Record<string, string | boolean | undefined>, [key, value]) {
       return {
         ...acc,
-        [curr]: personalisationValues[curr],
+        [key]: personalisationValues[key] ?? value,
       };
-    }, {});
+    };
   }
 
   handleError(error: any) {

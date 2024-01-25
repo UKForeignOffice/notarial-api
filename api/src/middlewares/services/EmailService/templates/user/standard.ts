@@ -1,11 +1,12 @@
 export const standard = {
-  oathType: "",
-  firstName: "",
-  post: "",
+  oathType: undefined,
+  firstName: undefined,
+  post: undefined,
   docsList: "",
-  reference: "",
+  reference: undefined,
   additionalText: "",
-  country: "",
-  bookingLink: "",
+  country: undefined,
+  bookingLink: undefined,
   translationNeeded: false,
+  localRequirements: "",
 };
