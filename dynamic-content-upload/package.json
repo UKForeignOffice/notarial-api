@@ -1,17 +1,12 @@
 {
-  "name": "dynamic-content-upload",
+  "name": "@notarialapi/dynamic-content",
   "version": "1.0.0",
   "description": "Use this script to update the dynamic content for the PYE forms",
   "main": "index.ts",
   "scripts": {
-    "upload": "npx ts-node index.ts",
+    "upload": "ts-node index.ts",
     "test": "jest --coverage"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/UKForeignOffice/prove-eligibility-foreign-government-forms.git"
-  },
-  "private": true,
   "devDependencies": {
     "@babel/core": "^7.23.7",
     "@babel/preset-env": "^7.23.8",
