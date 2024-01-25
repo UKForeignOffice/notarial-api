@@ -1,23 +1,90 @@
 {
   "affirmation": {
     "countries": {
-      "Azerbaijan": { "additionalDocs": "", "localRequirements": "Your partner must come to your appointment with you and bring their passport.\r" },
-      "Belarus": { "additionalDocs": "", "localRequirements": "" },
-      "Brazil": { "additionalDocs": "", "localRequirements": "" },
-      "Cambodia": { "additionalDocs": "", "localRequirements": "" },
-      "Colombia": { "additionalDocs": "", "localRequirements": "" },
-      "Costa Rica": { "additionalDocs": "", "localRequirements": "" },
-      "Ethiopia": { "additionalDocs": "", "localRequirements": "" },
+      "Azerbaijan": {
+        "additionalDocs": "",
+        "localRequirements": "Your partner must come to your appointment with you and bring their passport.\r",
+        "post": "British Embassy Baku",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=99&service=13\r"
+      },
+      "Belarus": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Minsk",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=130&service=13\r"
+      },
+      "Brazil": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Brasilia",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=105&service=13\r"
+      },
+      "Cambodia": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Phnom Penh",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=135&service=13\r"
+      },
+      "Colombia": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Bogotá",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=104&service=13\r"
+      },
+      "Costa Rica": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy San Jose",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=141&service=13\r"
+      },
+      "Ethiopia": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Addis Ababa",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=90&service=13\r"
+      },
       "Finland": {
         "additionalDocs": "your partner's birth certificate",
-        "localRequirements": "Check with your wedding officiant (the person conducting your ceremony) or venue how long your affirmation is valid for as it varies in different regions.\r"
+        "localRequirements": "Check with your wedding officiant (the person conducting your ceremony) or venue how long your affirmation is valid for as it varies in different regions.\r",
+        "post": "British Embassy Helsinki",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=24&service=13\r"
       },
-      "Latvia": { "additionalDocs": "", "localRequirements": "" },
-      "Mongolia": { "additionalDocs": "", "localRequirements": "" },
-      "Norway": { "additionalDocs": "", "localRequirements": "" },
-      "Oman": { "additionalDocs": "", "localRequirements": "" },
-      "Qatar": { "additionalDocs": "", "localRequirements": "" },
-      "Slovenia": { "additionalDocs": "", "localRequirements": "" },
+      "Latvia": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Riga",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=32&service=13\r"
+      },
+      "Mongolia": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Ulaanbaatar",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=154&service=13\r"
+      },
+      "Norway": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Oslo",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=28&service=13\r"
+      },
+      "Oman": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Muscat",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=133&service=13\r"
+      },
+      "Qatar": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Doha",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=111&service=32\r"
+      },
+      "Slovenia": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Ljubljana",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=26&service=13\r"
+      },
       "Morocco": { "additionalDocs": "", "localRequirements": "" },
       "Philippines": { "additionalDocs": "", "localRequirements": "" },
       "United Arab Emirates": { "additionalDocs": "", "localRequirements": "" }
@@ -25,49 +92,169 @@
     "posts": {
       "British Embassy Abu Dhabi": {
         "post": "British Embassy Abu Dhabi",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=89&service=13"
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=89&service=13\r"
       },
       "British Embassy Dubai": {
         "post": "British Embassy Dubai",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=112&service=13"
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=112&service=13\r"
       }
     }
   },
   "cni": {
     "countries": {
-      "Bolivia": { "additionalDocs": "", "localRequirements": "" },
-      "Bulgaria": { "additionalDocs": "partner's residence permit", "localRequirements": "" },
+      "Bolivia": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy La Paz",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=124&service=10\r"
+      },
+      "Bulgaria": {
+        "additionalDocs": "partner's residence permit",
+        "localRequirements": "",
+        "post": "British Embassy Sofia",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=34&service=10\r"
+      },
       "Croatia": {
         "post": "British Embassy Zagreb",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=41&service=10"
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=41&service=10\r"
       },
-      "Cuba": { "additionalDocs": "", "localRequirements": "" },
-      "Ecuador": { "additionalDocs": "", "localRequirements": "" },
-      "Estonia": { "additionalDocs": "", "localRequirements": "" },
-      "Guatemala": { "additionalDocs": "", "localRequirements": "" },
-      "Iceland": { "additionalDocs": "", "localRequirements": "" },
-      "Iran": { "additionalDocs": "", "localRequirements": "" },
-      "Italy": { "post": "British Embassy Rome", "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10" },
-      "Kosovo": { "additionalDocs": "", "localRequirements": "" },
-      "Kuwait": { "additionalDocs": "", "localRequirements": "" },
-      "Lithuania": { "additionalDocs": "", "localRequirements": "" },
-      "Mali": { "additionalDocs": "", "localRequirements": "" },
-      "Moldova": { "additionalDocs": "", "localRequirements": "" },
-      "Montenegro": { "additionalDocs": "", "localRequirements": "" },
-      "Nepal": { "additionalDocs": "partner's national ID that includes their address", "localRequirements": "" },
-      "Nicaragua": { "additionalDocs": "", "localRequirements": "" },
-      "Poland": { "additionalDocs": "", "localRequirements": "" },
-      "Senegal": { "additionalDocs": "", "localRequirements": "" },
-      "Serbia": { "additionalDocs": "", "localRequirements": "" },
+      "Cuba": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Havana",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=117&service=10\r"
+      },
+      "Ecuador": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Quito",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=138&service=10\r"
+      },
+      "Estonia": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Tallinn",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=36&service=10\r"
+      },
+      "Guatemala": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Guatemala City",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=114&service=10\r"
+      },
+      "Iceland": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Reykjavik",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=31&service=10\r"
+      },
+      "Iran": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Tehran",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=149&service=10\r"
+      },
+      "Italy": { "post": "British Embassy Rome", "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10\r" },
+      "Kosovo": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Pristina",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=137&service=10\r"
+      },
+      "Kuwait": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Kuwait",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=123&service=10\r"
+      },
+      "Lithuania": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Vilnius",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=39&service=10\r"
+      },
+      "Mali": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy  Bamako",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=199&service=10\r"
+      },
+      "Moldova": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Chisinau",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=109&service=10\r"
+      },
+      "Montenegro": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Podgorica",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=136&service=10\r"
+      },
+      "Nepal": {
+        "additionalDocs": "partner's national ID that includes their address",
+        "localRequirements": "",
+        "post": "British Embassy Kathmandu",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=120&service=10\r"
+      },
+      "Nicaragua": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy San Jose (for Nicaragua)",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=141&service=10\r"
+      },
+      "Poland": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Warsaw",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10\r"
+      },
+      "Senegal": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Dakar",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=110&service=10\r"
+      },
+      "Serbia": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Belgrade",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=102&service=10\r"
+      },
       "Sweden": {
         "post": "British Embassy Stockholm",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=35&service=10"
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=35&service=10\r"
       },
-      "Tajikistan": { "additionalDocs": "", "localRequirements": "" },
-      "Tunisia": { "additionalDocs": "", "localRequirements": "" },
-      "Turkmenistan": { "additionalDocs": "", "localRequirements": "" },
-      "Uzbekistan": { "additionalDocs": "", "localRequirements": "" },
-      "Venezuela": { "additionalDocs": "partner's CNI", "localRequirements": "" },
+      "Tajikistan": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Dushanbe",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=113&service=10\r"
+      },
+      "Tunisia": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Tunis",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=153&service=10\r"
+      },
+      "Turkmenistan": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Ashgabat",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=95&service=10\r"
+      },
+      "Uzbekistan": {
+        "additionalDocs": "",
+        "localRequirements": "",
+        "post": "British Embassy Tashkent",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=147&service=10\r"
+      },
+      "Venezuela": {
+        "additionalDocs": "partner's CNI",
+        "localRequirements": "",
+        "post": "British Embassy Caracas",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=108&service=10\r"
+      },
       "Albania": { "additionalDocs": "", "localRequirements": "" },
       "Armenia": { "additionalDocs": "partner's proof of address", "localRequirements": "" },
       "Benin": { "additionalDocs": ["premarital medical certificate", "partner's premarital medical certificate"], "localRequirements": "" },

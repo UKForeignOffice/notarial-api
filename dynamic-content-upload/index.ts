@@ -56,8 +56,9 @@ function uploadContent(fileConstants: ConstantsMap["content"] | ConstantsMap["bo
       const contentFamily = contentType === "content" ? "countries" : helpers.determineBookingContentFamily(rowObjects, curr);
       const relevantFields = helpers.getRelevantFields(curr, fileConstants.relevant);
       const contentSubject = contentFamily === "countries" ? curr.country : curr.post;
-      const setPath = `${curr.type}.${contentFamily}.${contentSubject}`;
-      _.set(acc, setPath, relevantFields);
+      const setPath = `${curr.type}.${contentFamily}["${contentSubject}"]`;
+      const currObj = _.get(acc, setPath);
+      _.set(acc, setPath, { ...currObj, ...relevantFields });
       return acc;
     },
     { ...currentDynamicContent }
