@@ -23,8 +23,8 @@ export class SESService implements EmailServiceProvider {
     this.ses = ses;
     this.fileService = fileService;
     this.templates = {
-      affirmation: SESService.createTemplate(templates.staff.affirmation),
-      cni: SESService.createTemplate(templates.staff.affirmation),
+      affirmation: SESService.createTemplate(templates.ses.affirmation),
+      cni: SESService.createTemplate(templates.ses.affirmation),
     };
   }
 
