@@ -85,7 +85,7 @@ export function getRowObjects(rows: string[], fieldNames: string[], fieldNameMap
  * @param bulletList - The plain text string to be converted
  */
 export function bulletsToArray(bulletList: string) {
-  return bulletList.split("*");
+  return bulletList.split("*").filter((item) => item !== "");
 }
 
 /**
