@@ -1,20 +1,86 @@
 {
-  "Turkey": {
-    "translationNeeded": false,
-    "additionalDocs": [
-      "your Turkish Residence Permit if you’ve been living in Turkey for 3 months or more"
-    ]
+  "affirmation": {
+    "countries": {
+      "Azerbaijan": { "additionalDocs": "", "localRequirements": "Your partner must come to your appointment with you and bring their passport.\r" },
+      "Belarus": { "additionalDocs": "", "localRequirements": "" },
+      "Brazil": { "additionalDocs": "", "localRequirements": "" },
+      "Cambodia": { "additionalDocs": "", "localRequirements": "" },
+      "Colombia": { "additionalDocs": "", "localRequirements": "" },
+      "Costa Rica": { "additionalDocs": "", "localRequirements": "" },
+      "Ethiopia": { "additionalDocs": "", "localRequirements": "" },
+      "Finland": {
+        "additionalDocs": "your partner's birth certificate",
+        "localRequirements": "Check with your wedding officiant (the person conducting your ceremony) or venue how long your affirmation is valid for as it varies in different regions.\r"
+      },
+      "Latvia": { "additionalDocs": "", "localRequirements": "" },
+      "Mongolia": { "additionalDocs": "", "localRequirements": "" },
+      "Norway": { "additionalDocs": "", "localRequirements": "" },
+      "Oman": { "additionalDocs": "", "localRequirements": "" },
+      "Qatar": { "additionalDocs": "", "localRequirements": "" },
+      "Slovenia": { "additionalDocs": "", "localRequirements": "" },
+      "Morocco": { "additionalDocs": "", "localRequirements": "" },
+      "Philippines": { "additionalDocs": "", "localRequirements": "" },
+      "United Arab Emirates": { "additionalDocs": "", "localRequirements": "" }
+    },
+    "posts": {
+      "British Embassy Abu Dhabi": {
+        "post": "British Embassy Abu Dhabi",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=89&service=13"
+      },
+      "British Embassy Dubai": {
+        "post": "British Embassy Dubai",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=112&service=13"
+      }
+    }
   },
-  "Istanbul Consulate General": {
-    "bookingLink": ""
-  },
-  "Ankara Embassy": {
-    "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=93&service=13"
-  },
-  "Izmir consulate": {
-    "bookingLink": ""
-  },
-  "Antalya vice consulate": {
-    "bookingLink": ""
+  "cni": {
+    "countries": {
+      "Bolivia": { "additionalDocs": "", "localRequirements": "" },
+      "Bulgaria": { "additionalDocs": "partner's residence permit", "localRequirements": "" },
+      "Croatia": {
+        "post": "British Embassy Zagreb",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=41&service=10"
+      },
+      "Cuba": { "additionalDocs": "", "localRequirements": "" },
+      "Ecuador": { "additionalDocs": "", "localRequirements": "" },
+      "Estonia": { "additionalDocs": "", "localRequirements": "" },
+      "Guatemala": { "additionalDocs": "", "localRequirements": "" },
+      "Iceland": { "additionalDocs": "", "localRequirements": "" },
+      "Iran": { "additionalDocs": "", "localRequirements": "" },
+      "Italy": { "post": "British Embassy Rome", "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10" },
+      "Kosovo": { "additionalDocs": "", "localRequirements": "" },
+      "Kuwait": { "additionalDocs": "", "localRequirements": "" },
+      "Lithuania": { "additionalDocs": "", "localRequirements": "" },
+      "Mali": { "additionalDocs": "", "localRequirements": "" },
+      "Moldova": { "additionalDocs": "", "localRequirements": "" },
+      "Montenegro": { "additionalDocs": "", "localRequirements": "" },
+      "Nepal": { "additionalDocs": "partner's national ID that includes their address", "localRequirements": "" },
+      "Nicaragua": { "additionalDocs": "", "localRequirements": "" },
+      "Poland": { "additionalDocs": "", "localRequirements": "" },
+      "Senegal": { "additionalDocs": "", "localRequirements": "" },
+      "Serbia": { "additionalDocs": "", "localRequirements": "" },
+      "Sweden": {
+        "post": "British Embassy Stockholm",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=35&service=10"
+      },
+      "Tajikistan": { "additionalDocs": "", "localRequirements": "" },
+      "Tunisia": { "additionalDocs": "", "localRequirements": "" },
+      "Turkmenistan": { "additionalDocs": "", "localRequirements": "" },
+      "Uzbekistan": { "additionalDocs": "", "localRequirements": "" },
+      "Venezuela": { "additionalDocs": "partner's CNI", "localRequirements": "" },
+      "Albania": { "additionalDocs": "", "localRequirements": "" },
+      "Armenia": { "additionalDocs": "partner's proof of address", "localRequirements": "" },
+      "Benin": { "additionalDocs": ["premarital medical certificate", "partner's premarital medical certificate"], "localRequirements": "" },
+      "Burkina Faso": { "additionalDocs": "premarital medical certificate", "localRequirements": "" },
+      "El Salvador": { "additionalDocs": "", "localRequirements": "" },
+      "Guinea": {
+        "additionalDocs": ["premarital medical certificate", "partner's premarital medical certificate", "photo ID (in addition to your UK passport)"],
+        "localRequirements": ""
+      },
+      "Mauritania": { "additionalDocs": "", "localRequirements": "" },
+      "North Macedonia": { "additionalDocs": "", "localRequirements": "" },
+      "Spain": { "additionalDocs": "", "localRequirements": "" },
+      "Togo": { "additionalDocs": ["premarital medical certificate", "partner's premarital medical certificate"], "localRequirements": "" }
+    }
   }
 }
