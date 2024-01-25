@@ -1,0 +1,29 @@
+{
+  "name": "dynamic-content-upload",
+  "version": "1.0.0",
+  "description": "Use this script to update the dynamic content for the PYE forms",
+  "main": "index.ts",
+  "scripts": {
+    "upload": "npx ts-node index.ts",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UKForeignOffice/prove-eligibility-foreign-government-forms.git"
+  },
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.8",
+    "@babel/preset-typescript": "^7.23.3",
+    "@types/jest": "^29.5.11",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "joi": "^17.11.1",
+    "lodash": "^4.17.21"
+  }
+}
