@@ -7,5 +7,6 @@
   "submissionEmail": "SUBMISSION_EMAIL_ADDRESS",
   "senderEmail": "SENDER_EMAIL_ADDRESS",
   "notifyApiKey": "NOTIFY_API_KEY",
-  "notifyTemplateStandard": "NOTIFY_TEMPLATE_STANDARD"
+  "notifyTemplateUserConfirmation": "NOTIFY_TEMPLATE_USER_CONFIRMATION",
+  "notifyTemplatePostNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"
 }
