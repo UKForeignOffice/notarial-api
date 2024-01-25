@@ -85,11 +85,11 @@ export class NotifyService implements EmailServiceProvider {
       ...(additionalContexts[post as string] ?? {}),
     };
     const toPersonalisation = this.mapPersonalisationValues(personalisationValues);
-    return Object.entries(template).reduce(toPersonalisation, {});
+    return Object.entries(template).reduce(toPersonalisation, template);
   }
 
   mapPersonalisationValues(personalisationValues: Record<string, string | boolean>) {
-    return function (acc: Record<string, string | boolean | undefined>, [key, value]) {
+    return function (acc: NotifyPersonalisation, [key, value]) {
       return {
         ...acc,
         [key]: personalisationValues[key] ?? value,
