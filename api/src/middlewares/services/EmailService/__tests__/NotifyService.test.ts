@@ -1,19 +1,19 @@
 import { NotifyService } from "../NotifyService";
 import { flattenQuestions, answersHashMap } from "../../helpers";
 import { testData } from "./fixtures";
+import { userConfirmation } from "../templates/notify";
 
 const emailService = new NotifyService();
 const formFields = [{ key: "paid", type: "TextField", title: "paid", answer: true }, ...flattenQuestions(testData.questions)];
 
 test("buildSendEmailArgs should return the correct personalisation", () => {
-  const emailParams = emailService.buildSendEmailArgs(formFields, "standard", "1234");
+  const emailParams = emailService.buildSendEmailArgs(formFields, "userConfirmation", "1234");
 
   expect(emailParams).toEqual({
     template: "1234",
     emailAddress: "test@test.com",
     options: {
       personalisation: {
-        oathType: "affirmation",
         firstName: "foo",
         post: "Istanbul Consulate General",
         docsList:
@@ -22,11 +22,26 @@ test("buildSendEmailArgs should return the correct personalisation", () => {
         translationNeeded: false,
         bookingLink: "",
         country: "Turkey",
-        additionalText: undefined,
+        additionalText: "",
+        localRequirements: "",
       },
       reference: "1234",
     },
   });
+});
+
+test("mapPersonalisationValues should return some keys as undefined if a required value is missing", () => {
+  const template = userConfirmation;
+  const values = {
+    firstName: "Joe",
+    docsList: "* Document 1\n* Document 2",
+    reference: "ABC1234",
+    country: "Turkey",
+    bookingLink: "https://a-booking-link.com",
+  };
+  const mapPersonalisationValuesFunc = emailService.mapPersonalisationValues(values);
+  const result = Object.entries(template).reduce(mapPersonalisationValuesFunc, {});
+  expect(result["post"]).toBe(undefined);
 });
 
 test("buildDocsList will add optional documents when the relevant fields are filled in", () => {

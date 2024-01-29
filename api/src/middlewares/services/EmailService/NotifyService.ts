@@ -3,7 +3,7 @@ import config from "config";
 import pino, { Logger } from "pino";
 import { ApplicationError } from "../../../ApplicationError";
 import * as additionalContexts from "./additionalContexts.json";
-import { EmailServiceProvider, isUserEmailTemplate, NotifySendEmailArgs, UserEmailTemplate } from "./types";
+import { EmailServiceProvider, isNotifyEmailTemplate, NotifyPersonalisation, NotifySendEmailArgs, NotifyEmailTemplate } from "./types";
 import * as templates from "./templates";
 import { FormField } from "../../../types/FormField";
 import { answersHashMap } from "../helpers";
@@ -19,25 +19,27 @@ const previousMarriageDocs = {
 export class NotifyService implements EmailServiceProvider {
   notify: NotifyClient;
   logger: Logger;
-  templates: Record<UserEmailTemplate, string>;
+  templates: Record<NotifyEmailTemplate, string>;
   constructor() {
     const apiKey = config.get("notifyApiKey");
-    const standardTemplate = config.get("notifyTemplateStandard");
+    const userConfirmationTemplate = config.get("notifyTemplateUserConfirmation");
+    const postNotificationTemplate = config.get("notifyTemplatePostNotification");
     if (!apiKey) {
       throw new ApplicationError("NOTIFY", "NO_API_KEY", 500);
     }
-    if (!standardTemplate) {
+    if (!userConfirmationTemplate || !postNotificationTemplate) {
       throw new ApplicationError("NOTIFY", "NO_TEMPLATE", 500);
     }
     this.templates = {
-      standard: standardTemplate as string,
+      userConfirmation: userConfirmationTemplate as string,
+      postNotification: postNotificationTemplate as string,
     };
     this.notify = new NotifyClient(apiKey as string);
     this.logger = pino().child({ service: "Notify" });
   }
 
   async send(fields: FormField[], template: string, reference: string) {
-    if (!isUserEmailTemplate(template)) {
+    if (!isNotifyEmailTemplate(template)) {
       throw new ApplicationError("NOTIFY", "TEMPLATE_NOT_FOUND", 400);
     }
     const emailArgs = this.buildSendEmailArgs(fields, template, reference);
@@ -56,12 +58,12 @@ export class NotifyService implements EmailServiceProvider {
     }
   }
 
-  buildSendEmailArgs(fields: FormField[], template: UserEmailTemplate, reference: string): NotifySendEmailArgs {
+  buildSendEmailArgs(fields: FormField[], template: NotifyEmailTemplate, reference: string): NotifySendEmailArgs {
     const answers = answersHashMap(fields);
-    const defaultTemplate = templates.user[template];
+    const defaultTemplate = templates.notify[template];
     const personalisation = this.getPersonalisationForTemplate(answers, reference, answers.paid as boolean, defaultTemplate);
     return {
-      template: this.templates.standard,
+      template: this.templates.userConfirmation,
       emailAddress: answers.emailAddress as string,
       options: {
         personalisation,
@@ -70,7 +72,7 @@ export class NotifyService implements EmailServiceProvider {
     };
   }
 
-  getPersonalisationForTemplate(answers: AnswersHashMap, reference: string, paid: boolean, template: Record<string, string | boolean>) {
+  getPersonalisationForTemplate(answers: AnswersHashMap, reference: string, paid: boolean, template: NotifyPersonalisation) {
     const docsList = this.buildDocsList(answers, paid);
     const country = answers["country"];
     const post = answers["post"];
@@ -82,12 +84,17 @@ export class NotifyService implements EmailServiceProvider {
       ...(additionalContexts[country as string] ?? {}),
       ...(additionalContexts[post as string] ?? {}),
     };
-    return Object.keys(template).reduce((acc, curr) => {
+    const toPersonalisation = this.mapPersonalisationValues(personalisationValues);
+    return Object.entries(template).reduce(toPersonalisation, template);
+  }
+
+  mapPersonalisationValues(personalisationValues: Record<string, string | boolean>) {
+    return function (acc: NotifyPersonalisation, [key, value]) {
       return {
         ...acc,
-        [curr]: personalisationValues[curr],
+        [key]: personalisationValues[key] ?? value,
       };
-    }, {});
+    };
   }
 
   handleError(error: any) {

@@ -11,5 +11,6 @@ module.exports = {
   submissionAddress: "pye@cautionyourblast.com",
   senderEmail: "pye@cautionyourblast.com",
   notifyApiKey: "",
-  notifyTemplateStandard: "",
+  notifyTemplateUserConfirmation: "",
+  notifyTemplatePostNotification: "",
 };

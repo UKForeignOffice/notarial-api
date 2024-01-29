@@ -1,1 +1,0 @@
-export { standard } from "./standard";
