@@ -24,8 +24,8 @@ export class NotifyService implements EmailServiceProvider {
   queue: PgBoss;
   constructor() {
     const apiKey = config.get("notifyApiKey");
-    const userConfirmationTemplate = config.get("notifyTemplateUserConfirmation");
-    const postNotificationTemplate = config.get("notifyTemplatePostNotification");
+    const userConfirmationTemplate = config.get<string>("notifyTemplateUserConfirmation");
+    const postNotificationTemplate = config.get<string>("notifyTemplatePostNotification");
     if (!apiKey) {
       throw new ApplicationError("NOTIFY", "NO_API_KEY", 500);
     }
@@ -33,8 +33,8 @@ export class NotifyService implements EmailServiceProvider {
       throw new ApplicationError("NOTIFY", "NO_TEMPLATE", 500);
     }
     this.templates = {
-      userConfirmation: userConfirmationTemplate as string,
-      postNotification: postNotificationTemplate as string,
+      userConfirmation: userConfirmationTemplate,
+      postNotification: postNotificationTemplate,
     };
     this.notify = new NotifyClient(apiKey as string);
     this.logger = pino().child({ service: "Notify" });
