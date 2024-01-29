@@ -6,7 +6,7 @@ import { ApplicationError } from "../../../ApplicationError";
 import { FormField } from "../../../types/FormField";
 import * as templates from "./templates";
 import * as additionalContexts from "./additionalContexts.json";
-import { EmailServiceProvider, isStaffEmailTemplate, StaffEmailTemplate } from "./types";
+import { EmailServiceProvider, isSESEmailTemplate, SESEmailTemplate } from "./types";
 import { createMimeMessage } from "mimetext";
 import config from "config";
 import { FileService } from "../FileService";
@@ -16,7 +16,7 @@ export class SESService implements EmailServiceProvider {
   logger: Logger;
   ses: SESClient;
   fileService: FileService;
-  templates: Record<StaffEmailTemplate, HandlebarsTemplateDelegate>;
+  templates: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
 
   constructor({ fileService }) {
     this.logger = logger().child({ service: "SES" });
@@ -29,7 +29,7 @@ export class SESService implements EmailServiceProvider {
   }
 
   async send(fields: FormField[], template: string, reference: string) {
-    if (!isStaffEmailTemplate(template)) {
+    if (!isSESEmailTemplate(template)) {
       throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 400);
     }
     const emailArgs = await this.buildSendEmailArgs(fields, template, reference);
@@ -49,7 +49,7 @@ export class SESService implements EmailServiceProvider {
     }
   }
 
-  private getEmailBody(fields: FormField[], template: StaffEmailTemplate) {
+  private getEmailBody(fields: FormField[], template: SESEmailTemplate) {
     if (template === "cni") {
       throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 500, "CNI template has not been configured");
     }
@@ -58,7 +58,7 @@ export class SESService implements EmailServiceProvider {
     });
   }
 
-  private async buildSendEmailArgs(fields: FormField[], template: StaffEmailTemplate, reference: string): Promise<SendRawEmailCommand> {
+  private async buildSendEmailArgs(fields: FormField[], template: SESEmailTemplate, reference: string): Promise<SendRawEmailCommand> {
     const answers = answersHashMap(fields);
     const emailBody = this.getEmailBody(fields, template);
     const post = answers.post ?? additionalContexts[answers.country as string].post;
