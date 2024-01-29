@@ -1,4 +1,4 @@
-import { NotifyClient, RequestError, SendEmailResponse } from "notifications-node-client";
+import { NotifyClient, RequestError } from "notifications-node-client";
 import config from "config";
 import pino, { Logger } from "pino";
 import { ApplicationError } from "../../../ApplicationError";
@@ -8,6 +8,7 @@ import * as templates from "./templates";
 import { FormField } from "../../../types/FormField";
 import { answersHashMap } from "../helpers";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
+import PgBoss from "pg-boss";
 
 const previousMarriageDocs = {
   Divorced: "decree absolute",
@@ -20,6 +21,7 @@ export class NotifyService implements EmailServiceProvider {
   notify: NotifyClient;
   logger: Logger;
   templates: Record<NotifyEmailTemplate, string>;
+  queue: PgBoss;
   constructor() {
     const apiKey = config.get("notifyApiKey");
     const userConfirmationTemplate = config.get("notifyTemplateUserConfirmation");
@@ -36,6 +38,10 @@ export class NotifyService implements EmailServiceProvider {
     };
     this.notify = new NotifyClient(apiKey as string);
     this.logger = pino().child({ service: "Notify" });
+
+    this.queue = new PgBoss({
+      connectionString: config.get<string>("Queue.url"),
+    });
   }
 
   async send(fields: FormField[], template: string, reference: string) {
@@ -48,13 +54,20 @@ export class NotifyService implements EmailServiceProvider {
 
   async sendEmail({ template, emailAddress, options }: NotifySendEmailArgs, reference: string) {
     try {
-      const response = await this.notify.sendEmail(template, emailAddress, options);
-      const data = response.data as SendEmailResponse;
-      this.logger.info(`Reference ${reference} user email sent successfully with Notify id: ${data.id}`);
-      return response.data as SendEmailResponse;
-    } catch (e) {
-      this.handleError(e);
-      return;
+      const jobId = await this.queue.send("notify", {
+        data: {
+          template,
+          emailAddress,
+          options,
+        },
+        options: {
+          retryBackoff: true,
+        },
+      });
+      this.logger.info({ reference, jobId }, `reference ${reference}, notify email queued with jobId ${jobId}`);
+    } catch (e: any) {
+      this.logger.error({ err: e, reference, emailAddress }, `Sending ${template} to ${emailAddress} failed`);
+      throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, e.message);
     }
   }
 
@@ -74,15 +87,15 @@ export class NotifyService implements EmailServiceProvider {
 
   getPersonalisationForTemplate(answers: AnswersHashMap, reference: string, paid: boolean, template: NotifyPersonalisation) {
     const docsList = this.buildDocsList(answers, paid);
-    const country = answers["country"];
-    const post = answers["post"];
+    const country = answers["country"] as string;
+    const post = answers["post"] as string;
     const personalisationValues = {
       ...answers,
       docsList,
       paid,
       reference,
-      ...(additionalContexts[country as string] ?? {}),
-      ...(additionalContexts[post as string] ?? {}),
+      ...(additionalContexts[country] ?? {}),
+      ...(additionalContexts[post] ?? {}),
     };
     const toPersonalisation = this.mapPersonalisationValues(personalisationValues);
     return Object.entries(template).reduce(toPersonalisation, template);
@@ -90,10 +103,8 @@ export class NotifyService implements EmailServiceProvider {
 
   mapPersonalisationValues(personalisationValues: Record<string, string | boolean>) {
     return function (acc: NotifyPersonalisation, [key, value]) {
-      return {
-        ...acc,
-        [key]: personalisationValues[key] ?? value,
-      };
+      acc[key] = personalisationValues[key] ?? value;
+      return acc;
     };
   }
 

@@ -33,7 +33,7 @@ type SESErrorCode =
   | "BAD_REQUEST"
   | "API_ERROR"
   | "UNKNOWN";
-type NotifyErrorCode = "NO_API_KEY" | "MISSING_TEMPLATE" | "UNKNOWN";
+type NotifyErrorCode = "NO_API_KEY" | "MISSING_TEMPLATE" | "QUEUE_ERROR" | "UNKNOWN";
 
 type GenericErrorCode = "UNKNOWN" | "RATE_LIMIT_EXCEEDED";
 
@@ -74,7 +74,8 @@ const SES: ErrorRecord<SESErrorCode> = {
 const NOTIFY: ErrorRecord<NotifyErrorCode> = {
   NO_API_KEY: "No Notify API key has been set",
   MISSING_TEMPLATE: "A notify template id has not been set",
-  UNKNOWN: "There waa an unknown error sending the email",
+  UNKNOWN: "There was an unknown error sending the email",
+  QUEUE_ERROR: "There was an error sending this email to queue",
 };
 
 const GENERIC: ErrorRecord<GenericErrorCode> = {
