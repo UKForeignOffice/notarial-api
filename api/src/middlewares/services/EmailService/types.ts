@@ -8,9 +8,9 @@ export interface NotifySendEmailArgs {
   options: SendEmailOptions<any>;
 }
 
-export type StaffEmailTemplate = "affirmation" | "cni";
+export type SESEmailTemplate = "affirmation" | "cni";
 
-export function isStaffEmailTemplate(template: string): template is StaffEmailTemplate {
+export function isSESEmailTemplate(template: string): template is SESEmailTemplate {
   return template === "affirmation" || template === "cni";
 }
 

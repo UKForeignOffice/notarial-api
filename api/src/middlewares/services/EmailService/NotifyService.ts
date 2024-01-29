@@ -109,7 +109,7 @@ export class NotifyService implements EmailServiceProvider {
 
   buildDocsList(fields: AnswersHashMap, paid: boolean) {
     const docsList = ["your UK passport", "proof of address", "your partner’s passport or national identity card"];
-    if (fields.maritalStatus) {
+    if (fields.maritalStatus && fields.maritalStatus !== "Never married") {
       docsList.push(`your ${previousMarriageDocs[fields.maritalStatus as string]}`);
     }
     if (fields.oathType === "affidavit") {

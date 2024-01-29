@@ -14,14 +14,14 @@ export const testData = {
     {
       category: "appointmentLocation",
       question: "Select a British embassy or consulate in Turkey",
-      fields: [{ key: "post", title: "Select a location", type: "list", answer: "Ankara Embassy" }],
+      fields: [{ key: "post", title: "Select a location", type: "list", answer: "Istanbul Consulate General" }],
     },
     {
       category: "marriage",
       question: "Place and date of marriage registration",
       fields: [
-        { key: "placeOfMarriage", title: "Place of marriage", type: "text", answer: "test" },
-        { key: "dateOfMarriage", title: "Date of marriage", type: "monthYear", answer: "2023-10" },
+        { key: "placeOfMarriage", title: "Place of marriage", type: "text", answer: "Bodrum" },
+        { key: "dateOfMarriage", title: "Date of marriage", type: "monthYear", answer: "2024-02" },
       ],
     },
     {
@@ -43,9 +43,9 @@ export const testData = {
       category: "applicantDetails",
       question: "Your full name",
       fields: [
-        { key: "firstName", title: "First name", type: "text", answer: "test" },
+        { key: "firstName", title: "First name", type: "text", answer: "foo" },
         { key: "middleName", title: "Middle name", type: "text", answer: null },
-        { key: "surname", title: "Surname", type: "text", answer: "test" },
+        { key: "surname", title: "Surname", type: "text", answer: "bar" },
       ],
     },
     {
@@ -122,7 +122,7 @@ export const testData = {
       question: "Your contact details",
       fields: [
         { key: "phoneNumber", title: "Phone number", type: "text", answer: "+44 1234 567890" },
-        { key: "emailAddress", title: "Email address", type: "text", answer: "luke@cautionyourblast.com" },
+        { key: "emailAddress", title: "Email address", type: "text", answer: "test@test.com" },
       ],
     },
     { category: "contact", question: "Confirm your contact details", fields: [] },
