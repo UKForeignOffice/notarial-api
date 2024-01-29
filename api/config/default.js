@@ -13,4 +13,7 @@ module.exports = {
   notifyApiKey: "",
   notifyTemplateUserConfirmation: "",
   notifyTemplatePostNotification: "",
+  Queue: {
+    url: "",
+  },
 };

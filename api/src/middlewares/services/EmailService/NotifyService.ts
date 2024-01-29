@@ -64,7 +64,7 @@ export class NotifyService implements EmailServiceProvider {
           retryBackoff: true,
         },
       });
-      this.logger.info({ reference, jobId }, `reference ${reference}, notify email queued with jobId ${jobId}`);
+      this.logger.info({ reference, emailAddress, jobId }, `reference ${reference}, notify email queued with jobId ${jobId}`);
     } catch (e: any) {
       this.logger.error({ err: e, reference, emailAddress }, `Sending ${template} to ${emailAddress} failed`);
       throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, e.message);
@@ -127,6 +127,7 @@ export class NotifyService implements EmailServiceProvider {
       docsList.push("religious book of your faith to swear upon");
     }
     if (!paid) {
+      // TODO:- update to reflect correct £.
       docsList.push("the equivalent of £50 in the local currency");
     }
     const country = fields.country as string;
