@@ -2726,7 +2726,7 @@ __metadata:
     nodemon: ^3.0.1
     notifications-node-client: ^8.0.0
     pg-boss: ^9.0.3
-    pino: ^8.15.4
+    pino: ^8.17.2
     pino-http: ^8.5.0
     prettier: ^3.0.3
     typescript: ^5.2.2
@@ -9858,7 +9858,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino@npm:^8.0.0, pino@npm:^8.15.4":
+"pino@npm:^8.0.0":
   version: 8.16.0
   resolution: "pino@npm:8.16.0"
   dependencies:
