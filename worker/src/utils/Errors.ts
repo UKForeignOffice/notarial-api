@@ -17,7 +17,7 @@
 /**
  * Category of the error - this is likely to match the service it came from
  */
-export type ErrorTypes = "CONSUMER" | "GENERIC";
+export type ErrorTypes = "CONSUMER" | "FILE" | "GENERIC";
 
 /**
  * Error code for the matching ErrorType.

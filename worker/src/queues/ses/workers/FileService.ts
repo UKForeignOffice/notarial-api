@@ -32,23 +32,12 @@ export class FileService {
   handleFetchError(err: AxiosError | Error) {
     if (err instanceof AxiosError) {
       if (err.status === 404) {
-        return new ApplicationError("FILE", "NOT_FOUND", 500, "Requested file could not be found");
+        return new ApplicationError("FILE", "NOT_FOUND", "Requested file could not be found");
       }
       if (err.status === 500) {
-        return new ApplicationError("FILE", "UNKNOWN", 500, err.message);
+        return new ApplicationError("FILE", "UNKNOWN", err.message);
       }
     }
-    return new ApplicationError("FILE", "UNKNOWN", 500, err.message);
+    return new ApplicationError("FILE", "UNKNOWN", err.message);
   }
-
-  // encryptFile(file: ArrayBuffer) {
-  //   const hash = crypto.createHash("sha256");
-  //   hash.update(this.password);
-  //   const key = hash.digest();
-  //   const iv = crypto.randomBytes(16);
-  //   const cipher = crypto.createCipheriv("aes-256-ocb", key, iv);
-  //   const encryptedFile = cipher.update(new Uint8Array(file));
-  //   cipher.final();
-  //   return encryptedFile;
-  // }
 }
