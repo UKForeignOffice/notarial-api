@@ -8,8 +8,8 @@
   "senderEmail": "SENDER_EMAIL_ADDRESS",
   "Notify": {
     "Template": {
-      "UserConfirmation": "NOTIFY_TEMPLATE_USER_CONFIRMATION",
-      "PostNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"
+      "userConfirmation": "NOTIFY_TEMPLATE_USER_CONFIRMATION",
+      "postNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"
     }
   },
   "Queue": {
