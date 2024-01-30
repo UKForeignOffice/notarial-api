@@ -17,13 +17,12 @@
 /**
  * Category of the error - this is likely to match the service it came from
  */
-export type ErrorTypes = "WEBHOOK" | "FILE" | "SES" | "NOTIFY" | "GENERIC";
+export type ErrorTypes = "WEBHOOK" | "SES" | "NOTIFY" | "GENERIC";
 
 /**
  * Error code for the matching ErrorType.
  */
 type WebhookErrorCode = "VALIDATION" | "EMPTY_TEMPLATE_DATA";
-type FileErrorCode = "EMPTY_RES" | "API_ERROR" | "NOT_FOUND";
 type SESErrorCode =
   | "NO_TEMPLATE"
   | "TEMPLATE_NOT_FOUND"
@@ -40,7 +39,7 @@ type GenericErrorCode = "UNKNOWN" | "RATE_LIMIT_EXCEEDED";
 /**
  * Union of all the different ErrorCode.
  */
-export type ErrorCode = WebhookErrorCode | FileErrorCode | SESErrorCode | NotifyErrorCode | GenericErrorCode;
+export type ErrorCode = WebhookErrorCode | SESErrorCode | NotifyErrorCode | GenericErrorCode;
 
 /**
  * {@ErrorRecord} uses `Record`, which means every key passed into the generic, must be implemented
@@ -52,12 +51,6 @@ type ErrorRecord<T extends ErrorCode> = Record<T, string>;
 const WEBHOOK: ErrorRecord<WebhookErrorCode> = {
   VALIDATION: "Malformed form data: The supplied form data is invalid",
   EMPTY_TEMPLATE_DATA: "No template data was returned",
-};
-
-const FILE: ErrorRecord<FileErrorCode> = {
-  EMPTY_RES: "The file server did not return a response",
-  API_ERROR: "There was an error returning this file",
-  NOT_FOUND: "The requested file could not be found",
 };
 
 const SES: ErrorRecord<SESErrorCode> = {
