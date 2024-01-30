@@ -1,7 +1,7 @@
 import logger, { Logger } from "pino";
 import axios, { AxiosError } from "axios";
 import config from "config";
-import { ApplicationError } from "../../../ApplicationError";
+import { ApplicationError } from "utils/ApplicationError";
 
 export class FileService {
   logger: Logger;
