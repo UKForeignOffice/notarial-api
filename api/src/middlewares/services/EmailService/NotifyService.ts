@@ -21,7 +21,7 @@ export class NotifyService implements EmailServiceProvider {
   notify: NotifyClient;
   logger: Logger;
   templates: Record<NotifyEmailTemplate, string>;
-  queue: PgBoss;
+  queue?: PgBoss;
   constructor() {
     const apiKey = config.get<string>("notifyApiKey");
     const userConfirmationTemplate = config.get<string>("notifyTemplateUserConfirmation");
@@ -38,9 +38,11 @@ export class NotifyService implements EmailServiceProvider {
     };
     this.notify = new NotifyClient(apiKey);
     this.logger = pino().child({ service: "Notify" });
-
-    this.queue = new PgBoss({
+    const queue = new PgBoss({
       connectionString: config.get<string>("Queue.url"),
+    });
+    queue.start().then((pgboss) => {
+      this.queue = pgboss;
     });
   }
 
@@ -50,7 +52,7 @@ export class NotifyService implements EmailServiceProvider {
   }
 
   async sendEmail({ template, emailAddress, options }: NotifySendEmailArgs, reference: string) {
-    const jobId = await this.queue.send("notify", {
+    const jobId = await this.queue?.send?.("notify", {
       data: {
         template,
         emailAddress,

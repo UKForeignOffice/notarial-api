@@ -14,9 +14,11 @@ const logger = pino().child({
 const notifyClient = new NotifyClient(config.get<string>("Notify.apiKey"));
 
 type NotifyJob = {
-  template: string;
-  emailAddress: string;
-  options: SendEmailOptions<any>;
+  data: {
+    template: string;
+    emailAddress: string;
+    options: SendEmailOptions<any>;
+  };
 };
 
 /**
@@ -26,7 +28,7 @@ type NotifyJob = {
 export async function notifyHandler(job: Job<NotifyJob>) {
   const jobId = job.id;
   logger.info({ jobId }, `received ${worker} job`);
-  const { data } = job;
+  const { data } = job.data;
   const { template, emailAddress, options } = data;
   try {
     const response = await notifyClient.sendEmail(template, emailAddress, options);
