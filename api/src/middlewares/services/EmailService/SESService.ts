@@ -1,5 +1,5 @@
 import logger, { Logger } from "pino";
-import { SendRawEmailCommand, SESClient, SESServiceException } from "@aws-sdk/client-ses";
+import { SESClient } from "@aws-sdk/client-ses";
 import { ses } from "../../../SESClient";
 import * as handlebars from "handlebars";
 import { ApplicationError } from "../../../ApplicationError";
@@ -11,11 +11,14 @@ import { createMimeMessage } from "mimetext";
 import config from "config";
 import { FileService } from "../FileService";
 import { getFileFields, answersHashMap } from "../helpers";
+import PgBoss from "pg-boss";
+
 export class SESService implements EmailServiceProvider {
   logger: Logger;
   ses: SESClient;
   fileService: FileService;
   templates: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
+  queue?: PgBoss;
 
   constructor({ fileService }) {
     this.logger = logger().child({ service: "SES" });
@@ -25,6 +28,13 @@ export class SESService implements EmailServiceProvider {
       affirmation: SESService.createTemplate(templates.ses.affirmation),
       cni: SESService.createTemplate(templates.ses.affirmation),
     };
+    const queue = new PgBoss({
+      connectionString: config.get<string>("Queue.url"),
+    });
+
+    queue.start().then((pgboss) => {
+      this.queue = pgboss;
+    });
   }
 
   async send(fields: FormField[], template: string, reference: string) {
@@ -38,14 +48,20 @@ export class SESService implements EmailServiceProvider {
   /**
    * @throws ApplicationError
    */
-  private async sendEmail(message: SendRawEmailCommand, reference: string) {
-    try {
-      const response = await this.ses.send(message);
-      this.logger.info(`Reference ${reference} staff email sent successfully with SES message id: ${response.MessageId}`);
-      return response;
-    } catch (err: SESServiceException | any) {
-      throw new ApplicationError("SES", "API_ERROR", 400, err.message);
+  private async sendEmail(emailArgs, reference: string) {
+    const jobId = await this.queue?.send?.("ses", {
+      data: {
+        ...emailArgs,
+      },
+      options: {
+        retryBackoff: true,
+      },
+    });
+    if (!jobId) {
+      throw new ApplicationError("SES", "QUEUE_ERROR", 500, `Queueing failed for ${reference}`);
     }
+    this.logger.info({ reference, emailAddress, jobId }, `reference ${reference}, notify email queued with jobId ${jobId}`);
+    return jobId;
   }
 
   private getEmailBody(fields: FormField[], template: SESEmailTemplate) {
@@ -57,20 +73,17 @@ export class SESService implements EmailServiceProvider {
     });
   }
 
-  private async buildSendEmailArgs(fields: FormField[], template: SESEmailTemplate, reference: string): Promise<SendRawEmailCommand> {
+  private async buildSendEmailArgs(fields: FormField[], template: SESEmailTemplate, reference: string) {
     const answers = answersHashMap(fields);
     const emailBody = this.getEmailBody(fields, template);
     const post = answers.post ?? additionalContexts[answers.country as string].post;
-    const message = await this.buildEmailWithAttachments({
+
+    return {
       subject: `${template} application, ${post} – ${reference}`,
       body: emailBody,
       attachments: getFileFields(fields),
-    });
-    return new SendRawEmailCommand({
-      RawMessage: {
-        Data: Buffer.from(message),
-      },
-    });
+      reference,
+    };
   }
 
   async buildEmailWithAttachments({ subject, body, attachments }: { subject: string; body: string; attachments: FormField[] }) {
