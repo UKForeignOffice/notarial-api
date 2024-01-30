@@ -15,9 +15,10 @@ export function isSESEmailTemplate(template: string): template is SESEmailTempla
 }
 
 export type NotifyEmailTemplate = "userConfirmation" | "postNotification";
+export type EmailTemplate = SESEmailTemplate & NotifyEmailTemplate;
 
 export type NotifyPersonalisation = typeof notify.userConfirmation | typeof notify.postNotification;
 
 export interface EmailServiceProvider {
-  send: (fields: FormField[], template: NotifyEmailTemplate | SESEmailTemplate, reference: string) => Promise<any>;
+  send: (fields: FormField[], template: EmailTemplate, reference: string) => Promise<any>;
 }

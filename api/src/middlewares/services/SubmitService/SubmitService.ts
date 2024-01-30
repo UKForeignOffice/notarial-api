@@ -2,15 +2,15 @@ import logger, { Logger } from "pino";
 import { FileService } from "../FileService";
 import { FormDataBody } from "../../../types";
 import { flattenQuestions } from "../helpers";
-import { EmailServiceProvider } from "../EmailService/types";
+import { NotifyService, SESService } from "../EmailService";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
 export class SubmitService {
   logger: Logger;
   fileService: FileService;
-  customerEmailService: EmailServiceProvider;
-  staffEmailService: EmailServiceProvider;
+  customerEmailService: NotifyService;
+  staffEmailService: SESService;
 
   constructor({ fileService, notifyService, sesService }) {
     this.logger = logger().child({ service: "Submit" });
