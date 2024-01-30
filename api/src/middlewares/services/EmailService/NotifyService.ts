@@ -3,7 +3,7 @@ import config from "config";
 import pino, { Logger } from "pino";
 import { ApplicationError } from "../../../ApplicationError";
 import * as additionalContexts from "./additionalContexts.json";
-import { EmailServiceProvider, isNotifyEmailTemplate, NotifyPersonalisation, NotifySendEmailArgs, NotifyEmailTemplate } from "./types";
+import { EmailServiceProvider, NotifyPersonalisation, NotifySendEmailArgs, NotifyEmailTemplate } from "./types";
 import * as templates from "./templates";
 import { FormField } from "../../../types/FormField";
 import { answersHashMap } from "../helpers";
@@ -23,7 +23,7 @@ export class NotifyService implements EmailServiceProvider {
   templates: Record<NotifyEmailTemplate, string>;
   queue: PgBoss;
   constructor() {
-    const apiKey = config.get("notifyApiKey");
+    const apiKey = config.get<string>("notifyApiKey");
     const userConfirmationTemplate = config.get<string>("notifyTemplateUserConfirmation");
     const postNotificationTemplate = config.get<string>("notifyTemplatePostNotification");
     if (!apiKey) {
@@ -36,7 +36,7 @@ export class NotifyService implements EmailServiceProvider {
       userConfirmation: userConfirmationTemplate,
       postNotification: postNotificationTemplate,
     };
-    this.notify = new NotifyClient(apiKey as string);
+    this.notify = new NotifyClient(apiKey);
     this.logger = pino().child({ service: "Notify" });
 
     this.queue = new PgBoss({
@@ -44,31 +44,27 @@ export class NotifyService implements EmailServiceProvider {
     });
   }
 
-  async send(fields: FormField[], template: string, reference: string) {
-    if (!isNotifyEmailTemplate(template)) {
-      throw new ApplicationError("NOTIFY", "TEMPLATE_NOT_FOUND", 400);
-    }
+  async send(fields: FormField[], template: NotifyEmailTemplate, reference: string) {
     const emailArgs = this.buildSendEmailArgs(fields, template, reference);
     return this.sendEmail(emailArgs, reference);
   }
 
   async sendEmail({ template, emailAddress, options }: NotifySendEmailArgs, reference: string) {
-    try {
-      const jobId = await this.queue.send("notify", {
-        data: {
-          template,
-          emailAddress,
-          options,
-        },
-        options: {
-          retryBackoff: true,
-        },
-      });
-      this.logger.info({ reference, emailAddress, jobId }, `reference ${reference}, notify email queued with jobId ${jobId}`);
-    } catch (e: any) {
-      this.logger.error({ err: e, reference, emailAddress }, `Sending ${template} to ${emailAddress} failed`);
-      throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, e.message);
+    const jobId = await this.queue.send("notify", {
+      data: {
+        template,
+        emailAddress,
+        options,
+      },
+      options: {
+        retryBackoff: true,
+      },
+    });
+    if (!jobId) {
+      throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, `Sending ${template} to ${emailAddress} failed`);
     }
+    this.logger.info({ reference, emailAddress, jobId }, `reference ${reference}, notify email queued with jobId ${jobId}`);
+    return jobId;
   }
 
   buildSendEmailArgs(fields: FormField[], template: NotifyEmailTemplate, reference: string): NotifySendEmailArgs {
@@ -98,7 +94,7 @@ export class NotifyService implements EmailServiceProvider {
       ...(additionalContexts[post] ?? {}),
     };
     const toPersonalisation = this.mapPersonalisationValues(personalisationValues);
-    return Object.entries(template).reduce(toPersonalisation, template);
+    return Object.entries(template).reduce(toPersonalisation, {} as NotifyPersonalisation);
   }
 
   mapPersonalisationValues(personalisationValues: Record<string, string | boolean>) {
