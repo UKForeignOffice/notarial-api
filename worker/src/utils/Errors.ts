@@ -24,11 +24,12 @@ export type ErrorTypes = "CONSUMER" | "GENERIC";
  */
 type ConsumerErrorCode = "START_FAILED";
 type GenericErrorCode = "UNKNOWN";
+type FileErrorCode = "EMPTY_RES" | "API_ERROR" | "NOT_FOUND";
 
 /**
  * Union of all the different ErrorCode.
  */
-export type ErrorCode = ConsumerErrorCode | GenericErrorCode;
+export type ErrorCode = ConsumerErrorCode | GenericErrorCode | FileErrorCode;
 
 /**
  * {@ErrorRecord} uses `Record`, which means every key passed into the generic, must be implemented
@@ -45,11 +46,19 @@ const GENERIC: ErrorRecord<GenericErrorCode> = {
   UNKNOWN: "Unknown error",
 };
 
+const FILE: ErrorRecord<FileErrorCode> = {
+  EMPTY_RES: "The file server did not return a response",
+  API_ERROR: "There was an error returning this file",
+  NOT_FOUND: "The requested file could not be found",
+};
+
 type ErrorRecords = {
   CONSUMER: typeof CONSUMER;
+  FILE: typeof FILE;
   GENERIC: typeof GENERIC;
 };
 export const ERRORS: ErrorRecords = {
   CONSUMER,
+  FILE,
   GENERIC,
 };
