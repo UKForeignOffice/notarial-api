@@ -24,8 +24,8 @@ export class NotifyService implements EmailServiceProvider {
     this.logger = pino().child({ service: "Notify" });
 
     try {
-      const userConfirmation = config.get<string>("notifyTemplateUserConfirmation");
-      const postNotification = config.get<string>("notifyTemplatePostNotification");
+      const userConfirmation = config.get<string>("Notify.Template.UserConfirmation");
+      const postNotification = config.get<string>("NotifyTemplate.PostNotification");
       this.templates = {
         userConfirmation,
         postNotification,
