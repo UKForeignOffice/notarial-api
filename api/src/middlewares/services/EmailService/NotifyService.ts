@@ -21,23 +21,24 @@ export class NotifyService implements EmailServiceProvider {
   templates: Record<NotifyEmailTemplate, string>;
   queue?: PgBoss;
   constructor() {
-    const apiKey = config.get<string>("notifyApiKey");
-    const userConfirmationTemplate = config.get<string>("notifyTemplateUserConfirmation");
-    const postNotificationTemplate = config.get<string>("notifyTemplatePostNotification");
-    if (!apiKey) {
-      throw new ApplicationError("NOTIFY", "NO_API_KEY", 500);
-    }
-    if (!userConfirmationTemplate || !postNotificationTemplate) {
-      throw new ApplicationError("NOTIFY", "NO_TEMPLATE", 500);
-    }
-    this.templates = {
-      userConfirmation: userConfirmationTemplate,
-      postNotification: postNotificationTemplate,
-    };
     this.logger = pino().child({ service: "Notify" });
+
+    try {
+      const userConfirmation = config.get<string>("notifyTemplateUserConfirmation");
+      const postNotification = config.get<string>("notifyTemplatePostNotification");
+      this.templates = {
+        userConfirmation,
+        postNotification,
+      };
+    } catch (err) {
+      this.logger.error({ err }, "No template has been configured, exiting");
+      process.exit(1);
+    }
+
     const queue = new PgBoss({
       connectionString: config.get<string>("Queue.url"),
     });
+
     queue.start().then((pgboss) => {
       this.queue = pgboss;
     });
