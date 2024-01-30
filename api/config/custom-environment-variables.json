@@ -10,7 +10,7 @@
     "Template": {
       "UserConfirmation": "NOTIFY_TEMPLATE_USER_CONFIRMATION",
       "PostNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"
-    },
+    }
   },
   "Queue": {
     "url": "QUEUE_URL",

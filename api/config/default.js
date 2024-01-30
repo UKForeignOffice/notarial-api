@@ -11,6 +11,6 @@ module.exports = {
   submissionAddress: "pye@cautionyourblast.com",
   senderEmail: "pye@cautionyourblast.com",
   Queue: {
-    url: "",
+    url: "postgresql://user:root@localhost:5432/queue",
   },
 };

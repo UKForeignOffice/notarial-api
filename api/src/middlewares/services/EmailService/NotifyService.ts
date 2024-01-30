@@ -25,7 +25,7 @@ export class NotifyService implements EmailServiceProvider {
 
     try {
       const userConfirmation = config.get<string>("Notify.Template.UserConfirmation");
-      const postNotification = config.get<string>("NotifyTemplate.PostNotification");
+      const postNotification = config.get<string>("Notify.Template.PostNotification");
       this.templates = {
         userConfirmation,
         postNotification,

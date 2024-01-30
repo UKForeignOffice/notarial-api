@@ -38,7 +38,7 @@ export async function notifyHandler(job: Job<NotifyJob>) {
     return id;
   } catch (e: any) {
     if (e.response) {
-      logger.error({ jobId, err: e.response.data.errors }, "Notify responded with an error");
+      logger.error({ jobId, err: e.response.data.errors, emailAddress }, "Notify responded with an error");
       throw e.response.data;
     }
 
