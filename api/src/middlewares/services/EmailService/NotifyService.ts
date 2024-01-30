@@ -31,7 +31,7 @@ export class NotifyService implements EmailServiceProvider {
         postNotification,
       };
     } catch (err) {
-      this.logger.error({ err }, "No template has been configured, exiting");
+      this.logger.error({ err }, "Notify templates have not been configured, exiting");
       process.exit(1);
     }
 
