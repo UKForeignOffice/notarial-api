@@ -11,7 +11,6 @@ import { createMimeMessage } from "mimetext";
 import config from "config";
 import { FileService } from "../FileService";
 import { getFileFields, answersHashMap } from "../helpers";
-
 export class SESService implements EmailServiceProvider {
   logger: Logger;
   ses: SESClient;

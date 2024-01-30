@@ -6,7 +6,15 @@
   "cniTemplate": "CNI_TEMPLATE_ID",
   "submissionEmail": "SUBMISSION_EMAIL_ADDRESS",
   "senderEmail": "SENDER_EMAIL_ADDRESS",
-  "notifyApiKey": "NOTIFY_API_KEY",
-  "notifyTemplateUserConfirmation": "NOTIFY_TEMPLATE_USER_CONFIRMATION",
-  "notifyTemplatePostNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"
+  "Notify": {
+    "Template": {
+      "userConfirmation": "NOTIFY_TEMPLATE_USER_CONFIRMATION",
+      "postNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"
+    }
+  },
+  "Queue": {
+    "url": "QUEUE_URL",
+    "archiveFailedAfterDays": "ARCHIVE_FAILED_AFTER_DAYS",
+    "deleteArchivedAfterDays": "DELETE_ARCHIVED_IN_DAYS"
+  }
 }

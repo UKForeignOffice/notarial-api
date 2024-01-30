@@ -1,5 +1,8 @@
 {
   "Queue": {
     "url": "QUEUE_URL"
+  },
+  "Notify": {
+    "apiKey": "NOTIFY_API_KEY"
   }
 }

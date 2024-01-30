@@ -7,6 +7,8 @@ services:
       context: .
       dockerfile: api/Dockerfile
   worker:
+    environment:
+      - NOTIFY_API_KEY=${NOTIFY_API_KEY:?}
     build:
       context: .
       dockerfile: worker/Dockerfile
