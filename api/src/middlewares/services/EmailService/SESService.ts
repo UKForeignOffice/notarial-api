@@ -13,6 +13,13 @@ import { FileService } from "../FileService";
 import { getFileFields, answersHashMap } from "../helpers";
 import PgBoss from "pg-boss";
 
+type EmailArgs = {
+  subject: string;
+  body: string;
+  attachments: FormField[];
+  reference: string;
+};
+
 export class SESService implements EmailServiceProvider {
   logger: Logger;
   ses: SESClient;
@@ -48,7 +55,7 @@ export class SESService implements EmailServiceProvider {
   /**
    * @throws ApplicationError
    */
-  private async sendEmail(emailArgs, reference: string) {
+  private async sendEmail(emailArgs: EmailArgs, reference: string) {
     const jobId = await this.queue?.send?.("ses", {
       data: {
         ...emailArgs,
@@ -60,7 +67,7 @@ export class SESService implements EmailServiceProvider {
     if (!jobId) {
       throw new ApplicationError("SES", "QUEUE_ERROR", 500, `Queueing failed for ${reference}`);
     }
-    this.logger.info({ reference, emailAddress, jobId }, `reference ${reference}, notify email queued with jobId ${jobId}`);
+    this.logger.info({ reference, jobId }, `reference ${reference}, SES queued with jobId ${jobId}`);
     return jobId;
   }
 
