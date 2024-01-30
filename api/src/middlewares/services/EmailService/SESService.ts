@@ -11,13 +11,11 @@ import { createMimeMessage } from "mimetext";
 import config from "config";
 import { FileService } from "../FileService";
 import { getFileFields, answersHashMap } from "../helpers";
-import PgBoss from "pg-boss";
 export class SESService implements EmailServiceProvider {
   logger: Logger;
   ses: SESClient;
   fileService: FileService;
   templates: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
-  queue: PgBoss;
 
   constructor({ fileService }) {
     this.logger = logger().child({ service: "SES" });
@@ -27,10 +25,6 @@ export class SESService implements EmailServiceProvider {
       affirmation: SESService.createTemplate(templates.ses.affirmation),
       cni: SESService.createTemplate(templates.ses.affirmation),
     };
-
-    this.queue = new PgBoss({
-      connectionString: config.get<string>("Queue.url"),
-    });
   }
 
   async send(fields: FormField[], template: string, reference: string) {
