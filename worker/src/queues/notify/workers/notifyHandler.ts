@@ -1,7 +1,7 @@
 import pino from "pino";
 import { Job } from "pg-boss";
 import config from "config";
-import { NotifyClient, RequestError, SendEmailOptions, SendEmailResponse } from "notifications-node-client";
+import { NotifyClient, SendEmailOptions, SendEmailResponse } from "notifications-node-client";
 
 const queue = "notifications";
 const worker = "notify";
@@ -43,15 +43,8 @@ export async function notifyHandler(job: Job<NotifyJob>) {
     }
 
     if (e.request) {
-      logger.error(jobId, `post to ${url} request could not be sent, see database for error`);
+      logger.error(jobId, `Request could not be sent to Notify`);
     }
-    /*if (!e.resonse)
-    const isNotifyError = "data" in response && response.data.errors;
-    if (isNotifyError) {
-      const notifyErrors = response.data.errors as RequestError[];
-      throw new ApplicationError("NOTIFY", "API_ERROR", 500, JSON.stringify(notifyErrors));
-    }
-throw new ApplicationError("NOTIFY", "UNKNOWN", 500, error.message);
-   */
+    throw e;
   }
 }
