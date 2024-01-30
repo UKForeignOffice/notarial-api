@@ -2,7 +2,7 @@ import config from "config";
 import pino, { Logger } from "pino";
 import { ApplicationError } from "../../../ApplicationError";
 import * as additionalContexts from "./additionalContexts.json";
-import { EmailServiceProvider, NotifyPersonalisation, NotifySendEmailArgs, NotifyEmailTemplate } from "./types";
+import { EmailServiceProvider, NotifyPersonalisation, NotifySendEmailArgs, NotifyEmailTemplate, EmailTemplate } from "./types";
 import * as templates from "./templates";
 import { FormField } from "../../../types/FormField";
 import { answersHashMap } from "../helpers";
