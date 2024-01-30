@@ -1,4 +1,4 @@
-import { NotifyClient, RequestError } from "notifications-node-client";
+import { NotifyClient } from "notifications-node-client";
 import config from "config";
 import pino, { Logger } from "pino";
 import { ApplicationError } from "../../../ApplicationError";
