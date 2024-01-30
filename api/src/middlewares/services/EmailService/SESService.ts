@@ -23,14 +23,12 @@ type EmailArgs = {
 export class SESService implements EmailServiceProvider {
   logger: Logger;
   ses: SESClient;
-  fileService: FileService;
   templates: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
   queue?: PgBoss;
 
   constructor({ fileService }) {
     this.logger = logger().child({ service: "SES" });
     this.ses = ses;
-    this.fileService = fileService;
     this.templates = {
       affirmation: SESService.createTemplate(templates.ses.affirmation),
       cni: SESService.createTemplate(templates.ses.affirmation),
@@ -107,18 +105,18 @@ export class SESService implements EmailServiceProvider {
     });
 
     message.setRecipient(config.get("submissionAddress"));
-    try {
-      for (const attachment of attachments) {
-        const { contentType, data } = await this.fileService.getFile(attachment.answer as string);
-        message.addAttachment({
-          filename: attachment.title,
-          contentType,
-          data: data.toString("base64"),
-        });
-      }
-    } catch (err: any) {
-      throw new ApplicationError("SES", "API_ERROR", 400, err.message);
-    }
+    // try {
+    //   for (const attachment of attachments) {
+    //     const { contentType, data } = await this.fileService.getFile(attachment.answer as string);
+    //     message.addAttachment({
+    //       filename: attachment.title,
+    //       contentType,
+    //       data: data.toString("base64"),
+    //     });
+    //   }
+    // } catch (err: any) {
+    //   throw new ApplicationError("SES", "API_ERROR", 400, err.message);
+    // }
 
     return message.asRaw();
   }
