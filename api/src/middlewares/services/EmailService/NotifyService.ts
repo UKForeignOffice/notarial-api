@@ -106,16 +106,6 @@ export class NotifyService implements EmailServiceProvider {
     };
   }
 
-  handleError(error: any) {
-    const { response = {} } = error;
-    const isNotifyError = "data" in response && response.data.errors;
-    if (isNotifyError) {
-      const notifyErrors = response.data.errors as RequestError[];
-      throw new ApplicationError("NOTIFY", "API_ERROR", 500, JSON.stringify(notifyErrors));
-    }
-    throw new ApplicationError("NOTIFY", "UNKNOWN", 500, error.message);
-  }
-
   buildDocsList(fields: AnswersHashMap, paid: boolean) {
     const docsList = ["your UK passport", "proof of address", "your partner’s passport or national identity card"];
     if (fields.maritalStatus && fields.maritalStatus !== "Never married") {
