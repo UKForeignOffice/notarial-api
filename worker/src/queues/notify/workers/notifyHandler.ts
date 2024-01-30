@@ -36,7 +36,15 @@ export async function notifyHandler(job: Job<NotifyJob>) {
     const { id, reference } = data;
     logger.info({ jobId, reference, template }, "sent successfully");
     return id;
-  } catch (e) {
+  } catch (e: any) {
+    if (e.response) {
+      logger.error({ jobId, err: e.response.data.errors }, "Notify responded with an error");
+      throw e.response.data;
+    }
+
+    if (e.request) {
+      logger.error(jobId, `post to ${url} request could not be sent, see database for error`);
+    }
     /*if (!e.resonse)
     const isNotifyError = "data" in response && response.data.errors;
     if (isNotifyError) {
