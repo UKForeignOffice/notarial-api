@@ -76,14 +76,12 @@ const GENERIC: ErrorRecord<GenericErrorCode> = {
 
 type ErrorRecords = {
   WEBHOOK: typeof WEBHOOK;
-  FILE: typeof FILE;
   SES: typeof SES;
   NOTIFY: typeof NOTIFY;
   GENERIC: typeof GENERIC;
 };
 export const ERRORS: ErrorRecords = {
   WEBHOOK,
-  FILE,
   SES,
   NOTIFY,
   GENERIC,
