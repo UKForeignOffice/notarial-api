@@ -1,4 +1,3 @@
-import { NotifyClient } from "notifications-node-client";
 import config from "config";
 import pino, { Logger } from "pino";
 import { ApplicationError } from "../../../ApplicationError";
@@ -18,7 +17,6 @@ const previousMarriageDocs = {
   Annulled: "decree of nullity",
 };
 export class NotifyService implements EmailServiceProvider {
-  notify: NotifyClient;
   logger: Logger;
   templates: Record<NotifyEmailTemplate, string>;
   queue?: PgBoss;
@@ -36,7 +34,6 @@ export class NotifyService implements EmailServiceProvider {
       userConfirmation: userConfirmationTemplate,
       postNotification: postNotificationTemplate,
     };
-    this.notify = new NotifyClient(apiKey);
     this.logger = pino().child({ service: "Notify" });
     const queue = new PgBoss({
       connectionString: config.get<string>("Queue.url"),
