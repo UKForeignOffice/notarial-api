@@ -1,5 +1,4 @@
 import logger, { Logger } from "pino";
-import { FileService } from "../FileService";
 import { FormDataBody } from "../../../types";
 import { flattenQuestions } from "../helpers";
 import { NotifyService, SESService } from "../EmailService";
@@ -8,13 +7,11 @@ const { customAlphabet } = require("nanoid");
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
 export class SubmitService {
   logger: Logger;
-  fileService: FileService;
   customerEmailService: NotifyService;
   staffEmailService: SESService;
 
-  constructor({ fileService, notifyService, sesService }) {
+  constructor({ notifyService, sesService }) {
     this.logger = logger().child({ service: "Submit" });
-    this.fileService = fileService;
     this.customerEmailService = notifyService;
     this.staffEmailService = sesService;
   }
@@ -39,16 +36,13 @@ export class SubmitService {
 
     const reference = this.generateId();
 
-    const staffPromise = this.staffEmailService.send(formFields, "affirmation", reference);
-
-    const customerPromise = this.customerEmailService.send(formFields, "userConfirmation", reference);
-
-    const [staffRes, customerRes] = await Promise.all([staffPromise, customerPromise]);
+    const staffJobId = await this.staffEmailService.send(formFields, "affirmation", reference);
+    const userNotifyJobId = await this.customerEmailService.send(formFields, "userConfirmation", reference);
 
     return {
       response: {
-        staff: staffRes,
-        customer: customerRes,
+        staff: staffJobId,
+        customer: userNotifyJobId,
       },
       reference,
     };
