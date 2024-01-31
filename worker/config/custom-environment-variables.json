@@ -1,8 +1,19 @@
 {
   "Queue": {
-    "url": "QUEUE_URL"
+    "url": "QUEUE_URL",
+    "archiveFailedAfterDays": "ARCHIVE_FAILED_AFTER_DAYS",
+    "deleteArchivedAfterDays": "DELETE_ARCHIVED_IN_DAYS"
   },
   "Notify": {
     "apiKey": "NOTIFY_API_KEY"
+  },
+  "SES": {
+    "Sender": {
+      "name": "SES_SENDER_NAME",
+      "emailAddress": "SENDER_EMAIL_ADDRESS"
+    },
+    "Recipient": {
+      "emailAddress": "SUBMISSION_ADDRESS"
+    }
   }
 }
