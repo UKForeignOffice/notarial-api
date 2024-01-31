@@ -1,6 +1,6 @@
 import axios from "axios";
-import { FileService } from "../FileService";
 import { ApplicationError } from "../../../../utils/ApplicationError";
+import FileService from "../FileService";
 
 jest.mock("axios");
 
