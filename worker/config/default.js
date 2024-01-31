@@ -13,5 +13,4 @@ module.exports = {
       emailAddress: "pye@cautionyourblast.com",
     },
   },
-  },
 };
