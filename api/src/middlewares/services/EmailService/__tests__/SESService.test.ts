@@ -34,8 +34,7 @@ test("getEmailBody renders cni template correctly", () => {
 });
 
 test("sendEmail returns a jobId", async () => {
-  const sendSpy = jest.spyOn(pgBossMock, "send");
-  const c = await emailService.sendEmail(
+  const jobId = await emailService.sendEmail(
     {
       subject: "your application",
       body: "has been accepted",
@@ -44,7 +43,7 @@ test("sendEmail returns a jobId", async () => {
     },
     "1234"
   );
-  expect(c).toBe("some-job-id");
+  expect(jobId).toBe("some-job-id");
 });
 
 test("sendEmail throws ApplicationError when no jobId is returned", async () => {
