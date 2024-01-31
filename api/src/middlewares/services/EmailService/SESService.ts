@@ -1,6 +1,5 @@
 import logger, { Logger } from "pino";
 import { SESClient } from "@aws-sdk/client-ses";
-import { ses } from "../../../SESClient";
 import * as handlebars from "handlebars";
 import { ApplicationError } from "../../../ApplicationError";
 import { FormField } from "../../../types/FormField";
@@ -20,13 +19,11 @@ type EmailArgs = {
 
 export class SESService implements EmailServiceProvider {
   logger: Logger;
-  ses: SESClient;
   templates: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
   queue?: PgBoss;
 
   constructor() {
     this.logger = logger().child({ service: "SES" });
-    this.ses = ses;
     this.templates = {
       affirmation: SESService.createTemplate(templates.ses.affirmation),
       cni: SESService.createTemplate(templates.ses.affirmation),
