@@ -21,21 +21,17 @@ export default class FileService {
         contentType: headers["content-type"],
         data,
       };
-    } catch (e: AxiosError | Error | any) {
-      throw this.handleFetchError(e);
-    }
-  }
-
-  handleFetchError(err: AxiosError | Error) {
-    this.logger.error({ err }, "Fetching files failed");
-    if (err instanceof AxiosError) {
-      if (err.status === 404) {
-        return new ApplicationError("FILE", "NOT_FOUND", `Requested file could not be found at ${err.response?.config.url}`);
+    } catch (err: AxiosError | Error | any) {
+      this.logger.error({ err }, "Fetching files failed");
+      if (err.response) {
+        if (err.response.status === 404) {
+          throw new ApplicationError("FILE", "NOT_FOUND", `Requested file could not be found at ${err.response?.config.url}`);
+        }
+        if (err.response.status === 500) {
+          throw new ApplicationError("FILE", "UNKNOWN", err.message);
+        }
       }
-      if (err.status === 500) {
-        return new ApplicationError("FILE", "UNKNOWN", err.message);
-      }
+      throw new ApplicationError("FILE", "UNKNOWN", err.message);
     }
-    return new ApplicationError("FILE", "UNKNOWN", err.message);
   }
 }

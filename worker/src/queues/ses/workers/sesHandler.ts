@@ -5,8 +5,8 @@ import { sesClient, SESEmail } from "../helpers";
 
 import { SESServiceException, SendRawEmailCommand } from "@aws-sdk/client-ses";
 
-const queue = "ses";
-const worker = "ses";
+const queue = "SES";
+const worker = "sesHandler";
 
 const logger = pino().child({
   queue,

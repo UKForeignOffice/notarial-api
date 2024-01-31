@@ -20,6 +20,7 @@ export class SESService implements EmailServiceProvider {
   logger: Logger;
   templates: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
   queue?: PgBoss;
+  QUEUE_NAME = "SES";
 
   constructor() {
     this.logger = logger().child({ service: "SES" });
@@ -33,6 +34,7 @@ export class SESService implements EmailServiceProvider {
 
     queue.start().then((pgboss) => {
       this.queue = pgboss;
+      this.logger.info(`Sending messages to ${this.QUEUE_NAME}. Ensure that there is a handler listening to ${this.QUEUE_NAME}`);
     });
   }
 
@@ -48,7 +50,7 @@ export class SESService implements EmailServiceProvider {
    * @throws ApplicationError
    */
   private async sendEmail(emailArgs: EmailArgs, reference: string) {
-    const jobId = await this.queue?.send?.("ses", emailArgs, {
+    const jobId = await this.queue?.send?.(this.QUEUE_NAME, emailArgs, {
       retryBackoff: true,
     });
     if (!jobId) {

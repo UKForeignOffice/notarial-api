@@ -20,6 +20,7 @@ export class NotifyService implements EmailServiceProvider {
   logger: Logger;
   templates: Record<NotifyEmailTemplate, string>;
   queue?: PgBoss;
+  QUEUE_NAME = "NOTIFY";
   constructor() {
     this.logger = pino().child({ service: "Notify" });
     try {
@@ -40,6 +41,7 @@ export class NotifyService implements EmailServiceProvider {
 
     queue.start().then((pgboss) => {
       this.queue = pgboss;
+      this.logger.info(`Sending messages to ${this.QUEUE_NAME}. Ensure that there is a handler listening to ${this.QUEUE_NAME}`);
     });
   }
 
@@ -50,7 +52,7 @@ export class NotifyService implements EmailServiceProvider {
 
   async sendEmail({ template, emailAddress, options }: NotifySendEmailArgs, reference: string) {
     const jobId = await this.queue?.send?.(
-      "notify",
+      this.QUEUE_NAME,
       {
         template,
         emailAddress,

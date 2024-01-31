@@ -1,5 +1,4 @@
 import axios from "axios";
-import { ApplicationError } from "../../../../utils/ApplicationError";
 import FileService from "../FileService";
 
 jest.mock("axios");
@@ -21,9 +20,38 @@ test("getFile returns the file type and file content when a file is found", asyn
   });
 });
 
-test("getFile returns an error when the file content cannot be found", () => {
+test("getFile returns an error when the file content cannot be found", async () => {
   (axios.get as jest.Mock).mockRejectedValueOnce({
-    status: 404,
+    response: {
+      status: 404,
+      config: {
+        url: "https://a-failing-url.com",
+      },
+    },
   });
-  expect(fileService.getFile("https://a-failing-url.com")).rejects.toThrowError(ApplicationError);
+
+  try {
+    await fileService.getFile("https://a-failing-url.com");
+  } catch (e) {
+    expect(e.name).toBe("FILE");
+    expect(e.message).toBe("Requested file could not be found at https://a-failing-url.com");
+  }
+});
+
+test("getFile returns an error when the API responds with a 500", async () => {
+  (axios.get as jest.Mock).mockRejectedValueOnce({
+    response: {
+      status: 500,
+      config: {
+        url: "https://a-failing-url.com",
+      },
+    },
+  });
+
+  try {
+    await fileService.getFile("https://a-failing-url.com");
+  } catch (e) {
+    expect(e.name).toBe("FILE");
+    expect(e.code).toBe("UNKNOWN");
+  }
 });

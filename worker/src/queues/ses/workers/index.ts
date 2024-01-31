@@ -4,7 +4,7 @@ import PgBoss from "pg-boss";
 import { sesHandler } from "./sesHandler";
 
 const logger = pino();
-const queue = "ses";
+const queue = "SES";
 
 export async function setupSesQueueWorker() {
   const consumer: PgBoss = await getConsumer();
