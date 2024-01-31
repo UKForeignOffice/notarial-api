@@ -12,7 +12,6 @@
     "sourceMap": true,
     "resolveJsonModule": true,
 
-
     /* Strict Type-Checking Options */
     "strict": true,
     "noImplicitAny": false, // once all ts this should be true
@@ -33,6 +32,9 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
 
+    /* pretty compile output */
+    "pretty": true
   },
   "exclude": ["node_modules", "**/*/*.test.ts"],
+
 }
