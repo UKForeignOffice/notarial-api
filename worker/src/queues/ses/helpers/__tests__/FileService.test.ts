@@ -27,16 +27,3 @@ test("getFile returns an error when the file content cannot be found", () => {
   });
   expect(fileService.getFile("https://a-failing-url.com")).rejects.toThrowError(ApplicationError);
 });
-
-// test("buildEmailWithAttachments throws ApplicationError when fileService rejects", async () => {
-//   fileService.getFile.mockRejectedValueOnce(new AxiosError("some axios error", "AXIOS_ERR"));
-//   const fields = [
-//     {
-//       answer: "somewhere/123",
-//       key: "favouriteEgg",
-//       title: "Favourite egg",
-//       type: "file",
-//     },
-//   ];
-//   await expect(emailService.buildEmailWithAttachments({ subject: "foo", body: "bar", attachments: fields })).rejects.toThrowError(ApplicationError);
-// });
