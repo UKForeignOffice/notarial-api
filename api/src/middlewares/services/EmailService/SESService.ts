@@ -1,5 +1,4 @@
 import logger, { Logger } from "pino";
-import { SESClient } from "@aws-sdk/client-ses";
 import * as handlebars from "handlebars";
 import { ApplicationError } from "../../../ApplicationError";
 import { FormField } from "../../../types/FormField";
