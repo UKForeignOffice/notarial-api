@@ -2,14 +2,19 @@ import { flattenQuestions } from "../../helpers";
 import { testData } from "./fixtures";
 import { SESService } from "../SESService";
 import { isNotFieldType } from "../../../../utils";
-import { ApplicationError } from "../../../../ApplicationError";
-import { SendRawEmailCommand } from "@aws-sdk/client-ses";
 import "pg-boss";
-import { AxiosError } from "axios";
+
+const pgBossMock = {
+  async start() {
+    return this;
+  },
+  send: async () => {
+    return "some-job-id";
+  },
+};
+
 jest.mock("pg-boss", () => {
-  return jest.fn().mockImplementation(() => {
-    return { start: async () => this };
-  });
+  return jest.fn().mockImplementation(() => pgBossMock);
 });
 
 const emailService = new SESService();
@@ -28,18 +33,36 @@ test("getEmailBody renders cni template correctly", () => {
   }).toThrow();
 });
 
+test("sendEmail returns a jobId", async () => {
+  const sendSpy = jest.spyOn(pgBossMock, "send");
+  const c = await emailService.sendEmail(
+    {
+      subject: "your application",
+      body: "has been accepted",
+      attachments: [],
+      reference: "1234",
+    },
+    "1234"
+  );
+  expect(c).toBe("some-job-id");
+});
+
 test("sendEmail throws ApplicationError when no jobId is returned", async () => {
-  const spy = jest.spyOn(emailService, "send");
-  //@ts-ignore
-  spy.mockRejectedValueOnce(new ApplicationError("SES", "API_ERROR", 500, "some message"));
-  expect(
-    emailService.sendEmail(
-      new SendRawEmailCommand({
-        RawMessage: {
-          Data: Buffer.from("foo"),
-        },
-      }),
+  const sendSpy = jest.spyOn(pgBossMock, "send");
+  sendSpy.mockResolvedValueOnce(null);
+
+  try {
+    await emailService.sendEmail(
+      {
+        subject: "your application",
+        body: "has been accepted",
+        attachments: [],
+        reference: "1234",
+      },
       "1234"
-    )
-  ).rejects.toThrowError(ApplicationError);
+    );
+  } catch (e) {
+    expect(e.code).toBe("QUEUE_ERROR");
+    expect(e.name).toBe("SES");
+  }
 });
