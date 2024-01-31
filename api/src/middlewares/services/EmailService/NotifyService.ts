@@ -50,16 +50,17 @@ export class NotifyService implements EmailServiceProvider {
   }
 
   async sendEmail({ template, emailAddress, options }: NotifySendEmailArgs, reference: string) {
-    const jobId = await this.queue?.send?.("notify", {
-      data: {
+    const jobId = await this.queue?.send?.(
+      "notify",
+      {
         template,
         emailAddress,
         options,
       },
-      options: {
+      {
         retryBackoff: true,
-      },
-    });
+      }
+    );
     if (!jobId) {
       throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, `Sending ${template} to ${emailAddress} failed`);
     }

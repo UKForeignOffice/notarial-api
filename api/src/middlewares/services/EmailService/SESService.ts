@@ -7,9 +7,7 @@ import { FormField } from "../../../types/FormField";
 import * as templates from "./templates";
 import * as additionalContexts from "./additionalContexts.json";
 import { EmailServiceProvider, isSESEmailTemplate, SESEmailTemplate } from "./types";
-import { createMimeMessage } from "mimetext";
 import config from "config";
-import { FileService } from "../FileService";
 import { getFileFields, answersHashMap } from "../helpers";
 import PgBoss from "pg-boss";
 
@@ -26,7 +24,7 @@ export class SESService implements EmailServiceProvider {
   templates: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
   queue?: PgBoss;
 
-  constructor({ fileService }) {
+  constructor() {
     this.logger = logger().child({ service: "SES" });
     this.ses = ses;
     this.templates = {
@@ -54,13 +52,8 @@ export class SESService implements EmailServiceProvider {
    * @throws ApplicationError
    */
   private async sendEmail(emailArgs: EmailArgs, reference: string) {
-    const jobId = await this.queue?.send?.("ses", {
-      data: {
-        ...emailArgs,
-      },
-      options: {
-        retryBackoff: true,
-      },
+    const jobId = await this.queue?.send?.("ses", emailArgs, {
+      retryBackoff: true,
     });
     if (!jobId) {
       throw new ApplicationError("SES", "QUEUE_ERROR", 500, `Queueing failed for ${reference}`);
@@ -89,36 +82,6 @@ export class SESService implements EmailServiceProvider {
       attachments: getFileFields(fields),
       reference,
     };
-  }
-
-  async buildEmailWithAttachments({ subject, body, attachments }: { subject: string; body: string; attachments: FormField[] }) {
-    const message = createMimeMessage();
-    message.setSender({
-      name: "Getting Married Abroad Service",
-      addr: config.get("senderEmail"),
-    });
-    message.setSubject(subject);
-
-    message.addMessage({
-      contentType: "text/html",
-      data: body,
-    });
-
-    message.setRecipient(config.get("submissionAddress"));
-    // try {
-    //   for (const attachment of attachments) {
-    //     const { contentType, data } = await this.fileService.getFile(attachment.answer as string);
-    //     message.addAttachment({
-    //       filename: attachment.title,
-    //       contentType,
-    //       data: data.toString("base64"),
-    //     });
-    //   }
-    // } catch (err: any) {
-    //   throw new ApplicationError("SES", "API_ERROR", 400, err.message);
-    // }
-
-    return message.asRaw();
   }
 
   private static createTemplate(template: string) {

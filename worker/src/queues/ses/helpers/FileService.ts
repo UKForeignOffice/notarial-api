@@ -1,15 +1,12 @@
 import logger, { Logger } from "pino";
 import axios, { AxiosError } from "axios";
-import config from "config";
-import { ApplicationError } from "utils/ApplicationError";
+import { ApplicationError } from "../../../utils/ApplicationError";
 
 export class FileService {
   logger: Logger;
-  password: string;
 
   constructor() {
     this.logger = logger().child({ service: "File" });
-    this.password = config.get("documentPassword");
   }
 
   /**
@@ -30,9 +27,10 @@ export class FileService {
   }
 
   handleFetchError(err: AxiosError | Error) {
+    this.logger.error({ err }, "Fetching files failed");
     if (err instanceof AxiosError) {
       if (err.status === 404) {
-        return new ApplicationError("FILE", "NOT_FOUND", "Requested file could not be found");
+        return new ApplicationError("FILE", "NOT_FOUND", `Requested file could not be found at ${err.response?.config.url}`);
       }
       if (err.status === 500) {
         return new ApplicationError("FILE", "UNKNOWN", err.message);

@@ -12,5 +12,5 @@ export async function setupSesQueueWorker() {
   logger.info({ queue }, `starting queue '${queue}' workers`);
 
   logger.info({ queue }, `starting 'sesHandler' on ${queue} listeners`);
-  await consumer.work(queue, { newJobCheckInterval: 500 }, sesHandler);
+  await consumer.work(queue, { newJobCheckInterval: 300 }, sesHandler);
 }

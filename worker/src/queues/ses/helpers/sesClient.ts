@@ -1,5 +1,5 @@
 import { SESClient } from "@aws-sdk/client-ses";
 
-export const ses = new SESClient({
+export const sesClient = new SESClient({
   region: "eu-west-2",
 });
