@@ -2,7 +2,7 @@ import logger, { Logger } from "pino";
 import axios, { AxiosError } from "axios";
 import { ApplicationError } from "../../../utils/ApplicationError";
 
-export class FileService {
+export default class FileService {
   logger: Logger;
 
   constructor() {
