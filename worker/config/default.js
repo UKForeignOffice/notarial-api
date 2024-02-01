@@ -4,12 +4,6 @@ module.exports = {
     archiveFailedInDays: 30,
     deleteArchivedAfterDays: 7,
   },
-  Notify: {
-    Retry: {
-      backoff: "true",
-      limit: "50",
-    },
-  },
   SES: {
     Sender: {
       name: "Getting Married Abroad Service",
@@ -17,10 +11,6 @@ module.exports = {
     },
     Recipient: {
       emailAddress: "pye@cautionyourblast.com",
-    },
-    Retry: {
-      backoff: "true",
-      limit: "50",
     },
   },
 };

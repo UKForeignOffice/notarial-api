@@ -5,11 +5,7 @@
     "deleteArchivedAfterDays": "DELETE_ARCHIVED_IN_DAYS"
   },
   "Notify": {
-    "apiKey": "NOTIFY_API_KEY",
-    "Retry": {
-      "backoff": "NOTIFY_RETRY_BACKOFF",
-      "limit": "NOTIFY_RETRY_LIMIT"
-    }
+    "apiKey": "NOTIFY_API_KEY"
   },
   "SES": {
     "Sender": {

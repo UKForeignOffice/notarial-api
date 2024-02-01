@@ -10,11 +10,21 @@
     "Template": {
       "userConfirmation": "NOTIFY_TEMPLATE_USER_CONFIRMATION",
       "postNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"
+    },
+    "Retry": {
+      "backoff": "NOTIFY_RETRY_BACKOFF",
+      "limit": "NOTIFY_RETRY_LIMIT"
     }
   },
   "Queue": {
     "url": "QUEUE_URL",
     "archiveFailedAfterDays": "ARCHIVE_FAILED_AFTER_DAYS",
     "deleteArchivedAfterDays": "DELETE_ARCHIVED_IN_DAYS"
+  },
+  "SES": {
+    "Retry": {
+      "backoff": "SES_RETRY_BACKOFF",
+      "limit": "SES_RETRY_LIMIT"
+    }
   }
 }

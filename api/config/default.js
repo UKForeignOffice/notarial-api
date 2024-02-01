@@ -13,4 +13,16 @@ module.exports = {
   Queue: {
     url: "postgresql://user:root@localhost:5432/queue",
   },
+  SES: {
+    Retry: {
+      backoff: "true",
+      limit: "50",
+    },
+  },
+  Notify: {
+    Retry: {
+      backoff: "true",
+      limit: "50",
+    },
+  },
 };
