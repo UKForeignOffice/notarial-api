@@ -3,9 +3,10 @@ import joi from "joi";
 import { ApplicationError } from "../ApplicationError";
 
 const questionSchema = joi.object().keys({
+  index: joi.number().optional(),
   category: joi.string().optional(),
   question: joi.string().required(),
-  fields: joi.array().items(joi.any()).min(1).required(),
+  fields: joi.array().items(joi.any()).required(),
 });
 
 const webhookOutputSchema = joi.object().keys({
