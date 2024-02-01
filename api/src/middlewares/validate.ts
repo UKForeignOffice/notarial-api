@@ -13,7 +13,7 @@ const webhookOutputSchema = joi.object().keys({
   name: joi.string().required(),
   questions: joi.array().items(questionSchema).required(),
   metadata: joi.object().required(),
-  fees: joi.object().required(),
+  fees: joi.object().optional(),
 });
 export function validationHandler(req: Request, _res: Response, next: NextFunction) {
   const result = webhookOutputSchema.validate(req.body, { abortEarly: false, allowUnknown: true });
