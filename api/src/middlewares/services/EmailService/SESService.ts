@@ -21,6 +21,10 @@ export class SESService implements EmailServiceProvider {
   templates: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
   queue?: PgBoss;
   QUEUE_NAME = "SES";
+  queueOptions: {
+    retryBackoff: boolean;
+    retryLimit: number;
+  };
 
   constructor() {
     this.logger = logger().child({ service: "SES" });
@@ -31,6 +35,19 @@ export class SESService implements EmailServiceProvider {
     const queue = new PgBoss({
       connectionString: config.get<string>("Queue.url"),
     });
+
+    try {
+      const retryBackoff = config.get<string>("SES.Retry.backoff") === "true";
+      const retryLimit = parseInt(config.get<string>("SES.Retry.limit"));
+      this.queueOptions = {
+        retryBackoff,
+        retryLimit,
+      };
+      this.logger.info(`${this.QUEUE_NAME} jobs will retry with retryBackoff: ${retryBackoff}, retryLimit: ${retryLimit}`);
+    } catch (err) {
+      this.logger.error({ err }, "Retry options could not be set, exiting");
+      process.exit(1);
+    }
 
     queue.start().then((pgboss) => {
       this.queue = pgboss;
