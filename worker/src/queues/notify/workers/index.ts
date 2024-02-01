@@ -4,7 +4,7 @@ import PgBoss from "pg-boss";
 import { notifyHandler } from "./notifyHandler";
 
 const logger = pino();
-const queue = "notify";
+const queue = "NOTIFY";
 
 export async function setupNotifyWorker() {
   const consumer: PgBoss = await getConsumer();
