@@ -3,6 +3,21 @@ import { flattenQuestions, answersHashMap } from "../../helpers";
 import { testData } from "./fixtures";
 import { userConfirmation } from "../templates/notify";
 
+import "pg-boss";
+
+const pgBossMock = {
+  async start() {
+    return this;
+  },
+  send: async () => {
+    return "some-job-id";
+  },
+};
+
+jest.mock("pg-boss", () => {
+  return jest.fn().mockImplementation(() => pgBossMock);
+});
+
 const emailService = new NotifyService();
 const formFields = [{ key: "paid", type: "TextField", title: "paid", answer: true }, ...flattenQuestions(testData.questions)];
 
