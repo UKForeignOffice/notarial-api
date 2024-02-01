@@ -4,7 +4,7 @@ import PgBoss from "pg-boss";
 import { sesHandler } from "./sesHandler";
 
 const logger = pino();
-const queue = "ses";
+const queue = "SES";
 
 export async function setupSesQueueWorker() {
   const consumer: PgBoss = await getConsumer();
@@ -12,5 +12,5 @@ export async function setupSesQueueWorker() {
   logger.info({ queue }, `starting queue '${queue}' workers`);
 
   logger.info({ queue }, `starting 'sesHandler' on ${queue} listeners`);
-  await consumer.work(queue, { newJobCheckInterval: 500 }, sesHandler);
+  await consumer.work(queue, { newJobCheckInterval: 300 }, sesHandler);
 }

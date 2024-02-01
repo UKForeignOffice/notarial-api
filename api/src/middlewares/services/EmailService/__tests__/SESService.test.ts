@@ -1,16 +1,23 @@
 import { flattenQuestions } from "../../helpers";
-import { AxiosError } from "axios";
-import { ApplicationError } from "../../../../ApplicationError";
 import { testData } from "./fixtures";
 import { SESService } from "../SESService";
-import { SendRawEmailCommand } from "@aws-sdk/client-ses";
 import { isNotFieldType } from "../../../../utils";
+import "pg-boss";
 
-const fileService = {
-  getFile: jest.fn().mockResolvedValue({ data: Buffer.from("an image"), contentType: "image/jpeg" }),
+const pgBossMock = {
+  async start() {
+    return this;
+  },
+  send: async () => {
+    return "some-job-id";
+  },
 };
 
-const emailService = new SESService({ fileService });
+jest.mock("pg-boss", () => {
+  return jest.fn().mockImplementation(() => pgBossMock);
+});
+
+const emailService = new SESService();
 
 const formFields = flattenQuestions(testData.questions);
 const allOtherFields = formFields.filter(isNotFieldType("file"));
@@ -26,51 +33,35 @@ test("getEmailBody renders cni template correctly", () => {
   }).toThrow();
 });
 
-// test("buildSendEmailArgs returns valid raw email", async () => {
-//   const fields = {
-//     ...fieldHashMap,
-//     favouriteEgg: {
-//       answer: "somewhere/123",
-//       key: "favouriteEgg",
-//       title: "Favourite egg",
-//       type: "file",
-//     },
-//   };
-//
-//   const email = await emailService.buildSendEmailArgs(fields, "oath", "1234");
-//   expect(email.RawMessage.data.includes("Date:")).toBeTruthy();
-//   expect(email.includes("From:")).toBeTruthy();
-//   expect(email.includes("Message-ID")).toBeTruthy();
-//   expect(email.includes("Content-Type: text/html; charset=UTF-8")).toBeTruthy();
-//   expect(email.includes('Content-Type: image/jpeg; name="Favourite egg')).toBeTruthy();
-//   expect(email.includes('Content-Disposition: attachment; filename="Favourite egg"')).toBeTruthy();
-// });
-
-test("buildEmailWithAttachments throws ApplicationError when fileService rejects", async () => {
-  fileService.getFile.mockRejectedValueOnce(new AxiosError("some axios error", "AXIOS_ERR"));
-  const fields = [
+test("sendEmail returns a jobId", async () => {
+  const jobId = await emailService.sendEmail(
     {
-      answer: "somewhere/123",
-      key: "favouriteEgg",
-      title: "Favourite egg",
-      type: "file",
+      subject: "your application",
+      body: "has been accepted",
+      attachments: [],
+      reference: "1234",
     },
-  ];
-  await expect(emailService.buildEmailWithAttachments({ subject: "foo", body: "bar", attachments: fields })).rejects.toThrowError(ApplicationError);
+    "1234"
+  );
+  expect(jobId).toBe("some-job-id");
 });
 
-test("sendEmail throws ApplicationError when SES rejects", () => {
-  const spy = jest.spyOn(emailService.ses, "send");
-  //@ts-ignore
-  spy.mockRejectedValueOnce(new ApplicationError("SES", "API_ERROR", 500, "some message"));
-  expect(
-    emailService.sendEmail(
-      new SendRawEmailCommand({
-        RawMessage: {
-          Data: Buffer.from("foo"),
-        },
-      }),
+test("sendEmail throws ApplicationError when no jobId is returned", async () => {
+  const sendSpy = jest.spyOn(pgBossMock, "send");
+  sendSpy.mockResolvedValueOnce(null);
+
+  try {
+    await emailService.sendEmail(
+      {
+        subject: "your application",
+        body: "has been accepted",
+        attachments: [],
+        reference: "1234",
+      },
       "1234"
-    )
-  ).rejects.toThrowError(ApplicationError);
+    );
+  } catch (e) {
+    expect(e.code).toBe("QUEUE_ERROR");
+    expect(e.name).toBe("SES");
+  }
 });

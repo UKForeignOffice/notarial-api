@@ -1,10 +1,9 @@
-import { FileService, SubmitService } from "../middlewares/services";
+import { SubmitService } from "../middlewares/services";
 
 declare global {
   namespace Express {
     interface Application {
       services: {
-        fileService: FileService;
         submitService: SubmitService;
       };
     }
