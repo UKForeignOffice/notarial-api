@@ -1,7 +1,7 @@
 import { createMimeMessage, MIMEMessage } from "mimetext";
 import config from "config";
 import { FormField } from "../types";
-import FileService from "./FileService";
+import { FileService } from "./FileService";
 import pino from "pino";
 
 const fileService = new FileService();
