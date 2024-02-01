@@ -21,6 +21,10 @@ export class NotifyService implements EmailServiceProvider {
   templates: Record<NotifyEmailTemplate, string>;
   queue?: PgBoss;
   QUEUE_NAME = "NOTIFY";
+  queueOptions: {
+    retryBackoff: boolean;
+    retryLimit: number;
+  };
   constructor() {
     this.logger = pino().child({ service: "Notify" });
     try {
@@ -32,6 +36,19 @@ export class NotifyService implements EmailServiceProvider {
       };
     } catch (err) {
       this.logger.error({ err }, "Notify templates have not been configured, exiting");
+      process.exit(1);
+    }
+
+    try {
+      const retryBackoff = config.get<string>("Notify.Retry.backoff") === "true";
+      const retryLimit = parseInt(config.get<string>("Notify.Retry.limit"));
+      this.queueOptions = {
+        retryBackoff,
+        retryLimit,
+      };
+      this.logger.info(`${this.QUEUE_NAME} jobs will retry with retryBackoff: ${retryBackoff}, retryLimit: ${retryLimit}`);
+    } catch (err) {
+      this.logger.error({ err }, "Retry options could not be set, exiting");
       process.exit(1);
     }
 
