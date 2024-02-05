@@ -6,6 +6,5 @@ export const userConfirmation = {
   additionalText: "",
   country: undefined,
   bookingLink: undefined,
-  translationNeeded: false,
   localRequirements: "",
 };
