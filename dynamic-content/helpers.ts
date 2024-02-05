@@ -55,8 +55,8 @@ function parseRowContent(row: Row) {
 
 function parseContent(acc: Record<string, string>, [key, value]) {
   if (key === "type" && value) value = value.toLowerCase();
-  if (value && value.includes("*")) value = bulletsToHtml(value);
-  if (value && value.includes("<br>")) value = breaksToHtml(value);
+  if (value && value.includes("*")) value = bulletsToNotifyString(value);
+  if (value && value.includes("<br>")) value = breaksToNotifyString(value);
   acc[key] = value;
   return acc;
 }
@@ -81,34 +81,32 @@ export function getRowObjects(rows: string[], fieldNames: string[], fieldNameMap
  * Converts a plain text string into a html bullet list. Bullets are defined in the plain text string by asterisks.
  * @param bulletList - The plain text string to be converted
  */
-export function bulletsToHtml(bulletList: string) {
+export function bulletsToNotifyString(bulletList: string) {
   return bulletList
     .split("*")
     .map((bullet) => {
       if (bullet !== "") {
-        return `<li>${bullet}</li>`;
+        return `* ${bullet}`;
       }
       return "";
     })
-    .join("");
+    .join("\n");
 }
 
 /**
  * Converts a plain text string with standard html break elements into html paragraph elements
  * @param text - The text to be converted
  */
-export function breaksToHtml(text: string) {
+export function breaksToNotifyString(text: string) {
   return text
     .split("<br>")
     .map((para) => {
       if (para !== "") {
-        return `<p class="govuk-body">${para}</p>`;
+        return `${para}`;
       }
       return "";
     })
-    .join("")
-    .replace(/(<p class="govuk-body">)"/g, "$1")
-    .replace(/"(<\/p>)/g, "$1");
+    .join("\n");
 }
 
 /**

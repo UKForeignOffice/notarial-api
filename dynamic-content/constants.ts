@@ -1,7 +1,7 @@
 import { FileConstants } from "./types";
 
 const CONTENT_SOURCE = "./csv";
-const CONTENT_TARGET = "../runner/src/server/templates/additionalContexts.json";
+const CONTENT_TARGET = "../api/src/middlewares/services/EmailService/additionalContexts.json";
 
 const CONTENT_FIELD_MAP = {
   country: "country",
@@ -12,9 +12,9 @@ const CONTENT_FIELD_MAP = {
   "certified passport": "certifiedPassport",
   duration: "duration",
   "civil partnership": "civilPartnership",
-  "other (localised content)": "otherInfo",
+  "other (localised content)": "localRequirements",
 };
-const CONTENT_RELEVANT_FIELDS = ["additionalDocs", "duration", "civilPartnership", "otherInfo"];
+const CONTENT_RELEVANT_FIELDS = ["additionalDocs", "localRequirements"];
 const BOOKING_LINKS_FIELD_MAP = {
   type: "type",
   country: "country",
