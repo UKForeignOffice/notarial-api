@@ -109,8 +109,8 @@ export class NotifyService implements EmailServiceProvider {
       docsList,
       paid,
       reference,
-      ...(additionalContexts[country] ?? {}),
-      ...(additionalContexts[post] ?? {}),
+      ...(additionalContexts.countries[country] ?? {}),
+      ...(additionalContexts.posts[post] ?? {}),
     };
     const toPersonalisation = this.mapPersonalisationValues(personalisationValues);
     return Object.entries(template).reduce(toPersonalisation, {} as NotifyPersonalisation);
