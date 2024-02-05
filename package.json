@@ -4,11 +4,13 @@
   "private": true,
   "workspaces": [
     "api",
-    "worker"
+    "worker",
+    "dynamic-content"
   ],
   "scripts": {
     "api": "yarn workspace @notarialapi/api",
     "worker": "yarn workspace @notarialapi/worker",
+    "dynamic-content": "yarn workspace @notarialapi/dynamic-content",
     "lint": "yarn workspaces foreach run lint",
     "test": "yarn workspaces foreach run test",
     "release": "semantic-release"

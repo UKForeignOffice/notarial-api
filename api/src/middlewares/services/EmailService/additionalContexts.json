@@ -1,20 +1,531 @@
 {
-  "Turkey": {
-    "translationNeeded": false,
-    "additionalDocs": [
-      "your Turkish Residence Permit if you’ve been living in Turkey for 3 months or more"
-    ]
+  "countries": {
+    "Albania": {
+      "post": "British Embassy Tirana",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=151&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Algeria": {
+      "post": "British Embassy Algiers",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=91&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Angola": {
+      "post": "British Embassy Luanda",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=126&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Armenia": {
+      "post": "British Embassy Yerevan",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=157&service=10",
+      "additionalDocs": "* partner’s proof of address",
+      "localRequirements": ""
+    },
+    "Austria": {
+      "post": "British Embassy Vienna",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=38&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Azerbaijan": {
+      "post": "British Embassy Baku",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=99&service=13",
+      "additionalDocs": "",
+      "localRequirements": "Your partner must come to your appointment with you and bring their passport."
+    },
+    "Bahrain": {
+      "post": "British Embassy Manama",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=127&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Belarus": {
+      "post": "British Embassy Minsk",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=130&service=13",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Belgium": { "post": "British Embassy Brussels", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Benin": {
+      "post": "British High Commission Accra",
+      "bookingLink": "",
+      "additionalDocs": "* premarital medical certificate* partner's premarital medical certificate",
+      "localRequirements": ""
+    },
+    "Bolivia": {
+      "post": "British Embassy La Paz",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=124&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Bosnia and Herzegovina": {
+      "post": "British Embassy Sarajevo",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=145&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Bulgaria": {
+      "post": "British Embassy Sofia",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=34&service=10",
+      "additionalDocs": "* partner’s residence permit",
+      "localRequirements": ""
+    },
+    "Burundi": { "post": "British High Commission Kigali", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Cambodia": {
+      "post": "British Embassy Phnom Penh",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=135&service=13",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Colombia": {
+      "post": "British Embassy Bogotá",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=104&service=13",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Congo (Democratic Republic)": {
+      "post": "British Embassy Kinshasa",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=122&service=13"
+    },
+    "Costa Rica": {
+      "post": "British Embassy San Jose",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=141&service=13",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Croatia": {
+      "post": "British Embassy Zagreb",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=41&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Cuba": {
+      "post": "British Embassy Havana",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=117&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Czechia (Czech Republic)": { "post": "British Embassy Prague", "bookingLink": "" },
+    "Ecuador": {
+      "post": "British Embassy Quito",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=138&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Egypt": { "post": "British Embassy Cairo", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "El Salvador": { "post": "British Embassy San Salvador", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Eritrea": { "post": "British Embassy Asmara", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Estonia": {
+      "post": "British Embassy Tallinn",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=36&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Ethiopia": {
+      "post": "British Embassy Addis Ababa",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=90&service=13",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Finland": {
+      "post": "British Embassy Helsinki",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=24&service=13",
+      "additionalDocs": "* partner’s birth certificate",
+      "localRequirements": "Check with your wedding officiant (the person conducting your ceremony) or venue how long your affirmation is valid for as it varies in different regions."
+    },
+    "France": { "post": "British Embassy Paris", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Georgia": { "post": "British Embassy Tbilisi", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Guatemala": {
+      "post": "British Embassy Guatemala City",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=114&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Guinea": {
+      "post": "British Embassy Conakry",
+      "bookingLink": "",
+      "additionalDocs": "* premarital medical certificate* partner's premarital medical certificate* photo ID (in addition to your UK passport)",
+      "localRequirements": ""
+    },
+    "Iceland": {
+      "post": "British Embassy Reykjavik",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=31&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Iran": {
+      "post": "British Embassy Tehran",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=149&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Iraq": { "post": "British Embassy Baghdad", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Israel": { "post": "British Embassy Tel Aviv", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Jordan": { "post": "British Embassy Amman", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Kosovo": {
+      "post": "British Embassy Pristina",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=137&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Kuwait": {
+      "post": "British Embassy Kuwait",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=123&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Kyrgyzstan": { "post": "British Embassy Bishkek", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Laos": { "post": "British Embassy Vientiane", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Latvia": {
+      "post": "British Embassy Riga",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=32&service=13",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Lebanon": { "post": "British Embassy Beirut", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Lithuania": {
+      "post": "British Embassy Vilnius",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=39&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Luxembourg": { "post": "British Embassy Luxembourg", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Madagascar": { "post": "British Embassy Antananarivo", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Mali": {
+      "post": "British Embassy  Bamako",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=199&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Mauritania": { "post": "British Embassy Nouakchott", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Moldova": {
+      "post": "British Embassy Chisinau",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=109&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Mongolia": {
+      "post": "British Embassy Ulaanbaatar",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=154&service=13",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Montenegro": {
+      "post": "British Embassy Podgorica",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=136&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Myanmar (Burma)": { "post": "British Embassy Yangon", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Nepal": {
+      "post": "British Embassy Kathmandu",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=120&service=10",
+      "additionalDocs": "* partner’s national ID that includes their address",
+      "localRequirements": ""
+    },
+    "Nicaragua": {
+      "post": "British Embassy San Jose (for Nicaragua)",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=141&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "North Macedonia": { "post": "British Embassy Skopje", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Norway": {
+      "post": "British Embassy Oslo",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=28&service=13",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Oman": {
+      "post": "British Embassy Muscat",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=133&service=13",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Paraguay": { "post": "British Embassy Asunción", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Peru": { "post": "British Embassy Lima", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Poland": {
+      "post": "British Embassy Warsaw",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Qatar": {
+      "post": "British Embassy Doha",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=111&service=32",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Romania": { "post": "British Embassy Bucharest", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Russia": { "post": "British Embassy Moscow", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Senegal": {
+      "post": "British Embassy Dakar",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=110&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Serbia": {
+      "post": "British Embassy Belgrade",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=102&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Slovenia": {
+      "post": "British Embassy Ljubljana",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=26&service=13",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "South Korea": { "post": "British Embassy Seoul", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Sudan": { "post": "British Embassy Khartoum", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Sweden": {
+      "post": "British Embassy Stockholm",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=35&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Switzerland": { "post": "British Embassy Berne", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Taiwan": {
+      "post": "British Office Taipei",
+      "bookingLink": "",
+      "additionalDocs": "",
+      "localRequirements": "\"Contact the Household Registration Office to find out about local marriage laws, including what documents you and your partner will need.The Household Registration Office may say you need a certificate of no impediment (CNI) to get married. You must <a class=\"govuk-link\" href=\"https://www.gov.uk/register-offices\">make an appointment at a UK register office</a> to get one.There are no British consular facilities that will issue a CNI in Taiwan.\""
+    },
+    "Tajikistan": {
+      "post": "British Embassy Dushanbe",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=113&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Tanzania": { "post": "British High Commission Dar es Salaam", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Togo": {
+      "post": "British High Commission Accra",
+      "bookingLink": "",
+      "additionalDocs": "* premarital medical certificate* partner's premarital medical certificate",
+      "localRequirements": ""
+    },
+    "Tunisia": {
+      "post": "British Embassy Tunis",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=153&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Turkmenistan": {
+      "post": "British Embassy Ashgabat",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=95&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Ukraine": { "post": "British Embassy Kyiv", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Uzbekistan": {
+      "post": "British Embassy Tashkent",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=147&service=10",
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Venezuela": {
+      "post": "British Embassy Caracas",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=108&service=10",
+      "additionalDocs": "* partner’s CNI",
+      "localRequirements": ""
+    },
+    "Zimbabwe": { "post": "British Embassy Harare", "bookingLink": "", "additionalDocs": "", "localRequirements": "" },
+    "Afghanistan": { "additionalDocs": "", "localRequirements": "" },
+    "American Samoa": { "additionalDocs": "", "localRequirements": "" },
+    "Andorra": { "additionalDocs": "", "localRequirements": "" },
+    "Anguilla": { "additionalDocs": "", "localRequirements": "" },
+    "Antigua and Barbuda": { "additionalDocs": "", "localRequirements": "" },
+    "Argentina": { "additionalDocs": "", "localRequirements": "" },
+    "Aruba": { "additionalDocs": "", "localRequirements": "" },
+    "Australia": { "additionalDocs": "", "localRequirements": "" },
+    "The Bahamas": { "additionalDocs": "", "localRequirements": "" },
+    "Bangladesh": { "additionalDocs": "", "localRequirements": "" },
+    "Barbados": { "additionalDocs": "", "localRequirements": "" },
+    "Belize": { "additionalDocs": "", "localRequirements": "" },
+    "Bermuda": { "additionalDocs": "", "localRequirements": "" },
+    "Bhutan": { "additionalDocs": "", "localRequirements": "" },
+    "Bonaire/St Eustatius/Saba": { "additionalDocs": "", "localRequirements": "" },
+    "Botswana": { "additionalDocs": "", "localRequirements": "" },
+    "Brazil": { "additionalDocs": "", "localRequirements": "" },
+    "British Indian Ocean Territory": { "additionalDocs": "", "localRequirements": "" },
+    "British Virgin Islands": { "additionalDocs": "", "localRequirements": "" },
+    "Brunei": { "additionalDocs": "", "localRequirements": "" },
+    "Burkina Faso": { "additionalDocs": "* premarital medical certificate", "localRequirements": "" },
+    "Cameroon": { "additionalDocs": "", "localRequirements": "" },
+    "Canada": { "additionalDocs": "", "localRequirements": "" },
+    "Cape Verde": { "additionalDocs": "", "localRequirements": "" },
+    "Cayman Islands": { "additionalDocs": "", "localRequirements": "" },
+    "Central African Republic": { "additionalDocs": "", "localRequirements": "" },
+    "Chad": { "additionalDocs": "", "localRequirements": "" },
+    "Chile": { "additionalDocs": "", "localRequirements": "" },
+    "China": { "additionalDocs": "", "localRequirements": "" },
+    "Comoros": { "additionalDocs": "", "localRequirements": "" },
+    "Congo": { "additionalDocs": "", "localRequirements": "" },
+    "Democratic Republic of The Congo": { "additionalDocs": "", "localRequirements": "" },
+    "Ivory Coast": { "additionalDocs": "", "localRequirements": "" },
+    "Curaçao": { "additionalDocs": "", "localRequirements": "" },
+    "Cyprus": { "additionalDocs": "", "localRequirements": "" },
+    "Czechia": { "additionalDocs": "", "localRequirements": "" },
+    "Denmark": { "additionalDocs": "", "localRequirements": "" },
+    "Djibouti": { "additionalDocs": "", "localRequirements": "" },
+    "Dominica": { "additionalDocs": "", "localRequirements": "" },
+    "Dominican Republic": { "additionalDocs": "", "localRequirements": "" },
+    "East Timor": { "additionalDocs": "", "localRequirements": "" },
+    "Equatorial Guinea": { "additionalDocs": "", "localRequirements": "" },
+    "Eswatini": { "additionalDocs": "", "localRequirements": "" },
+    "Falkland Islands": { "additionalDocs": "", "localRequirements": "" },
+    "Fiji": { "additionalDocs": "", "localRequirements": "" },
+    "French Guiana": { "additionalDocs": "", "localRequirements": "" },
+    "French Polynesia": { "additionalDocs": "", "localRequirements": "" },
+    "Gabon": { "additionalDocs": "", "localRequirements": "" },
+    "Germany": { "additionalDocs": "", "localRequirements": "" },
+    "Ghana": { "additionalDocs": "", "localRequirements": "" },
+    "Gibraltar": { "additionalDocs": "", "localRequirements": "" },
+    "Greece": { "additionalDocs": "", "localRequirements": "" },
+    "Grenada": { "additionalDocs": "", "localRequirements": "" },
+    "Guadeloupe": { "additionalDocs": "", "localRequirements": "" },
+    "Guinea-Bissau": { "additionalDocs": "", "localRequirements": "" },
+    "Guyana": { "additionalDocs": "", "localRequirements": "" },
+    "Haiti": { "additionalDocs": "", "localRequirements": "" },
+    "Honduras": { "additionalDocs": "", "localRequirements": "" },
+    "Hong Kong": { "additionalDocs": "", "localRequirements": "" },
+    "Hungary": { "additionalDocs": "", "localRequirements": "" },
+    "India": { "additionalDocs": "", "localRequirements": "" },
+    "Indonesia": { "additionalDocs": "", "localRequirements": "" },
+    "Ireland": { "additionalDocs": "", "localRequirements": "" },
+    "Italy": { "additionalDocs": "", "localRequirements": "" },
+    "Jamaica": { "additionalDocs": "", "localRequirements": "" },
+    "Japan": { "additionalDocs": "", "localRequirements": "" },
+    "Kazakhstan": { "additionalDocs": "", "localRequirements": "" },
+    "Kenya": { "additionalDocs": "", "localRequirements": "" },
+    "Kiribati": { "additionalDocs": "", "localRequirements": "" },
+    "Lesotho": { "additionalDocs": "", "localRequirements": "" },
+    "Liberia": { "additionalDocs": "", "localRequirements": "" },
+    "Libya": { "additionalDocs": "", "localRequirements": "" },
+    "Liechtenstein": { "additionalDocs": "", "localRequirements": "" },
+    "Macao": { "additionalDocs": "", "localRequirements": "" },
+    "Malawi": { "additionalDocs": "", "localRequirements": "" },
+    "Malaysia": { "additionalDocs": "", "localRequirements": "" },
+    "Maldives": { "additionalDocs": "", "localRequirements": "" },
+    "Malta": { "additionalDocs": "", "localRequirements": "" },
+    "Marshall Islands": { "additionalDocs": "", "localRequirements": "" },
+    "Martinique": { "additionalDocs": "", "localRequirements": "" },
+    "Mauritius": { "additionalDocs": "", "localRequirements": "" },
+    "Mayotte": { "additionalDocs": "", "localRequirements": "" },
+    "Mexico": { "additionalDocs": "", "localRequirements": "" },
+    "Micronesia": { "additionalDocs": "", "localRequirements": "" },
+    "Monaco": { "additionalDocs": "", "localRequirements": "" },
+    "Montserrat": { "additionalDocs": "", "localRequirements": "" },
+    "Morocco": { "additionalDocs": "", "localRequirements": "" },
+    "Mozambique": { "additionalDocs": "", "localRequirements": "" },
+    "Namibia": { "additionalDocs": "", "localRequirements": "" },
+    "Nauru": { "additionalDocs": "", "localRequirements": "" },
+    "Netherlands": { "additionalDocs": "", "localRequirements": "" },
+    "New Caledonia": { "additionalDocs": "", "localRequirements": "" },
+    "New Zealand": { "additionalDocs": "", "localRequirements": "" },
+    "Niger": { "additionalDocs": "", "localRequirements": "" },
+    "Nigeria": { "additionalDocs": "", "localRequirements": "" },
+    "North Korea": { "additionalDocs": "", "localRequirements": "" },
+    "Pakistan": { "additionalDocs": "", "localRequirements": "" },
+    "Palau": { "additionalDocs": "", "localRequirements": "" },
+    "Panama": { "additionalDocs": "", "localRequirements": "" },
+    "Papua New Guinea": { "additionalDocs": "", "localRequirements": "" },
+    "Philippines": { "additionalDocs": "", "localRequirements": "" },
+    "Pitcairn Island": { "additionalDocs": "", "localRequirements": "" },
+    "Portugal": { "additionalDocs": "", "localRequirements": "" },
+    "Réunion": { "additionalDocs": "", "localRequirements": "" },
+    "Rwanda": { "additionalDocs": "", "localRequirements": "" },
+    "Samoa": { "additionalDocs": "", "localRequirements": "" },
+    "San Marino": { "additionalDocs": "", "localRequirements": "" },
+    "Sao Tome and Principe": { "additionalDocs": "", "localRequirements": "" },
+    "Saudi Arabia": { "additionalDocs": "", "localRequirements": "" },
+    "Seychelles": { "additionalDocs": "", "localRequirements": "" },
+    "Sierra Leone": { "additionalDocs": "", "localRequirements": "" },
+    "Singapore": { "additionalDocs": "", "localRequirements": "" },
+    "Slovakia": { "additionalDocs": "", "localRequirements": "" },
+    "Solomon Islands": { "additionalDocs": "", "localRequirements": "" },
+    "Somalia": { "additionalDocs": "", "localRequirements": "" },
+    "South Africa": { "additionalDocs": "", "localRequirements": "" },
+    "South Georgia and the South Sandwich Islands": { "additionalDocs": "", "localRequirements": "" },
+    "South Sudan": { "additionalDocs": "", "localRequirements": "" },
+    "Spain": { "additionalDocs": "", "localRequirements": "Check with your civil registry how long your affirmation is valid for." },
+    "Sri Lanka": { "additionalDocs": "", "localRequirements": "" },
+    "\"St Helena, Ascension and Tristan da Cunha\"": { "additionalDocs": "", "localRequirements": "" },
+    "St Kitts and Nevis": { "additionalDocs": "", "localRequirements": "" },
+    "St Lucia": { "additionalDocs": "", "localRequirements": "" },
+    "St Maarten": { "additionalDocs": "", "localRequirements": "" },
+    "St Barthélemy": { "additionalDocs": "", "localRequirements": "" },
+    "St Martin": { "additionalDocs": "", "localRequirements": "" },
+    "St Pierre & Miquelon": { "additionalDocs": "", "localRequirements": "" },
+    "St Vincent": { "additionalDocs": "", "localRequirements": "" },
+    "Suriname": { "additionalDocs": "", "localRequirements": "" },
+    "Syria": { "additionalDocs": "", "localRequirements": "" },
+    "Thailand": { "additionalDocs": "", "localRequirements": "" },
+    "The Gambia": { "additionalDocs": "", "localRequirements": "" },
+    "Timor-Leste": { "additionalDocs": "", "localRequirements": "" },
+    "Tonga": { "additionalDocs": "", "localRequirements": "" },
+    "Trinidad and Tobago": { "additionalDocs": "", "localRequirements": "" },
+    "Turkey": { "additionalDocs": "", "localRequirements": "" },
+    "Turks and Caicos Islands": { "additionalDocs": "", "localRequirements": "" },
+    "Tuvalu": { "additionalDocs": "", "localRequirements": "" },
+    "Uganda": { "additionalDocs": "", "localRequirements": "" },
+    "United Arab Emirates": { "additionalDocs": "", "localRequirements": "" },
+    "United States": { "additionalDocs": "", "localRequirements": "" },
+    "Uruguay": { "additionalDocs": "", "localRequirements": "" },
+    "Vanuatu": { "additionalDocs": "", "localRequirements": "" },
+    "Vietnam": { "additionalDocs": "", "localRequirements": "" },
+    "Wallis and Futuna": { "additionalDocs": "", "localRequirements": "" },
+    "Western Sahara": { "additionalDocs": "", "localRequirements": "" },
+    "Yemen": { "additionalDocs": "", "localRequirements": "" },
+    "Zambia": { "additionalDocs": "", "localRequirements": "" }
   },
-  "Istanbul Consulate General": {
-    "bookingLink": ""
-  },
-  "Ankara Embassy": {
-    "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=93&service=13"
-  },
-  "Izmir consulate": {
-    "bookingLink": ""
-  },
-  "Antalya vice consulate": {
-    "bookingLink": ""
+  "posts": {
+    "British Embassy Brasilia": {
+      "post": "British Embassy Brasilia",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=105&service=13"
+    },
+    "British Consulate-General Rio de Janeiro": {
+      "post": "British Consulate-General Rio de Janeiro",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=59&service=13"
+    },
+    "British Consulate-General Sao Paulo": {
+      "post": "British Consulate-General Sao Paulo",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=76&service=13"
+    },
+    "British Embassy Athens": { "post": "British Embassy Athens", "bookingLink": "" },
+    "British Vice Consulate Corfu": { "post": "British Vice Consulate Corfu", "bookingLink": "" },
+    "British Vice Consulate Crete": { "post": "British Vice Consulate Crete", "bookingLink": "" },
+    "British Vice Consulate Rhodes": { "post": "British Vice Consulate Rhodes", "bookingLink": "" },
+    "British Honorary Vice Consulate Zakynthos": { "post": "British Honorary Vice Consulate Zakynthos", "bookingLink": "" },
+    "British Embassy Jakarta": { "post": "British Embassy Jakarta", "bookingLink": "" },
+    "British Consulate Bali": { "post": "British Consulate Bali", "bookingLink": "" },
+    "British Embassy Rome": {
+      "post": "British Embassy Rome",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10"
+    },
+    "British Consulate General Milan": { "post": "British Consulate General Milan", "bookingLink": "" },
+    "British Embassy Riyadh": { "post": "British Embassy Riyadh", "bookingLink": "" },
+    "British Consulate General Jeddah": { "post": "British Consulate General Jeddah", "bookingLink": "" },
+    "British Embassy Ankara": {
+      "post": "British Embassy Ankara",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=93&service=10"
+    },
+    "British Consulate General Istanbul": {
+      "post": "British Consulate General Istanbul",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=10"
+    },
+    "British Embassy Abu Dhabi": {
+      "post": "British Embassy Abu Dhabi",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=89&service=13"
+    },
+    "British Embassy Dubai": {
+      "post": "British Embassy Dubai",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=112&service=13"
+    },
+    "British Embassy Hanoi": { "post": "British Embassy Hanoi", "bookingLink": "" },
+    "British Consulate General Ho Chi Minh City": { "post": "British Consulate General Ho Chi Minh City", "bookingLink": "" }
   }
 }

@@ -3,7 +3,7 @@ import * as handlebars from "handlebars";
 import { ApplicationError } from "../../../ApplicationError";
 import { FormField } from "../../../types/FormField";
 import * as templates from "./templates";
-import * as additionalContexts from "./additionalContexts.json";
+import additionalContexts from "./additionalContexts.json";
 import { EmailServiceProvider, isSESEmailTemplate, SESEmailTemplate } from "./types";
 import config from "config";
 import { getFileFields, answersHashMap } from "../helpers";
@@ -89,7 +89,7 @@ export class SESService implements EmailServiceProvider {
   private async buildSendEmailArgs(fields: FormField[], template: SESEmailTemplate, reference: string) {
     const answers = answersHashMap(fields);
     const emailBody = this.getEmailBody(fields, template);
-    const post = answers.post ?? additionalContexts[answers.country as string].post;
+    const post = answers.post ?? additionalContexts.countries[answers.country as string]?.post;
 
     return {
       subject: `${template} application, ${post} – ${reference}`,

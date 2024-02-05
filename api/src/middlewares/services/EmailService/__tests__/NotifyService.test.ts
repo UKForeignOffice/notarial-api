@@ -31,11 +31,9 @@ test("buildSendEmailArgs should return the correct personalisation", () => {
       personalisation: {
         firstName: "foo",
         post: "Istanbul Consulate General",
-        docsList:
-          "* your UK passport\n* proof of address\n* your partner’s passport or national identity card\n* your Turkish Residence Permit if you’ve been living in Turkey for 3 months or more",
+        docsList: "* your UK passport\n* proof of address\n* your partner’s passport or national identity card",
         reference: "1234",
-        translationNeeded: false,
-        bookingLink: "",
+        bookingLink: undefined,
         country: "Turkey",
         additionalText: "",
         localRequirements: "",
@@ -68,6 +66,6 @@ test("buildDocsList will add optional documents when the relevant fields are fil
     oathType: "affidavit",
   };
   expect(emailService.buildDocsList(fieldsMap, false)).toBe(
-    `* your UK passport\n* proof of address\n* your partner’s passport or national identity card\n* your decree absolute\n* religious book of your faith to swear upon\n* the equivalent of £50 in the local currency\n* your Turkish Residence Permit if you’ve been living in Turkey for 3 months or more`
+    `* your UK passport\n* proof of address\n* your partner’s passport or national identity card\n* your decree absolute\n* religious book of your faith to swear upon\n* the equivalent of £50 in the local currency`
   );
 });
