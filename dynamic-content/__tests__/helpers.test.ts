@@ -57,8 +57,8 @@ test("determineBookingFamily returns countries if there's only one booking link 
   expect(helpers.determineBookingContentFamily(rows, currentRow)).toBe("countries");
 });
 test("bulletsToHtml returns valid html content if plain text with asterisks is passed in", () => {
-  const bulletsString = `* item 1 * item 2 some other content`;
-  expect(helpers.bulletsToHtml(bulletsString)).toEqual("<li> item 1 </li><li> item 2 some other content</li>");
+  const bulletsString = `*item 1 *item 2 some other content`;
+  expect(helpers.bulletsToNotifyString(bulletsString)).toEqual("\n* item 1 \n* item 2 some other content");
 });
 test("splitRow correctly splits a csv row into its fields", () => {
   const row = "Austria,Vienna,Affirmation,Austrian residence permit,Yes";
@@ -81,7 +81,5 @@ test("convertToObjectWithKeys correctly pulls out the required fields from a row
 });
 test("breaksToHtml returns valid html content if plain text with <br> tags is passed in", () => {
   const breaksString = `<br>Some text<br>and some other text<br>even more content`;
-  expect(helpers.breaksToHtml(breaksString)).toEqual(
-    `<p class="govuk-body">Some text</p><p class="govuk-body">and some other text</p><p class="govuk-body">even more content</p>`
-  );
+  expect(helpers.breaksToNotifyString(breaksString)).toEqual(`\nSome text\nand some other text\neven more content`);
 });
