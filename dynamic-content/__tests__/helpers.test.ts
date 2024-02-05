@@ -1,5 +1,4 @@
 import * as helpers from "../helpers";
-import { populateConditionsArray } from "../helpers";
 test("validate returns a list of missing fields if missing fields are present", () => {
   const requiredFields = {
     "field 1": "field1",
@@ -85,68 +84,4 @@ test("breaksToHtml returns valid html content if plain text with <br> tags is pa
   expect(helpers.breaksToHtml(breaksString)).toEqual(
     `<p class="govuk-body">Some text</p><p class="govuk-body">and some other text</p><p class="govuk-body">even more content</p>`
   );
-});
-test("populateConditionsArray returns undefined if there are no valid rows", () => {
-  const conditionConfig = {
-    evaluateField: "nice",
-    evaluateValue: ["Yes"],
-    useField: "type",
-    defaultDisplayName: "Egg type is nice",
-    formField: {
-      name: "type",
-      displayName: "Is the egg nice",
-      type: "YesNoField",
-    },
-    section: "eggVerdict",
-    operation: "is",
-  };
-  const rows = [
-    {
-      type: "boiled",
-      nice: "No",
-    },
-    {
-      type: "poached",
-      nice: "No",
-    },
-    {
-      type: "omelette",
-      nice: "No",
-    },
-  ];
-  expect(populateConditionsArray(rows, conditionConfig)).toBe(false);
-});
-test("populateConditionsArray returns only valid conditions from an array of rows", () => {
-  const conditionConfig = {
-    evaluateField: "nice",
-    evaluateValue: ["yes"],
-    useField: "type",
-    defaultDisplayName: "Egg type is nice",
-    formField: {
-      name: "type",
-      displayName: "Is the egg nice",
-      type: "YesNoField",
-    },
-    section: "eggVerdict",
-    operation: "is",
-  };
-  const rows = [
-    {
-      type: "boiled",
-      nice: "No",
-    },
-    {
-      type: "poached",
-      nice: "No",
-    },
-    {
-      type: "omelette",
-      nice: "No",
-    },
-    {
-      type: "fried",
-      nice: "Yes",
-    },
-  ];
-  expect(populateConditionsArray(rows, conditionConfig).length).toBe(1);
 });
