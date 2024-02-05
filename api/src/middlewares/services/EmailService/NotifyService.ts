@@ -132,8 +132,8 @@ export class NotifyService implements EmailServiceProvider {
       docsList.push("religious book of your faith to swear upon");
     }
     if (!paid) {
-      // TODO:- update to reflect correct £.
-      docsList.push("the equivalent of £50 in the local currency");
+      const price = fields.certifyPassport ? "£75" : "£50";
+      docsList.push(`the equivalent of ${price} in the local currency`);
     }
     const country = fields.country as string;
     const additionalDocs = additionalContexts[country]?.additionalDocs ?? [];
