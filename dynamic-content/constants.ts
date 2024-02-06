@@ -14,7 +14,7 @@ const CONTENT_FIELD_MAP = {
   "civil partnership": "civilPartnership",
   "other (localised content)": "localRequirements",
 };
-const CONTENT_RELEVANT_FIELDS = ["additionalDocs", "localRequirements"];
+const CONTENT_RELEVANT_FIELDS = ["additionalDocs", "localRequirements", "civilPartnership"];
 const BOOKING_LINKS_FIELD_MAP = {
   type: "type",
   country: "country",
