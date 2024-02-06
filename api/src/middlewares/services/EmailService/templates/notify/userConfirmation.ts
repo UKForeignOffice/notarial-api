@@ -7,4 +7,5 @@ export const userConfirmation = {
   country: undefined,
   bookingLink: undefined,
   localRequirements: "",
+  civilPartnership: "false",
 };
