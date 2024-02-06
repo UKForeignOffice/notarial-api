@@ -34,6 +34,7 @@ test("buildSendEmailArgs should return the correct personalisation", () => {
         docsList: "* your UK passport\n* proof of address\n* your partner’s passport or national identity card",
         reference: "1234",
         bookingLink: undefined,
+        civilPartnership: "",
         country: "Turkey",
         additionalText: "",
         localRequirements: "",
