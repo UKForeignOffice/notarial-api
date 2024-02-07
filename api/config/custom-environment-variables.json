@@ -26,5 +26,8 @@
       "backoff": "SES_RETRY_BACKOFF",
       "limit": "SES_RETRY_LIMIT"
     }
+  },
+  "Pay": {
+    "accountTransactionsUrl": "PAY_ACCOUNT_TRANSACTIONS_URL"
   }
 }

@@ -145,5 +145,12 @@ export const testData = {
       fields: [{ key: "feedbackConsent", title: "Can our partner contact you for feedback to help improve this service?", type: "list", answer: false }],
     },
   ],
-  metadata: { paymentSkipped: true },
+  metadata: {
+    paymentSkipped: true,
+    pay: {
+      payId: "some-pay-id",
+      state: { status: "success", finished: true },
+      reference: "DG19_IJVV6",
+    },
+  },
 };

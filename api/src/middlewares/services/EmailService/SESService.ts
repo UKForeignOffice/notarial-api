@@ -8,12 +8,23 @@ import { EmailServiceProvider, isSESEmailTemplate, SESEmailTemplate } from "./ty
 import config from "config";
 import { getFileFields, answersHashMap } from "../helpers";
 import PgBoss from "pg-boss";
+import { PayMetadata } from "../../../types/FormDataBody";
 
 type EmailArgs = {
   subject: string;
   body: string;
   attachments: FormField[];
   reference: string;
+};
+
+type PaymentViewModel = {
+  id: string;
+  status: string;
+  url: string;
+  allTransactionsByCountry: {
+    url: string;
+    country: string;
+  };
 };
 
 export class SESService implements EmailServiceProvider {
@@ -55,11 +66,20 @@ export class SESService implements EmailServiceProvider {
     });
   }
 
-  async send(fields: FormField[], template: string, reference: string) {
+  async send(
+    fields: FormField[],
+    template: string,
+    metadata: {
+      reference: string;
+      payment?: PayMetadata;
+    }
+  ) {
     if (!isSESEmailTemplate(template)) {
       throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 400);
     }
-    const emailArgs = await this.buildSendEmailArgs(fields, template, reference);
+    const { reference, payment } = metadata;
+
+    const emailArgs = await this.buildSendEmailArgs({ fields, payment }, template, reference);
     return this.sendEmail(emailArgs, reference);
   }
 
@@ -77,25 +97,55 @@ export class SESService implements EmailServiceProvider {
     return jobId;
   }
 
-  private getEmailBody(fields: FormField[], template: SESEmailTemplate) {
+  private getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel }, template: SESEmailTemplate) {
     if (template === "cni") {
       throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 500, "CNI template has not been configured");
     }
+    const { fields, payment } = data;
+
     return this.templates[template]({
       questions: fields,
+      payment,
     });
   }
 
-  private async buildSendEmailArgs(fields: FormField[], template: SESEmailTemplate, reference: string) {
+  private async buildSendEmailArgs(data: { fields: FormField[]; payment?: PayMetadata }, template: SESEmailTemplate, reference: string) {
+    const { fields, payment } = data;
     const answers = answersHashMap(fields);
-    const emailBody = this.getEmailBody(fields, template);
-    const post = answers.post ?? additionalContexts.countries[answers.country as string]?.post;
+    let paymentViewModel: PaymentViewModel | undefined;
 
+    try {
+      paymentViewModel = this.paymentViewModel(payment, answers.country as string);
+    } catch (e) {
+      this.logger.warn(`Payment details for ${reference} could not be parsed. Payment details will not be shown on the email.`);
+    }
+
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel }, template);
+    const post = answers.post ?? additionalContexts[answers.country as string].post;
     return {
       subject: `${template} application, ${post} – ${reference}`,
       body: emailBody,
       attachments: getFileFields(fields),
       reference,
+    };
+  }
+
+  paymentViewModel(payment: PayMetadata | undefined, country: string) {
+    if (!payment) {
+      return;
+    }
+    const paymentUrl = new URL(payment.payId, config.get<string>("Pay.accountTransactionsUrl"));
+    const allTransactionsByCountryUrl = new URL(config.get<string>("Pay.accountTransactionsUrl"));
+    allTransactionsByCountryUrl.searchParams.set("metadataValue", country);
+
+    return {
+      id: payment.payId,
+      status: payment.state.status,
+      url: paymentUrl.toString(),
+      allTransactionsByCountry: {
+        url: allTransactionsByCountryUrl.toString(),
+        country,
+      },
     };
   }
 

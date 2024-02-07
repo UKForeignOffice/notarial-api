@@ -3,6 +3,7 @@ import { testData } from "./fixtures";
 import { SESService } from "../SESService";
 import { isNotFieldType } from "../../../../utils";
 import "pg-boss";
+import { PayMetadata } from "../../../../types/FormDataBody";
 
 const pgBossMock = {
   async start() {
@@ -21,9 +22,18 @@ const emailService = new SESService();
 
 const formFields = flattenQuestions(testData.questions);
 const allOtherFields = formFields.filter(isNotFieldType("file"));
+const paymentViewModel = {
+  id: "govuk-pay-id",
+  status: "success",
+  url: "https://payments.gov.uk",
+  allTransactionsByCountry: {
+    url: "https://payments.gov.uk",
+    country: "italy",
+  },
+};
 
 test("getEmailBody renders oath email correctly", () => {
-  const emailBody = emailService.getEmailBody(allOtherFields, "affirmation");
+  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel }, "affirmation");
   expect(emailBody.includes("<li>First name: foo</li>")).toBe(true);
 });
 
@@ -64,4 +74,47 @@ test("sendEmail throws ApplicationError when no jobId is returned", async () => 
     expect(e.code).toBe("QUEUE_ERROR");
     expect(e.name).toBe("SES");
   }
+});
+
+test("buildSendEmailArgs returns an object with subject, body, attachments and reference", async () => {
+  const result = await emailService.buildSendEmailArgs(
+    {
+      fields: allOtherFields,
+      payment: testData.metadata.pay,
+    },
+    "affirmation",
+    "1234"
+  );
+  expect(result).toEqual({
+    subject: "affirmation application, Istanbul Consulate General – 1234",
+    body: expect.any(String),
+    attachments: [],
+    reference: "1234",
+  });
+});
+
+test("paymentViewModel returns undefined when no payment is provided", () => {
+  const result = emailService.paymentViewModel(undefined, "italy");
+  expect(result).toBeUndefined();
+});
+
+test("paymentViewModel returns a PaymentViewModel", () => {
+  const payMetadata: PayMetadata = {
+    payId: "123",
+    reference: "ref",
+    state: {
+      status: "success",
+      finished: true,
+    },
+  };
+  const result = emailService.paymentViewModel(payMetadata, "italy");
+  expect(result).toEqual({
+    allTransactionsByCountry: {
+      country: "italy",
+      url: "https://selfservice.payments.service.gov.uk/account/ACCOUNT_ID/transactions?metadataValue=italy",
+    },
+    id: "123",
+    status: "success",
+    url: "https://selfservice.payments.service.gov.uk/account/ACCOUNT_ID/123",
+  });
 });
