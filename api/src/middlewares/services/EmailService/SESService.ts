@@ -139,7 +139,7 @@ export class SESService {
 
     return {
       id: payment.payId,
-      status: payment.state.status,
+      status: payment.state.status === "success" ? "success" : "cancelled or failed",
       url: paymentUrl.toString(),
       allTransactionsByCountry: {
         url: allTransactionsByCountryUrl.toString(),
