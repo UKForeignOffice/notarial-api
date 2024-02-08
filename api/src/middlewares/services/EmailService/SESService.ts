@@ -117,8 +117,10 @@ export class SESService {
       this.logger.warn(`Payment details for ${reference} could not be parsed. Payment details will not be shown on the email.`);
     }
 
+    const country = answers.country as string;
+    const contextForCountry = additionalContexts.countries[country];
     const emailBody = this.getEmailBody({ fields, payment: paymentViewModel }, template);
-    const post = answers.post ?? additionalContexts[answers.country as string].post;
+    const post = answers.post ?? contextForCountry.post;
     return {
       subject: `${template} application, ${post} – ${reference}`,
       body: emailBody,
