@@ -4,7 +4,7 @@ import { ApplicationError } from "../../../ApplicationError";
 import { FormField } from "../../../types/FormField";
 import * as templates from "./templates";
 import additionalContexts from "./additionalContexts.json";
-import { EmailServiceProvider, isSESEmailTemplate, SESEmailTemplate } from "./types";
+import { SESEmailTemplate } from "./types";
 import config from "config";
 import { getFileFields, answersHashMap } from "../helpers";
 import PgBoss from "pg-boss";
@@ -27,7 +27,7 @@ type PaymentViewModel = {
   };
 };
 
-export class SESService implements EmailServiceProvider {
+export class SESService {
   logger: Logger;
   templates: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
   queue?: PgBoss;
@@ -68,15 +68,12 @@ export class SESService implements EmailServiceProvider {
 
   async send(
     fields: FormField[],
-    template: string,
+    template: SESEmailTemplate,
     metadata: {
       reference: string;
       payment?: PayMetadata;
     }
   ) {
-    if (!isSESEmailTemplate(template)) {
-      throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 400);
-    }
     const { reference, payment } = metadata;
 
     const emailArgs = await this.buildSendEmailArgs({ fields, payment }, template, reference);
