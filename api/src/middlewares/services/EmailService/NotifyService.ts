@@ -104,6 +104,7 @@ export class NotifyService {
     const docsList = this.buildDocsList(answers, paid);
     const country = answers["country"] as string;
     const post = answers["post"] as string;
+
     const personalisationValues = {
       ...answers,
       docsList,

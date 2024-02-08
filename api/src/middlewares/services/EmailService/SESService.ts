@@ -84,9 +84,7 @@ export class SESService {
    * @throws ApplicationError
    */
   private async sendEmail(emailArgs: EmailArgs, reference: string) {
-    const jobId = await this.queue?.send?.(this.QUEUE_NAME, emailArgs, {
-      retryBackoff: true,
-    });
+    const jobId = await this.queue?.send?.(this.QUEUE_NAME, emailArgs, this.queueOptions);
     if (!jobId) {
       throw new ApplicationError("SES", "QUEUE_ERROR", 500, `Queueing failed for ${reference}`);
     }
