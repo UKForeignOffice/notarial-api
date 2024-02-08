@@ -24,8 +24,9 @@ export class SubmitService {
    * @throws ApplicationError
    */
   async submitForm(formData: FormDataBody) {
-    const { questions = [] } = formData;
+    const { questions = [], metadata } = formData;
     const formFields = flattenQuestions(questions);
+    const reference = metadata.pay?.reference ?? this.generateId();
 
     formFields.push({
       key: "paid",
@@ -34,9 +35,7 @@ export class SubmitService {
       answer: !!formData.fees?.paymentReference,
     });
 
-    const reference = this.generateId();
-
-    const staffJobId = await this.staffEmailService.send(formFields, "affirmation", reference);
+    const staffJobId = await this.staffEmailService.send(formFields, "affirmation", { reference, payment: metadata.pay });
     const userNotifyJobId = await this.customerEmailService.send(formFields, "userConfirmation", reference);
 
     return {

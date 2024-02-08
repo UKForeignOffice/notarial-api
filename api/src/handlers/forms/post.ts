@@ -5,7 +5,6 @@ export async function post(req: Request, res: Response, next: NextFunction) {
   try {
     const { reference } = await submitService.submitForm(req.body);
     res.status(200).send({
-      message: "Emails sent successfully",
       reference,
     });
   } catch (e) {
