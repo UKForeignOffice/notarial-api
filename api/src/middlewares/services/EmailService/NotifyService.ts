@@ -2,7 +2,7 @@ import config from "config";
 import pino, { Logger } from "pino";
 import { ApplicationError } from "../../../ApplicationError";
 import * as additionalContexts from "./additionalContexts.json";
-import { EmailServiceProvider, NotifyPersonalisation, NotifySendEmailArgs, NotifyEmailTemplate } from "./types";
+import { NotifyEmailTemplate, NotifyPersonalisation, NotifySendEmailArgs } from "./types";
 import * as templates from "./templates";
 import { FormField } from "../../../types/FormField";
 import { answersHashMap } from "../helpers";
@@ -16,7 +16,7 @@ const previousMarriageDocs = {
   "Surviving civil partner": "late partner's death certificate",
   Annulled: "decree of nullity",
 };
-export class NotifyService implements EmailServiceProvider {
+export class NotifyService {
   logger: Logger;
   templates: Record<NotifyEmailTemplate, string>;
   queue?: PgBoss;
