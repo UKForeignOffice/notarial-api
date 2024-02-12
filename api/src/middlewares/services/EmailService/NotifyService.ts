@@ -75,9 +75,7 @@ export class NotifyService {
         emailAddress,
         options,
       },
-      {
-        retryBackoff: true,
-      }
+      this.queueOptions
     );
     if (!jobId) {
       throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, `Sending ${template} to ${emailAddress} failed`);
