@@ -4,6 +4,7 @@ import { testData } from "./fixtures";
 import { userConfirmation } from "../templates/notify";
 
 import "pg-boss";
+import { templateBuilder } from "../TemplateService";
 
 const pgBossMock = {
   async start() {
@@ -19,28 +20,20 @@ jest.mock("pg-boss", () => {
 });
 
 const emailService = new NotifyService();
-const formFields = [{ key: "paid", type: "TextField", title: "paid", answer: true }, ...flattenQuestions(testData.questions)];
+const formFields = flattenQuestions(testData.questions);
+const answers = answersHashMap(formFields);
 
 test("buildSendEmailArgs should return the correct personalisation", () => {
-  const emailParams = emailService.buildSendEmailArgs(formFields, "userConfirmation", "1234");
-
-  expect(emailParams).toEqual({
-    template: "1234",
-    emailAddress: "test@test.com",
-    options: {
-      personalisation: {
-        firstName: "foo",
-        post: "Istanbul Consulate General",
-        docsList: "* your UK passport\n* proof of address\n* your partner’s passport or national identity card",
-        reference: "1234",
-        bookingLink: undefined,
-        civilPartnership: "",
-        country: "Turkey",
-        additionalText: "",
-        localRequirements: "",
-      },
-      reference: "1234",
-    },
+  const personalisation = templateBuilder.userConfirmation(answers, { reference: "1234" });
+  expect(personalisation).toEqual({
+    firstName: "foo",
+    docsList: "* your UK passport\n* proof of address\n* your partner’s passport or national identity card\n* the equivalent of £50 in the local currency",
+    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=10",
+    civilPartnership: "",
+    country: "Turkey",
+    additionalText: "",
+    localRequirements: "",
+    post: "British Consulate General Istanbul",
   });
 });
 

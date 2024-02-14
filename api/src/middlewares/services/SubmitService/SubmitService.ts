@@ -1,6 +1,6 @@
 import logger, { Logger } from "pino";
 import { FormDataBody } from "../../../types";
-import { flattenQuestions } from "../helpers";
+import { answersHashMap, flattenQuestions } from "../helpers";
 import { NotifyService, SESService } from "../EmailService";
 const { customAlphabet } = require("nanoid");
 
@@ -26,6 +26,7 @@ export class SubmitService {
   async submitForm(formData: FormDataBody) {
     const { questions = [], metadata } = formData;
     const formFields = flattenQuestions(questions);
+    const answers = answersHashMap(formFields);
     const reference = metadata.pay?.reference ?? this.generateId();
 
     formFields.push({
@@ -36,7 +37,9 @@ export class SubmitService {
     });
 
     const staffJobId = await this.staffEmailService.send(formFields, "affirmation", { reference, payment: metadata.pay });
-    const userNotifyJobId = await this.customerEmailService.send(formFields, "userConfirmation", reference);
+
+    const userNotifyJobId = await this.customerEmailService.sendEmailToUser(answers, { reference, payment: metadata.pay });
+    const postNotifyJobId = await this.customerEmailService.sendEmailToPost(answers, { reference, payment: metadata.pay });
 
     return {
       response: {

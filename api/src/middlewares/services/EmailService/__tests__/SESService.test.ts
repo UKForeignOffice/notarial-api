@@ -86,7 +86,7 @@ test("buildSendEmailArgs returns an object with subject, body, attachments and r
     "1234"
   );
   expect(result).toEqual({
-    subject: "affirmation application, Istanbul Consulate General – 1234",
+    subject: "affirmation application, British Consulate General Istanbul – 1234",
     body: expect.any(String),
     attachments: [],
     reference: "1234",

@@ -4,10 +4,12 @@ import { ApplicationError } from "../../../ApplicationError";
 import * as additionalContexts from "./additionalContexts.json";
 import { NotifyEmailTemplate, NotifyPersonalisation, NotifySendEmailArgs } from "./types";
 import * as templates from "./templates";
-import { FormField } from "../../../types/FormField";
-import { answersHashMap } from "../helpers";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import PgBoss from "pg-boss";
+import { getPostEmailAddress } from "./utils/getPostEmailAddress";
+import { templateBuilder } from "./TemplateService";
+import { ref } from "joi";
+import { PayMetadata } from "../../../types/FormDataBody";
 
 const previousMarriageDocs = {
   Divorced: "decree absolute",
@@ -62,8 +64,17 @@ export class NotifyService {
     });
   }
 
-  async send(fields: FormField[], template: NotifyEmailTemplate, reference: string) {
-    const emailArgs = this.buildSendEmailArgs(fields, template, reference);
+  async sendEmailToUser(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata }) {
+    const { reference, payment } = metadata;
+    const personalisation = templateBuilder.userConfirmation(answers, metadata);
+    const emailArgs = {
+      template: this.templates.userConfirmation,
+      emailAddress: answers.emailAddress as string,
+      options: {
+        personalisation,
+        reference,
+      },
+    };
     return this.sendEmail(emailArgs, reference);
   }
 
@@ -84,18 +95,36 @@ export class NotifyService {
     return jobId;
   }
 
-  buildSendEmailArgs(fields: FormField[], template: NotifyEmailTemplate, reference: string): NotifySendEmailArgs {
-    const answers = answersHashMap(fields);
-    const defaultTemplate = templates.notify[template];
-    const personalisation = this.getPersonalisationForTemplate(answers, reference, answers.paid as boolean, defaultTemplate);
-    return {
-      template: this.templates.userConfirmation,
-      emailAddress: answers.emailAddress as string,
-      options: {
-        personalisation,
-        reference: reference,
+  async sendEmailToPost(answers: AnswersHashMap, reference: string) {
+    const country = answers["country"] as string;
+    const post = answers["post"] as string;
+    const emailAddress = getPostEmailAddress(country, post);
+
+    if (!emailAddress) {
+      this.logger.warn(`No email address found for country ${country} - post ${post}`);
+      return;
+    }
+
+    const jobId = await this.queue?.send?.(
+      this.QUEUE_NAME,
+      {
+        template: this.templates.postNotification,
+        emailAddress,
+        options: {
+          reference,
+          personalisation: {
+            post,
+          },
+        },
       },
-    };
+      this.queueOptions
+    );
+
+    if (!jobId) {
+      throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, `Sending ${this.templates.postNotification} to ${emailAddress} failed`);
+    }
+
+    return jobId;
   }
 
   getPersonalisationForTemplate(answers: AnswersHashMap, reference: string, paid: boolean, template: NotifyPersonalisation) {
@@ -109,7 +138,7 @@ export class NotifyService {
       paid,
       reference,
       ...(additionalContexts.countries[country] ?? {}),
-      ...(additionalContexts.posts[post] ?? {}),
+      ...(additionalContexts.posts[post] ?? additionalContexts.countries[country].post ?? {}),
     };
     const toPersonalisation = this.mapPersonalisationValues(personalisationValues);
     return Object.entries(template).reduce(toPersonalisation, {} as NotifyPersonalisation);

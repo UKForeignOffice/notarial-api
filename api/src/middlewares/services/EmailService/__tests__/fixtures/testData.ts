@@ -14,7 +14,7 @@ export const testData = {
     {
       category: "appointmentLocation",
       question: "Select a British embassy or consulate in Turkey",
-      fields: [{ key: "post", title: "Select a location", type: "list", answer: "Istanbul Consulate General" }],
+      fields: [{ key: "post", title: "Select a location", type: "list", answer: "British Consulate General Istanbul" }],
     },
     {
       category: "marriage",
