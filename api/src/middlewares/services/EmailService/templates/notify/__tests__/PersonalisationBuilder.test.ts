@@ -1,8 +1,6 @@
-import { NotifyService } from "../NotifyService";
-import { flattenQuestions, answersHashMap } from "../../helpers";
-import { testData } from "./fixtures";
-
 import "pg-boss";
+import { testData } from "../../../__tests__/fixtures";
+import { answersHashMap, flattenQuestions } from "../../../../helpers";
 import { buildUserConfirmationDocsList, PersonalisationBuilder } from "../PersonalisationBuilder";
 
 const pgBossMock = {
@@ -18,7 +16,6 @@ jest.mock("pg-boss", () => {
   return jest.fn().mockImplementation(() => pgBossMock);
 });
 
-const emailService = new NotifyService();
 const formFields = flattenQuestions(testData.questions);
 const answers = answersHashMap(formFields);
 

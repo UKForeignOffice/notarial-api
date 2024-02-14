@@ -1,12 +1,12 @@
 import config from "config";
 import pino, { Logger } from "pino";
 import { ApplicationError } from "../../../ApplicationError";
-import { NotifyEmailTemplate, NotifyPersonalisation, NotifySendEmailArgs } from "./types";
+import { NotifyEmailTemplate, NotifySendEmailArgs } from "./types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import PgBoss from "pg-boss";
 import { getPostEmailAddress } from "./utils/getPostEmailAddress";
-import { PersonalisationBuilder } from "./PersonalisationBuilder";
 import { PayMetadata } from "../../../types/FormDataBody";
+import { PersonalisationBuilder } from "./PersonalisationBuilder";
 
 export class NotifyService {
   logger: Logger;
@@ -55,8 +55,8 @@ export class NotifyService {
   }
 
   async sendEmailToUser(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata }) {
-    const { reference, payment } = metadata;
-    const personalisation = templateBuilder.userConfirmation(answers, metadata);
+    const { reference } = metadata;
+    const personalisation = PersonalisationBuilder.userConfirmation(answers, metadata);
     const emailArgs = {
       template: this.templates.userConfirmation,
       emailAddress: answers.emailAddress as string,

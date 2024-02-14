@@ -1,7 +1,7 @@
-import { NotifyEmailTemplate } from "./types";
-import { AnswersHashMap } from "../../../types/AnswersHashMap";
-import * as additionalContexts from "./additionalContexts.json";
-import { PayMetadata } from "../../../types/FormDataBody";
+import { AnswersHashMap } from "../../../../../types/AnswersHashMap";
+import * as additionalContexts from "./../../additionalContexts.json";
+import { NotifyEmailTemplate } from "../../types";
+import { PayMetadata } from "../../../../../types/FormDataBody";
 
 export const PersonalisationBuilder: Record<NotifyEmailTemplate, any> = {
   /**
