@@ -1,8 +1,8 @@
 import "pg-boss";
 import { testData } from "../../../__tests__/fixtures";
 import { answersHashMap, flattenQuestions } from "../../../../helpers";
-import { buildUserConfirmationDocsList, PersonalisationBuilder } from "../PersonalisationBuilder";
-
+import { PersonalisationBuilder } from "../PersonalisationBuilder";
+import { buildUserConfirmationDocsList } from "../personalisationBuilder.userConfirmation";
 const pgBossMock = {
   async start() {
     return this;

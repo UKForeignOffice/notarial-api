@@ -6,7 +6,7 @@ import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import PgBoss from "pg-boss";
 import { getPostEmailAddress } from "./utils/getPostEmailAddress";
 import { PayMetadata } from "../../../types/FormDataBody";
-import { PersonalisationBuilder } from "./PersonalisationBuilder";
+import { PersonalisationBuilder } from "./templates/notify/PersonalisationBuilder";
 
 export class NotifyService {
   logger: Logger;
