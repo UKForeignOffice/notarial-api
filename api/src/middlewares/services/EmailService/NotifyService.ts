@@ -1,23 +1,13 @@
 import config from "config";
 import pino, { Logger } from "pino";
 import { ApplicationError } from "../../../ApplicationError";
-import * as additionalContexts from "./additionalContexts.json";
 import { NotifyEmailTemplate, NotifyPersonalisation, NotifySendEmailArgs } from "./types";
-import * as templates from "./templates";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import PgBoss from "pg-boss";
 import { getPostEmailAddress } from "./utils/getPostEmailAddress";
-import { templateBuilder } from "./TemplateService";
-import { ref } from "joi";
+import { PersonalisationBuilder } from "./PersonalisationBuilder";
 import { PayMetadata } from "../../../types/FormDataBody";
 
-const previousMarriageDocs = {
-  Divorced: "decree absolute",
-  "Dissolved civil partner": "final order",
-  Widowed: "late partner's death certificate",
-  "Surviving civil partner": "late partner's death certificate",
-  Annulled: "decree of nullity",
-};
 export class NotifyService {
   logger: Logger;
   templates: Record<NotifyEmailTemplate, string>;
@@ -125,47 +115,5 @@ export class NotifyService {
     }
 
     return jobId;
-  }
-
-  getPersonalisationForTemplate(answers: AnswersHashMap, reference: string, paid: boolean, template: NotifyPersonalisation) {
-    const docsList = this.buildDocsList(answers, paid);
-    const country = answers["country"] as string;
-    const post = answers["post"] as string;
-
-    const personalisationValues = {
-      ...answers,
-      docsList,
-      paid,
-      reference,
-      ...(additionalContexts.countries[country] ?? {}),
-      ...(additionalContexts.posts[post] ?? additionalContexts.countries[country].post ?? {}),
-    };
-    const toPersonalisation = this.mapPersonalisationValues(personalisationValues);
-    return Object.entries(template).reduce(toPersonalisation, {} as NotifyPersonalisation);
-  }
-
-  mapPersonalisationValues(personalisationValues: Record<string, string | boolean>) {
-    return function (acc: NotifyPersonalisation, [key, value]) {
-      acc[key] = personalisationValues[key] ?? value;
-      return acc;
-    };
-  }
-
-  buildDocsList(fields: AnswersHashMap, paid: boolean) {
-    const docsList = ["your UK passport", "proof of address", "your partner’s passport or national identity card"];
-    if (fields.maritalStatus && fields.maritalStatus !== "Never married") {
-      docsList.push(`your ${previousMarriageDocs[fields.maritalStatus as string]}`);
-    }
-    if (fields.oathType === "affidavit") {
-      docsList.push("religious book of your faith to swear upon");
-    }
-    if (!paid) {
-      const price = fields.certifyPassport ? "£75" : "£50";
-      docsList.push(`the equivalent of ${price} in the local currency`);
-    }
-    const country = fields.country as string;
-    const additionalDocs = additionalContexts[country]?.additionalDocs ?? [];
-    docsList.push(...additionalDocs);
-    return docsList.map((doc) => `* ${doc}`).join("\n");
   }
 }

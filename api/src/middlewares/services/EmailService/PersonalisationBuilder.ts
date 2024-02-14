@@ -1,10 +1,17 @@
-import { NotifyEmailTemplate, NotifyPersonalisation } from "./types";
+import { NotifyEmailTemplate } from "./types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import * as additionalContexts from "./additionalContexts.json";
 import { PayMetadata } from "../../../types/FormDataBody";
 
-export const templateBuilder: Record<NotifyEmailTemplate, any> = {
+export const PersonalisationBuilder: Record<NotifyEmailTemplate, any> = {
+  /**
+   * Email to send to a post, mentioning that there is a new form to process.
+   */
   postNotification(answers: AnswersHashMap, reference: string, paid: boolean) {},
+
+  /**
+   * Confirmation email for the user, detailing how to book, what to bring etc.
+   */
   userConfirmation: getPersonalisationForTemplate,
 };
 
@@ -16,7 +23,7 @@ const previousMarriageDocs = {
   Annulled: "decree of nullity",
 };
 
-function buildUserConfirmationDocsList(fields: AnswersHashMap, paid) {
+export function buildUserConfirmationDocsList(fields: AnswersHashMap, paid) {
   const docsList = ["your UK passport", "proof of address", "your partner’s passport or national identity card"];
   if (fields.maritalStatus && fields.maritalStatus !== "Never married") {
     docsList.push(`your ${previousMarriageDocs[fields.maritalStatus as string]}`);
