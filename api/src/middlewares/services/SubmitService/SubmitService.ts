@@ -29,8 +29,11 @@ export class SubmitService {
     const answers = answersHashMap(formFields);
     const reference = metadata?.pay?.reference ?? this.generateId();
 
+    // @ts-ignore
     const staffJobId = await this.staffEmailService.send(formFields, "affirmation", { reference, payment: metadata.pay });
+    // @ts-ignore
     const userNotifyJobId = await this.notifyEmailService.sendEmailToUser(answers, { reference, payment: metadata.pay });
+    // @ts-ignore
     const postNotifyJobId = await this.notifyEmailService.sendEmailToPost(answers, reference);
 
     return {

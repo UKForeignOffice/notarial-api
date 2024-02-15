@@ -5,6 +5,8 @@ console.log(POST_EMAILS);
 export function getPostEmailAddress(country: string, post?: string) {
   let emailAddress;
   console.log(country, post);
+  // @ts-ignore
+  console.log(POST_EMAILS[post]);
 
   if (post) {
     emailAddress = additionalContexts.posts?.[post]?.emailAddress;

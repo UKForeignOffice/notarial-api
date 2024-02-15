@@ -28,6 +28,8 @@ export async function notifyHandler(job: Job<NotifyJob>) {
   logger.info({ jobId }, `received ${worker} job`);
   const { data } = job;
   const { template, emailAddress, options } = data;
+  console.log(data);
+
   try {
     const response = await notifyClient.sendEmail(template, emailAddress, options);
     const data = response.data as SendEmailResponse;

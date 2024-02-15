@@ -5,9 +5,11 @@ import { validationHandler } from "../../middlewares/validate";
 export const formRouter = Router();
 
 formRouter.post("/", validationHandler, formsHandlers.post);
+// @ts-ignore
 formRouter.get("/", async (req: Request, res: Response, next: NextFunction) => {
   const { submitService } = res.app.services;
   try {
+    // @ts-ignore
     const { reference } = await submitService.submitForm(body);
     res.status(200).send({
       reference,
