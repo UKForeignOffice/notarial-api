@@ -89,10 +89,9 @@ export class NotifyService {
     const country = answers["country"] as string;
     const post = answers["post"] as string;
     const emailAddress = getPostEmailAddress(country, post);
-    const personalisation = PersonalisationBuilder.postNotification(answers);
-
+    const personalisation = PersonalisationBuilder.postNotification(answers, reference);
     if (!emailAddress) {
-      this.logger.warn(`No email address found for country ${country} - post ${post}`);
+      this.logger.warn(`No email address found for country ${country} - post ${post}. Post notification will not be sent`);
       return;
     }
 

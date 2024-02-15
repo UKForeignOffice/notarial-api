@@ -7,12 +7,12 @@ const { customAlphabet } = require("nanoid");
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
 export class SubmitService {
   logger: Logger;
-  customerEmailService: NotifyService;
+  notifyEmailService: NotifyService;
   staffEmailService: SESService;
 
   constructor({ notifyService, sesService }) {
     this.logger = logger().child({ service: "Submit" });
-    this.customerEmailService = notifyService;
+    this.notifyEmailService = notifyService;
     this.staffEmailService = sesService;
   }
 
@@ -27,25 +27,14 @@ export class SubmitService {
     const { questions = [], metadata } = formData;
     const formFields = flattenQuestions(questions);
     const answers = answersHashMap(formFields);
-    const reference = metadata.pay?.reference ?? this.generateId();
-
-    formFields.push({
-      key: "paid",
-      title: "paid",
-      type: "metadata",
-      answer: !!formData.fees?.paymentReference,
-    });
+    const reference = metadata?.pay?.reference ?? this.generateId();
 
     const staffJobId = await this.staffEmailService.send(formFields, "affirmation", { reference, payment: metadata.pay });
-
-    const userNotifyJobId = await this.customerEmailService.sendEmailToUser(answers, { reference, payment: metadata.pay });
-    const postNotifyJobId = await this.customerEmailService.sendEmailToPost(answers, { reference, payment: metadata.pay });
+    const userNotifyJobId = await this.notifyEmailService.sendEmailToUser(answers, { reference, payment: metadata.pay });
+    const postNotifyJobId = await this.notifyEmailService.sendEmailToPost(answers, reference);
 
     return {
-      response: {
-        staff: staffJobId,
-        customer: userNotifyJobId,
-      },
+      response: {},
       reference,
     };
   }

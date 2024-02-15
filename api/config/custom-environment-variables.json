@@ -29,5 +29,11 @@
   },
   "Pay": {
     "accountTransactionsUrl": "PAY_ACCOUNT_TRANSACTIONS_URL"
+  },
+  "settings": {
+    "postEmails": {
+      "__name": "POST_EMAILS",
+      "__format": "json"
+    }
   }
 }

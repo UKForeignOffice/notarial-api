@@ -30,6 +30,7 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
     bookingLink: additionalContext.bookingLink,
     localRequirements: additionalContext.localRequirements,
     civilPartnership: additionalContext.civilPartnership,
+    reference: metadata.reference,
   };
 }
 
