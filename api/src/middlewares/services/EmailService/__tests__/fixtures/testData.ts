@@ -14,7 +14,7 @@ export const testData = {
     {
       category: "appointmentLocation",
       question: "Select a British embassy or consulate in Turkey",
-      fields: [{ key: "post", title: "Select a location", type: "list", answer: "Istanbul Consulate General" }],
+      fields: [{ key: "post", title: "Select a location", type: "list", answer: "British Consulate General Istanbul" }],
     },
     {
       category: "marriage",
@@ -122,7 +122,7 @@ export const testData = {
       question: "Your contact details",
       fields: [
         { key: "phoneNumber", title: "Phone number", type: "text", answer: "+44 1234 567890" },
-        { key: "emailAddress", title: "Email address", type: "text", answer: "test@test.com" },
+        { key: "emailAddress", title: "Email address", type: "text", answer: "pye@cautionyourblast.com" },
       ],
     },
     { category: "contact", question: "Confirm your contact details", fields: [] },

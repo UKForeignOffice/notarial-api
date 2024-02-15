@@ -1,3 +1,4 @@
 export const postNotification = {
-  post: undefined,
+  post: "",
+  reference: "",
 };

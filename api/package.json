@@ -42,6 +42,7 @@
     "build": "yarn tsc",
     "start": "node dist/index.js",
     "start:local": "yarn tsc -w & nodemon -q -w dist dist/index.js",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watch"
   }
 }

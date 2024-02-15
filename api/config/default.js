@@ -25,4 +25,5 @@ module.exports = {
       limit: "50",
     },
   },
+  postEmails: {},
 };
