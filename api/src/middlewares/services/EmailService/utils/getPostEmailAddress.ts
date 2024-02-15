@@ -1,19 +1,12 @@
 import * as additionalContexts from "./../additionalContexts.json";
 import config from "config";
-const POST_EMAILS = config.get("postEmails");
-console.log(POST_EMAILS);
+const POST_EMAILS = config.get<Record<string, string>>("postEmails");
 export function getPostEmailAddress(country: string, post?: string) {
-  let emailAddress;
-  console.log(country, post);
-  // @ts-ignore
-  console.log(POST_EMAILS[post]);
+  const postName = post ?? additionalContexts.countries?.[country]?.post;
 
-  if (post) {
-    emailAddress = additionalContexts.posts?.[post]?.emailAddress;
+  if (!postName) {
+    return;
   }
 
-  const countryEmailAddress = additionalContexts.countries?.[country]?.emailAddress;
-  emailAddress ??= countryEmailAddress ?? config.get("submissionAddress");
-
-  return emailAddress;
+  return POST_EMAILS[postName];
 }
