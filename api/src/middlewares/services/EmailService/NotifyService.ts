@@ -85,11 +85,11 @@ export class NotifyService {
     return jobId;
   }
 
-  async sendEmailToPost(answers: AnswersHashMap, reference: string) {
+  async sendEmailToPost(answers: AnswersHashMap) {
     const country = answers["country"] as string;
     const post = answers["post"] as string;
     const emailAddress = getPostEmailAddress(country, post);
-    const personalisation = PersonalisationBuilder.postNotification(answers, reference);
+    const personalisation = PersonalisationBuilder.postNotification(answers);
     if (!emailAddress) {
       this.logger.warn(`No email address found for country ${country} - post ${post}. Post notification will not be sent`);
       return;
@@ -101,7 +101,6 @@ export class NotifyService {
         template: this.templates.postNotification,
         emailAddress,
         options: {
-          reference,
           personalisation,
         },
       },
