@@ -30,6 +30,7 @@ test("buildSendEmailArgs should return the correct personalisation", () => {
     additionalText: "",
     localRequirements: "",
     post: "British Consulate General Istanbul",
+    reference: "1234",
   });
 });
 
