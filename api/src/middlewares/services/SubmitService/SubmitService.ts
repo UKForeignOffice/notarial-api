@@ -31,7 +31,7 @@ export class SubmitService {
 
     const staffJobId = await this.staffEmailService.send(formFields, "affirmation", { reference, payment: metadata.pay });
     const userNotifyJobId = await this.notifyEmailService.sendEmailToUser(answers, { reference, payment: metadata.pay });
-    const postNotifyJobId = await this.notifyEmailService.sendEmailToPost(answers, reference);
+    const postNotifyJobId = await this.notifyEmailService.sendEmailToPost(answers);
 
     return {
       response: {
