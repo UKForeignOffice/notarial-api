@@ -6,7 +6,7 @@ import * as templates from "./templates";
 import additionalContexts from "./additionalContexts.json";
 import { SESEmailTemplate } from "./types";
 import config from "config";
-import { getFileFields, answersHashMap } from "../helpers";
+import { answersHashMap } from "../helpers";
 import PgBoss from "pg-boss";
 import { PayMetadata } from "../../../types/FormDataBody";
 
@@ -77,7 +77,8 @@ export class SESService {
     const { reference, payment } = metadata;
 
     const emailArgs = await this.buildSendEmailArgs({ fields, payment }, template, reference);
-    return this.sendEmail(emailArgs, reference);
+    return emailArgs;
+    // return this.sendEmail(emailArgs, reference);
   }
 
   /**
@@ -92,15 +93,27 @@ export class SESService {
     return jobId;
   }
 
-  private getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel }, template: SESEmailTemplate) {
+  private getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate) {
     if (template === "cni") {
       throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 500, "CNI template has not been configured");
     }
-    const { fields, payment } = data;
+    const { fields, payment, reference } = data;
+    const answers = answersHashMap(fields);
+    const groupByCategories = groupByCategoriesWithIgnore({ keys: ["country", "oathType", "jurats", "feedbackConsent", "certifyPassport"], types: ["file"] });
+    const { other, ...rest } = fields.reduce(groupByCategories, { other: [] } as Record<string, FormField[]>);
 
     return this.templates[template]({
-      questions: fields,
+      categories: {
+        ...rest,
+        ...(other.length && other),
+      },
+      reference,
       payment,
+      country: answers.country,
+      oathType: answers.oathType,
+      jurats: answers.jurats ?? answers.UPQLxm,
+      feedbackConsent: answers.feedbackConsent,
+      certifyPassport: answers.certifyPassport,
     });
   }
 
@@ -117,14 +130,17 @@ export class SESService {
 
     const country = answers.country as string;
     const contextForCountry = additionalContexts.countries[country];
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel }, template);
-    const post = answers.post ?? contextForCountry.post;
-    return {
-      subject: `${template} application, ${post} – ${reference}`,
-      body: emailBody,
-      attachments: getFileFields(fields),
-      reference,
-    };
+    console.log(reference);
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference }, template);
+    return emailBody;
+    // console.log(emailBody);
+    // const post = answers.post ?? contextForCountry.post;
+    // return {
+    //   subject: `${template} application, ${post} – ${reference}`,
+    //   body: emailBody,
+    //   attachments: getFileFields(fields),
+    //   reference,
+    // };
   }
 
   paymentViewModel(payment: PayMetadata | undefined, country: string) {
@@ -149,4 +165,44 @@ export class SESService {
   private static createTemplate(template: string) {
     return handlebars.compile(template);
   }
+}
+
+function groupByCategory(prev, curr) {
+  const category = curr.category;
+
+  if (!category) {
+    prev.other.push(curr);
+    return prev;
+  }
+
+  if (prev[category]) {
+    prev[category].push(curr);
+    return prev;
+  }
+
+  prev[category] = [curr];
+  return prev;
+}
+
+function groupByCategoriesWithIgnore(ignoreOptions: { keys: string[]; types: string[] }) {
+  const { keys, types } = ignoreOptions;
+  const ignoreKeys = new Set(keys);
+  const ignoreTypes = new Set(types);
+
+  return function (prev, curr) {
+    const category = curr.category ?? "other";
+    if (ignoreTypes.has(curr.type) || ignoreKeys.has(curr.key)) {
+      return prev;
+    }
+
+    if (!prev[category]) {
+      prev[category] = [curr];
+      return prev;
+    }
+
+    if (prev[category]) {
+      prev[category].push(curr);
+      return prev;
+    }
+  };
 }
