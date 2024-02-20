@@ -101,7 +101,7 @@ export class SESService {
     }
 
     const { fields, payment, reference } = data;
-    const remapped = fields.reduce(remappers.toAffirmation, {});
+    const remapped = remappers.affirmation(fields);
 
     const { information } = remapped;
 

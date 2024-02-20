@@ -1,4 +1,5 @@
 import { set } from "lodash";
+import { FormField } from "../../../../../types/FormField";
 
 /**
  * Recreates an object with the keys remapped according to the mappings object.
@@ -13,21 +14,23 @@ import { set } from "lodash";
 export function createRemapper<T>(mappings: T, ignoreKeys: string[] = [], ignoreTypes: string[] = []) {
   const ignoreKeysSet = new Set(ignoreKeys);
   const ignoreTypesSet = new Set(ignoreTypes);
-  return function (acc, curr) {
-    const key = curr.key;
+  return function (data: FormField[]) {
+    return data.reduce((acc, curr) => {
+      const key = curr.key;
 
-    if (ignoreKeysSet.has(key) || ignoreTypesSet.has(curr.type)) {
+      if (ignoreKeysSet.has(key) || ignoreTypesSet.has(curr.type)) {
+        return acc;
+      }
+
+      const remappedPath = mappings[key];
+      if (remappedPath) {
+        set(acc, remappedPath, curr);
+        return acc;
+      }
+
+      acc[key] = curr;
+
       return acc;
-    }
-
-    const remappedPath = mappings[key];
-    if (remappedPath) {
-      set(acc, remappedPath, curr);
-      return acc;
-    }
-
-    acc[key] = curr;
-
-    return acc;
+    }, {} as any);
   };
 }
