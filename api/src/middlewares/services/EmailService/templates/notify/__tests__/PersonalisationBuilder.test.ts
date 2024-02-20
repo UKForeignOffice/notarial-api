@@ -29,6 +29,7 @@ test("buildSendEmailArgs should return the correct personalisation", () => {
     country: "Turkey",
     additionalText: "",
     localRequirements: "",
+    multipleNameChanges: "TODO",
     post: "British Consulate General Istanbul",
     reference: "1234",
   });
