@@ -25,26 +25,22 @@ const template = `
         Physical or mental conditions that would reduce ability to read or sign affirmation: {{ jurats }}
     </li>
     <li>Needs passport certification: {{ certifyPassport }}</li>
-   
-    <li>Feedback consent: {{ feedbackConsent }}</li>
- 
 </ul>
 
 <h3>Fees:</h3>
 <ul>
     <li>Paid: {{payment.status}}</li>
     <li>
-        <a href="{{payment.url}}">View payment details or refund {{ payment.id }}</a>
+        <a href="{{payment.url}}">View payment details or refund (payment ID: {{ payment.id }})</a>
     </li>
     <li>
         <a href="{{payment.allTransactionsByCountry.url}}"> View all transactions for {{payment.allTransactionsByCountry.country}}</a>
     </li> 
 </ul>
 
-<h3>Applicant’s details</h3>
 
 
-    {{#each categories}}
+    {{#each questions}}
         <h4>{{@key}}</h4>
         <ul>
             {{#each this}}
