@@ -71,7 +71,7 @@ exports[`affirmation is successfully remapped 1`] = `
       "type": "date",
     },
     "emailAddress": {
-      "answer": "ros.vaughan@cautionyourblast.com",
+      "answer": "pye@cautionyourblast.com",
       "category": "contact",
       "key": "emailAddress",
       "title": "Email address",
