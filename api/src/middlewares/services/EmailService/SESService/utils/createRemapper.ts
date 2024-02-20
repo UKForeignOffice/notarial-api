@@ -9,7 +9,7 @@ import { FormField } from "../../../../../types/FormField";
  *
  * @example
  * const remapper = createRemapper(affirmationMappings, ["ignoreThisKey"], ["ignoreThisType"]);
- * const remappedObject = someArray.reduce(remapper, {});
+ * const remappedObject = remapper(formFields)
  */
 export function createRemapper<T>(mappings: T, ignoreKeys: string[] = [], ignoreTypes: string[] = []) {
   const ignoreKeysSet = new Set(ignoreKeys);
