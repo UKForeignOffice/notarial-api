@@ -3571,7 +3571,6 @@ __metadata:
     "@babel/core": ^7.22.5
     "@babel/preset-env": ^7.22.5
     "@babel/preset-typescript": ^7.22.5
-    "@types/bcrypt": ^5.0.0
     "@types/config": ^3.3.1
     "@types/express": ^4.17.18
     axios: ^1.6.2
