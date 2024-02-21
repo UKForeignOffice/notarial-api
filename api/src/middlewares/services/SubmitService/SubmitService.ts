@@ -28,10 +28,11 @@ export class SubmitService {
     const formFields = flattenQuestions(questions);
     const answers = answersHashMap(formFields);
     const reference = metadata?.pay?.reference ?? this.generateId();
+    const type = metadata?.type ?? "affirmation";
 
-    const staffJobId = await this.staffEmailService.send(formFields, "affirmation", { reference, payment: metadata.pay });
-    const userNotifyJobId = await this.notifyEmailService.sendEmailToUser(answers, { reference, payment: metadata.pay });
-    const postNotifyJobId = await this.notifyEmailService.sendEmailToPost(answers);
+    const staffJobId = await this.staffEmailService.send(formFields, "submission", { reference, payment: metadata.pay, type });
+    const userNotifyJobId = await this.notifyEmailService.sendEmailToUser(answers, { reference, payment: metadata.pay, type });
+    const postNotifyJobId = await this.notifyEmailService.sendEmailToPost(answers, type);
 
     return {
       response: {

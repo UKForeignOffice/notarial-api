@@ -7,7 +7,7 @@ import { SESEmailTemplate } from "../types";
 import config from "config";
 import { answersHashMap, getFileFields } from "../../helpers";
 import PgBoss from "pg-boss";
-import { PayMetadata } from "../../../../types/FormDataBody";
+import { formType, PayMetadata } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { reorderers } from "./reorderers";
 import { getPost } from "../utils/getPost";
@@ -42,8 +42,7 @@ export class SESService {
   constructor() {
     this.logger = logger().child({ service: "SES" });
     this.templates = {
-      affirmation: SESService.createTemplate(templates.ses.affirmation),
-      cni: SESService.createTemplate(templates.ses.affirmation),
+      submission: SESService.createTemplate(templates.ses.submission),
     };
 
     const queue = new PgBoss({
@@ -75,11 +74,12 @@ export class SESService {
     metadata: {
       reference: string;
       payment?: PayMetadata;
+      type: formType;
     }
   ) {
-    const { reference, payment } = metadata;
+    const { reference, payment, type } = metadata;
 
-    const emailArgs = await this.buildSendEmailArgs({ fields, payment }, template, reference);
+    const emailArgs = await this.buildSendEmailArgs({ fields, payment }, template, reference, type);
     return this.sendEmail(emailArgs, reference);
   }
 
@@ -95,8 +95,8 @@ export class SESService {
     return jobId;
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate) {
-    if (template === "cni") {
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate, type: formType) {
+    if (type === "cni") {
       throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 500, "CNI template has not been configured");
     }
 
@@ -121,7 +121,7 @@ export class SESService {
     });
   }
 
-  private async buildSendEmailArgs(data: { fields: FormField[]; payment?: PayMetadata }, template: SESEmailTemplate, reference: string) {
+  private async buildSendEmailArgs(data: { fields: FormField[]; payment?: PayMetadata }, template: SESEmailTemplate, reference: string, type: formType) {
     const { fields, payment } = data;
     const answers = answersHashMap(fields);
     let paymentViewModel: PaymentViewModel | undefined;
@@ -133,10 +133,10 @@ export class SESService {
     }
 
     const country = answers.country as string;
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference }, template);
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference }, template, type);
     const post = getPost(country, answers.post as string);
     return {
-      subject: `${template} application, ${post} – ${reference}`,
+      subject: `${type} application, ${post} – ${reference}`,
       body: emailBody,
       attachments: getFileFields(fields),
       reference,
