@@ -1,14 +1,16 @@
 import logger, { Logger } from "pino";
 import * as handlebars from "handlebars";
-import { ApplicationError } from "../../../ApplicationError";
-import { FormField } from "../../../types/FormField";
-import * as templates from "./templates";
-import additionalContexts from "./additionalContexts.json";
-import { SESEmailTemplate } from "./types";
+import { ApplicationError } from "../../../../ApplicationError";
+import { FormField } from "../../../../types/FormField";
+import * as templates from "./../templates";
+import { SESEmailTemplate } from "../types";
 import config from "config";
-import { getFileFields, answersHashMap } from "../helpers";
+import { answersHashMap, getFileFields } from "../../helpers";
 import PgBoss from "pg-boss";
-import { PayMetadata } from "../../../types/FormDataBody";
+import { PayMetadata } from "../../../../types/FormDataBody";
+import { remappers } from "./remappers";
+import { reorderers } from "./reorderers";
+import { getPost } from "../utils/getPost";
 
 type EmailArgs = {
   subject: string;
@@ -43,6 +45,7 @@ export class SESService {
       affirmation: SESService.createTemplate(templates.ses.affirmation),
       cni: SESService.createTemplate(templates.ses.affirmation),
     };
+
     const queue = new PgBoss({
       connectionString: config.get<string>("Queue.url"),
     });
@@ -83,7 +86,7 @@ export class SESService {
   /**
    * @throws ApplicationError
    */
-  private async sendEmail(emailArgs: EmailArgs, reference: string) {
+  async sendEmail(emailArgs: EmailArgs, reference: string) {
     const jobId = await this.queue?.send?.(this.QUEUE_NAME, emailArgs, this.queueOptions);
     if (!jobId) {
       throw new ApplicationError("SES", "QUEUE_ERROR", 500, `Queueing failed for ${reference}`);
@@ -92,15 +95,29 @@ export class SESService {
     return jobId;
   }
 
-  private getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel }, template: SESEmailTemplate) {
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate) {
     if (template === "cni") {
       throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 500, "CNI template has not been configured");
     }
-    const { fields, payment } = data;
+
+    const { fields, payment, reference } = data;
+    const remapped = remappers.affirmation(fields);
+
+    const { information } = remapped;
+
+    const reordered = reorderers.affirmation(remapped);
+    const country = information.country.answer;
+    const post = information.post?.answer;
 
     return this.templates[template]({
-      questions: fields,
+      post: getPost(country, post),
+      reference,
       payment,
+      country: information.country.answer,
+      oathType: information.oathType.answer,
+      jurats: information.jurats.answer,
+      certifyPassport: information.certifyPassport.answer,
+      questions: reordered,
     });
   }
 
@@ -116,9 +133,8 @@ export class SESService {
     }
 
     const country = answers.country as string;
-    const contextForCountry = additionalContexts.countries[country];
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel }, template);
-    const post = answers.post ?? contextForCountry.post;
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference }, template);
+    const post = getPost(country, answers.post as string);
     return {
       subject: `${template} application, ${post} – ${reference}`,
       body: emailBody,

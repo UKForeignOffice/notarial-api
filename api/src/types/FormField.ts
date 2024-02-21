@@ -3,4 +3,5 @@ export interface FormField {
   title: string;
   type: string;
   answer: string[] | string | boolean | null;
+  category?: string;
 }

@@ -1,5 +1,5 @@
 import "pg-boss";
-import { testData } from "../../../__tests__/fixtures";
+import { testData } from "./fixtures";
 import { answersHashMap, flattenQuestions } from "../../../../helpers";
 import { PersonalisationBuilder } from "../PersonalisationBuilder";
 import { buildUserConfirmationDocsList } from "../personalisationBuilder.userConfirmation";
@@ -29,6 +29,7 @@ test("buildSendEmailArgs should return the correct personalisation", () => {
     country: "Turkey",
     additionalText: "",
     localRequirements: "",
+    multipleNameChanges: "TODO",
     post: "British Consulate General Istanbul",
     reference: "1234",
   });

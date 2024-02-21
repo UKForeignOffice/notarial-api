@@ -1,6 +1,7 @@
 import { AnswersHashMap } from "../../../../../types/AnswersHashMap";
 import { PayMetadata } from "../../../../../types/FormDataBody";
 import * as additionalContexts from "../../additionalContexts.json";
+import { getPost } from "../../utils/getPost";
 
 const previousMarriageDocs = {
   Divorced: "decree absolute",
@@ -23,7 +24,7 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
 
   return {
     firstName: answers.firstName,
-    post,
+    post: getPost(country, post),
     docsList,
     additionalText: "",
     country,
@@ -31,6 +32,7 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
     localRequirements: additionalContext.localRequirements,
     civilPartnership: additionalContext.civilPartnership,
     reference: metadata.reference,
+    multipleNameChanges: "TODO",
   };
 }
 
