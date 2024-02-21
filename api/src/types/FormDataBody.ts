@@ -5,6 +5,8 @@ type PayState = {
   finished: boolean;
 };
 
+export type formType = "affirmation" | "cni";
+
 type FailedPayState = {
   status: "failed";
   message: string;
@@ -23,7 +25,7 @@ export interface FormDataBody {
   questions: FormQuestion[];
   metadata: {
     paymentSkipped: boolean;
-    type: "oath" | "cni";
+    type: formType;
     pay?: PayMetadata;
     [key: string]: any;
   };
