@@ -34,7 +34,6 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
     localRequirements: additionalContext.localRequirements,
     civilPartnership: additionalContext.civilPartnership,
     reference: metadata.reference,
-    multipleNameChanges: "TODO",
   };
 }
 
