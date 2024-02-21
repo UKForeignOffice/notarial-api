@@ -33,14 +33,15 @@ const paymentViewModel = {
 };
 
 test("getEmailBody renders oath email correctly", () => {
-  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel }, "affirmation");
-  expect(emailBody.includes("<li>First name: foo</li>")).toBe(true);
+  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" }, "submission", "affirmation");
+  expect(emailBody).toContain("<li>First name: foo</li>");
+  expect(emailBody).toContain("marital status affirmation");
 });
 
 test("getEmailBody renders cni template correctly", () => {
-  expect(() => {
-    emailService.getEmailBody(allOtherFields, "cni");
-  }).toThrow();
+  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" }, "submission", "cni");
+  expect(emailBody).toContain("<li>First name: foo</li>");
+  expect(emailBody).toContain("notice of marriage and marital status affirmation");
 });
 
 test("sendEmail returns a jobId", async () => {
@@ -82,8 +83,9 @@ test("buildSendEmailArgs returns an object with subject, body, attachments and r
       fields: allOtherFields,
       payment: testData.metadata.pay,
     },
-    "affirmation",
-    "1234"
+    "submission",
+    "1234",
+    "affirmation"
   );
   expect(result).toEqual({
     subject: "affirmation application, British Consulate General Istanbul – 1234",
