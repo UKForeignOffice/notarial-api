@@ -11,6 +11,7 @@ import { formType, PayMetadata } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { reorderers } from "./reorderers";
 import { getPost } from "../utils/getPost";
+import { getApplicationType } from "./utils/getApplicationType";
 
 type EmailArgs = {
   subject: string;
@@ -96,10 +97,6 @@ export class SESService {
   }
 
   getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate, type: formType) {
-    if (type === "cni") {
-      throw new ApplicationError("SES", "TEMPLATE_NOT_FOUND", 500, "CNI template has not been configured");
-    }
-
     const { fields, payment, reference } = data;
     const remapped = remappers.affirmation(fields);
 
@@ -111,6 +108,7 @@ export class SESService {
 
     return this.templates[template]({
       post: getPost(country, post),
+      type: getApplicationType(type),
       reference,
       payment,
       country: information.country.answer,
