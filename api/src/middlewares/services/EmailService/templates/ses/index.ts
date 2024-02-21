@@ -1,3 +1,3 @@
-import affirmation from "./affirmation";
+import submission from "./submission";
 
-export { affirmation };
+export { submission };
