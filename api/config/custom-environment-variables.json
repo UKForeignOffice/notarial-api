@@ -8,7 +8,8 @@
   "senderEmail": "SENDER_EMAIL_ADDRESS",
   "Notify": {
     "Template": {
-      "userConfirmation": "NOTIFY_TEMPLATE_USER_CONFIRMATION",
+      "affirmationUserConfirmation": "NOTIFY_TEMPLATE_AFFIRMATION_USER_CONFIRMATION",
+      "cniUserConfirmation": "NOTIFY_TEMPLATE_CNI_USER_CONFIRMATION",
       "postNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"
     },
     "Retry": {
