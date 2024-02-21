@@ -1,7 +1,7 @@
 const template = `
 <p>Dear {{post}}, </p>
 
-<p>You have a new application for a {{applicationType}}.</p>
+<p>You have a new application for a {{type}}.</p>
 <p>
     Below is the information the applicant entered in their online application. Attached are the documents they submitted.
     Use them to create a new case in Casebook and prepare the affirmation document.
