@@ -114,7 +114,7 @@ export class SESService {
       country: information.country.answer,
       oathType: information.oathType.answer,
       jurats: information.jurats.answer,
-      certifyPassport: information.certifyPassport.answer,
+      certifyPassport: information.certifyPassport?.answer ?? false,
       questions: reordered,
     });
   }
