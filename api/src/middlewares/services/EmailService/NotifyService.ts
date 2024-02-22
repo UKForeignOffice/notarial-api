@@ -5,12 +5,12 @@ import { NotifySendEmailArgs, NotifyTemplateGroup } from "./types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import PgBoss from "pg-boss";
 import { getPostEmailAddress } from "./utils/getPostEmailAddress";
-import { formType, PayMetadata } from "../../../types/FormDataBody";
+import { FormType, PayMetadata } from "../../../types/FormDataBody";
 import { PersonalisationBuilder } from "./templates/notify/PersonalisationBuilder";
 
 export class NotifyService {
   logger: Logger;
-  templates: Record<formType, NotifyTemplateGroup>;
+  templates: Record<FormType, NotifyTemplateGroup>;
   queue?: PgBoss;
   QUEUE_NAME = "NOTIFY";
   queueOptions: {
@@ -61,7 +61,7 @@ export class NotifyService {
     });
   }
 
-  async sendEmailToUser(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: formType }) {
+  async sendEmailToUser(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType }) {
     const { reference, type } = metadata;
     const personalisation = PersonalisationBuilder.userConfirmation(answers, metadata);
     const emailArgs = {
@@ -92,7 +92,7 @@ export class NotifyService {
     return jobId;
   }
 
-  async sendEmailToPost(answers: AnswersHashMap, type: formType) {
+  async sendEmailToPost(answers: AnswersHashMap, type: FormType) {
     const country = answers["country"] as string;
     const post = answers["post"] as string;
     const emailAddress = getPostEmailAddress(country, post);

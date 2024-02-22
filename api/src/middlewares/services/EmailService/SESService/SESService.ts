@@ -7,7 +7,7 @@ import { SESEmailTemplate } from "../types";
 import config from "config";
 import { answersHashMap, getFileFields } from "../../helpers";
 import PgBoss from "pg-boss";
-import { formType, PayMetadata } from "../../../../types/FormDataBody";
+import { FormType, PayMetadata } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { reorderers } from "./reorderers";
 import { getPost } from "../utils/getPost";
@@ -75,7 +75,7 @@ export class SESService {
     metadata: {
       reference: string;
       payment?: PayMetadata;
-      type: formType;
+      type: FormType;
     }
   ) {
     const { reference, payment, type } = metadata;
@@ -96,7 +96,7 @@ export class SESService {
     return jobId;
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate, type: formType) {
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate, type: FormType) {
     const { fields, payment, reference } = data;
     const remapped = remappers.affirmation(fields);
 
@@ -119,7 +119,7 @@ export class SESService {
     });
   }
 
-  private async buildSendEmailArgs(data: { fields: FormField[]; payment?: PayMetadata }, template: SESEmailTemplate, reference: string, type: formType) {
+  private async buildSendEmailArgs(data: { fields: FormField[]; payment?: PayMetadata }, template: SESEmailTemplate, reference: string, type: FormType) {
     const { fields, payment } = data;
     const answers = answersHashMap(fields);
     let paymentViewModel: PaymentViewModel | undefined;
@@ -153,7 +153,7 @@ export class SESService {
       id: payment.payId,
       status: payment.state.status === "success" ? "success" : "cancelled or failed",
       url: paymentUrl.toString(),
-      allTransactionsByCountry: {
+      allTransactionaasByCountry: {
         url: allTransactionsByCountryUrl.toString(),
         country,
       },
