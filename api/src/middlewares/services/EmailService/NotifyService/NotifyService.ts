@@ -1,16 +1,16 @@
 import config from "config";
 import pino, { Logger } from "pino";
-import { ApplicationError } from "../../../ApplicationError";
-import { NotifyEmailTemplate, NotifySendEmailArgs } from "./types";
-import { AnswersHashMap } from "../../../types/AnswersHashMap";
+import { ApplicationError } from "../../../../ApplicationError";
+import { NotifySendEmailArgs, NotifyTemplateGroup } from "../types";
+import { AnswersHashMap } from "../../../../types/AnswersHashMap";
 import PgBoss from "pg-boss";
-import { getPostEmailAddress } from "./utils/getPostEmailAddress";
-import { PayMetadata } from "../../../types/FormDataBody";
-import { PersonalisationBuilder } from "./templates/notify/PersonalisationBuilder";
+import { getPostEmailAddress } from "../utils/getPostEmailAddress";
+import { FormType, PayMetadata } from "../../../../types/FormDataBody";
+import { PersonalisationBuilder } from "./personalisation/PersonalisationBuilder";
 
 export class NotifyService {
   logger: Logger;
-  templates: Record<NotifyEmailTemplate, string>;
+  templates: Record<FormType, NotifyTemplateGroup>;
   queue?: PgBoss;
   QUEUE_NAME = "NOTIFY";
   queueOptions: {
@@ -20,11 +20,18 @@ export class NotifyService {
   constructor() {
     this.logger = pino().child({ service: "Notify" });
     try {
-      const userConfirmation = config.get<string>("Notify.Template.userConfirmation");
+      const affirmationUserConfirmation = config.get<string>("Notify.Template.affirmationUserConfirmation");
+      const cniUserConfirmation = config.get<string>("Notify.Template.cniUserConfirmation");
       const postNotification = config.get<string>("Notify.Template.postNotification");
       this.templates = {
-        userConfirmation,
-        postNotification,
+        affirmation: {
+          userConfirmation: affirmationUserConfirmation,
+          postNotification,
+        },
+        cni: {
+          userConfirmation: cniUserConfirmation,
+          postNotification,
+        },
       };
     } catch (err) {
       this.logger.error({ err }, "Notify templates have not been configured, exiting");
@@ -54,11 +61,11 @@ export class NotifyService {
     });
   }
 
-  async sendEmailToUser(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata }) {
-    const { reference } = metadata;
+  async sendEmailToUser(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType }) {
+    const { reference, type } = metadata;
     const personalisation = PersonalisationBuilder.userConfirmation(answers, metadata);
     const emailArgs = {
-      template: this.templates.userConfirmation,
+      template: this.templates[type].userConfirmation,
       emailAddress: answers.emailAddress as string,
       options: {
         personalisation,
@@ -85,7 +92,7 @@ export class NotifyService {
     return jobId;
   }
 
-  async sendEmailToPost(answers: AnswersHashMap) {
+  async sendEmailToPost(answers: AnswersHashMap, type: FormType) {
     const country = answers["country"] as string;
     const post = answers["post"] as string;
     const emailAddress = getPostEmailAddress(country, post);
@@ -98,7 +105,7 @@ export class NotifyService {
     const jobId = await this.queue?.send?.(
       this.QUEUE_NAME,
       {
-        template: this.templates.postNotification,
+        template: this.templates[type].postNotification,
         emailAddress,
         options: {
           personalisation,
@@ -108,7 +115,7 @@ export class NotifyService {
     );
 
     if (!jobId) {
-      throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, `Sending ${this.templates.postNotification} to ${emailAddress} failed`);
+      throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, `Sending ${this.templates[type].postNotification} to ${emailAddress} failed`);
     }
 
     return jobId;
