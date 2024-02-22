@@ -11,7 +11,7 @@ import { FormType, PayMetadata } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { reorderers } from "./reorderers";
 import { getPost } from "../utils/getPost";
-import { getApplicationTypeName } from "./utils/getApplicationType";
+import { getApplicationTypeName } from "./utils/getApplicationTypeName";
 
 type EmailArgs = {
   subject: string;
