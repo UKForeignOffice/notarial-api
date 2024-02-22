@@ -16,7 +16,7 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
   const docsList = buildUserConfirmationDocsList(answers, isSuccessfulPayment);
   const country = answers["country"] as string;
   const post = answers["post"] as string;
-  const multipleNameChanges = answers["nameChanged"] === "name changed more than once";
+  const nameChangedMoreThanOnce = answers["nameChanged"] === "name changed more than once";
 
   const additionalContext = {
     ...(additionalContexts.countries[country] ?? {}),
@@ -27,7 +27,7 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
     firstName: answers.firstName,
     post: getPost(country, post),
     docsList,
-    multipleNameChanges,
+    nameChangedMoreThanOnce,
     additionalText: "",
     country,
     bookingLink: additionalContext.bookingLink,

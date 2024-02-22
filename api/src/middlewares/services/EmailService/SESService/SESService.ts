@@ -11,7 +11,7 @@ import { FormType, PayMetadata } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { reorderers } from "./reorderers";
 import { getPost } from "../utils/getPost";
-import { getApplicationType } from "./utils/getApplicationType";
+import { getApplicationTypeName } from "./utils/getApplicationType";
 
 type EmailArgs = {
   subject: string;
@@ -108,7 +108,7 @@ export class SESService {
 
     return this.templates[template]({
       post: getPost(country, post),
-      type: getApplicationType(type),
+      type: getApplicationTypeName(type),
       reference,
       payment,
       country: information.country.answer,
