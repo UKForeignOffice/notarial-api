@@ -2,7 +2,7 @@ import logger, { Logger } from "pino";
 import * as handlebars from "handlebars";
 import { ApplicationError } from "../../../../ApplicationError";
 import { FormField } from "../../../../types/FormField";
-import * as templates from "./../templates";
+import * as templates from "./templates";
 import { SESEmailTemplate } from "../types";
 import config from "config";
 import { answersHashMap, getFileFields } from "../../helpers";
@@ -43,7 +43,7 @@ export class SESService {
   constructor() {
     this.logger = logger().child({ service: "SES" });
     this.templates = {
-      submission: SESService.createTemplate(templates.ses.submission),
+      submission: SESService.createTemplate(templates.submission),
     };
 
     const queue = new PgBoss({

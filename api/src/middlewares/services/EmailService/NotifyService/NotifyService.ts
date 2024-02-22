@@ -1,12 +1,12 @@
 import config from "config";
 import pino, { Logger } from "pino";
-import { ApplicationError } from "../../../ApplicationError";
-import { NotifySendEmailArgs, NotifyTemplateGroup } from "./types";
-import { AnswersHashMap } from "../../../types/AnswersHashMap";
+import { ApplicationError } from "../../../../ApplicationError";
+import { NotifySendEmailArgs, NotifyTemplateGroup } from "../types";
+import { AnswersHashMap } from "../../../../types/AnswersHashMap";
 import PgBoss from "pg-boss";
-import { getPostEmailAddress } from "./utils/getPostEmailAddress";
-import { FormType, PayMetadata } from "../../../types/FormDataBody";
-import { PersonalisationBuilder } from "./templates/notify/PersonalisationBuilder";
+import { getPostEmailAddress } from "../utils/getPostEmailAddress";
+import { FormType, PayMetadata } from "../../../../types/FormDataBody";
+import { PersonalisationBuilder } from "./personalisation/PersonalisationBuilder";
 
 export class NotifyService {
   logger: Logger;
