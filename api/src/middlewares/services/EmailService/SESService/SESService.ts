@@ -111,7 +111,7 @@ export class SESService {
       type: getApplicationTypeName(type),
       reference,
       payment,
-      country: information.country.answer,
+      country,
       oathType: information.oathType.answer,
       jurats: information.jurats.answer,
       certifyPassport: information.certifyPassport?.answer ?? false,

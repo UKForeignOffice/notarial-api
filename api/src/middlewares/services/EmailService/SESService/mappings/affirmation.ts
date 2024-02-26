@@ -9,6 +9,7 @@ export const order = {
   partnerName: "Partner's name",
   partnerAddress: "Partner's address",
   partnerNationality: "Partner's nationality",
+  marriageDetails: "Marriage",
   feedbackConsent: "Feedback consent",
 };
 

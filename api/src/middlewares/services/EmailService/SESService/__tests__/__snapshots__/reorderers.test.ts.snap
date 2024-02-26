@@ -161,6 +161,22 @@ exports[`affirmation is successfully remapped 1`] = `
       "type": "list",
     },
   },
+  "Marriage": {
+    "dateOfMarriage": {
+      "answer": "2024-06",
+      "category": "marriage",
+      "key": "dateOfMarriage",
+      "title": "Date of marriage",
+      "type": "monthYear",
+    },
+    "placeOfMarriage": {
+      "answer": "Test",
+      "category": "marriage",
+      "key": "placeOfMarriage",
+      "title": "Place of marriage",
+      "type": "text",
+    },
+  },
   "Occupation": {
     "occupation": {
       "answer": "Test",
