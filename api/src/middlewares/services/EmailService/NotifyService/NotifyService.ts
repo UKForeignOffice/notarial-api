@@ -22,6 +22,7 @@ export class NotifyService {
     try {
       const affirmationUserConfirmation = config.get<string>("Notify.Template.affirmationUserConfirmation");
       const cniUserConfirmation = config.get<string>("Notify.Template.cniUserConfirmation");
+      const exchangeUserConfirmation = config.get<string>("Notify.Template.exchangeUserConfirmation");
       const postNotification = config.get<string>("Notify.Template.postNotification");
       this.templates = {
         affirmation: {
@@ -30,6 +31,10 @@ export class NotifyService {
         },
         cni: {
           userConfirmation: cniUserConfirmation,
+          postNotification,
+        },
+        exchange: {
+          userConfirmation: exchangeUserConfirmation,
           postNotification,
         },
       };

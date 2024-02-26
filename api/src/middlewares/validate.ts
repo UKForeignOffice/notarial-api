@@ -4,7 +4,7 @@ import { ApplicationError } from "../ApplicationError";
 
 const questionSchema = joi.object().keys({
   index: joi.number().optional(),
-  category: joi.string().optional(),
+  category: joi.string().allow(null).optional(),
   question: joi.string().required(),
   fields: joi.array().items(joi.any()).required(),
 });
