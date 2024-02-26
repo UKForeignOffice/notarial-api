@@ -36,6 +36,6 @@ test("attachFilesToMessage returns valid raw email with images", async () => {
     message
   );
   const email = message.asRaw();
-  expect(email.includes('Content-Type: application/pdf; name="Favourite egg')).toBeTruthy();
-  expect(email.includes('Content-Disposition: attachment; filename="Favourite egg"')).toBeTruthy();
+  expect(email.includes('Content-Type: application/pdf; name="Favourite egg.pdf')).toBeTruthy();
+  expect(email.includes('Content-Disposition: attachment; filename="Favourite egg.pdf"')).toBeTruthy();
 });
