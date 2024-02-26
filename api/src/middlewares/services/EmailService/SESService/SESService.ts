@@ -5,13 +5,14 @@ import { FormField } from "../../../../types/FormField";
 import * as templates from "./templates";
 import { SESEmailTemplate } from "../types";
 import config from "config";
-import { answersHashMap, getFileFields } from "../../helpers";
+import { answersHashMap } from "../../helpers";
 import PgBoss from "pg-boss";
 import { FormType, PayMetadata } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { reorderers } from "./reorderers";
 import { getPost } from "../utils/getPost";
 import { getApplicationTypeName } from "./utils/getApplicationTypeName";
+import { isFieldType } from "../../../../utils";
 
 type EmailArgs = {
   subject: string;
@@ -136,7 +137,7 @@ export class SESService {
     return {
       subject: `${type} application, ${post} – ${reference}`,
       body: emailBody,
-      attachments: getFileFields(fields),
+      attachments: fields.filter(isFieldType("file")),
       reference,
     };
   }

@@ -38,10 +38,16 @@ export async function attachFilesToMessage(attachments: FormField[], message: MI
   for (const attachment of attachments) {
     const { contentType, data } = await fileService.getFile(attachment.answer as string);
     message.addAttachment({
-      filename: attachment.title,
+      filename: `${attachment.title}.${FileMimeType[contentType]}`,
       contentType,
       data: data.toString("base64"),
     });
   }
   return message;
 }
+
+export const FileMimeType = {
+  "image/jpeg": "jpg",
+  "application/pdf": "pdf",
+  "image/png": "png",
+};
