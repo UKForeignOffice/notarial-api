@@ -32,7 +32,8 @@
     "handlebars": "^4.7.8"
   },
   "resolutions": {
-    "follow-redirects": "1.15.4"
+    "follow-redirects": "1.15.4",
+    "ip": "2.0.1"
   },
   "release": {
     "branches": [
