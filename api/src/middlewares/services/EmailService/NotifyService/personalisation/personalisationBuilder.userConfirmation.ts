@@ -38,9 +38,9 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
 }
 
 export function buildUserConfirmationDocsList(fields: AnswersHashMap, paid) {
-  const docsList = ["your UK passport", "proof of address", "your partner’s passport or national identity card"];
+  const docsList = ["your UK passport", "your birth certificate", "proof of address", "your partner’s passport or national identity card"];
   if (fields.maritalStatus && fields.maritalStatus !== "Never married") {
-    docsList.push(`your ${previousMarriageDocs[fields.maritalStatus as string]}`);
+    docsList.push(`${previousMarriageDocs[fields.maritalStatus as string]}`);
   }
   if (fields.oathType === "affidavit") {
     docsList.push("religious book of your faith to swear upon");
