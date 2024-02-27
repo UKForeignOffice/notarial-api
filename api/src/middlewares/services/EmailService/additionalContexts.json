@@ -39,7 +39,7 @@
       "post": "British Embassy Baku",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=99&service=13",
       "additionalDocs": "",
-      "localRequirements": "Your partner must come to your appointment with you and bring their passport.\n",
+      "localRequirements": "Your partner must come to your appointment with you and bring their passport.",
       "civilPartnership": ""
     },
     "Bahrain": {
@@ -60,7 +60,7 @@
     "Benin": {
       "post": "British High Commission Accra",
       "bookingLink": "",
-      "additionalDocs": "\n* premarital medical certificate\n* partner's premarital medical certificate",
+      "additionalDocs": "* premarital medical certificate \n* partner’s premarital medical certificate",
       "localRequirements": "",
       "civilPartnership": ""
     },
@@ -81,7 +81,7 @@
     "Bulgaria": {
       "post": "British Embassy Sofia",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=34&service=10",
-      "additionalDocs": "\n* partner’s residence permit",
+      "additionalDocs": "* partner’s residence permit",
       "localRequirements": "",
       "civilPartnership": ""
     },
@@ -96,8 +96,8 @@
     "Colombia": {
       "post": "British Embassy Bogotá",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=104&service=13",
-      "additionalDocs": "",
-      "localRequirements": "",
+      "additionalDocs": "\n* test field",
+      "localRequirements": "Testing, testing, 1,2,3 content testing",
       "civilPartnership": "true"
     },
     "Congo (Democratic Republic)": {
@@ -154,7 +154,7 @@
       "post": "British Embassy Helsinki",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=24&service=13",
       "additionalDocs": "\n* partner’s birth certificate",
-      "localRequirements": "Check with your wedding officiant (the person conducting your ceremony) or venue how long your affirmation is valid for as it varies in different regions.\n",
+      "localRequirements": "",
       "civilPartnership": "true"
     },
     "France": { "post": "British Embassy Paris", "bookingLink": "", "additionalDocs": "", "localRequirements": "", "civilPartnership": "true" },
@@ -169,7 +169,7 @@
     "Guinea": {
       "post": "British Embassy Conakry",
       "bookingLink": "",
-      "additionalDocs": "\n* premarital medical certificate\n* partner's premarital medical certificate\n* photo ID (in addition to your UK passport)",
+      "additionalDocs": "\n* premarital medical certificate\n* partner’s premarital medical certificate\n* photo ID (in addition to your UK passport)",
       "localRequirements": "",
       "civilPartnership": ""
     },
@@ -287,9 +287,9 @@
     "Poland": {
       "post": "British Embassy Warsaw",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10",
-      "additionalDocs": "",
-      "localRequirements": "",
-      "civilPartnership": ""
+      "additionalDocs": "* test field \n* test field",
+      "localRequirements": "Test field [test link](www.gov.uk)",
+      "civilPartnership": "test field"
     },
     "Qatar": {
       "post": "British Embassy Doha",
@@ -335,7 +335,7 @@
       "post": "British Office Taipei",
       "bookingLink": "",
       "additionalDocs": "",
-      "localRequirements": "\"Contact the Household Registration Office to find out about local marriage laws, including what documents you and your partner will need.\nThe Household Registration Office may say you need a certificate of no impediment (CNI) to get married. You must <a class=\"govuk-link\" href=\"https://www.gov.uk/register-offices\">make an appointment at a UK register office</a> to get one.There are no British consular facilities that will issue a CNI in Taiwan.\"",
+      "localRequirements": "Contact the Household Registration Office to find out about local marriage laws, including what documents you and your partner will need. \nThe Household Registration Office may say you need a certificate of no impediment (CNI) to get married. You must [make an appointment at a UK register office to get one](https://www.gov.uk/register-offices).There are no British consular facilities that will issue a CNI in Taiwan.",
       "civilPartnership": ""
     },
     "Tajikistan": {
@@ -349,9 +349,9 @@
     "Togo": {
       "post": "British High Commission Accra",
       "bookingLink": "",
-      "additionalDocs": "\n* premarital medical certificate\n* partner's premarital medical certificate",
+      "additionalDocs": "\n* premarital medical certificate \n* partner’s premarital medical certificate",
       "localRequirements": "",
-      "civilPartnership": ""
+      "civilPartnership": "Test field"
     },
     "Tunisia": {
       "post": "British Embassy Tunis",
@@ -387,10 +387,14 @@
     "American Samoa": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Andorra": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "true" },
     "Anguilla": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Antigua and Barbuda": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
+    "Antigua and Barbuda": {
+      "additionalDocs": "",
+      "localRequirements": "If you’re asked to provide a CNI or similar document, explain that the UK no longer issues these in Commonwealth countries. [Check if there’s an information note you can use to help explain this](https://www.gov.uk)",
+      "civilPartnership": ""
+    },
     "Argentina": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "true" },
     "Aruba": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "true" },
-    "Australia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
+    "Australia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "true" },
     "The Bahamas": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Bangladesh": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Barbados": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
@@ -405,7 +409,7 @@
     "Brunei": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Burkina Faso": { "additionalDocs": "\n* premarital medical certificate", "localRequirements": "", "civilPartnership": "" },
     "Cameroon": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Canada": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
+    "Canada": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "true" },
     "Cape Verde": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Cayman Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Central African Republic": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
@@ -446,7 +450,11 @@
     "India": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Indonesia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Ireland": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Italy": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
+    "Italy": {
+      "additionalDocs": "* testing field \n* testing field",
+      "localRequirements": "Testing, testing 1,2,3 testing content",
+      "civilPartnership": ""
+    },
     "Jamaica": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Japan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Kazakhstan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
@@ -498,12 +506,12 @@
     "Slovakia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Solomon Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Somalia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "South Africa": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
+    "South Africa": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "true" },
     "South Georgia and the South Sandwich Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "South Sudan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Spain": {
       "additionalDocs": "",
-      "localRequirements": "Check with your civil registry how long your affirmation is valid for.\n",
+      "localRequirements": "Check with your civil registry how long your affirmation is valid for.",
       "civilPartnership": "true"
     },
     "Sri Lanka": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
@@ -534,7 +542,8 @@
     "Wallis and Futuna": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Western Sahara": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Yemen": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Zambia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" }
+    "Zambia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
+    "Democratic Republic of the Congo": { "civilPartnership": "", "additionalDocs": "", "localRequirements": "" }
   },
   "posts": {
     "British Embassy Brasilia": {
