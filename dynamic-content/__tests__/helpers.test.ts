@@ -56,7 +56,7 @@ test("determineBookingFamily returns countries if there's only one booking link 
   };
   expect(helpers.determineBookingContentFamily(rows, currentRow)).toBe("countries");
 });
-test("bulletsToArray returns valid html content if plain text with asterisks is passed in", () => {
+test("bulletsToArray returns valid array if plain text with asterisks is passed in", () => {
   const bulletsString = `*item 1 *item 2 some other content`;
   expect(helpers.bulletsToArray(bulletsString)).toEqual(["item 1 ", "item 2 some other content"]);
 });
