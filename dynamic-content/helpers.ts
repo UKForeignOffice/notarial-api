@@ -55,7 +55,7 @@ function parseRowContent(row: Row) {
 
 function parseContent(acc: Record<string, string>, [key, value]) {
   if (key === "type" && value) value = value.toLowerCase();
-  if (value && value.includes("*")) value = bulletsToNotifyString(value);
+  if (value && value.includes("*")) value = bulletsToArray(value);
   if (value && value.includes("<br>")) value = breaksToNotifyString(value);
   acc[key] = value;
   return acc;
@@ -81,16 +81,8 @@ export function getRowObjects(rows: string[], fieldNames: string[], fieldNameMap
  * Converts a plain text string into a html bullet list. Bullets are defined in the plain text string by asterisks.
  * @param bulletList - The plain text string to be converted
  */
-export function bulletsToNotifyString(bulletList: string) {
-  return bulletList
-    .split("*")
-    .map((bullet) => {
-      if (bullet !== "") {
-        return `* ${bullet}`;
-      }
-      return "";
-    })
-    .join("\n");
+export function bulletsToArray(bulletList: string) {
+  return bulletList.split("*").filter((bullet) => bullet !== "");
 }
 
 /**

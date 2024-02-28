@@ -51,7 +51,7 @@ export function buildUserConfirmationDocsList(fields: AnswersHashMap, paid) {
     docsList.push(`the equivalent of ${price} in the local currency`);
   }
   const country = fields.country as string;
-  const additionalDocs = additionalContexts[country]?.additionalDocs ?? [];
+  const additionalDocs = additionalContexts.countries[country]?.additionalDocs ?? [];
   docsList.push(...additionalDocs);
   return docsList.map((doc) => `* ${doc}`).join("\n");
 }
