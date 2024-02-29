@@ -34,7 +34,7 @@ export class SubmitService {
     const userNotifyJobPromise = this.notifyEmailService.sendEmailToUser(answers, { reference, payment: metadata.pay, type });
     const postNotifyJobPromise = this.notifyEmailService.sendEmailToPost(answers, type);
 
-    await Promise.any([staffJobPromise, userNotifyJobPromise, postNotifyJobPromise]);
+    await Promise.allSettled([staffJobPromise, userNotifyJobPromise, postNotifyJobPromise]);
     return {
       reference,
     };
