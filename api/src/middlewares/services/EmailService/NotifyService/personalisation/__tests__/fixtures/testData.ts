@@ -137,7 +137,7 @@ export const testData = {
     {
       category: "oath",
       question: "Your affirmation document",
-      fields: [{ key: "UPQLxm", title: "Select any that apply to you", type: "list", answer: ["you cannot read English"] }],
+      fields: [{ key: "jurats", title: "Select any that apply to you", type: "list", answer: "Yes" }],
     },
     {
       category: "feedback",

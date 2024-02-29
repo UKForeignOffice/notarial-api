@@ -28,7 +28,7 @@ export const fields = [
     category: "marriage",
   },
   {
-    key: "nameChanged",
+    key: "nameChangedByDeedPoll",
     type: "list",
     title: "Name changed",
     answer: "By deed poll",
@@ -308,7 +308,7 @@ export const fields = [
     category: "oath",
   },
   {
-    key: "UPQLxm",
+    key: "jurats",
     type: "list",
     title: "Select all that apply to you ",
     answer: ["you have no additional reading or writing needs"],
@@ -486,7 +486,7 @@ export const remapped = {
     jurats: {
       answer: ["you have no additional reading or writing needs"],
       category: "oath",
-      key: "UPQLxm",
+      key: "jurats",
       title: "Select all that apply to you ",
       type: "list",
     },
