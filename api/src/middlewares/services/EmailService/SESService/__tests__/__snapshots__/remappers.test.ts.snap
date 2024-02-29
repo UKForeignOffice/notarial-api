@@ -47,10 +47,10 @@ exports[`affirmation is successfully remapped 1`] = `
       "title": "Country of birth",
       "type": "list",
     },
-    "nameChanged": {
+    "nameChangedByDeedPoll": {
       "answer": "By deed poll",
       "category": "nameChange",
-      "key": "nameChanged",
+      "key": "nameChangedByDeedPoll",
       "title": "Name changed",
       "type": "list",
     },
@@ -129,15 +129,6 @@ exports[`affirmation is successfully remapped 1`] = `
       "type": "text",
     },
   },
-  "applicationBirth": {
-    "previousName": {
-      "answer": "Testing",
-      "category": "nameChange",
-      "key": "previousName",
-      "title": "Previous name",
-      "type": "text",
-    },
-  },
   "feedbackConsent": {
     "feedbackConsent": {
       "answer": true,
@@ -167,7 +158,7 @@ exports[`affirmation is successfully remapped 1`] = `
         "you have no additional reading or writing needs",
       ],
       "category": "oath",
-      "key": "UPQLxm",
+      "key": "jurats",
       "title": "Select all that apply to you ",
       "type": "list",
     },
@@ -311,6 +302,13 @@ exports[`affirmation is successfully remapped 1`] = `
       "title": "Partner's nationality",
       "type": "list",
     },
+  },
+  "previousName": {
+    "answer": "Testing",
+    "category": "nameChange",
+    "key": "previousName",
+    "title": "Previous name",
+    "type": "text",
   },
 }
 `;
