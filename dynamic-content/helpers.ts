@@ -55,7 +55,7 @@ function parseRowContent(row: Row) {
 
 function parseContent(acc: Record<string, string>, [key, value]) {
   if (key === "type" && value) value = value.toLowerCase();
-  if (value && value.includes("*")) value = bulletsToArray(value);
+  if (key === "additionalDocs" && value) value = bulletsToArray(value);
   if (value && value.includes("<br>")) value = breaksToNotifyString(value);
   acc[key] = value;
   return acc;
