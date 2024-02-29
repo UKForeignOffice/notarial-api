@@ -15,7 +15,6 @@ export const order = {
 
 export const remap = {
   country: "information.country",
-  UPQLxm: "information.jurats",
   jurats: "information.jurats",
   certifyPassport: "information.certifyPassport",
   feedbackConsent: "feedbackConsent.feedbackConsent",
@@ -36,8 +35,10 @@ export const remap = {
   countryAddress: "applicantAddress.country",
   placeOfBirth: "applicantBirth.placeOfBirth",
   countryOfBirth: "applicantBirth.countryOfBirth",
-  nameChanged: "applicantBirth.nameChanged",
-  previousName: "applicationBirth.previousName",
+  nameChangedByDeedPoll: "applicantBirth.nameChangedByDeedPoll",
+  previousNameByDeedPoll: "applicantBirth.previousNameByDeedPoll",
+  nameChangedByMarriage: "applicantBirth.nameChangedByMarriage",
+  previousNameByMarriage: "applicantBirth.previousNameByMarriage",
 
   passportDateOfIssue: "applicantPassport.dateOfIssue",
   passportNumber: "applicantPassport.number",
