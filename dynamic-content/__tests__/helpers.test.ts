@@ -56,9 +56,9 @@ test("determineBookingFamily returns countries if there's only one booking link 
   };
   expect(helpers.determineBookingContentFamily(rows, currentRow)).toBe("countries");
 });
-test("bulletsToHtml returns valid html content if plain text with asterisks is passed in", () => {
+test("bulletsToArray returns valid array if plain text with asterisks is passed in", () => {
   const bulletsString = `*item 1 *item 2 some other content`;
-  expect(helpers.bulletsToNotifyString(bulletsString)).toEqual("\n* item 1 \n* item 2 some other content");
+  expect(helpers.bulletsToArray(bulletsString)).toEqual(["item 1 ", "item 2 some other content"]);
 });
 test("splitRow correctly splits a csv row into its fields", () => {
   const row = "Austria,Vienna,Affirmation,Austrian residence permit,Yes";

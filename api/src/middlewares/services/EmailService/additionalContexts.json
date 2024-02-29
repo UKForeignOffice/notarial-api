@@ -24,7 +24,7 @@
     "Armenia": {
       "post": "British Embassy Yerevan",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=157&service=10",
-      "additionalDocs": "\n* partner’s proof of address",
+      "additionalDocs": ["partner’s proof of address"],
       "localRequirements": "",
       "civilPartnership": ""
     },
@@ -60,7 +60,7 @@
     "Benin": {
       "post": "British High Commission Accra",
       "bookingLink": "",
-      "additionalDocs": "* premarital medical certificate \n* partner’s premarital medical certificate",
+      "additionalDocs": ["premarital medical certificate ", "partner’s premarital medical certificate"],
       "localRequirements": "",
       "civilPartnership": ""
     },
@@ -81,7 +81,7 @@
     "Bulgaria": {
       "post": "British Embassy Sofia",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=34&service=10",
-      "additionalDocs": "* partner’s residence permit",
+      "additionalDocs": ["partner’s residence permit"],
       "localRequirements": "",
       "civilPartnership": ""
     },
@@ -96,7 +96,7 @@
     "Colombia": {
       "post": "British Embassy Bogotá",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=104&service=13",
-      "additionalDocs": "\n* test field",
+      "additionalDocs": ["test field"],
       "localRequirements": "Testing, testing, 1,2,3 content testing",
       "civilPartnership": "true"
     },
@@ -153,7 +153,7 @@
     "Finland": {
       "post": "British Embassy Helsinki",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=24&service=13",
-      "additionalDocs": "\n* partner’s birth certificate",
+      "additionalDocs": ["partner’s birth certificate"],
       "localRequirements": "",
       "civilPartnership": "true"
     },
@@ -169,7 +169,7 @@
     "Guinea": {
       "post": "British Embassy Conakry",
       "bookingLink": "",
-      "additionalDocs": "\n* premarital medical certificate\n* partner’s premarital medical certificate\n* photo ID (in addition to your UK passport)",
+      "additionalDocs": ["premarital medical certificate ", "partner’s premarital medical certificate ", "photo ID (in addition to your UK passport)"],
       "localRequirements": "",
       "civilPartnership": ""
     },
@@ -256,7 +256,7 @@
     "Nepal": {
       "post": "British Embassy Kathmandu",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=120&service=10",
-      "additionalDocs": "\n* partner’s national ID that includes their address",
+      "additionalDocs": ["partner’s national ID that includes their address"],
       "localRequirements": "",
       "civilPartnership": ""
     },
@@ -287,7 +287,7 @@
     "Poland": {
       "post": "British Embassy Warsaw",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10",
-      "additionalDocs": "* test field \n* test field",
+      "additionalDocs": ["test field ", "test field"],
       "localRequirements": "Test field [test link](www.gov.uk)",
       "civilPartnership": "test field"
     },
@@ -349,7 +349,7 @@
     "Togo": {
       "post": "British High Commission Accra",
       "bookingLink": "",
-      "additionalDocs": "\n* premarital medical certificate \n* partner’s premarital medical certificate",
+      "additionalDocs": ["premarital medical certificate ", "partner’s premarital medical certificate"],
       "localRequirements": "",
       "civilPartnership": "Test field"
     },
@@ -378,7 +378,7 @@
     "Venezuela": {
       "post": "British Embassy Caracas",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=108&service=10",
-      "additionalDocs": "\n* partner’s CNI",
+      "additionalDocs": ["partner’s CNI"],
       "localRequirements": "",
       "civilPartnership": ""
     },
@@ -407,7 +407,7 @@
     "British Indian Ocean Territory": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "British Virgin Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Brunei": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Burkina Faso": { "additionalDocs": "\n* premarital medical certificate", "localRequirements": "", "civilPartnership": "" },
+    "Burkina Faso": { "additionalDocs": ["premarital medical certificate"], "localRequirements": "", "civilPartnership": "" },
     "Cameroon": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Canada": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "true" },
     "Cape Verde": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
@@ -451,7 +451,7 @@
     "Indonesia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Ireland": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
     "Italy": {
-      "additionalDocs": "* testing field \n* testing field",
+      "additionalDocs": ["testing field ", "testing field"],
       "localRequirements": "Testing, testing 1,2,3 testing content",
       "civilPartnership": ""
     },
