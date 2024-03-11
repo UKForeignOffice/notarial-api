@@ -13,12 +13,14 @@ import { reorderers } from "./reorderers";
 import { getPost } from "../utils/getPost";
 import { getApplicationTypeName } from "./utils/getApplicationTypeName";
 import { isFieldType } from "../../../../utils";
+import { NotifyService } from "../NotifyService";
 
 type EmailArgs = {
   subject: string;
   body: string;
   attachments: FormField[];
   reference: string;
+  onComplete?: ReturnType<NotifyService["getPostAlertOptions"]>;
 };
 
 type PaymentViewModel = {
@@ -77,11 +79,11 @@ export class SESService {
       reference: string;
       payment?: PayMetadata;
       type: FormType;
+      postAlertOptions: ReturnType<NotifyService["getPostAlertOptions"]>;
     }
   ) {
-    const { reference, payment, type } = metadata;
-
-    const emailArgs = await this.buildSendEmailArgs({ fields, payment }, template, reference, type);
+    const { reference, payment, type, postAlertOptions } = metadata;
+    const emailArgs = await this.buildSendEmailArgs({ fields, payment }, template, reference, type, postAlertOptions);
     return this.sendEmail(emailArgs, reference);
   }
 
@@ -120,7 +122,13 @@ export class SESService {
     });
   }
 
-  private async buildSendEmailArgs(data: { fields: FormField[]; payment?: PayMetadata }, template: SESEmailTemplate, reference: string, type: FormType) {
+  private async buildSendEmailArgs(
+    data: { fields: FormField[]; payment?: PayMetadata },
+    template: SESEmailTemplate,
+    reference: string,
+    type: FormType,
+    postAlertOptions: ReturnType<NotifyService["getPostAlertOptions"]>
+  ) {
     const { fields, payment } = data;
     const answers = answersHashMap(fields);
     let paymentViewModel: PaymentViewModel | undefined;
@@ -139,6 +147,7 @@ export class SESService {
       body: emailBody,
       attachments: fields.filter(isFieldType("file")),
       reference,
+      postAlertOptions,
     };
   }
 

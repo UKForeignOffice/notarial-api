@@ -4,6 +4,7 @@ import { SESJob } from "../types";
 import { sesClient, SESEmail } from "../helpers";
 
 import { SESServiceException, SendRawEmailCommand } from "@aws-sdk/client-ses";
+import { getConsumer } from "../../../Consumer";
 
 const queue = "SES";
 const worker = "sesHandler";
@@ -39,12 +40,31 @@ export async function sesHandler(job: Job<SESJob>) {
     },
   });
 
+  let response;
+
   try {
-    const response = await sesClient.send(emailCommand);
+    response = await sesClient.send(emailCommand);
     logger.info(`Reference ${reference} staff email sent successfully with SES message id: ${response.MessageId}`);
-    return response;
   } catch (err: SESServiceException | any) {
     logger.error({ jobId, reference, err }, "SES could not send the email");
     throw err;
+  }
+
+  sendAlertToPost(job);
+  return response;
+}
+
+/**
+ * Sends an alert to individual posts, notifying them that a form has been submitted to the shared inbox.
+ */
+export async function sendAlertToPost(job: Job<SESJob>) {
+  const jobId = job.id;
+  logger.info({ jobId }, `completed ${jobId} on ${worker}. Creating NOTIFY job to alert staff`);
+
+  const consumer = await getConsumer();
+  try {
+    await consumer.send("NOTIFY", job.data.postAlertOptions);
+  } catch (e) {
+    logger.error({ jobId, err: e }, `Failed to send NOTIFY job to alert staff for ${jobId}`);
   }
 }

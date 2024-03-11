@@ -30,11 +30,11 @@ export class SubmitService {
     const reference = metadata?.pay?.reference ?? this.generateId();
     const type = metadata?.type ?? "affirmation";
 
-    const staffJobPromise = this.staffEmailService.send(formFields, "submission", { reference, payment: metadata.pay, type });
+    const postAlertOptions = this.notifyEmailService.getPostAlertOptions(answers, type, reference);
+    const staffJobPromise = this.staffEmailService.send(formFields, "submission", { reference, payment: metadata.pay, type, postAlertOptions });
     const userNotifyJobPromise = this.notifyEmailService.sendEmailToUser(answers, { reference, payment: metadata.pay, type });
-    const postNotifyJobPromise = this.notifyEmailService.sendEmailToPost(answers, type);
 
-    await Promise.allSettled([staffJobPromise, userNotifyJobPromise, postNotifyJobPromise]);
+    await Promise.allSettled([staffJobPromise, userNotifyJobPromise]);
     return {
       reference,
     };

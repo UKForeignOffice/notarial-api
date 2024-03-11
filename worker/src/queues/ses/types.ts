@@ -1,3 +1,5 @@
+import { SendEmailOptions } from "notifications-node-client";
+
 export interface FormField {
   key: string;
   title: string;
@@ -10,4 +12,9 @@ export type SESJob = {
   body: string;
   attachments: FormField[];
   reference: string;
+  postAlertOptions: {
+    template: string;
+    emailAddress: string;
+    options: SendEmailOptions<any>;
+  };
 };
