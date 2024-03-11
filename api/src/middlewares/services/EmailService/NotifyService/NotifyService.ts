@@ -103,7 +103,7 @@ export class NotifyService {
     return jobId;
   }
 
-  async sendEmailToPost(answers: AnswersHashMap, type: FormType) {
+  getPostAlertOptions(answers: AnswersHashMap, type: FormType, reference: string) {
     const country = answers["country"] as string;
     const post = answers["post"] as string;
     const emailAddress = getPostEmailAddress(country, post);
@@ -113,22 +113,14 @@ export class NotifyService {
       return;
     }
 
-    const jobId = await this.queue?.send?.(
-      this.QUEUE_NAME,
-      {
-        template: this.templates[type].postNotification,
-        emailAddress,
-        options: {
-          personalisation,
-        },
+    return {
+      template: this.templates[type].postNotification,
+      emailAddress,
+      reference,
+      options: {
+        personalisation,
+        reference,
       },
-      this.queueOptions
-    );
-
-    if (!jobId) {
-      throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, `Sending ${this.templates[type].postNotification} to ${emailAddress} failed`);
-    }
-
-    return jobId;
+    };
   }
 }
