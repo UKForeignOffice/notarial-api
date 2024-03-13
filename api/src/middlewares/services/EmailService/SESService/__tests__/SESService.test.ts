@@ -45,7 +45,7 @@ test("getEmailBody renders cni template correctly", () => {
 });
 
 test("sendEmail returns a jobId", async () => {
-  const jobId = await emailService.sendEmail(
+  const jobId = await emailService.sendToSendQueue(
     {
       subject: "your application",
       body: "has been accepted",
@@ -62,7 +62,7 @@ test("sendEmail throws ApplicationError when no jobId is returned", async () => 
   sendSpy.mockResolvedValueOnce(null);
 
   try {
-    await emailService.sendEmail(
+    await emailService.sendToSendQueue(
       {
         subject: "your application",
         body: "has been accepted",

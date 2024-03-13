@@ -34,6 +34,16 @@ type PaymentViewModel = {
   };
 };
 
+type ProcessQueueData = {
+  fields: FormField[];
+  template: SESEmailTemplate;
+  metadata: {
+    reference: string;
+    payment?: PayMetadata;
+    type: FormType;
+    postAlertOptions: ReturnType<NotifyService["getPostAlertOptions"]>;
+  };
+};
 export class SESService {
   logger: Logger;
   templates: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
@@ -97,26 +107,15 @@ export class SESService {
     return jobId;
   }
 
-  async send(data: {
-    fields: FormField[];
-    template: SESEmailTemplate;
-    metadata: {
-      reference: string;
-      payment?: PayMetadata;
-      type: FormType;
-      postAlertOptions: ReturnType<NotifyService["getPostAlertOptions"]>;
-    };
-  }) {
-    const { fields, template, metadata } = data;
-    const { reference, payment, type, postAlertOptions } = metadata;
-    const emailArgs = this.buildSendEmailArgs({ fields, payment }, template, reference, type, postAlertOptions);
-    return this.sendEmail(emailArgs, reference);
+  async sendEmail(data: ProcessQueueData) {
+    const emailArgs = this.buildSendEmailArgs(data);
+    return this.sendToSendQueue(emailArgs, emailArgs.reference);
   }
 
   /**
    * @throws ApplicationError
    */
-  async sendEmail(emailArgs: EmailArgs, reference: string) {
+  async sendToSendQueue(emailArgs: EmailArgs, reference: string) {
     const jobId = await this.queue?.send?.(this.QUEUE_NAME, emailArgs, this.queueOptions);
     if (!jobId) {
       throw new ApplicationError("SES", "QUEUE_ERROR", 500, `Queueing ${this.QUEUE_NAME} failed for ${reference}`);
@@ -147,14 +146,9 @@ export class SESService {
     });
   }
 
-  private buildSendEmailArgs(
-    data: { fields: FormField[]; payment?: PayMetadata },
-    template: SESEmailTemplate,
-    reference: string,
-    type: FormType,
-    postAlertOptions: ReturnType<NotifyService["getPostAlertOptions"]>
-  ) {
-    const { fields, payment } = data;
+  private buildSendEmailArgs(data: ProcessQueueData) {
+    const { fields, template, metadata } = data;
+    const { reference, payment, type, postAlertOptions } = metadata;
     const answers = answersHashMap(fields);
     let paymentViewModel: PaymentViewModel | undefined;
 

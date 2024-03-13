@@ -29,7 +29,7 @@ export function validate(req: Request, _res: Response, next: NextFunction) {
 export async function post(req: Request, res: Response, next: NextFunction) {
   const { sesService } = res.app.services;
   try {
-    return await sesService.send(req.body);
+    return await sesService.sendEmail(req.body);
   } catch (e) {
     next(e);
     return;
