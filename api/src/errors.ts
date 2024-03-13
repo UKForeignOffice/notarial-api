@@ -31,6 +31,7 @@ type SESErrorCode =
   | "EMPTY_RES"
   | "BAD_REQUEST"
   | "API_ERROR"
+  | "MISSING_ANSWER"
   | "UNKNOWN";
 type NotifyErrorCode = "QUEUE_ERROR" | "UNKNOWN";
 
@@ -61,6 +62,7 @@ const SES: ErrorRecord<SESErrorCode> = {
   EMPTY_RES: "The email service did not return a response",
   BAD_REQUEST: "The email data being sent was malformed",
   API_ERROR: "The email service returned an error",
+  MISSING_ANSWER: "The payload is missing an answer",
   UNKNOWN: "There was an unknown error sending the email",
 };
 

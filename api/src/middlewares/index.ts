@@ -12,6 +12,8 @@ export function initMiddleware(server: Application) {
     sesService,
   });
   server.services = {
+    notifyService,
+    sesService,
     submitService,
   };
 }

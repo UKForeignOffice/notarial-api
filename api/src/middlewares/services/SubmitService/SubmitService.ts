@@ -2,6 +2,7 @@ import logger, { Logger } from "pino";
 import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
 import { NotifyService, SESService } from "../EmailService";
+import { ApplicationError } from "../../../ApplicationError";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
@@ -30,11 +31,13 @@ export class SubmitService {
     const reference = metadata?.pay?.reference ?? this.generateId();
     const type = metadata?.type ?? "affirmation";
 
-    const postAlertOptions = this.notifyEmailService.getPostAlertOptions(answers, type, reference);
-    const staffJobPromise = this.staffEmailService.send(formFields, "submission", { reference, payment: metadata.pay, type, postAlertOptions });
-    const userNotifyJobPromise = this.notifyEmailService.sendEmailToUser(answers, { reference, payment: metadata.pay, type });
-
-    await Promise.allSettled([staffJobPromise, userNotifyJobPromise]);
+    try {
+      const postAlertOptions = this.notifyEmailService.getPostAlertOptions(answers, type, reference);
+      const staffJobId = await this.staffEmailService.sendToParseQueue(formFields, "submission", { reference, payment: metadata.pay, type, postAlertOptions });
+      const userJobId = await this.notifyEmailService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type });
+    } catch (e) {
+      throw new ApplicationError("WEBHOOK", "QUEUE_ERROR", 500, ``);
+    }
     return {
       reference,
     };

@@ -14,6 +14,7 @@ import { getPost } from "../utils/getPost";
 import { getApplicationTypeName } from "./utils/getApplicationTypeName";
 import { isFieldType } from "../../../../utils";
 import { NotifyService } from "../NotifyService";
+import { getAnswerOrThrow } from "./utils/getAnswerOrThrow";
 
 type EmailArgs = {
   subject: string;
@@ -37,7 +38,8 @@ export class SESService {
   logger: Logger;
   templates: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
   queue?: PgBoss;
-  QUEUE_NAME = "SES";
+  QUEUE_NAME = "SES_SEND";
+  PROCESS_QUEUE_NAME = "SES_PROCESS";
   queueOptions: {
     retryBackoff: boolean;
     retryLimit: number;
@@ -68,11 +70,13 @@ export class SESService {
 
     queue.start().then((pgboss) => {
       this.queue = pgboss;
-      this.logger.info(`Sending messages to ${this.QUEUE_NAME}. Ensure that there is a handler listening to ${this.QUEUE_NAME}`);
+      this.logger.info(
+        `Sending messages to ${this.QUEUE_NAME} or ${this.PROCESS_QUEUE_NAME}. Ensure that there is a handler listening to ${this.QUEUE_NAME} and ${this.PROCESS_QUEUE_NAME}`
+      );
     });
   }
 
-  async send(
+  async sendToParseQueue(
     fields: FormField[],
     template: SESEmailTemplate,
     metadata: {
@@ -82,8 +86,26 @@ export class SESService {
       postAlertOptions: ReturnType<NotifyService["getPostAlertOptions"]>;
     }
   ) {
+    const jobId = await this.queue?.send?.(this.PROCESS_QUEUE_NAME, { fields, template, metadata }, this.queueOptions);
+    if (!jobId) {
+      throw new ApplicationError("SES", "QUEUE_ERROR", 500, `Queueing failed for ${metadata.reference}`);
+    }
+    return jobId;
+  }
+
+  async send(data: {
+    fields: FormField[];
+    template: SESEmailTemplate;
+    metadata: {
+      reference: string;
+      payment?: PayMetadata;
+      type: FormType;
+      postAlertOptions: ReturnType<NotifyService["getPostAlertOptions"]>;
+    };
+  }) {
+    const { fields, template, metadata } = data;
     const { reference, payment, type, postAlertOptions } = metadata;
-    const emailArgs = await this.buildSendEmailArgs({ fields, payment }, template, reference, type, postAlertOptions);
+    const emailArgs = this.buildSendEmailArgs({ fields, payment }, template, reference, type, postAlertOptions);
     return this.sendEmail(emailArgs, reference);
   }
 
@@ -106,23 +128,22 @@ export class SESService {
     const { information } = remapped;
 
     const reordered = reorderers.affirmation(remapped);
-    const country = information.country.answer;
+    const country = getAnswerOrThrow(information, "country");
     const post = information.post?.answer;
-
     return this.templates[template]({
       post: getPost(country, post),
       type: getApplicationTypeName(type),
       reference,
       payment,
       country,
-      oathType: information.oathType.answer,
-      jurats: information.jurats.answer,
+      oathType: getAnswerOrThrow(information, "oathType"),
+      jurats: getAnswerOrThrow(information, "jurats"),
       certifyPassport: information.certifyPassport?.answer ?? false,
       questions: reordered,
     });
   }
 
-  private async buildSendEmailArgs(
+  private buildSendEmailArgs(
     data: { fields: FormField[]; payment?: PayMetadata },
     template: SESEmailTemplate,
     reference: string,

@@ -3,7 +3,7 @@ import { Job } from "pg-boss";
 import config from "config";
 import { NotifyClient, SendEmailOptions, SendEmailResponse } from "notifications-node-client";
 
-const queue = "NOTIFY";
+const queue = "NOTIFY_SEND";
 const worker = "notify";
 
 const logger = pino().child({

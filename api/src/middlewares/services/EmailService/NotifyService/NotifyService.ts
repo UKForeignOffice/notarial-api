@@ -13,7 +13,8 @@ export class NotifyService {
   logger: Logger;
   templates: Record<FormType, NotifyTemplateGroup>;
   queue?: PgBoss;
-  QUEUE_NAME = "NOTIFY";
+  QUEUE_NAME = "NOTIFY_SEND";
+  PROCESS_QUEUE_NAME = "NOTIFY_PROCESS";
   queueOptions: {
     retryBackoff: boolean;
     retryLimit: number;
@@ -71,8 +72,21 @@ export class NotifyService {
     });
   }
 
-  async sendEmailToUser(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType }) {
-    const { reference, type } = metadata;
+  /**
+   * Stores the user's answers in the queue for processing.
+   */
+  async sendToProcessQueue(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType }) {
+    const jobId = await this.queue?.send(this.PROCESS_QUEUE_NAME, { answers, metadata }, this.queueOptions);
+    if (!jobId) {
+      throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, `Storing answers for ${metadata.reference} failed`);
+    }
+    return jobId;
+  }
+
+  async sendEmailToUser(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType } }) {
+    const { answers, metadata } = data;
+    const { reference, type } = data.metadata;
+
     const personalisation = PersonalisationBuilder.userConfirmation(answers, metadata);
     const templateName = getUserTemplate(answers.country as string);
     const emailArgs = {
