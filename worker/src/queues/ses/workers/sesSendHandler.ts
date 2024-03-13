@@ -63,7 +63,7 @@ export async function sendAlertToPost(job: Job<SESJob>) {
 
   const consumer = await getConsumer();
   try {
-    await consumer.send("NOTIFY", job.data.postAlertOptions);
+    await consumer.send("NOTIFY_SEND", job.data.postAlertOptions);
   } catch (e) {
     logger.error({ jobId, err: e }, `Failed to send NOTIFY job to alert staff for ${jobId}`);
   }

@@ -12,7 +12,7 @@ const logger = pino().child({
   worker,
 });
 
-const CREATE_NOTIFY_EMAIL_URL = config.get<string>("NotarialApi.createUserEmailUrl");
+const CREATE_NOTIFY_EMAIL_URL = config.get<string>("NotarialApi.createNotifyEmailUrl");
 type NotifyParseJob = {
   answers: any;
   metadata: { reference: string; payment?: PayMetadata; type: string };
