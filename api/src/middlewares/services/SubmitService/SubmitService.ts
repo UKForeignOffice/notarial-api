@@ -33,8 +33,14 @@ export class SubmitService {
 
     try {
       const postAlertOptions = this.notifyEmailService.getPostAlertOptions(answers, type, reference);
-      const staffJobId = await this.staffEmailService.sendToParseQueue(formFields, "submission", { reference, payment: metadata.pay, type, postAlertOptions });
-      const userJobId = await this.notifyEmailService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type });
+      const staffProcessJob = await this.staffEmailService.sendToProcessQueue(formFields, "submission", {
+        reference,
+        payment: metadata.pay,
+        type,
+        postAlertOptions,
+      });
+      const userProcessJob = await this.notifyEmailService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type });
+      this.logger.info({ reference, staffProcessJob, userProcessJob }, "submitted form data for processing");
     } catch (e) {
       throw new ApplicationError("WEBHOOK", "QUEUE_ERROR", 500, ``);
     }

@@ -76,7 +76,11 @@ export class SESService {
     });
   }
 
-  async sendToParseQueue(
+  /**
+   * This will add all the parameters needed to process the email to the queue. The NOTIFY_PROCESS queue will pick up
+   * this message and make a post request to notarial-api/forms/emails/staff
+   */
+  async sendToProcessQueue(
     fields: FormField[],
     template: SESEmailTemplate,
     metadata: {
@@ -115,7 +119,7 @@ export class SESService {
   async sendEmail(emailArgs: EmailArgs, reference: string) {
     const jobId = await this.queue?.send?.(this.QUEUE_NAME, emailArgs, this.queueOptions);
     if (!jobId) {
-      throw new ApplicationError("SES", "QUEUE_ERROR", 500, `Queueing failed for ${reference}`);
+      throw new ApplicationError("SES", "QUEUE_ERROR", 500, `Queueing ${this.QUEUE_NAME} failed for ${reference}`);
     }
     this.logger.info({ reference, jobId }, `reference ${reference}, SES queued with jobId ${jobId}`);
     return jobId;
