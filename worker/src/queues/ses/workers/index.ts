@@ -5,7 +5,7 @@ import { sesHandler } from "./sesHandler";
 import { sesParserHandler } from "./sesParserHandler";
 
 const logger = pino();
-const queue = "SES";
+const queue = "SES_SEND";
 
 export async function setupSesQueueWorker() {
   const consumer: PgBoss = await getConsumer();

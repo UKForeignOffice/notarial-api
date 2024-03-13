@@ -2,6 +2,7 @@ import { AnswersHashMap } from "../../../../../types/AnswersHashMap";
 import { PayMetadata } from "../../../../../types/FormDataBody";
 import * as additionalContexts from "../../additionalContexts.json";
 import { getPost } from "../../utils/getPost";
+import { ApplicationError } from "../../../../../ApplicationError";
 
 const previousMarriageDocs = {
   Divorced: "decree absolute",
@@ -41,6 +42,10 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
 }
 
 export function buildUserConfirmationDocsList(fields: AnswersHashMap, paid) {
+  if (!fields) {
+    throw new ApplicationError("WEBHOOK", "VALIDATION", 500, "Fields are empty");
+  }
+
   const docsList = ["your UK passport", "your birth certificate", "proof of address", "your partner’s passport or national identity card"];
   if (fields.maritalStatus && fields.maritalStatus !== "Never married") {
     docsList.push(`${previousMarriageDocs[fields.maritalStatus as string]}`);

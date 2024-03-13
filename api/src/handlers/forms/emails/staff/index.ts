@@ -32,5 +32,6 @@ export async function post(req: Request, res: Response, next: NextFunction) {
     return await sesService.send(req.body);
   } catch (e) {
     next(e);
+    return;
   }
 }

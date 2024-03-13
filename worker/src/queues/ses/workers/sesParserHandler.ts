@@ -4,7 +4,7 @@ import axios from "axios";
 import config from "config";
 import { SESParseJob } from "../types";
 
-const queue = "SES_PARSER";
+const queue = "SES_PROCESS";
 const worker = "sesParserHandler";
 
 const logger = pino().child({
@@ -38,7 +38,6 @@ export async function sesParserHandler(job: Job<SESParseJob>) {
     }
     return;
   } catch (e: any) {
-    logger.debug({ jobId, err: e });
     logger.error({ jobId }, `post to ${CREATE_SES_EMAIL_URL} job: ${id} failed with ${e.cause ?? e.message}`);
     if (e.response) {
       logger.error({ jobId, err: e.response.error });
