@@ -13,6 +13,7 @@ const CONTENT_FIELD_MAP = {
   duration: "duration",
   "civil partnership": "civilPartnership",
   "other (localised content)": "localRequirements",
+  "confirmation delay": "confirmationDelay",
 };
 const CONTENT_RELEVANT_FIELDS = ["additionalDocs", "localRequirements", "civilPartnership"];
 const BOOKING_LINKS_FIELD_MAP = {
@@ -20,8 +21,9 @@ const BOOKING_LINKS_FIELD_MAP = {
   country: "country",
   embassy: "post",
   "cabs link": "bookingLink",
+  "post address": "postAddress",
 };
-const BOOKING_LINKS_RELEVANT_FIELDS = ["post", "bookingLink"];
+const BOOKING_LINKS_RELEVANT_FIELDS = ["post", "bookingLink", "postAddress"];
 
 const CONTENT_MAP: Record<string, FileConstants> = {
   content: {
