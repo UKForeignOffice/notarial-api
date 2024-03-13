@@ -4,8 +4,8 @@ import axios from "axios";
 import config from "config";
 import { SESParseJob } from "../types";
 
-const queue = "SES_PROCESS";
-const worker = "sesParserHandler";
+const queue = "NOTIFY_PROCESS";
+const worker = "NotifyProcessHandler";
 
 const logger = pino().child({
   queue,
@@ -19,7 +19,7 @@ const CREATE_SES_EMAIL_URL = config.get<string>("NotarialApi.createStaffEmailUrl
  * The source of this event is the notarial-api, after the user has submitted a form. The purpose of this handler is
  * to simply store the data required to create an SES event.
  */
-export async function notifyProcessHandler(job: Job<SESParseJob>) {
+export async function sesProcessHandler(job: Job<SESParseJob>) {
   const jobId = job.id;
   logger.info({ jobId }, `received ${worker} job`);
 
@@ -27,16 +27,12 @@ export async function notifyProcessHandler(job: Job<SESParseJob>) {
   const reference = data.metadata.reference;
   try {
     const res = await axios.post(CREATE_SES_EMAIL_URL, data);
-    // @ts-ignore
+    logger.info(
+      { jobId, reference },
+      `job: ${id} posted successfully to ${CREATE_SES_EMAIL_URL} for user with reference ${reference}. Email will be sent by ${res.data.jobId}`
+    );
 
-    if (reference) {
-      logger.info(
-        { jobId, reference },
-        `job: ${id} posted successfully to ${CREATE_SES_EMAIL_URL} for user with reference ${reference}. Email will be sent by ${res.data.jobId}`
-      );
-      return reference;
-    }
-    return;
+    return res.data.jobId;
   } catch (e: any) {
     logger.error({ jobId }, `post to ${CREATE_SES_EMAIL_URL} job: ${id} failed with ${e.cause ?? e.message}`);
     if (e.response) {

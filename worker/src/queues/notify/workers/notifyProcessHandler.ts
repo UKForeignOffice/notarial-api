@@ -31,14 +31,12 @@ export async function notifyProcessHandler(job: Job<NotifyParseJob>) {
   try {
     const res = await axios.post(CREATE_NOTIFY_EMAIL_URL, data);
 
-    if (reference) {
-      logger.info(
-        { jobId, reference },
-        `job: ${id} posted successfully to ${CREATE_NOTIFY_EMAIL_URL} for user with reference ${reference}. Email will be sent by ${res.data.jobId}`
-      );
-      return reference;
-    }
-    return;
+    logger.info(
+      { jobId, reference },
+      `job: ${id} posted successfully to ${CREATE_NOTIFY_EMAIL_URL} for user with reference ${reference}. Email will be sent by ${res.data.jobId}`
+    );
+
+    return res.data.jobId;
   } catch (e: any) {
     logger.error({ jobId, err: e }, `post to ${CREATE_NOTIFY_EMAIL_URL} job: ${id} failed with ${e.cause ?? e.message}`);
 

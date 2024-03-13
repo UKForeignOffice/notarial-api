@@ -18,7 +18,14 @@ export function validate(req: Request, _res: Response, next: NextFunction) {
   }
   next();
 }
-export async function post(req: Request, res: Response) {
+export async function post(req: Request, res: Response, next: NextFunction) {
   const { notifyService } = res.app.services;
-  return await notifyService.sendEmailToUser(req.body);
+  try {
+    const jobId = await notifyService.sendEmailToUser(req.body);
+    return {
+      jobId,
+    };
+  } catch (e) {
+    next(e);
+  }
 }
