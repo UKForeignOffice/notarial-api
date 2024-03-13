@@ -19,7 +19,7 @@ const logger = pino().child({
  * with SES`
  * The source of this event is the runner, after a user has submitted a form.
  */
-export async function sesHandler(job: Job<SESJob>) {
+export async function sesSendHandler(job: Job<SESJob>) {
   const jobId = job.id;
   logger.info({ jobId }, `received ${worker} job`);
   const { data } = job;

@@ -19,7 +19,7 @@ const CREATE_SES_EMAIL_URL = config.get<string>("NotarialApi.createStaffEmailUrl
  * The source of this event is the notarial-api, after the user has submitted a form. The purpose of this handler is
  * to simply store the data required to create an SES event.
  */
-export async function sesParserHandler(job: Job<SESParseJob>) {
+export async function notifyProcessHandler(job: Job<SESParseJob>) {
   const jobId = job.id;
   logger.info({ jobId }, `received ${worker} job`);
 
