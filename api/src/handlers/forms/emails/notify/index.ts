@@ -27,5 +27,6 @@ export async function post(req: Request, res: Response, next: NextFunction) {
     };
   } catch (e) {
     next(e);
+    return;
   }
 }

@@ -14,7 +14,7 @@ module.exports = {
     },
   },
   NotarialApi: {
-    createStaffEmailUrl: "http://localhost:9000/forms/emails/staff",
-    createUserEmailUrl: "http://localhost:9000/forms/emails/user",
+    createSESEmailUrl: "http://localhost:9000/forms/emails/ses",
+    createNotifyEmailUrl: "http://localhost:9000/forms/emails/notify",
   },
 };

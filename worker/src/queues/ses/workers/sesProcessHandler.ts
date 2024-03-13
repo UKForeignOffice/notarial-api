@@ -12,7 +12,7 @@ const logger = pino().child({
   worker,
 });
 
-const CREATE_SES_EMAIL_URL = config.get<string>("NotarialApi.createStaffEmailUrl");
+const CREATE_SES_EMAIL_URL = config.get<string>("NotarialApi.createSESEmailUrl");
 
 /**
  * When an "SES_PARSER" event is detected, this worker simply POSTs the data back to the notarial-api/forms/emails/staff
