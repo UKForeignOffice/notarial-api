@@ -13,7 +13,7 @@ const CONTENT_FIELD_MAP = {
   duration: "duration",
   "civil partnership": "civilPartnership",
   "other (localised content)": "localRequirements",
-  "confirmation delay": "confirmationDelay",
+  "confirmation email delay": "confirmationDelay",
 };
 const CONTENT_RELEVANT_FIELDS = ["additionalDocs", "localRequirements", "civilPartnership"];
 const BOOKING_LINKS_FIELD_MAP = {
