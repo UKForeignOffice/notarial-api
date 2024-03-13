@@ -28,12 +28,14 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
     post: getPost(country, post),
     docsList,
     nameChangedMoreThanOnce,
-    additionalText: "",
     country,
     bookingLink: additionalContext.bookingLink,
     localRequirements: additionalContext.localRequirements,
     civilPartnership: additionalContext.civilPartnership,
     reference: metadata.reference,
+    confirmationDelay: additionalContext.confirmationDelay ?? "2 weeks",
+    duration: additionalContext.duration,
+    postAddress: additionalContext.postAddress,
   };
 }
 
