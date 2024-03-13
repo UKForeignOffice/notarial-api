@@ -78,18 +78,20 @@ test("sendEmail throws ApplicationError when no jobId is returned", async () => 
 });
 
 test("buildSendEmailArgs returns an object with subject, body, attachments and reference", async () => {
-  const result = await emailService.buildSendEmailArgs(
-    {
-      fields: allOtherFields,
-      payment: testData.metadata.pay,
+  const result = await emailService.buildSendEmailArgs({
+    fields: allOtherFields,
+    template: "submission",
+    payment: testData.metadata.pay,
+    metadata: {
+      reference: "1234",
+      type: "affirmation",
+      postAlertOptions: {},
     },
-    "submission",
-    "1234",
-    "affirmation"
-  );
+  });
   expect(result).toEqual({
     subject: "affirmation application, British Consulate General Istanbul – 1234",
     body: expect.any(String),
+    postAlertOptions: {},
     attachments: [],
     reference: "1234",
   });
