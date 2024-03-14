@@ -1,22 +1,22 @@
 import logger, { Logger } from "pino";
-import * as handlebars from "handlebars";
-import { FormField } from "../../../../types/FormField";
+import { SESEmailTemplate } from "../EmailService/types";
+import { QueueService } from "../QueueService";
+import { NotifyService } from "..";
+import { FormField } from "../../../types/FormField";
 import * as templates from "./templates";
-import { SESEmailTemplate } from "../types";
-import config from "config";
-import { answersHashMap } from "../../helpers";
-import { FormType, PayMetadata } from "../../../../types/FormDataBody";
+import { FormType, PayMetadata } from "../../../types/FormDataBody";
 import { remappers } from "./remappers";
-import { reorderers } from "./reorderers";
-import { getPost } from "../utils/getPost";
-import { getApplicationTypeName } from "./utils/getApplicationTypeName";
-import { isFieldType } from "../../../../utils";
-import { NotifyService } from "../NotifyService";
 import { getAnswerOrThrow } from "./utils/getAnswerOrThrow";
-import { AnswersHashMap } from "../../../../types/AnswersHashMap";
-import { getPostEmailAddress } from "../utils/getPostEmailAddress";
-import { PersonalisationBuilder } from "../NotifyService/personalisation/PersonalisationBuilder";
-import { QueueService } from "../../QueueService";
+import { reorderers } from "./reorderers";
+import { getApplicationTypeName } from "./utils/getApplicationTypeName";
+import { getPost } from "../EmailService/utils/getPost";
+import { answersHashMap } from "../helpers";
+import { AnswersHashMap } from "../../../types/AnswersHashMap";
+import config from "config";
+import { getPostEmailAddress } from "../EmailService/utils/getPostEmailAddress";
+import { PersonalisationBuilder } from "../EmailService/NotifyService/personalisation/PersonalisationBuilder";
+import * as handlebars from "handlebars";
+import { isFieldType } from "../../../utils";
 
 type EmailArgs = {
   subject: string;
