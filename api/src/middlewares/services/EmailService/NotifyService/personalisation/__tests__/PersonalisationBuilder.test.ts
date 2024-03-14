@@ -28,10 +28,12 @@ test("buildSendEmailArgs should return the correct personalisation", () => {
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=10",
     civilPartnership: "",
     country: "Turkey",
-    additionalText: "",
     localRequirements: "",
     nameChangedMoreThanOnce: false,
     post: "British Consulate General Istanbul",
+    postAddress: "",
+    confirmationDelay: "2 weeks",
+    duration: "",
     reference: "1234",
   });
 });

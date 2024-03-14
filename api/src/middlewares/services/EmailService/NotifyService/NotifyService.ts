@@ -7,6 +7,7 @@ import PgBoss from "pg-boss";
 import { getPostEmailAddress } from "../utils/getPostEmailAddress";
 import { FormType, PayMetadata } from "../../../../types/FormDataBody";
 import { PersonalisationBuilder } from "./personalisation/PersonalisationBuilder";
+import { getUserTemplate } from "../utils/getUserTemplate";
 
 export class NotifyService {
   logger: Logger;
@@ -23,18 +24,22 @@ export class NotifyService {
       const affirmationUserConfirmation = config.get<string>("Notify.Template.affirmationUserConfirmation");
       const cniUserConfirmation = config.get<string>("Notify.Template.cniUserConfirmation");
       const exchangeUserConfirmation = config.get<string>("Notify.Template.exchangeUserConfirmation");
+      const exchangeUserPostalConfirmation = config.get<string>("Notify.Template.exchangeUserPostalConfirmation");
       const postNotification = config.get<string>("Notify.Template.postNotification");
       this.templates = {
         affirmation: {
           userConfirmation: affirmationUserConfirmation,
+          userPostalConfirmation: affirmationUserConfirmation,
           postNotification,
         },
         cni: {
           userConfirmation: cniUserConfirmation,
+          userPostalConfirmation: cniUserConfirmation,
           postNotification,
         },
         exchange: {
           userConfirmation: exchangeUserConfirmation,
+          userPostalConfirmation: exchangeUserPostalConfirmation,
           postNotification,
         },
       };
@@ -69,8 +74,9 @@ export class NotifyService {
   async sendEmailToUser(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType }) {
     const { reference, type } = metadata;
     const personalisation = PersonalisationBuilder.userConfirmation(answers, metadata);
+    const templateName = getUserTemplate(answers.country as string);
     const emailArgs = {
-      template: this.templates[type].userConfirmation,
+      template: this.templates[type][templateName],
       emailAddress: answers.emailAddress as string,
       options: {
         personalisation,
@@ -101,7 +107,7 @@ export class NotifyService {
     const country = answers["country"] as string;
     const post = answers["post"] as string;
     const emailAddress = getPostEmailAddress(country, post);
-    const personalisation = PersonalisationBuilder.postNotification(answers);
+    const personalisation = PersonalisationBuilder.postNotification(answers, type);
     if (!emailAddress) {
       this.logger.warn(`No email address found for country ${country} - post ${post}. Post notification will not be sent`);
       return;
