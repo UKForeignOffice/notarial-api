@@ -1,46 +1,36 @@
 import config from "config";
 import pino, { Logger } from "pino";
-import { ApplicationError } from "../../../../ApplicationError";
 import { NotifySendEmailArgs, NotifyTemplateGroup } from "../types";
 import { AnswersHashMap } from "../../../../types/AnswersHashMap";
-import PgBoss from "pg-boss";
 import { getPostEmailAddress } from "../utils/getPostEmailAddress";
 import { FormType, PayMetadata } from "../../../../types/FormDataBody";
 import { PersonalisationBuilder } from "./personalisation/PersonalisationBuilder";
 import { getUserTemplate } from "../utils/getUserTemplate";
+import { QueueService } from "../../QueueService";
 
 export class NotifyService {
   logger: Logger;
   templates: Record<FormType, NotifyTemplateGroup>;
-  queue?: PgBoss;
-  QUEUE_NAME = "NOTIFY_SEND";
-  PROCESS_QUEUE_NAME = "NOTIFY_PROCESS";
-  queueOptions: {
-    retryBackoff: boolean;
-    retryLimit: number;
-  };
-  constructor() {
+  queueService: QueueService;
+  constructor({ queueService }: { queueService: QueueService }) {
     this.logger = pino().child({ service: "Notify" });
+    this.queueService = queueService;
     try {
-      const affirmationUserConfirmation = config.get<string>("Notify.Template.affirmationUserConfirmation");
-      const cniUserConfirmation = config.get<string>("Notify.Template.cniUserConfirmation");
-      const exchangeUserConfirmation = config.get<string>("Notify.Template.exchangeUserConfirmation");
-      const exchangeUserPostalConfirmation = config.get<string>("Notify.Template.exchangeUserPostalConfirmation");
       const postNotification = config.get<string>("Notify.Template.postNotification");
       this.templates = {
         affirmation: {
-          userConfirmation: affirmationUserConfirmation,
-          userPostalConfirmation: affirmationUserConfirmation,
+          userConfirmation: config.get<string>("Notify.Template.affirmationUserConfirmation"),
+          userPostalConfirmation: config.get<string>("Notify.Template.affirmationUserConfirmation"),
           postNotification,
         },
         cni: {
-          userConfirmation: cniUserConfirmation,
-          userPostalConfirmation: cniUserConfirmation,
+          userConfirmation: config.get<string>("Notify.Template.cniUserConfirmation"),
+          userPostalConfirmation: config.get<string>("Notify.Template.cniUserConfirmation"),
           postNotification,
         },
         exchange: {
-          userConfirmation: exchangeUserConfirmation,
-          userPostalConfirmation: exchangeUserPostalConfirmation,
+          userConfirmation: config.get<string>("Notify.Template.exchangeUserConfirmation"),
+          userPostalConfirmation: config.get<string>("Notify.Template.exchangeUserPostalConfirmation"),
           postNotification,
         },
       };
@@ -48,39 +38,13 @@ export class NotifyService {
       this.logger.error({ err }, "Notify templates have not been configured, exiting");
       process.exit(1);
     }
-
-    try {
-      const retryBackoff = config.get<string>("Notify.Retry.backoff") === "true";
-      const retryLimit = parseInt(config.get<string>("Notify.Retry.limit"));
-      this.queueOptions = {
-        retryBackoff,
-        retryLimit,
-      };
-      this.logger.info(`${this.QUEUE_NAME} jobs will retry with retryBackoff: ${retryBackoff}, retryLimit: ${retryLimit}`);
-    } catch (err) {
-      this.logger.error({ err }, "Retry options could not be set, exiting");
-      process.exit(1);
-    }
-
-    const queue = new PgBoss({
-      connectionString: config.get<string>("Queue.url"),
-    });
-
-    queue.start().then((pgboss) => {
-      this.queue = pgboss;
-      this.logger.info(`Sending messages to ${this.QUEUE_NAME}. Ensure that there is a handler listening to ${this.QUEUE_NAME}`);
-    });
   }
 
   /**
    * Stores the user's answers in the queue for processing.
    */
   async sendToProcessQueue(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType }) {
-    const jobId = await this.queue?.send(this.PROCESS_QUEUE_NAME, { answers, metadata }, this.queueOptions);
-    if (!jobId) {
-      throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, `Storing answers for ${metadata.reference} failed`);
-    }
-    return jobId;
+    return await this.queueService.sendToQueue("NOTIFY_PROCESS", { answers, metadata });
   }
 
   async sendEmailToUser(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType } }) {
@@ -92,29 +56,19 @@ export class NotifyService {
     const emailArgs = {
       template: this.templates[type][templateName],
       emailAddress: answers.emailAddress as string,
+      metadata: {
+        reference,
+      },
       options: {
         personalisation,
         reference,
       },
     };
-    return this.sendEmail(emailArgs, reference);
+    return this.sendEmail(emailArgs);
   }
 
-  async sendEmail({ template, emailAddress, options }: NotifySendEmailArgs, reference: string) {
-    const jobId = await this.queue?.send?.(
-      this.QUEUE_NAME,
-      {
-        template,
-        emailAddress,
-        options,
-      },
-      this.queueOptions
-    );
-    if (!jobId) {
-      throw new ApplicationError("NOTIFY", "QUEUE_ERROR", 500, `Sending ${template} to ${emailAddress} failed`);
-    }
-    this.logger.info({ reference, emailAddress, jobId }, `reference ${reference}, notify email queued with jobId ${jobId}`);
-    return jobId;
+  async sendEmail(notifySendEmailArgs: NotifySendEmailArgs) {
+    return await this.queueService.sendToQueue("NOTIFY_SEND", notifySendEmailArgs);
   }
 
   getPostAlertOptions(answers: AnswersHashMap, type: FormType, reference: string) {
