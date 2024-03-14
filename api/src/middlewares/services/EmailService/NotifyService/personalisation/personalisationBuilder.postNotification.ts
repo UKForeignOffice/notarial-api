@@ -22,6 +22,7 @@ export function buildPostNotificationPersonalisation(answers: AnswersHashMap, ty
 
   return {
     post,
+    type,
     ...personalisationMappings[type],
   };
 }
