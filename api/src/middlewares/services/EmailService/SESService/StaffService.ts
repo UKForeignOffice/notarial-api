@@ -24,7 +24,10 @@ type EmailArgs = {
   body: string;
   attachments: FormField[];
   reference: string;
-  onComplete?: ReturnType<NotifyService["getPostAlertOptions"]>;
+  onComplete?: {
+    queue: string;
+    job: ReturnType<NotifyService["getPostAlertOptions"]>;
+  };
 };
 
 type PaymentViewModel = {
@@ -44,7 +47,6 @@ type ProcessQueueData = {
     reference: string;
     payment?: PayMetadata;
     type: FormType;
-    postAlertOptions: ReturnType<NotifyService["getPostAlertOptions"]>;
   };
 };
 export class StaffService {
