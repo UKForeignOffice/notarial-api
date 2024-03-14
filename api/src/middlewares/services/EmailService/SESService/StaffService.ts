@@ -15,6 +15,9 @@ import { getApplicationTypeName } from "./utils/getApplicationTypeName";
 import { isFieldType } from "../../../../utils";
 import { NotifyService } from "../NotifyService";
 import { getAnswerOrThrow } from "./utils/getAnswerOrThrow";
+import { AnswersHashMap } from "../../../../types/AnswersHashMap";
+import { getPostEmailAddress } from "../utils/getPostEmailAddress";
+import { PersonalisationBuilder } from "../NotifyService/personalisation/PersonalisationBuilder";
 
 type EmailArgs = {
   subject: string;
@@ -44,9 +47,12 @@ type ProcessQueueData = {
     postAlertOptions: ReturnType<NotifyService["getPostAlertOptions"]>;
   };
 };
-export class SESService {
+export class StaffService {
   logger: Logger;
-  templates: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
+  templates: {
+    SES: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
+    Notify: Record<"postAlert", string>;
+  };
   queue?: PgBoss;
   QUEUE_NAME = "SES_SEND";
   PROCESS_QUEUE_NAME = "SES_PROCESS";
@@ -58,7 +64,12 @@ export class SESService {
   constructor() {
     this.logger = logger().child({ service: "SES" });
     this.templates = {
-      submission: SESService.createTemplate(templates.submission),
+      SES: {
+        submission: StaffService.createTemplate(templates.submission),
+      },
+      Notify: {
+        postAlert: config.get<string>("Notify.Template.postNotification"),
+      },
     };
 
     const queue = new PgBoss({
@@ -97,7 +108,6 @@ export class SESService {
       reference: string;
       payment?: PayMetadata;
       type: FormType;
-      postAlertOptions: ReturnType<NotifyService["getPostAlertOptions"]>;
     }
   ) {
     const jobId = await this.queue?.send?.(this.PROCESS_QUEUE_NAME, { fields, template, metadata }, this.queueOptions);
@@ -116,7 +126,7 @@ export class SESService {
    * @throws ApplicationError
    */
   async sendToSendQueue(emailArgs: EmailArgs, reference: string) {
-    const jobId = await this.queue?.send?.(this.QUEUE_NAME, emailArgs, this.queueOptions);
+    const jobId = await this.queue?.send?.(this.QUEUE_NAME, emailArgs, { ...this.queueOptions, onComplete: true });
     if (!jobId) {
       throw new ApplicationError("SES", "QUEUE_ERROR", 500, `Queueing ${this.QUEUE_NAME} failed for ${reference}`);
     }
@@ -133,7 +143,7 @@ export class SESService {
     const reordered = reorderers.affirmation(remapped);
     const country = getAnswerOrThrow(information, "country");
     const post = information.post?.answer;
-    return this.templates[template]({
+    return this.templates.SES[template]({
       post: getPost(country, post),
       type: getApplicationTypeName(type),
       reference,
@@ -148,7 +158,7 @@ export class SESService {
 
   private buildSendEmailArgs(data: ProcessQueueData) {
     const { fields, template, metadata } = data;
-    const { reference, payment, type, postAlertOptions } = metadata;
+    const { reference, payment, type } = metadata;
     const answers = answersHashMap(fields);
     let paymentViewModel: PaymentViewModel | undefined;
 
@@ -166,7 +176,10 @@ export class SESService {
       body: emailBody,
       attachments: fields.filter(isFieldType("file")),
       reference,
-      postAlertOptions,
+      onComplete: {
+        queue: "NOTIFY_SEND",
+        job: this.getPostAlertOptions(answers, type, reference),
+      },
     };
   }
 
@@ -185,6 +198,27 @@ export class SESService {
       allTransactionsByCountry: {
         url: allTransactionsByCountryUrl.toString(),
         country,
+      },
+    };
+  }
+
+  getPostAlertOptions(answers: AnswersHashMap, type: FormType, reference: string) {
+    const country = answers["country"] as string;
+    const post = answers["post"] as string;
+    const emailAddress = getPostEmailAddress(country, post);
+    const personalisation = PersonalisationBuilder.postNotification(answers, type);
+    if (!emailAddress) {
+      this.logger.warn(`No email address found for country ${country} - post ${post}. Post notification will not be sent`);
+      return;
+    }
+
+    return {
+      template: this.templates.Notify.postAlert,
+      emailAddress,
+      reference,
+      options: {
+        personalisation,
+        reference,
       },
     };
   }

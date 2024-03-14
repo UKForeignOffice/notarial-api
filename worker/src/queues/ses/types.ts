@@ -1,5 +1,6 @@
 import { SendEmailOptions } from "notifications-node-client";
 import { PayMetadata } from "../../types";
+import { NotifyJob } from "../../../../shared/dist/types";
 
 export interface FormField {
   key: string;
@@ -13,10 +14,9 @@ export type SESJob = {
   body: string;
   attachments: FormField[];
   reference: string;
-  postAlertOptions: {
-    template: string;
-    emailAddress: string;
-    options: SendEmailOptions<any>;
+  onComplete?: {
+    queue: string;
+    job: SESJob | NotifyJob;
   };
 };
 

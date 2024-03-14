@@ -1,7 +1,7 @@
 import { getConsumer } from "../../../Consumer";
 import pino from "pino";
 import PgBoss from "pg-boss";
-import { sesSendHandler } from "./sesSendHandler";
+import { onComplete, sesSendHandler } from "./sesSendHandler";
 import { sesProcessHandler } from "./sesProcessHandler";
 
 const logger = pino();
@@ -13,6 +13,8 @@ export async function setupSesQueueWorker() {
 
   logger.info({ SEND_QUEUE }, `starting 'sesSendHandler' on ${SEND_QUEUE} listeners`);
   await consumer.work(SEND_QUEUE, { newJobCheckInterval: 500 }, sesSendHandler);
+
+  await consumer.onComplete(SEND_QUEUE, onComplete);
 
   logger.info({ PROCESS_QUEUE }, `starting 'sesProcessHandler' on ${PROCESS_QUEUE} listeners`);
   await consumer.work(PROCESS_QUEUE, { newJobCheckInterval: 2000 }, sesProcessHandler);

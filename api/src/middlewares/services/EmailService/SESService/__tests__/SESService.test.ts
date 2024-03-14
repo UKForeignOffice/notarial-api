@@ -1,6 +1,6 @@
 import { flattenQuestions } from "../../../helpers";
 import { testData } from "./fixtures";
-import { SESService } from "../SESService";
+import { StaffService } from "../StaffService";
 import { isNotFieldType } from "../../../../../utils";
 import "pg-boss";
 import { PayMetadata } from "../../../../../types/FormDataBody";
@@ -18,7 +18,7 @@ jest.mock("pg-boss", () => {
   return jest.fn().mockImplementation(() => pgBossMock);
 });
 
-const emailService = new SESService();
+const emailService = new StaffService();
 
 const formFields = flattenQuestions(testData.questions);
 const allOtherFields = formFields.filter(isNotFieldType("file"));

@@ -7,7 +7,7 @@ import { SESServiceException, SendRawEmailCommand } from "@aws-sdk/client-ses";
 import { getConsumer } from "../../../Consumer";
 
 const queue = "SES_SEND";
-const worker = "sesHandler";
+const worker = "sesSendHandler";
 
 const logger = pino().child({
   queue,
@@ -50,21 +50,30 @@ export async function sesSendHandler(job: Job<SESJob>) {
     throw err;
   }
 
-  sendAlertToPost(job);
   return response;
 }
 
+const consumerPromise = getConsumer();
 /**
  * Sends an alert to individual posts, notifying them that a form has been submitted to the shared inbox.
  */
-export async function sendAlertToPost(job: Job<SESJob>) {
+export async function onComplete(job: Job<{ request: Job<SESJob> }>) {
+  const consumer = await consumerPromise;
   const jobId = job.id;
-  logger.info({ jobId }, `completed ${jobId} on ${worker}. Creating NOTIFY job to alert staff`);
+  const completedJobId = job.data.request.id;
+  logger.info({ jobId, completedJobId }, `completed ${completedJobId} on ${worker}. onComplete flag detected`);
+  const onComplete = job.data.request.data?.onComplete;
 
-  const consumer = await getConsumer();
+  if (!onComplete) {
+    logger.warn({ jobId }, "onComplete flag was detected, but onComplete data is empty");
+    return;
+  }
+
+  const { queue, job: onCompleteJobArgs } = onComplete;
+
   try {
-    await consumer.send("NOTIFY_SEND", job.data.postAlertOptions);
+    await consumer.send(queue, onCompleteJobArgs);
   } catch (e) {
-    logger.error({ jobId, err: e }, `Failed to send NOTIFY job to alert staff for ${jobId}`);
+    logger.error({ jobId, completedJobId, err: e }, `Failed to send onComplete ${queue} job triggered by ${completedJobId}`);
   }
 }

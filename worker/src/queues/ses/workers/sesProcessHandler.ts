@@ -4,8 +4,8 @@ import axios from "axios";
 import config from "config";
 import { SESParseJob } from "../types";
 
-const queue = "NOTIFY_PROCESS";
-const worker = "NotifyProcessHandler";
+const queue = "SES_PROCESS";
+const worker = "SesProcessHandler";
 
 const logger = pino().child({
   queue,
@@ -22,7 +22,6 @@ const CREATE_SES_EMAIL_URL = config.get<string>("NotarialApi.createSESEmailUrl")
 export async function sesProcessHandler(job: Job<SESParseJob>) {
   const jobId = job.id;
   logger.info({ jobId }, `received ${worker} job`);
-
   const { data, id } = job;
   const reference = data.metadata.reference;
   try {

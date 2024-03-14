@@ -1,2 +1,2 @@
-export { SESService, NotifyService } from "./EmailService";
+export { StaffService, NotifyService } from "./EmailService";
 export { SubmitService } from "./SubmitService";
