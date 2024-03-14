@@ -6,7 +6,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Algeria": {
       "post": "British Embassy Algiers",
@@ -14,7 +15,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Angola": {
       "post": "British Embassy Luanda",
@@ -22,7 +24,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Armenia": {
       "post": "British Embassy Yerevan",
@@ -30,7 +33,8 @@
       "additionalDocs": ["partner’s proof of address"],
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Austria": {
       "post": "British Embassy Vienna",
@@ -38,7 +42,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "or civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Azerbaijan": {
       "post": "British Embassy Baku",
@@ -46,7 +51,8 @@
       "additionalDocs": "",
       "localRequirements": "\nYour partner must come to your appointment with you and bring their passport.",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Bahrain": {
       "post": "British Embassy Manama",
@@ -54,7 +60,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Belarus": {
       "post": "British Embassy Minsk",
@@ -62,7 +69,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Belgium": {
       "post": "British Embassy Brussels",
@@ -70,7 +78,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "or civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Benin": {
       "post": "British High Commission Accra",
@@ -78,7 +87,8 @@
       "additionalDocs": ["premarital medical certificate ", "partner’s premarital medical certificate"],
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Bolivia": {
       "post": "British Embassy La Paz",
@@ -86,7 +96,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Bosnia and Herzegovina": {
       "post": "British Embassy Sarajevo",
@@ -94,7 +105,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Bulgaria": {
       "post": "British Embassy Sofia",
@@ -102,7 +114,8 @@
       "additionalDocs": ["partner’s residence permit"],
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Burundi": {
       "post": "British High Commission Kigali",
@@ -110,7 +123,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Cambodia": {
       "post": "British Embassy Phnom Penh",
@@ -118,7 +132,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Colombia": {
       "post": "British Embassy Bogotá",
@@ -126,7 +141,8 @@
       "additionalDocs": ["test field for additional doc"],
       "localRequirements": "\nTesting field for localised content",
       "civilPartnership": "or civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Congo (Democratic Republic)": {
       "post": "British Embassy Kinshasa",
@@ -139,7 +155,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Croatia": {
       "post": "British Embassy Zagreb",
@@ -147,7 +164,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Cuba": {
       "post": "British Embassy Havana",
@@ -155,7 +173,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Czechia (Czech Republic)": { "post": "British Embassy Prague", "bookingLink": "", "postAddress": "" },
     "Ecuador": {
@@ -164,16 +183,26 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "or civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
-    "Egypt": { "post": "British Embassy Cairo", "bookingLink": "", "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "postAddress": "" },
+    "Egypt": {
+      "post": "British Embassy Cairo",
+      "bookingLink": "",
+      "additionalDocs": "",
+      "localRequirements": "",
+      "civilPartnership": "",
+      "postAddress": "",
+      "duration": ""
+    },
     "El Salvador": {
       "post": "British Embassy San Salvador",
       "bookingLink": "",
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Eritrea": {
       "post": "British Embassy Asmara",
@@ -181,7 +210,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Estonia": {
       "post": "British Embassy Tallinn",
@@ -189,7 +219,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "or opposite-sex civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Ethiopia": {
       "post": "British Embassy Addis Ababa",
@@ -197,7 +228,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Finland": {
       "post": "British Embassy Helsinki",
@@ -205,7 +237,8 @@
       "additionalDocs": ["partner’s birth certificate"],
       "localRequirements": "",
       "civilPartnership": "or same-sex civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "France": {
       "post": "British Embassy Paris",
@@ -213,7 +246,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "or civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Georgia": {
       "post": "British Embassy Tbilisi",
@@ -221,7 +255,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Guatemala": {
       "post": "British Embassy Guatemala City",
@@ -229,7 +264,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Guinea": {
       "post": "British Embassy Conakry",
@@ -237,7 +273,8 @@
       "additionalDocs": ["premarital medical certificate ", "partner’s premarital medical certificate ", "photo ID (in addition to your UK passport)"],
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Iceland": {
       "post": "British Embassy Reykjavik",
@@ -245,7 +282,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "or same-sex civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Iran": {
       "post": "British Embassy Tehran",
@@ -253,25 +291,44 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
-    "Iraq": { "post": "British Embassy Baghdad", "bookingLink": "", "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "postAddress": "" },
+    "Iraq": {
+      "post": "British Embassy Baghdad",
+      "bookingLink": "",
+      "additionalDocs": "",
+      "localRequirements": "",
+      "civilPartnership": "",
+      "postAddress": "",
+      "duration": ""
+    },
     "Israel": {
       "post": "British Embassy Tel Aviv",
       "bookingLink": "",
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "or opposite-sex civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
-    "Jordan": { "post": "British Embassy Amman", "bookingLink": "", "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "postAddress": "" },
+    "Jordan": {
+      "post": "British Embassy Amman",
+      "bookingLink": "",
+      "additionalDocs": "",
+      "localRequirements": "",
+      "civilPartnership": "",
+      "postAddress": "",
+      "duration": ""
+    },
     "Kosovo": {
       "post": "British Embassy Pristina",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=137&service=10",
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Kuwait": {
       "post": "British Embassy Kuwait",
@@ -279,7 +336,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Kyrgyzstan": {
       "post": "British Embassy Bishkek",
@@ -287,7 +345,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Laos": {
       "post": "British Embassy Vientiane",
@@ -295,7 +354,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Latvia": {
       "post": "British Embassy Riga",
@@ -303,7 +363,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Lebanon": {
       "post": "British Embassy Beirut",
@@ -311,7 +372,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Lithuania": {
       "post": "British Embassy Vilnius",
@@ -319,7 +381,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Luxembourg": {
       "post": "British Embassy Luxembourg",
@@ -327,7 +390,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "or civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Madagascar": {
       "post": "British Embassy Antananarivo",
@@ -335,7 +399,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Mali": {
       "post": "British Embassy  Bamako",
@@ -343,7 +408,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Mauritania": {
       "post": "British Embassy Nouakchott",
@@ -351,7 +417,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Moldova": {
       "post": "British Embassy Chisinau",
@@ -359,7 +426,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Mongolia": {
       "post": "British Embassy Ulaanbaatar",
@@ -367,7 +435,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Montenegro": {
       "post": "British Embassy Podgorica",
@@ -375,7 +444,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Myanmar (Burma)": {
       "post": "British Embassy Yangon",
@@ -383,7 +453,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Nepal": {
       "post": "British Embassy Kathmandu",
@@ -391,7 +462,8 @@
       "additionalDocs": ["partner’s national ID that includes their address"],
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Nicaragua": {
       "post": "British Embassy San Jose (for Nicaragua)",
@@ -399,7 +471,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "North Macedonia": {
       "post": "British Embassy Skopje",
@@ -407,7 +480,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Norway": {
       "post": "British Embassy Oslo",
@@ -415,7 +489,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "or same-sex civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Oman": {
       "post": "British Embassy Muscat",
@@ -423,7 +498,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Paraguay": {
       "post": "British Embassy Asunción",
@@ -431,16 +507,26 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
-    "Peru": { "post": "British Embassy Lima", "bookingLink": "", "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "postAddress": "" },
+    "Peru": {
+      "post": "British Embassy Lima",
+      "bookingLink": "",
+      "additionalDocs": "",
+      "localRequirements": "",
+      "civilPartnership": "",
+      "postAddress": "",
+      "duration": ""
+    },
     "Poland": {
       "post": "British Embassy Warsaw",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10",
       "additionalDocs": ["test field additional doc ", "test field additional doc"],
       "localRequirements": "\nTest field localised content [test link](www.gov.uk)",
       "civilPartnership": "test field for civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Qatar": {
       "post": "British Embassy Doha",
@@ -448,7 +534,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Romania": {
       "post": "British Embassy Bucharest",
@@ -456,7 +543,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Russia": {
       "post": "British Embassy Moscow",
@@ -464,7 +552,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Senegal": {
       "post": "British Embassy Dakar",
@@ -472,7 +561,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Serbia": {
       "post": "British Embassy Belgrade",
@@ -480,7 +570,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Slovenia": {
       "post": "British Embassy Ljubljana",
@@ -488,7 +579,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "or same-sex civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "South Korea": {
       "post": "British Embassy Seoul",
@@ -496,7 +588,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Sudan": {
       "post": "British Embassy Khartoum",
@@ -504,7 +597,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Sweden": {
       "post": "British Embassy Stockholm",
@@ -512,7 +606,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "or same-sex civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Switzerland": {
       "post": "British Embassy Berne",
@@ -520,7 +615,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "or same-sex civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Taiwan": {
       "post": "British Office Taipei",
@@ -528,7 +624,8 @@
       "additionalDocs": "",
       "localRequirements": "\"\nContact the Household Registration Office to find out about local marriage laws, including what documents you and your partner will need. \nThe Household Registration Office may say you need a certificate of no impediment (CNI) to get married. You must [make an appointment at a UK register office to get one](https://www.gov.uk/register-offices).There are no British consular facilities that will issue a CNI in Taiwan.\"",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Tajikistan": {
       "post": "British Embassy Dushanbe",
@@ -536,7 +633,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Tanzania": {
       "post": "British High Commission Dar es Salaam",
@@ -544,7 +642,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
     "Togo": {
       "post": "British High Commission Accra",
@@ -552,7 +651,8 @@
       "additionalDocs": ["premarital medical certificate ", "partner’s premarital medical certificate"],
       "localRequirements": "Test field for other localised content",
       "civilPartnership": "Test field for civil partnership",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Tunisia": {
       "post": "British Embassy Tunis",
@@ -560,7 +660,8 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
     "Turkmenistan": {
       "post": "British Embassy Ashgabat",
@@ -568,16 +669,26 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "6 months"
     },
-    "Ukraine": { "post": "British Embassy Kyiv", "bookingLink": "", "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "postAddress": "" },
+    "Ukraine": {
+      "post": "British Embassy Kyiv",
+      "bookingLink": "",
+      "additionalDocs": "",
+      "localRequirements": "",
+      "civilPartnership": "",
+      "postAddress": "",
+      "duration": ""
+    },
     "Uzbekistan": {
       "post": "British Embassy Tashkent",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=147&service=10",
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Venezuela": {
       "post": "British Embassy Caracas",
@@ -585,7 +696,8 @@
       "additionalDocs": ["partner’s CNI"],
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
     "Zimbabwe": {
       "post": "British Embassy Harare",
@@ -593,173 +705,181 @@
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": ""
     },
-    "Afghanistan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "American Samoa": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Andorra": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership" },
-    "Anguilla": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Antigua and Barbuda": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Argentina": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership" },
-    "Aruba": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership" },
-    "Australia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership" },
-    "The Bahamas": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Bangladesh": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Barbados": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Belize": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Bermuda": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership" },
-    "Bhutan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Bonaire/St Eustatius/Saba": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Botswana": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Brazil": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership" },
-    "British Indian Ocean Territory": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "British Virgin Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Brunei": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Burkina Faso": { "additionalDocs": ["premarital medical certificate"], "localRequirements": "", "civilPartnership": "" },
-    "Cameroon": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Canada": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership" },
-    "Cape Verde": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Cayman Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Central African Republic": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Chad": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Chile": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership" },
-    "China": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Comoros": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Congo": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
+    "Afghanistan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "American Samoa": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Andorra": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership", "duration": "" },
+    "Anguilla": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Antigua and Barbuda": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Argentina": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership", "duration": "" },
+    "Aruba": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership", "duration": "" },
+    "Australia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership", "duration": "" },
+    "The Bahamas": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Bangladesh": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Barbados": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Belize": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Bermuda": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership", "duration": "" },
+    "Bhutan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Bonaire/St Eustatius/Saba": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Botswana": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Brazil": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership", "duration": "3 months" },
+    "British Indian Ocean Territory": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "British Virgin Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Brunei": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Burkina Faso": { "additionalDocs": ["premarital medical certificate"], "localRequirements": "", "civilPartnership": "", "duration": "3 months" },
+    "Cameroon": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Canada": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership", "duration": "" },
+    "Cape Verde": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Cayman Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Central African Republic": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Chad": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Chile": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership", "duration": "" },
+    "China": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "6 months" },
+    "Comoros": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Congo": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
     "Democratic Republic of The Congo": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Ivory Coast": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Curaçao": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Cyprus": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership" },
-    "Czechia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or same-sex civil partnership" },
+    "Ivory Coast": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Curaçao": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Cyprus": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership", "duration": "" },
+    "Czechia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or same-sex civil partnership", "duration": "" },
     "Denmark": {
       "additionalDocs": "",
       "localRequirements": "\"You should apply for a document showing that you’re free to marry from the General Register Office, National Records of Scotland or nidirect.\"",
-      "civilPartnership": "or same-sex civil partnership"
+      "civilPartnership": "or same-sex civil partnership",
+      "duration": ""
     },
-    "Djibouti": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Dominica": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Dominican Republic": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
+    "Djibouti": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Dominica": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Dominican Republic": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
     "East Timor": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Equatorial Guinea": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Eswatini": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Falkland Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Fiji": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "French Guiana": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "French Polynesia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Gabon": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Germany": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or same-sex civil partnership" },
-    "Ghana": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Gibraltar": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Greece": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership" },
-    "Grenada": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Guadeloupe": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Guinea-Bissau": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Guyana": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Haiti": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Honduras": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Hong Kong": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Hungary": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership" },
-    "India": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Indonesia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Ireland": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
+    "Equatorial Guinea": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Eswatini": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Falkland Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Fiji": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "French Guiana": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "French Polynesia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Gabon": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Germany": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or same-sex civil partnership", "duration": "" },
+    "Ghana": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Gibraltar": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Greece": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership", "duration": "" },
+    "Grenada": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Guadeloupe": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Guinea-Bissau": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Guyana": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Haiti": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Honduras": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Hong Kong": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Hungary": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership", "duration": "" },
+    "India": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Indonesia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Ireland": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
     "Italy": {
       "additionalDocs": ["test field additional doc ", "test field additional doc"],
       "localRequirements": "\nTesting field for localised content",
-      "civilPartnership": ""
+      "civilPartnership": "",
+      "duration": "6 months"
     },
-    "Jamaica": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Japan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Kazakhstan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Kenya": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Kiribati": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Lesotho": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Liberia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Libya": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Liechtenstein": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or same-sex civil partnership" },
-    "Macao": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Malawi": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Malaysia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Maldives": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Malta": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership" },
-    "Marshall Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Martinique": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Mauritius": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Mayotte": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Mexico": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership" },
-    "Micronesia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Monaco": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Montserrat": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Morocco": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Mozambique": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Namibia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Nauru": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Netherlands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership" },
-    "New Caledonia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "New Zealand": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership" },
-    "Niger": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Nigeria": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "North Korea": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Pakistan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Palau": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Panama": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Papua New Guinea": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
+    "Jamaica": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Japan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "3 months" },
+    "Kazakhstan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Kenya": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Kiribati": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Lesotho": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Liberia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Libya": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Liechtenstein": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or same-sex civil partnership", "duration": "" },
+    "Macao": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Malawi": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Malaysia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Maldives": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Malta": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership", "duration": "" },
+    "Marshall Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Martinique": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Mauritius": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Mayotte": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Mexico": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership", "duration": "" },
+    "Micronesia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Monaco": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Montserrat": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Morocco": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "3 months" },
+    "Mozambique": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Namibia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Nauru": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Netherlands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership", "duration": "" },
+    "New Caledonia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "New Zealand": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership", "duration": "" },
+    "Niger": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Nigeria": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "North Korea": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Pakistan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Palau": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Panama": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Papua New Guinea": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
     "Philippines": {
       "additionalDocs": "",
       "localRequirements": "",
       "civilPartnership": "",
       "post": "British Embassy Manila",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=128&service=13",
-      "postAddress": ""
+      "postAddress": "",
+      "duration": "3 months"
     },
-    "Pitcairn Island": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Portugal": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or same-sex civil partnership" },
-    "Réunion": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Rwanda": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Samoa": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "San Marino": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership" },
-    "Sao Tome and Principe": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Saudi Arabia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Seychelles": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Sierra Leone": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Singapore": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Slovakia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Solomon Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Somalia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "South Africa": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership" },
-    "South Georgia and the South Sandwich Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "South Sudan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Spain": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership" },
-    "Sri Lanka": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
+    "Pitcairn Island": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Portugal": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or same-sex civil partnership", "duration": "" },
+    "Réunion": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Rwanda": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Samoa": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "San Marino": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or opposite-sex civil partnership", "duration": "" },
+    "Sao Tome and Principe": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Saudi Arabia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Seychelles": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Sierra Leone": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Singapore": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Slovakia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Solomon Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Somalia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "South Africa": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership", "duration": "" },
+    "South Georgia and the South Sandwich Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "South Sudan": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Spain": {
+      "additionalDocs": "",
+      "localRequirements": "",
+      "civilPartnership": "or civil partnership",
+      "duration": "3 or 6 months (check with the person conducting your ceremony)"
+    },
+    "Sri Lanka": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
     "St Helena, Ascension and Tristan da Cunha": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "St Kitts and Nevis": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "St Lucia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "St Maarten": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "St Barthélemy": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "St Martin": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "St Pierre & Miquelon": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "St Vincent": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Suriname": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Syria": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Thailand": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "The Gambia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Timor-Leste": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Tonga": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Trinidad and Tobago": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Turkey": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Turks and Caicos Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Tuvalu": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Uganda": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "United Arab Emirates": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "United States": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership" },
-    "Uruguay": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or same-sex civil partnership" },
-    "Vanuatu": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Vietnam": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Wallis and Futuna": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Western Sahara": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Yemen": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Zambia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "" },
-    "Democratic Republic of the Congo": { "civilPartnership": "", "additionalDocs": "", "localRequirements": "" },
-    "\"St Helena, Ascension and Tristan da Cunha\"": { "civilPartnership": "", "additionalDocs": "", "localRequirements": "" }
+    "St Kitts and Nevis": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "St Lucia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "St Maarten": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "St Barthélemy": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "St Martin": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "St Pierre & Miquelon": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "St Vincent": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Suriname": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Syria": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Thailand": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "3 months" },
+    "The Gambia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Timor-Leste": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Tonga": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Trinidad and Tobago": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Turkey": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Turks and Caicos Islands": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Tuvalu": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Uganda": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "United Arab Emirates": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "3 months" },
+    "United States": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or civil partnership", "duration": "" },
+    "Uruguay": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "or same-sex civil partnership", "duration": "" },
+    "Vanuatu": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Vietnam": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Wallis and Futuna": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Western Sahara": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Yemen": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Zambia": { "additionalDocs": "", "localRequirements": "", "civilPartnership": "", "duration": "" },
+    "Democratic Republic of the Congo": { "civilPartnership": "", "additionalDocs": "", "localRequirements": "", "duration": "" }
   },
   "posts": {
     "British Embassy Brasilia": {
