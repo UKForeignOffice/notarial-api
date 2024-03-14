@@ -74,8 +74,9 @@ export class NotifyService {
   async sendEmailToUser(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType }) {
     const { reference, type } = metadata;
     const personalisation = PersonalisationBuilder.userConfirmation(answers, metadata);
+    const templateName = getUserTemplate(answers.country as string);
     const emailArgs = {
-      template: this.templates[type][getUserTemplate(answers.country as string)],
+      template: this.templates[type][templateName],
       emailAddress: answers.emailAddress as string,
       options: {
         personalisation,
