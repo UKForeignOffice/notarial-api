@@ -1,14 +1,15 @@
 import logger, { Logger } from "pino";
-import PgBoss, { JobOptions, SendOptions } from "pg-boss";
+import PgBoss, { SendOptions } from "pg-boss";
 import config from "config";
 import { ApplicationError } from "../../ApplicationError";
 
 type QueueName = "SES_PROCESS" | "SES_SEND" | "NOTIFY_PROCESS" | "NOTIFY_SEND";
 
 const DEFAULT_OPTIONS = {
-  retryBackoff: config.get<string>("Queue.defaultOptions.retry.backoff") === "true",
-  retryLimit: parseInt(config.get<string>("Queue.defaultOptions.retry.limit")),
+  retryBackoff: config.get<string>("Queue.defaultOptions.retryBackoff") === "true",
+  retryLimit: parseInt(config.get<string>("Queue.defaultOptions.retryLimit")),
 };
+
 class Queue {
   options: SendOptions = DEFAULT_OPTIONS;
   name: QueueName;
@@ -20,11 +21,9 @@ class Queue {
   }
 }
 type JobWithMetadata<T = {}> = T & {
-  metadata: {
-    reference: string;
-  };
+  reference?: string;
+  metadata?: { reference: string };
 };
-
 export class QueueService {
   logger: Logger;
   boss?: PgBoss;
@@ -49,11 +48,11 @@ export class QueueService {
     });
   }
 
-  async sendToQueue(queue: QueueName, data: JobWithMetadata) {
+  async sendToQueue<T>(queue: QueueName, data: JobWithMetadata<T>) {
     const q = this.queues[queue];
     const jobId = await this.boss?.send?.(queue, data, q.options);
     if (!jobId) {
-      throw new ApplicationError("QUEUE", `${queue}_ERROR`, 500, `Queueing failed for user: ${data.metadata.reference}`);
+      throw new ApplicationError("QUEUE", `${queue}_ERROR`, 500, `Queueing failed for user: ${data.metadata?.reference ?? data?.reference}`);
     }
     return jobId;
   }

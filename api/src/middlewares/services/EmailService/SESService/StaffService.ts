@@ -18,12 +18,16 @@ import { getAnswerOrThrow } from "./utils/getAnswerOrThrow";
 import { AnswersHashMap } from "../../../../types/AnswersHashMap";
 import { getPostEmailAddress } from "../utils/getPostEmailAddress";
 import { PersonalisationBuilder } from "../NotifyService/personalisation/PersonalisationBuilder";
+import { QueueService } from "../../QueueService";
 
 type EmailArgs = {
   subject: string;
   body: string;
   attachments: FormField[];
   reference: string;
+  metadata: {
+    reference: string;
+  };
   onComplete?: {
     queue: string;
     job: ReturnType<NotifyService["getPostAlertOptions"]>;
@@ -55,15 +59,11 @@ export class StaffService {
     SES: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
     Notify: Record<"postAlert", string>;
   };
-  queue?: PgBoss;
-  QUEUE_NAME = "SES_SEND";
-  PROCESS_QUEUE_NAME = "SES_PROCESS";
-  queueOptions: {
-    retryBackoff: boolean;
-    retryLimit: number;
-  };
 
-  constructor() {
+  queueService: QueueService;
+
+  constructor({ queueService }) {
+    this.queueService = queueService;
     this.logger = logger().child({ service: "SES" });
     this.templates = {
       SES: {
@@ -73,30 +73,6 @@ export class StaffService {
         postAlert: config.get<string>("Notify.Template.postNotification"),
       },
     };
-
-    const queue = new PgBoss({
-      connectionString: config.get<string>("Queue.url"),
-    });
-
-    try {
-      const retryBackoff = config.get<string>("SES.Retry.backoff") === "true";
-      const retryLimit = parseInt(config.get<string>("SES.Retry.limit"));
-      this.queueOptions = {
-        retryBackoff,
-        retryLimit,
-      };
-      this.logger.info(`${this.QUEUE_NAME} jobs will retry with retryBackoff: ${retryBackoff}, retryLimit: ${retryLimit}`);
-    } catch (err) {
-      this.logger.error({ err }, "Retry options could not be set, exiting");
-      process.exit(1);
-    }
-
-    queue.start().then((pgboss) => {
-      this.queue = pgboss;
-      this.logger.info(
-        `Sending messages to ${this.QUEUE_NAME} or ${this.PROCESS_QUEUE_NAME}. Ensure that there is a handler listening to ${this.QUEUE_NAME} and ${this.PROCESS_QUEUE_NAME}`
-      );
-    });
   }
 
   /**
@@ -112,28 +88,12 @@ export class StaffService {
       type: FormType;
     }
   ) {
-    const jobId = await this.queue?.send?.(this.PROCESS_QUEUE_NAME, { fields, template, metadata }, this.queueOptions);
-    if (!jobId) {
-      throw new ApplicationError("SES", "QUEUE_ERROR", 500, `Queueing failed for ${metadata.reference}`);
-    }
-    return jobId;
+    return await this.queueService.sendToQueue("SES_PROCESS", { fields, template, metadata });
   }
 
   async sendEmail(data: ProcessQueueData) {
     const emailArgs = this.buildSendEmailArgs(data);
-    return this.sendToSendQueue(emailArgs, emailArgs.reference);
-  }
-
-  /**
-   * @throws ApplicationError
-   */
-  async sendToSendQueue(emailArgs: EmailArgs, reference: string) {
-    const jobId = await this.queue?.send?.(this.QUEUE_NAME, emailArgs, { ...this.queueOptions, onComplete: true });
-    if (!jobId) {
-      throw new ApplicationError("SES", "QUEUE_ERROR", 500, `Queueing ${this.QUEUE_NAME} failed for ${reference}`);
-    }
-    this.logger.info({ reference, jobId }, `reference ${reference}, SES queued with jobId ${jobId}`);
-    return jobId;
+    return await this.queueService.sendToQueue("SES_SEND", emailArgs);
   }
 
   getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate, type: FormType) {
@@ -178,6 +138,9 @@ export class StaffService {
       body: emailBody,
       attachments: fields.filter(isFieldType("file")),
       reference,
+      metadata: {
+        reference,
+      },
       onComplete: {
         queue: "NOTIFY_SEND",
         job: this.getPostAlertOptions(answers, type, reference),
