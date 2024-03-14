@@ -1,12 +1,10 @@
 import logger, { Logger } from "pino";
 import * as handlebars from "handlebars";
-import { ApplicationError } from "../../../../ApplicationError";
 import { FormField } from "../../../../types/FormField";
 import * as templates from "./templates";
 import { SESEmailTemplate } from "../types";
 import config from "config";
 import { answersHashMap } from "../../helpers";
-import PgBoss from "pg-boss";
 import { FormType, PayMetadata } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { reorderers } from "./reorderers";

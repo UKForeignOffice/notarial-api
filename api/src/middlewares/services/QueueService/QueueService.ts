@@ -1,8 +1,8 @@
 import logger, { Logger } from "pino";
 import PgBoss from "pg-boss";
 import config from "config";
-import { ApplicationError } from "../../ApplicationError";
-import { QueueConfig, QueueName } from "./QueueService/QueueConfig";
+import { ApplicationError } from "../../../ApplicationError";
+import { QueueConfig, QueueName } from "./QueueConfig";
 
 type JobWithMetadata<T = {}> = T & {
   reference?: string;
