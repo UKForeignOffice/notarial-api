@@ -12,10 +12,10 @@ export class SubmitService {
   userService: UserService;
   staffService: StaffService;
 
-  constructor({ userService, sesService }) {
+  constructor({ userService, staffService }) {
     this.logger = logger().child({ service: "Submit" });
     this.userService = userService;
-    this.staffService = sesService;
+    this.staffService = staffService;
   }
   generateId() {
     return nanoid();
