@@ -131,6 +131,7 @@ export class StaffService {
     const country = answers.country as string;
     const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference }, template, type);
     const post = getPost(country, answers.post as string);
+    const onCompleteJob = this.getPostAlertOptions(answers, type, reference);
     return {
       subject: `${type} application, ${post} – ${reference}`,
       body: emailBody,
@@ -141,7 +142,7 @@ export class StaffService {
       },
       onComplete: {
         queue: "NOTIFY_SEND",
-        job: this.getPostAlertOptions(answers, type, reference),
+        ...(onCompleteJob && { job: onCompleteJob }),
       },
     };
   }
