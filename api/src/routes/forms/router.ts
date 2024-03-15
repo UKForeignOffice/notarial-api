@@ -1,4 +1,4 @@
-import { NextFunction, Router } from "express";
+import { Router } from "express";
 import * as formsHandlers from "../../handlers/forms";
 import * as staffEmailHandlers from "../../handlers/forms/emails/ses";
 import * as notifyEmailHandlers from "../../handlers/forms/emails/notify";
