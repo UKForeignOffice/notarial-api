@@ -1,6 +1,6 @@
 import "pg-boss";
 import { testData } from "./fixtures";
-import { answersHashMap, flattenQuestions } from "../../../../helpers";
+import { answersHashMap, flattenQuestions } from "../../../helpers";
 import { PersonalisationBuilder } from "../PersonalisationBuilder";
 import { buildUserConfirmationDocsList } from "../personalisationBuilder.userConfirmation";
 const pgBossMock = {
