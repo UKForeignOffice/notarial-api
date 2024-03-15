@@ -40,7 +40,7 @@ export class SubmitService {
       const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type });
       this.logger.info({ reference, staffProcessJob, userProcessJob }, "submitted form data for processing");
     } catch (e) {
-      throw new ApplicationError("WEBHOOK", "QUEUE_ERROR", 500, ``);
+      throw new ApplicationError("WEBHOOK", "QUEUE_ERROR", 500);
     }
     return {
       reference,

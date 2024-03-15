@@ -27,9 +27,9 @@ export function validate(req: Request, _res: Response, next: NextFunction) {
   next();
 }
 export async function post(req: Request, res: Response, next: NextFunction) {
-  const { sesService } = res.app.services;
+  const { staffService } = res.app.services;
   try {
-    const jobId = await sesService.sendEmail(req.body);
+    const jobId = await staffService.sendEmail(req.body);
     return {
       jobId,
     };

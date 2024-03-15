@@ -1,6 +1,6 @@
 import { Application, json } from "express";
 import pino from "pino-http";
-import { UserService, StaffService, SubmitService, QueueService } from "./services";
+import { QueueService, StaffService, SubmitService, UserService } from "./services";
 
 export function initMiddleware(server: Application) {
   server.use(pino());

@@ -19,9 +19,9 @@ export function validate(req: Request, _res: Response, next: NextFunction) {
   next();
 }
 export async function post(req: Request, res: Response, next: NextFunction) {
-  const { notifyService } = res.app.services;
+  const { userService } = res.app.services;
   try {
-    const jobId = await notifyService.sendEmailToUser(req.body);
+    const jobId = await userService.sendEmailToUser(req.body);
     return {
       jobId,
     };
