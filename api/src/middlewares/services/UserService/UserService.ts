@@ -8,7 +8,7 @@ import { NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import { getUserTemplate } from "./getUserTemplate";
 
-export class NotifyService {
+export class UserService {
   logger: Logger;
   templates: Record<FormType, NotifyTemplateGroup>;
   queueService: QueueService;

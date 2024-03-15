@@ -1,14 +1,15 @@
 import logger, { Logger } from "pino";
 import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
-import { NotifyService, StaffService } from "../EmailService";
 import { ApplicationError } from "../../../ApplicationError";
+import { UserService } from "../UserService";
+import { StaffService } from "../StaffService";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
 export class SubmitService {
   logger: Logger;
-  notifyEmailService: NotifyService;
+  notifyEmailService: UserService;
   staffEmailService: StaffService;
 
   constructor({ notifyService, sesService }) {

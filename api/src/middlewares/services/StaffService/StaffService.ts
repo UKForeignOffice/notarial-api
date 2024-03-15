@@ -1,6 +1,6 @@
 import logger, { Logger } from "pino";
 import { QueueService } from "../QueueService";
-import { NotifyService } from "..";
+import { UserService } from "..";
 import { FormField } from "../../../types/FormField";
 import * as templates from "./templates";
 import { FormType, PayMetadata } from "../../../types/FormDataBody";
@@ -28,7 +28,7 @@ type EmailArgs = {
   };
   onComplete?: {
     queue: string;
-    job: ReturnType<NotifyService["getPostAlertOptions"]>;
+    job: ReturnType<UserService["getPostAlertOptions"]>;
   };
 };
 

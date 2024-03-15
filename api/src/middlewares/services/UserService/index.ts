@@ -1,1 +1,1 @@
-export { NotifyService } from "./NotifyService";
+export { UserService } from "./UserService";
