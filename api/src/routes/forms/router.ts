@@ -1,7 +1,7 @@
 import { Router } from "express";
 import * as formsHandlers from "../../handlers/forms";
-import * as staffEmailHandlers from "../../handlers/forms/emails/ses";
-import * as notifyEmailHandlers from "../../handlers/forms/emails/notify";
+import * as staffEmailHandlers from "../../handlers/forms/emails/staff";
+import * as notifyEmailHandlers from "../../handlers/forms/emails/user";
 import { validationHandler } from "../../middlewares/validate";
 
 export const formRouter = Router();
