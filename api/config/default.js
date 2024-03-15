@@ -38,9 +38,7 @@ module.exports = {
     },
   },
   Notify: {
-    Template: {
-      exchangeUserPostalConfirmation: "64013379-bd54-4111-993f-b83df347233a",
-    },
+    Template: {},
   },
   postEmails: {},
 };
