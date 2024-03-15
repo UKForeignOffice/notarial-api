@@ -12,9 +12,9 @@ export class SubmitService {
   userService: UserService;
   staffEmailService: StaffService;
 
-  constructor({ notifyService, sesService }) {
+  constructor({ userService, sesService }) {
     this.logger = logger().child({ service: "Submit" });
-    this.userService = notifyService;
+    this.userService = userService;
     this.staffEmailService = sesService;
   }
   generateId() {
