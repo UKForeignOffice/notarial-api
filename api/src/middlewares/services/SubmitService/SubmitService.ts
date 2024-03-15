@@ -9,12 +9,12 @@ const { customAlphabet } = require("nanoid");
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
 export class SubmitService {
   logger: Logger;
-  notifyEmailService: UserService;
+  userService: UserService;
   staffEmailService: StaffService;
 
   constructor({ notifyService, sesService }) {
     this.logger = logger().child({ service: "Submit" });
-    this.notifyEmailService = notifyService;
+    this.userService = notifyService;
     this.staffEmailService = sesService;
   }
   generateId() {
@@ -37,7 +37,7 @@ export class SubmitService {
         payment: metadata.pay,
         type,
       });
-      const userProcessJob = await this.notifyEmailService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type });
+      const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type });
       this.logger.info({ reference, staffProcessJob, userProcessJob }, "submitted form data for processing");
     } catch (e) {
       throw new ApplicationError("WEBHOOK", "QUEUE_ERROR", 500, ``);
