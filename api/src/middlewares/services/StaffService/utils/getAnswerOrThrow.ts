@@ -1,4 +1,4 @@
-import { ApplicationError } from "../../../../../ApplicationError";
+import { ApplicationError } from "../../../../ApplicationError";
 
 export function getAnswerOrThrow(answers: any, key: string) {
   const answer = answers[key]?.answer;
