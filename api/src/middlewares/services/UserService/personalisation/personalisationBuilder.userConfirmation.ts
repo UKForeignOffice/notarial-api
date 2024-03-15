@@ -1,8 +1,8 @@
-import { AnswersHashMap } from "../../../../../types/AnswersHashMap";
-import { PayMetadata } from "../../../../../types/FormDataBody";
-import * as additionalContexts from "../../additionalContexts.json";
+import * as additionalContexts from "./../../utils/additionalContexts.json";
 import { getPost } from "../../utils/getPost";
-import { ApplicationError } from "../../../../../ApplicationError";
+import { AnswersHashMap } from "../../../../types/AnswersHashMap";
+import { PayMetadata } from "../../../../types/FormDataBody";
+import { ApplicationError } from "../../../../ApplicationError";
 
 const previousMarriageDocs = {
   Divorced: "decree absolute",

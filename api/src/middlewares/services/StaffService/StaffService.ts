@@ -1,5 +1,4 @@
 import logger, { Logger } from "pino";
-import { SESEmailTemplate } from "../EmailService/types";
 import { QueueService } from "../QueueService";
 import { NotifyService } from "..";
 import { FormField } from "../../../types/FormField";
@@ -9,14 +8,15 @@ import { remappers } from "./remappers";
 import { getAnswerOrThrow } from "./utils/getAnswerOrThrow";
 import { reorderers } from "./reorderers";
 import { getApplicationTypeName } from "./utils/getApplicationTypeName";
-import { getPost } from "../EmailService/utils/getPost";
 import { answersHashMap } from "../helpers";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import config from "config";
-import { getPostEmailAddress } from "../EmailService/utils/getPostEmailAddress";
-import { PersonalisationBuilder } from "../EmailService/NotifyService/personalisation/PersonalisationBuilder";
 import * as handlebars from "handlebars";
 import { isFieldType } from "../../../utils";
+import { getPost } from "../utils/getPost";
+import { getPostEmailAddress } from "../utils/getPostEmailAddress";
+import { PersonalisationBuilder } from "../UserService/personalisation/PersonalisationBuilder";
+import { SESEmailTemplate } from "../utils/types";
 
 type EmailArgs = {
   subject: string;
