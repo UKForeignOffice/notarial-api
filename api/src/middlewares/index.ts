@@ -6,15 +6,15 @@ export function initMiddleware(server: Application) {
   server.use(pino());
   server.use(json());
   const queueService = new QueueService();
-  const sesService = new StaffService({ queueService });
+  const staffService = new StaffService({ queueService });
   const userService = new UserService({ queueService });
   const submitService = new SubmitService({
     userService,
-    sesService,
+    staffService,
   });
   server.services = {
     userService,
-    sesService,
+    staffService,
     submitService,
   };
 }

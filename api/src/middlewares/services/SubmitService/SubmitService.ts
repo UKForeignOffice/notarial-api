@@ -10,12 +10,12 @@ const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
 export class SubmitService {
   logger: Logger;
   userService: UserService;
-  staffEmailService: StaffService;
+  staffService: StaffService;
 
   constructor({ userService, sesService }) {
     this.logger = logger().child({ service: "Submit" });
     this.userService = userService;
-    this.staffEmailService = sesService;
+    this.staffService = sesService;
   }
   generateId() {
     return nanoid();
@@ -32,7 +32,7 @@ export class SubmitService {
     const type = metadata?.type ?? "affirmation";
 
     try {
-      const staffProcessJob = await this.staffEmailService.sendToProcessQueue(formFields, "submission", {
+      const staffProcessJob = await this.staffService.sendToProcessQueue(formFields, "submission", {
         reference,
         payment: metadata.pay,
         type,
