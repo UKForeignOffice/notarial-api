@@ -8,4 +8,4 @@ export const formRouter = Router();
 
 formRouter.post("/", validationHandler, formsHandlers.post);
 formRouter.post("/emails/ses", staffEmailHandlers.validate, staffEmailHandlers.post);
-formRouter.post("/emails/notify", userEmailHandlers.post);
+formRouter.post("/emails/notify", userEmailHandlers.validate, userEmailHandlers.post);
