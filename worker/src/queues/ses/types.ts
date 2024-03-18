@@ -1,6 +1,6 @@
 import { SendEmailOptions } from "notifications-node-client";
 import { PayMetadata } from "../../types";
-import { NotifyJob } from "../../../../shared/dist/types";
+import { NotifyJob } from "../notify/types";
 
 export interface FormField {
   key: string;
