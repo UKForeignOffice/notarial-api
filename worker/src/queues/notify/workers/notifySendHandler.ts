@@ -1,7 +1,8 @@
 import pino from "pino";
 import { Job } from "pg-boss";
 import config from "config";
-import { NotifyClient, SendEmailOptions, SendEmailResponse } from "notifications-node-client";
+import { NotifyClient, SendEmailResponse } from "notifications-node-client";
+import { NotifyJob } from "../types";
 
 const queue = "NOTIFY_SEND";
 const worker = "notifySendHandler";
@@ -12,12 +13,6 @@ const logger = pino().child({
 });
 
 const notifyClient = new NotifyClient(config.get<string>("Notify.apiKey"));
-
-type NotifyJob = {
-  template: string;
-  emailAddress: string;
-  options: SendEmailOptions<any>;
-};
 
 /**
  * When a "notify" event is detected, this worker uses the GOV.UK Notify client to send the email.
