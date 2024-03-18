@@ -57,6 +57,7 @@ function parseContent(acc: Record<string, string>, [key, value]) {
   if (key === "type" && value) value = value.toLowerCase();
   if (key === "additionalDocs" && value) value = bulletsToArray(value);
   if (value && value.includes("<br>")) value = breaksToNotifyString(value);
+  if (key === "civilPartnership") value = !!value;
   acc[key] = value;
   return acc;
 }
