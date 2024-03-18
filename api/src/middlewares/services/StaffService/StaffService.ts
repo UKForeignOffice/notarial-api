@@ -1,6 +1,5 @@
 import logger, { Logger } from "pino";
 import { QueueService } from "../QueueService";
-import { UserService } from "..";
 import { FormField } from "../../../types/FormField";
 import * as templates from "./templates";
 import { FormType, PayMetadata } from "../../../types/FormDataBody";
@@ -17,20 +16,6 @@ import { getPost } from "../utils/getPost";
 import { getPostEmailAddress } from "../utils/getPostEmailAddress";
 import { PersonalisationBuilder } from "../UserService/personalisation/PersonalisationBuilder";
 import { SESEmailTemplate } from "../utils/types";
-
-type EmailArgs = {
-  subject: string;
-  body: string;
-  attachments: FormField[];
-  reference: string;
-  metadata: {
-    reference: string;
-  };
-  onComplete?: {
-    queue: string;
-    job: ReturnType<UserService["getPostAlertOptions"]>;
-  };
-};
 
 type PaymentViewModel = {
   id: string;
