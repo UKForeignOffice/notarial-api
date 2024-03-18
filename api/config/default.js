@@ -12,18 +12,33 @@ module.exports = {
   senderEmail: "pye@cautionyourblast.com",
   Queue: {
     url: "postgresql://user:root@localhost:5432/queue",
-  },
-  SES: {
-    Retry: {
-      backoff: "true",
-      limit: "50",
+    defaultOptions: {
+      retryBackoff: "true",
+      retryLimit: "50",
+    },
+    SES_SEND: {
+      retryBackoff: "true",
+      retryLimit: "50",
+      onComplete: "true",
+    },
+    NOTIFY_SEND: {
+      retryBackoff: "true",
+      retryLimit: "50",
+      onComplete: "false",
+    },
+    SES_PROCESS: {
+      retryBackoff: "true",
+      retryLimit: "50",
+      onComplete: "false",
+    },
+    NOTIFY_PROCESS: {
+      retryBackoff: "true",
+      retryLimit: "50",
+      onComplete: "false",
     },
   },
   Notify: {
-    Retry: {
-      backoff: "true",
-      limit: "50",
-    },
+    Template: {},
   },
   postEmails: {},
 };

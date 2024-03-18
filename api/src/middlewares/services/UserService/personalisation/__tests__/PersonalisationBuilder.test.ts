@@ -1,6 +1,6 @@
 import "pg-boss";
 import { testData } from "./fixtures";
-import { answersHashMap, flattenQuestions } from "../../../../helpers";
+import { answersHashMap, flattenQuestions } from "../../../helpers";
 import { PersonalisationBuilder } from "../PersonalisationBuilder";
 import { buildUserConfirmationDocsList } from "../personalisationBuilder.userConfirmation";
 const pgBossMock = {
@@ -26,7 +26,7 @@ test("buildSendEmailArgs should return the correct personalisation", () => {
     docsList:
       "* your UK passport\n* your birth certificate\n* proof of address\n* your partner’s passport or national identity card\n* the equivalent of £50 in the local currency",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=10",
-    civilPartnership: "",
+    civilPartnership: false,
     country: "Turkey",
     localRequirements: "",
     nameChangedMoreThanOnce: false,

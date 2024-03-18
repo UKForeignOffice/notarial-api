@@ -3,8 +3,8 @@ import { Job } from "pg-boss";
 import config from "config";
 import { NotifyClient, SendEmailOptions, SendEmailResponse } from "notifications-node-client";
 
-const queue = "NOTIFY";
-const worker = "notify";
+const queue = "NOTIFY_SEND";
+const worker = "notifySendHandler";
 
 const logger = pino().child({
   queue,
@@ -23,7 +23,7 @@ type NotifyJob = {
  * When a "notify" event is detected, this worker uses the GOV.UK Notify client to send the email.
  * The source of this event is the runner, after a user has submitted a form.
  */
-export async function notifyHandler(job: Job<NotifyJob>) {
+export async function notifySendHandler(job: Job<NotifyJob>) {
   const jobId = job.id;
   logger.info({ jobId }, `received ${worker} job`);
   const { data } = job;

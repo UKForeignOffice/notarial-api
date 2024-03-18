@@ -1,24 +1,18 @@
-import { flattenQuestions } from "../../../helpers";
 import { testData } from "./fixtures";
-import { SESService } from "../SESService";
-import { isNotFieldType } from "../../../../../utils";
+import { StaffService } from "../StaffService";
 import "pg-boss";
-import { PayMetadata } from "../../../../../types/FormDataBody";
+import { flattenQuestions } from "../../helpers";
+import { isNotFieldType } from "../../../../utils";
+import { PayMetadata } from "../../../../types/FormDataBody";
+import { fields } from "./fixtures/fields";
+import { ApplicationError } from "../../../../ApplicationError";
+const sendToQueue = jest.fn();
 
-const pgBossMock = {
-  async start() {
-    return this;
-  },
-  send: async () => {
-    return "some-job-id";
-  },
+const queueService = {
+  sendToQueue,
 };
 
-jest.mock("pg-boss", () => {
-  return jest.fn().mockImplementation(() => pgBossMock);
-});
-
-const emailService = new SESService();
+const emailService = new StaffService({ queueService });
 
 const formFields = flattenQuestions(testData.questions);
 const allOtherFields = formFields.filter(isNotFieldType("file"));
@@ -45,52 +39,67 @@ test("getEmailBody renders cni template correctly", () => {
 });
 
 test("sendEmail returns a jobId", async () => {
-  const jobId = await emailService.sendEmail(
-    {
-      subject: "your application",
-      body: "has been accepted",
-      attachments: [],
-      reference: "1234",
+  sendToQueue.mockResolvedValueOnce("ABC-123");
+  const jobId = await emailService.sendEmail({
+    fields: fields,
+    template: "submission",
+    metadata: {
+      reference: "..",
+      payment: {
+        payId: "",
+        reference: "",
+        state: { code: "", finished: false, message: "" },
+      },
+      type: "affirmation",
     },
-    "1234"
-  );
-  expect(jobId).toBe("some-job-id");
+  });
+  expect(jobId).toBe("ABC-123");
 });
 
 test("sendEmail throws ApplicationError when no jobId is returned", async () => {
-  const sendSpy = jest.spyOn(pgBossMock, "send");
-  sendSpy.mockResolvedValueOnce(null);
-
+  sendToQueue.mockRejectedValue(new ApplicationError("QUEUE", `SES_SEND_ERROR`, 500));
   try {
-    await emailService.sendEmail(
-      {
-        subject: "your application",
-        body: "has been accepted",
-        attachments: [],
-        reference: "1234",
+    await emailService.sendEmail({
+      fields,
+      template: "submission",
+      metadata: {
+        reference: "USER_REF",
+        payment: testData.metadata.pay,
+        type: "affirmation",
       },
-      "1234"
-    );
+    });
   } catch (e) {
-    expect(e.code).toBe("QUEUE_ERROR");
-    expect(e.name).toBe("SES");
+    console.log(e);
+    expect(e.code).toBe("SES_SEND_ERROR");
+    expect(e.name).toBe("QUEUE");
   }
 });
 
 test("buildSendEmailArgs returns an object with subject, body, attachments and reference", async () => {
-  const result = await emailService.buildSendEmailArgs(
-    {
-      fields: allOtherFields,
-      payment: testData.metadata.pay,
+  const result = emailService.buildSendEmailArgs({
+    fields: allOtherFields,
+    template: "submission",
+    payment: testData.metadata.pay,
+    reference: "1234",
+    metadata: {
+      reference: "1234",
+      type: "affirmation",
     },
-    "submission",
-    "1234",
-    "affirmation"
-  );
+    onComplete: {
+      queue: "NOTIFY_SEND",
+      job: {},
+    },
+  });
   expect(result).toEqual({
     subject: "affirmation application, British Consulate General Istanbul – 1234",
     body: expect.any(String),
+    onComplete: {
+      queue: "NOTIFY_SEND",
+    },
     attachments: [],
+    metadata: {
+      reference: "1234",
+    },
     reference: "1234",
   });
 });

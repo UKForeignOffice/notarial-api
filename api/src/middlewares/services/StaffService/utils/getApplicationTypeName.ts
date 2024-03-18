@@ -1,4 +1,4 @@
-import { FormType } from "../../../../../types/FormDataBody";
+import { FormType } from "../../../../types/FormDataBody";
 
 const applicationTypeNames: Record<FormType, string> = {
   affirmation: "marital status affirmation",

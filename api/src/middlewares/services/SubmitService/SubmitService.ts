@@ -1,21 +1,22 @@
 import logger, { Logger } from "pino";
 import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
-import { NotifyService, SESService } from "../EmailService";
+import { ApplicationError } from "../../../ApplicationError";
+import { UserService } from "../UserService";
+import { StaffService } from "../StaffService";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
 export class SubmitService {
   logger: Logger;
-  notifyEmailService: NotifyService;
-  staffEmailService: SESService;
+  userService: UserService;
+  staffService: StaffService;
 
-  constructor({ notifyService, sesService }) {
+  constructor({ userService, staffService }) {
     this.logger = logger().child({ service: "Submit" });
-    this.notifyEmailService = notifyService;
-    this.staffEmailService = sesService;
+    this.userService = userService;
+    this.staffService = staffService;
   }
-
   generateId() {
     return nanoid();
   }
@@ -30,11 +31,17 @@ export class SubmitService {
     const reference = metadata?.pay?.reference ?? this.generateId();
     const type = metadata?.type ?? "affirmation";
 
-    const staffJobPromise = this.staffEmailService.send(formFields, "submission", { reference, payment: metadata.pay, type });
-    const userNotifyJobPromise = this.notifyEmailService.sendEmailToUser(answers, { reference, payment: metadata.pay, type });
-    const postNotifyJobPromise = this.notifyEmailService.sendEmailToPost(answers, type);
-
-    await Promise.allSettled([staffJobPromise, userNotifyJobPromise, postNotifyJobPromise]);
+    try {
+      const staffProcessJob = await this.staffService.sendToProcessQueue(formFields, "submission", {
+        reference,
+        payment: metadata.pay,
+        type,
+      });
+      const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type });
+      this.logger.info({ reference, staffProcessJob, userProcessJob }, "submitted form data for processing");
+    } catch (e) {
+      throw new ApplicationError("WEBHOOK", "QUEUE_ERROR", 500);
+    }
     return {
       reference,
     };

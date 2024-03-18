@@ -4,9 +4,10 @@ import { SESJob } from "../types";
 import { sesClient, SESEmail } from "../helpers";
 
 import { SESServiceException, SendRawEmailCommand } from "@aws-sdk/client-ses";
+import { getConsumer } from "../../../Consumer";
 
-const queue = "SES";
-const worker = "sesHandler";
+const queue = "SES_SEND";
+const worker = "sesSendHandler";
 
 const logger = pino().child({
   queue,
@@ -18,7 +19,7 @@ const logger = pino().child({
  * with SES`
  * The source of this event is the runner, after a user has submitted a form.
  */
-export async function sesHandler(job: Job<SESJob>) {
+export async function sesSendHandler(job: Job<SESJob>) {
   const jobId = job.id;
   logger.info({ jobId }, `received ${worker} job`);
   const { data } = job;
@@ -39,12 +40,40 @@ export async function sesHandler(job: Job<SESJob>) {
     },
   });
 
+  let response;
+
   try {
-    const response = await sesClient.send(emailCommand);
+    response = await sesClient.send(emailCommand);
     logger.info(`Reference ${reference} staff email sent successfully with SES message id: ${response.MessageId}`);
-    return response;
   } catch (err: SESServiceException | any) {
     logger.error({ jobId, reference, err }, "SES could not send the email");
     throw err;
+  }
+
+  return response;
+}
+
+const consumerPromise = getConsumer();
+/**
+ * Sends an alert to individual posts, notifying them that a form has been submitted to the shared inbox.
+ */
+export async function onComplete(job: Job<{ request: Job<SESJob> }>) {
+  const consumer = await consumerPromise;
+  const jobId = job.id;
+  const completedJobId = job.data.request.id;
+  logger.info({ jobId, completedJobId }, `completed ${completedJobId} on ${worker}. onComplete flag detected`);
+  const onComplete = job.data.request.data?.onComplete;
+
+  if (!onComplete) {
+    logger.warn({ jobId }, "onComplete flag was detected, but onComplete data is empty");
+    return;
+  }
+
+  const { queue, job: onCompleteJobArgs } = onComplete;
+
+  try {
+    await consumer.send(queue, onCompleteJobArgs);
+  } catch (e) {
+    logger.error({ jobId, completedJobId, err: e }, `Failed to send onComplete ${queue} job triggered by ${completedJobId}`);
   }
 }

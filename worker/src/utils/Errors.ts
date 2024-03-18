@@ -25,7 +25,7 @@ export type ErrorTypes = "CONSUMER" | "FILE" | "GENERIC" | "SES";
 type ConsumerErrorCode = "START_FAILED";
 type GenericErrorCode = "UNKNOWN";
 type FileErrorCode = "EMPTY_RES" | "API_ERROR" | "NOT_FOUND";
-type SESErrorCode = "FAILED_TO_ATTACH";
+type SESErrorCode = "FAILED_TO_ATTACH" | "FAILED_TO_SEND_COMPLETE_JOB";
 
 /**
  * Union of all the different ErrorCode.
@@ -55,6 +55,7 @@ const FILE: ErrorRecord<FileErrorCode> = {
 
 const SES: ErrorRecord<SESErrorCode> = {
   FAILED_TO_ATTACH: "Could not attach files to MIMEMessage",
+  FAILED_TO_SEND_COMPLETE_JOB: "Could not send complete job",
 };
 
 type ErrorRecords = {

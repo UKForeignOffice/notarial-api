@@ -1,6 +1,6 @@
-import { AnswersHashMap } from "../../../../../types/AnswersHashMap";
-import * as additionalContexts from "../../additionalContexts.json";
-import { FormType } from "../../../../../types/FormDataBody";
+import { AnswersHashMap } from "../../../../types/AnswersHashMap";
+import * as additionalContexts from "../../utils/additionalContexts.json";
+import { FormType } from "../../../../types/FormDataBody";
 
 const personalisationMappings: Record<FormType, object> = {
   affirmation: {

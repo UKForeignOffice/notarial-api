@@ -1,34 +1,81 @@
-# Queue: `notification`
+# notarial-worker
 
-Workers
-- `notifyHandler`
-- `sesHandler`
+Handles emails via GOV.UK Notify or AWS SES.
 
-## `notifyHandler`
-[notifyHandler]('./queues/notify/workers/notifyHandler.ts')
+The queues are managed by [pg-boss](https://github.com/timgit/pg-boss)
 
-When a message on the "notify" queue is detected, this worker sends a GOV.UK notify request.
-The source of this event is notarial-api, after a user has submitted a form, and the data has been process by notarial-api.
+The current naming scheme is `NOTIFY_*` and `SES_*` to handle GOV.UK Notify and AWS SES respectively.
+The suffixes `_PROCESS` and `_SEND` are currently used. 
+- `_PROCESS` is used to store the parameters, and allow retrying of the message. Minimal business logic is used for these workers,
+  they simply send the request to `notarial-api/forms/emails*` where the actual parsing of data and business logic is held
+- `_SEND` is used to send the email
 
+The general flow is 
+
+1. POST to /forms (handled by forms-worker)
+1. creates two messages (`.sendToProcessQueue`) which just takes the data and adds it to `*_PROCESS` queues
+1. On successful message creation, respond with success (so POST to /forms doesn’t need to be retried)
+1. Worker picks up the (`sendToProcessQueue`) messages and POSTs to /forms/emails/ses and /forms/emails/notify
+1. Endpoints parse the data and throw appropriately
+1. On success, sticks the compiled notify/ email body on the `*_SEND` queues
+1. Worker sends the emails
+
+This allows all stages to be retried individually. If errors are thrown, or there are erroneous responses (4xx or 5xx errors),
+these will be stored in the database, in the output column.
+
+
+- `NOTIFY_PROCESS` is handled by [notifyProcessHandler](queues/notify/workers/notifyProcessHandler.ts)
+- `NOTIFY_SEND` is handled by [notifySendHandler](queues/notify/workers/notifySendHandler.ts)
+- `SES_PROCESS` is handled by [sesProcessHandler](queues/ses/workers/sesProcessHandler.ts)
+- `SES_SEND` is handled by [sesSendHandler](queues/ses/workers/sesSendHandler.ts)
+
+## `notifyProcessHandler`
+[notifyProcessHandler](queues/notify/workers/notifyProcessHandler.ts)
+
+When a message on the `NOTIFY_PROCESS` queue is detected this worker will send a request to `notarial-api/forms/emails/notify`.
+The source of this event is notarial-api, after a user has submitted a form (POST /forms) [SubmitService.submitForm](../../api/src/middlewares/services/SubmitService/SubmitService.ts)
 
 ```postgresql
-    select * from pgboss.job where name = 'notify';
+    select * from pgboss.job where name = 'NOTIFY_PROCESS';
 ```
 
 
-## `sesHandler`
-[sesHandler]('./queues/notify/workers/sesHandler.ts')
+## `notifySendHandler`
+[notifySendHandler](queues/notify/workers/notifySendHandler.ts)
 
-When a message on the "ses" queue is detected, this worker sends an SES message.
-The source of this event is notarial-api, after a user has submitted a form, and the data has been process by notarial-api.
+
+When a message on the "NOTIFY_SEND" queue is detected, this worker sends a GOV.UK notify request.
+The source of this event is notarial-api/forms/emails/notify, which processes the user's data.
 
 ```postgresql
-    select * from pgboss.job where name = 'ses';
+    select * from pgboss.job where name = 'NOTIFY_SEND';
+```
+
+
+## `sesProcessHandler`
+[sesProcessHandler](./queues/ses/workers/sesProcessHandler.ts)
+
+When a message on the `SES_PROCESS` queue is detected this worker will send a request to `notarial-api/forms/emails/ses`.
+The source of this event is notarial-api, after a user has submitted a form (POST /forms) [SubmitService.submitForm](../../api/src/middlewares/services/SubmitService/SubmitService.ts)
+
+```postgresql
+    select * from pgboss.job where name = 'SES_PROCESS';
+```
+
+
+## `sesSendHandler`
+[sesSendHandler](./queues/ses/workers/sesSendHandler.ts)
+
+When a message on the "NOTIFY_SEND" queue is detected, this worker sends a GOV.UK notify request.
+The source of this event is notarial-api/forms/emails/ses, which processes the user's data.
+
+```postgresql
+    select * from pgboss.job where name = 'SES_SEND';
 ```
 
 ### Troubleshooting
 
-When tasks fail, the error emitted will automatically be added to the jobs table, and the error is logged.
+When tasks fail, the error emitted will automatically be added to the jobs, and the error is logged.
 
 If the logs are incomplete, further logging may be found on the database in the `output` column.
 
@@ -57,6 +104,13 @@ Events can easily be retried by setting completedon = null, retrycount = 0, stat
     retrycount = 0,
     state = 'created'
     where id = '4aad27dc-db53-48e4-824b-612a4b3d9fa7';
+```
+
+If you cannot find a job in `pgboss.job`, it may be in the archive table, `pgboss.archive`.
+
+
+```postgresql
+    select * from pgboss.archive where id = '4aad27dc-db53-48e4-824b-612a4b3d9fa7;'
 ```
 
 If you wish to keep a record of the failed event, create a new event using the failed events details.

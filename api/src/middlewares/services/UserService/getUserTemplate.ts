@@ -1,4 +1,4 @@
-import * as additionalContexts from "../additionalContexts.json";
+import * as additionalContexts from "../utils/additionalContexts.json";
 
 export function getUserTemplate(country: string) {
   const postalSupport = additionalContexts.countries[country]?.postal;

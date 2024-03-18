@@ -1,17 +1,20 @@
 import { Application, json } from "express";
 import pino from "pino-http";
-import { NotifyService, SESService, SubmitService } from "./services";
+import { QueueService, StaffService, SubmitService, UserService } from "./services";
 
 export function initMiddleware(server: Application) {
   server.use(pino());
   server.use(json());
-  const sesService = new SESService();
-  const notifyService = new NotifyService();
+  const queueService = new QueueService();
+  const staffService = new StaffService({ queueService });
+  const userService = new UserService({ queueService });
   const submitService = new SubmitService({
-    notifyService,
-    sesService,
+    userService,
+    staffService,
   });
   server.services = {
+    userService,
+    staffService,
     submitService,
   };
 }

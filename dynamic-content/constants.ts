@@ -1,7 +1,7 @@
 import { FileConstants } from "./types";
 
 const CONTENT_SOURCE = "./csv";
-const CONTENT_TARGET = "../api/src/middlewares/services/EmailService/additionalContexts.json";
+const CONTENT_TARGET = "../api/src/middlewares/services/utils/additionalContexts.json";
 
 const CONTENT_FIELD_MAP = {
   country: "country",

@@ -1,4 +1,4 @@
-import * as additionalContexts from "./../additionalContexts.json";
+import * as additionalContexts from "./additionalContexts.json";
 import config from "config";
 const POST_EMAILS = config.get<Record<string, string>>("postEmails");
 export function getPostEmailAddress(country: string, post?: string) {
