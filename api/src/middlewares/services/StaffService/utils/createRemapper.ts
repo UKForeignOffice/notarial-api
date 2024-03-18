@@ -1,5 +1,5 @@
 import { set } from "lodash";
-import { FormField } from "../../../../../types/FormField";
+import { FormField } from "../../../../types/FormField";
 
 /**
  * Recreates an object with the keys remapped according to the mappings object.
