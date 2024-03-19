@@ -1,12 +1,23 @@
 import logger, { Logger } from "pino";
 import axios, { AxiosError } from "axios";
 import { ApplicationError } from "../../../utils/ApplicationError";
+import config from "config";
 
 export default class FileService {
   logger: Logger;
+  allowedOrigins: string[];
 
   constructor() {
     this.logger = logger().child({ service: "File" });
+    this.allowedOrigins = config.get<string[]>("Files.allowedOrigins");
+  }
+
+  checkFileIsAllowed(url: string): this {
+    const isAllowed = this.allowedOrigins.find((origin) => url.includes(origin)) !== undefined;
+    if (!isAllowed) {
+      throw new ApplicationError("FILE", "ORIGIN_NOT_ALLOWED", `The specified file location ${url} is forbidden`);
+    }
+    return this;
   }
 
   /**
