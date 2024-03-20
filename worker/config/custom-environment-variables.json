@@ -19,5 +19,9 @@
       "backoff": "SES_RETRY_BACKOFF",
       "limit": "SES_RETRY_LIMIT"
     }
+  },
+  "NotarialApi": {
+    "createSESEmailUrl": "NOTARIAL_API_CREATE_SES_EMAIL_URL",
+    "createNotifyEmailUrl": "NOTARIAL_API_CREATE_NOTIFY_EMAIL_URL"
   }
 }
