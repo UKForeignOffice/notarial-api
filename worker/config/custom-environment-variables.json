@@ -25,6 +25,9 @@
     "createNotifyEmailUrl": "NOTARIAL_API_CREATE_NOTIFY_EMAIL_URL"
   },
   "Files": {
-    "allowedOrigins": "FILES_ALLOWED_ORIGINS"
+    "allowedOrigins": {
+      "__name": "FILES_ALLOWED_ORIGINS",
+      "__format": "json"
+    }
   }
 }
