@@ -12,7 +12,7 @@ export default class FileService {
     this.allowedOrigins = config.get<string[]>("Files.allowedOrigins");
   }
 
-  checkFileIsAllowed(url: string): this {
+  validateFileLocation(url: string): this {
     const isAllowed = this.allowedOrigins.find((origin) => url.includes(origin)) !== undefined;
     if (!isAllowed) {
       throw new ApplicationError("FILE", "ORIGIN_NOT_ALLOWED", `The specified file location ${url} is forbidden`);
