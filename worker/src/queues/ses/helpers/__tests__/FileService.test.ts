@@ -55,3 +55,15 @@ test("getFile returns an error when the API responds with a 500", async () => {
     expect(e.code).toBe("UNKNOWN");
   }
 });
+
+test("validateFileLocation returns the fileService instance if the specified URL is from an allowed origin", () => {
+  expect(fileService.validateFileLocation("https://some-url.com")).toBeInstanceOf(FileService);
+});
+test("validateFileLocation throws when the specified URL is not in the list of allowed origins", () => {
+  try {
+    fileService.validateFileLocation("https://a-failing-url.com");
+  } catch (e) {
+    expect(e.name).toBe("FILE");
+    expect(e.code).toBe("ORIGIN_NOT_ALLOWED");
+  }
+});
