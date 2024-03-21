@@ -88,8 +88,11 @@ export class StaffService {
     const reordered = reorderers[type](remapped);
     const country = getAnswerOrThrow(information, "country");
     const post = information.post?.answer;
-    const oathType = type === "affirmation" ? getAnswerOrThrow(information, "oathType") : undefined;
-    const jurats = type === "affirmation" ? getAnswerOrThrow(information, "jurats") : undefined;
+    let oathType, jurats;
+    if (type === "affirmation" || type === "cni") {
+      oathType = getAnswerOrThrow(information, "oathType");
+      jurats = getAnswerOrThrow(information, "jurats");
+    }
     return this.templates.SES[template]({
       post: getPost(country, post),
       type: getApplicationTypeName(type),
