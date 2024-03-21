@@ -21,7 +21,7 @@ export class QueueService {
     this.configs = {
       SES_PROCESS: new QueueConfig("SES_PROCESS"),
       SES_SEND: new QueueConfig("SES_SEND"),
-      NOTIFY_SEND: new QueueConfig("NOTIFY_PROCESS"),
+      NOTIFY_SEND: new QueueConfig("NOTIFY_SEND"),
       NOTIFY_PROCESS: new QueueConfig("NOTIFY_PROCESS"),
     };
     boss.start().then((pgboss) => {
