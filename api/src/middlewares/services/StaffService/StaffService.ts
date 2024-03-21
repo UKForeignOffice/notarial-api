@@ -81,21 +81,26 @@ export class StaffService {
 
   getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate, type: FormType) {
     const { fields, payment, reference } = data;
-    const remapped = remappers.affirmation(fields);
+    const remapped = remappers[type](fields);
 
     const { information } = remapped;
 
-    const reordered = reorderers.affirmation(remapped);
+    const reordered = reorderers[type](remapped);
     const country = getAnswerOrThrow(information, "country");
     const post = information.post?.answer;
+    let oathType, jurats;
+    if (type === "affirmation" || type === "cni") {
+      oathType = getAnswerOrThrow(information, "oathType");
+      jurats = getAnswerOrThrow(information, "jurats");
+    }
     return this.templates.SES[template]({
       post: getPost(country, post),
       type: getApplicationTypeName(type),
       reference,
       payment,
       country,
-      oathType: getAnswerOrThrow(information, "oathType"),
-      jurats: getAnswerOrThrow(information, "jurats"),
+      oathType,
+      jurats,
       certifyPassport: information.certifyPassport?.answer ?? false,
       questions: reordered,
     });

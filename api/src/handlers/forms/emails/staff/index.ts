@@ -7,7 +7,7 @@ const schema = joi.object({
   metadata: {
     reference: joi.string(),
     payment: joi.object(),
-    type: joi.string().valid("affirmation", "cni"),
+    type: joi.string().valid("affirmation", "cni", "exchange"),
     postAlertOptions: joi.object({
       emailAddress: joi.string(),
       options: {
