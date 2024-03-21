@@ -31,7 +31,7 @@
     "SES_PROCESS": {
         "retryBackoff": "SES_PROCESS_RETRY_BACKOFF",
         "retryLimit": "SES_PROCESS_RETRY_LIMIT",
-        "onComplete": "SES_PROCESS_ON_COMPLETE",
+        "onComplete": "SES_PROCESS_ON_COMPLETE"
     },
     "NOTIFY_SEND": {
       "retryBackoff": "NOTIFY_SEND_RETRY_BACKOFF",
