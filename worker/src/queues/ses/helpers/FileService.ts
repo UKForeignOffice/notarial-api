@@ -12,12 +12,16 @@ export default class FileService {
     this.allowedOrigins = config.get<string[]>("Files.allowedOrigins");
   }
 
-  validateFileLocation(url: string): this {
-    const isAllowed = this.allowedOrigins.find((origin) => url.includes(origin)) !== undefined;
-    if (!isAllowed) {
+  validateFileLocation(url: string): void {
+    try {
+      const urlObject = new URL(url);
+      const isAllowed = this.allowedOrigins.includes(urlObject.origin);
+      if (!isAllowed) {
+        throw "";
+      }
+    } catch (e) {
       throw new ApplicationError("FILE", "ORIGIN_NOT_ALLOWED", `The specified file location ${url} is forbidden`);
     }
-    return this;
   }
 
   /**
@@ -27,6 +31,7 @@ export default class FileService {
    */
   async getFile(url: string): Promise<{ contentType: string; data: Buffer }> {
     try {
+      this.validateFileLocation(url);
       const { headers, data } = await axios.get<Buffer>(url, { responseType: "arraybuffer", responseEncoding: "base64" });
       return {
         contentType: headers["content-type"],
@@ -38,6 +43,9 @@ export default class FileService {
         if (err.response.status === 404) {
           throw new ApplicationError("FILE", "NOT_FOUND", `Requested file could not be found at ${err.response?.config.url}`);
         }
+      }
+      if (err instanceof ApplicationError) {
+        throw err;
       }
       throw new ApplicationError("FILE", "UNKNOWN", err.message);
     }

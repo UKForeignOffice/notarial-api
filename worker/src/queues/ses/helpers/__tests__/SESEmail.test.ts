@@ -2,7 +2,7 @@ import { attachFilesToMessage, createMessageWithText } from "../SESEmail";
 import "./../FileService";
 const fileServiceMock = {
   validateFileLocation(_url: string) {
-    return this;
+    return;
   },
   async getFile() {
     const fileBuffer = Buffer.from("test file");

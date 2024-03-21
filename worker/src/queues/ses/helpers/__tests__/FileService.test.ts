@@ -25,16 +25,16 @@ test("getFile returns an error when the file content cannot be found", async () 
     response: {
       status: 404,
       config: {
-        url: "https://a-failing-url.com",
+        url: "https://some-url.com",
       },
     },
   });
 
   try {
-    await fileService.getFile("https://a-failing-url.com");
+    await fileService.getFile("https://some-url.com");
   } catch (e) {
     expect(e.name).toBe("FILE");
-    expect(e.message).toBe("Requested file could not be found at https://a-failing-url.com");
+    expect(e.message).toBe("Requested file could not be found at https://some-url.com");
   }
 });
 
@@ -43,13 +43,13 @@ test("getFile returns an error when the API responds with a 500", async () => {
     response: {
       status: 500,
       config: {
-        url: "https://a-failing-url.com",
+        url: "https://some-url.com",
       },
     },
   });
 
   try {
-    await fileService.getFile("https://a-failing-url.com");
+    await fileService.getFile("https://some-url.com");
   } catch (e) {
     expect(e.name).toBe("FILE");
     expect(e.code).toBe("UNKNOWN");
@@ -57,7 +57,9 @@ test("getFile returns an error when the API responds with a 500", async () => {
 });
 
 test("validateFileLocation returns the fileService instance if the specified URL is from an allowed origin", () => {
-  expect(fileService.validateFileLocation("https://some-url.com")).toBeInstanceOf(FileService);
+  expect(() => {
+    fileService.validateFileLocation("https://some-url.com");
+  }).not.toThrow();
 });
 test("validateFileLocation throws when the specified URL is not in the list of allowed origins", () => {
   try {
@@ -66,4 +68,19 @@ test("validateFileLocation throws when the specified URL is not in the list of a
     expect(e.name).toBe("FILE");
     expect(e.code).toBe("ORIGIN_NOT_ALLOWED");
   }
+});
+
+test("validateFileLocation throws when an invalid url is passed", () => {
+  try {
+    fileService.validateFileLocation("/a-failing-url");
+  } catch (e) {
+    expect(e.name).toBe("FILE");
+    expect(e.code).toBe("ORIGIN_NOT_ALLOWED");
+  }
+});
+
+test("validateFileLocation checks origin only", () => {
+  expect(() => {
+    fileService.validateFileLocation("https://a-failing-url.com?param=https://some-url.com");
+  }).toThrow();
 });
