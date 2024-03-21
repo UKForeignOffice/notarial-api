@@ -30,7 +30,7 @@ export async function notifyProcessHandler(job: Job<NotifyParseJob>) {
   const reference = data.metadata.reference;
   try {
     const res = await axios.post(CREATE_NOTIFY_EMAIL_URL, data);
-
+    logger.debug({ jobId, reference, ...res.data });
     logger.info(
       { jobId, reference },
       `job: ${id} posted successfully to ${CREATE_NOTIFY_EMAIL_URL} for user with reference ${reference}. Email will be sent by ${res.data.jobId}`

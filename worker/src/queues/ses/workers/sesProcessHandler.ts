@@ -26,6 +26,7 @@ export async function sesProcessHandler(job: Job<SESParseJob>) {
   const reference = data.metadata.reference;
   try {
     const res = await axios.post(CREATE_SES_EMAIL_URL, data);
+    logger.debug({ jobId, reference, ...res.data });
     logger.info(
       { jobId, reference },
       `job: ${id} posted successfully to ${CREATE_SES_EMAIL_URL} for user with reference ${reference}. Email will be sent by ${res.data.jobId}`
