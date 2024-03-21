@@ -213,10 +213,10 @@ jobs:
           resource-name: deployment/notarial-api
 
 
-#      - kubernetes/update-container-image:
-#          namespace: << parameters.namespace >>
-#          container-image-updates: notarial-worker=523508197323.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-worker:$DOCKER_TAG
-#          resource-name: deployment/notarial-worker
+      - kubernetes/update-container-image:
+          namespace: << parameters.namespace >>
+          container-image-updates: notarial-worker=523508197323.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-worker:$DOCKER_TAG
+          resource-name: deployment/notarial-worker
 
       - run:
           name: Disconnect from OpenVPN

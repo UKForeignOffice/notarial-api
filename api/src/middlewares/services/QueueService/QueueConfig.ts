@@ -9,7 +9,7 @@ const DEFAULT_OPTIONS = {
   retryBackoff: config.get<string>("Queue.defaultOptions.retryBackoff") === "true",
   retryLimit: parseInt(config.get<string>("Queue.defaultOptions.retryLimit")),
 };
-const QueueLogger = logger();
+const queueLogger = logger();
 
 export const schema = joi.object({
   retryBackoff: joi.boolean().optional(),
@@ -26,8 +26,9 @@ export class QueueConfig {
     try {
       const { value } = schema.validate(config.get<SendOptions>(`Queue.${name}`), { convert: true });
       this.options = value;
+      queueLogger.info({ value }, `${this.name} queue configured`);
     } catch (e) {
-      QueueLogger.warn(`${name} options could not be set, using default options`);
+      queueLogger.warn(`${name} options could not be set, using default options`);
       this.options = DEFAULT_OPTIONS;
     }
   }

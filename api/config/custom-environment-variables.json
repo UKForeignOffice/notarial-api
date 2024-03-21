@@ -22,12 +22,26 @@
   "Queue": {
     "url": "QUEUE_URL",
     "archiveFailedAfterDays": "ARCHIVE_FAILED_AFTER_DAYS",
-    "deleteArchivedAfterDays": "DELETE_ARCHIVED_IN_DAYS"
-  },
-  "SES": {
-    "Retry": {
-      "backoff": "SES_RETRY_BACKOFF",
-      "limit": "SES_RETRY_LIMIT"
+    "deleteArchivedAfterDays": "DELETE_ARCHIVED_IN_DAYS",
+    "SES_SEND": {
+      "retryBackoff": "SES_SEND_RETRY_BACKOFF",
+      "retryLimit": "SES_SEND_RETRY_LIMIT",
+      "onComplete": "SES_SEND_ON_COMPLETE"
+    },
+    "SES_PROCESS": {
+        "retryBackoff": "SES_PROCESS_RETRY_BACKOFF",
+        "retryLimit": "SES_PROCESS_RETRY_LIMIT",
+        "onComplete": "SES_PROCESS_ON_COMPLETE",
+    },
+    "NOTIFY_SEND": {
+      "retryBackoff": "NOTIFY_SEND_RETRY_BACKOFF",
+      "retryLimit": "NOTIFY_SEND_RETRY_LIMIT",
+      "onComplete": "NOTIFY_SEND_ON_COMPLETE"
+    },
+    "NOTIFY_PROCESS": {
+      "retryBackoff": "NOTIFY_PROCESS_RETRY_BACKOFF",
+      "retryLimit": "NOTIFY_PROCESS_RETRY_LIMIT",
+      "onComplete": "NOTIFY_PROCESS_ON_COMPLETE",
     }
   },
   "Pay": {
