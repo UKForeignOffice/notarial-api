@@ -12,16 +12,14 @@ export default class FileService {
     this.allowedOrigins = config.get<string[]>("Files.allowedOrigins");
   }
 
-  validateFileLocation(url: string): void {
+  validateFileLocation(urlToValidate: string): boolean {
+    let url: URL;
     try {
-      const urlObject = new URL(url);
-      const isAllowed = this.allowedOrigins.includes(urlObject.origin);
-      if (!isAllowed) {
-        throw "";
-      }
+      url = new URL(urlToValidate);
     } catch (e) {
-      throw new ApplicationError("FILE", "ORIGIN_NOT_ALLOWED", `The specified file location ${url} is forbidden`);
+      this.logger.error(`url ${urlToValidate} is not a valid URL`);
     }
+    return this.allowedOrigins.includes(url.origin);
   }
 
   /**
@@ -31,7 +29,10 @@ export default class FileService {
    */
   async getFile(url: string): Promise<{ contentType: string; data: Buffer }> {
     try {
-      this.validateFileLocation(url);
+      const isValid = this.validateFileLocation(url);
+      if (!isValid) {
+        throw new ApplicationError("FILE", "ORIGIN_NOT_ALLOWED", `The specified file location ${url} is forbidden`);
+      }
       const { headers, data } = await axios.get<Buffer>(url, { responseType: "arraybuffer", responseEncoding: "base64" });
       return {
         contentType: headers["content-type"],
