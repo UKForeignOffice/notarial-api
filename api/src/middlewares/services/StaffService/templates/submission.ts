@@ -20,10 +20,14 @@ const template = `
 <ul>
     <li>Reference: {{ reference }}</li>
     <li>Country: {{ country }}</li>
-    <li>Type of declaration: {{ oathType }}</li>
-    <li>
-        Physical or mental conditions that would reduce ability to read or sign affirmation: {{ jurats }}
-    </li>
+    {{#if oathType}}
+        <li>Type of declaration: {{ oathType }}</li>
+    {{/if}}
+    {{#if jurats}}
+        <li>
+            Physical or mental conditions that would reduce ability to read or sign affirmation: {{ jurats }}
+        </li>
+    {{/if}}
     <li>Needs passport certification: {{ certifyPassport }}</li>
 </ul>
 
