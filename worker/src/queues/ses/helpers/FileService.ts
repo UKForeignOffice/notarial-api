@@ -28,8 +28,8 @@ export default class FileService {
    *
    */
   async getFile(url: string): Promise<{ contentType: string; data: Buffer }> {
+    const isValid = this.validateFileLocation(url);
     try {
-      const isValid = this.validateFileLocation(url);
       if (!isValid) {
         throw new ApplicationError("FILE", "ORIGIN_NOT_ALLOWED", `The specified file location ${url} is forbidden`);
       }
