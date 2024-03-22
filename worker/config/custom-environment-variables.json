@@ -14,10 +14,6 @@
     },
     "Recipient": {
       "emailAddress": "SUBMISSION_ADDRESS"
-    },
-    "Retry": {
-      "backoff": "SES_RETRY_BACKOFF",
-      "limit": "SES_RETRY_LIMIT"
     }
   },
   "NotarialApi": {
