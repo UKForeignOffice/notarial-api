@@ -1,14 +1,14 @@
 version: "3.9"
 services:
   api:
-    depends_on: postgres
+    depends_on: [postgres]
     env_file:
       - api/.env
     build:
       context: .
       dockerfile: api/Dockerfile
   worker:
-    depends_on: postgres
+    depends_on: [postgres]
     environment:
       - NOTIFY_API_KEY=${NOTIFY_API_KEY:?}
     build:
