@@ -9,9 +9,9 @@ This ia a monorepo used for the notarial services apis, which power the [prove y
 
 
 ## Workspaces
-Currently, there is only workspace in this project:
 
 * [api](./api/README.md)
+* [worker](./worker/README.md)
 
 ### Getting started with Docker
 You may use docker and docker compose to build and start the project with the right components (e.g. database, microservices), but will not be able to run the application(s) in dev mode.
@@ -29,6 +29,14 @@ To rebuild the server after making some changes, run the following commands:
 docker compose down
 docker compose -d --build
 ```
+
+### Running the applications locally (without docker)
+
+You may still need docker to start the databases.
+
+
+1. Start the database
+2. 
 
 ### Formatting
 This project uses ESLint and Prettier to ensure consistent formatting. It is recommended that you add and turn on the prettier plugin for your IDE, and reformat on save.
