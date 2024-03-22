@@ -12,3 +12,13 @@ services:
     build:
       context: .
       dockerfile: worker/Dockerfile
+
+#  postgres:
+#    container_name: postgres
+#    image: "postgres:16"
+#    ports:
+#      - "5432:5432"
+#    environment:
+#      POSTGRES_DB: queue
+#      POSTGRES_PASSWORD: root
+#      POSTGRES_USER: user
