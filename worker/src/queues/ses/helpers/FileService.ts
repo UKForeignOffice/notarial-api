@@ -13,13 +13,14 @@ export default class FileService {
   }
 
   validateFileLocation(urlToValidate: string): boolean {
-    let url: URL | undefined = undefined;
+    let url: URL;
     try {
       url = new URL(urlToValidate);
     } catch (e) {
       this.logger.error(`url ${urlToValidate} is not a valid URL`);
     }
-    return this.allowedOrigins.includes(url?.origin as string);
+    // @ts-ignore
+    return this.allowedOrigins.includes(url.origin);
   }
 
   /**
