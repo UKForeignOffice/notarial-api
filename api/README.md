@@ -41,5 +41,17 @@ docker compose -d --build
 This will cause docker to tear down the current container, and force a new build image for the server, allowing you to test your most recent changes.
 
 ## Routes
-There is currently one route set up, which will be used to test the Optical Character Recognition (OCR) capabilities of the server. This route is:
- * /ocr-email
+
+### POST `/forms`
+This route is used to submit a form. It will then create two new jobs, "SES_PROCESS" and "NOTIFY_PROCESS". It will then return with a reference number. 
+The reference number is the GOV.UK Pay reference number. If a GOV.UK pay reference number could not be found, it will generate a random one. Use this reference number to track the user across the application.
+
+
+### POST `/forms/emails/ses`
+This route is used to parse user's data and prepare an email that will be sent to FCDO. The request will come from the SES_PROCESS job. 
+It will generate an email body to be sent via SES. The attachments are not added to the email body at this point.
+
+
+### POST `/forms/emails/notify`
+This route is used to parse the user's data to generate the confirmation email for the user. The request will come from the NOTIFY_PROCESS job.
+
