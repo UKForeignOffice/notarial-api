@@ -19,7 +19,7 @@ yarn install
 yarn api build
 yarn api start:local
 ```
-These commands will build the project dependencies, cmpile the initial build of the api workspace, and run the workspace in local mode (allowing watching for changes).
+These commands will build the project dependencies, compile the initial build of the api workspace, and run the workspace in local mode (allowing watching for changes).
 
 ### Getting started with Docker
 You may use docker and docker compose to build and start the project with the right components (e.g. database, microservices), but will not be able to run the application(s) in dev mode.
