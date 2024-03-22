@@ -17,4 +17,7 @@ module.exports = {
     createSESEmailUrl: "http://localhost:9000/forms/emails/ses",
     createNotifyEmailUrl: "http://localhost:9000/forms/emails/notify",
   },
+  Files: {
+    allowedOrigins: ["http://localhost:9000"],
+  },
 };

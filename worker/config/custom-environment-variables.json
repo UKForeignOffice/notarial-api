@@ -23,5 +23,11 @@
   "NotarialApi": {
     "createSESEmailUrl": "NOTARIAL_API_CREATE_SES_EMAIL_URL",
     "createNotifyEmailUrl": "NOTARIAL_API_CREATE_NOTIFY_EMAIL_URL"
+  },
+  "Files": {
+    "allowedOrigins": {
+      "__name": "FILES_ALLOWED_ORIGINS",
+      "__format": "json"
+    }
   }
 }

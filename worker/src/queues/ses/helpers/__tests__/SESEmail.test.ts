@@ -1,6 +1,9 @@
 import { attachFilesToMessage, createMessageWithText } from "../SESEmail";
 import "./../FileService";
 const fileServiceMock = {
+  validateFileLocation(_url: string) {
+    return;
+  },
   async getFile() {
     const fileBuffer = Buffer.from("test file");
     return {
@@ -27,7 +30,7 @@ test("attachFilesToMessage returns valid raw email with images", async () => {
   await attachFilesToMessage(
     [
       {
-        answer: "somewhere/123",
+        answer: "https://some-url.com/123",
         key: "favouriteEgg",
         title: "Favourite egg",
         type: "file",

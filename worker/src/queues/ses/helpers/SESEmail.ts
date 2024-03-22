@@ -36,7 +36,8 @@ export function createMessageWithText(subject: string, body: string) {
 
 export async function attachFilesToMessage(attachments: FormField[], message: MIMEMessage) {
   for (const attachment of attachments) {
-    const { contentType, data } = await fileService.getFile(attachment.answer as string);
+    const url = attachment.answer as string;
+    const { contentType, data } = await fileService.getFile(url);
     message.addAttachment({
       filename: `${attachment.title}.${FileMimeType[contentType]}`,
       contentType,
