@@ -1,5 +1,8 @@
 # API workspace
-This workspace is used to run the API server, which is called at various parts during the form and triggers email submissions after the form has been submitter.
+This workspace is used to run the API server, which is called at various parts during the form and triggers email submissions after the form has been submitted.
+
+Use the API to house all the business logic. This will allow the worker to be a simple service that just listens for messages and sends them to an API.
+The API should parse user's data, render email templates etc. 
 
 ## Prerequisites
 1. A node version manager, like [nvm](https://formulae.brew.sh/formula/nvm), or [n](https://github.com/tj/n)
