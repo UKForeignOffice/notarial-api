@@ -4,7 +4,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "start:local": "yarn tsc -w & nodemon -q -w dist dist/index.js",
+    "start:local": "yarn tsc -w & node --watch dist/index.js",
     "test": "jest --coverage",
     "release": "semantic-release",
     "lint": "eslint ."
@@ -29,7 +29,6 @@
     "eslint-plugin-prettier": "^5.0.0",
     "jest": "^29.7.0",
     "jest-mock-extended": "^3.0.5",
-    "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
     "semantic-release": "^22.0.6",
     "typescript": "^5.3.3"
