@@ -46,9 +46,6 @@ export default class FileService {
           throw new ApplicationError("FILE", "NOT_FOUND", `Requested file could not be found at ${err.response?.config.url}`);
         }
       }
-      if (err instanceof ApplicationError) {
-        throw err;
-      }
       throw new ApplicationError("FILE", "UNKNOWN", err.message);
     }
   }
