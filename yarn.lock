@@ -3591,7 +3591,7 @@ __metadata:
     nanoid: 3.3.4
     notifications-node-client: ^8.0.0
     pg-boss: ^9.0.3
-    pino: ^8.15.4
+    pino: ^8.19.0
     pino-http: ^8.5.0
     prettier: ^3.0.3
     typescript: ^5.2.2
@@ -3641,7 +3641,7 @@ __metadata:
     mimetext: ^3.0.16
     notifications-node-client: ^8.0.0
     pg-boss: ^9.0.3
-    pino: ^8.17.2
+    pino: ^8.19.0
     prettier: ^3.0.3
     semantic-release: ^22.0.6
     typescript: ^5.3.3
@@ -10779,7 +10779,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino@npm:^8.0.0, pino@npm:^8.15.4":
+"pino@npm:^8.0.0":
   version: 8.16.0
   resolution: "pino@npm:8.16.0"
   dependencies:
@@ -10800,9 +10800,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino@npm:^8.17.2":
-  version: 8.17.2
-  resolution: "pino@npm:8.17.2"
+"pino@npm:^8.19.0":
+  version: 8.19.0
+  resolution: "pino@npm:8.19.0"
   dependencies:
     atomic-sleep: ^1.0.0
     fast-redact: ^3.1.1
@@ -10817,7 +10817,7 @@ __metadata:
     thread-stream: ^2.0.0
   bin:
     pino: bin.js
-  checksum: fc769d3d7b1333de94d51815fbe2abc4a1cc07cb0252a399313e54e26c13da2c0a69b227c296bd95ed52660d7eaa993662a9bf270b7370d0f7553fdd38716b63
+  checksum: 4db9e4b74d57ce2c3b87502bf1c6f9233d199b1ee5be77815c917afc376e58d44d9f1ca22db9968687210835a0cc1ec2b4f70ddc911e107edcbd8f0d7ff073c1
   languageName: node
   linkType: hard
 
