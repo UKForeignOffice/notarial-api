@@ -47,6 +47,6 @@
     "mimetext": "^3.0.16",
     "notifications-node-client": "^8.0.0",
     "pg-boss": "^9.0.3",
-    "pino": "^8.17.2"
+    "pino": "^8.19.0"
   }
 }
