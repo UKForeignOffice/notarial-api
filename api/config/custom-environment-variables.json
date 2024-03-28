@@ -8,10 +8,6 @@
       "exchangeUserConfirmation": "NOTIFY_TEMPLATE_EXCHANGE_USER_CONFIRMATION",
       "exchangeUserPostalConfirmation": "NOTIFY_TEMPLATE_EXCHANGE_USER_POSTAL_CONFIRMATION",
       "postNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"
-    },
-    "Retry": {
-      "backoff": "NOTIFY_RETRY_BACKOFF",
-      "limit": "NOTIFY_RETRY_LIMIT"
     }
   },
   "Queue": {
