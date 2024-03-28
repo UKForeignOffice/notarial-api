@@ -58,3 +58,22 @@ It will generate an email body to be sent via SES. The attachments are not added
 ### POST `/forms/emails/notify`
 This route is used to parse the user's data to generate the confirmation email for the user. The request will come from the NOTIFY_PROCESS job.
 
+
+
+### Environment variables
+
+| Env var                                             | Description                                                                                                                             | default                                      |
+|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
+| `PORT`                                              | Port to start the application on                                                                                                        | 9000                                         |
+| `NODE_ENV`                                          | Environment the application is running in. If the environment has a matching [config](./config) file, it will use those as the defaults | development                                  |
+| `NOTIFY_TEMPLATE_AFFIRMATION_USER_CONFIRMATION`     | Notify template which sends a confirmation email to the user for the /affirmation form                                                  | 7                                            |
+| `NOTIFY_TEMPLATE_EXCHANGE_USER_CONFIRMATION`        | Notify template which sends a confirmation email to the user for the /exchange-uk-cni form                                              |                                              |
+| `NOTIFY_TEMPLATE_EXCHANGE_USER_POSTAL_CONFIRMATION` | Notify template which sends a confirmation email to the user for the /cni                                                               |                                              |
+| `NOTIFY_TEMPLATE_POST_NOTIFICATION`                 | Notify template which alerts embassies that they have an application                                                                    |                                              |
+| `QUEUE_URL`                                         | The connection string to the database, including username and password                                                                  | postgres://user:root@localhost:5432/notarial |
+| `ARCHIVE_FAILED_AFTER_DAYS`                         | How long to keep failed jobs in the pgboss.job before moving it to pgboss.archive                                                       | 30                                           |
+| `DELETE_ARCHIVED_AFTER_DAYS`                        | How long to keep jobs in pgboss.archive before deleting it                                                                              | 7                                            |
+| `SES_SEND_RETRY_BACKOFF`                            | Whether or not to retry these jobs if they failed with exponential backoff (i.e. each retry is delayed longer than the last attempt)    | true                                         |
+| `SES_SEND_RETRY_BACKOFF`                            | Whether or not to retry these jobs if they failed with exponential backoff (i.e. each retry is delayed longer than the last attempt)    | true                                         |
+
+
