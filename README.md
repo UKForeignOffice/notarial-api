@@ -55,7 +55,18 @@ This project uses ESLint and Prettier to ensure consistent formatting. It is rec
 
 
 ## CI/CD
-There is a CI/CD pipeline currently set up for deploying new versions of the project to test environments. For more information, please refer to the [CI/CD docs](https://github.com/UKForeignOffice/notarial-api/blob/main/docs/ci.md)
+There is a CI/CD pipeline currently set up for deploying new versions of the project to test environments. For more information, please refer to the [CI/CD docs](docs/ci.md)
+
+This project uses [semantic-release](https://github.com/semantic-release/semantic-release). This allows for automatic versioning of the project based on the commit messages when merging.
+
+When merging, prefix the pull request subject with
+- `chore:` for changes which should not increment the version number (like documentation changes)
+- `fix:` for bug fixes, (increments the patch version)
+- `feat:` for new features (increment the minor version)
+- `BREAKING:` for major changes (increments the major version)
+
+[Releases](https://github.com/UKForeignOffice/forms-queue/releases) are automatically generated from commit messages. Prefix each commit with one of the above prefixes to include the commit message in the generated message.
+
 
 ## Testing
 Currently, there is unit testing and integration testing set up for the api workspace. For more information, refer to the [testing docs](./docs/testing.md).
