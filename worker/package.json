@@ -44,6 +44,7 @@
     "@aws-sdk/client-ses": "^3.427.0",
     "axios": "^1.6.7",
     "config": "^3.3.9",
+    "dotenv": "^16.4.5",
     "mimetext": "^3.0.16",
     "notifications-node-client": "^8.0.0",
     "pg-boss": "^9.0.3",
