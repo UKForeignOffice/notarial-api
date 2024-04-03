@@ -29,6 +29,10 @@ these will be stored in the database, in the output column.
 - `SES_PROCESS` is handled by [sesProcessHandler](queues/ses/workers/sesProcessHandler.ts)
 - `SES_SEND` is handled by [sesSendHandler](queues/ses/workers/sesSendHandler.ts)
 
+Generally all jobs will be added to the queue with the data required for the operation, as well as metadata to allow for easy tracking of the job.
+All jobs will have a metadata property, which will contain the reference number. This will match with their GOV.UK Pay reference number (not to be confused wit their payment ID).
+
+
 ## `notifyProcessHandler`
 
 [notifyProcessHandler](queues/notify/workers/notifyProcessHandler.ts)
@@ -40,6 +44,32 @@ The source of this event is notarial-api, after a user has submitted a form (POS
     select * from pgboss.job where name = 'NOTIFY_PROCESS';
 ```
 
+The data stored in this job will be the user's answers, and the metadata of the form submission. For example:
+
+```json5
+{ 
+  "answers": {
+    "firstName": "test",
+    "middleName": null, 
+    "dateOfBirth": "2000-01-01"
+    /** etc **/
+  },
+  "metadata": {
+    "type": "affirmation", 
+    "payment": { 
+      "payId": "usfetplth9aqfm0ft598eigpkm",
+      "state": { 
+        "status": "created",
+        "finished": false
+      },
+      "reference": "B-6FYZIU1M"
+    },
+    "reference": "B-6FYZIU1M"
+  }
+}
+```
+
+
 ## `notifySendHandler`
 
 [notifySendHandler](queues/notify/workers/notifySendHandler.ts)
@@ -49,6 +79,28 @@ The source of this event is notarial-api/forms/emails/notify, which processes th
 
 ```postgresql
     select * from pgboss.job where name = 'NOTIFY_SEND';
+```
+
+The data stored in this job will be GOV.UK Notify API options, which include personalisations, reference, template ID and email address. 
+
+For example:
+```json5
+ {
+  "options": {
+    "reference": "PF3N8EGP9L",
+    "personalisation": {
+      "post": "British Embassy Rome",
+      "country": "Italy",
+      "firstName": "test",
+      /** etc **/
+    },
+    "metadata": {
+      "reference": "PF3N8EGP9L"
+    }, 
+    "template": "ABC-DEF",
+    "emailAddress": "pye@cautionyourblast.com"
+  }
+}
 ```
 
 ## `sesProcessHandler`
@@ -73,52 +125,47 @@ The source of this event is notarial-api/forms/emails/ses, which processes the u
     select * from pgboss.job where name = 'SES_SEND';
 ```
 
+The data stored in this job will be the email body and attachments.
+
+```json5
+{
+  "body": "\n<p>Dear British Embassy Rome, Use them to create a new case in Casebook and prepare the affirmation document.\n</p>...",
+  "subject": "cni application, British Embassy Rome – PF3N8EGP9L",
+  "metadata": {
+    "reference": "PF3N8EGP9L"
+  },
+  "reference": "PF3N8EGP9L",
+  "onComplete": {
+    "job": {
+      "options": { // This will match the NOTIFY_SEND job
+        "personalisation": {},
+        "template": "ABCDEF_EG",
+        "reference": "PF3N8EGP9L",
+        "emailAddress": "pye@cautionyourblast.com"
+      },
+      "queue": "NOTIFY_SEND"
+    },
+    "attachments": [
+      {
+        "key": "ukPassportFile",
+        "type": "file",
+        "title": "UK passport",
+        "answer": "http://documentupload:9000/v1/files/511ffde6-ea44-4d72-967c-a5581f73fb8e.png",
+        "category": "applicantDetails"
+      }
+    ]
+  }
+}
+```
+The attachments will be fetched, then added to the email body in memory (i.e. not updated in the database) before sending to SES.
+
+
 ### Troubleshooting
 
-When tasks fail, the error emitted will automatically be added to the jobs, and the error is logged.
+When tasks fail, the error emitted will automatically be added to the jobs, and the error is logged. If the logs are incomplete, further logging may be found on the database in the `output` column.
 
-If the logs are incomplete, further logging may be found on the database in the `output` column.
+See [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) for more information.
 
-To see all failed events
-
-```postgresql
-
-select * from pgboss.job where name = 'notify' and state = 'failed';
-
-```
-
-```postgresql
-    select data, output from pgboss.job where id = '6aa3b250-4bc8-4fcb-9a15-7ca56551d04b';
-```
-
-Events can easily be retried by setting completedon = null, retrycount = 0, state = 'created'
-
-```postgresql
-    update pgboss.job
-    set data = jsonb_set(
-            data,
-            '{webhook_url}',
-            '"https://b4bf0fcd-1dd3-4650-92fe-d1f83885a447.mock.pstmn.io"'
-        ),
-    completedon = null,
-    retrycount = 0,
-    state = 'created'
-    where id = '4aad27dc-db53-48e4-824b-612a4b3d9fa7';
-```
-
-If you cannot find a job in `pgboss.job`, it may be in the archive table, `pgboss.archive`.
-
-```postgresql
-    select * from pgboss.archive where id = '4aad27dc-db53-48e4-824b-612a4b3d9fa7;'
-```
-
-If you wish to keep a record of the failed event, create a new event using the failed events details.
-
-```postgresql
-    insert into pgboss.job (name, data)
-    SELECT name, data
-    from pgboss.job where id = '4aad27dc-db53-48e4-824b-612a4b3d9fa7';
-```
 
 ### Environment variables
 
@@ -127,6 +174,7 @@ If you wish to keep a record of the failed event, create a new event using the f
 | `QUEUE_URL`                            | Connection string of the db                                                                             | postgres://user:root@localhost:5432/queue |
 | `ARCHIVE_FAILED_AFTER_DAYS`            | In days, how long to keep failed jobs in the table `pgboss.jobs`, before sending it to `pgboss.archive` | 30                                        |
 | `DELETE_ARCHIVED_AFTER_DAYS`           | In days, how long to keep any jobs in `pgboss.archive` before deleting                                  | 7                                         |
+| `MONITOR_STATE_INTERVAL_SECONDS`       | In seconds, how often to log the statuses of each queue                                                 | 10                                        |
 | `NOTIFY_API_KEY`                       | Notify API key to send emails from                                                                      |                                           |
 | `SES_SENDER_NAME`                      | The name to display when sending an email via SES                                                       | Getting Married Abroad Service            |
 | `SENDER_EMAIL_ADDRESS`                 | Where the email should be sent from. There must be an SES domain identity matching this email address   | pye@cautionyourblast.com                  |
