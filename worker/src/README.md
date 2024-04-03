@@ -169,16 +169,16 @@ See [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) for more information.
 
 ### Environment variables
 
-| Env var                                | Description                                                                                             | default                                   |
-|----------------------------------------|---------------------------------------------------------------------------------------------------------|-------------------------------------------|
-| `QUEUE_URL`                            | Connection string of the db                                                                             | postgres://user:root@localhost:5432/queue |
-| `ARCHIVE_FAILED_AFTER_DAYS`            | In days, how long to keep failed jobs in the table `pgboss.jobs`, before sending it to `pgboss.archive` | 30                                        |
-| `DELETE_ARCHIVED_AFTER_DAYS`           | In days, how long to keep any jobs in `pgboss.archive` before deleting                                  | 7                                         |
-| `MONITOR_STATE_INTERVAL_SECONDS`       | In seconds, how often to log the statuses of each queue                                                 | 10                                        |
-| `NOTIFY_API_KEY`                       | Notify API key to send emails from                                                                      |                                           |
-| `SES_SENDER_NAME`                      | The name to display when sending an email via SES                                                       | Getting Married Abroad Service            |
-| `SENDER_EMAIL_ADDRESS`                 | Where the email should be sent from. There must be an SES domain identity matching this email address   | pye@cautionyourblast.com                  |
-| `SUBMISSION_ADDRESS`                   | Where to send the emails to                                                                             | pye@cautionyourblast.com                  |
-| `NOTARIAL_API_CREATE_SES_EMAIL_URL`    | URL on the notarial-api where SES emails can be created                                                 | http://localhost:9000/forms/emails/ses    |
-| `NOTARIAL_API_CREATE_NOTIFY_EMAIL_URL` | URL on the notarial-api where Notify emails can be created                                              | http://localhost:9000/forms/emails/notify |
-| `FILES_ALLOWED_ORIGINS`                | Allowed origins where files can be downloaded from                                                      | ["http://localhost:9000"]                 |
+| Env var                                | Description                                                                                             | default                                      |
+|----------------------------------------|---------------------------------------------------------------------------------------------------------|----------------------------------------------|
+| `QUEUE_URL`                            | Connection string of the db                                                                             | postgres://user:root@localhost:5432/notarial |
+| `ARCHIVE_FAILED_AFTER_DAYS`            | In days, how long to keep failed jobs in the table `pgboss.jobs`, before sending it to `pgboss.archive` | 30                                           |
+| `DELETE_ARCHIVED_AFTER_DAYS`           | In days, how long to keep any jobs in `pgboss.archive` before deleting                                  | 7                                            |
+| `MONITOR_STATE_INTERVAL_SECONDS`       | In seconds, how often to log the statuses of each queue                                                 | 10                                           |
+| `NOTIFY_API_KEY`                       | Notify API key to send emails from                                                                      |                                              |
+| `SES_SENDER_NAME`                      | The name to display when sending an email via SES                                                       | Getting Married Abroad Service               |
+| `SENDER_EMAIL_ADDRESS`                 | Where the email should be sent from. There must be an SES domain identity matching this email address   | pye@cautionyourblast.com                     |
+| `SUBMISSION_ADDRESS`                   | Where to send the emails to                                                                             | pye@cautionyourblast.com                     |
+| `NOTARIAL_API_CREATE_SES_EMAIL_URL`    | URL on the notarial-api where SES emails can be created                                                 | http://localhost:9000/forms/emails/ses       |
+| `NOTARIAL_API_CREATE_NOTIFY_EMAIL_URL` | URL on the notarial-api where Notify emails can be created                                              | http://localhost:9000/forms/emails/notify    |
+| `FILES_ALLOWED_ORIGINS`                | Allowed origins where files can be downloaded from                                                      | ["http://localhost:9000"]                    |

@@ -10,7 +10,7 @@ module.exports = {
   submissionAddress: "pye@cautionyourblast.com",
   senderEmail: "pye@cautionyourblast.com",
   Queue: {
-    url: "postgresql://user:root@localhost:5432/queue",
+    url: "postgresql://user:root@localhost:5432/notarial",
     defaultOptions: {
       retryBackoff: "true",
       retryLimit: "50",
