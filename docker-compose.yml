@@ -12,7 +12,7 @@ services:
   worker:
     depends_on: [postgres]
     environment:
-      - NOTIFY_API_KEY=${NOTIFY_API_KEY:?}
+      - NOTIFY_API_KEY=${NOTIFY_API_KEY:-}
       - QUEUE_URL=postgres://user:root@postgres:5432/notarial
     build:
       context: .
