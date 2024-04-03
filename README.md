@@ -40,8 +40,8 @@ From the root directory,
 This will start the postgres container running on port 5432; with username `user` and password `root`,
 and a database created called `notarial` (`postgres://user:root@localhost:5432/notarial`).
 [`init.sql`](init.sql) is also loaded as a volume into the container, and will create a database named `queue`
-(`postgres://user:root@localhost:5432/notarial`). This is useful if you are going to be running [notarial-api](https://github.com/UKForeignOffice/notarial-api)
-at the same time. If you are running postgres from this repo, you do not need to run it in `notarial-api`.
+(`postgres://user:root@localhost:5432/notarial`). This is useful if you are going to be running [forms-worker](https://github.com/UKForeignOffice/forms-queue)
+at the same time. If you are running postgres from this repo, you do not need to run it in `forms-queue`.
 
 
 1. If you wish to send emails locally, you will need to authenticate your terminal with AWS. (`formsawsauth prod`)
