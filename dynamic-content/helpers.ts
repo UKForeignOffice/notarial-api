@@ -42,7 +42,7 @@ export function convertToObjectWithKeys(fieldNames: string[], fieldNameMap: Reco
   return function (row: string[]) {
     return fieldNames.reduce((acc, key, i) => {
       if (fieldNameMap[key]) {
-        acc[fieldNameMap[key]] = row[i].replace("\r", "");
+        acc[fieldNameMap[key]] = row[i].replaceAll("\r", "");
       }
       return acc;
     }, {});
