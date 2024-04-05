@@ -5,7 +5,7 @@ import pino from "pino";
 
 const DEFAULT_URL = config.get<string>("Queue.url");
 const logger = pino().child({
-  method: "Consumer.create",
+  method: "Consumer",
 });
 const MINUTE_IN_S = 60;
 const HOUR_IN_S = MINUTE_IN_S * 60;
@@ -13,8 +13,11 @@ const DAY_IN_S = HOUR_IN_S * 24;
 
 const archiveFailedAfterDays = parseInt(config.get<string>("Queue.archiveFailedInDays"));
 const deleteAfterDays = parseInt(config.get<string>("Queue.deleteArchivedAfterDays"));
+const monitorStateIntervalSeconds = parseInt(config.get<string>("Queue.monitorStateIntervalSeconds"));
 
-logger.info(`archiveFailedAfterDays: ${archiveFailedAfterDays}, deleteAfterDays: ${deleteAfterDays}`);
+logger.info(
+  `archiveFailedAfterDays: ${archiveFailedAfterDays}, deleteAfterDays: ${deleteAfterDays}, monitorStateIntervalSeconds: ${monitorStateIntervalSeconds}`
+);
 
 let consumer;
 
@@ -24,10 +27,16 @@ export async function create(url: string = DEFAULT_URL) {
     connectionString: url,
     archiveFailedAfterSeconds: archiveFailedAfterDays * DAY_IN_S,
     deleteAfterDays,
+    monitorStateIntervalSeconds,
   });
 
   boss.on("error", (error) => {
+    logger.error(error);
     throw error;
+  });
+
+  boss.on("monitor-states", (states) => {
+    logger.info({ states }, "STATUS_UPDATE");
   });
 
   try {

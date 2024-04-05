@@ -32,12 +32,12 @@ export async function notifySendHandler(job: Job<NotifyJob>) {
     return id;
   } catch (e: any) {
     if (e.response) {
-      logger.error({ jobId, err: e.response.data.errors, emailAddress }, "Notify responded with an error");
+      logger.error({ jobId, err: e.response.data.errors, emailAddress, errorCode: "NOTIFY_RESPONSE_ERROR" }, "Notify responded with an error");
       throw e.response.data;
     }
 
     if (e.request) {
-      logger.error(jobId, `Request could not be sent to Notify`);
+      logger.error({ jobId, errorCode: "NOTIFY_REQUEST_ERROR" }, `Request could not be sent to Notify`);
     }
     throw e;
   }

@@ -1,11 +1,6 @@
 {
   "port": "PORT",
   "env": "NODE_ENV",
-  "documentPassword": "DOCUMENT_PASSWORD",
-  "affirmationTemplate": "AFFIRMATION_TEMPLATE_ID",
-  "cniTemplate": "CNI_TEMPLATE_ID",
-  "submissionEmail": "SUBMISSION_EMAIL_ADDRESS",
-  "senderEmail": "SENDER_EMAIL_ADDRESS",
   "Notify": {
     "Template": {
       "affirmationUserConfirmation": "NOTIFY_TEMPLATE_AFFIRMATION_USER_CONFIRMATION",
@@ -13,10 +8,6 @@
       "exchangeUserConfirmation": "NOTIFY_TEMPLATE_EXCHANGE_USER_CONFIRMATION",
       "exchangeUserPostalConfirmation": "NOTIFY_TEMPLATE_EXCHANGE_USER_POSTAL_CONFIRMATION",
       "postNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"
-    },
-    "Retry": {
-      "backoff": "NOTIFY_RETRY_BACKOFF",
-      "limit": "NOTIFY_RETRY_LIMIT"
     }
   },
   "Queue": {

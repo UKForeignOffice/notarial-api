@@ -1,14 +1,31 @@
 version: "3.9"
 services:
   api:
+    depends_on: [postgres]
     env_file:
       - api/.env
+    environment:
+      - QUEUE_DATABASE_URL=postgres://user:root@postgres:5432/notarial
     build:
       context: .
       dockerfile: api/Dockerfile
   worker:
+    depends_on: [postgres]
     environment:
-      - NOTIFY_API_KEY=${NOTIFY_API_KEY:?}
+      - NOTIFY_API_KEY=${NOTIFY_API_KEY:-}
+      - QUEUE_URL=postgres://user:root@postgres:5432/notarial
     build:
       context: .
       dockerfile: worker/Dockerfile
+
+  postgres:
+    container_name: postgres
+    image: "postgres:16"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: notarial
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: user

@@ -7,11 +7,10 @@ if (process.env.NODE_ENV !== "test") {
 module.exports = {
   port: "9000",
   env: "development",
-  documentPassword: "Sup3rS3cr3tP4ssw0rd",
   submissionAddress: "pye@cautionyourblast.com",
   senderEmail: "pye@cautionyourblast.com",
   Queue: {
-    url: "postgresql://user:root@localhost:5432/queue",
+    url: "postgresql://user:root@localhost:5432/notarial",
     defaultOptions: {
       retryBackoff: "true",
       retryLimit: "50",

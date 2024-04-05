@@ -1,8 +1,15 @@
+const dotEnv = require("dotenv");
+
+if (process.env.NODE_ENV !== "test") {
+  dotEnv.config({ path: ".env" });
+}
+
 module.exports = {
   Queue: {
-    url: "postgres://user:root@localhost:5432/queue",
+    url: "postgres://user:root@localhost:5432/notarial",
     archiveFailedInDays: 30,
     deleteArchivedAfterDays: 7,
+    monitorStateIntervalSeconds: 10,
   },
   SES: {
     Sender: {
