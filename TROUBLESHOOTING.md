@@ -43,7 +43,7 @@ The jobs table has the following columns:
 ```
 
 Columns/values to note are
-- `name`: the name of the job. It can be one of SES_PROCESS, NOTIFY_PROCESS, SES_SEND, NOTIFY_SEND. More detail can be found in [worker/src/README.md](worker/src/README.md)
+- `name`: the name of the job. It can be one of SES_PROCESS, NOTIFY_PROCESS, SES_SEND, NOTIFY_SEND. More detail can be found in [worker/src/README.md](worker/src/README.md). PgBoss will also create some of its own.
 - `state`: the state of the job. Read more about them in [pgboss documentation](https://github.com/timgit/pg-boss/blob/master/docs/readme.md#job-states)
     - `created`: the job has been created
     - `failed`: the job has failed
