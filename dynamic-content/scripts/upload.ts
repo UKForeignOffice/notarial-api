@@ -9,10 +9,10 @@ import _ from "lodash";
  * Some basic validation happens here, as well as top level console logs to update on the progress of the upload.
  */
 function main() {
-  const bookingRows = helpers.prepareUpdateFile("booking-links.csv", constants.CONTENT_MAP["booking-links"]);
+  const bookingRows = helpers.prepareUpdateFile("booking-links.tsv", constants.CONTENT_MAP["booking-links"]);
   uploadContent(constants.CONTENT_MAP["booking-links"], bookingRows, "booking-links");
 
-  const contentRows = helpers.prepareUpdateFile("content.csv", constants.CONTENT_MAP["content"]);
+  const contentRows = helpers.prepareUpdateFile("content.tsv", constants.CONTENT_MAP["content"]);
   uploadContent(constants.CONTENT_MAP["content"], contentRows, "content");
 }
 
