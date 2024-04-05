@@ -65,7 +65,7 @@ When merging, prefix the pull request subject with
 - `feat:` for new features (increment the minor version)
 - `BREAKING:` for major changes (increments the major version)
 
-[Releases](https://github.com/UKForeignOffice/forms-queue/releases) are automatically generated from commit messages. Prefix each commit with one of the above prefixes to include the commit message in the generated message.
+[Releases](https://github.com/UKForeignOffice/notarial-api/releases) are automatically generated from commit messages. Prefix each commit with one of the above prefixes to include the commit message in the generated message.
 
 
 ## Testing
