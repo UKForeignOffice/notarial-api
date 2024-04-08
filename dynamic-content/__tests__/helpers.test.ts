@@ -61,7 +61,7 @@ test("bulletsToArray returns valid array if plain text with asterisks is passed 
   expect(helpers.bulletsToArray(bulletsString)).toEqual(["item 1 ", "item 2 some other content"]);
 });
 test("splitRow correctly splits a csv row into its fields", () => {
-  const row = "Austria,Vienna,Affirmation,Austrian residence permit,Yes";
+  const row = "Austria\tVienna\tAffirmation\tAustrian residence permit\tYes";
   expect(helpers.splitRow(row)).toEqual(["Austria", "Vienna", "Affirmation", "Austrian residence permit", "Yes"]);
 });
 test("convertToObjectWithKeys correctly pulls out the required fields from a row and builds them into an object", () => {
@@ -78,8 +78,4 @@ test("convertToObjectWithKeys correctly pulls out the required fields from a row
     type: "Affirmation",
     postal: "Yes",
   });
-});
-test("breaksToHtml returns valid html content if plain text with <br> tags is passed in", () => {
-  const breaksString = `<br>Some text<br>and some other text<br>even more content`;
-  expect(helpers.breaksToNotifyString(breaksString)).toEqual(`\nSome text\nand some other text\neven more content`);
 });

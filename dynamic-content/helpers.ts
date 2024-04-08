@@ -42,7 +42,7 @@ export function convertToObjectWithKeys(fieldNames: string[], fieldNameMap: Reco
   return function (row: string[]) {
     return fieldNames.reduce((acc, key, i) => {
       if (fieldNameMap[key]) {
-        acc[fieldNameMap[key]] = row[i];
+        acc[fieldNameMap[key]] = row[i].replaceAll("\r", "");
       }
       return acc;
     }, {});
@@ -56,14 +56,14 @@ function parseRowContent(row: Row) {
 function parseContent(acc: Record<string, string>, [key, value]) {
   if (key === "type" && value) value = value.toLowerCase();
   if (key === "additionalDocs" && value) value = bulletsToArray(value);
-  if (value && value.includes("<br>")) value = breaksToNotifyString(value);
+  if (value && value.includes("<br>")) value = value.replaceAll("<br>", "\n");
   if (key === "civilPartnership") value = !!value;
   acc[key] = value;
   return acc;
 }
 
 export function splitRow(row: string) {
-  return row.split(/,\s*(?=(?:[^"]*"[^"]*")*[^"]*$)/g).filter((field: string) => field !== undefined);
+  return row.split("\t").filter((field: string) => field !== undefined);
 }
 
 /**
@@ -84,22 +84,6 @@ export function getRowObjects(rows: string[], fieldNames: string[], fieldNameMap
  */
 export function bulletsToArray(bulletList: string) {
   return bulletList.split("*").filter((bullet) => bullet !== "");
-}
-
-/**
- * Converts a plain text string with standard html break elements into html paragraph elements
- * @param text - The text to be converted
- */
-export function breaksToNotifyString(text: string) {
-  return text
-    .split("<br>")
-    .map((para) => {
-      if (para !== "") {
-        return `${para}`;
-      }
-      return "";
-    })
-    .join("\n");
 }
 
 /**
@@ -126,7 +110,7 @@ export function prepareUpdateFile(file: string, fileConstants: FileConstants) {
   const csv = fs.readFileSync(`${constants.CONTENT_SOURCE}/${file}`).toString();
 
   const rows = csv.split("\n");
-  const firstRow = rows.splice(0, 1)[0].toLowerCase().trim().split(",");
+  const firstRow = rows.splice(0, 1)[0].toLowerCase().trim().split("\t");
 
   const result = validate(firstRow, fileConstants.fieldMap);
   if (result) {

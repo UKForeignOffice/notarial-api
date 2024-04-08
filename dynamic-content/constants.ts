@@ -1,6 +1,6 @@
 import { FileConstants } from "./types";
 
-const CONTENT_SOURCE = "./csv";
+const CONTENT_SOURCE = "./tsv";
 const CONTENT_TARGET = "../api/src/middlewares/services/utils/additionalContexts.json";
 
 const CONTENT_FIELD_MAP = {
@@ -12,12 +12,10 @@ const CONTENT_FIELD_MAP = {
   "certified passport": "certifiedPassport",
   duration: "duration",
   "civil partnership": "civilPartnership",
-  "other (localised content)": "localRequirements",
-  "confirmation email delay": "confirmationDelay",
+  "localised content - start pages": "localRequirements",
 };
 const CONTENT_RELEVANT_FIELDS = ["additionalDocs", "duration", "localRequirements", "civilPartnership"];
 const BOOKING_LINKS_FIELD_MAP = {
-  type: "type",
   country: "country",
   embassy: "post",
   "cabs link": "bookingLink",
