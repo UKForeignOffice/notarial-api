@@ -3,7 +3,7 @@ import { Job } from "pg-boss";
 import { SESJob } from "../types";
 import { sesClient, SESEmail } from "../helpers";
 
-import { SESServiceException, SendRawEmailCommand } from "@aws-sdk/client-ses";
+import { SESv2ServiceException, SendEmailCommand } from "@aws-sdk/client-sesv2";
 import { getConsumer } from "../../../Consumer";
 
 const queue = "SES_SEND";
@@ -34,9 +34,11 @@ export async function sesSendHandler(job: Job<SESJob>) {
     throw err;
   }
 
-  const emailCommand = new SendRawEmailCommand({
-    RawMessage: {
-      Data: Buffer.from(message.asRaw()),
+  const emailCommand = new SendEmailCommand({
+    Content: {
+      Raw: {
+        Data: Buffer.from(message.asRaw()),
+      },
     },
   });
 
@@ -45,7 +47,7 @@ export async function sesSendHandler(job: Job<SESJob>) {
   try {
     response = await sesClient.send(emailCommand);
     logger.info(`Reference ${reference} staff email sent successfully with SES message id: ${response.MessageId}`);
-  } catch (err: SESServiceException | any) {
+  } catch (err: SESv2ServiceException | any) {
     logger.error({ jobId, reference, err }, "SES could not send the email");
     throw err;
   }

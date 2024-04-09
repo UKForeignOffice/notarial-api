@@ -1,5 +1,5 @@
-import { SESClient } from "@aws-sdk/client-ses";
+import { SESv2Client } from "@aws-sdk/client-sesv2";
 
-export const sesClient = new SESClient({
+export const sesClient = new SESv2Client({
   region: "eu-west-2",
 });
