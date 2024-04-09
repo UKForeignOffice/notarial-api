@@ -1,5 +1,5 @@
 import { MockProxy } from "jest-mock-extended";
-import { SESClient } from "@aws-sdk/client-ses";
+import { SESv2Client } from "@aws-sdk/client-sesv2";
 import { sesClient } from "../sesClient";
 
 jest.mock("../SESClient", () => ({
@@ -9,4 +9,4 @@ jest.mock("../SESClient", () => ({
   },
 }));
 
-export const ses = sesClient as unknown as MockProxy<SESClient>;
+export const ses = sesClient as unknown as MockProxy<SESv2Client>;
