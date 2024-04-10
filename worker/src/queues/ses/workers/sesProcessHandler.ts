@@ -3,6 +3,7 @@ import { Job } from "pg-boss";
 import axios from "axios";
 import config from "config";
 import { SESParseJob } from "../types";
+import { SES_PROCESS_ERRORS } from "./errors";
 
 const queue = "SES_PROCESS";
 const worker = "SesProcessHandler";
@@ -36,7 +37,7 @@ export async function sesProcessHandler(job: Job<SESParseJob>) {
   } catch (e: any) {
     logger.error({ jobId }, `post to ${CREATE_SES_EMAIL_URL} job: ${id} failed with ${e.cause ?? e.message}`);
     if (e.response) {
-      logger.error({ jobId, err: e.response.error });
+      logger.error({ jobId, err: e.response.error, errorCode: SES_PROCESS_ERRORS.RESPONSE }, `${CREATE_SES_EMAIL_URL} responded with an error`);
       const { message, name, code, response } = e;
       const { status, data } = response;
       throw {
@@ -49,11 +50,13 @@ export async function sesProcessHandler(job: Job<SESParseJob>) {
     }
 
     if (e.request) {
-      logger.error(jobId, `post to ${CREATE_SES_EMAIL_URL} request could not be sent, see database for error`);
+      logger.error({ jobId, errorCode: SES_PROCESS_ERRORS.REQUEST }, `post to ${CREATE_SES_EMAIL_URL} request could not be sent, see database for error`);
+      throw e;
     }
 
     // @ts-ignore
     if (e.cause instanceof AggregateError) {
+      logger.error({ jobId, errorCode: SES_PROCESS_ERRORS.AGGREGATE }, `post to ${CREATE_SES_EMAIL_URL} request could not be sent, see database for error`);
       throw { errors: e.cause.errors };
     }
     throw e;
