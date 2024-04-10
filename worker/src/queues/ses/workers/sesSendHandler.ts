@@ -5,6 +5,7 @@ import { sesClient, SESEmail } from "../helpers";
 
 import { SESv2ServiceException, SendEmailCommand } from "@aws-sdk/client-sesv2";
 import { getConsumer } from "../../../Consumer";
+import { SES_SEND_ERRORS } from "./errors";
 
 const queue = "SES_SEND";
 const worker = "sesSendHandler";
@@ -48,7 +49,7 @@ export async function sesSendHandler(job: Job<SESJob>) {
     response = await sesClient.send(emailCommand);
     logger.info(`Reference ${reference} staff email sent successfully with SES message id: ${response.MessageId}`);
   } catch (err: SESv2ServiceException | any) {
-    logger.error({ jobId, reference, err }, "SES could not send the email");
+    logger.error({ jobId, reference, err, errorCode: SES_SEND_ERRORS.SES }, "SES could not send the email");
     throw err;
   }
 
@@ -76,6 +77,10 @@ export async function onComplete(job: Job<{ request: Job<SESJob> }>) {
   try {
     await consumer.send(queue, onCompleteJobArgs);
   } catch (e) {
-    logger.error({ jobId, completedJobId, err: e }, `Failed to send onComplete ${queue} job triggered by ${completedJobId}`);
+    logger.error(
+      { jobId, completedJobId, err: e, errorCode: SES_SEND_ERRORS.ON_COMPLETE },
+      `Failed to send onComplete ${queue} job triggered by ${completedJobId}`
+    );
+    throw e;
   }
 }

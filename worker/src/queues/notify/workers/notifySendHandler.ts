@@ -3,6 +3,7 @@ import { Job } from "pg-boss";
 import config from "config";
 import { NotifyClient, SendEmailResponse } from "notifications-node-client";
 import { NotifyJob } from "../types";
+import { NOTIFY_SEND_ERRORS } from "./errors";
 
 const queue = "NOTIFY_SEND";
 const worker = "notifySendHandler";
@@ -32,13 +33,16 @@ export async function notifySendHandler(job: Job<NotifyJob>) {
     return id;
   } catch (e: any) {
     if (e.response) {
-      logger.error({ jobId, err: e.response.data.errors, emailAddress, errorCode: "NOTIFY_RESPONSE_ERROR" }, "Notify responded with an error");
+      logger.error({ jobId, err: e.response.data.errors, emailAddress, errorCode: NOTIFY_SEND_ERRORS.RESPONSE }, "Notify responded with an error");
       throw e.response.data;
     }
 
     if (e.request) {
-      logger.error({ jobId, errorCode: "NOTIFY_REQUEST_ERROR" }, `Request could not be sent to Notify`);
+      logger.error({ jobId, errorCode: NOTIFY_SEND_ERRORS.REQUEST, err: e }, `Request could not be sent to Notify`);
+      throw e;
     }
+
+    logger.error({ jobId, errorCode: NOTIFY_SEND_ERRORS.UNKNOWN, err: e }, `Request failed with an unknown error, ${e.message}`);
     throw e;
   }
 }

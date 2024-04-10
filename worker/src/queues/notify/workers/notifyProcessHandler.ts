@@ -3,6 +3,7 @@ import { Job } from "pg-boss";
 import axios from "axios";
 import config from "config";
 import { PayMetadata } from "../../../types";
+import { NOTIFY_PROCESS_ERRORS } from "./errors";
 
 const queue = "NOTIFY_PROCESS";
 const worker = "notifyProcessHandler";
@@ -41,7 +42,7 @@ export async function notifyProcessHandler(job: Job<NotifyParseJob>) {
     logger.error({ jobId, err: e }, `post to ${CREATE_NOTIFY_EMAIL_URL} job: ${id} failed with ${e.cause ?? e.message}`);
 
     if (e.response) {
-      logger.error({ jobId, err: e.response.error });
+      logger.error({ jobId, err: e.response.error, errorCode: NOTIFY_PROCESS_ERRORS.RESPONSE });
       const { message, name, code, response } = e;
       const { status, data } = response;
       throw {
@@ -54,13 +55,20 @@ export async function notifyProcessHandler(job: Job<NotifyParseJob>) {
     }
 
     if (e.request) {
-      logger.error(jobId, `post to ${CREATE_NOTIFY_EMAIL_URL} request could not be sent, see database for error`);
+      logger.error(
+        { jobId, errorCode: NOTIFY_PROCESS_ERRORS.REQUEST, err: e },
+        `post to ${CREATE_NOTIFY_EMAIL_URL} request could not be sent, see database for error`
+      );
+      throw e;
     }
 
     // @ts-ignore
     if (e.cause instanceof AggregateError) {
+      logger.error({ jobId, errorCode: NOTIFY_PROCESS_ERRORS.AGGREGATE, err: e }, `Post to ${CREATE_NOTIFY_EMAIL_URL} request failed with AggregateError`);
       throw { errors: e.cause.errors };
     }
+
+    logger.error({ jobId, errorCode: NOTIFY_PROCESS_ERRORS.UNKNOWN, err: e }, `Post to ${CREATE_NOTIFY_EMAIL_URL} failed with an unknown error`);
     throw e;
   }
 }
