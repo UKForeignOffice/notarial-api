@@ -90,7 +90,7 @@ export class StaffService {
     const reordered = reorderer(remapped);
 
     const country = getAnswerOrThrow(information, "country");
-    const post = information.post?.answer;
+    const post = getPost(country, information.post);
     let oathType, jurats;
     if (type === "affirmation" || type === "cni") {
       oathType = getAnswerOrThrow(information, "oathType");
