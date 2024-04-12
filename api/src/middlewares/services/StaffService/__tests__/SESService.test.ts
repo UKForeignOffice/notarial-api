@@ -91,7 +91,7 @@ test("buildSendEmailArgs returns an object with subject, body, attachments and r
     },
   });
   expect(result).toEqual({
-    subject: "affirmation application, British Consulate General Istanbul – 1234",
+    subject: "Local marriage application - British Consulate General Istanbul – 1234",
     body: expect.any(String),
     onComplete: {
       queue: "NOTIFY_SEND",
