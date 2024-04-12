@@ -55,11 +55,26 @@ export function buildUserConfirmationDocsList(fields: AnswersHashMap, paid) {
   }
   if (!paid) {
     //TODO:- should this be in the template itself?
-    const price = fields.certifyPassport ? "£75" : "£50";
+    const price = calculateCost(fields);
     docsList.push(`the equivalent of ${price} in the local currency`);
   }
   const country = fields.country as string;
   const additionalDocs = additionalContexts.countries[country]?.additionalDocs ?? [];
   docsList.push(...additionalDocs);
   return docsList.map((doc) => `* ${doc}`).join("\n");
+}
+
+function calculateCost(fields: AnswersHashMap) {
+  const priceMap = {
+    certifyPassport: 25,
+    getAdditionalDocument: 50,
+  };
+  const finalCost = Object.entries(priceMap).reduce((total, [fieldName, price]) => {
+    if (fields[fieldName]) {
+      total += price;
+    }
+    return total;
+  }, 50);
+
+  return `£${finalCost}`;
 }
