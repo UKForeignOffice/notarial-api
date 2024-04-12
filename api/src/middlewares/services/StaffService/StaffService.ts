@@ -126,7 +126,7 @@ export class StaffService {
     const post = getPost(country, answers.post as string);
     const onCompleteJob = this.getPostAlertOptions(answers, type, reference);
     return {
-      subject: `${type} application, ${post} – ${reference}`,
+      subject: `Local marriage application - ${post} – ${reference}`,
       body: emailBody,
       attachments: fields.filter(isFieldType("file")),
       reference,
