@@ -19,7 +19,7 @@ describe("POST /forms/emails/notify", () => {
       .expect(400)
       .then((res) => {
         expect(res.statusCode).toBe(400);
-        expect(res.body.error).toBe("VALIDATION");
+        expect(res.body.error).toBe("PROCESS_VALIDATION");
       });
   });
 

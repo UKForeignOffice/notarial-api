@@ -18,7 +18,7 @@ describe("POST /forms/emails/ses", () => {
       .expect(400)
       .then((res) => {
         expect(res.statusCode).toBe(400);
-        expect(res.body.error).toBe("VALIDATION");
+        expect(res.body.error).toBe("PROCESS_VALIDATION");
       });
   });
 
@@ -29,7 +29,7 @@ describe("POST /forms/emails/ses", () => {
       .send(sesTestData)
       .expect(400)
       .then((res) => {
-        expect(res.body.error).toStrictEqual("SES_SEND_ERROR");
+        expect(res.body.error).toStrictEqual("SES_PROCESS_ERROR");
       });
   });
 
