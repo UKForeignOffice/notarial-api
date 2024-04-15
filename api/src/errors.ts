@@ -22,9 +22,9 @@ export type ErrorTypes = "WEBHOOK" | "SES" | "NOTIFY" | "QUEUE" | "GENERIC";
 /**
  * Error code for the matching ErrorType.
  */
-type WebhookErrorCode = "VALIDATION";
-type SESErrorCode = "MISSING_ANSWER" | "UNKNOWN";
-type NotifyErrorCode = "QUEUE_ERROR" | "UNKNOWN";
+type WebhookErrorCode = "VALIDATION" | "QUEUE_ERROR";
+type SESErrorCode = "MISSING_ANSWER" | "PROCESS_VALIDATION" | "UNKNOWN";
+type NotifyErrorCode = "PROCESS_VALIDATION" | "UNKNOWN";
 type QueueErrorCode = "SES_SEND_ERROR" | "SES_PROCESS_ERROR" | "NOTIFY_SEND_ERROR" | "NOTIFY_PROCESS_ERROR";
 
 type GenericErrorCode = "UNKNOWN" | "RATE_LIMIT_EXCEEDED";
@@ -47,12 +47,13 @@ const WEBHOOK: ErrorRecord<WebhookErrorCode> = {
 
 const SES: ErrorRecord<SESErrorCode> = {
   MISSING_ANSWER: "The payload is missing an answer",
+  PROCESS_VALIDATION: "Malformed POST data: The supplied form data is invalid",
   UNKNOWN: "There was an unknown error sending the email",
 };
 
 const NOTIFY: ErrorRecord<NotifyErrorCode> = {
   UNKNOWN: "There was an unknown error sending the email",
-  QUEUE_ERROR: "There was an error sending this email to queue",
+  PROCESS_VALIDATION: "Malformed POST data: The supplied form data is invalid",
 };
 
 const GENERIC: ErrorRecord<GenericErrorCode> = {

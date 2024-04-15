@@ -30,11 +30,18 @@ describe("POST /forms", () => {
   });
 
   it("should respond with a queue error if sendToQueue failed", async () => {
-    jest.spyOn(queueService.QueueService.prototype, "sendToQueue").mockRejectedValueOnce(new ApplicationError("QUEUE", "SES_PROCESS_ERROR", 400));
-    return await request(app)
+    jest.spyOn(queueService.QueueService.prototype, "sendToQueue").mockRejectedValueOnce(new ApplicationError("QUEUE", "SES_PROCESS_ERROR", 500));
+    await request(app)
       .post("/forms")
       .send(testData)
       .expect(500)
-      .then((res) => expect(res.body.error).toStrictEqual("QUEUE_ERROR"));
+      .then((res) => expect(res.body.error).toStrictEqual("SES_PROCESS_ERROR"));
+
+    jest.spyOn(queueService.QueueService.prototype, "sendToQueue").mockRejectedValueOnce(new ApplicationError("QUEUE", "NOTIFY_PROCESS_ERROR", 500));
+    await request(app)
+      .post("/forms")
+      .send(testData)
+      .expect(500)
+      .then((res) => expect(res.body.error).toStrictEqual("NOTIFY_PROCESS_ERROR"));
   });
 });

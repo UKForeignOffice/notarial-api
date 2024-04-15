@@ -31,17 +31,15 @@ export class SubmitService {
     const reference = metadata?.pay?.reference ?? this.generateId();
     const type = metadata?.type ?? "affirmation";
 
-    try {
-      const staffProcessJob = await this.staffService.sendToProcessQueue(formFields, "submission", {
-        reference,
-        payment: metadata.pay,
-        type,
-      });
-      const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type });
-      this.logger.info({ reference, staffProcessJob, userProcessJob }, "submitted form data for processing");
-    } catch (e) {
-      throw new ApplicationError("WEBHOOK", "QUEUE_ERROR", 500);
-    }
+    const staffProcessJob = await this.staffService.sendToProcessQueue(formFields, "submission", {
+      reference,
+      payment: metadata.pay,
+      type,
+    });
+    const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type });
+
+    this.logger.info({ reference, staffProcessJob, userProcessJob }, "submitted form data for processing");
+
     return {
       reference,
     };

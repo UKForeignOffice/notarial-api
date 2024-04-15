@@ -14,7 +14,7 @@ export function validate(req: Request, _res: Response, next: NextFunction) {
   const result = schema.validate(req.body, { abortEarly: false, allowUnknown: true });
   if (result.error) {
     const message = `The supplied form data is invalid: ${result.error.details.map((error) => error.message).join(",")}`;
-    next(new ApplicationError("WEBHOOK", "VALIDATION", 400, message));
+    next(new ApplicationError("NOTIFY", "PROCESS_VALIDATION", 400, message));
   }
   next();
 }
