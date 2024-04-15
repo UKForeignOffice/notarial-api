@@ -23,16 +23,7 @@ export type ErrorTypes = "WEBHOOK" | "SES" | "NOTIFY" | "QUEUE" | "GENERIC";
  * Error code for the matching ErrorType.
  */
 type WebhookErrorCode = "VALIDATION" | "EMPTY_TEMPLATE_DATA";
-type SESErrorCode =
-  | "NO_TEMPLATE"
-  | "TEMPLATE_NOT_FOUND"
-  | "TEMPLATE_PART_MISSING"
-  | "TEMPLATE_VAR_MISSING"
-  | "EMPTY_RES"
-  | "BAD_REQUEST"
-  | "API_ERROR"
-  | "MISSING_ANSWER"
-  | "UNKNOWN";
+type SESErrorCode = "MISSING_ANSWER" | "UNKNOWN";
 type NotifyErrorCode = "QUEUE_ERROR" | "UNKNOWN";
 type QueueErrorCode = "SES_SEND_ERROR" | "SES_PROCESS_ERROR" | "NOTIFY_SEND_ERROR" | "NOTIFY_PROCESS_ERROR";
 
@@ -56,13 +47,6 @@ const WEBHOOK: ErrorRecord<WebhookErrorCode> = {
 };
 
 const SES: ErrorRecord<SESErrorCode> = {
-  NO_TEMPLATE: "no template id was set for the specified form",
-  TEMPLATE_NOT_FOUND: "no template with the specified id could be found",
-  TEMPLATE_PART_MISSING: "the template subject line or body were missing",
-  TEMPLATE_VAR_MISSING: "a required variable was missing from the template data",
-  EMPTY_RES: "The email service did not return a response",
-  BAD_REQUEST: "The email data being sent was malformed",
-  API_ERROR: "The email service returned an error",
   MISSING_ANSWER: "The payload is missing an answer",
   UNKNOWN: "There was an unknown error sending the email",
 };
