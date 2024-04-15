@@ -22,7 +22,7 @@ export type ErrorTypes = "WEBHOOK" | "SES" | "NOTIFY" | "QUEUE" | "GENERIC";
 /**
  * Error code for the matching ErrorType.
  */
-type WebhookErrorCode = "VALIDATION" | "EMPTY_TEMPLATE_DATA";
+type WebhookErrorCode = "VALIDATION";
 type SESErrorCode = "MISSING_ANSWER" | "UNKNOWN";
 type NotifyErrorCode = "QUEUE_ERROR" | "UNKNOWN";
 type QueueErrorCode = "SES_SEND_ERROR" | "SES_PROCESS_ERROR" | "NOTIFY_SEND_ERROR" | "NOTIFY_PROCESS_ERROR";
@@ -43,7 +43,6 @@ type ErrorRecord<T extends ErrorCode> = Record<T, string>;
 
 const WEBHOOK: ErrorRecord<WebhookErrorCode> = {
   VALIDATION: "Malformed form data: The supplied form data is invalid",
-  EMPTY_TEMPLATE_DATA: "No template data was returned",
 };
 
 const SES: ErrorRecord<SESErrorCode> = {
