@@ -9,6 +9,7 @@ module.exports = {
   env: "development",
   submissionAddress: "pye@cautionyourblast.com",
   senderEmail: "pye@cautionyourblast.com",
+  rateLimit: 1200,
   Queue: {
     url: "postgresql://user:root@localhost:5432/notarial",
     defaultOptions: {

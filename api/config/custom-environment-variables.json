@@ -1,6 +1,7 @@
 {
   "port": "PORT",
   "env": "NODE_ENV",
+  "rateLimit": "RATE_LIMIT",
   "Notify": {
     "Template": {
       "affirmationUserConfirmation": "NOTIFY_TEMPLATE_AFFIRMATION_USER_CONFIRMATION",
