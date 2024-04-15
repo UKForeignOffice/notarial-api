@@ -22,7 +22,7 @@ export type ErrorTypes = "WEBHOOK" | "SES" | "NOTIFY" | "QUEUE" | "GENERIC";
 /**
  * Error code for the matching ErrorType.
  */
-type WebhookErrorCode = "VALIDATION" | "QUEUE_ERROR";
+type WebhookErrorCode = "VALIDATION";
 type SESErrorCode = "MISSING_ANSWER" | "PROCESS_VALIDATION" | "UNKNOWN";
 type NotifyErrorCode = "PROCESS_VALIDATION" | "UNKNOWN";
 type QueueErrorCode = "SES_SEND_ERROR" | "SES_PROCESS_ERROR" | "NOTIFY_SEND_ERROR" | "NOTIFY_PROCESS_ERROR";
