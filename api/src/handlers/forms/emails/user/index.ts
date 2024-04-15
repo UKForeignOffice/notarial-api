@@ -1,18 +1,19 @@
 import { NextFunction, Request, Response } from "express";
 import joi from "joi";
 import { ApplicationError } from "../../../../ApplicationError";
+
 const schema = joi.object({
-  answers: joi.object(),
+  answers: joi.object().required(),
   metadata: {
-    reference: joi.string(),
+    reference: joi.string().required(),
     payment: joi.object(),
-    type: joi.string().valid("affirmation", "cni", "exchange"),
+    type: joi.string().valid("affirmation", "cni", "exchange").required(),
   },
 });
 export function validate(req: Request, _res: Response, next: NextFunction) {
   const result = schema.validate(req.body, { abortEarly: false, allowUnknown: true });
   if (result.error) {
-    const message = `The supplied form data is invalid: ${result.error.details.map((error) => error.message).join("\n")}`;
+    const message = `The supplied form data is invalid: ${result.error.details.map((error) => error.message).join(",")}`;
     next(new ApplicationError("WEBHOOK", "VALIDATION", 400, message));
   }
   next();
