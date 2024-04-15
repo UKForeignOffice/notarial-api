@@ -34,7 +34,7 @@ const webhookOutputSchema = joi.object().keys({
 export function validationHandler(req: Request, _res: Response, next: NextFunction) {
   const result = webhookOutputSchema.validate(req.body, { abortEarly: false, allowUnknown: true });
   if (result.error) {
-    const message = `The supplied form data is invalid: ${result.error.details.map((error) => error.message).join("\n")}`;
+    const message = `The supplied form data is invalid: ${result.error.details.map((error) => error.message).join(",")}`;
     throw new ApplicationError("WEBHOOK", "VALIDATION", 400, message);
   }
   next();
