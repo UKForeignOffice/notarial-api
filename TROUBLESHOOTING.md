@@ -51,8 +51,7 @@ Columns/values to note are
     - `active`: the job is currently being processed
 - `data`: the data associated with the job. 
 - `output`: the output of the job. This will contain the reference number, or the error message if the job has failed
-- `keepuntil`: the time until the job will be kept in the table. After this time, the job will be moved to `pgboss.archive`. If you need more time to resolve the issue, you can update this value to a later time.
-
+- `keepuntil`: the time until the job will be kept in the table. As long as the state is not `failed`
 
 
 ## Finding jobs
@@ -149,3 +148,102 @@ If a job has been moved to the archive, and you want to retry it, you can move i
     SELECT name, data
     from pgboss.archive where id = '<id>';
 ```
+
+
+
+## logs / errors
+
+### API
+The following errors are logged by the API. They may be inserted into the database described above, but some errors are to do with failure to send to the queue.
+Below is a summary of the errors that may be logged by the API. Some errors may have steps to remediate.
+
+Summary:
+
+| Error type | Error code           | Comment                                                                                        |
+|------------|----------------------|------------------------------------------------------------------------------------------------|
+| WEBHOOK    | VALIDATION           | POST from forms-worker (or forms runner) failed validation.                                    |
+| SES        | PROCESS_VALIDATION   | POST to /forms/emails/staff failed validation                                                  |
+| SES        | MISSING_ANSWER       | Expected answer is missing. Check the queue database first, then the notarial database         |
+| SES        | UNKNOWN              | The error has been identified as relating to SES, but logs must be checked for further details |
+| NOTIFY     | PROCESS_VALIDATION   | POST to /forms/emails/user failed validation                                                   |
+| NOTIFY     | UNKNOWN              | The error has been identified as relating to NOTIFY (or UserService)                           |
+| QUEUE      | SES_PROCESS_ERROR    | Inserting into queue failed                                                                    |
+| QUEUE      | NOTIFY_PROCESS_ERROR | Inserting into queue failed                                                                    |
+| GENERIC    | UNKNOWN              |                                                                                                |
+| GENERIC    | RATE_LIMIT           | Rate limit exceeded. If required, this can be changed by adjusting `RATE_LIMIT` env var        |
+
+For the API, generally you may fix the issues in a few ways
+- Update the data in the database and retry the job
+- Fix the code, redeploy, and let the job be retried. You may need to reset the retry limits via the database
+
+
+#### WEBHOOK | VALIDATION
+
+The forms-worker or forms runner attempted to POST to /forms, but validation failed. Only basic validation is applied, so this error should be rare.
+
+Check the /queue database first. If data can be easily amended, amend it on the /queue database and resend it. More details can be found in the [forms-queue troubleshooting guide](https://github.com/UKForeignOffice/forms-queue/blob/main/TROUBLESHOOTING.md#incorrect-data).
+
+#### SES | PROCESS_VALIDATION
+Only basic validation is applied, so this error should be rare. 
+
+Check the /notarial database
+```postgresql
+
+-- get all failed
+select * from pgboss.job where name = 'SES_PROCESS' and state = 'failed';
+
+-- get by job id
+select * from pgboss.job where id = '<id>';
+
+-- get by reference number (GOV.UK Pay reference number / notify reference number)
+select * from pgboss.job where data->>'metadata'->>'reference' = '<reference>';
+
+```
+
+#### SES | MISSING_ANSWER
+
+Expected answer is missing. These are required fields, and embassies/consulates need this information. Work backwards in this case. 
+1. Investigate the payload in the notarial database with the name `SES_PROCESS` first to see if that data is present, but has been incorrectly parsed.
+1. If the data was not present, check the /queue database
+
+If data was present in the queue database, but not in the notarial database, you will need to manually insert the data into the notarial database.
+
+The form JSON may have changed, meaning the remapper is out of date (or the JSON has been updated in error).
+Data can be manually added or changed, so it's compatible with the remapper, or a fix to the code can be made. 
+
+You will need to append a `field` object to the jsonb data column in the notarial database. 
+
+1. Check the logs or entry output for which field is missing. It will appear as `Missing answer for <key>`.
+1. Check the value that the remapper is expecting 
+
+
+```postgresql
+-- To add append a field to the fields array
+    update pgboss.job
+    set data = jsonb_set(
+            data,
+            '{fields}',
+            data->'fields' || '{
+                "key": "jurats",
+                "type": "list",
+                "answer": "Yes",
+                "category": "oath"
+            }'
+        )
+    where id = '<id>';
+```
+If you need to edit a field, it may be easier to copy the data to a text editor, make the changes, and then update the data in the database.
+
+
+
+#### NOTIFY | PROCESS_VALIDATION
+Only basic validation is applied, so this error should be rare. The job can be edited manually.
+
+
+
+#### QUEUE | SES_PROCESS_ERROR / QUEUE | NOTIFY_PROCESS_ERROR
+
+There is an issue adding data to the database. Investigate RDS. 
+
+
+
