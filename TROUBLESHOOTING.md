@@ -139,6 +139,7 @@ Alternatively, you can copy the data from the failed job, and create a new job w
     SELECT name, data
     from pgboss.job where id = '<id>';
 ```
+Ensure you archive or delete the failed job if you decide to create a new one.
 
 ### Moving a job from archive to job
 If a job has been moved to the archive, and you want to retry it, you can move it back to the jobs table.
