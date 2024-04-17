@@ -25,12 +25,11 @@ export type ErrorTypes = "CONSUMER" | "FILE" | "GENERIC" | "SES";
 type ConsumerErrorCode = "START_FAILED";
 type GenericErrorCode = "UNKNOWN";
 type FileErrorCode = "EMPTY_RES" | "ORIGIN_NOT_ALLOWED" | "API_ERROR" | "NOT_FOUND";
-type SESErrorCode = "FAILED_TO_ATTACH" | "FAILED_TO_SEND_COMPLETE_JOB";
 
 /**
  * Union of all the different ErrorCode.
  */
-export type ErrorCode = ConsumerErrorCode | GenericErrorCode | FileErrorCode | SESErrorCode;
+export type ErrorCode = ConsumerErrorCode | GenericErrorCode | FileErrorCode;
 
 /**
  * {@ErrorRecord} uses `Record`, which means every key passed into the generic, must be implemented
@@ -54,20 +53,13 @@ const FILE: ErrorRecord<FileErrorCode> = {
   NOT_FOUND: "The requested file could not be found",
 };
 
-const SES: ErrorRecord<SESErrorCode> = {
-  FAILED_TO_ATTACH: "Could not attach files to MIMEMessage",
-  FAILED_TO_SEND_COMPLETE_JOB: "Could not send complete job",
-};
-
 type ErrorRecords = {
   CONSUMER: typeof CONSUMER;
   FILE: typeof FILE;
-  SES: typeof SES;
   GENERIC: typeof GENERIC;
 };
 export const ERRORS: ErrorRecords = {
   CONSUMER,
   FILE,
-  SES,
   GENERIC,
 };

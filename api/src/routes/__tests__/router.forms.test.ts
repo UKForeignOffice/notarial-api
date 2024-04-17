@@ -29,19 +29,19 @@ describe("POST /forms", () => {
       .then((res) => expect(res.body).toStrictEqual({ reference: "DG19_IJVV6" }));
   });
 
-  it("should respond with a queue error if sendToQueue failed", async () => {
+  it("should respond with a reference number even though queueService threw an error", async () => {
     jest.spyOn(queueService.QueueService.prototype, "sendToQueue").mockRejectedValueOnce(new ApplicationError("QUEUE", "SES_PROCESS_ERROR", 500));
     await request(app)
       .post("/forms")
       .send(testData)
-      .expect(500)
-      .then((res) => expect(res.body.error).toStrictEqual("SES_PROCESS_ERROR"));
+      .expect(200)
+      .then((res) => expect(res.body).toStrictEqual({ reference: "DG19_IJVV6" }));
 
     jest.spyOn(queueService.QueueService.prototype, "sendToQueue").mockRejectedValueOnce(new ApplicationError("QUEUE", "NOTIFY_PROCESS_ERROR", 500));
     await request(app)
       .post("/forms")
       .send(testData)
-      .expect(500)
-      .then((res) => expect(res.body.error).toStrictEqual("NOTIFY_PROCESS_ERROR"));
+      .expect(200)
+      .then((res) => expect(res.body).toStrictEqual({ reference: "DG19_IJVV6" }));
   });
 });

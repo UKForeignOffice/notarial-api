@@ -28,6 +28,8 @@ export interface FormDataBody {
     type: FormType;
     pay?: PayMetadata;
     [key: string]: any;
+    SKIP_QUEUEING_STAFF_EMAIL?: boolean;
+    SKIP_QUEUEING_USER_EMAIL?: boolean;
   };
   fees?: {
     paymentReference: string;
