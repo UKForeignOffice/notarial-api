@@ -182,9 +182,8 @@ This is a logged error only, but is not thrown or cause an HTTP error.
 
 The error will appear like so
 
-```postgresql
-{"level":50,"time":1713362276177,"pid":34641,"service":"Submit","reference":"DG19_IJVV6","err":{"type":"ApplicationError","message":"unable to queue NOTIFY_PROCESS_ERROR","stack":"QUEUE: unable to queue NOTIFY_PROCESS_ERROR\n    at Object.<anonymous> (/Users/jen/development/notarial-api/api/src/routes/__tests__/router.forms.test.ts:40:90)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","httpStatusCode":500,"code":"NOTIFY_PROCESS_ERROR","isOperational":true,"exposeToClient":true,"name":"QUEUE"},"errorCode":"SUBMIT_FORM_ERROR","msg":"NOTARIAL_API_ERROR User's data did not queue correctly. Responding with reference number since their data is safe."}
-
+```json
+{"level":50,"time":1713362276177,"pid":34641,"service":"Submit","reference":"DG19_IJVV6","err":{"type":"ApplicationError","message":"unable to queue NOTIFY_PROCESS_ERROR","stack":"QUEUE: unable to queue NOTIFY_PROCESS_ERROR","httpStatusCode":500,"code":"NOTIFY_PROCESS_ERROR","isOperational":true,"exposeToClient":true,"name":"QUEUE"},"errorCode":"SUBMIT_FORM_ERROR","msg":"NOTARIAL_API_ERROR User's data did not queue correctly. Responding with reference number since their data is safe."}
 ```
 
 
