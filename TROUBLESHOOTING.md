@@ -178,7 +178,7 @@ For the API, generally you may fix the issues in a few ways
 - Fix the code, redeploy, and let the job be retried. You may need to reset the retry limits via the database
 
 #### SUBMIT_FORM_ERROR
-This is a logged error only, but is not thrown or cause an HTTP error.
+This is a logged error only, but is not thrown or cause an HTTP error. This error should be rare, and likely down to a database issue.
 
 The error will appear like so
 
@@ -186,6 +186,26 @@ The error will appear like so
 {"level":50,"time":1713362276177,"pid":34641,"service":"Submit","reference":"DG19_IJVV6","err":{"type":"ApplicationError","message":"unable to queue NOTIFY_PROCESS_ERROR","stack":"QUEUE: unable to queue NOTIFY_PROCESS_ERROR","httpStatusCode":500,"code":"NOTIFY_PROCESS_ERROR","isOperational":true,"exposeToClient":true,"name":"QUEUE"},"errorCode":"SUBMIT_FORM_ERROR","msg":"NOTARIAL_API_ERROR User's data did not queue correctly. Responding with reference number since their data is safe."}
 ```
 
+The user's data failed to queue for further processing steps. 
+
+in the /queue database, find and set the job to the `failed` state, and set the retrylimit and retrycount to 0. This is to prevent the user's data from being archived and deleted.
+```postgresql
+    update pgboss.job
+    set state = 'failed',
+    retrylimit = 0,
+    retrycount = 0
+    where output->>'reference' = 'DG19_IJVV6';
+```
+
+If this is a code based issue, redeploy the API with the fix, and retry the job by updating the entry, or creating a new job with the same data.
+```postgresql
+    update pgboss.job
+    set state = 'created',
+    retrylimit = 50,
+    retrycount = 0,
+    completedon = null
+    where output->>'reference' = 'DG19_IJVV6';
+```
 
 
 #### WEBHOOK | VALIDATION

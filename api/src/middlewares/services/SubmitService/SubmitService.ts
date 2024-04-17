@@ -28,25 +28,16 @@ export class SubmitService {
     const type = metadata?.type ?? "affirmation";
 
     try {
-      const shouldSkipStaffEmail = metadata.SKIP_QUEUEING_STAFF_EMAIL ?? false;
-      if (!shouldSkipStaffEmail) {
-        const staffProcessJob = await this.staffService.sendToProcessQueue(formFields, "submission", {
-          reference,
-          payment: metadata.pay,
-          type,
-        });
-        this.logger.info({ reference, staffProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
-      } else {
-        this.logger.info({ reference }, `Skipping queueing staff email for ${reference}`);
-      }
+      const staffProcessJob = await this.staffService.sendToProcessQueue(formFields, "submission", {
+        reference,
+        payment: metadata.pay,
+        type,
+      });
+      this.logger.info({ reference, staffProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
 
-      const shouldSkipUserEmail = metadata.SKIP_QUEUEING_USER_EMAIL ?? false;
-      if (!shouldSkipUserEmail) {
-        const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type });
-        this.logger.info({ reference, userProcessJob }, `NOTIFY_PROCESS job queued successfully for ${reference}`);
-      } else {
-        this.logger.info({ reference }, `Skipping queueing user email for ${reference}`);
-      }
+      const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type });
+
+      this.logger.info({ reference, userProcessJob }, `NOTIFY_PROCESS job queued successfully for ${reference}`);
     } catch (e) {
       /**
        * Even though the data did not queue correctly, the user's data is safe in the /queue database, so we can respond with the reference number.
