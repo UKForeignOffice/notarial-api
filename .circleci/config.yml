@@ -42,6 +42,10 @@ jobs:
           name: Run tests
           command: yarn test
 
+      - run:
+          name: build
+          command: yarn workspaces foreach run build
+
       - save_cache:
           key: v1-deps-{{ checksum "yarn.lock" }}
           paths:
