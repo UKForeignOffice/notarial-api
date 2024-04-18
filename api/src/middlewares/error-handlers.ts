@@ -8,7 +8,7 @@ function errorLogger(error: Error, req: Request, _res: Response, next: NextFunct
   if (error instanceof ApplicationError) {
     const { name, code } = error;
     const summary = `${ERRORS[name][code]}`;
-    req.log.error(`${name} ${code} ${summary}`, error);
+    req.log.error(`NOTARIAL_API_ERROR ${name} ${code} ${summary}`, error);
     stackLogger.error(error);
     next(error);
     return;

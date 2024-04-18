@@ -81,11 +81,14 @@ export class StaffService {
 
   getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate, type: FormType) {
     const { fields, payment, reference } = data;
-    const remapped = remappers[type](fields);
+    const remapFields = remappers[type];
+    const remapped = remapFields(fields);
 
     const { information } = remapped;
 
-    const reordered = reorderers[type](remapped);
+    const reorderer = reorderers[type];
+    const reordered = reorderer(remapped);
+
     const country = getAnswerOrThrow(information, "country");
     const post = information.post?.answer;
     let oathType, jurats;

@@ -22,19 +22,10 @@ export type ErrorTypes = "WEBHOOK" | "SES" | "NOTIFY" | "QUEUE" | "GENERIC";
 /**
  * Error code for the matching ErrorType.
  */
-type WebhookErrorCode = "VALIDATION" | "EMPTY_TEMPLATE_DATA";
-type SESErrorCode =
-  | "NO_TEMPLATE"
-  | "TEMPLATE_NOT_FOUND"
-  | "TEMPLATE_PART_MISSING"
-  | "TEMPLATE_VAR_MISSING"
-  | "EMPTY_RES"
-  | "BAD_REQUEST"
-  | "API_ERROR"
-  | "MISSING_ANSWER"
-  | "UNKNOWN";
-type NotifyErrorCode = "QUEUE_ERROR" | "UNKNOWN";
-type QueueErrorCode = "SES_SEND_ERROR" | "SES_PROCESS_ERROR" | "NOTIFY_SEND_ERROR" | "NOTIFY_PROCESS_ERROR";
+type WebhookErrorCode = "VALIDATION";
+type SESErrorCode = "MISSING_ANSWER" | "PROCESS_VALIDATION" | "UNKNOWN";
+type NotifyErrorCode = "PROCESS_VALIDATION" | "UNKNOWN";
+type QueueErrorCode = "SES_PROCESS_ERROR" | "NOTIFY_PROCESS_ERROR";
 
 type GenericErrorCode = "UNKNOWN" | "RATE_LIMIT_EXCEEDED";
 
@@ -52,24 +43,17 @@ type ErrorRecord<T extends ErrorCode> = Record<T, string>;
 
 const WEBHOOK: ErrorRecord<WebhookErrorCode> = {
   VALIDATION: "Malformed form data: The supplied form data is invalid",
-  EMPTY_TEMPLATE_DATA: "No template data was returned",
 };
 
 const SES: ErrorRecord<SESErrorCode> = {
-  NO_TEMPLATE: "no template id was set for the specified form",
-  TEMPLATE_NOT_FOUND: "no template with the specified id could be found",
-  TEMPLATE_PART_MISSING: "the template subject line or body were missing",
-  TEMPLATE_VAR_MISSING: "a required variable was missing from the template data",
-  EMPTY_RES: "The email service did not return a response",
-  BAD_REQUEST: "The email data being sent was malformed",
-  API_ERROR: "The email service returned an error",
   MISSING_ANSWER: "The payload is missing an answer",
+  PROCESS_VALIDATION: "Malformed POST data: The supplied form data is invalid",
   UNKNOWN: "There was an unknown error sending the email",
 };
 
 const NOTIFY: ErrorRecord<NotifyErrorCode> = {
   UNKNOWN: "There was an unknown error sending the email",
-  QUEUE_ERROR: "There was an error sending this email to queue",
+  PROCESS_VALIDATION: "Malformed POST data: The supplied form data is invalid",
 };
 
 const GENERIC: ErrorRecord<GenericErrorCode> = {
@@ -79,9 +63,7 @@ const GENERIC: ErrorRecord<GenericErrorCode> = {
 
 const QUEUE: ErrorRecord<QueueErrorCode> = {
   NOTIFY_PROCESS_ERROR: "unable to queue NOTIFY_PROCESS_ERROR",
-  NOTIFY_SEND_ERROR: "unable to queue NOTIFY_SEND_ERROR",
   SES_PROCESS_ERROR: "unable to queue SES_PROCESS_ERROR",
-  SES_SEND_ERROR: "unable to queue SES_SEND_ERROR",
 };
 
 type ErrorRecords = {
