@@ -14,7 +14,7 @@ const previousMarriageDocs = {
 
 export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata }) {
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
-  const docsList = buildUserConfirmationDocsList(answers, isSuccessfulPayment);
+  const docsList = buildUserConfirmationDocsList(answers);
   const country = answers["country"] as string;
   const post = answers["post"] as string;
   const nameChangedMoreThanOnce =
@@ -38,10 +38,11 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
     confirmationDelay: additionalContext.confirmationDelay ?? "2 weeks",
     duration: additionalContext.duration,
     postAddress: additionalContext.postAddress,
+    notPaid: !isSuccessfulPayment,
   };
 }
 
-export function buildUserConfirmationDocsList(fields: AnswersHashMap, paid) {
+export function buildUserConfirmationDocsList(fields: AnswersHashMap) {
   if (!fields) {
     throw new ApplicationError("WEBHOOK", "VALIDATION", 500, "Fields are empty");
   }
@@ -53,17 +54,17 @@ export function buildUserConfirmationDocsList(fields: AnswersHashMap, paid) {
   if (fields.oathType === "affidavit") {
     docsList.push("religious book of your faith to swear upon");
   }
-  if (!paid) {
-    //TODO:- should this be in the template itself?
-    const price = calculateCost(fields);
-    docsList.push(`the equivalent of ${price} in the local currency`);
-  }
   const country = fields.country as string;
   const additionalDocs = additionalContexts.countries[country]?.additionalDocs ?? [];
   docsList.push(...additionalDocs);
   return docsList.map((doc) => `* ${doc}`).join("\n");
 }
 
+/**
+ * @deprecated - the content in the email does not require price now
+ * @param fields
+ */
+// @ts-ignore
 function calculateCost(fields: AnswersHashMap) {
   const priceMap = {
     certifyPassport: 25,
