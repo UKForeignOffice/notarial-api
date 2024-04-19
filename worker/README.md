@@ -24,6 +24,9 @@ The general flow is
 This allows all stages to be retried individually. If errors are thrown, or there are erroneous responses (4xx or 5xx errors),
 these will be stored in the database, in the output column.
 
+A simplified diagram of this flow can be found in [simplified_flow.svg](./docs/assets/simplified_flow.svg).
+
+
 - `NOTIFY_PROCESS` is handled by [notifyProcessHandler](queues/notify/workers/notifyProcessHandler.ts)
 - `NOTIFY_SEND` is handled by [notifySendHandler](queues/notify/workers/notifySendHandler.ts)
 - `SES_PROCESS` is handled by [sesProcessHandler](queues/ses/workers/sesProcessHandler.ts)
@@ -164,7 +167,7 @@ The attachments will be fetched, then added to the email body in memory (i.e. no
 
 When tasks fail, the error emitted will automatically be added to the jobs, and the error is logged. If the logs are incomplete, further logging may be found on the database in the `output` column.
 
-See [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) for more information.
+See [TROUBLESHOOTING.md](./../TROUBLESHOOTING.md) for more information.
 
 
 ### Environment variables
@@ -182,3 +185,4 @@ See [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) for more information.
 | `NOTARIAL_API_CREATE_SES_EMAIL_URL`    | URL on the notarial-api where SES emails can be created                                                 | http://localhost:9000/forms/emails/ses       |
 | `NOTARIAL_API_CREATE_NOTIFY_EMAIL_URL` | URL on the notarial-api where Notify emails can be created                                              | http://localhost:9000/forms/emails/notify    |
 | `FILES_ALLOWED_ORIGINS`                | Allowed origins where files can be downloaded from                                                      | ["http://localhost:9000"]                    |
+
