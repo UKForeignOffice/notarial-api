@@ -6,7 +6,7 @@ The API should parse user's data, render email templates etc.
 
 ## Prerequisites
 1. A node version manager, like [nvm](https://formulae.brew.sh/formula/nvm), or [n](https://github.com/tj/n)
-2. node 18.x.x
+2. node 20.x.x
 3. yarn >= v1.22. This project uses yarn 3. Yarn v1.22 will load the correct version of yarn by looking at [.yarnrc](./../.yarnrc.yml) and [.yarn](./../yarn)
 4. Docker >= 3.9 - [Install docker engine](https://docs.docker.com/engine/install/) 
 
@@ -57,7 +57,6 @@ It will generate an email body to be sent via SES. The attachments are not added
 
 ### POST `/forms/emails/notify`
 This route is used to parse the user's data to generate the confirmation email for the user. The request will come from the NOTIFY_PROCESS job.
-
 
 
 ### Environment variables
