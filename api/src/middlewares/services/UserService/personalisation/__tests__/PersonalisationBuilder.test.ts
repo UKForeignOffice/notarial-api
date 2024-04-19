@@ -23,13 +23,13 @@ test("buildSendEmailArgs should return the correct personalisation", () => {
   const personalisation = PersonalisationBuilder.userConfirmation(answers, { reference: "1234" });
   expect(personalisation).toEqual({
     firstName: "foo",
-    docsList:
-      "* your UK passport\n* your birth certificate\n* proof of address\n* your partner’s passport or national identity card\n* the equivalent of £50 in the local currency",
+    docsList: "* your UK passport\n* your birth certificate\n* proof of address\n* your partner’s passport or national identity card",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=10",
     civilPartnership: false,
     country: "Turkey",
     localRequirements: "",
     nameChangedMoreThanOnce: false,
+    notPaid: true,
     post: "British Consulate General Istanbul",
     postAddress: "",
     confirmationDelay: "2 weeks",
@@ -47,6 +47,6 @@ test("buildDocsList will add optional documents when the relevant fields are fil
     oathType: "affidavit",
   };
   expect(buildUserConfirmationDocsList(fieldsMap, false)).toBe(
-    `* your UK passport\n* your birth certificate\n* proof of address\n* your partner’s passport or national identity card\n* decree absolute\n* religious book of your faith to swear upon\n* the equivalent of £50 in the local currency`
+    `* your UK passport\n* your birth certificate\n* proof of address\n* your partner’s passport or national identity card\n* decree absolute\n* religious book of your faith to swear upon`
   );
 });
