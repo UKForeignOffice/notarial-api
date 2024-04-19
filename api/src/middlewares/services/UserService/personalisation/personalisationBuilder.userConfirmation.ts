@@ -59,23 +59,3 @@ export function buildUserConfirmationDocsList(fields: AnswersHashMap) {
   docsList.push(...additionalDocs);
   return docsList.map((doc) => `* ${doc}`).join("\n");
 }
-
-/**
- * @deprecated - the content in the email does not require price now
- * @param fields
- */
-// @ts-ignore
-function calculateCost(fields: AnswersHashMap) {
-  const priceMap = {
-    certifyPassport: 25,
-    getAdditionalDocument: 50,
-  };
-  const finalCost = Object.entries(priceMap).reduce((total, [fieldName, price]) => {
-    if (fields[fieldName]) {
-      total += price;
-    }
-    return total;
-  }, 50);
-
-  return `£${finalCost}`;
-}
