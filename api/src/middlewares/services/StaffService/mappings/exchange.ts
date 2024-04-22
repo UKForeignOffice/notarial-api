@@ -12,6 +12,7 @@ export const order = {
 
 export const remap = {
   country: "information.country",
+  post: "information.post",
   certifyPassport: "information.certifyPassport",
   feedbackConsent: "feedbackConsent.feedbackConsent",
 
