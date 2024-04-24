@@ -124,7 +124,7 @@ export class StaffService {
 
     const country = answers.country as string;
     const postalValue = postal ? "Postal" : "";
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postalValue }, template, type);
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal: postalValue }, template, type);
     const post = getPost(country, answers.post as string);
     const onCompleteJob = this.getPostAlertOptions(answers, type, reference);
     return {
