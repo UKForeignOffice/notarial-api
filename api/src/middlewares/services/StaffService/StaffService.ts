@@ -34,6 +34,7 @@ type ProcessQueueData = {
     reference: string;
     payment?: PayMetadata;
     type: FormType;
+    postal?: boolean;
   };
 };
 export class StaffService {
@@ -79,14 +80,14 @@ export class StaffService {
     return await this.queueService.sendToQueue("SES_SEND", emailArgs);
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate, type: FormType) {
-    const { fields, payment, reference } = data;
-    const remapFields = remappers[type];
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string; postal?: string }, template: SESEmailTemplate, type: FormType) {
+    const { fields, payment, reference, postal } = data;
+    const remapFields = remappers[`${type}${postal}`];
     const remapped = remapFields(fields);
 
     const { information } = remapped;
 
-    const reorderer = reorderers[type];
+    const reorderer = reorderers[`${type}${postal}`];
     const reordered = reorderer(remapped);
 
     const country = getAnswerOrThrow(information, "country");
@@ -111,7 +112,7 @@ export class StaffService {
 
   private buildSendEmailArgs(data: ProcessQueueData) {
     const { fields, template, metadata } = data;
-    const { reference, payment, type } = metadata;
+    const { reference, payment, type, postal } = metadata;
     const answers = answersHashMap(fields);
     let paymentViewModel: PaymentViewModel | undefined;
 
@@ -122,7 +123,8 @@ export class StaffService {
     }
 
     const country = answers.country as string;
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference }, template, type);
+    const postalValue = postal ? "Postal" : "";
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postalValue }, template, type);
     const post = getPost(country, answers.post as string);
     const onCompleteJob = this.getPostAlertOptions(answers, type, reference);
     return {
