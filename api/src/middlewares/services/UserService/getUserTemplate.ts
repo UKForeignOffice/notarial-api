@@ -1,7 +1,7 @@
 import * as additionalContexts from "../utils/additionalContexts.json";
 
-export function getUserTemplate(country: string) {
-  const postalSupport = additionalContexts.countries[country]?.postal;
+export function getUserTemplate(country: string, postal?: boolean) {
+  const postalSupport = postal !== undefined ? postal : additionalContexts.countries[country]?.postal;
   if (!postalSupport) {
     return "userConfirmation";
   }

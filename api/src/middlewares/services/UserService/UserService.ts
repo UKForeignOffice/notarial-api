@@ -46,12 +46,12 @@ export class UserService {
     return await this.queueService.sendToQueue("NOTIFY_PROCESS", { answers, metadata });
   }
 
-  async sendEmailToUser(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType } }) {
+  async sendEmailToUser(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean } }) {
     const { answers, metadata } = data;
     const { reference, type } = data.metadata;
 
     const personalisation = PersonalisationBuilder.userConfirmation(answers, metadata);
-    const templateName = getUserTemplate(answers.country as string);
+    const templateName = getUserTemplate(answers.country as string, metadata.postal);
     const emailArgs = {
       template: this.templates[type][templateName],
       emailAddress: answers.emailAddress as string,
