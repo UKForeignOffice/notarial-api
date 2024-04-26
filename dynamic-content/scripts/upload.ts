@@ -10,21 +10,28 @@ import _ from "lodash";
  */
 function main() {
   const bookingRows = helpers.prepareUpdateFile("booking-links.tsv", constants.CONTENT_MAP["booking-links"]);
-  uploadContent(constants.CONTENT_MAP["booking-links"], bookingRows, "booking-links");
+  let newContent = uploadContent(constants.CONTENT_MAP["booking-links"], bookingRows, "booking-links");
 
   const contentRows = helpers.prepareUpdateFile("content.tsv", constants.CONTENT_MAP["content"]);
-  uploadContent(constants.CONTENT_MAP["content"], contentRows, "content");
+  newContent = uploadContent(constants.CONTENT_MAP["content"], contentRows, "content", newContent);
+
+  fs.writeFileSync(constants.CONTENT_TARGET, JSON.stringify(newContent));
 }
 
 /**
- * Function to upload an array of csv rows to the additional contexts file.
+ * Function to upload an array of tsv rows to the additional contexts file.
  * @param fileConstants - The constants associated with the content type to be used for picking the correct fields to upload
- * @param rowObjects - The rows of the csv as JS objects
+ * @param rowObjects - The rows of the tsv as JS objects
  * @param contentType - The file type being processed. This determines what fields to be uploaded, and to what part of the additional contexts file
+ * @param defaultContent - default content to be used for the uploaded content. Used to combine booking links and content tsvs
  */
-function uploadContent(fileConstants: ConstantsMap["content"] | ConstantsMap["booking-links"], rowObjects: Row[], contentType: "content" | "booking-links") {
-  const currentDynamicContent = helpers.getFileJson(constants.CONTENT_TARGET);
-  const newContent = rowObjects.reduce(
+function uploadContent(
+  fileConstants: ConstantsMap["content"] | ConstantsMap["booking-links"],
+  rowObjects: Row[],
+  contentType: "content" | "booking-links",
+  defaultContent: Record<string, any> = {}
+) {
+  return rowObjects.reduce(
     (acc, curr) => {
       const contentFamily = contentType === "content" ? "countries" : helpers.determineBookingContentFamily(rowObjects, curr);
       const relevantFields = helpers.getRelevantFields(curr, fileConstants.relevant);
@@ -34,10 +41,8 @@ function uploadContent(fileConstants: ConstantsMap["content"] | ConstantsMap["bo
       _.set(acc, setPath, { ...currentFields, ...relevantFields });
       return acc;
     },
-    { ...currentDynamicContent }
+    { ...defaultContent }
   );
-  fs.writeFileSync(constants.CONTENT_TARGET, JSON.stringify(newContent));
-  console.log("\x1b[32m%s\x1b[0m", "Dynamic content updated successfully.");
 }
 
 main();

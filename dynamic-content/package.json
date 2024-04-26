@@ -4,7 +4,7 @@
   "description": "Use this script to update the dynamic content for the api",
   "main": "index.ts",
   "scripts": {
-    "upload": "ts-node scripts/upload.ts",
+    "upload": "ts-node scripts/upload.ts && prettier ../api/src/middlewares/services/utils/additionalContexts.json --write",
     "test": "jest --coverage"
   },
   "repository": {
