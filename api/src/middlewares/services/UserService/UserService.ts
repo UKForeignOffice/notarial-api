@@ -1,6 +1,5 @@
 import config from "config";
 import pino, { Logger } from "pino";
-import { getPostEmailAddress } from "../utils/getPostEmailAddress";
 import { PersonalisationBuilder } from "./personalisation/PersonalisationBuilder";
 import { QueueService } from "../QueueService";
 import { FormType, PayMetadata } from "../../../types/FormDataBody";
@@ -69,26 +68,5 @@ export class UserService {
 
   async sendEmail(notifySendEmailArgs: NotifySendEmailArgs) {
     return await this.queueService.sendToQueue("NOTIFY_SEND", notifySendEmailArgs);
-  }
-
-  getPostAlertOptions(answers: AnswersHashMap, type: FormType, reference: string) {
-    const country = answers["country"] as string;
-    const post = answers["post"] as string;
-    const emailAddress = getPostEmailAddress(country, post);
-    const personalisation = PersonalisationBuilder.postNotification(answers, type);
-    if (!emailAddress) {
-      this.logger.warn(`No email address found for country ${country} - post ${post}. Post notification will not be sent`);
-      return;
-    }
-
-    return {
-      template: this.templates[type].postNotification,
-      emailAddress,
-      reference,
-      options: {
-        personalisation,
-        reference,
-      },
-    };
   }
 }

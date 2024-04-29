@@ -52,6 +52,7 @@ Columns/values to note are
 - `data`: the data associated with the job. 
 - `output`: the output of the job. This will contain the reference number, or the error message if the job has failed
 - `keepuntil`: the time until the job will be kept in the table. As long as the state is not `failed`
+- `startafter`: the time the job will start processing
 
 
 ## Finding jobs
@@ -66,16 +67,16 @@ If the retrylimit has not been hit (retrylimit > retrycount) and the retrylimit 
 
 It is recommended you run every query in a transaction, so that you can abort the changes if they are incorrect.
 
-```postgresql
+```sql
     begin;
     -- First run a query to print the current state of the job you are trying to change     
     select data from pgboss.job where id = '<id>';
 
     update pgboss.job
-    set state = 'created',
+    set state = 'retry',
     completedon = null,
     retrycount = 0,
-    state = 'created'
+    startafter = now()
     where id = '<id>';
     
     -- Run the query again, to see if you've made the correct changes
@@ -92,7 +93,7 @@ The following queries will assume that you are running them in a transaction.
 ## Incorrect data
 If the data is incorrect, you can update the data in the database. All data is stored as jsonb, so you can use [postgresql's jsonb functions](https://www.postgresql.org/docs/current/functions-json.html) to update the data
 
-```postgresql
+```sql
     update pgboss.job
     set data = jsonb_set(
             data,
@@ -104,21 +105,21 @@ If the data is incorrect, you can update the data in the database. All data is s
 
 You may find it easier to copy the data to a text editor, make the changes, and then update the data in the database.
 
-```postgresql
+```sql
     update pgboss.job
     set data = '<NEW_DATA>'
     where id = '<id>';
 ```
 
 ### Retry a job
-If a job has failed, and you want to retry it, you can update the job to `created` state, and reset the `retrycount` to 0.
+If a job has failed, and you want to retry it, you can update the `startafter` column to now, and reset the `retrycount` to 0.
 
-```postgresql
+```sql
     update pgboss.job
-    set state = 'created',
+    set state = 'retry',
     completedon = null,
     retrycount = 0,
-    state = 'created'
+    startafter = now()
 --  output = null  
     where id = '<id>';
 ```
@@ -127,14 +128,14 @@ You may also want to update output to null, to clear the error message.
 ## Creating a new job
 If the job does not seem to be retrying, or it is easier to just create a new job you need to create a new job, you can do so by running the following query:
 
-```postgresql
+```sql
     insert into pgboss.job (name, data)
     values ('NOTIFY_PROCESS', '{"answers": {}, "metadata": {}, "reference": "123456"}');
 ```
 
 Alternatively, you can copy the data from the failed job, and create a new job with the same data.
 
-```postgresql
+```sql
     insert into pgboss.job (name, data)
     SELECT name, data
     from pgboss.job where id = '<id>';
@@ -144,7 +145,7 @@ Ensure you archive or delete the failed job if you decide to create a new one.
 ### Moving a job from archive to job
 If a job has been moved to the archive, and you want to retry it, you can move it back to the jobs table.
 
-```postgresql
+```sql
     insert into pgboss.job (name, data)
     SELECT name, data
     from pgboss.archive where id = '<id>';
@@ -189,7 +190,7 @@ The error will appear like so
 The user's data failed to queue for further processing steps. 
 
 in the /queue database, find and set the job to the `failed` state, and set the retrylimit and retrycount to 0. This is to prevent the user's data from being archived and deleted.
-```postgresql
+```sql
     update pgboss.job
     set state = 'failed',
     retrylimit = 0,
@@ -198,7 +199,7 @@ in the /queue database, find and set the job to the `failed` state, and set the 
 ```
 
 If this is a code based issue, redeploy the API with the fix, and retry the job by updating the entry, or creating a new job with the same data.
-```postgresql
+```sql
     update pgboss.job
     set state = 'created',
     retrylimit = 50,
@@ -218,7 +219,7 @@ Check the /queue database first. If data can be easily amended, amend it on the 
 Only basic validation is applied, so this error should be rare. 
 
 Check the /notarial database
-```postgresql
+```sql
 
 -- get all failed
 select * from pgboss.job where name = 'SES_PROCESS' and state = 'failed';
@@ -248,7 +249,7 @@ You will need to append a `field` object to the jsonb data column in the notaria
 1. Check the value that the remapper is expecting 
 
 
-```postgresql
+```sql
 -- To add append a field to the fields array
     update pgboss.job
     set data = jsonb_set(
