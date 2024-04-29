@@ -52,6 +52,7 @@ Columns/values to note are
 - `data`: the data associated with the job. 
 - `output`: the output of the job. This will contain the reference number, or the error message if the job has failed
 - `keepuntil`: the time until the job will be kept in the table. As long as the state is not `failed`
+- `startafter`: the time the job will start processing
 
 
 ## Finding jobs
@@ -111,14 +112,14 @@ You may find it easier to copy the data to a text editor, make the changes, and 
 ```
 
 ### Retry a job
-If a job has failed, and you want to retry it, you can update the job to `created` state, and reset the `retrycount` to 0.
+If a job has failed, and you want to retry it, you can update the `startafter` column to now, and reset the `retrycount` to 0.
 
 ```postgresql
     update pgboss.job
     set state = 'created',
     completedon = null,
     retrycount = 0,
-    state = 'created'
+    startafter = now()
 --  output = null  
     where id = '<id>';
 ```
