@@ -75,8 +75,7 @@ It is recommended you run every query in a transaction, so that you can abort th
     update pgboss.job
     set state = 'created',
     completedon = null,
-    retrycount = 0,
-    state = 'created'
+    retrycount = 0
     where id = '<id>';
     
     -- Run the query again, to see if you've made the correct changes
@@ -116,7 +115,7 @@ If a job has failed, and you want to retry it, you can update the `startafter` c
 
 ```postgresql
     update pgboss.job
-    set state = 'created',
+    set state = 'retry',
     completedon = null,
     retrycount = 0,
     startafter = now()
