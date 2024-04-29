@@ -3986,7 +3986,7 @@ __metadata:
     nanoid: 3.3.4
     notifications-node-client: ^8.0.0
     pg-boss: ^9.0.3
-    pino: ^8.15.4
+    pino: ^9.0.0
     pino-http: ^8.5.0
     prettier: ^3.0.3
     supertest: ^6.3.4
@@ -4038,7 +4038,7 @@ __metadata:
     mimetext: ^3.0.16
     notifications-node-client: ^8.0.0
     pg-boss: ^9.0.3
-    pino: ^8.17.2
+    pino: ^9.0.0
     prettier: ^3.0.3
     semantic-release: ^22.0.6
     typescript: ^5.3.3
@@ -11743,6 +11743,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pino-abstract-transport@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "pino-abstract-transport@npm:1.2.0"
+  dependencies:
+    readable-stream: ^4.0.0
+    split2: ^4.0.0
+  checksum: 3336c51fb91ced5ef8a4bfd70a96e41eb6deb905698e83350dc71eedffb34795db1286d2d992ce1da2f6cd330a68be3f7e2748775a6b8a2ee3416796070238d6
+  languageName: node
+  linkType: hard
+
 "pino-abstract-transport@npm:v1.1.0":
   version: 1.1.0
   resolution: "pino-abstract-transport@npm:1.1.0"
@@ -11772,7 +11782,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino@npm:^8.0.0, pino@npm:^8.15.4":
+"pino@npm:^8.0.0":
   version: 8.16.0
   resolution: "pino@npm:8.16.0"
   dependencies:
@@ -11793,24 +11803,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino@npm:^8.17.2":
-  version: 8.17.2
-  resolution: "pino@npm:8.17.2"
+"pino@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "pino@npm:9.0.0"
   dependencies:
     atomic-sleep: ^1.0.0
     fast-redact: ^3.1.1
     on-exit-leak-free: ^2.1.0
-    pino-abstract-transport: v1.1.0
+    pino-abstract-transport: ^1.2.0
     pino-std-serializers: ^6.0.0
     process-warning: ^3.0.0
     quick-format-unescaped: ^4.0.3
     real-require: ^0.2.0
     safe-stable-stringify: ^2.3.1
     sonic-boom: ^3.7.0
-    thread-stream: ^2.0.0
+    thread-stream: ^2.6.0
   bin:
     pino: bin.js
-  checksum: fc769d3d7b1333de94d51815fbe2abc4a1cc07cb0252a399313e54e26c13da2c0a69b227c296bd95ed52660d7eaa993662a9bf270b7370d0f7553fdd38716b63
+  checksum: d4d22aa5ab7d1c116c40b694bcc14a38cc9335ff195186933bb9f622784f9dd95d755c454cde420bf971bcda07d3a6013b3a2a4dcb9be43745f9c1a7f86c352c
   languageName: node
   linkType: hard
 
@@ -13168,6 +13178,15 @@ __metadata:
   dependencies:
     real-require: ^0.2.0
   checksum: 8b28e11eab2f805f963e6b6b23afab5523079575c4fc79c16eb29aa1c13d7931289762ebbc1268b3373d3f35ce795bd291df8e2d51eb45779ecaaecd06873459
+  languageName: node
+  linkType: hard
+
+"thread-stream@npm:^2.6.0":
+  version: 2.7.0
+  resolution: "thread-stream@npm:2.7.0"
+  dependencies:
+    real-require: ^0.2.0
+  checksum: 75ab019cda628344c7779e5f5a88f7759764efd29d320327ad2e6c2622778b5f1c43a3966d76a9ee5744086d61c680b413548f5521030f9e9055487684436165
   languageName: node
   linkType: hard
 
