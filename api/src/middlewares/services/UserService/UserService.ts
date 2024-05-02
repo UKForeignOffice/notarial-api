@@ -24,7 +24,7 @@ export class UserService {
         },
         cni: {
           userConfirmation: config.get<string>("Notify.Template.cniUserConfirmation"),
-          userPostalConfirmation: config.get<string>("Notify.Template.cniUserConfirmation"),
+          userPostalConfirmation: config.get<string>("Notify.Template.cniUserPostalConfirmation"),
           postNotification,
         },
         exchange: {
@@ -50,8 +50,8 @@ export class UserService {
     const { answers, metadata } = data;
     const { reference, type } = data.metadata;
 
-    const personalisation = PersonalisationBuilder.userConfirmation(answers, metadata);
     const templateName = getUserTemplate(answers.country as string, metadata.postal);
+    const personalisation = PersonalisationBuilder[templateName](answers, metadata);
     const emailArgs = {
       template: this.templates[type][templateName],
       emailAddress: answers.emailAddress as string,
