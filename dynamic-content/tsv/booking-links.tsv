@@ -1,21 +1,23 @@
 Country	Embassy	CABs link	Post address
 Albania	British Embassy Tirana	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=151&service=10	
 Algeria	British Embassy Algiers	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=91&service=10	
-Angola	British Embassy Luanda	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=126&service=10	
+Angola	British Embassy Luanda	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=126&service=13	
 Armenia	British Embassy Yerevan	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=157&service=4	
 Austria	British Embassy Vienna	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=38&service=13	
 Azerbaijan	British Embassy Baku	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=99&service=13	
 Bahrain	British Embassy Manama	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=127&service=10	
 Belarus	British Embassy Minsk	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=130&service=13	
-Benin	British High Commission Accra	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=159&service=2	
+Benin	British High Commission Accra	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=159&service=40	
 Bolivia	British Embassy La Paz	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=124&service=10	
 Bosnia and Herzegovina	British Embassy Sarajevo	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=145&service=10	
 Brazil	British Embassy Brasilia	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=105&service=13	
 Brazil	British Consulate-General Rio de Janeiro	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=59&service=13	
 Brazil	British Consulate-General Sao Paulo	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=76&service=13	
 Bulgaria	British Embassy Sofia	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=34&service=10	
+Burkina Faso	British High Commission Accra	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=159&service=40	
 Burundi	British High Commission Kigali		
 Cambodia	British Embassy Phnom Penh	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=135&service=13	
+Central African Republic	British Embassy Kinshasa	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=122&service=10	
 Colombia	British Embassy Bogotá	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=104&service=13	
 Congo (Democratic Republic)	British Embassy Kinshasa	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=122&service=10	
 Costa Rica	British Embassy San Jose	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=141&service=13	
@@ -38,7 +40,7 @@ Guatemala	British Embassy Guatemala City	https://www.book-consular-appointment.s
 Guinea	British Embassy Conakry		
 Honduras	British Embassy Guatemala City	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=114&service=10	
 Indonesia	British Embassy Jakarta	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=118&service=13	
-Indonesia	British Consulate Bali		
+Indonesia	British Consulate Bali	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=55&service=13	
 Iran	British Embassy Tehran	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=149&service=10	
 Iraq	British Embassy Baghdad		
 Israel	British Embassy Tel Aviv		
@@ -54,9 +56,10 @@ Latvia	British Embassy Riga	https://www.book-consular-appointment.service.gov.uk
 Lebanon	British Embassy Beirut	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=101&service=13	
 Lithuania	British Embassy Vilnius	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=39&service=10	
 Luxembourg	British Embassy Luxembourg	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=27&service=13	
+Macao	British Consulate General Hong Kong	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=65&service=13	
 Madagascar	British Embassy Antananarivo		
-Mali	British Embassy Bamako	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=199&service=10	
-Mauritania	British Embassy Nouakchott		
+Mali	British Embassy Bamako	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=199&service=40	
+Mauritania	British Embassy Nouakchott	mailto:Nouakchott.ExternalEnquiries@fcdo.gov.uk	
 Moldova	British Embassy Chisinau	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=109&service=10	
 Mongolia	British Embassy Ulaanbaatar	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=154&service=13	
 Montenegro	British Embassy Podgorica	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=136&service=10	
@@ -73,12 +76,14 @@ Philippines	British Embassy Manila	https://www.book-consular-appointment.service
 Qatar	British Embassy Doha	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=111&service=32	
 Romania	British Embassy Bucharest		
 Russia	British Embassy Moscow	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10	
+Russia	British Consulate General Ekaterinburg	mailto:BritishConsulate.Ekaterinburg@ukinrussia.info	
 Saudi Arabia	British Embassy Riyadh	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=140&service=10	
 Saudi Arabia	British Consulate General Jeddah	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=68&service=10	
 Senegal	British Embassy Dakar	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=110&service=4	
 Serbia	British Embassy Belgrade	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=102&service=10	
 Slovenia	British Embassy Ljubljana	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=26&service=13	
 South Korea	British Embassy Seoul	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=146&service=10	
+Spain	British Embassy Madrid		
 Sudan	British Embassy Khartoum		
 Suriname	British High Commission Georgetown	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=170&service=4	
 Sweden	British Embassy Stockholm	https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=35&service=4	
