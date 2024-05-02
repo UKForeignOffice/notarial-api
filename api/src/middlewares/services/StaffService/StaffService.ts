@@ -80,7 +80,7 @@ export class StaffService {
     return await this.queueService.sendToQueue("SES_SEND", emailArgs);
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string; postal?: string }, template: SESEmailTemplate, type: FormType) {
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string; postal: string }, template: SESEmailTemplate, type: FormType) {
     const { fields, payment, reference, postal } = data;
     const remapFields = remappers[`${type}${postal}`];
     const remapped = remapFields(fields);
