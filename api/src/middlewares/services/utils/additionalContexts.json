@@ -22,7 +22,7 @@
     },
     "Angola": {
       "post": "British Embassy Luanda",
-      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=126&service=10",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=126&service=13",
       "postAddress": "",
       "civilPartnership": false,
       "duration": "3 months",
@@ -84,7 +84,7 @@
     },
     "Benin": {
       "post": "British High Commission Accra",
-      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=159&service=2",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=159&service=40",
       "postAddress": "",
       "civilPartnership": false,
       "duration": "3 months",
@@ -127,6 +127,20 @@
       "additionalDocs": ["partner’s residence permit"],
       "localRequirements": ""
     },
+    "Burkina Faso": {
+      "post": "British High Commission Accra",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=159&service=40",
+      "postAddress": "",
+      "civilPartnership": false,
+      "duration": "3 months",
+      "postal": false,
+      "additionalDocs": [
+        "premarital medical certificate ",
+        "if you live in Burkino Faso - your residence certificate (this serves as your proof of address) ",
+        "copy of your witness's passport or national identity card"
+      ],
+      "localRequirements": ""
+    },
     "Burundi": {
       "post": "British High Commission Kigali",
       "bookingLink": "",
@@ -145,6 +159,16 @@
       "duration": "3 months",
       "postal": false,
       "additionalDocs": ["evidence that your partner is free to marry (either a document from their government or their passport showing they're unmarried)"],
+      "localRequirements": ""
+    },
+    "Central African Republic": {
+      "post": "British Embassy Kinshasa",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=122&service=10",
+      "postAddress": "",
+      "civilPartnership": false,
+      "duration": "3 months",
+      "postal": false,
+      "additionalDocs": "",
       "localRequirements": ""
     },
     "Colombia": {
@@ -427,6 +451,16 @@
       "additionalDocs": "",
       "localRequirements": ""
     },
+    "Macao": {
+      "post": "British Consulate General Hong Kong",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=65&service=13",
+      "postAddress": "",
+      "civilPartnership": false,
+      "duration": "3 months",
+      "postal": false,
+      "additionalDocs": ["partner's full birth certificate or naturalisation certificate"],
+      "localRequirements": ""
+    },
     "Madagascar": {
       "post": "British Embassy Antananarivo",
       "bookingLink": "",
@@ -439,7 +473,7 @@
     },
     "Mali": {
       "post": "British Embassy Bamako",
-      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=199&service=10",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=199&service=40",
       "postAddress": "",
       "civilPartnership": false,
       "duration": "6 months",
@@ -449,7 +483,7 @@
     },
     "Mauritania": {
       "post": "British Embassy Nouakchott",
-      "bookingLink": "",
+      "bookingLink": "mailto:Nouakchott.ExternalEnquiries@fcdo.gov.uk",
       "postAddress": "",
       "civilPartnership": false,
       "duration": "3 months",
@@ -588,19 +622,6 @@
       "additionalDocs": "",
       "localRequirements": ""
     },
-    "Russia": {
-      "post": "British Embassy Moscow",
-      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10",
-      "postAddress": "",
-      "civilPartnership": false,
-      "duration": "3 to 12 months (check with the person conducting your ceremony)",
-      "postal": false,
-      "additionalDocs": [
-        "Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities) ",
-        "if you're not a Russian resident - either your residence registration slip issued by migration authorities or the rental agreement with your name for your private accommodation in Russia"
-      ],
-      "localRequirements": ""
-    },
     "Senegal": {
       "post": "British Embassy Dakar",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=110&service=4",
@@ -640,6 +661,16 @@
       "postal": false,
       "additionalDocs": "",
       "localRequirements": ""
+    },
+    "Spain": {
+      "post": "British Embassy Madrid",
+      "bookingLink": "",
+      "postAddress": "",
+      "civilPartnership": true,
+      "duration": "3 or 6 months (check with the person conducting your ceremony)",
+      "postal": true,
+      "additionalDocs": "",
+      "localRequirements": "\nYou should apply for your local CNI 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards."
     },
     "Sudan": {
       "post": "British Embassy Khartoum",
@@ -787,22 +818,10 @@
     "British Indian Ocean Territory": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "British Virgin Islands": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Brunei": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
-    "Burkina Faso": {
-      "civilPartnership": false,
-      "duration": "3 months",
-      "postal": false,
-      "additionalDocs": [
-        "premarital medical certificate ",
-        "if you live in Burkino Faso - your residence certificate (this serves as your proof of address) ",
-        "copy of your witness's passport or national identity card"
-      ],
-      "localRequirements": ""
-    },
     "Cameroon": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Canada": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Cape Verde": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Cayman Islands": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
-    "Central African Republic": { "civilPartnership": false, "duration": "3 months", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Chad": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Chile": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "China": { "civilPartnership": false, "duration": "6 months", "postal": false, "additionalDocs": "", "localRequirements": "" },
@@ -857,13 +876,6 @@
     "Liberia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Libya": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Liechtenstein": { "civilPartnership": true, "duration": "3 months", "postal": false, "additionalDocs": "", "localRequirements": "" },
-    "Macao": {
-      "civilPartnership": false,
-      "duration": "3 months",
-      "postal": false,
-      "additionalDocs": ["partner's full birth certificate or naturalisation certificate"],
-      "localRequirements": ""
-    },
     "Malawi": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Malaysia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Maldives": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
@@ -896,6 +908,16 @@
     "Pitcairn Island": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Portugal": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Réunion": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
+    "Russia": {
+      "civilPartnership": false,
+      "duration": "3 to 12 months (check with the person conducting your ceremony)",
+      "postal": false,
+      "additionalDocs": [
+        "Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities) ",
+        "if you're not a Russian resident - either your residence registration slip issued by migration authorities or the rental agreement with your name for your private accommodation in Russia"
+      ],
+      "localRequirements": ""
+    },
     "Rwanda": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Samoa": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "San Marino": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
@@ -916,13 +938,6 @@
       "localRequirements": ""
     },
     "South Sudan": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
-    "Spain": {
-      "civilPartnership": true,
-      "duration": "3 or 6 months (check with the person conducting your ceremony)",
-      "postal": true,
-      "additionalDocs": "",
-      "localRequirements": "\nYou should apply for your local CNI 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards."
-    },
     "Sri Lanka": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "St Helena,Ascension and Tristan da Cunha": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "St Kitts and Nevis": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
@@ -990,7 +1005,11 @@
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=118&service=13",
       "postAddress": ""
     },
-    "British Consulate Bali": { "post": "British Consulate Bali", "bookingLink": "", "postAddress": "" },
+    "British Consulate Bali": {
+      "post": "British Consulate Bali",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=55&service=13",
+      "postAddress": ""
+    },
     "British Embassy Rome": {
       "post": "British Embassy Rome",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
@@ -1004,6 +1023,16 @@
     "British Embassy San Jose (for Nicaragua)": {
       "post": "British Embassy San Jose (for Nicaragua)",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=141&service=10",
+      "postAddress": ""
+    },
+    "British Embassy Moscow": {
+      "post": "British Embassy Moscow",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10",
+      "postAddress": ""
+    },
+    "British Consulate General Ekaterinburg": {
+      "post": "British Consulate General Ekaterinburg",
+      "bookingLink": "mailto:BritishConsulate.Ekaterinburg@ukinrussia.info",
       "postAddress": ""
     },
     "British Embassy Riyadh": {
