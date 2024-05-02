@@ -27,13 +27,17 @@ const paymentViewModel = {
 };
 
 test("getEmailBody renders oath email correctly", () => {
-  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" }, "submission", "affirmation");
+  const emailBody = emailService.getEmailBody(
+    { fields: allOtherFields, payment: paymentViewModel, reference: "1234", postal: "" },
+    "submission",
+    "affirmation"
+  );
   expect(emailBody).toContain("<li>First name: foo</li>");
   expect(emailBody).toContain("marital status affirmation");
 });
 
 test("getEmailBody renders cni template correctly", () => {
-  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" }, "submission", "cni");
+  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234", postal: "" }, "submission", "cni");
   expect(emailBody).toContain("<li>First name: foo</li>");
   expect(emailBody).toContain("notice of marriage and marital status affirmation");
 });

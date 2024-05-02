@@ -28,12 +28,9 @@ test("buildSendEmailArgs should return the correct personalisation", () => {
     civilPartnership: false,
     country: "Turkey",
     localRequirements: "",
-    nameChangedMoreThanOnce: false,
     notPaid: true,
     post: "British Consulate General Istanbul",
-    postAddress: "",
     confirmationDelay: "2 weeks",
-    duration: "",
     reference: "1234",
   });
 });
