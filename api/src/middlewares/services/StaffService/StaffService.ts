@@ -95,7 +95,7 @@ export class StaffService {
     const country = getAnswerOrThrow(information, "country");
     const post = getPost(country, information.post);
     let oathType, jurats;
-    if (type === "affirmation" || type === "cni") {
+    if ((type === "affirmation" || type === "cni") && !postal) {
       oathType = getAnswerOrThrow(information, "oathType");
       jurats = getAnswerOrThrow(information, "jurats");
     }

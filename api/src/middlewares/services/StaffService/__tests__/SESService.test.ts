@@ -27,17 +27,24 @@ const paymentViewModel = {
 };
 
 test("getEmailBody renders oath email correctly", () => {
-  const emailBody = emailService.getEmailBody(
-    { fields: allOtherFields, payment: paymentViewModel, reference: "1234", postal: "" },
-    "submission",
-    "affirmation"
-  );
+  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" }, "submission", "affirmation");
   expect(emailBody).toContain("<li>First name: foo</li>");
   expect(emailBody).toContain("marital status affirmation");
 });
 
 test("getEmailBody renders cni template correctly", () => {
-  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234", postal: "" }, "submission", "cni");
+  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" }, "submission", "cni");
+  expect(emailBody).toContain("<li>First name: foo</li>");
+  expect(emailBody).toContain("notice of marriage and marital status affirmation");
+});
+
+test("getEmailBody handles a cni postal form properly", () => {
+  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234", postal: true }, "submission", "cni");
+  expect(emailBody).toContain("<li>First name: bar</li>");
+});
+
+test("getEmailBody handles a cni form with postal set to false properly", () => {
+  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234", postal: false }, "submission", "cni");
   expect(emailBody).toContain("<li>First name: foo</li>");
   expect(emailBody).toContain("notice of marriage and marital status affirmation");
 });

@@ -40,6 +40,11 @@ export const testData = {
       fields: [{ key: "ukPassportFile", title: "UK passport", type: "file", answer: "https://document-upload-endpoint" }],
     },
     {
+      category: "delivery",
+      question: "Your delivery details",
+      fields: [{ key: "deliveryFirstName", title: "First name", type: "text", answer: "bar" }],
+    },
+    {
       category: "applicantDetails",
       question: "Your full name",
       fields: [
