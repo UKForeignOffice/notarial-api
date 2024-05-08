@@ -8,6 +8,7 @@ process.env.SUBMISSION_EMAIL_ADDRESS = "pye@cautionyourblast.com";
 process.env.POST_EMAILS = '{"British Embassy Tirana": "pye+albania@cautionyourblast.com"}';
 process.env.NOTIFY_TEMPLATE_AFFIRMATION_USER_CONFIRMATION = "ABC";
 process.env.NOTIFY_TEMPLATE_CNI_USER_CONFIRMATION = "ABC";
+process.env.NOTIFY_TEMPLATE_CNI_USER_POSTAL_CONFIRMATION = "ABC";
 process.env.NOTIFY_TEMPLATE_EXCHANGE_USER_CONFIRMATION = "ABC";
 process.env.NOTIFY_TEMPLATE_EXCHANGE_USER_POSTAL_CONFIRMATION = "ABC";
 process.env.NOTIFY_TEMPLATE_POST_NOTIFICATION = "ABC";

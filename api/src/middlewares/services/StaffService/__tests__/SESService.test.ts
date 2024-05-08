@@ -38,6 +38,17 @@ test("getEmailBody renders cni template correctly", () => {
   expect(emailBody).toContain("notice of marriage and marital status affirmation");
 });
 
+test("getEmailBody handles a cni postal form properly", () => {
+  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234", postal: true }, "submission", "cni");
+  expect(emailBody).toContain("<li>First name: bar</li>");
+});
+
+test("getEmailBody handles a cni form with postal set to false properly", () => {
+  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234", postal: false }, "submission", "cni");
+  expect(emailBody).toContain("<li>First name: foo</li>");
+  expect(emailBody).toContain("notice of marriage and marital status affirmation");
+});
+
 test("sendEmail returns a jobId", async () => {
   sendToQueue.mockResolvedValueOnce("ABC-123");
   const jobId = await emailService.sendEmail({

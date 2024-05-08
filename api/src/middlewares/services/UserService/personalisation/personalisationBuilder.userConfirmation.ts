@@ -17,8 +17,6 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
   const docsList = buildUserConfirmationDocsList(answers);
   const country = answers["country"] as string;
   const post = answers["post"] as string;
-  const nameChangedMoreThanOnce =
-    answers["nameChangedByDeedPoll"] === "name changed more than once" || answers["nameChangedByMarriage"] === "name changed more than once";
 
   const additionalContext = {
     ...(additionalContexts.countries[country] ?? {}),
@@ -29,15 +27,12 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
     firstName: answers.firstName,
     post: getPost(country, post),
     docsList,
-    nameChangedMoreThanOnce,
     country,
     bookingLink: additionalContext.bookingLink,
     localRequirements: additionalContext.localRequirements,
     civilPartnership: additionalContext.civilPartnership,
     reference: metadata.reference,
     confirmationDelay: additionalContext.confirmationDelay ?? "2 weeks",
-    duration: additionalContext.duration,
-    postAddress: additionalContext.postAddress,
     notPaid: !isSuccessfulPayment,
   };
 }

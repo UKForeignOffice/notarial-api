@@ -34,6 +34,7 @@ type ProcessQueueData = {
     reference: string;
     payment?: PayMetadata;
     type: FormType;
+    postal?: boolean;
   };
 };
 export class StaffService {
@@ -79,20 +80,22 @@ export class StaffService {
     return await this.queueService.sendToQueue("SES_SEND", emailArgs);
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate, type: FormType) {
-    const { fields, payment, reference } = data;
-    const remapFields = remappers[type];
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string; postal?: boolean }, template: SESEmailTemplate, type: FormType) {
+    const { fields, payment, reference, postal } = data;
+    const remapperName = postal ? `${type}Postal` : type;
+
+    const remapFields = remappers[remapperName];
     const remapped = remapFields(fields);
 
     const { information } = remapped;
 
-    const reorderer = reorderers[type];
+    const reorderer = reorderers[remapperName];
     const reordered = reorderer(remapped);
 
     const country = getAnswerOrThrow(information, "country");
     const post = getPost(country, information.post);
     let oathType, jurats;
-    if (type === "affirmation" || type === "cni") {
+    if ((type === "affirmation" || type === "cni") && !postal) {
       oathType = getAnswerOrThrow(information, "oathType");
       jurats = getAnswerOrThrow(information, "jurats");
     }
@@ -111,7 +114,7 @@ export class StaffService {
 
   private buildSendEmailArgs(data: ProcessQueueData) {
     const { fields, template, metadata } = data;
-    const { reference, payment, type } = metadata;
+    const { reference, payment, type, postal } = metadata;
     const answers = answersHashMap(fields);
     let paymentViewModel: PaymentViewModel | undefined;
 
@@ -122,7 +125,7 @@ export class StaffService {
     }
 
     const country = answers.country as string;
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference }, template, type);
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal }, template, type);
     const post = getPost(country, answers.post as string);
     const onCompleteJob = this.getPostAlertOptions(answers, type, reference);
     return {

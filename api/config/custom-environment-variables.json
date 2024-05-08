@@ -6,6 +6,7 @@
     "Template": {
       "affirmationUserConfirmation": "NOTIFY_TEMPLATE_AFFIRMATION_USER_CONFIRMATION",
       "cniUserConfirmation": "NOTIFY_TEMPLATE_CNI_USER_CONFIRMATION",
+      "cniUserPostalConfirmation": "NOTIFY_TEMPLATE_CNI_USER_POSTAL_CONFIRMATION",
       "exchangeUserConfirmation": "NOTIFY_TEMPLATE_EXCHANGE_USER_CONFIRMATION",
       "exchangeUserPostalConfirmation": "NOTIFY_TEMPLATE_EXCHANGE_USER_POSTAL_CONFIRMATION",
       "postNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"

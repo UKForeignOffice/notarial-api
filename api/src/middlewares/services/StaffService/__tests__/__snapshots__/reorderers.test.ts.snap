@@ -239,6 +239,7 @@ exports[`affirmation is successfully remapped 1`] = `
       "type": "text",
     },
   },
+  "Partner's marital and civil status": undefined,
   "Partner's name": {
     "partnerFirstName": {
       "answer": "Test",

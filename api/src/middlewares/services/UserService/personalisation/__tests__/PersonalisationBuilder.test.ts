@@ -3,6 +3,7 @@ import { testData } from "./fixtures";
 import { answersHashMap, flattenQuestions } from "../../../helpers";
 import { PersonalisationBuilder } from "../PersonalisationBuilder";
 import { buildUserConfirmationDocsList } from "../personalisationBuilder.userConfirmation";
+import { getPost } from "../../../utils/getPost";
 const pgBossMock = {
   async start() {
     return this;
@@ -19,7 +20,7 @@ jest.mock("pg-boss", () => {
 const formFields = flattenQuestions(testData.questions);
 const answers = answersHashMap(formFields);
 
-test("buildSendEmailArgs should return the correct personalisation", () => {
+test("buildSendEmailArgs should return the correct personalisation for an in-person email", () => {
   const personalisation = PersonalisationBuilder.userConfirmation(answers, { reference: "1234" });
   expect(personalisation).toEqual({
     firstName: "foo",
@@ -28,13 +29,25 @@ test("buildSendEmailArgs should return the correct personalisation", () => {
     civilPartnership: false,
     country: "Turkey",
     localRequirements: "",
-    nameChangedMoreThanOnce: false,
     notPaid: true,
     post: "British Consulate General Istanbul",
-    postAddress: "",
     confirmationDelay: "2 weeks",
-    duration: "",
     reference: "1234",
+  });
+});
+
+test("buildSendEmailArgs should return the correct personalisation for a postal email", () => {
+  const personalisation = PersonalisationBuilder.userPostalConfirmation(answers, { reference: "1234" });
+  expect(personalisation).toEqual({
+    firstName: "foo",
+    post: "British Consulate General Istanbul",
+    country: "Turkey",
+    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=10",
+    localRequirements: "",
+    civilPartnership: false,
+    reference: "1234",
+    postAddress: "",
+    notPaid: true,
   });
 });
 
