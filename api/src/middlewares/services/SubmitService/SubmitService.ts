@@ -32,10 +32,11 @@ export class SubmitService {
         reference,
         payment: metadata.pay,
         type,
+        postal: metadata.postal,
       });
       this.logger.info({ reference, staffProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
 
-      const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type });
+      const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type, postal: metadata.postal });
 
       this.logger.info({ reference, userProcessJob }, `NOTIFY_PROCESS job queued successfully for ${reference}`);
     } catch (e) {

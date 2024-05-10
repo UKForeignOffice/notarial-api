@@ -70,6 +70,7 @@ export class StaffService {
       reference: string;
       payment?: PayMetadata;
       type: FormType;
+      postal?: boolean;
     }
   ) {
     return await this.queueService.sendToQueue("SES_PROCESS", { fields, template, metadata });
