@@ -42,7 +42,7 @@ export class UserService {
   /**
    * Stores the user's answers in the queue for processing.
    */
-  async sendToProcessQueue(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType }) {
+  async sendToProcessQueue(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean }) {
     return await this.queueService.sendToQueue("NOTIFY_PROCESS", { answers, metadata });
   }
 

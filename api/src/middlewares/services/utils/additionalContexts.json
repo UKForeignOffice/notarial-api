@@ -83,7 +83,7 @@
       "localRequirements": ""
     },
     "Benin": {
-      "post": "British High Commission Accra",
+      "post": "British High Commission Accra (for Benin)",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=159&service=40",
       "postAddress": "",
       "civilPartnership": false,
@@ -105,7 +105,7 @@
       "duration": "3 months",
       "postal": false,
       "additionalDocs": "",
-      "localRequirements": ""
+      "localRequirements": "\nYou will also need to give the registrar in Bolivia a legalised (apostilled) birth certificate. You need to [apply for legalisation separately](https://www.gov.uk/get-document-legalised)."
     },
     "Bosnia and Herzegovina": {
       "post": "British Embassy Sarajevo",
@@ -179,7 +179,7 @@
       "duration": "3 months",
       "postal": false,
       "additionalDocs": "",
-      "localRequirements": ""
+      "localRequirements": "\nYou may need to provide a legalised (apostilled) birth certificate translated into Spanish. You need to [apply for legalisation separately](https://www.gov.uk/get-document-legalised)."
     },
     "Congo (Democratic Republic)": {
       "post": "British Embassy Kinshasa",
@@ -218,7 +218,7 @@
     },
     "Ecuador": {
       "post": "British Embassy Quito",
-      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=138&service=10",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=138&service=13",
       "postAddress": "",
       "civilPartnership": true,
       "duration": "3 months",
@@ -238,7 +238,7 @@
     },
     "El Salvador": {
       "post": "British Embassy San Salvador",
-      "bookingLink": "",
+      "bookingLink": "mailto:britishembassy.elsalvador@fcdo.gov.uk",
       "postAddress": "",
       "civilPartnership": false,
       "duration": "3 months",
@@ -264,7 +264,7 @@
       "duration": "6 months",
       "postal": false,
       "additionalDocs": [
-        "if you or your partner live in Estonia - your extract from the [Estonian Population Register](www.eesti.ee/en/family/release-of-data-from-the-population-register/extract-from-the-population-register) - this serves as your proof of address"
+        "if you or your partner live in Estonia - you can use your extract from the [Estonian Population Register](www.eesti.ee/en/family/release-of-data-from-the-population-register/extract-from-the-population-register) as your proof of address"
       ],
       "localRequirements": ""
     },
@@ -312,14 +312,14 @@
       "localRequirements": ""
     },
     "Honduras": {
-      "post": "British Embassy Guatemala City",
+      "post": "British Embassy Guatemala City (for Honduras)",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=114&service=10",
       "postAddress": "",
       "civilPartnership": false,
       "duration": "",
       "postal": false,
       "additionalDocs": "",
-      "localRequirements": "\nThere are no British consular facilities that will issue a CNI in Honduras.  \nYou will need to travel to the British Embassy Guatemala City in Guatemala to give notice and collect your CNI. "
+      "localRequirements": "\nThere are no British consular facilities that will issue a CNI in Honduras. You will need to travel to the British Embassy Guatemala City in Guatemala to give notice and collect your CNI. "
     },
     "Iran": {
       "post": "British Embassy Tehran",
@@ -532,6 +532,16 @@
       "additionalDocs": "",
       "localRequirements": ""
     },
+    "Nicaragua": {
+      "post": "British Embassy San Jose (for Nicaragua)",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=141&service=13",
+      "postAddress": "",
+      "civilPartnership": false,
+      "duration": "3 months",
+      "postal": false,
+      "additionalDocs": "",
+      "localRequirements": "\nThere are no British consular facilities that will issue a CNI in Nicaragua.  \nYou will need to travel to the British Embassy San Jose in Costa Rica to give notice and collect your CNI. "
+    },
     "North Macedonia": {
       "post": "British Embassy Skopje",
       "bookingLink": "",
@@ -577,20 +587,20 @@
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=125&service=13",
       "postAddress": "",
       "civilPartnership": false,
-      "duration": "",
+      "duration": "3 months",
       "postal": false,
       "additionalDocs": "",
-      "localRequirements": ""
+      "localRequirements": "\nYou will also need to provide your legalised (apostilled) birth certificate. You need to [apply for legalisation separately](https://www.gov.uk/get-document-legalised)."
     },
     "Poland": {
       "post": "British Embassy Warsaw",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10",
-      "postAddress": "",
+      "postAddress": "\nConsular Section \nBritish Embassy \nul. Kawalerii 12 \n00-468 Warsaw \nMazowieckie",
       "civilPartnership": false,
       "duration": "6 months",
       "postal": false,
       "additionalDocs": "",
-      "localRequirements": ""
+      "localRequirements": "\nYou can apply before you have confirmed the final place and date of your ceremony. When asked in your online application, enter the estimated date and rough location within Poland."
     },
     "Philippines": {
       "post": "British Embassy Manila",
@@ -600,7 +610,7 @@
       "duration": "3 months",
       "postal": false,
       "additionalDocs": "",
-      "localRequirements": ""
+      "localRequirements": "\nYou must be a resident outside of the UK to apply for this service. If you live in the UK, you need to [apply for a UK CNI](/before-you-start/apply-for-uk-cni?marriage.country=Philippines) before travelling to the Philippines."
     },
     "Qatar": {
       "post": "British Embassy Doha",
@@ -665,8 +675,8 @@
     "Spain": {
       "post": "British Embassy Madrid",
       "bookingLink": "",
-      "postAddress": "",
-      "civilPartnership": true,
+      "postAddress": "\nBritish Consulate-General Madrid \nNotarial Services \nTorre Emperador Castellana \nPaseo de la Castellana 259D \n28046 Madrid",
+      "civilPartnership": false,
       "duration": "3 or 6 months (check with the person conducting your ceremony)",
       "postal": true,
       "additionalDocs": "",
@@ -695,7 +705,7 @@
     "Sweden": {
       "post": "British Embassy Stockholm",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=35&service=4",
-      "postAddress": "",
+      "postAddress": "\nBritish Embassy \nConsular Section \nBox 27819 \n115 93 Stockholm",
       "civilPartnership": true,
       "duration": "3 months",
       "postal": false,
@@ -733,7 +743,7 @@
       "localRequirements": ""
     },
     "Togo": {
-      "post": "British High Commission Accra",
+      "post": "British High Commission Accra (for Togo)",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=159&service=2",
       "postAddress": "",
       "civilPartnership": false,
@@ -866,7 +876,7 @@
       "duration": "6 months",
       "postal": true,
       "additionalDocs": ["test field additional doc", "test field additional doc"],
-      "localRequirements": "\nTesting field for localised content"
+      "localRequirements": ""
     },
     "Jamaica": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Japan": { "civilPartnership": false, "duration": "3 months", "postal": false, "additionalDocs": "", "localRequirements": "" },
@@ -896,7 +906,6 @@
     "Netherlands": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "New Caledonia": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "New Zealand": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
-    "Nicaragua": { "civilPartnership": false, "duration": "3 months", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Niger": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Nigeria": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "North Korea": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
@@ -944,6 +953,7 @@
     "St Lucia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "St Barthelemy": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "St Maarten": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
+    "St Pierre and Miquelon": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "St Vincent": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Switzerland": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Syria": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
@@ -967,7 +977,7 @@
       "duration": "3 or 6 months (check with the local People's Committee)",
       "postal": false,
       "additionalDocs": ["partner's birth certificate"],
-      "localRequirements": ""
+      "localRequirements": "\nYour proof of any previous marriages having ended (for example your divorce absolute or partner's death certificate) must be legalised if they were issued in the UK. You need to [apply for legalisation separately](https://www.gov.uk/get-document-legalised)."
     },
     "Wallis and Futuna": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Western Sahara": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
@@ -988,11 +998,6 @@
     "British Consulate-General Sao Paulo": {
       "post": "British Consulate-General Sao Paulo",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=76&service=13",
-      "postAddress": ""
-    },
-    "British Embassy San Jose": {
-      "post": "British Embassy San Jose",
-      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=141&service=13",
       "postAddress": ""
     },
     "British Embassy Athens": { "post": "British Embassy Athens", "bookingLink": "", "postAddress": "" },
@@ -1020,15 +1025,10 @@
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=6&service=10",
       "postAddress": ""
     },
-    "British Embassy San Jose (for Nicaragua)": {
-      "post": "British Embassy San Jose (for Nicaragua)",
-      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=141&service=10",
-      "postAddress": ""
-    },
     "British Embassy Moscow": {
       "post": "British Embassy Moscow",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10",
-      "postAddress": ""
+      "postAddress": "\nBritish Embassy Moscow \n121099 Moscow \nSmolenskaya Naberezhnaya 10"
     },
     "British Consulate General Ekaterinburg": {
       "post": "British Consulate General Ekaterinburg",
