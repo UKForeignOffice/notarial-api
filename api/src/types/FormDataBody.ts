@@ -27,6 +27,7 @@ export interface FormDataBody {
     paymentSkipped: boolean;
     type: FormType;
     pay?: PayMetadata;
+    postal?: boolean;
     [key: string]: any;
   };
   fees?: {
