@@ -47,6 +47,7 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     civilPartnership: false,
     reference: "1234",
     postAddress: "",
+    previousMarriage: false,
     notPaid: true,
   });
 });
