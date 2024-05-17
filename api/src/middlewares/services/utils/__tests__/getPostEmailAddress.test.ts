@@ -6,3 +6,6 @@ test("returns the post's email address if it is defined", () => {
 test("returns undefined if the post could not be found", () => {
   expect(getPostEmailAddress("Turkey", "British Consulate General Istanbul")).toBeUndefined();
 });
+test("returns a post email address if the country has multiple posts but no post was passed in", () => {
+  expect(getPostEmailAddress("Russia")).toBe("pye+moscow@cautionyourblast.com");
+});
