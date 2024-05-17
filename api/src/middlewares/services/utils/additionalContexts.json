@@ -159,17 +159,17 @@
       "duration": "3 months",
       "postal": false,
       "additionalDocs": ["evidence that your partner is free to marry (either a document from their government or their passport showing they're unmarried)"],
-      "localRequirements": ""
+      "localRequirements": "\n The person conducting your ceremony should tell you to contact either the Ministry of Foreign Affairs, the Ministry of Interior or the local commune/Sangkat. They can confirm if you need a marital status affirmation to get married in Cambodia."
     },
     "Central African Republic": {
-      "post": "British Embassy Kinshasa",
+      "post": "British Embassy Kinshasa (for Central African Republic)",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=122&service=10",
       "postAddress": "",
       "civilPartnership": false,
       "duration": "3 months",
       "postal": false,
       "additionalDocs": "",
-      "localRequirements": ""
+      "localRequirements": "\nThere are no British consular facilities that will issue a CNI in the Central African Republic. You will need to travel to the British Embassy Kinshasa in the Democratic Republic of the Congo to give notice and collect your CNI."
     },
     "Colombia": {
       "post": "British Embassy Bogotá",
@@ -181,10 +181,15 @@
       "additionalDocs": "",
       "localRequirements": "\nYou may need to provide a legalised (apostilled) birth certificate translated into Spanish. You need to [apply for legalisation separately](https://www.gov.uk/get-document-legalised)."
     },
-    "Congo (Democratic Republic)": {
-      "post": "British Embassy Kinshasa",
+    "Congo": {
+      "post": "British Embassy Kinshasa (for Congo)",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=122&service=10",
-      "postAddress": ""
+      "postAddress": "",
+      "civilPartnership": false,
+      "duration": "3 months",
+      "postal": false,
+      "additionalDocs": "",
+      "localRequirements": "\nThere are no British consular facilities that will issue a CNI in Congo. You will need to travel to the British Embassy Kinshasa in the Democratic Republic of the Congo to give notice and collect your CNI."
     },
     "Costa Rica": {
       "post": "British Embassy San Jose",
@@ -212,6 +217,16 @@
       "postAddress": "",
       "civilPartnership": false,
       "duration": "6 months",
+      "postal": false,
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
+    "Democratic Republic of the Congo": {
+      "post": "British Embassy Kinshasa",
+      "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=122&service=10",
+      "postAddress": "",
+      "civilPartnership": false,
+      "duration": "3 months",
       "postal": false,
       "additionalDocs": "",
       "localRequirements": ""
@@ -273,7 +288,7 @@
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=90&service=13",
       "postAddress": "",
       "civilPartnership": false,
-      "duration": "",
+      "duration": "3 months",
       "postal": false,
       "additionalDocs": "",
       "localRequirements": ""
@@ -303,12 +318,12 @@
     },
     "Guinea": {
       "post": "British Embassy Conakry",
-      "bookingLink": "",
+      "bookingLink": "mailto:BritishEmbassy.Conakry@fcdo.gov.uk",
       "postAddress": "",
       "civilPartnership": false,
       "duration": "3 months",
       "postal": false,
-      "additionalDocs": ["premarital medical certificate", "partner’s premarital medical certificate", "photo ID (in addition to your UK passport)"],
+      "additionalDocs": "",
       "localRequirements": ""
     },
     "Honduras": {
@@ -483,7 +498,7 @@
     },
     "Mauritania": {
       "post": "British Embassy Nouakchott",
-      "bookingLink": "mailto:Nouakchott.ExternalEnquiries@fcdo.gov.uk",
+      "bookingLink": "https://www.gov.uk/world/organisations/british-embassy-nouakchott#contact-us",
       "postAddress": "",
       "civilPartnership": false,
       "duration": "3 months",
@@ -598,7 +613,7 @@
       "postAddress": "\nConsular Section \nBritish Embassy \nul. Kawalerii 12 \n00-468 Warsaw \nMazowieckie",
       "civilPartnership": false,
       "duration": "6 months",
-      "postal": false,
+      "postal": true,
       "additionalDocs": "",
       "localRequirements": "\nYou can apply before you have confirmed the final place and date of your ceremony. When asked in your online application, enter the estimated date and rough location within Poland."
     },
@@ -610,7 +625,7 @@
       "duration": "3 months",
       "postal": false,
       "additionalDocs": "",
-      "localRequirements": "\nYou must be a resident outside of the UK to apply for this service. If you live in the UK, you need to [apply for a UK CNI](/before-you-start/apply-for-uk-cni?marriage.country=Philippines) before travelling to the Philippines."
+      "localRequirements": "\nOnce you’ve applied online, print out either an [affirmation](https://assets.publishing.service.gov.uk/media/6583f40f23b70a0013234d53/Affirmation_of_Marital_Status.odt) (if you want to make a non-religious declaration) or [affidavit](https://assets.publishing.service.gov.uk/media/6583f3fc23b70a000d234d53/Affidavit_of_Marital_Status.odt) (religious). Fill in your details by hand but do not sign yet. You must bring your completed form with you to your appointment at your embassy or consulate and sign it then.  \nYou must be a resident outside of the UK to apply for this service. If you live in the UK, you need to [apply for a UK CNI](/before-you-start/apply-for-uk-cni?marriage.country=Philippines) before travelling to the Philippines."
     },
     "Qatar": {
       "post": "British Embassy Doha",
@@ -708,7 +723,7 @@
       "postAddress": "\nBritish Embassy \nConsular Section \nBox 27819 \n115 93 Stockholm",
       "civilPartnership": true,
       "duration": "3 months",
-      "postal": false,
+      "postal": true,
       "additionalDocs": ["partner's extract from the population register (if they're registered in Sweden)"],
       "localRequirements": "\nOnly apply for this service if are not registered in the Swedish population register. If you are registered you should not need a CNI to get married. Check with the [Swedish Tax Authorities](https://www.skatteverket.se/privat.4.76a43be412206334b89800052864.html). \n If you live in the UK you should [apply for a CNI from a UK register office](https://prove-eligibility-foreign-government.forms.fcodev.org.uk/exchange-uk-cni/check-eligibility-and-documents?marriage.country=Sweden) unless you have already travelled to Sweden."
     },
@@ -836,8 +851,6 @@
     "Chile": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "China": { "civilPartnership": false, "duration": "6 months", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Comoros": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
-    "Congo": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
-    "Democratic Republic of the Congo": { "civilPartnership": false, "duration": "3 months", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Cook Islands": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Côte d'Ivoire": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Curacao": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
@@ -869,7 +882,13 @@
     "Hungary": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Iceland": { "civilPartnership": true, "duration": "3 months", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "India": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
-    "Indonesia": { "civilPartnership": false, "duration": "3 months", "postal": false, "additionalDocs": "", "localRequirements": "" },
+    "Indonesia": {
+      "civilPartnership": false,
+      "duration": "3 months (you should confirm this with the local authority)",
+      "postal": false,
+      "additionalDocs": "",
+      "localRequirements": ""
+    },
     "Ireland": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "localRequirements": "" },
     "Italy": {
       "civilPartnership": false,
@@ -920,7 +939,7 @@
     "Russia": {
       "civilPartnership": false,
       "duration": "3 to 12 months (check with the person conducting your ceremony)",
-      "postal": false,
+      "postal": true,
       "additionalDocs": [
         "Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities) ",
         "if you're not a Russian resident - either your residence registration slip issued by migration authorities or the rental agreement with your name for your private accommodation in Russia"
