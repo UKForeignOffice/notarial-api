@@ -3,7 +3,7 @@ import { testData } from "./fixtures";
 import { answersHashMap, flattenQuestions } from "../../../helpers";
 import { PersonalisationBuilder } from "../PersonalisationBuilder";
 import { buildUserConfirmationDocsList } from "../personalisationBuilder.userConfirmation";
-import { getPost } from "../../../utils/getPost";
+import { buildUserPostalConfirmationPersonalisation, getUserPostalConfirmationAdditionalContext } from "../personalisationBuilder.userPostalConfirmation";
 const pgBossMock = {
   async start() {
     return this;
@@ -50,6 +50,53 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     previousMarriage: false,
     notPaid: true,
   });
+});
+
+test("getUserPostalConfirmationAdditionalContext returns additionalContext correctly", () => {
+  expect(getUserPostalConfirmationAdditionalContext("Italy")).toStrictEqual({
+    additionalDocs: ["test field additional doc", "test field additional doc"],
+    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
+    civilPartnership: false,
+    duration: "6 months",
+    localRequirements: "",
+    post: "British Embassy Rome",
+    postAddress: "",
+    postal: true,
+  });
+
+  expect(getUserPostalConfirmationAdditionalContext("Russia")).toStrictEqual({
+    additionalDocs: [
+      "Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities) ",
+      "if you're not a Russian resident - either your residence registration slip issued by migration authorities or the rental agreement with your name for your private accommodation in Russia",
+    ],
+    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10",
+    civilPartnership: false,
+    duration: "3 to 12 months (check with the person conducting your ceremony)",
+    localRequirements: "",
+    post: "British Embassy Moscow",
+    postAddress: "\nBritish Embassy Moscow \n121099 Moscow \nSmolenskaya Naberezhnaya 10",
+    postal: true,
+  });
+
+  expect(getUserPostalConfirmationAdditionalContext("Poland")).toStrictEqual({
+    additionalDocs: "",
+    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10",
+    civilPartnership: false,
+    duration: "6 months",
+    localRequirements:
+      "\nYou can apply before you have confirmed the final place and date of your ceremony. When asked in your online application, enter the estimated date and rough location within Poland.",
+    post: "British Embassy Warsaw",
+    postAddress: "\nConsular Section \nBritish Embassy \nul. Kawalerii 12 \n00-468 Warsaw \nMazowieckie",
+    postal: true,
+  });
+});
+
+test("buildUserPostalConfirmationPersonalisation renders countries with default posts", () => {
+  let personalisation = buildUserPostalConfirmationPersonalisation({ country: "Italy" }, {});
+  expect(personalisation.post).toBe("British Embassy Rome");
+
+  personalisation = buildUserPostalConfirmationPersonalisation({ country: "Russia" }, {});
+  expect(personalisation.post).toBe("British Embassy Moscow");
 });
 
 test("buildDocsList will add optional documents when the relevant fields are filled in", () => {
