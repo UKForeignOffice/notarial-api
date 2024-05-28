@@ -9,6 +9,8 @@
       "cniUserPostalConfirmation": "NOTIFY_TEMPLATE_CNI_USER_POSTAL_CONFIRMATION",
       "exchangeUserConfirmation": "NOTIFY_TEMPLATE_EXCHANGE_USER_CONFIRMATION",
       "exchangeUserPostalConfirmation": "NOTIFY_TEMPLATE_EXCHANGE_USER_POSTAL_CONFIRMATION",
+      "mscUserConfirmation": "NOTIFY_TEMPLATE_MSC_USER_CONFIRMATION",
+      "cniMSCUserConfirmation": "NOTIFY_TEMPLATE_CNI_MSC_COMBINED_USER_CONFIRMATION",
       "postNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"
     }
   },
