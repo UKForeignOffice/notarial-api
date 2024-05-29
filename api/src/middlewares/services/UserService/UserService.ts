@@ -39,7 +39,7 @@ export class UserService {
         },
         cniAndMsc: {
           userConfirmation: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-          userPostalConfirmation: config.get<string>("Notify.Template.cniMSCCNIUserConfirmation"),
+          userPostalConfirmation: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
           postNotification,
         },
       };
