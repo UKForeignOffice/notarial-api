@@ -26,6 +26,8 @@ export class SubmitService {
     const formFields = flattenQuestions(questions);
     const answers = answersHashMap(formFields);
     const reference = metadata?.pay?.reference ?? this.generateId();
+
+    // forms with multiple services will receive the correct form type from answers.service
     const type = (answers.service as FormType) ?? metadata?.type ?? "affirmation";
 
     try {
