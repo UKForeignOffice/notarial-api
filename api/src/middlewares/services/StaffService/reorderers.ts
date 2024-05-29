@@ -10,5 +10,5 @@ export const reorderers = {
   cniPostal: reorderSectionsWithNewName(cniPostalMappings.order),
   exchange: reorderSectionsWithNewName(exchangeMappings.order),
   msc: reorderSectionsWithNewName(mscMappings.order),
-  "cni and msc": reorderSectionsWithNewName(cniMSCCombinedMappings.order),
+  cniAndMsc: reorderSectionsWithNewName(cniMSCCombinedMappings.order),
 };

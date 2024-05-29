@@ -11,5 +11,5 @@ export const remappers = {
   cniPostal: createRemapper(cniPostalMappings.remap, [], ["file"]),
   exchange: createRemapper(exchangeMappings.remap, [], ["file"]),
   msc: createRemapper(mscMappings.remap, [], ["file"]),
-  "cni and msc": createRemapper(cniMSCCombinedMappings.remap, [], ["file"]);
+  cniAndMsc: createRemapper(cniMSCCombinedMappings.remap, [], ["file"]);
 };

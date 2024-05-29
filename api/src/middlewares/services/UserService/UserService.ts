@@ -37,7 +37,7 @@ export class UserService {
           userPostalConfirmation: config.get<string>("Notify.Template.mscUserConfirmation"),
           postNotification,
         },
-        "cni and msc": {
+        cniAndMsc: {
           userConfirmation: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
           userPostalConfirmation: config.get<string>("Notify.Template.cniMSCCNIUserConfirmation"),
           postNotification,
