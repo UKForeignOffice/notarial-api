@@ -3,6 +3,7 @@ import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
 import { UserService } from "../UserService";
 import { StaffService } from "../StaffService";
+import { FormType } from "../../../types/FormDataBody";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
@@ -25,7 +26,9 @@ export class SubmitService {
     const formFields = flattenQuestions(questions);
     const answers = answersHashMap(formFields);
     const reference = metadata?.pay?.reference ?? this.generateId();
-    const type = metadata?.type ?? "affirmation";
+
+    // forms with multiple services will receive the correct form type from answers.service
+    const type = (answers.service as FormType) ?? metadata?.type ?? "affirmation";
 
     try {
       const staffProcessJob = await this.staffService.sendToProcessQueue(formFields, "submission", {

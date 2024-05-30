@@ -15,6 +15,14 @@ const personalisationMappings: Record<FormType, object> = {
     applicationName: "exchange of a UK CNI",
     caseType: "an affirmation",
   },
+  msc: {
+    applicationName: "MSC",
+    caseType: "a MSC",
+  },
+  cniAndMsc: {
+    applicationName: "CNI and MSC",
+    caseType: "a CNI and MSC",
+  },
 };
 export function buildPostNotificationPersonalisation(answers: AnswersHashMap, type: FormType) {
   const country = answers["country"] as string;

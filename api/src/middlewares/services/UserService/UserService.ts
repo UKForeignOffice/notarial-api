@@ -32,6 +32,16 @@ export class UserService {
           userPostalConfirmation: config.get<string>("Notify.Template.exchangeUserPostalConfirmation"),
           postNotification,
         },
+        msc: {
+          userConfirmation: config.get<string>("Notify.Template.mscUserConfirmation"),
+          userPostalConfirmation: config.get<string>("Notify.Template.mscUserConfirmation"),
+          postNotification,
+        },
+        cniAndMsc: {
+          userConfirmation: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
+          userPostalConfirmation: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
+          postNotification,
+        },
       };
     } catch (err) {
       this.logger.error({ err }, "Notify templates have not been configured, exiting");

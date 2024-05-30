@@ -5,7 +5,7 @@ type PayState = {
   finished: boolean;
 };
 
-export type FormType = "affirmation" | "cni" | "exchange";
+export type FormType = "affirmation" | "cni" | "exchange" | "msc" | "cniAndMsc";
 
 type FailedPayState = {
   status: "failed";
