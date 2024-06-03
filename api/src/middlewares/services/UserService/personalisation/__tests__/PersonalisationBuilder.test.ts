@@ -30,7 +30,7 @@ test("buildSendEmailArgs should return the correct personalisation for an in-per
     country: "Turkey",
     localRequirements: "",
     notPaid: true,
-    post: "British Consulate General Istanbul",
+    post: "the British Consulate General Istanbul",
     confirmationDelay: "2 weeks",
     reference: "1234",
   });
@@ -40,7 +40,7 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
   const personalisation = PersonalisationBuilder.userPostalConfirmation(answers, { reference: "1234" });
   expect(personalisation).toEqual({
     firstName: "foo",
-    post: "British Consulate General Istanbul",
+    post: "the British Consulate General Istanbul",
     country: "Turkey",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=10",
     localRequirements: "",
@@ -54,12 +54,12 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
 
 test("getUserPostalConfirmationAdditionalContext returns additionalContext correctly", () => {
   expect(getUserPostalConfirmationAdditionalContext("Italy")).toStrictEqual({
-    additionalDocs: ["test field additional doc", "test field additional doc"],
+    additionalDocs: "",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
     civilPartnership: false,
     duration: "6 months",
     localRequirements: "",
-    post: "British Embassy Rome",
+    post: "the British Embassy Rome",
     postAddress: "",
     postal: true,
   });
@@ -73,7 +73,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
     civilPartnership: false,
     duration: "3 to 12 months (check with the person conducting your ceremony)",
     localRequirements: "",
-    post: "British Embassy Moscow",
+    post: "the British Embassy Moscow",
     postAddress: "\nBritish Embassy Moscow \n121099 Moscow \nSmolenskaya Naberezhnaya 10",
     postal: true,
   });
@@ -85,7 +85,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
     duration: "6 months",
     localRequirements:
       "\nYou can apply before you have confirmed the final place and date of your ceremony. When asked in your online application, enter the estimated date and rough location within Poland.",
-    post: "British Embassy Warsaw",
+    post: "the British Embassy Warsaw",
     postAddress: "\nConsular Section \nBritish Embassy \nul. Kawalerii 12 \n00-468 Warsaw \nMazowieckie",
     postal: true,
   });
@@ -93,10 +93,10 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
 
 test("buildUserPostalConfirmationPersonalisation renders countries with default posts", () => {
   let personalisation = buildUserPostalConfirmationPersonalisation({ country: "Italy" }, {});
-  expect(personalisation.post).toBe("British Embassy Rome");
+  expect(personalisation.post).toBe("the British Embassy Rome");
 
   personalisation = buildUserPostalConfirmationPersonalisation({ country: "Russia" }, {});
-  expect(personalisation.post).toBe("British Embassy Moscow");
+  expect(personalisation.post).toBe("the British Embassy Moscow");
 });
 
 test("buildDocsList will add optional documents when the relevant fields are filled in", () => {
