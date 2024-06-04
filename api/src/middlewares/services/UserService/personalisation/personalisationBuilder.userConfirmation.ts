@@ -12,9 +12,9 @@ const previousMarriageDocs = {
   Annulled: "decree of nullity",
 };
 
-export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata }, type: FormType) {
+export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
-  const docsList = buildUserConfirmationDocsList(answers, type);
+  const docsList = buildUserConfirmationDocsList(answers, metadata.type);
   const country = answers["country"] as string;
   const post = answers["post"] as string;
 
@@ -37,16 +37,15 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
   };
 }
 
-export function buildUserConfirmationDocsList(fields: AnswersHashMap, type: FormType) {
+export function buildUserConfirmationDocsList(fields: AnswersHashMap, type?: FormType) {
   if (!fields) {
     throw new ApplicationError("WEBHOOK", "VALIDATION", 500, "Fields are empty");
   }
 
-  const docsList = ["your UK passport", "your birth certificate", "proof of address"];
+  const docsList = ["your UK passport", "your birth certificate", "proof of address", "your partner’s passport or national identity card"];
   if (type === "cni") {
-    docsList.push("proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address");
+    docsList.splice(3, 0, "proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address");
   }
-  docsList.push("your partner’s passport or national identity card");
   if (fields.maritalStatus && fields.maritalStatus !== "Never married") {
     docsList.push(`${previousMarriageDocs[fields.maritalStatus as string]}`);
   }

@@ -62,7 +62,7 @@ export class UserService {
 
     const templateName = getUserTemplate(answers.country as string, type, metadata.postal);
     const buildPersonalisationForTemplate = PersonalisationBuilder[templateName];
-    const personalisation = buildPersonalisationForTemplate(answers, metadata, type);
+    const personalisation = buildPersonalisationForTemplate(answers, metadata);
     const emailArgs = {
       template: this.templates[type][templateName],
       emailAddress: answers.emailAddress as string,
