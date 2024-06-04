@@ -45,7 +45,7 @@ export function buildUserConfirmationDocsList(fields: AnswersHashMap, type?: For
   const docsList = [
     "your UK passport",
     "your birth certificate",
-    "proof of address – you must use your residence permit (also known as a residence certificate or card) if the country you live in issues these",
+    "proof of address – you must use your residence permit if the country you live in issues these",
     "your partner’s passport or national identity card",
   ];
 
