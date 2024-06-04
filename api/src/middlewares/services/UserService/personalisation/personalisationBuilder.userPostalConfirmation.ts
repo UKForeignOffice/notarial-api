@@ -1,7 +1,7 @@
 import * as additionalContexts from "./../../utils/additionalContexts.json";
 import { getPost } from "../../utils/getPost";
 import { AnswersHashMap } from "../../../../types/AnswersHashMap";
-import { PayMetadata } from "../../../../types/FormDataBody";
+import { FormType, PayMetadata } from "../../../../types/FormDataBody";
 
 export function getUserPostalConfirmationAdditionalContext(country: string, post?: string) {
   const postName = getPost(country, post);
@@ -13,7 +13,7 @@ export function getUserPostalConfirmationAdditionalContext(country: string, post
     ...additionalPostContext,
   };
 }
-export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata }) {
+export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata }, _type: FormType) {
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
   const country = answers["country"] as string;
   const post = answers["post"] as string;
