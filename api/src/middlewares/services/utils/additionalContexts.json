@@ -725,7 +725,7 @@
       "duration": "3 months",
       "postal": true,
       "additionalDocs": ["partner's extract from the population register (if they're registered in Sweden)"],
-      "localRequirements": "\n[Check with the Swedish Tax Authorities](https://www.skatteverket.se/privat.4.76a43be412206334b89800052864.html) to find out whether you need a CNI. Only apply for this service if you are not registered in the Swedish population register. If you are registered, you should not need a CNI to get married.   \nIf you live in the UK you should [apply for a CNI from a UK register office](/exchange-uk-cni/check-eligibility-and-documents?marriage.country=Sweden) unless you have already travelled to Sweden."
+      "localRequirements": "\nCheck with the Swedish Tax Authorities](https://www.skatteverket.se/privat.4.76a43be412206334b89800052864.html) to find out whether you need a CNI. Only apply for this service if you are not registered in the Swedish population register. If you are registered, you should not need a CNI to get married.   \nIf you live in the UK you should [apply for a CNI from a UK register office](/exchange-uk-cni/check-eligibility-and-documents?marriage.country=Sweden) unless you have already travelled to Sweden."
     },
     "Taiwan": {
       "post": "the British Office Taipei",
