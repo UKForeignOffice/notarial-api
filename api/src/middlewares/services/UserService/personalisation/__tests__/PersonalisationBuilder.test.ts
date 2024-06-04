@@ -24,7 +24,8 @@ test("buildSendEmailArgs should return the correct personalisation for an in-per
   const personalisation = PersonalisationBuilder.userConfirmation(answers, { reference: "1234" });
   expect(personalisation).toEqual({
     firstName: "foo",
-    docsList: "* your UK passport\n* your birth certificate\n* proof of address\n* your partner’s passport or national identity card",
+    docsList:
+      "* your UK passport\n* your birth certificate\n* proof of address – you must use your residence permit (also known as a residence certificate or card) if the country you live in issues these\n* your partner’s passport or national identity card",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=10",
     civilPartnership: false,
     country: "Turkey",
@@ -108,7 +109,7 @@ test("buildDocsList will add optional documents when the relevant fields are fil
     oathType: "affidavit",
   };
   expect(buildUserConfirmationDocsList(fieldsMap, "affirmation")).toBe(
-    `* your UK passport\n* your birth certificate\n* proof of address\n* your partner’s passport or national identity card\n* decree absolute\n* religious book of your faith to swear upon`
+    `* your UK passport\n* your birth certificate\n* proof of address – you must use your residence permit (also known as a residence certificate or card) if the country you live in issues these\n* your partner’s passport or national identity card\n* decree absolute\n* religious book of your faith to swear upon`
   );
 });
 
@@ -120,6 +121,6 @@ test("buildDocsList will add cni proof of stay doc if the form type is cni", () 
     oathType: "affirmation",
   };
   expect(buildUserConfirmationDocsList(fieldsMap, "cni")).toBe(
-    `* your UK passport\n* your birth certificate\n* proof of address\n* proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address\n* your partner’s passport or national identity card`
+    `* your UK passport\n* your birth certificate\n* proof of address – you must use your residence permit (also known as a residence certificate or card) if the country you live in issues these\n* proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address\n* your partner’s passport or national identity card`
   );
 });

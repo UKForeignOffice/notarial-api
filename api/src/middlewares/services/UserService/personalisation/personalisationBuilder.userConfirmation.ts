@@ -42,7 +42,12 @@ export function buildUserConfirmationDocsList(fields: AnswersHashMap, type?: For
     throw new ApplicationError("WEBHOOK", "VALIDATION", 500, "Fields are empty");
   }
 
-  const docsList = ["your UK passport", "your birth certificate", "proof of address", "your partner’s passport or national identity card"];
+  const docsList = [
+    "your UK passport",
+    "your birth certificate",
+    "proof of address – you must use your residence permit (also known as a residence certificate or card) if the country you live in issues these",
+    "your partner’s passport or national identity card",
+  ];
 
   // for cnis, the user needs to provide proof they have stayed in the country for 3 days. For contextual reasons, this should appear below the proof of address doc
   if (type === "cni") {
