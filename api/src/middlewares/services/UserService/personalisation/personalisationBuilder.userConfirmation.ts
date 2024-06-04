@@ -43,6 +43,8 @@ export function buildUserConfirmationDocsList(fields: AnswersHashMap, type?: For
   }
 
   const docsList = ["your UK passport", "your birth certificate", "proof of address", "your partner’s passport or national identity card"];
+
+  // for cnis, the user needs to provide proof they have stayed in the country for 3 days. For contextual reasons, this should appear below the proof of address doc
   if (type === "cni") {
     docsList.splice(3, 0, "proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address");
   }
