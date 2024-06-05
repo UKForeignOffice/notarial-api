@@ -7,7 +7,7 @@ const schema = joi.object({
   metadata: {
     reference: joi.string().required(),
     payment: joi.object(),
-    type: joi.string().valid("affirmation", "cni", "exchange").required(),
+    type: joi.string().valid("affirmation", "cni", "exchange", "msc", "cniAndMsc").required(),
   },
 });
 export function validate(req: Request, _res: Response, next: NextFunction) {
