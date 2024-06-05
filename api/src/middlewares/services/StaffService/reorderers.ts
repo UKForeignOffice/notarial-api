@@ -9,6 +9,6 @@ export const reorderers = {
   cni: reorderSectionsWithNewName(affirmationMappings.order),
   cniPostal: reorderSectionsWithNewName(cniPostalMappings.order),
   exchange: reorderSectionsWithNewName(exchangeMappings.order),
-  msc: reorderSectionsWithNewName(mscMappings.order),
-  cniAndMsc: reorderSectionsWithNewName(cniMSCCombinedMappings.order),
+  mscPostal: reorderSectionsWithNewName(mscMappings.order),
+  cniAndMscPostal: reorderSectionsWithNewName(cniMSCCombinedMappings.order),
 };
