@@ -1,11 +1,12 @@
 export const order = {
+  contactDetails: "Contact details",
   applicantDetails: "Applicant's details",
-  applicantAddress: "Applicant's address",
   applicantBirth: "Applicant's birth details",
-  applicantPassport: "Applicant's passport",
-  parentDetails: "Parents' details",
-  maritalStatus: "Marital and civil status",
+  applicantAddress: "Applicant's address",
   occupation: "Occupation",
+  parentDetails: "Parents' details",
+  applicantPassport: "Applicant's passport",
+  maritalStatus: "Marital and civil status",
   partnerName: "Partner's name",
   partnerAddress: "Partner's address",
   partnerNationality: "Partner's nationality",
@@ -22,19 +23,15 @@ export const remap = {
   feedbackConsent: "feedbackConsent.feedbackConsent",
   oathType: "information.oathType",
 
+  phoneNumber: "contactDetails.phoneNumber",
+  emailAddress: "contactDetails.emailAddress",
+
   firstName: "applicantDetails.firstName",
   middleName: "applicantDetails.middleName",
   surname: "applicantDetails.surname",
-  dateOfBirth: "applicantDetails.dateOfBirth",
   sex: "applicantDetails.sex",
-  emailAddress: "applicantDetails.emailAddress",
-  phoneNumber: "applicantDetails.phoneNumber",
 
-  addressLine1: "applicantAddress.addressLine1",
-  addressLine2: "applicantAddress.addressLine2",
-  city: "applicantAddress.city",
-  postcode: "applicantAddress.postcode",
-  countryAddress: "applicantAddress.country",
+  dateOfBirth: "applicantBirth.dateOfBirth",
   placeOfBirth: "applicantBirth.placeOfBirth",
   countryOfBirth: "applicantBirth.countryOfBirth",
   nameChangedByDeedPoll: "applicantBirth.nameChangedByDeedPoll",
@@ -42,12 +39,20 @@ export const remap = {
   nameChangedByMarriage: "applicantBirth.nameChangedByMarriage",
   previousNameByMarriage: "applicantBirth.previousNameByMarriage",
 
-  passportDateOfIssue: "applicantPassport.dateOfIssue",
-  passportNumber: "applicantPassport.number",
+  addressLine1: "applicantAddress.addressLine1",
+  addressLine2: "applicantAddress.addressLine2",
+  city: "applicantAddress.city",
+  postcode: "applicantAddress.postcode",
+  countryAddress: "applicantAddress.country",
+
+  occupation: "occupation.occupation",
 
   fatherFullName: "parentDetails.fatherFullName",
   motherFullName: "parentDetails.motherFullName",
   motherMaidenName: "parentDetails.motherMaidenName",
+
+  passportNumber: "applicantPassport.number",
+  passportDateOfIssue: "applicantPassport.dateOfIssue",
 
   maritalStatus: "maritalStatus.status",
   dateOfDecreeAbsolute: "maritalStatus.dateOfDecreeAbsolute",
@@ -60,8 +65,6 @@ export const remap = {
   placeOfDissolution: "maritalStatus.placeOfDissolution",
   dateOfDecreeOfNullity: "maritalStatus.dateOfDecreeOfNullity",
   placeOfDecreeOfNullity: "maritalStatus.placeOfDecreeOfNullity",
-
-  occupation: "occupation.occupation",
 
   partnerFirstName: "partnerName.partnerFirstName",
   partnerMiddleName: "partnerName.partnerMiddleName",
