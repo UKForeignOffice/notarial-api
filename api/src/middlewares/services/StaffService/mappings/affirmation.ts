@@ -12,6 +12,7 @@ export const order = {
   partnerNationality: "Partner's nationality",
   partnerMaritalStatus: "Partner's marital and civil status",
   marriageDetails: "Marriage",
+  postalAddress: "Postal address",
   feedbackConsent: "Feedback consent",
 };
 
@@ -20,7 +21,6 @@ export const remap = {
   post: "information.post",
   jurats: "information.jurats",
   certifyPassport: "information.certifyPassport",
-  feedbackConsent: "feedbackConsent.feedbackConsent",
   oathType: "information.oathType",
 
   phoneNumber: "contactDetails.phoneNumber",
@@ -82,4 +82,12 @@ export const remap = {
 
   dateOfMarriage: "marriageDetails.dateOfMarriage",
   placeOfMarriage: "marriageDetails.placeOfMarriage",
+
+  deliveryAddressLine1: "postalAddress.addressLine1",
+  deliveryAddressLine2: "postalAddress.addressLine2",
+  deliveryCity: "postalAddress.city",
+  deliveryPostcode: "postalAddress.postcode",
+  deliveryCountry: "postalAddress.country",
+
+  feedbackConsent: "feedbackConsent.feedbackConsent",
 };
