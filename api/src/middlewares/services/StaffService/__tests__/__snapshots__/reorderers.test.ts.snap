@@ -129,6 +129,7 @@ exports[`affirmation is successfully remapped 1`] = `
       "type": "text",
     },
   },
+  "Contact details": undefined,
   "Feedback consent": {
     "feedbackConsent": {
       "answer": true,
@@ -272,5 +273,6 @@ exports[`affirmation is successfully remapped 1`] = `
       "type": "list",
     },
   },
+  "Postal address": undefined,
 }
 `;

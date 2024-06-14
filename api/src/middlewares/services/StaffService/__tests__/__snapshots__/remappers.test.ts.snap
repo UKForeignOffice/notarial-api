@@ -47,6 +47,13 @@ exports[`affirmation is successfully remapped 1`] = `
       "title": "Country of birth",
       "type": "list",
     },
+    "dateOfBirth": {
+      "answer": "2000-11-11",
+      "category": "applicantDetails",
+      "key": "dateOfBirth",
+      "title": "Date of birth",
+      "type": "date",
+    },
     "nameChangedByDeedPoll": {
       "answer": "By deed poll",
       "category": "nameChange",
@@ -63,20 +70,6 @@ exports[`affirmation is successfully remapped 1`] = `
     },
   },
   "applicantDetails": {
-    "dateOfBirth": {
-      "answer": "2000-11-11",
-      "category": "applicantDetails",
-      "key": "dateOfBirth",
-      "title": "Date of birth",
-      "type": "date",
-    },
-    "emailAddress": {
-      "answer": "pye@cautionyourblast.com",
-      "category": "contact",
-      "key": "emailAddress",
-      "title": "Email address",
-      "type": "text",
-    },
     "firstName": {
       "answer": "Test",
       "category": "applicantDetails",
@@ -89,13 +82,6 @@ exports[`affirmation is successfully remapped 1`] = `
       "category": "applicantDetails",
       "key": "middleName",
       "title": "Middle name",
-      "type": "text",
-    },
-    "phoneNumber": {
-      "answer": "+440000000",
-      "category": "contact",
-      "key": "phoneNumber",
-      "title": "Phone number",
       "type": "text",
     },
     "sex": {
@@ -126,6 +112,22 @@ exports[`affirmation is successfully remapped 1`] = `
       "category": "applicantDetails",
       "key": "passportNumber",
       "title": "Passport number",
+      "type": "text",
+    },
+  },
+  "contactDetails": {
+    "emailAddress": {
+      "answer": "pye@cautionyourblast.com",
+      "category": "contact",
+      "key": "emailAddress",
+      "title": "Email address",
+      "type": "text",
+    },
+    "phoneNumber": {
+      "answer": "+440000000",
+      "category": "contact",
+      "key": "phoneNumber",
+      "title": "Phone number",
       "type": "text",
     },
   },
