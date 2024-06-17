@@ -67,8 +67,8 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
 
   expect(getUserPostalConfirmationAdditionalContext("Russia")).toStrictEqual({
     additionalDocs: [
-      "Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities) ",
-      "if you're not a Russian resident - either your residence registration slip issued by migration authorities or the rental agreement with your name for your private accommodation in Russia",
+      " A piece of paper with the Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities)",
+      " if you're not a Russian resident - either your residence registration slip issued by migration authorities or the rental agreement with your name for your private accommodation in Russia",
     ],
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10",
     civilPartnership: false,
