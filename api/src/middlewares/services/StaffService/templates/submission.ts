@@ -45,12 +45,14 @@ const template = `
 
 
     {{#each questions}}
-        <h4>{{@key}}</h4>
-        <ul>
-            {{#each this}}
-            <li>{{this.title}}: {{this.answer}}</li>
-            {{/each}}
-        </ul>
+        {{#if this}}
+            <h4>{{@key}}</h4>
+            <ul>
+                {{#each this}}
+                <li>{{this.title}}: {{this.answer}}</li>
+                {{/each}}
+            </ul>
+        {{/if}}
     {{/each}}
 
 
