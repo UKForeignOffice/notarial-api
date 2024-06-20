@@ -56,7 +56,7 @@ export function buildUserConfirmationDocsList(fields: AnswersHashMap, type?: For
   if (fields.maritalStatus && fields.maritalStatus !== "Never married") {
     docsList.push(`${previousMarriageDocs[fields.maritalStatus as string]}`);
   }
-  if (fields.oathType === "affidavit") {
+  if (fields.oathType === "Religious") {
     docsList.push("religious book of your faith to swear upon");
   }
   const country = fields.country as string;
