@@ -106,7 +106,7 @@ test("buildDocsList will add optional documents when the relevant fields are fil
     ...answers,
     marriedBefore: true,
     maritalStatus: "Divorced",
-    oathType: "affidavit",
+    oathType: "Religious",
   };
   expect(buildUserConfirmationDocsList(fieldsMap, "affirmation")).toBe(
     `* your UK passport\n* your birth certificate\n* proof of address – you must use your residence permit if the country you live in issues these\n* your partner’s passport or national identity card\n* decree absolute\n* religious book of your faith to swear upon`
