@@ -4,11 +4,7 @@ const template = `
 <p>You have a new application for {{type}}.</p>
 <p>
     Below is the information the applicant entered in their online application. Attached are the documents they submitted.
-    Use them to create a new case in Casebook and prepare the affirmation document.
-</p>
-<p>
-    The applicant should book an appointment in CABS to swear and sign their affirmation. You’ll get a separate email 
-    from CABS when they complete their booking.  
+    Use them to create a new case in Casebook.
 </p>
 <p>
     FCDO Documents Policy Team
