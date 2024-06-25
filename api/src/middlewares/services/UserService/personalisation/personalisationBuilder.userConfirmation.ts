@@ -44,10 +44,14 @@ export function buildUserConfirmationDocsList(fields: AnswersHashMap, type?: For
 
   const docsList = [
     "your UK passport",
-    "your birth certificate",
     "proof of address – you must use your residence permit if the country you live in issues these",
     "your partner’s passport or national identity card",
   ];
+
+  // for affirmations, users need to provide their birth certificate. For contextual reasons, this should appear next to the user's passport
+  if (type === "affirmation") {
+    docsList.splice(1, 0, "your birth certificate");
+  }
 
   // for cnis, the user needs to provide proof they have stayed in the country for 3 days. For contextual reasons, this should appear below the proof of address doc
   if (type === "cni") {
