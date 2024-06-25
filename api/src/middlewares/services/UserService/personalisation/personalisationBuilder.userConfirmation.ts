@@ -55,7 +55,7 @@ export function buildUserConfirmationDocsList(fields: AnswersHashMap, type?: For
 
   // for cnis, the user needs to provide proof they have stayed in the country for 3 days. For contextual reasons, this should appear below the proof of address doc
   if (type === "cni") {
-    docsList.splice(3, 0, "proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address");
+    docsList.splice(2, 0, "proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address");
   }
   if (fields.maritalStatus && fields.maritalStatus !== "Never married") {
     docsList.push(`${previousMarriageDocs[fields.maritalStatus as string]}`);
