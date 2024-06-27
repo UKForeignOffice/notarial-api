@@ -21,7 +21,7 @@ const formFields = flattenQuestions(testData.questions);
 const answers = answersHashMap(formFields);
 
 test("buildSendEmailArgs should return the correct personalisation for an in-person email", () => {
-  const personalisation = PersonalisationBuilder.userConfirmation(answers, { reference: "1234" });
+  const personalisation = PersonalisationBuilder.userConfirmation(answers, { type: "affirmation", reference: "1234" });
   expect(personalisation).toEqual({
     firstName: "foo",
     docsList:
@@ -121,6 +121,6 @@ test("buildDocsList will add cni proof of stay doc if the form type is cni", () 
     oathType: "affirmation",
   };
   expect(buildUserConfirmationDocsList(fieldsMap, "cni")).toBe(
-    `* your UK passport\n* your birth certificate\n* proof of address – you must use your residence permit if the country you live in issues these\n* proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address\n* your partner’s passport or national identity card`
+    `* your UK passport\n* proof of address – you must use your residence permit if the country you live in issues these\n* proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address\n* your partner’s passport or national identity card`
   );
 });
