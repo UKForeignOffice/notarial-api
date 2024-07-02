@@ -16,6 +16,7 @@ import { getPost } from "../utils/getPost";
 import { getPostEmailAddress } from "../utils/getPostEmailAddress";
 import { PersonalisationBuilder } from "../UserService/personalisation/PersonalisationBuilder";
 import { SESEmailTemplate } from "../utils/types";
+import { ApplicationError } from "../../../ApplicationError";
 
 type PaymentViewModel = {
   id: string;
@@ -169,7 +170,14 @@ export class StaffService {
     const emailAddress = getPostEmailAddress(country, post);
     const personalisation = PersonalisationBuilder.postNotification(answers, type);
     if (!emailAddress) {
-      this.logger.warn(`No email address found for country ${country} - post ${post}. Post notification will not be sent`);
+      this.logger.error(
+        new ApplicationError(
+          "GENERIC",
+          "UNRECOGNISED_SERVICE_APPLICATION",
+          400,
+          "The currently selected post does not have an associated email address. This indicates the current country should not be using this service."
+        )
+      );
       return;
     }
 
