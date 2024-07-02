@@ -27,7 +27,7 @@ type SESErrorCode = "MISSING_ANSWER" | "PROCESS_VALIDATION" | "UNKNOWN";
 type NotifyErrorCode = "PROCESS_VALIDATION" | "UNKNOWN";
 type QueueErrorCode = "SES_PROCESS_ERROR" | "NOTIFY_PROCESS_ERROR" | "NOTIFY_SEND_ERROR" | "SES_SEND_ERROR";
 
-type GenericErrorCode = "UNKNOWN" | "RATE_LIMIT_EXCEEDED";
+type GenericErrorCode = "UNKNOWN" | "RATE_LIMIT_EXCEEDED" | "UNRECOGNISED_SERVICE_APPLICATION";
 
 /**
  * Union of all the different ErrorCode.
@@ -59,6 +59,7 @@ const NOTIFY: ErrorRecord<NotifyErrorCode> = {
 const GENERIC: ErrorRecord<GenericErrorCode> = {
   UNKNOWN: "Unknown error",
   RATE_LIMIT_EXCEEDED: "Rate limit exceeded",
+  UNRECOGNISED_SERVICE_APPLICATION: "Current service could not be processed, as it was not recognised",
 };
 
 const QUEUE: ErrorRecord<QueueErrorCode> = {
