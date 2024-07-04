@@ -171,12 +171,8 @@ export class StaffService {
     const personalisation = PersonalisationBuilder.postNotification(answers, type);
     if (!emailAddress) {
       this.logger.error(
-        new ApplicationError(
-          "GENERIC",
-          "UNRECOGNISED_SERVICE_APPLICATION",
-          400,
-          "The currently selected post does not have an associated email address. This indicates the current country should not be using this service."
-        )
+        { code: "UNRECOGNISED_SERVICE_APPLICATION" },
+        `No email address for the specified post – ${country} - ${post} – could be found. This is for application with the reference ${reference}.`
       );
       return;
     }
