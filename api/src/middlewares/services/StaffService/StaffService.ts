@@ -16,7 +16,6 @@ import { getPost } from "../utils/getPost";
 import { getPostEmailAddress } from "../utils/getPostEmailAddress";
 import { PersonalisationBuilder } from "../UserService/personalisation/PersonalisationBuilder";
 import { SESEmailTemplate } from "../utils/types";
-import { ApplicationError } from "../../../ApplicationError";
 
 type PaymentViewModel = {
   id: string;
