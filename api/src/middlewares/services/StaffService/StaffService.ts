@@ -171,7 +171,7 @@ export class StaffService {
     if (!emailAddress) {
       this.logger.error(
         { code: "UNRECOGNISED_SERVICE_APPLICATION" },
-        `No email address for the specified post – ${country} - ${post} – could be found. This is for application with the reference ${reference}.`
+        `No email address found for the specified post – ${country} - ${post} – reference ${reference}.`
       );
       return;
     }
