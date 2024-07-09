@@ -1,11 +1,18 @@
 import { getUserTemplate } from "../getUserTemplate";
-import * as additionalContexts from "../../utils/additionalContexts.json";
 
 jest.mock("../../utils/additionalContexts.json", () => {
   return {
     countries: {
       Turkey: {
         postal: true,
+      },
+      Sweden: {
+        postal: true,
+        cniDelivery: true,
+      },
+      Russia: {
+        postal: true,
+        cniDelivery: false,
       },
     },
   };
@@ -19,14 +26,18 @@ test("Returns in-person template if the form has the metadata value postal: fals
   expect(getUserTemplate("Turkey", "cni", false)).toBe("userConfirmation");
 });
 
-test("Returns correct postal value from country if the form has no postal metadata value and is using the exchange journey", () => {
-  expect(getUserTemplate("Turkey", "exchange")).toBe("userPostalConfirmation");
-});
-
 test("Returns correct postal value from country if the form has no postal value and the user is submitting an affirmation", () => {
   expect(getUserTemplate("Turkey", "affirmation")).toBe("userConfirmation");
 });
 
-test("Returns correct postal value from country if the form has no postal metadata, but the user is submitting a cni", () => {
+test("Returns correct template from country if the form has no postal metadata, but the user is submitting a cni", () => {
   expect(getUserTemplate("Sweden", "cni")).toBe("userConfirmation");
+});
+
+test("returns correct template from country if the form has no postal metadata, the user is submitting an exchange, and the country allows postal exchange", () => {
+  expect(getUserTemplate("Sweden", "exchange")).toBe("userPostalConfirmation");
+});
+
+test("returns correct template from country if the form has no postal metadata, the user is submitting an exchange, and the country does not allow postal exchange", () => {
+  expect(getUserTemplate("Russia", "exchange")).toBe("userConfirmation");
 });
