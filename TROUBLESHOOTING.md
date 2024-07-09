@@ -160,18 +160,19 @@ The following errors are logged by the API. They may be inserted into the databa
 Below is a summary of the errors that may be logged by the API. Some errors may have steps to remediate.
 
 
-| Error type | Error code           | Comment                                                                                        |
-|------------|----------------------|------------------------------------------------------------------------------------------------|
-| WEBHOOK    | VALIDATION           | POST from forms-worker (or forms runner) failed validation.                                    |
-| SES        | PROCESS_VALIDATION   | POST to /forms/emails/staff failed validation                                                  |
-| SES        | MISSING_ANSWER       | Expected answer is missing. Check the queue database first, then the notarial database         |
-| SES        | UNKNOWN              | The error has been identified as relating to SES, but logs must be checked for further details |
-| NOTIFY     | PROCESS_VALIDATION   | POST to /forms/emails/user failed validation                                                   |
-| NOTIFY     | UNKNOWN              | The error has been identified as relating to NOTIFY (or UserService)                           |
-| QUEUE      | SES_PROCESS_ERROR    | Inserting into queue failed                                                                    |
-| QUEUE      | NOTIFY_PROCESS_ERROR | Inserting into queue failed                                                                    |
-| GENERIC    | UNKNOWN              |                                                                                                |
-| GENERIC    | RATE_LIMIT           | Rate limit exceeded. If required, this can be changed by adjusting `RATE_LIMIT` env var        |
+| Error type | Error code                  | Comment                                                                                                                                     |
+|------------|-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| WEBHOOK    | VALIDATION                  | POST from forms-worker (or forms runner) failed validation.                                                                                 |
+| SES        | PROCESS_VALIDATION          | POST to /forms/emails/staff failed validation                                                                                               |
+| SES        | MISSING_ANSWER              | Expected answer is missing. Check the queue database first, then the notarial database                                                      |
+| SES        | UNKNOWN                     | The error has been identified as relating to SES, but logs must be checked for further details                                              |
+| NOTIFY     | PROCESS_VALIDATION          | POST to /forms/emails/user failed validation                                                                                                |
+| NOTIFY     | UNKNOWN                     | The error has been identified as relating to NOTIFY (or UserService)                                                                        |
+| QUEUE      | SES_PROCESS_ERROR           | Inserting into queue failed                                                                                                                 |
+| QUEUE      | NOTIFY_PROCESS_ERROR        | Inserting into queue failed                                                                                                                 |
+| GENERIC    | UNKNOWN                     |                                                                                                                                             |
+| GENERIC    | RATE_LIMIT                  | Rate limit exceeded. If required, this can be changed by adjusting `RATE_LIMIT` env var                                                     |
+| GENERIC    | UNKNOWN_SERVICE_APPLICATION | An email address could not be found for the specified post. This implies that a user should not be able to apply for a service at this post |
 
 
 For the API, generally you may fix the issues in a few ways

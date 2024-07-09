@@ -169,7 +169,10 @@ export class StaffService {
     const emailAddress = getPostEmailAddress(country, post);
     const personalisation = PersonalisationBuilder.postNotification(answers, type);
     if (!emailAddress) {
-      this.logger.warn(`No email address found for country ${country} - post ${post}. Post notification will not be sent`);
+      this.logger.error(
+        { code: "UNRECOGNISED_SERVICE_APPLICATION" },
+        `No email address found for the specified post – ${country} - ${post} – reference ${reference}.`
+      );
       return;
     }
 
