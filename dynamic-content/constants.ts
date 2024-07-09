@@ -8,13 +8,14 @@ const CONTENT_FIELD_MAP = {
   type: "type",
   "additional documentation": "additionalDocs",
   "postal application": "postal",
+  "cni delivery": "cniDelivery",
   "uk cni": "ukcni",
   "certified passport": "certifiedPassport",
   duration: "duration",
   "civil partnership": "civilPartnership",
   "localised content - start pages": "localRequirements",
 };
-const CONTENT_RELEVANT_FIELDS = ["additionalDocs", "duration", "localRequirements", "civilPartnership", "postal"];
+const CONTENT_RELEVANT_FIELDS = ["additionalDocs", "duration", "localRequirements", "civilPartnership", "postal", "cniDelivery"];
 const BOOKING_LINKS_FIELD_MAP = {
   country: "country",
   embassy: "post",
