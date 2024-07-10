@@ -15,9 +15,9 @@ type FailedPayState = {
 };
 
 export type PayMetadata = {
-  payId?: string;
-  reference?: string;
-  state?: PayState | FailedPayState;
+  payId: string;
+  reference: string;
+  state: PayState | FailedPayState;
   total?: number;
 };
 
