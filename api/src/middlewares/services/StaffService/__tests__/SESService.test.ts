@@ -138,5 +138,6 @@ test("paymentViewModel returns a PaymentViewModel", () => {
     id: "123",
     status: "success",
     url: "https://selfservice.payments.service.gov.uk/account/ACCOUNT_ID/123",
+    total: "Unpaid",
   });
 });

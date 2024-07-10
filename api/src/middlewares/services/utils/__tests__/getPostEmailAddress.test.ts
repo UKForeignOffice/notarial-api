@@ -9,7 +9,7 @@ test("returns undefined if the post could not be found", () => {
 });
 
 test("returns a post email address if the country has multiple posts but no post was passed in", () => {
-  expect(getPostEmailAddress("Russia")).toBe("pye+moscow@cautionyourblast.com");
+  expect(getPostEmailAddress("Italy")).toBe("pye+rome@cautionyourblast.com");
 });
 
 test("returns undefined the post is undefined, and there is no default for that country", () => {

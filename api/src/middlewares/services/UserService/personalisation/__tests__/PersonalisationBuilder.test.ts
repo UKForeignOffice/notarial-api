@@ -66,7 +66,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
     postal: true,
   });
 
-  expect(getUserPostalConfirmationAdditionalContext("Russia")).toStrictEqual({
+  expect(getUserPostalConfirmationAdditionalContext("Russia", "the British Embassy Moscow")).toStrictEqual({
     additionalDocs: [
       " A piece of paper with the Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities)",
       " if you're not a Russian resident - either your residence registration slip issued by migration authorities or the rental agreement with your name for your private accommodation in Russia",
@@ -98,9 +98,6 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
 test("buildUserPostalConfirmationPersonalisation renders countries with default posts", () => {
   let personalisation = buildUserPostalConfirmationPersonalisation({ country: "Italy" }, { reference: "1234" });
   expect(personalisation.post).toBe("the British Embassy Rome");
-
-  personalisation = buildUserPostalConfirmationPersonalisation({ country: "Russia" }, { reference: "1234" });
-  expect(personalisation.post).toBe("the British Embassy Moscow");
 });
 
 test("buildDocsList will add optional documents when the relevant fields are filled in", () => {
