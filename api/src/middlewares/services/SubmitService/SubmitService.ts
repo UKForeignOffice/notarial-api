@@ -29,8 +29,8 @@ export class SubmitService {
 
     // forms with multiple services will receive the correct form type from answers.service
     const type = (answers.service as FormType) ?? metadata?.type ?? "affirmation";
-    if (metadata.pay && fees) {
-      Object.assign(metadata.pay, { total: fees.total });
+    if (metadata.pay) {
+      metadata.pay.total = fees?.total;
     }
 
     try {
