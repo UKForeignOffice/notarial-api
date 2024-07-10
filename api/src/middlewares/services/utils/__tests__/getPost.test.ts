@@ -15,10 +15,8 @@ test("getPost returns the correct post if the post is specified", () => {
 
 test("getPost returns the correct post if the country has multiple posts but a post has been specified", () => {
   expect(getPost("Italy", "the British Embassy Rome")).toBe("the British Embassy Rome");
-  expect(getPost("Russia", "the British Embassy Moscow")).toBe("the British Embassy Moscow");
 });
 
 test("getPost returns the correct post if the country has multiple posts but no post has been specified", () => {
   expect(getPost("Italy")).toBe("the British Embassy Rome");
-  expect(getPost("Russia")).toBe("the British Embassy Moscow");
 });

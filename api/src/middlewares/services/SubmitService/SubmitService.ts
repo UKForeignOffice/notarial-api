@@ -22,13 +22,16 @@ export class SubmitService {
   }
 
   async submitForm(formData: FormDataBody) {
-    const { questions = [], metadata } = formData;
+    const { questions = [], metadata, fees } = formData;
     const formFields = flattenQuestions(questions);
     const answers = answersHashMap(formFields);
     const reference = metadata?.pay?.reference ?? this.generateId();
 
     // forms with multiple services will receive the correct form type from answers.service
     const type = (answers.service as FormType) ?? metadata?.type ?? "affirmation";
+    if (metadata.pay) {
+      metadata.pay.total = fees?.total;
+    }
 
     try {
       const staffProcessJob = await this.staffService.sendToProcessQueue(formFields, "submission", {

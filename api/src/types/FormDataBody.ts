@@ -18,6 +18,7 @@ export type PayMetadata = {
   payId: string;
   reference: string;
   state: PayState | FailedPayState;
+  total?: number;
 };
 
 export interface FormDataBody {
@@ -31,6 +32,13 @@ export interface FormDataBody {
     [key: string]: any;
   };
   fees?: {
+    details: {
+      description: string;
+      amount: number;
+    }[];
+    total: number;
+    referenceFormat: string;
+    reportingColumns: Record<string, any>;
     paymentReference: string;
   };
 }

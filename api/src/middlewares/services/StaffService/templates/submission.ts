@@ -4,7 +4,10 @@ const template = `
 <p>You have a new application for {{type}}.</p>
 <p>
     Below is the information the applicant entered in their online application. Attached are the documents they submitted.
-    Use them to create a new case in Casebook.
+    Use them to create a new case in Orbit.
+</p>
+<p>
+    Do not forward this email. Enter the details into Orbit and delete it from the shared mailbox once you have processed the application.
 </p>
 <p>
     FCDO Documents Policy Team
@@ -31,7 +34,10 @@ const template = `
 <ul>
     <li>Paid: {{payment.status}}</li>
     <li>
-        <a href="{{payment.url}}">View payment details or refund (payment ID: {{ payment.id }})</a>
+        Payment amount: {{payment.total}}
+    </li>
+    <li>
+        payment ID: {{ payment.id }} <a href="{{payment.url}}">(View payment details or refund)</a>
     </li>
     <li>
         <a href="{{payment.allTransactionsByCountry.url}}"> View all transactions for {{payment.allTransactionsByCountry.country}}</a>
