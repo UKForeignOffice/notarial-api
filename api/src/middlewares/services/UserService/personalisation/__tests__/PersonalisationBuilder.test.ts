@@ -58,6 +58,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
     additionalDocs: "",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
     civilPartnership: false,
+    cniDelivery: false,
     duration: "6 months",
     localRequirements: "",
     post: "the British Embassy Rome",
@@ -72,6 +73,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
     ],
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10",
     civilPartnership: false,
+    cniDelivery: false,
     duration: "3 to 12 months (check with the person conducting your ceremony)",
     localRequirements: "",
     post: "the British Embassy Moscow",
@@ -83,6 +85,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
     additionalDocs: "",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10",
     civilPartnership: false,
+    cniDelivery: false,
     duration: "6 months",
     localRequirements:
       "\nYou can apply before you have confirmed the final place and date of your ceremony. When asked in your online application, enter the estimated date and rough location within Poland.",
