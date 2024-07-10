@@ -30,18 +30,12 @@ export class SubmitService {
     // forms with multiple services will receive the correct form type from answers.service
     const type = (answers.service as FormType) ?? metadata?.type ?? "affirmation";
 
-    let total: string = "Unpaid";
-
-    if (fees?.total) {
-      total = (fees.total / 100).toFixed(2);
-    }
-
     try {
       const staffProcessJob = await this.staffService.sendToProcessQueue(formFields, "submission", {
         reference,
         payment: {
           ...metadata.pay,
-          total,
+          total: fees?.total,
         },
         type,
         postal: metadata.postal,

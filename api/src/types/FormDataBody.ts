@@ -18,7 +18,7 @@ export type PayMetadata = {
   payId?: string;
   reference?: string;
   state?: PayState | FailedPayState;
-  total: string;
+  total?: number;
 };
 
 export interface FormDataBody {
