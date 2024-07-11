@@ -133,7 +133,7 @@
       "additionalDocs": [
         "either the proof of address or your partner's ID must prove that you or your partner live in Bulgaria or your partner is a Bulgarian national"
       ],
-      "cniDelivery": false,
+      "cniDelivery": true,
       "localRequirements": ""
     },
     "Burkina Faso": {
@@ -221,7 +221,7 @@
       "duration": "3 months",
       "postal": true,
       "additionalDocs": "",
-      "cniDelivery": false,
+      "cniDelivery": true,
       "localRequirements": "\nIn addition to a CNI you will also need a Certificate of Custom/Law issued by the British Embassy Zagreb. You can apply for this when you apply to exchange your UK CNI.  \nYou will need to give the registrar a [legalised (apostilled)](https://www.gov.uk/get-document-legalised) and [translated](https://find-a-professional-service-abroad.service.csd.fcdo.gov.uk/find/translators-interpreters) birth certificate. If you are divorced or widowed you will also need to have your decree absolute or partner's death certificate legalised (apostilled) and translated."
     },
     "Cuba": {
@@ -1019,7 +1019,7 @@
       "localRequirements": ""
     },
     "Ireland": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "Italy": { "civilPartnership": false, "duration": "6 months", "postal": true, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "Italy": { "civilPartnership": false, "duration": "6 months", "postal": true, "additionalDocs": "", "cniDelivery": true, "localRequirements": "" },
     "Jamaica": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Japan": { "civilPartnership": false, "duration": "3 months", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Kenya": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },

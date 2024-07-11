@@ -58,7 +58,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
     additionalDocs: "",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
     civilPartnership: false,
-    cniDelivery: false,
+    cniDelivery: true,
     duration: "6 months",
     localRequirements: "",
     post: "the British Embassy Rome",
