@@ -69,6 +69,7 @@ export const remap = {
   partnerFirstName: "partnerName.partnerFirstName",
   partnerMiddleName: "partnerName.partnerMiddleName",
   partnerSurname: "partnerName.partnerSurname",
+  partnerSex: "partnerName.partnerSex",
 
   partnerAddressLine1: "partnerAddress.partnerAddressLine1",
   partnerAddressLine2: "partnerAddress.partnerAddressLine2",
