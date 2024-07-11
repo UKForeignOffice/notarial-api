@@ -54,11 +54,22 @@ function parseRowContent(row: Row) {
 }
 
 function parseContent(acc: Record<string, string>, [key, value]) {
-  if (key === "type" && value) value = value.toLowerCase();
-  if (key === "additionalDocs" && value) value = bulletsToArray(value);
-  if (value && value.includes("<br>")) value = value.replaceAll("<br>", "\n");
-  if (key === "civilPartnership") value = !!value;
-  if (key === "postal" || key === "cniDelivery") value = !!value && value?.toLowerCase() !== "false";
+  const hasValue = !!value;
+  if (key === "type" && hasValue) {
+    value = value.toLowerCase();
+  }
+  if (key === "additionalDocs" && hasValue) {
+    value = bulletsToArray(value);
+  }
+  if (hasValue && value.includes("<br>")) {
+    value = value.replaceAll("<br>", "\n");
+  }
+  if (key === "civilPartnership") {
+    value = hasValue;
+  }
+  if (key === "postal" || key === "cniDelivery") {
+    value = hasValue && value?.toLowerCase() !== "false";
+  }
   acc[key] = value;
   return acc;
 }
