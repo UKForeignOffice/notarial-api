@@ -19,6 +19,9 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const post = answers["post"] as string;
   const previousMarriage = answers.maritalStatus && answers.maritalStatus !== "Never married";
 
+  // Italy is the only country that requires the partner's proof of end of marriage doc
+  const italyPartnerPreviousMarriage = country === "Italy" && answers.partnerMaritalStatus && answers.partnerMaritalStatus !== "Never married";
+
   const additionalContext = getUserPostalConfirmationAdditionalContext(country, post);
 
   return {
@@ -29,6 +32,7 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     localRequirements: additionalContext.localRequirements,
     civilPartnership: additionalContext.civilPartnership,
     previousMarriage,
+    italyPartnerPreviousMarriage,
     reference: metadata.reference,
     postAddress: additionalContext.postAddress,
     notPaid: !isSuccessfulPayment,
