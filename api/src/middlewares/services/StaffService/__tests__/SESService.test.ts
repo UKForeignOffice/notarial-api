@@ -4,7 +4,7 @@ import "pg-boss";
 import { flattenQuestions } from "../../helpers";
 import { isNotFieldType } from "../../../../utils";
 import { PayMetadata } from "../../../../types/FormDataBody";
-import { fields } from "./fixtures/fields";
+import * as fields from "./fixtures/fields";
 import { ApplicationError } from "../../../../ApplicationError";
 const sendToQueue = jest.fn();
 
@@ -52,7 +52,7 @@ test("getEmailBody handles a cni form with postal set to false properly", () => 
 test("sendEmail returns a jobId", async () => {
   sendToQueue.mockResolvedValueOnce("ABC-123");
   const jobId = await emailService.sendEmail({
-    fields: fields,
+    fields: fields.affirmation.remap,
     template: "submission",
     metadata: {
       reference: "..",
@@ -71,7 +71,7 @@ test("sendEmail throws ApplicationError when no jobId is returned", async () => 
   sendToQueue.mockRejectedValue(new ApplicationError("QUEUE", `SES_SEND_ERROR`, 500));
   try {
     await emailService.sendEmail({
-      fields,
+      fields: fields.affirmation.remap,
       template: "submission",
       metadata: {
         reference: "USER_REF",
