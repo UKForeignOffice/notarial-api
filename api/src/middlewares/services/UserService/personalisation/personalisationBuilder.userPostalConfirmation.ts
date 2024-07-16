@@ -20,7 +20,8 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const previousMarriage = answers.maritalStatus && answers.maritalStatus !== "Never married";
 
   // Italy is the only country that requires the partner's proof of end of marriage doc
-  const italyPartnerPreviousMarriage = country === "Italy" && answers.partnerMaritalStatus && answers.partnerMaritalStatus !== "Never married";
+  const partnerHasPreviousMarriage = answers.partnerMaritalStatus && answers.partnerMaritalStatus !== "Never married";
+  const italyPartnerPreviousMarriage = country === "Italy" && partnerHasPreviousMarriage;
 
   const additionalContext = getUserPostalConfirmationAdditionalContext(country, post);
 
