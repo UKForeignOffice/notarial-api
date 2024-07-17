@@ -26,7 +26,7 @@ test("buildSendEmailArgs should return the correct personalisation for an in-per
     firstName: "foo",
     docsList:
       "* your UK passport\n* your birth certificate\n* proof of address – you must use your residence permit if the country you live in issues these\n* your partner’s passport or national identity card",
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=10",
+    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
     civilPartnership: false,
     country: "Turkey",
     localRequirements: "",
@@ -43,7 +43,7 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     firstName: "foo",
     post: "the British Consulate General Istanbul",
     country: "Turkey",
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=10",
+    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
     localRequirements: "",
     civilPartnership: false,
     reference: "1234",
@@ -56,21 +56,22 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
 
 test("getUserPostalConfirmationAdditionalContext returns additionalContext correctly", () => {
   expect(getUserPostalConfirmationAdditionalContext("Italy")).toStrictEqual({
-    additionalDocs: "",
+    additionalDocs: ["your parents' full names ", "partner's proof any previous marriages or civil partnerships have ended"],
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
-    civilPartnership: false,
+    civilPartnership: true,
     cniDelivery: true,
     duration: "6 months",
-    localRequirements: "",
+    localRequirements: `\nA CNI is equivalent to a 'Nulla Osta' in Italy. \nIf you decide to apply by post, you will pay an additional fee to a notary public. ‘Ask the notary to use the 'Vera di Firma procedure’.`,
     post: "the British Embassy Rome",
-    postAddress: "",
+    postAddress: `\nBritish Embassy Rome \nVia XX Settembre 80/a \n00187 Rome \nItaly`,
     postal: true,
   });
 
   expect(getUserPostalConfirmationAdditionalContext("Russia", "the British Embassy Moscow")).toStrictEqual({
     additionalDocs: [
       " A piece of paper with the Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities)",
-      " if you're not a Russian resident - either your residence registration slip issued by migration authorities or the rental agreement with your name for your private accommodation in Russia",
+      " if you're not a Russian resident - either your residence registration slip issued by migration authorities or the rental agreement with your name for your private accommodation in Russia ",
+      "if you live in another country, you can use your migration card date-stamped by Russian border control upon your arrival as proof you arrived in Russia at least 3 days earlier",
     ],
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10",
     civilPartnership: false,
