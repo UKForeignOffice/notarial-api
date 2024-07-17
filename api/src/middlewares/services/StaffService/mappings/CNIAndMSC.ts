@@ -7,6 +7,7 @@ export const order = {
   partnerAddress: "Partner's address",
   partnerNationality: "Partner's nationality",
   partnerMaritalStatus: "Partner's marital and civil status",
+  marriageDetails: "Marriage",
   deliveryDetails: "Delivery details",
   feedbackConsent: "Feedback consent",
 };
@@ -39,6 +40,7 @@ export const remap = {
   partnerFirstName: "partnerName.partnerFirstName",
   partnerMiddleName: "partnerName.partnerMiddleName",
   partnerSurname: "partnerName.partnerSurname",
+  partnerSex: "partnerName.partnerSex",
 
   partnerAddressLine1: "partnerAddress.partnerAddressLine1",
   partnerAddressLine2: "partnerAddress.partnerAddressLine2",
@@ -49,6 +51,9 @@ export const remap = {
   partnerNationality: "partnerNationality.partnerNationality",
 
   partnerMaritalStatus: "partnerMaritalStatus.partnerMaritalStatus",
+
+  dateOfMarriage: "marriageDetails.dateOfMarriage",
+  placeOfMarriage: "marriageDetails.placeOfMarriage",
 
   deliveryFirstName: "deliveryDetails.deliveryFirstName",
   deliverySurname: "deliveryDetails.deliverySurname",

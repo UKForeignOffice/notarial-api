@@ -1,24 +1,741 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`affirmation is successfully remapped 1`] = `
+exports[`CNI and MSC by post is successfully remapped 1`] = `
 {
   "Applicant's address": {
     "addressLine1": {
-      "answer": "Test",
+      "answer": "test",
       "category": "applicantDetails",
       "key": "addressLine1",
       "title": "Address line 1",
       "type": "text",
     },
     "addressLine2": {
-      "answer": "Test",
+      "answer": null,
       "category": "applicantDetails",
       "key": "addressLine2",
       "title": "Address line 2 ",
       "type": "text",
     },
     "city": {
-      "answer": "Test",
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "city",
+      "title": "Town or city",
+      "type": "text",
+    },
+    "country": {
+      "answer": "United Kingdom",
+      "category": "applicantDetails",
+      "key": "countryAddress",
+      "title": "Country",
+      "type": "list",
+    },
+    "postcode": {
+      "answer": null,
+      "category": "applicantDetails",
+      "key": "postcode",
+      "title": "Postcode or zip code",
+      "type": "text",
+    },
+  },
+  "Applicant's details": {
+    "dateOfBirth": {
+      "answer": "1998-01-19",
+      "category": "applicantDetails",
+      "key": "dateOfBirth",
+      "title": "Date of birth",
+      "type": "date",
+    },
+    "emailAddress": {
+      "answer": "luke@cautionyourblast.com",
+      "category": "contact",
+      "key": "emailAddress",
+      "title": "Email address",
+      "type": "text",
+    },
+    "firstName": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "firstName",
+      "title": "First name",
+      "type": "text",
+    },
+    "middleName": {
+      "answer": null,
+      "category": "applicantDetails",
+      "key": "middleName",
+      "title": "Middle name",
+      "type": "text",
+    },
+    "phoneNumber": {
+      "answer": "+44 123456787890",
+      "category": "contact",
+      "key": "phoneNumber",
+      "title": "Phone number",
+      "type": "text",
+    },
+    "sex": {
+      "answer": "Male",
+      "category": "applicantDetails",
+      "key": "sex",
+      "title": "Male or female",
+      "type": "list",
+    },
+    "surname": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "surname",
+      "title": "Surname",
+      "type": "text",
+    },
+  },
+  "Applicant's passport": {
+    "dateOfIssue": {
+      "answer": "1998-01-19",
+      "category": "applicantDetails",
+      "key": "passportDateOfIssue",
+      "title": "Date of issue of passport",
+      "type": "date",
+    },
+    "number": {
+      "answer": "1234567899",
+      "category": "applicantDetails",
+      "key": "passportNumber",
+      "title": "Passport number",
+      "type": "text",
+    },
+  },
+  "Delivery details": undefined,
+  "Feedback consent": {
+    "feedbackConsent": {
+      "answer": false,
+      "category": "feedback",
+      "key": "feedbackConsent",
+      "title": "Can our partner contact you for feedback to help improve this service?",
+      "type": "list",
+    },
+  },
+  "Marital and civil status": {
+    "status": {
+      "answer": "Never married",
+      "category": "maritalStatus",
+      "key": "maritalStatus",
+      "title": "Marital status",
+      "type": "list",
+    },
+  },
+  "Marriage": {
+    "dateOfMarriage": {
+      "answer": "2023-10",
+      "category": "marriage",
+      "key": "dateOfMarriage",
+      "title": "Date of marriage",
+      "type": "monthYear",
+    },
+    "placeOfMarriage": {
+      "answer": "test",
+      "category": "marriage",
+      "key": "placeOfMarriage",
+      "title": "Place of marriage",
+      "type": "text",
+    },
+  },
+  "Partner's address": {
+    "partnerAddressCity": {
+      "answer": "test",
+      "category": "partner",
+      "key": "partnerAddressCity",
+      "title": "Town or city",
+      "type": "text",
+    },
+    "partnerAddressCountry": {
+      "answer": "United Kingdom",
+      "category": "partner",
+      "key": "partnerAddressCountry",
+      "title": "Country",
+      "type": "list",
+    },
+    "partnerAddressLine1": {
+      "answer": "test",
+      "category": "partner",
+      "key": "partnerAddressLine1",
+      "title": "Address line 1",
+      "type": "text",
+    },
+    "partnerAddressLine2": {
+      "answer": null,
+      "category": "partner",
+      "key": "partnerAddressLine2",
+      "title": "Address line 2",
+      "type": "text",
+    },
+    "partnerAddressPostcode": {
+      "answer": null,
+      "category": "partner",
+      "key": "partnerAddressPostcode",
+      "title": "Postcode or zip code",
+      "type": "text",
+    },
+  },
+  "Partner's marital and civil status": {
+    "partnerMaritalStatus": {
+      "answer": "Never married",
+      "category": "partner",
+      "key": "partnerMaritalStatus",
+      "title": "Marital status",
+      "type": "list",
+    },
+  },
+  "Partner's name": {
+    "partnerFirstName": {
+      "answer": "test",
+      "category": "partner",
+      "key": "partnerFirstName",
+      "title": "Partner’s first name",
+      "type": "text",
+    },
+    "partnerMiddleName": {
+      "answer": null,
+      "category": "partner",
+      "key": "partnerMiddleName",
+      "title": "Partner’s middle name",
+      "type": "text",
+    },
+    "partnerSex": {
+      "answer": "Male",
+      "category": "partner",
+      "key": "partnerSex",
+      "title": "Partner’s sex",
+      "type": "list",
+    },
+    "partnerSurname": {
+      "answer": "testq",
+      "category": "partner",
+      "key": "partnerSurname",
+      "title": "Partner’s surname",
+      "type": "text",
+    },
+  },
+  "Partner's nationality": {
+    "partnerNationality": {
+      "answer": "British",
+      "category": "partner",
+      "key": "partnerNationality",
+      "title": "Partner’s nationality",
+      "type": "list",
+    },
+  },
+}
+`;
+
+exports[`CNI by post is successfully remapped 1`] = `
+{
+  "Applicant's address": {
+    "addressLine1": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "addressLine1",
+      "title": "Address line 1",
+      "type": "text",
+    },
+    "addressLine2": {
+      "answer": null,
+      "category": "applicantDetails",
+      "key": "addressLine2",
+      "title": "Address line 2 ",
+      "type": "text",
+    },
+    "city": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "city",
+      "title": "Town or city",
+      "type": "text",
+    },
+    "country": {
+      "answer": "United Kingdom",
+      "category": "applicantDetails",
+      "key": "countryAddress",
+      "title": "Country",
+      "type": "list",
+    },
+    "postcode": {
+      "answer": null,
+      "category": "applicantDetails",
+      "key": "postcode",
+      "title": "Postcode or zip code",
+      "type": "text",
+    },
+  },
+  "Applicant's birth details": undefined,
+  "Applicant's details": {
+    "emailAddress": {
+      "answer": "luke@cautionyourblast.com",
+      "category": "contact",
+      "key": "emailAddress",
+      "title": "Email address",
+      "type": "text",
+    },
+    "firstName": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "firstName",
+      "title": "First name",
+      "type": "text",
+    },
+    "middleName": {
+      "answer": null,
+      "category": "applicantDetails",
+      "key": "middleName",
+      "title": "Middle name",
+      "type": "text",
+    },
+    "phoneNumber": {
+      "answer": "+44 1234 567890",
+      "category": "contact",
+      "key": "phoneNumber",
+      "title": "Phone number",
+      "type": "text",
+    },
+    "surname": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "surname",
+      "title": "Surname",
+      "type": "text",
+    },
+  },
+  "Applicant's passport": undefined,
+  "Contact details": undefined,
+  "Feedback consent": {
+    "feedbackConsent": {
+      "answer": false,
+      "category": "feedback",
+      "key": "feedbackConsent",
+      "title": "Can our partner contact you for feedback to help improve this service?",
+      "type": "list",
+    },
+  },
+  "Marital and civil status": {
+    "status": {
+      "answer": "Never married",
+      "category": "maritalStatus",
+      "key": "maritalStatus",
+      "title": "Marital status",
+      "type": "list",
+    },
+  },
+  "Marriage": {
+    "dateOfMarriage": {
+      "answer": "2023-10",
+      "category": "marriage",
+      "key": "dateOfMarriage",
+      "title": "Date of marriage",
+      "type": "monthYear",
+    },
+    "placeOfMarriage": {
+      "answer": "test",
+      "category": "marriage",
+      "key": "placeOfMarriage",
+      "title": "Place of marriage",
+      "type": "text",
+    },
+  },
+  "Occupation": undefined,
+  "Parents' details": undefined,
+  "Partner's address": {
+    "partnerAddressCity": {
+      "answer": "test",
+      "category": "partner",
+      "key": "partnerAddressCity",
+      "title": "Town or city",
+      "type": "text",
+    },
+    "partnerAddressCountry": {
+      "answer": "United Kingdom",
+      "category": "partner",
+      "key": "partnerAddressCountry",
+      "title": "Country",
+      "type": "list",
+    },
+    "partnerAddressLine1": {
+      "answer": "test",
+      "category": "partner",
+      "key": "partnerAddressLine1",
+      "title": "Address line 1",
+      "type": "text",
+    },
+    "partnerAddressLine2": {
+      "answer": null,
+      "category": "partner",
+      "key": "partnerAddressLine2",
+      "title": "Address line 2",
+      "type": "text",
+    },
+    "partnerAddressPostcode": {
+      "answer": null,
+      "category": "partner",
+      "key": "partnerAddressPostcode",
+      "title": "Postcode or zip code",
+      "type": "text",
+    },
+  },
+  "Partner's marital and civil status": {
+    "partnerMaritalStatus": {
+      "answer": "Never married",
+      "category": "partner",
+      "key": "partnerMaritalStatus",
+      "title": "Marital status",
+      "type": "list",
+    },
+  },
+  "Partner's name": {
+    "partnerFirstName": {
+      "answer": "test",
+      "category": "partner",
+      "key": "partnerFirstName",
+      "title": "Partner’s first name",
+      "type": "text",
+    },
+    "partnerMiddleName": {
+      "answer": null,
+      "category": "partner",
+      "key": "partnerMiddleName",
+      "title": "Partner’s middle name",
+      "type": "text",
+    },
+    "partnerSex": {
+      "answer": "Male",
+      "category": "partner",
+      "key": "partnerSex",
+      "title": "Partner’s sex",
+      "type": "list",
+    },
+    "partnerSurname": {
+      "answer": "test",
+      "category": "partner",
+      "key": "partnerSurname",
+      "title": "Partner’s surname",
+      "type": "text",
+    },
+  },
+  "Partner's nationality": {
+    "partnerNationality": {
+      "answer": "British",
+      "category": "partner",
+      "key": "partnerNationality",
+      "title": "Partner’s nationality",
+      "type": "list",
+    },
+  },
+  "Postal address": undefined,
+}
+`;
+
+exports[`Exchange is successfully remapped 1`] = `
+{
+  "Applicant's address": {
+    "addressLine1": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "addressLine1",
+      "title": "Address line 1",
+      "type": "text",
+    },
+    "addressLine2": {
+      "answer": null,
+      "category": "applicantDetails",
+      "key": "addressLine2",
+      "title": "Address line 2 ",
+      "type": "text",
+    },
+    "city": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "city",
+      "title": "Town or city",
+      "type": "text",
+    },
+    "country": {
+      "answer": "United Kingdom",
+      "category": "applicantDetails",
+      "key": "countryAddress",
+      "title": "Country",
+      "type": "list",
+    },
+    "postcode": {
+      "answer": null,
+      "category": "applicantDetails",
+      "key": "postcode",
+      "title": "Postcode or zip code",
+      "type": "text",
+    },
+  },
+  "Applicant's details": {
+    "emailAddress": {
+      "answer": "luke@cautionyourblast.com",
+      "category": "contact",
+      "key": "emailAddress",
+      "title": "Email address",
+      "type": "text",
+    },
+    "firstName": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "firstName",
+      "title": "First name",
+      "type": "text",
+    },
+    "middleName": {
+      "answer": null,
+      "category": "applicantDetails",
+      "key": "middleName",
+      "title": "Middle name",
+      "type": "text",
+    },
+    "phoneNumber": {
+      "answer": "+44 1234 567890",
+      "category": "contact",
+      "key": "phoneNumber",
+      "title": "Phone number",
+      "type": "text",
+    },
+    "surname": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "surname",
+      "title": "Surname",
+      "type": "text",
+    },
+  },
+  "Feedback consent": {
+    "feedbackConsent": {
+      "answer": false,
+      "category": "feedback",
+      "key": "feedbackConsent",
+      "title": "Can our partner contact you for feedback to help improve this service?",
+      "type": "list",
+    },
+  },
+  "Marital and civil status": {
+    "status": {
+      "answer": "Never married",
+      "category": "applicantDetails",
+      "key": "maritalStatus",
+      "title": "Marital status",
+      "type": "list",
+    },
+  },
+  "Marriage": {
+    "dateOfMarriage": {
+      "answer": "2203-10",
+      "category": "marriage",
+      "key": "dateOfMarriage",
+      "title": "Date of marriage",
+      "type": "monthYear",
+    },
+    "placeOfMarriage": {
+      "answer": "test",
+      "category": "marriage",
+      "key": "placeOfMarriage",
+      "title": "Place of marriage",
+      "type": "text",
+    },
+  },
+  "Partner's address": {
+    "partnerAddressCity": {
+      "answer": "test",
+      "category": "partner",
+      "key": "partnerAddressCity",
+      "title": "Town or city",
+      "type": "text",
+    },
+    "partnerAddressCountry": {
+      "answer": "United Kingdom",
+      "category": "partner",
+      "key": "partnerAddressCountry",
+      "title": "Country",
+      "type": "list",
+    },
+    "partnerAddressLine1": {
+      "answer": "test",
+      "category": "partner",
+      "key": "partnerAddressLine1",
+      "title": "Address line 1",
+      "type": "text",
+    },
+    "partnerAddressLine2": {
+      "answer": null,
+      "category": "partner",
+      "key": "partnerAddressLine2",
+      "title": "Address line 2",
+      "type": "text",
+    },
+    "partnerAddressPostcode": {
+      "answer": null,
+      "category": "partner",
+      "key": "partnerAddressPostcode",
+      "title": "Postcode or zip code",
+      "type": "text",
+    },
+  },
+  "Partner's marital and civil status": {
+    "partnerMaritalStatus": {
+      "answer": "Never married",
+      "category": "partner",
+      "key": "partnerMaritalStatus",
+      "title": "Partner’s marital status",
+      "type": "list",
+    },
+  },
+  "Partner's name": {
+    "partnerFirstName": {
+      "answer": "test",
+      "category": "partner",
+      "key": "partnerFirstName",
+      "title": "Partner’s first name",
+      "type": "text",
+    },
+    "partnerMiddleName": {
+      "answer": null,
+      "category": "partner",
+      "key": "partnerMiddleName",
+      "title": "Partner’s middle name",
+      "type": "text",
+    },
+    "partnerSex": {
+      "answer": "Male",
+      "category": "partner",
+      "key": "partnerSex",
+      "title": "Partner’s sex",
+      "type": "list",
+    },
+    "partnerSurname": {
+      "answer": "test",
+      "category": "partner",
+      "key": "partnerSurname",
+      "title": "Partner’s surname",
+      "type": "text",
+    },
+  },
+  "Partner's nationality": {
+    "partnerNationality": {
+      "answer": "British",
+      "category": "partner",
+      "key": "partnerNationality",
+      "title": "Partner’s nationality",
+      "type": "list",
+    },
+  },
+}
+`;
+
+exports[`MSC by post is successfully remapped 1`] = `
+{
+  "Applicant's details": {
+    "dateOfBirth": {
+      "answer": "1998-01-19",
+      "category": "applicantDetails",
+      "key": "dateOfBirth",
+      "title": "Date of birth",
+      "type": "date",
+    },
+    "emailAddress": {
+      "answer": "luke@cautionyourblast.com",
+      "category": "contact",
+      "key": "emailAddress",
+      "title": "Email address",
+      "type": "text",
+    },
+    "phoneNumber": {
+      "answer": "+44 12345678900",
+      "category": "contact",
+      "key": "phoneNumber",
+      "title": "Phone number",
+      "type": "text",
+    },
+    "sex": {
+      "answer": "Male",
+      "category": "applicantDetails",
+      "key": "sex",
+      "title": "Male or female",
+      "type": "list",
+    },
+  },
+  "Applicant's passport": {
+    "dateOfIssue": {
+      "answer": "1998-01-19",
+      "category": "applicantDetails",
+      "key": "passportDateOfIssue",
+      "title": "Date of issue of passport",
+      "type": "date",
+    },
+    "number": {
+      "answer": "1234567890",
+      "category": "applicantDetails",
+      "key": "passportNumber",
+      "title": "Passport number",
+      "type": "text",
+    },
+  },
+  "Delivery details": undefined,
+  "Feedback consent": {
+    "feedbackConsent": {
+      "answer": false,
+      "category": "feedback",
+      "key": "feedbackConsent",
+      "title": "Can our partner contact you for feedback to help improve this service?",
+      "type": "list",
+    },
+  },
+  "Marital and civil status": {
+    "status": {
+      "answer": "Never married",
+      "category": "maritalStatus",
+      "key": "maritalStatus",
+      "title": "Marital status",
+      "type": "list",
+    },
+  },
+  "Marriage": {
+    "dateOfMarriage": {
+      "answer": "2023-10",
+      "category": "marriage",
+      "key": "dateOfMarriage",
+      "title": "Date of marriage",
+      "type": "monthYear",
+    },
+    "placeOfMarriage": {
+      "answer": "test",
+      "category": "marriage",
+      "key": "placeOfMarriage",
+      "title": "Place of marriage",
+      "type": "text",
+    },
+  },
+}
+`;
+
+exports[`affirmation is successfully remapped 1`] = `
+{
+  "Applicant's address": {
+    "addressLine1": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "addressLine1",
+      "title": "Address line 1",
+      "type": "text",
+    },
+    "addressLine2": {
+      "answer": null,
+      "category": "applicantDetails",
+      "key": "addressLine2",
+      "title": "Address line 2 ",
+      "type": "text",
+    },
+    "city": {
+      "answer": "test",
       "category": "applicantDetails",
       "key": "city",
       "title": "Town or city",
@@ -47,15 +764,22 @@ exports[`affirmation is successfully remapped 1`] = `
       "title": "Country of birth",
       "type": "list",
     },
-    "nameChanged": {
-      "answer": "By deed poll",
+    "dateOfBirth": {
+      "answer": "1998-01-19",
+      "category": "applicantDetails",
+      "key": "dateOfBirth",
+      "title": "Date of birth",
+      "type": "date",
+    },
+    "nameChangedByDeedPoll": {
+      "answer": "false",
       "category": "nameChange",
-      "key": "nameChanged",
-      "title": "Name changed",
+      "key": "nameChangedByDeedPoll",
+      "title": "Name changed by deed poll",
       "type": "list",
     },
     "placeOfBirth": {
-      "answer": "Test",
+      "answer": "test",
       "category": "applicantDetails",
       "key": "placeOfBirth",
       "title": "Place of birth ",
@@ -63,22 +787,8 @@ exports[`affirmation is successfully remapped 1`] = `
     },
   },
   "Applicant's details": {
-    "dateOfBirth": {
-      "answer": "2000-11-11",
-      "category": "applicantDetails",
-      "key": "dateOfBirth",
-      "title": "Date of birth",
-      "type": "date",
-    },
-    "emailAddress": {
-      "answer": "pye@cautionyourblast.com",
-      "category": "contact",
-      "key": "emailAddress",
-      "title": "Email address",
-      "type": "text",
-    },
     "firstName": {
-      "answer": "Test",
+      "answer": "test",
       "category": "applicantDetails",
       "key": "firstName",
       "title": "First name",
@@ -91,22 +801,15 @@ exports[`affirmation is successfully remapped 1`] = `
       "title": "Middle name",
       "type": "text",
     },
-    "phoneNumber": {
-      "answer": "+440000000",
-      "category": "contact",
-      "key": "phoneNumber",
-      "title": "Phone number",
-      "type": "text",
-    },
     "sex": {
-      "answer": "Female",
+      "answer": "Male",
       "category": "applicantDetails",
       "key": "sex",
       "title": "Male or female",
       "type": "list",
     },
     "surname": {
-      "answer": "Test",
+      "answer": "test",
       "category": "applicantDetails",
       "key": "surname",
       "title": "Surname",
@@ -115,24 +818,39 @@ exports[`affirmation is successfully remapped 1`] = `
   },
   "Applicant's passport": {
     "dateOfIssue": {
-      "answer": "2020-12-12",
+      "answer": "1998-01-18",
       "category": "applicantDetails",
       "key": "passportDateOfIssue",
       "title": "Date of issue of passport",
       "type": "date",
     },
     "number": {
-      "answer": "0000",
+      "answer": "1234567890",
       "category": "applicantDetails",
       "key": "passportNumber",
       "title": "Passport number",
       "type": "text",
     },
   },
-  "Contact details": undefined,
+  "Contact details": {
+    "emailAddress": {
+      "answer": "luke@cautionyourblast.com",
+      "category": "contact",
+      "key": "emailAddress",
+      "title": "Email address",
+      "type": "text",
+    },
+    "phoneNumber": {
+      "answer": "+44 1234 567890",
+      "category": "contact",
+      "key": "phoneNumber",
+      "title": "Phone number",
+      "type": "text",
+    },
+  },
   "Feedback consent": {
     "feedbackConsent": {
-      "answer": true,
+      "answer": false,
       "category": "feedback",
       "key": "feedbackConsent",
       "title": "Can our partner contact you for feedback to help improve this service?",
@@ -140,22 +858,8 @@ exports[`affirmation is successfully remapped 1`] = `
     },
   },
   "Marital and civil status": {
-    "dateOfDecreeAbsolute": {
-      "answer": "2020-12-12",
-      "category": "maritalStatus",
-      "key": "dateOfDecreeAbsolute",
-      "title": "Date of issue of decree absolute",
-      "type": "date",
-    },
-    "placeOfDecreeAbsolute": {
-      "answer": "London, England",
-      "category": "maritalStatus",
-      "key": "placeOfDecreeAbsolute",
-      "title": "Place of issue of decree absolute",
-      "type": "text",
-    },
     "status": {
-      "answer": "Divorced",
+      "answer": "Never married",
       "category": "maritalStatus",
       "key": "maritalStatus",
       "title": "Marital status",
@@ -164,14 +868,14 @@ exports[`affirmation is successfully remapped 1`] = `
   },
   "Marriage": {
     "dateOfMarriage": {
-      "answer": "2024-06",
+      "answer": "2023-10",
       "category": "marriage",
       "key": "dateOfMarriage",
       "title": "Date of marriage",
       "type": "monthYear",
     },
     "placeOfMarriage": {
-      "answer": "Test",
+      "answer": "test",
       "category": "marriage",
       "key": "placeOfMarriage",
       "title": "Place of marriage",
@@ -180,7 +884,7 @@ exports[`affirmation is successfully remapped 1`] = `
   },
   "Occupation": {
     "occupation": {
-      "answer": "Test",
+      "answer": "test",
       "category": "occupation",
       "key": "occupation",
       "title": "Occupation",
@@ -189,37 +893,44 @@ exports[`affirmation is successfully remapped 1`] = `
   },
   "Parents' details": {
     "fatherFullName": {
-      "answer": "Test Test",
+      "answer": "test",
       "category": "parents",
       "key": "fatherFullName",
       "title": "Father's full name",
       "type": "text",
     },
     "motherFullName": {
-      "answer": "Test Test",
+      "answer": "test",
       "category": "parents",
       "key": "motherFullName",
       "title": "Mother's full name",
       "type": "text",
     },
+    "motherMaidenName": {
+      "answer": "test",
+      "category": "parents",
+      "key": "motherMaidenName",
+      "title": "Maiden name",
+      "type": "text",
+    },
   },
   "Partner's address": {
     "partnerAddressCity": {
-      "answer": "Test",
+      "answer": "test",
       "category": "partner",
       "key": "partnerAddressCity",
       "title": "Town or city",
       "type": "text",
     },
     "partnerAddressCountry": {
-      "answer": "Spain",
+      "answer": "United Kingdom",
       "category": "partner",
       "key": "partnerAddressCountry",
       "title": "Country",
       "type": "list",
     },
     "partnerAddressLine1": {
-      "answer": "Test",
+      "answer": "test",
       "category": "partner",
       "key": "partnerAddressLine1",
       "title": "Address line 1",
@@ -243,33 +954,40 @@ exports[`affirmation is successfully remapped 1`] = `
   "Partner's marital and civil status": undefined,
   "Partner's name": {
     "partnerFirstName": {
-      "answer": "Test",
+      "answer": "test",
       "category": "partner",
       "key": "partnerFirstName",
-      "title": "Partner's first name",
+      "title": "Partner’s first name",
       "type": "text",
     },
     "partnerMiddleName": {
       "answer": null,
       "category": "partner",
       "key": "partnerMiddleName",
-      "title": "Partner's middle name",
+      "title": "Partner’s middle name",
       "type": "text",
     },
+    "partnerSex": {
+      "answer": "Male",
+      "category": "partner",
+      "key": "partnerSex",
+      "title": "Partner’s sex",
+      "type": "list",
+    },
     "partnerSurname": {
-      "answer": "Test",
+      "answer": "test",
       "category": "partner",
       "key": "partnerSurname",
-      "title": "Partner's surname",
+      "title": "Partner’s surname",
       "type": "text",
     },
   },
   "Partner's nationality": {
     "partnerNationality": {
-      "answer": "United States citizen",
+      "answer": "British",
       "category": "partner",
       "key": "partnerNationality",
-      "title": "Partner's nationality",
+      "title": "Partner’s nationality",
       "type": "list",
     },
   },

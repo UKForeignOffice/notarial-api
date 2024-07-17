@@ -2,6 +2,7 @@ export const order = {
   applicantDetails: "Applicant's details",
   applicantPassport: "Applicant's passport",
   maritalStatus: "Marital and civil status",
+  marriageDetails: "Marriage",
   deliveryDetails: "Delivery details",
   feedbackConsent: "Feedback consent",
 };
@@ -21,6 +22,9 @@ export const remap = {
   passportNumber: "applicantPassport.number",
 
   maritalStatus: "maritalStatus.status",
+
+  dateOfMarriage: "marriageDetails.dateOfMarriage",
+  placeOfMarriage: "marriageDetails.placeOfMarriage",
 
   deliveryFirstName: "deliveryDetails.deliveryFirstName",
   deliverySurname: "deliveryDetails.deliverySurname",
