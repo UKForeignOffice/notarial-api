@@ -115,7 +115,7 @@ test("buildDocsList will add optional documents when the relevant fields are fil
   );
 });
 
-test("buildDocsList will add cni proof of stay doc if the form type is cni", () => {
+test("buildDocsList will add cni proof of stay doc if the form type is cni and the user does not live in the country", () => {
   const answers = answersHashMap(formFields);
   const fieldsMap = {
     ...answers,
@@ -123,6 +123,19 @@ test("buildDocsList will add cni proof of stay doc if the form type is cni", () 
     oathType: "affirmation",
   };
   expect(buildUserConfirmationDocsList(fieldsMap, "cni")).toBe(
-    `* your UK passport\n* proof of address – you must use your residence permit if the country you live in issues these\n* proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address\n* your partner’s passport or national identity card`
+    `* your UK passport\n* proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address\n* your partner’s passport or national identity card`
+  );
+});
+
+test("buildDocsList will add proof of address doc if the form type is cni and the user lives in the country", () => {
+  const answers = answersHashMap(formFields);
+  const fieldsMap = {
+    ...answers,
+    marriedBefore: false,
+    oathType: "affirmation",
+    livesInCountry: true,
+  };
+  expect(buildUserConfirmationDocsList(fieldsMap, "cni")).toBe(
+    `* your UK passport\n* proof of address – you must use your residence permit if the country you live in issues these\n* your partner’s passport or national identity card`
   );
 });
