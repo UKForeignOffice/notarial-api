@@ -42,19 +42,20 @@ export function buildUserConfirmationDocsList(fields: AnswersHashMap, type?: For
     throw new ApplicationError("WEBHOOK", "VALIDATION", 500, "Fields are empty");
   }
 
-  const docsList = [
-    "your UK passport",
-    "proof of address – you must use your residence permit if the country you live in issues these",
-    "your partner’s passport or national identity card",
-  ];
+  const docsList = ["your UK passport", "your partner’s passport or national identity card"];
 
   // for affirmations, users need to provide their birth certificate. For contextual reasons, this should appear next to the user's passport
   if (type === "affirmation") {
     docsList.splice(1, 0, "your birth certificate");
   }
 
+  // for cni applications, proof of address is only required if the user lives in the country. For affirmation applications, proof of address is always required
+  if (type === "affirmation" || (type === "cni" && fields.livesInCountry)) {
+    docsList.splice(2, 0, "proof of address – you must use your residence permit if the country you live in issues these");
+  }
+
   // for cnis, the user needs to provide proof they have stayed in the country for 3 days. For contextual reasons, this should appear below the proof of address doc
-  if (type === "cni") {
+  if (type === "cni" && !fields.livesInCountry) {
     docsList.splice(2, 0, "proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address");
   }
   if (fields.maritalStatus && fields.maritalStatus !== "Never married") {
