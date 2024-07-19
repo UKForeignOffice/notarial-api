@@ -18,8 +18,8 @@ export default class FileService {
       url = new URL(urlToValidate);
     } catch (e) {
       this.logger.error(`url ${urlToValidate} is not a valid URL`);
+      throw new ApplicationError("FILE", "URL_INVALID", `url: ${urlToValidate} was invalid`);
     }
-    // @ts-ignore
     return this.allowedOrigins.includes(url.origin);
   }
 

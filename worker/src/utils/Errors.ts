@@ -24,7 +24,7 @@ export type ErrorTypes = "CONSUMER" | "FILE" | "GENERIC" | "SES";
  */
 type ConsumerErrorCode = "START_FAILED";
 type GenericErrorCode = "UNKNOWN";
-type FileErrorCode = "EMPTY_RES" | "ORIGIN_NOT_ALLOWED" | "API_ERROR" | "NOT_FOUND";
+type FileErrorCode = "EMPTY_RES" | "ORIGIN_NOT_ALLOWED" | "API_ERROR" | "NOT_FOUND" | "URL_INVALID";
 
 /**
  * Union of all the different ErrorCode.
@@ -51,6 +51,7 @@ const FILE: ErrorRecord<FileErrorCode> = {
   ORIGIN_NOT_ALLOWED: "The file is not located in an allowed origin",
   API_ERROR: "There was an error returning this file",
   NOT_FOUND: "The requested file could not be found",
+  URL_INVALID: "The url is invalid",
 };
 
 type ErrorRecords = {

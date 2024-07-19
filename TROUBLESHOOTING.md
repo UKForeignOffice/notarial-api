@@ -284,12 +284,13 @@ There is an issue adding data to the database. Investigate RDS.
 
 The following are thrown errors, and may be inserted in the database. They have been parsed as `ApplicationError`s to simplify debugging.
 
-| Error type | Error code           | Comment                                                                                        |
-|------------|----------------------|------------------------------------------------------------------------------------------------|
-| FILE       | ORIGIN_NOT_ALLOWED   | Attempted to fetch a file that is not the document upload API                                  |
-| FILE       | NOT_FOUND            | document upload API returned a 404                                                             |
-| FILE       | UNKNOWN              | An error was identified as relating to file code, but logs must be checked for further details |
-| CONSUMER   | START_FAILED         | Connection to database/queue could not be established                                          |
+| Error type | Error code         | Comment                                                                                        |
+|------------|--------------------|------------------------------------------------------------------------------------------------|
+| FILE       | ORIGIN_NOT_ALLOWED | Attempted to fetch a file that is not the document upload API                                  |
+| FILE       | NOT_FOUND          | document upload API returned a 404                                                             |
+| FILE       | URL_INVALID        | The URL is invalid                                                                             |
+| FILE       | UNKNOWN            | An error was identified as relating to file code, but logs must be checked for further details |
+| CONSUMER   | START_FAILED       | Connection to database/queue could not be established                                          |
 
 The following are logged errors and related to sending requests. These errors are caught, logged, and rethrown with 
 minimal parsing to preserve as much data as possible. 
