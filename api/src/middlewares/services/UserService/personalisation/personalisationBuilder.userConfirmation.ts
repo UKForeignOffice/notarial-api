@@ -4,7 +4,9 @@ import { AnswersHashMap } from "../../../../types/AnswersHashMap";
 import { FormType, PayMetadata } from "../../../../types/FormDataBody";
 import { ApplicationError } from "../../../../ApplicationError";
 
-const personalisationTypeMap = {
+type PersonalisationFunction = (fields: AnswersHashMap) => Record<string, boolean>;
+
+const personalisationTypeMap: { [key in FormType]?: PersonalisationFunction } = {
   affirmation: getAffirmationPersonalisations,
   cni: getCNIPersonalisations,
 };
@@ -15,7 +17,13 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
   if (!answers) {
     throw new ApplicationError("WEBHOOK", "VALIDATION", 500, "Fields are empty");
   }
-  const additionalPersonalisations = personalisationTypeMap[metadata.type as string]?.(answers) ?? {};
+
+  const getAdditionalPersonalisations = personalisationTypeMap[metadata.type as string];
+  if (!getAdditionalPersonalisations) {
+    throw new ApplicationError("WEBHOOK", "VALIDATION", 500, `No personalisation mapper set for form type: ${metadata.type}`);
+  }
+  const additionalPersonalisations = getAdditionalPersonalisations(answers);
+
   const country = answers["country"] as string;
   const post = answers["post"] as string;
 
