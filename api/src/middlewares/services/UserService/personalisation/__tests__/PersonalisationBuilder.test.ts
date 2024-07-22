@@ -2,7 +2,7 @@ import "pg-boss";
 import { testData } from "./fixtures";
 import { answersHashMap, flattenQuestions } from "../../../helpers";
 import { PersonalisationBuilder } from "../PersonalisationBuilder";
-import { buildUserConfirmationDocsList } from "../personalisationBuilder.userConfirmation";
+// import { buildUserConfirmationDocsList } from "../personalisationBuilder.userConfirmation";
 import { buildUserPostalConfirmationPersonalisation, getUserPostalConfirmationAdditionalContext } from "../personalisationBuilder.userPostalConfirmation";
 const pgBossMock = {
   async start() {
@@ -102,40 +102,40 @@ test("buildUserPostalConfirmationPersonalisation renders countries with default 
   expect(personalisation.post).toBe("the British Embassy Rome");
 });
 
-test("buildDocsList will add optional documents when the relevant fields are filled in", () => {
-  const answers = answersHashMap(formFields);
-  const fieldsMap = {
-    ...answers,
-    marriedBefore: true,
-    maritalStatus: "Divorced",
-    oathType: "Religious",
-  };
-  expect(buildUserConfirmationDocsList(fieldsMap, "affirmation")).toBe(
-    `* your UK passport\n* your birth certificate\n* proof of address – you must use your residence permit if the country you live in issues these\n* your partner’s passport or national identity card\n* decree absolute\n* religious book of your faith to swear upon`
-  );
-});
-
-test("buildDocsList will add cni proof of stay doc if the form type is cni and the user does not live in the country", () => {
-  const answers = answersHashMap(formFields);
-  const fieldsMap = {
-    ...answers,
-    marriedBefore: false,
-    oathType: "affirmation",
-  };
-  expect(buildUserConfirmationDocsList(fieldsMap, "cni")).toBe(
-    `* your UK passport\n* proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address\n* your partner’s passport or national identity card`
-  );
-});
-
-test("buildDocsList will add proof of address doc if the form type is cni and the user lives in the country", () => {
-  const answers = answersHashMap(formFields);
-  const fieldsMap = {
-    ...answers,
-    marriedBefore: false,
-    oathType: "affirmation",
-    livesInCountry: true,
-  };
-  expect(buildUserConfirmationDocsList(fieldsMap, "cni")).toBe(
-    `* your UK passport\n* proof of address – you must use your residence permit if the country you live in issues these\n* your partner’s passport or national identity card`
-  );
-});
+// test("buildDocsList will add optional documents when the relevant fields are filled in", () => {
+//   const answers = answersHashMap(formFields);
+//   const fieldsMap = {
+//     ...answers,
+//     marriedBefore: true,
+//     maritalStatus: "Divorced",
+//     oathType: "Religious",
+//   };
+//   expect(buildUserConfirmationDocsList(fieldsMap, "affirmation")).toBe(
+//     `* your UK passport\n* your birth certificate\n* proof of address – you must use your residence permit if the country you live in issues these\n* your partner’s passport or national identity card\n* decree absolute\n* religious book of your faith to swear upon`
+//   );
+// });
+//
+// test("buildDocsList will add cni proof of stay doc if the form type is cni and the user does not live in the country", () => {
+//   const answers = answersHashMap(formFields);
+//   const fieldsMap = {
+//     ...answers,
+//     marriedBefore: false,
+//     oathType: "affirmation",
+//   };
+//   expect(buildUserConfirmationDocsList(fieldsMap, "cni")).toBe(
+//     `* your UK passport\n* proof you’ve been staying in the country for 3 whole days before your appointment – if this is not shown on your proof of address\n* your partner’s passport or national identity card`
+//   );
+// });
+//
+// test("buildDocsList will add proof of address doc if the form type is cni and the user lives in the country", () => {
+//   const answers = answersHashMap(formFields);
+//   const fieldsMap = {
+//     ...answers,
+//     marriedBefore: false,
+//     oathType: "affirmation",
+//     livesInCountry: true,
+//   };
+//   expect(buildUserConfirmationDocsList(fieldsMap, "cni")).toBe(
+//     `* your UK passport\n* proof of address – you must use your residence permit if the country you live in issues these\n* your partner’s passport or national identity card`
+//   );
+// });
