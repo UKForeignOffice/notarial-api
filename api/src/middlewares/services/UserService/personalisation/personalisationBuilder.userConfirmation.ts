@@ -42,8 +42,8 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
 
 export function getAffirmationPersonalisations(fields: AnswersHashMap) {
   return {
-    previouslyMarried: fields.previouslyMarried !== "Never married",
-    religious: fields.oathType === "religious",
+    previouslyMarried: fields.maritalStatus !== "Never married",
+    religious: fields.oathType === "Religious",
   };
 }
 
@@ -51,8 +51,8 @@ export function getCNIPersonalisations(fields: AnswersHashMap) {
   return {
     livesInCountry: fields.livesInCountry === true,
     livesAbroad: !fields.livesInCountry,
-    previouslyMarried: fields.previouslyMarried !== "Never married",
-    religious: fields.oathType === "religious",
+    previouslyMarried: fields.maritalStatus !== "Never married",
+    religious: fields.oathType === "Religious",
   };
 }
 
