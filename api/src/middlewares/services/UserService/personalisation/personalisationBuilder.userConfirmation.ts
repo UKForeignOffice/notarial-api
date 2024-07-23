@@ -6,9 +6,12 @@ import { ApplicationError } from "../../../../ApplicationError";
 
 type PersonalisationFunction = (fields: AnswersHashMap) => Record<string, boolean>;
 
-const personalisationTypeMap: { [key in FormType]?: PersonalisationFunction } = {
+const personalisationTypeMap: Record<FormType, PersonalisationFunction> = {
   affirmation: getAffirmationPersonalisations,
   cni: getCNIPersonalisations,
+  exchange: (_fields: AnswersHashMap) => ({}),
+  msc: (_fields: AnswersHashMap) => ({}),
+  cniAndMsc: (_fields: AnswersHashMap) => ({}),
 };
 
 export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
