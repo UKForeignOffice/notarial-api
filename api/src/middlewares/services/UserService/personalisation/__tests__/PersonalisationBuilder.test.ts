@@ -44,6 +44,7 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     firstName: "foo",
     post: "the British Consulate General Istanbul",
     country: "Turkey",
+    croatiaCertNeeded: false,
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
     localRequirements: "",
     civilPartnership: false,
@@ -132,9 +133,11 @@ test("getCNIPersonalisations returns the correct personalisations given all posi
     livesInCountry: true,
     maritalStatus: "Divorced",
     oathType: "Religious",
+    certRequired: true,
   };
 
   expect(getCNIPersonalisations(answers)).toStrictEqual({
+    croatiaCertNeeded: true,
     livesInCountry: true,
     livesAbroad: false,
     previouslyMarried: true,
@@ -147,9 +150,11 @@ test("getCNIPersonalisations returns the correct personalisations given all nega
     livesInCountry: false,
     maritalStatus: "Never married",
     oathType: "Non-religious",
+    certRequired: false,
   };
 
   expect(getCNIPersonalisations(answers)).toStrictEqual({
+    croatiaCertNeeded: false,
     livesInCountry: false,
     livesAbroad: true,
     previouslyMarried: false,
