@@ -23,6 +23,9 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const partnerHasPreviousMarriage = answers.partnerMaritalStatus && answers.partnerMaritalStatus !== "Never married";
   const italyPartnerPreviousMarriage = country === "Italy" && partnerHasPreviousMarriage;
 
+  // For Croatia, there is an additional question asking if the user needs a certificate of custom law. If the answer is yes, they will need to provide this with their postal application
+  const croatiaCertNeeded = answers.certRequired === true;
+
   const additionalContext = getUserPostalConfirmationAdditionalContext(country, post);
 
   return {
@@ -34,6 +37,7 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     civilPartnership: additionalContext.civilPartnership,
     previousMarriage,
     italyPartnerPreviousMarriage,
+    croatiaCertNeeded,
     reference: metadata.reference,
     postAddress: additionalContext.postAddress,
     notPaid: !isSuccessfulPayment,
