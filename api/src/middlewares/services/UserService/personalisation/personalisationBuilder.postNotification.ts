@@ -24,13 +24,14 @@ const personalisationMappings: Record<FormType, object> = {
     caseType: "a CNI and MSC",
   },
 };
-export function buildPostNotificationPersonalisation(answers: AnswersHashMap, type: FormType) {
+export function buildPostNotificationPersonalisation(answers: AnswersHashMap, type: FormType, reference: string) {
   const country = answers["country"] as string;
   const post = (answers["post"] ?? additionalContexts.countries?.[country]?.post) as string;
 
   return {
     post,
     type,
+    reference,
     ...personalisationMappings[type],
   };
 }

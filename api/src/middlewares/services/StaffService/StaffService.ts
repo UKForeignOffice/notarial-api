@@ -170,7 +170,7 @@ export class StaffService {
     const country = answers["country"] as string;
     const post = answers["post"] as string;
     const emailAddress = getPostEmailAddress(country, post);
-    const personalisation = PersonalisationBuilder.postNotification(answers, type);
+    const personalisation = PersonalisationBuilder.postNotification(answers, type, reference);
     if (!emailAddress) {
       this.logger.error(
         { code: "UNRECOGNISED_SERVICE_APPLICATION" },
