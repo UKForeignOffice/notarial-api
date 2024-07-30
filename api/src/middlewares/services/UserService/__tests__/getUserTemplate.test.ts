@@ -41,3 +41,7 @@ test("returns correct template from country if the form has no postal metadata, 
 test("returns correct template from country if the form has no postal metadata, the user is submitting an exchange, and the country does not allow postal exchange", () => {
   expect(getUserTemplate("Russia", "exchange")).toBe("userConfirmation");
 });
+
+test("returns the correct template for exchange if the country is Croatia", () => {
+  expect(getUserTemplate("Croatia", "exchange")).toBe("userConfirmation");
+});
