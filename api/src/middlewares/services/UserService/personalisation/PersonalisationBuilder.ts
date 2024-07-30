@@ -1,4 +1,4 @@
-import { buildUserConfirmationPersonalisation } from "./personalisationBuilder.userConfirmation";
+import { buildUserConfirmationPersonalisation } from "./personalisationBuilder/userConfirmation";
 import { buildPostNotificationPersonalisation } from "./personalisationBuilder.postNotification";
 import { buildUserPostalConfirmationPersonalisation } from "./personalisationBuilder.userPostalConfirmation";
 

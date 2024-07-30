@@ -1,18 +1,9 @@
-import * as additionalContexts from "./../../utils/additionalContexts.json";
-import { getPost } from "../../utils/getPost";
-import { AnswersHashMap } from "../../../../types/AnswersHashMap";
-import { FormType, PayMetadata } from "../../../../types/FormDataBody";
-import { ApplicationError } from "../../../../ApplicationError";
-
-type PersonalisationFunction = (fields: AnswersHashMap) => Record<string, boolean>;
-
-const personalisationTypeMap: Record<FormType, PersonalisationFunction> = {
-  affirmation: getAffirmationPersonalisations,
-  cni: getCNIPersonalisations,
-  exchange: (_fields: AnswersHashMap) => ({}),
-  msc: (_fields: AnswersHashMap) => ({}),
-  cniAndMsc: (_fields: AnswersHashMap) => ({}),
-};
+import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
+import { FormType, PayMetadata } from "../../../../../../types/FormDataBody";
+import { ApplicationError } from "../../../../../../ApplicationError";
+import * as additionalContexts from "../../../../utils/additionalContexts.json";
+import { getPost } from "../../../../utils/getPost";
+import { personalisationTypeMap } from "./getAdditionalPersonalisations";
 
 export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
@@ -21,7 +12,7 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
     throw new ApplicationError("WEBHOOK", "VALIDATION", 500, "Fields are empty");
   }
 
-  const getAdditionalPersonalisations = personalisationTypeMap[metadata.type as string];
+  const getAdditionalPersonalisations = personalisationTypeMap[metadata.type!];
   if (!getAdditionalPersonalisations) {
     throw new ApplicationError("WEBHOOK", "VALIDATION", 500, `No personalisation mapper set for form type: ${metadata.type}`);
   }
@@ -47,21 +38,5 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
     notPaid: !isSuccessfulPayment,
     ...additionalPersonalisations,
     additionalDocs: additionalContext.additionalDocs ?? "",
-  };
-}
-
-export function getAffirmationPersonalisations(fields: AnswersHashMap) {
-  return {
-    previouslyMarried: fields.maritalStatus !== "Never married",
-    religious: fields.oathType === "Religious",
-  };
-}
-
-export function getCNIPersonalisations(fields: AnswersHashMap) {
-  return {
-    livesInCountry: fields.livesInCountry === true,
-    livesAbroad: !fields.livesInCountry,
-    previouslyMarried: fields.maritalStatus !== "Never married",
-    religious: fields.oathType === "Religious",
   };
 }
