@@ -14,6 +14,10 @@ jest.mock("../../utils/additionalContexts.json", () => {
         postal: true,
         cniDelivery: false,
       },
+      Croatia: {
+        postal: true,
+        cniDelivery: true,
+      },
     },
   };
 });
