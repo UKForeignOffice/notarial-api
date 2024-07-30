@@ -6,7 +6,7 @@ type PersonalisationFunction = (fields: AnswersHashMap) => Record<string, boolea
 export const personalisationTypeMap: Record<FormType, PersonalisationFunction> = {
   affirmation: getAffirmationPersonalisations,
   cni: getCNIPersonalisations,
-  exchange: (_fields: AnswersHashMap) => ({}),
+  exchange: getExchangePersonalisations,
   msc: (_fields: AnswersHashMap) => ({}),
   cniAndMsc: (_fields: AnswersHashMap) => ({}),
 };
@@ -24,5 +24,12 @@ export function getCNIPersonalisations(fields: AnswersHashMap) {
     livesAbroad: !fields.livesInCountry,
     previouslyMarried: fields.maritalStatus !== "Never married",
     religious: fields.oathType === "Religious",
+    croatiaCertNeeded: fields.certRequired === true,
+  };
+}
+
+export function getExchangePersonalisations(fields: AnswersHashMap) {
+  return {
+    croatiaCertNeeded: fields.certRequired === true,
   };
 }
