@@ -2,7 +2,7 @@ import "pg-boss";
 import { testData } from "./fixtures";
 import { answersHashMap, flattenQuestions } from "../../../helpers";
 import { PersonalisationBuilder } from "../PersonalisationBuilder";
-import { getAffirmationPersonalisations, getCNIPersonalisations } from "../personalisationBuilder.userConfirmation";
+import { getAffirmationPersonalisations, getCNIPersonalisations } from "../personalisationBuilder/userConfirmation/getAdditionalPersonalisations";
 import { buildUserPostalConfirmationPersonalisation, getUserPostalConfirmationAdditionalContext } from "../personalisationBuilder.userPostalConfirmation";
 const pgBossMock = {
   async start() {
