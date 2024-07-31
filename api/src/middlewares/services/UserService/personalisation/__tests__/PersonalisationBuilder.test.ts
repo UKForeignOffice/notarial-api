@@ -51,6 +51,7 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     reference: "1234",
     postAddress: "",
     previousMarriage: false,
+    italyProofOfAddress: false,
     italyPartnerPreviousMarriage: false,
     notPaid: true,
   });
