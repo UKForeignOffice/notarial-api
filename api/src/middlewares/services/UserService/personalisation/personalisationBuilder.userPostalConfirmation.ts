@@ -23,6 +23,9 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const partnerHasPreviousMarriage = answers.partnerMaritalStatus && answers.partnerMaritalStatus !== "Never married";
   const italySpainPartnerPreviousMarriage = (country === "Italy" || country === "Spain") && partnerHasPreviousMarriage;
 
+  // For Italy you also need the user's proof of address if they live in the UK
+  const italyProofOfAddress = country === "Italy";
+
   // For Croatia, there is an additional question asking if the user needs a certificate of custom law. If the answer is yes, they will need to provide this with their postal application
   const croatiaCertNeeded = answers.certRequired === true;
 
@@ -37,6 +40,7 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     civilPartnership: additionalContext.civilPartnership,
     previousMarriage,
     italySpainPartnerPreviousMarriage,
+    italyProofOfAddress,
     croatiaCertNeeded,
     reference: metadata.reference,
     postAddress: additionalContext.postAddress,
