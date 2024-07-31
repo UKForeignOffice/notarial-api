@@ -19,12 +19,12 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const post = answers["post"] as string;
   const previousMarriage = answers.maritalStatus && answers.maritalStatus !== "Never married";
 
+  const countryIsSpain = country === "Spain";
+  const countryIsItaly = country === "Italy";
+
   // Italy and Spain are the only countries that requires the partner's proof of end of marriage doc
   const partnerHasPreviousMarriage = answers.partnerMaritalStatus && answers.partnerMaritalStatus !== "Never married";
-  const italySpainPartnerPreviousMarriage = (country === "Italy" || country === "Spain") && partnerHasPreviousMarriage;
-
-  // For Italy you also need the user's proof of address if they live in the UK
-  const italyProofOfAddress = country === "Italy";
+  const italySpainPartnerPreviousMarriage = (countryIsItaly || countryIsSpain) && partnerHasPreviousMarriage;
 
   // For Croatia, there is an additional question asking if the user needs a certificate of custom law. If the answer is yes, they will need to provide this with their postal application
   const croatiaCertNeeded = answers.certRequired === true;
@@ -40,7 +40,8 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     civilPartnership: additionalContext.civilPartnership,
     previousMarriage,
     italySpainPartnerPreviousMarriage,
-    italyProofOfAddress,
+    italyProofOfAddress: countryIsItaly,
+    spainProofOfAddress: countryIsSpain,
     croatiaCertNeeded,
     reference: metadata.reference,
     postAddress: additionalContext.postAddress,
