@@ -51,7 +51,64 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     reference: "1234",
     postAddress: "",
     previousMarriage: false,
-    italyPartnerPreviousMarriage: false,
+    italyProofOfAddressNeeded: false,
+    spainProofOfAddressNeeded: false,
+    italySpainPartnerPreviousMarriageDocNeeded: false,
+    ukProofOfAddressNeeded: false,
+    notPaid: true,
+  });
+});
+
+test("buildSendEmailArgs should return the correct personalisation for Spain when the user's partner has been married before", () => {
+  const spainAnswers = {
+    ...answers,
+    country: "Spain",
+    partnerMaritalStatus: "Divorced",
+  };
+  const personalisation = PersonalisationBuilder.userPostalConfirmation(spainAnswers, { reference: "1234" });
+  expect(personalisation).toEqual({
+    firstName: "foo",
+    post: "the British Consulate General Istanbul",
+    country: "Spain",
+    croatiaCertNeeded: false,
+    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
+    localRequirements:
+      "\nYou must apply for your documents 3 months before your civil registry appointment or your wedding date if you're holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the embassy receives your correct documents, you should get the documentation you're applying for within 30 working days. Your application will not be processed quicker if your civil registry appointment or wedding date is less than 30 days away, so do not contact the embassy to request this.",
+    civilPartnership: false,
+    reference: "1234",
+    postAddress: "",
+    previousMarriage: false,
+    italyProofOfAddressNeeded: false,
+    spainProofOfAddressNeeded: true,
+    italySpainPartnerPreviousMarriageDocNeeded: true,
+    ukProofOfAddressNeeded: false,
+    notPaid: true,
+  });
+});
+
+test("buildSendEmailArgs should return the correct personalisation for Italy when the user's partner has been married before", () => {
+  const spainAnswers = {
+    ...answers,
+    country: "Italy",
+    partnerMaritalStatus: "Divorced",
+  };
+  const personalisation = PersonalisationBuilder.userPostalConfirmation(spainAnswers, { reference: "1234" });
+  expect(personalisation).toEqual({
+    firstName: "foo",
+    post: "the British Consulate General Istanbul",
+    country: "Italy",
+    croatiaCertNeeded: false,
+    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
+    localRequirements:
+      "\nA CNI is equivalent to a 'Nulla Osta' in Italy. \nIf you decide to apply by post, you will pay an additional fee to a notary public. ‘Ask the notary to use the 'Vera di Firma procedure’.",
+    civilPartnership: true,
+    reference: "1234",
+    postAddress: "",
+    previousMarriage: false,
+    italyProofOfAddressNeeded: false,
+    spainProofOfAddressNeeded: false,
+    italySpainPartnerPreviousMarriageDocNeeded: true,
+    ukProofOfAddressNeeded: true,
     notPaid: true,
   });
 });
