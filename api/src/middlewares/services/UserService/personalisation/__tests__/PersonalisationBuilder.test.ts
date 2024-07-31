@@ -52,7 +52,7 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     postAddress: "",
     previousMarriage: false,
     italyProofOfAddress: false,
-    italyPartnerPreviousMarriage: false,
+    italySpainPartnerPreviousMarriage: false,
     notPaid: true,
   });
 });
