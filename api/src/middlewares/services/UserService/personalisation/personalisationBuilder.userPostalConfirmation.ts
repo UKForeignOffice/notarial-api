@@ -22,6 +22,8 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const countryIsSpain = country === "Spain";
   const countryIsItaly = country === "Italy";
 
+  const livesInCountry = answers.livesInCountry === true;
+
   // Italy and Spain are the only countries that requires the partner's proof of end of marriage doc
   const partnerHasPreviousMarriage = answers.partnerMaritalStatus && answers.partnerMaritalStatus !== "Never married";
   const italySpainPartnerPreviousMarriage = (countryIsItaly || countryIsSpain) && partnerHasPreviousMarriage;
@@ -40,8 +42,9 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     civilPartnership: additionalContext.civilPartnership,
     previousMarriage,
     italySpainPartnerPreviousMarriage,
-    italyProofOfAddress: countryIsItaly,
+    italyProofOfAddress: countryIsItaly && livesInCountry,
     spainProofOfAddress: countryIsSpain,
+    ukProofOfAddress: countryIsItaly && !livesInCountry,
     croatiaCertNeeded,
     reference: metadata.reference,
     postAddress: additionalContext.postAddress,
