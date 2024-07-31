@@ -51,10 +51,10 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     reference: "1234",
     postAddress: "",
     previousMarriage: false,
-    italyProofOfAddress: false,
-    spainProofOfAddress: false,
-    italySpainPartnerPreviousMarriage: false,
-    ukProofOfAddress: false,
+    italyProofOfAddressNeeded: false,
+    spainProofOfAddressNeeded: false,
+    italySpainPartnerPreviousMarriageDocNeeded: false,
+    ukProofOfAddressNeeded: false,
     notPaid: true,
   });
 });
@@ -78,10 +78,10 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
     reference: "1234",
     postAddress: "",
     previousMarriage: false,
-    italyProofOfAddress: false,
-    spainProofOfAddress: true,
-    italySpainPartnerPreviousMarriage: true,
-    ukProofOfAddress: false,
+    italyProofOfAddressNeeded: false,
+    spainProofOfAddressNeeded: true,
+    italySpainPartnerPreviousMarriageDocNeeded: true,
+    ukProofOfAddressNeeded: false,
     notPaid: true,
   });
 });
@@ -105,10 +105,10 @@ test("buildSendEmailArgs should return the correct personalisation for Italy whe
     reference: "1234",
     postAddress: "",
     previousMarriage: false,
-    italyProofOfAddress: false,
-    spainProofOfAddress: false,
-    italySpainPartnerPreviousMarriage: true,
-    ukProofOfAddress: true,
+    italyProofOfAddressNeeded: false,
+    spainProofOfAddressNeeded: false,
+    italySpainPartnerPreviousMarriageDocNeeded: true,
+    ukProofOfAddressNeeded: true,
     notPaid: true,
   });
 });
