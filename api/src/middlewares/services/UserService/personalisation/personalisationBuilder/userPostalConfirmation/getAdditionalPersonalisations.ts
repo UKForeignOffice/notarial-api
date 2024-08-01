@@ -12,15 +12,15 @@ export const postalPersonalisationTypeMap: Record<AdditionalPersonalisationCount
 
 export function getSpainAdditionalPersonalisations(answers: AnswersHashMap) {
   return {
-    livesInCountry: answers.livesInCountry === true,
     italySpainPartnerPreviousMarriageDocNeeded: answers.partnerMaritalStatus !== "Never married",
     ukProofOfAddressNeeded: !answers.livesInCountry,
+    spainProofOfAddressNeeded: answers.livesInCountry === true,
   };
 }
 
 export function getItalyAdditionalPersonalisations(answers: AnswersHashMap) {
   return {
-    italySpainPartnerProofOfAddress: answers.livesInCountry === true,
+    italySpainPartnerPreviousMarriageDocNeeded: answers.partnerMaritalStatus !== "Never married",
     ukProofOfAddressNeeded: !answers.livesInCountry,
   };
 }

@@ -20,11 +20,12 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const post = answers["post"] as string;
   const previousMarriage = answers.maritalStatus && answers.maritalStatus !== "Never married";
 
-  const additionalPersonalisations = postalPersonalisationTypeMap[country]?.(answers) ?? {
+  const additionalPersonalisations = {
     ukProofOfAddressNeeded: false,
     spainProofOfAddressNeeded: false,
     croatiaCertNeeded: false,
     italySpainPartnerPreviousMarriageDocNeeded: false,
+    ...(postalPersonalisationTypeMap[country]?.(answers) ?? {}),
   };
 
   const additionalContext = getUserPostalConfirmationAdditionalContext(country, post);
