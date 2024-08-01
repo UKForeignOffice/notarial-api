@@ -73,7 +73,7 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
     croatiaCertNeeded: false,
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
     localRequirements:
-      "\nYou must apply for your documents 3 months before your civil registry appointment or your wedding date if you're holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the embassy receives your correct documents, you should get the documentation you're applying for within 30 working days. Your application will not be processed quicker if your civil registry appointment or wedding date is less than 30 days away, so do not contact the embassy to request this.",
+      "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you're holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application.",
     civilPartnership: false,
     reference: "1234",
     postAddress: "",
@@ -115,7 +115,11 @@ test("buildSendEmailArgs should return the correct personalisation for Italy whe
 
 test("getUserPostalConfirmationAdditionalContext returns additionalContext correctly", () => {
   expect(getUserPostalConfirmationAdditionalContext("Italy")).toStrictEqual({
-    additionalDocs: ["your parents' full names ", "partner's proof any previous marriages or civil partnerships have ended"],
+    additionalDocs: [
+      "your parents' full names ",
+      "partner's proof any previous marriages or civil partnerships have ended",
+      "proof of address if you live in the UK",
+    ],
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
     civilPartnership: true,
     cniDelivery: true,
@@ -138,7 +142,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
     duration: "3 to 12 months (check with the person conducting your ceremony)",
     localRequirements: "",
     post: "the British Embassy Moscow",
-    postAddress: "\nBritish Embassy Moscow \n121099 Moscow \nSmolenskaya Naberezhnaya 10",
+    postAddress: "\nBritish Embassy Moscow \n121099 Moscow \nLuhansk People’s Republic Square 1 \n \n(for postal purposes only)",
     postal: true,
   });
 
@@ -146,7 +150,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
     additionalDocs: "",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10",
     civilPartnership: false,
-    cniDelivery: false,
+    cniDelivery: true,
     duration: "6 months",
     localRequirements:
       "\nYou can apply before you have confirmed the final place and date of your ceremony. When asked in your online application, enter the estimated date and rough location within Poland.",
