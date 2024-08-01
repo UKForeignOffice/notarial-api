@@ -27,11 +27,11 @@
       "bookingLink": "",
       "postAddress": "\nBritish Consulate General Barcelona \nAvda Diagonal 477–13 \n08036 Barcelona",
       "civilPartnership": true,
-      "duration": "3 months",
+      "duration": "",
       "postal": false,
       "additionalDocs": "",
-      "cniDelivery": true,
-      "localRequirements": "\nIf you need a Marital Status Certificate for cohabition registration (Pareja/Unión de Hecho) you should contact the [British Consulate General Barcelona](https://www.gov.uk/world/organisations/british-consulate-general-barcelona#contact-us)."
+      "cniDelivery": false,
+      "localRequirements": ""
     },
     "Angola": {
       "post": "the British Embassy Luanda",
@@ -200,7 +200,7 @@
       "postal": true,
       "additionalDocs": "",
       "cniDelivery": true,
-      "localRequirements": ""
+      "localRequirements": "\nIn addition to a CNI you may also need a certificate of custom law issued by the British Embassy Zagreb. This can be included in your CNI application and will cost an additional £50. You do not need to apply separately, but you do need to [fill in a certificate of custom law application form](https://www.gov.uk/government/publications/croatia-marriage-pack) and upload it when you apply. You will receive it with the CNI issued by the British Embassy Zagreb.   \nYour CNI and the certificate of custom law will be issued in Croatian. You will need to get both certified by the Ministry of Foreign and European Affairs in Zagreb before they will be accepted by your registrar.  \nYou will also need to give the registrar a [legalised (apostilled)](https://www.gov.uk/get-document-legalised) and [translated](https://find-a-professional-service-abroad.service.csd.fcdo.gov.uk/find/translators-interpreters) birth certificate. If your name is different on your birth cerficate and your passport the local registrar will ask for evidence of your name change, for example deed poll or previous marriage certificate.  \nOnce you’ve completed your online application, [email the British Embassy Zagreb](https://www.gov.uk/world/organisations/british-embassy-zagreb) if you would like your documents collected by someone. Include: *the full name of the person collecting your documents *the date of birth of the person collecting your documents *your application reference number – this will be in your confirmation email  \nThe British Embassy Zagreb will tell you when your documents have been issued and are ready to collect. The person collecting them will need to bring either a Croatian ID card issued by the police or Croatian passport, or a UK passport."
     },
     "Cuba": {
       "post": "the British Embassy Havana",
@@ -346,7 +346,11 @@
       "civilPartnership": true,
       "duration": "6 months",
       "postal": true,
-      "additionalDocs": ["your parents' full names ", "partner's proof any previous marriages or civil partnerships have ended"],
+      "additionalDocs": [
+        "your parents' full names ",
+        "partner's proof any previous marriages or civil partnerships have ended ",
+        "proof of address if you live in the UK"
+      ],
       "cniDelivery": true,
       "localRequirements": "\nA CNI is equivalent to a 'Nulla Osta' in Italy. \nIf you decide to apply by post, you will pay an additional fee to a notary public. ‘Ask the notary to use the 'Vera di Firma procedure’."
     },
@@ -533,7 +537,7 @@
       "civilPartnership": false,
       "duration": "3 months",
       "postal": false,
-      "additionalDocs": "",
+      "additionalDocs": ["UK CNI issued by a UK regster office"],
       "cniDelivery": false,
       "localRequirements": "\nTo get married in Montenegro you will need a certificate of no impediment (CNI) and a marital status affirmation, both issued by the British Embassy Podgoricathe. Your online application will cover both documents. You will be charged an additional £50."
     },
@@ -600,7 +604,7 @@
       "duration": "6 months",
       "postal": true,
       "additionalDocs": "",
-      "cniDelivery": false,
+      "cniDelivery": true,
       "localRequirements": "\nYou can apply before you have confirmed the final place and date of your ceremony. When asked in your online application, enter the estimated date and rough location within Poland."
     },
     "Philippines": {
@@ -656,7 +660,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nYour partner must attend your appointment with you."
+      "localRequirements": ""
     },
     "Serbia": {
       "post": "the British Embassy Belgrade",
@@ -700,10 +704,10 @@
       "postal": true,
       "additionalDocs": [
         "partner's proof any previous marriages or civil partnerships have ended",
-        "if you live in Spain, registration certificate for the town hall register (padrón municipal) – this should also be used as proof of address"
+        "if you live in Spain, registration certificate for the town hall register (padrón municipal) – also use as proof of address"
       ],
       "cniDelivery": true,
-      "localRequirements": "\nYou must apply for your documents 3 months before your civil registry appointment or your wedding date if you're holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the embassy receives your correct documents, you should get the documentation you're applying for within 30 working days. Your application will not be processed quicker if your civil registry appointment or wedding date is less than 30 days away, so do not contact the embassy to request this."
+      "localRequirements": "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you're holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application."
     },
     "Sweden": {
       "post": "the British Embassy Stockholm",
@@ -839,7 +843,7 @@
     "Cayman Islands": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Chad": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Chile": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "China": { "civilPartnership": false, "duration": "6 months", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "China": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Comoros": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Cook Islands": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Côte d’Ivoire": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
@@ -877,7 +881,7 @@
     "Guyana": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Haiti": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Hungary": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "Iceland": { "civilPartnership": true, "duration": "3 months", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "Iceland": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "India": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Indonesia": {
       "civilPartnership": false,
@@ -891,13 +895,13 @@
     "Ireland": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Israel": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Jamaica": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "Japan": { "civilPartnership": false, "duration": "3 months", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "Japan": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Kenya": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Kiribati": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Lesotho": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Liberia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Libya": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "Liechtenstein": { "civilPartnership": true, "duration": "3 months", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "Liechtenstein": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Macao": {
       "civilPartnership": false,
       "duration": "3 months",
@@ -918,7 +922,7 @@
     "Micronesia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Monaco": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Montserrat": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "Morocco": { "civilPartnership": false, "duration": "3 months", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "Morocco": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Mozambique": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Myanmar": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Namibia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
@@ -1013,7 +1017,7 @@
     "Syria": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Taiwan": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Tanzania": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "Thailand": { "civilPartnership": false, "duration": "3 months", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "Thailand": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "The Gambia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Timor-Leste": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Togo": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
@@ -1113,7 +1117,7 @@
     "the British Embassy Moscow": {
       "post": "the British Embassy Moscow",
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10",
-      "postAddress": "\nBritish Embassy Moscow \n121099 Moscow \nSmolenskaya Naberezhnaya 10"
+      "postAddress": "\nBritish Embassy Moscow \n121099 Moscow \nLuhansk People’s Republic Square 1 \n \n(for postal purposes only)"
     },
     "the British Consulate General Ekaterinburg": {
       "post": "the British Consulate General Ekaterinburg",
