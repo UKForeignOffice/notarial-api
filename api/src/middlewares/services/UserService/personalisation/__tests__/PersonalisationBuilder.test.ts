@@ -51,7 +51,6 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     reference: "1234",
     postAddress: "",
     previousMarriage: false,
-    italyProofOfAddressNeeded: false,
     spainProofOfAddressNeeded: false,
     italySpainPartnerPreviousMarriageDocNeeded: false,
     ukProofOfAddressNeeded: false,
@@ -64,6 +63,7 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
     ...answers,
     country: "Spain",
     partnerMaritalStatus: "Divorced",
+    livesInCountry: true,
   };
   const personalisation = PersonalisationBuilder.userPostalConfirmation(spainAnswers, { reference: "1234" });
   expect(personalisation).toEqual({
@@ -78,7 +78,6 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
     reference: "1234",
     postAddress: "",
     previousMarriage: false,
-    italyProofOfAddressNeeded: false,
     spainProofOfAddressNeeded: true,
     italySpainPartnerPreviousMarriageDocNeeded: true,
     ukProofOfAddressNeeded: false,
@@ -105,7 +104,6 @@ test("buildSendEmailArgs should return the correct personalisation for Italy whe
     reference: "1234",
     postAddress: "",
     previousMarriage: false,
-    italyProofOfAddressNeeded: false,
     spainProofOfAddressNeeded: false,
     italySpainPartnerPreviousMarriageDocNeeded: true,
     ukProofOfAddressNeeded: true,
