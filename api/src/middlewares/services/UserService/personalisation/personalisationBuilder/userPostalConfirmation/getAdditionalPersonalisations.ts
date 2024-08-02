@@ -4,7 +4,7 @@ export type AdditionalPersonalisationCountries = "Spain" | "Italy" | "Croatia";
 
 type PersonalisationFunction = (fields: AnswersHashMap) => Record<string, boolean>;
 
-export const postalPersonalisationTypeMap: Record<AdditionalPersonalisationCountries, PersonalisationFunction> = {
+export const postalPersonalisationsByCountry: Record<AdditionalPersonalisationCountries, PersonalisationFunction> = {
   Spain: getSpainAdditionalPersonalisations,
   Italy: getItalyAdditionalPersonalisations,
   Croatia: getCroatiaAdditionalPersonalisations,

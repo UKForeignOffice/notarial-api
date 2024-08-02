@@ -2,7 +2,7 @@ import * as additionalContexts from "../../../../utils/additionalContexts.json";
 import { getPost } from "../../../../utils/getPost";
 import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
 import { PayMetadata } from "../../../../../../types/FormDataBody";
-import { postalPersonalisationTypeMap } from "./getAdditionalPersonalisations";
+import { postalPersonalisationsByCountry, postalPersonalisationTypeMap } from "./getAdditionalPersonalisations";
 
 export function getUserPostalConfirmationAdditionalContext(country: string, post?: string) {
   const postName = getPost(country, post);
@@ -19,6 +19,7 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const country = answers["country"] as string;
   const post = answers["post"] as string;
   const previousMarriage = answers.maritalStatus && answers.maritalStatus !== "Never married";
+  const getAdditionalPersonalisations = postalPersonalisationsByCountry[country];
 
   const additionalPersonalisations = {
     ukProofOfAddressNeeded: false,
@@ -26,7 +27,7 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     croatiaCertNeeded: false,
     italySpainPartnerPreviousMarriageDocNeeded: false,
     showSpainContent: false,
-    ...(postalPersonalisationTypeMap[country]?.(answers) ?? {}),
+    ...getAdditionalPersonalisations?.(answers),
   };
 
   const additionalContext = getUserPostalConfirmationAdditionalContext(country, post);
