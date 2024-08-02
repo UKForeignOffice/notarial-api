@@ -1,6 +1,6 @@
 import { buildUserConfirmationPersonalisation } from "./personalisationBuilder/userConfirmation";
 import { buildPostNotificationPersonalisation } from "./personalisationBuilder.postNotification";
-import { buildUserPostalConfirmationPersonalisation } from "./personalisationBuilder.userPostalConfirmation";
+import { buildUserPostalConfirmationPersonalisation } from "./personalisationBuilder/userPostalConfirmation";
 
 export const PersonalisationBuilder = {
   /**

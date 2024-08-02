@@ -3,7 +3,7 @@ import { testData } from "./fixtures";
 import { answersHashMap, flattenQuestions } from "../../../helpers";
 import { PersonalisationBuilder } from "../PersonalisationBuilder";
 import { getAffirmationPersonalisations, getCNIPersonalisations } from "../personalisationBuilder/userConfirmation/getAdditionalPersonalisations";
-import { buildUserPostalConfirmationPersonalisation, getUserPostalConfirmationAdditionalContext } from "../personalisationBuilder.userPostalConfirmation";
+import { buildUserPostalConfirmationPersonalisation, getUserPostalConfirmationAdditionalContext } from "../personalisationBuilder/userPostalConfirmation";
 const pgBossMock = {
   async start() {
     return this;
@@ -51,10 +51,10 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     reference: "1234",
     postAddress: "",
     previousMarriage: false,
-    italyProofOfAddressNeeded: false,
     spainProofOfAddressNeeded: false,
     italySpainPartnerPreviousMarriageDocNeeded: false,
     ukProofOfAddressNeeded: false,
+    showSpainContent: false,
     notPaid: true,
   });
 });
@@ -64,6 +64,7 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
     ...answers,
     country: "Spain",
     partnerMaritalStatus: "Divorced",
+    livesInCountry: true,
   };
   const personalisation = PersonalisationBuilder.userPostalConfirmation(spainAnswers, { reference: "1234" });
   expect(personalisation).toEqual({
@@ -78,10 +79,10 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
     reference: "1234",
     postAddress: "",
     previousMarriage: false,
-    italyProofOfAddressNeeded: false,
     spainProofOfAddressNeeded: true,
     italySpainPartnerPreviousMarriageDocNeeded: true,
     ukProofOfAddressNeeded: false,
+    showSpainContent: true,
     notPaid: true,
   });
 });
@@ -105,10 +106,10 @@ test("buildSendEmailArgs should return the correct personalisation for Italy whe
     reference: "1234",
     postAddress: "",
     previousMarriage: false,
-    italyProofOfAddressNeeded: false,
     spainProofOfAddressNeeded: false,
     italySpainPartnerPreviousMarriageDocNeeded: true,
     ukProofOfAddressNeeded: true,
+    showSpainContent: false,
     notPaid: true,
   });
 });
