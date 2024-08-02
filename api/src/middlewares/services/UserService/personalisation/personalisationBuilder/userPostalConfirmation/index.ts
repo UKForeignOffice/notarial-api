@@ -19,7 +19,7 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const country = answers["country"] as string;
   const post = answers["post"] as string;
   const previousMarriage = answers.maritalStatus && answers.maritalStatus !== "Never married";
-  const getAdditionalPersonalisations = postalPersonalisationsByCountry[country];
+  const getAdditionalCountryPersonalisation = postalPersonalisationsByCountry[country];
 
   const additionalPersonalisations = {
     ukProofOfAddressNeeded: false,
@@ -27,7 +27,7 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     croatiaCertNeeded: false,
     italySpainPartnerPreviousMarriageDocNeeded: false,
     showSpainContent: false,
-    ...getAdditionalPersonalisations?.(answers),
+    ...getAdditionalCountryPersonalisation?.(answers),
   };
 
   const additionalContext = getUserPostalConfirmationAdditionalContext(country, post);
