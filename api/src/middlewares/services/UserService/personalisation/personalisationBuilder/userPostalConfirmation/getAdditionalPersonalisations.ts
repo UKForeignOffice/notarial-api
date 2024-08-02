@@ -15,6 +15,7 @@ export function getSpainAdditionalPersonalisations(answers: AnswersHashMap) {
     italySpainPartnerPreviousMarriageDocNeeded: answers.partnerMaritalStatus !== "Never married",
     ukProofOfAddressNeeded: !answers.livesInCountry,
     spainProofOfAddressNeeded: answers.livesInCountry === true,
+    showSpainContent: true,
   };
 }
 

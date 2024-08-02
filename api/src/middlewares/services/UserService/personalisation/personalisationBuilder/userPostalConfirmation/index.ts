@@ -25,6 +25,7 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     spainProofOfAddressNeeded: false,
     croatiaCertNeeded: false,
     italySpainPartnerPreviousMarriageDocNeeded: false,
+    showSpainContent: false,
     ...(postalPersonalisationTypeMap[country]?.(answers) ?? {}),
   };
 
