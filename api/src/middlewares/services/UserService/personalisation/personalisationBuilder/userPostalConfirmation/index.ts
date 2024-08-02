@@ -2,7 +2,7 @@ import * as additionalContexts from "../../../../utils/additionalContexts.json";
 import { getPost } from "../../../../utils/getPost";
 import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
 import { PayMetadata } from "../../../../../../types/FormDataBody";
-import { postalPersonalisationsByCountry, postalPersonalisationTypeMap } from "./getAdditionalPersonalisations";
+import { postalPersonalisationsByCountry } from "./getAdditionalPersonalisations";
 
 export function getUserPostalConfirmationAdditionalContext(country: string, post?: string) {
   const postName = getPost(country, post);
