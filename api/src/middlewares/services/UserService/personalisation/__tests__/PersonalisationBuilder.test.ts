@@ -54,6 +54,7 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     spainProofOfAddressNeeded: false,
     italySpainPartnerPreviousMarriageDocNeeded: false,
     ukProofOfAddressNeeded: false,
+    showSpainContent: false,
     notPaid: true,
   });
 });
@@ -81,6 +82,7 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
     spainProofOfAddressNeeded: true,
     italySpainPartnerPreviousMarriageDocNeeded: true,
     ukProofOfAddressNeeded: false,
+    showSpainContent: true,
     notPaid: true,
   });
 });
@@ -107,6 +109,7 @@ test("buildSendEmailArgs should return the correct personalisation for Italy whe
     spainProofOfAddressNeeded: false,
     italySpainPartnerPreviousMarriageDocNeeded: true,
     ukProofOfAddressNeeded: true,
+    showSpainContent: false,
     notPaid: true,
   });
 });
