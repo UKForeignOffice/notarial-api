@@ -143,13 +143,6 @@ exports[`CNIAndMSC is successfully remapped 1`] = `
       "type": "list",
     },
   },
-  "livesInCountry": {
-    "answer": true,
-    "category": "applicantDetails",
-    "key": "livesInCountry",
-    "title": "Lives in the country",
-    "type": "list",
-  },
   "maritalStatus": {
     "status": {
       "answer": "Never married",
@@ -278,6 +271,15 @@ exports[`CNIAndMSC is successfully remapped 1`] = `
     "key": "placeOfBirth",
     "title": "Place of birth ",
     "type": "text",
+  },
+  "residentStatus": {
+    "isAResidentOfApplicationCountry": {
+      "answer": true,
+      "category": "applicantDetails",
+      "key": "livesInCountry",
+      "title": "Lives in the country",
+      "type": "list",
+    },
   },
   "service": {
     "answer": "cniAndMsc",
@@ -694,13 +696,6 @@ exports[`cniPostal is successfully remapped 1`] = `
       "type": "list",
     },
   },
-  "livesInCountry": {
-    "answer": true,
-    "category": "applicantDetails",
-    "key": "livesInCountry",
-    "title": "Lives in the country",
-    "type": "list",
-  },
   "maritalStatus": {
     "status": {
       "answer": "Never married",
@@ -808,6 +803,15 @@ exports[`cniPostal is successfully remapped 1`] = `
       "category": "partner",
       "key": "partnerNationality",
       "title": "Partner’s nationality",
+      "type": "list",
+    },
+  },
+  "residentStatus": {
+    "isAResidentOfApplicationCountry": {
+      "answer": true,
+      "category": "applicantDetails",
+      "key": "livesInCountry",
+      "title": "Lives in the country",
       "type": "list",
     },
   },
@@ -1133,13 +1137,6 @@ exports[`msc is successfully remapped 1`] = `
       "type": "list",
     },
   },
-  "livesInCountry": {
-    "answer": true,
-    "category": "applicantDetails",
-    "key": "livesInCountry",
-    "title": "Lives in the country",
-    "type": "list",
-  },
   "maritalStatus": {
     "status": {
       "answer": "Never married",
@@ -1190,6 +1187,15 @@ exports[`msc is successfully remapped 1`] = `
     "key": "placeOfBirth",
     "title": "Place of birth ",
     "type": "text",
+  },
+  "residentStatus": {
+    "isAResidentOfApplicationCountry": {
+      "answer": true,
+      "category": "applicantDetails",
+      "key": "livesInCountry",
+      "title": "Lives in the country",
+      "type": "list",
+    },
   },
   "service": {
     "answer": "msc",

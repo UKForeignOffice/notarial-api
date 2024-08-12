@@ -2,43 +2,6 @@
 
 exports[`CNI and MSC by post is successfully remapped 1`] = `
 {
-  "Applicant's address": {
-    "addressLine1": {
-      "answer": "test",
-      "category": "applicantDetails",
-      "key": "addressLine1",
-      "title": "Address line 1",
-      "type": "text",
-    },
-    "addressLine2": {
-      "answer": null,
-      "category": "applicantDetails",
-      "key": "addressLine2",
-      "title": "Address line 2 ",
-      "type": "text",
-    },
-    "city": {
-      "answer": "test",
-      "category": "applicantDetails",
-      "key": "city",
-      "title": "Town or city",
-      "type": "text",
-    },
-    "country": {
-      "answer": "United Kingdom",
-      "category": "applicantDetails",
-      "key": "countryAddress",
-      "title": "Country",
-      "type": "list",
-    },
-    "postcode": {
-      "answer": null,
-      "category": "applicantDetails",
-      "key": "postcode",
-      "title": "Postcode or zip code",
-      "type": "text",
-    },
-  },
   "Applicant's details": {
     "dateOfBirth": {
       "answer": "1998-01-19",
@@ -90,6 +53,7 @@ exports[`CNI and MSC by post is successfully remapped 1`] = `
       "type": "text",
     },
   },
+  "Applicant's local address": undefined,
   "Applicant's passport": {
     "dateOfIssue": {
       "answer": "1998-01-19",
@@ -106,6 +70,44 @@ exports[`CNI and MSC by post is successfully remapped 1`] = `
       "type": "text",
     },
   },
+  "Applicant's permanent address": {
+    "addressLine1": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "addressLine1",
+      "title": "Address line 1",
+      "type": "text",
+    },
+    "addressLine2": {
+      "answer": null,
+      "category": "applicantDetails",
+      "key": "addressLine2",
+      "title": "Address line 2 ",
+      "type": "text",
+    },
+    "city": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "city",
+      "title": "Town or city",
+      "type": "text",
+    },
+    "country": {
+      "answer": "United Kingdom",
+      "category": "applicantDetails",
+      "key": "countryAddress",
+      "title": "Country",
+      "type": "list",
+    },
+    "postcode": {
+      "answer": null,
+      "category": "applicantDetails",
+      "key": "postcode",
+      "title": "Postcode or zip code",
+      "type": "text",
+    },
+  },
+  "Applicant's residential status": undefined,
   "Delivery details": undefined,
   "Feedback consent": {
     "feedbackConsent": {
@@ -663,6 +665,7 @@ exports[`MSC by post is successfully remapped 1`] = `
       "type": "list",
     },
   },
+  "Applicant's local address": undefined,
   "Applicant's passport": {
     "dateOfIssue": {
       "answer": "1998-01-19",
@@ -679,6 +682,8 @@ exports[`MSC by post is successfully remapped 1`] = `
       "type": "text",
     },
   },
+  "Applicant's permanent address": undefined,
+  "Applicant's residential status": undefined,
   "Delivery details": undefined,
   "Feedback consent": {
     "feedbackConsent": {
