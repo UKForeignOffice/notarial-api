@@ -1,6 +1,8 @@
 export const order = {
   applicantDetails: "Applicant's details",
-  applicantAddress: "Applicant's address",
+  residentStatus: "Applicant's residential status",
+  applicantAddress: "Applicant's permanent address",
+  applicantLocalAddress: "Applicant's local address",
   applicantPassport: "Applicant's passport",
   maritalStatus: "Marital and civil status",
   partnerName: "Partner's name",
@@ -26,11 +28,18 @@ export const remap = {
   emailAddress: "applicantDetails.emailAddress",
   phoneNumber: "applicantDetails.phoneNumber",
 
+  livesInCountry: "residentStatus.isAResidentOfApplicationCountry",
+
   addressLine1: "applicantAddress.addressLine1",
   addressLine2: "applicantAddress.addressLine2",
   city: "applicantAddress.city",
   postcode: "applicantAddress.postcode",
   countryAddress: "applicantAddress.country",
+
+  localAddressLine1: "applicantLocalAddress.addressLine1",
+  localAddressLine2: "applicantLocalAddress.addressLine2",
+  localCity: "applicantLocalAddress.city",
+  localPostcode: "applicantLocalAddress.postcode",
 
   passportDateOfIssue: "applicantPassport.dateOfIssue",
   passportNumber: "applicantPassport.number",
