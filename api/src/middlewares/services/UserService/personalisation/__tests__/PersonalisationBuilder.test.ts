@@ -196,6 +196,7 @@ test("getCNIPersonalisations returns the correct personalisations given all posi
     maritalStatus: "Divorced",
     oathType: "Religious",
     certRequired: true,
+    country: "Italy",
   };
 
   expect(getCNIPersonalisations(answers)).toStrictEqual({
@@ -204,6 +205,7 @@ test("getCNIPersonalisations returns the correct personalisations given all posi
     livesAbroad: false,
     previouslyMarried: true,
     religious: true,
+    countryIsItaly: true,
   });
 });
 
@@ -213,6 +215,7 @@ test("getCNIPersonalisations returns the correct personalisations given all nega
     maritalStatus: "Never married",
     oathType: "Non-religious",
     certRequired: false,
+    country: "Croatia",
   };
 
   expect(getCNIPersonalisations(answers)).toStrictEqual({
@@ -221,5 +224,6 @@ test("getCNIPersonalisations returns the correct personalisations given all nega
     livesAbroad: true,
     previouslyMarried: false,
     religious: false,
+    countryIsItaly: false,
   });
 });
