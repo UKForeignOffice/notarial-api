@@ -17,9 +17,9 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
   const country = answers["country"] as string;
   const post = answers["post"] as string;
-  const previousMarriage = answers.maritalStatus !== "Never married";
-  const livesAbroad = answers.livesInCountry === false;
-  const partnerPreviousMarriage = answers.partnerMaritalStatus !== "Never married";
+  const userHadPreviousMarriage = answers.maritalStatus !== "Never married";
+  const livesOutsideApplicationCountry = answers.livesInCountry === false;
+  const partnerHadPreviousMarriage = answers.partnerMaritalStatus !== "Never married";
 
   const additionalContext = getUserPostalConfirmationAdditionalContext(country, post);
 
@@ -30,9 +30,9 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     bookingLink: additionalContext.bookingLink,
     localRequirements: additionalContext.localRequirements,
     civilPartnership: additionalContext.civilPartnership,
-    previousMarriage,
-    livesAbroad,
-    partnerPreviousMarriage,
+    userHadPreviousMarriage,
+    livesOutsideApplicationCountry,
+    partnerHadPreviousMarriage,
     reference: metadata.reference,
     postAddress: additionalContext.postAddress,
     notPaid: !isSuccessfulPayment,
