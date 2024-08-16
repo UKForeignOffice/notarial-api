@@ -9,7 +9,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nAlbanian authorities will ask for your birth certificate. This will be retained by the authorities so you should provide a [certified copy from a local notary](https://www.thenotariessociety.org.uk/). If the authorities ask for your original birth certificate, explain that they are only issued once in the UK, you can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea53e49b9c0597fdafa8f/Albania_-_standard_letter_-_birth_certificate.pdf) to help you.  \nAlbanian authorities may ask you to provide a vërtetim banimi (proof of address template). If you live in the UK you can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea57da3c2a28abb50cd58/Albania_-_standard_letter_-_proof_of_address.pdf) to help you explain that there's no equivalent document in the UK."
+      "localRequirements": "\nAlbanian authorities will ask for your birth certificate. This will be retained by the authorities so you should provide a [certified copy from a local notary](https://www.gov.uk/guidance/find-a-notary-abroad). If the authorities ask for your original birth certificate, explain that they are only issued once in the UK. You can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea53e49b9c0597fdafa8f/Albania_-_standard_letter_-_birth_certificate.pdf) to help you.  \nAlbanian authorities may ask you to provide a vërtetim banimi (proof of address template). If you live in the UK you can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea57da3c2a28abb50cd58/Albania_-_standard_letter_-_proof_of_address.pdf) to help you explain that there‘s no equivalent document in the UK."
     },
     "Algeria": {
       "post": "the British Embassy Algiers",
@@ -20,7 +20,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nThe Algerian government has issued guidance for [foreign nationals wishing to get married in Algeria](https://www.interieur.gov.dz/index.php/fr/%C3%A9trangers-en-alg%C3%A9rie/mariage-mixte/17-etranger-en-algerie.html). This is called a 'mixed marriage' and there are [specific documents](https://www.interieur.gov.dz/index.php/fr/%C3%A9trangers-en-alg%C3%A9rie/mariage-mixte.html) you need to submit."
+      "localRequirements": "\nThe Algerian government has issued guidance for [foreign nationals wishing to get married in Algeria](https://www.interieur.gov.dz/index.php/fr/%C3%A9trangers-en-alg%C3%A9rie/mariage-mixte/17-etranger-en-algerie.html). This is called a ‘mixed marriage‘ and there are [specific documents](https://www.interieur.gov.dz/index.php/fr/%C3%A9trangers-en-alg%C3%A9rie/mariage-mixte.html) you need to submit."
     },
     "Andorra": {
       "post": "the British Consulate General Barcelona",
@@ -63,10 +63,10 @@
       "duration": "6 months",
       "postal": false,
       "additionalDocs": [
-        "Austrian residence certificate (‘Meldebestätigung’) with a registered ‘Hauptwohnsitz’ - if you or your partner live in Austria (this should also be used as proof of address)"
+        "Austrian residence certificate (‘Meldebestätigung’) with a registered ‘Hauptwohnsitz’ – if you or your partner live in Austria (this should also be your proof of address)"
       ],
       "cniDelivery": false,
-      "localRequirements": "\nBefore you apply you must have a confirmed date for your ceremony from your registry office (Standesamt) in Austria.  \nIf you or your partner are legally resident in Austria, the proof of residence must be an Austrian residence certificate (‘Meldebestätigung’) with a registered ‘Hauptwohnsitz’. "
+      "localRequirements": "\nIf you or your partner are legally resident in Austria, the proof of residence must be an Austrian residence certificate (‘Meldebestätigung’) with a registered ‘Hauptwohnsitz’. "
     },
     "Azerbaijan": {
       "post": "the British Embassy Baku",
@@ -110,7 +110,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": true,
-      "localRequirements": "\nYou will also need to give the registrar in Bolivia a legalised (apostilled) birth certificate. You need to [apply for legalisation separately](https://www.gov.uk/get-document-legalised)."
+      "localRequirements": "\nYou‘ll also need to give the registrar in Bolivia a legalised (apostilled) birth certificate. You need to [apply for legalisation](https://www.gov.uk/get-document-legalised) separately."
     },
     "Bosnia and Herzegovina": {
       "post": "the British Embassy Sarajevo",
@@ -131,7 +131,7 @@
       "duration": "6 months",
       "postal": true,
       "additionalDocs": [
-        "either the proof of address or your partner's ID must prove that you or your partner live in Bulgaria or your partner is a Bulgarian national"
+        "either the proof of address or your partner‘s ID must prove that you or your partner live in Bulgaria or your partner is a Bulgarian national"
       ],
       "cniDelivery": true,
       "localRequirements": ""
@@ -145,7 +145,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nThe local commune/Sangkat may be able to advise you on the documents you need to get married in Cambodia."
+      "localRequirements": "\nThe local commune (Sangkat) may be able to advise you on the documents you need to get married in Cambodia."
     },
     "Central African Republic": {
       "post": "the British Embassy Kinshasa (for Central African Republic)",
@@ -167,7 +167,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nYou may need to provide a legalised (apostilled) birth certificate translated into Spanish. You need to [apply for legalisation separately](https://www.gov.uk/get-document-legalised)."
+      "localRequirements": "\nYou may need to provide a legalised (apostilled) birth certificate translated into Spanish. You need to [apply for legalisation](https://www.gov.uk/get-document-legalised) separately."
     },
     "Congo": {
       "post": "the British Embassy Kinshasa (for Congo)",
@@ -200,7 +200,7 @@
       "postal": true,
       "additionalDocs": "",
       "cniDelivery": true,
-      "localRequirements": "\nIn addition to a CNI you may also need a certificate of custom law issued by the British Embassy Zagreb. This can be included in your CNI application and will cost an additional £50. You do not need to apply separately, but you do need to [fill in a certificate of custom law application form](https://www.gov.uk/government/publications/croatia-marriage-pack) and upload it when you apply. You will receive it with the CNI issued by the British Embassy Zagreb.   \nYour CNI and the certificate of custom law will be issued in Croatian. You will need to get both certified by the Ministry of Foreign and European Affairs in Zagreb before they will be accepted by your registrar.  \nYou will also need to give the registrar a [legalised (apostilled)](https://www.gov.uk/get-document-legalised) and [translated](https://find-a-professional-service-abroad.service.csd.fcdo.gov.uk/find/translators-interpreters) birth certificate. If your name is different on your birth cerficate and your passport the local registrar will ask for evidence of your name change, for example deed poll or previous marriage certificate.  \nOnce you’ve completed your online application, [email the British Embassy Zagreb](https://www.gov.uk/world/organisations/british-embassy-zagreb) if you would like your documents collected by someone. Include: *the full name of the person collecting your documents *the date of birth of the person collecting your documents *your application reference number – this will be in your confirmation email  \nThe British Embassy Zagreb will tell you when your documents have been issued and are ready to collect. The person collecting them will need to bring either a Croatian ID card issued by the police or Croatian passport, or a UK passport."
+      "localRequirements": "\nThe CNI and the certificate of custom law will be issued in Croatian. You‘ll need to get both certified by the Ministry of Foreign and European Affairs in Zagreb before they‘ll be accepted by your registrar.  \nYou‘ll also need to give the registrar a [legalised (apostilled)](https://www.gov.uk/get-document-legalised) and [translated](https://find-a-professional-service-abroad.service.csd.fcdo.gov.uk/find/translators-interpreters) birth certificate. If your name is different on your birth certificate and your passport the local registrar will ask for evidence of your name change, for example deed poll or previous marriage certificate."
     },
     "Cuba": {
       "post": "the British Embassy Havana",
@@ -211,7 +211,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": " "
+      "localRequirements": ""
     },
     "Democratic Republic of the Congo": {
       "post": "the British Embassy Kinshasa",
@@ -233,7 +233,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nYou will need a [certificate of no impediment (CNI)](/before-you-start/affirmation-and-cni-not-needed) if you are getting married (matrimonio) in Ecuador.   \nIf you are registering a civil partnership (“union de hecho”) you will need to [apply for a marital status affirmation](/affirmation/check-eligibility-and-the-documents-you-need?marriage.country=Ecuador) from the British Embassy Quito."
+      "localRequirements": ""
     },
     "Egypt": {
       "post": "the British Embassy Cairo",
@@ -242,9 +242,9 @@
       "civilPartnership": false,
       "duration": "1 month",
       "postal": false,
-      "additionalDocs": ["religious belief", "annual salary "],
+      "additionalDocs": ["religious belief", "annual salary"],
       "cniDelivery": false,
-      "localRequirements": "\nYour proof that a previous marriage has ended (for example your divorce absolute or partner's death certificate) must be legalised by the country who issued it. For UK documents you need to [apply for legalisation separately](https://www.gov.uk/get-document-legalised)."
+      "localRequirements": "\nYour proof that a previous marriage has ended, for example, your decree absolute or partner‘s death certificate, must be legalised by the country who issued it. For UK documents you need to [apply for legalisation](https://www.gov.uk/get-document-legalised) separately."
     },
     "El Salvador": {
       "post": "the office of the Honorary Consul in San Salvador",
@@ -265,7 +265,7 @@
       "duration": "6 months",
       "postal": false,
       "additionalDocs": [
-        "if you or your partner live in Estonia - you can use your extract from the [Estonian Population Register](www.eesti.ee/en/family/release-of-data-from-the-population-register/extract-from-the-population-register) as your proof of address"
+        "if you or your partner live in Estonia - you can use your extract from the [Estonian Population Register](https://www.eesti.ee/en/family/release-of-data-from-the-population-register/extract-from-the-population-register) as your proof of address"
       ],
       "cniDelivery": false,
       "localRequirements": ""
@@ -290,10 +290,10 @@
       "postal": false,
       "additionalDocs": [
         "residence permit card issued by Finnish Immigration Service (or equivalent for the country you live in) – this serves as your proof of address ",
-        "partner's DVV certificate (this can also be their proof of address)"
+        "partner‘s DVV certificate (this can also be their proof of address)"
       ],
       "cniDelivery": false,
-      "localRequirements": "\nTo apply for an affirmation in Finland you must live outside the UK. Upload your residence permit card as your proof of address and bring it to your appointment. If you cannot prove that you are resident outside the UK do not apply for this service.  \nIf you live in the UK, you'll need to [give notice](https://www.gov.uk/marriages-civil-partnerships/give-notice) at a UK register office to get a certificate of no impediment (CNI). [Follow the guidance for British nationals living in the UK](https://www.gov.uk/marriage-abroad) to find out how to apply."
+      "localRequirements": ""
     },
     "Guatemala": {
       "post": "the British Embassy Guatemala City",
@@ -347,12 +347,12 @@
       "duration": "6 months",
       "postal": true,
       "additionalDocs": [
-        "your parents' full names ",
-        "partner's proof any previous marriages or civil partnerships have ended",
-        "proof of address if you live in the UK"
+        "your parents‘ full names ",
+        "partner‘s proof any previous marriages or civil partnerships have ended ",
+        "proof of permanent address if you live outside of Italy"
       ],
       "cniDelivery": true,
-      "localRequirements": "\nA CNI is equivalent to a 'Nulla Osta' in Italy. \nIf you decide to apply by post, you will pay an additional fee to a notary public. ‘Ask the notary to use the 'Vera di Firma procedure’."
+      "localRequirements": "\nA CNI is equivalent to a ‘Nulla Osta‘ in Italy. "
     },
     "Jordan": {
       "post": "the British Embassy Amman",
@@ -363,7 +363,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nThe marital status affirmation you'll swear will be slightly different depending on your type of marriage. \nFor Islamic marriages at the Sharia Court, you’ll swear a single declaration document to prove you’re allowed to marry or a single divorced declaration document if you’re divorced. \nFor Christian marriages, you’ll swear a marital status affidavit. \nYou can use this service to apply for the single declarations and marital status affidavits. Before your appointment, the British Embassy in Amman will contact you to ask which document you need."
+      "localRequirements": "\nThe marital status affirmation you‘ll swear will be slightly different depending on your type of marriage. \nFor Islamic marriages at the Sharia Court, you‘ll swear a single declaration document to prove you‘re allowed to marry or a single divorced declaration document if you‘re divorced. \nFor Christian marriages, you‘ll swear a marital status affidavit. \nBefore your appointment, the British Embassy Amman will contact you to ask which document you need."
     },
     "Kazakhstan": {
       "post": "the British Embassy Astana",
@@ -537,9 +537,9 @@
       "civilPartnership": false,
       "duration": "3 months",
       "postal": false,
-      "additionalDocs": ["UK CNI issued by a UK regster office"],
+      "additionalDocs": ["UK CNI issued by a UK register office"],
       "cniDelivery": false,
-      "localRequirements": "\nTo get married in Montenegro you will need a certificate of no impediment (CNI) and a marital status affirmation, both issued by the British Embassy Podgoricathe. Your online application will cover both documents. You will be charged an additional £50."
+      "localRequirements": "\nTo get married in Montenegro you‘ll need a certificate of no impediment (CNI) and a marital status affirmation, both issued by the British Embassy Podgorica. Your online application includes both documents."
     },
     "Nepal": {
       "post": "the British Embassy Kathmandu",
@@ -572,7 +572,7 @@
       "postal": false,
       "additionalDocs": ["proof you live in Norway (this should also be your proof of address)"],
       "cniDelivery": false,
-      "localRequirements": "\nAppointments are only available at the British Embassy Oslo. You will need to travel to Oslo for your appointment.  \nTo apply for an affirmation you must be a resident in Norway. Your proof of address must be issued by a Norwegian Authority. If you cannot prove that you are a Norwegian resident do not apply for this service.  \nIf you live in the UK, you'll need to [give notice](https://www.gov.uk/marriages-civil-partnerships/give-notice) at a UK register office to get a certificate of no impediment (CNI). [Follow the guidance for British nationals living in the UK](https://www.gov.uk/marriage-abroad) to find out how to apply."
+      "localRequirements": "\nAppointments are only available at the British Embassy Oslo. You‘ll need to travel to Oslo for your appointment."
     },
     "Oman": {
       "post": "the British Embassy Muscat",
@@ -594,7 +594,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nYou will also need to provide your legalised (apostilled) birth certificate. You need to [apply for legalisation separately](https://www.gov.uk/get-document-legalised). Any other documents requested by the authorities that were issued outside of Peru will also need to be legalised and translated before they will be accepted."
+      "localRequirements": "\nYou‘ll also need to provide your legalised (apostilled) birth certificate. You need to [apply for legalisation](https://www.gov.uk/get-document-legalised) separately. Any other documents requested by the authorities that were issued outside of Peru will also need to be legalised and translated before they‘ll be accepted."
     },
     "Poland": {
       "post": "the British Embassy Warsaw",
@@ -605,7 +605,7 @@
       "postal": true,
       "additionalDocs": "",
       "cniDelivery": true,
-      "localRequirements": "\nYou can apply before you have confirmed the final place and date of your ceremony. When asked in your online application, enter the estimated date and rough location within Poland."
+      "localRequirements": ""
     },
     "Philippines": {
       "post": "the British Embassy Manila",
@@ -616,7 +616,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nOnce you’ve applied online, print out either an [affirmation](https://assets.publishing.service.gov.uk/media/6583f40f23b70a0013234d53/Affirmation_of_Marital_Status.odt) (if you want to make a non-religious declaration) or [affidavit](https://assets.publishing.service.gov.uk/media/6583f3fc23b70a000d234d53/Affidavit_of_Marital_Status.odt) (religious). Fill in your details by hand but do not sign yet. You must bring your completed form with you to your appointment at your embassy or consulate and sign it then.  \nYou must be a resident outside of the UK to apply for this service. If you live in the UK, you need to [apply for a UK CNI](/before-you-start/apply-for-uk-cni?marriage.country=Philippines) before travelling to the Philippines."
+      "localRequirements": "\nOnce you‘ve applied online, print out either an [affirmation](https://assets.publishing.service.gov.uk/media/6583f40f23b70a0013234d53/Affirmation_of_Marital_Status.odt) (if you want to make a non-religious declaration) or [affidavit](https://assets.publishing.service.gov.uk/media/6583f3fc23b70a000d234d53/Affidavit_of_Marital_Status.odt) (religious). Fill in your details by hand but do not sign yet. You must bring your completed form with you to your appointment at your embassy or consulate and sign it then."
     },
     "Qatar": {
       "post": "the British Embassy Doha",
@@ -645,11 +645,11 @@
       "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
       "postAddress": "\nBritish Embassy Rome \nVia XX Settembre 80/a \n00187 Rome \nItaly",
       "civilPartnership": true,
-      "duration": "6 months",
+      "duration": "",
       "postal": false,
-      "additionalDocs": ["your parents' full names"],
+      "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nThere are no British consular facilities to get legal documents to prove you’re eligible to marry in San Marino. If you live abroad you will need to apply to the British Embassy Rome for a Certificate of No Impediment (CNI). This is equivilent to a 'Nulla Osta' in Italy and San Marino."
+      "localRequirements": ""
     },
     "Senegal": {
       "post": "the British Embassy Dakar",
@@ -703,11 +703,11 @@
       "duration": "3 or 6 months (check with the person conducting your ceremony)",
       "postal": true,
       "additionalDocs": [
-        "partner's proof any previous marriages or civil partnerships have ended",
-        "if you live in Spain, registration certificate for the town hall register (padrón municipal) – also use as proof of address"
+        "partner‘s proof any previous marriages or civil partnerships have ended ",
+        "if you live in Spain, use your registration certificate for the town hall register (padrón municipal) as proof of address"
       ],
       "cniDelivery": true,
-      "localRequirements": "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you're holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application."
+      "localRequirements": "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you‘re holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application."
     },
     "Sweden": {
       "post": "the British Embassy Stockholm",
@@ -716,9 +716,9 @@
       "civilPartnership": true,
       "duration": "3 months",
       "postal": true,
-      "additionalDocs": ["partner's extract from the population register (if they're registered in Sweden)"],
+      "additionalDocs": ["partner‘s extract from the population register (if they‘re registered in Sweden)"],
       "cniDelivery": false,
-      "localRequirements": "\nCheck with the Swedish Tax Authorities](https://www.skatteverket.se/privat.4.76a43be412206334b89800052864.html) to find out whether you need a CNI. Only apply for this service if you are not registered in the Swedish population register. If you are registered, you should not need a CNI to get married.   \nIf you live in the UK you should [apply for a CNI from a UK register office](/exchange-uk-cni/check-eligibility-and-documents?marriage.country=Sweden) unless you have already travelled to Sweden."
+      "localRequirements": ""
     },
     "Tajikistan": {
       "post": "the British Embassy Dushanbe",
@@ -860,8 +860,8 @@
     "Falkland Islands": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Fiji": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "France": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "French Guiana": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "French Polynesia": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "French Guiana": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "French Polynesia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Gabon": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Georgia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Germany": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
@@ -871,12 +871,12 @@
       "civilPartnership": false,
       "duration": "6 months",
       "postal": false,
-      "additionalDocs": ["partner's proof any previous marriages or civil partnerships have ended"],
+      "additionalDocs": ["partner‘s proof any previous marriages or civil partnerships have ended"],
       "cniDelivery": false,
-      "localRequirements": "\n If you are forming a civil partnership in Greece you do not need a CNI. Your civil partnership will be recognised in the UK if you follow the correct processes according to Greek law and it would be allowed under UK law."
+      "localRequirements": ""
     },
     "Grenada": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "Guadeloupe": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "Guadeloupe": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Guinea-Bissau": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Guyana": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Haiti": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
@@ -908,7 +908,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nThere are no British consular facilities to get legal documents to prove you’re eligible to marry in Macao. You will need to travel to the British Consulate General Hong Kong to apply for a marital status affirmation. "
+      "localRequirements": "\nThere are no British consular facilities to get legal documents to prove you’re eligible to marry in Macao. You‘ll need to travel to the British Consulate General Hong Kong for your appointment to get a marital status affirmation. "
     },
     "Madagascar": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Malawi": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
@@ -916,19 +916,19 @@
     "Maldives": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Malta": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Marshall Islands": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "Martinique": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "Martinique": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Mauritius": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "Mayotte": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "Mayotte": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Micronesia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Monaco": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Montserrat": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Morocco": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Mozambique": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "Myanmar": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "Myanmar (Burma)": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Namibia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Nauru": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Netherlands": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "New Caledonia": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "New Caledonia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "New Zealand": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Nicaragua": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Niger": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
@@ -942,15 +942,13 @@
     "Paraguay": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Pitcairn Island": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Portugal": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "Réunion": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "Réunion": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Russia": {
       "civilPartnership": false,
       "duration": "3 to 12 months (check with the person conducting your ceremony)",
       "postal": true,
       "additionalDocs": [
-        " A piece of paper with the Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities)",
-        " if you're not a Russian resident - either your residence registration slip issued by migration authorities or the rental agreement with your name for your private accommodation in Russia ",
-        "if you live in another country, you can use your migration card date-stamped by Russian border control upon your arrival as proof you arrived in Russia at least 3 days earlier"
+        "a piece of paper with the Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities)"
       ],
       "cniDelivery": false,
       "localRequirements": ""
@@ -983,7 +981,7 @@
     },
     "South Sudan": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Sri Lanka": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-    "St Barthelemy": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "St Barthélemy": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "St Helena, Ascension and Tristan da Cunha": {
       "civilPartnership": false,
       "duration": "",
@@ -1041,23 +1039,24 @@
       "duration": "3 months",
       "postal": false,
       "additionalDocs": [
-        "if you are planning a religious ceremony and you are not a resident in UAE you will need to provide your partner's proof of UAE residency"
+        "if you‘re planning a religious ceremony and you‘re not a resident in UAE you‘ll need to provide your partner‘s proof of UAE residency ",
+        "letter from your employer or the local mayor that shows your address can also be used as proof of permanent address in UAE"
       ],
       "cniDelivery": false,
-      "localRequirements": "\nOnce you’ve applied online, download either the [affirmation](https://www.gov.uk/government/publications/affidavitaffirmatin-of-marital-status-forms-uae) (if you want to make a non-religious declaration) or [affidavit](https://www.gov.uk/government/publications/affidavitaffirmatin-of-marital-status-forms-uae) (religious) and type in your details. Do not fill in by hand or sign it. Email a copy of your form to either [British Embassy Dubai](mailto:consularappointment.uae@fcdo.gov.uk) or [British Embassy Abu Dhabi](mailto:abudhabi.consularappointments@fcdo.gov.uk). They will process your application and confirm your appointment. If you do not email a copy of the completed template your appointment will be cancelled."
+      "localRequirements": "\nOnce you‘ve applied online, download either the [affirmation](https://www.gov.uk/government/publications/affidavitaffirmatin-of-marital-status-forms-uae) (if you want to make a non-religious declaration) or [affidavit](https://www.gov.uk/government/publications/affidavitaffirmatin-of-marital-status-forms-uae) (religious) and type in your details. Do not fill in by hand or sign it. Email a copy of your form to either [British Embassy Dubai](mailto:consularappointment.uae@fcdo.gov.uk) or [British Embassy Abu Dhabi](mailto:abudhabi.consularappointments@fcdo.gov.uk). They will process your application and confirm your appointment. If you do not email a copy of the completed template your appointment will be cancelled."
     },
     "United States": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Uruguay": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Vanuatu": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Vietnam": {
       "civilPartnership": false,
-      "duration": "3 or 6 months (check with the local People's Committee)",
+      "duration": "3 or 6 months (check with the local People‘s Committee)",
       "postal": false,
-      "additionalDocs": ["partner's birth certificate"],
+      "additionalDocs": ["partner‘s birth certificate"],
       "cniDelivery": false,
-      "localRequirements": "\nYour proof of any previous marriages having ended (for example your divorce absolute or partner's death certificate) must be legalised if they were issued in the UK. You need to [apply for legalisation separately](https://www.gov.uk/get-document-legalised)."
+      "localRequirements": "\nYour proof that a previous marriage has ended, for example, your decree absolute or partner‘s death certificate, must be legalised if they were issued in the UK. You need to [apply for legalisation](https://www.gov.uk/get-document-legalised) separately. "
     },
-    "Wallis and Futuna": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+    "Wallis and Futuna": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Western Sahara": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Yemen": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Zambia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },

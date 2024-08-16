@@ -68,8 +68,8 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
   const personalisation = PersonalisationBuilder.userPostalConfirmation(spainAnswers, { reference: "1234" });
   expect(personalisation).toEqual({
     additionalDocs: [
-      "partner's proof any previous marriages or civil partnerships have ended",
-      "if you live in Spain, registration certificate for the town hall register (padrón municipal) – also use as proof of address",
+      "partner‘s proof any previous marriages or civil partnerships have ended ",
+      "if you live in Spain, use your registration certificate for the town hall register (padrón municipal) as proof of address",
     ],
     firstName: "foo",
     post: "the British Consulate General Istanbul",
@@ -78,7 +78,7 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
     livesInCountry: true,
     livesOutsideApplicationCountry: false,
     localRequirements:
-      "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you're holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application.",
+      "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you‘re holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application.",
     partnerHadPreviousMarriage: true,
     civilPartnership: false,
     reference: "1234",
@@ -98,9 +98,9 @@ test("buildSendEmailArgs should return the correct personalisation for Italy whe
   const personalisation = PersonalisationBuilder.userPostalConfirmation(italyAnswers, { reference: "1234" });
   expect(personalisation).toEqual({
     additionalDocs: [
-      "your parents' full names ",
-      "partner's proof any previous marriages or civil partnerships have ended",
-      "proof of address if you live in the UK",
+      "your parents‘ full names ",
+      "partner‘s proof any previous marriages or civil partnerships have ended ",
+      "proof of permanent address if you live outside of Italy",
     ],
     firstName: "foo",
     post: "the British Consulate General Istanbul",
@@ -108,8 +108,7 @@ test("buildSendEmailArgs should return the correct personalisation for Italy whe
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
     livesInCountry: true,
     livesOutsideApplicationCountry: false,
-    localRequirements:
-      "\nA CNI is equivalent to a 'Nulla Osta' in Italy. \nIf you decide to apply by post, you will pay an additional fee to a notary public. ‘Ask the notary to use the 'Vera di Firma procedure’.",
+    localRequirements: "\nA CNI is equivalent to a ‘Nulla Osta‘ in Italy. ",
     civilPartnership: true,
     reference: "1234",
     partnerHadPreviousMarriage: true,
@@ -122,15 +121,15 @@ test("buildSendEmailArgs should return the correct personalisation for Italy whe
 test("getUserPostalConfirmationAdditionalContext returns additionalContext correctly", () => {
   expect(getUserPostalConfirmationAdditionalContext("Italy")).toStrictEqual({
     additionalDocs: [
-      "your parents' full names ",
-      "partner's proof any previous marriages or civil partnerships have ended",
-      "proof of address if you live in the UK",
+      "your parents‘ full names ",
+      "partner‘s proof any previous marriages or civil partnerships have ended ",
+      "proof of permanent address if you live outside of Italy",
     ],
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
     civilPartnership: true,
     cniDelivery: true,
     duration: "6 months",
-    localRequirements: `\nA CNI is equivalent to a 'Nulla Osta' in Italy. \nIf you decide to apply by post, you will pay an additional fee to a notary public. ‘Ask the notary to use the 'Vera di Firma procedure’.`,
+    localRequirements: `\nA CNI is equivalent to a ‘Nulla Osta‘ in Italy. `,
     post: "the British Embassy Rome",
     postAddress: `\nBritish Embassy Rome \nVia XX Settembre 80/a \n00187 Rome \nItaly`,
     postal: true,
@@ -138,9 +137,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
 
   expect(getUserPostalConfirmationAdditionalContext("Russia", "the British Embassy Moscow")).toStrictEqual({
     additionalDocs: [
-      " A piece of paper with the Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities)",
-      " if you're not a Russian resident - either your residence registration slip issued by migration authorities or the rental agreement with your name for your private accommodation in Russia ",
-      "if you live in another country, you can use your migration card date-stamped by Russian border control upon your arrival as proof you arrived in Russia at least 3 days earlier",
+      "a piece of paper with the Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities)",
     ],
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10",
     civilPartnership: false,
@@ -158,8 +155,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
     civilPartnership: false,
     cniDelivery: true,
     duration: "6 months",
-    localRequirements:
-      "\nYou can apply before you have confirmed the final place and date of your ceremony. When asked in your online application, enter the estimated date and rough location within Poland.",
+    localRequirements: "",
     post: "the British Embassy Warsaw",
     postAddress: "\nConsular Section \nBritish Embassy \nul. Kawalerii 12 \n00-468 Warsaw \nMazowieckie",
     postal: true,
