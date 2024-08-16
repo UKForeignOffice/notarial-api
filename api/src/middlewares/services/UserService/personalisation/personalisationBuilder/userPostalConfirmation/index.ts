@@ -18,6 +18,7 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const country = answers["country"] as string;
   const post = answers["post"] as string;
   const userHadPreviousMarriage = answers.maritalStatus !== "Never married";
+  const livesInCountry = answers.livesInCountry === true;
   const livesOutsideApplicationCountry = answers.livesInCountry === false;
   const partnerHadPreviousMarriage = answers.partnerMaritalStatus !== "Never married";
 
@@ -31,10 +32,12 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     localRequirements: additionalContext.localRequirements,
     civilPartnership: additionalContext.civilPartnership,
     userHadPreviousMarriage,
+    livesInCountry,
     livesOutsideApplicationCountry,
     partnerHadPreviousMarriage,
     reference: metadata.reference,
     postAddress: additionalContext.postAddress,
     notPaid: !isSuccessfulPayment,
+    additionalDocs: additionalContext.additionalDocs,
   };
 }
