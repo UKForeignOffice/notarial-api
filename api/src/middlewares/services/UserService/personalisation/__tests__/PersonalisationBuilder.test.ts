@@ -49,9 +49,9 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     civilPartnership: false,
     reference: "1234",
     postAddress: "",
-    previousMarriage: false,
-    livesAbroad: false,
-    partnerPreviousMarriage: true,
+    userHadPreviousMarriage: false,
+    livesOutsideApplicationCountry: false,
+    partnerHadPreviousMarriage: true,
     notPaid: true,
   });
 });
@@ -69,14 +69,14 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
     post: "the British Consulate General Istanbul",
     country: "Spain",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
-    livesAbroad: false,
+    livesOutsideApplicationCountry: false,
     localRequirements:
       "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you're holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application.",
-    partnerPreviousMarriage: true,
+    partnerHadPreviousMarriage: true,
     civilPartnership: false,
     reference: "1234",
     postAddress: "",
-    previousMarriage: false,
+    userHadPreviousMarriage: false,
     notPaid: true,
   });
 });
@@ -93,14 +93,14 @@ test("buildSendEmailArgs should return the correct personalisation for Italy whe
     post: "the British Consulate General Istanbul",
     country: "Italy",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
-    livesAbroad: false,
+    livesOutsideApplicationCountry: false,
     localRequirements:
       "\nA CNI is equivalent to a 'Nulla Osta' in Italy. \nIf you decide to apply by post, you will pay an additional fee to a notary public. ‘Ask the notary to use the 'Vera di Firma procedure’.",
     civilPartnership: true,
     reference: "1234",
-    partnerPreviousMarriage: true,
+    partnerHadPreviousMarriage: true,
     postAddress: "",
-    previousMarriage: false,
+    userHadPreviousMarriage: false,
     notPaid: true,
   });
 });
