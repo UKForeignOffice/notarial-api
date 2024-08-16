@@ -25,6 +25,7 @@ export function getCNIPersonalisations(fields: AnswersHashMap) {
     previouslyMarried: fields.maritalStatus !== "Never married",
     religious: fields.oathType === "Religious",
     croatiaCertNeeded: fields.certRequired === true,
+    countryIsItaly: fields.country === "Italy",
   };
 }
 

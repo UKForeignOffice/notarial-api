@@ -44,17 +44,14 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     firstName: "foo",
     post: "the British Consulate General Istanbul",
     country: "Turkey",
-    croatiaCertNeeded: false,
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
     localRequirements: "",
     civilPartnership: false,
     reference: "1234",
     postAddress: "",
-    previousMarriage: false,
-    spainProofOfAddressNeeded: false,
-    italySpainPartnerPreviousMarriageDocNeeded: false,
-    ukProofOfAddressNeeded: false,
-    showSpainContent: false,
+    userHadPreviousMarriage: false,
+    livesOutsideApplicationCountry: false,
+    partnerHadPreviousMarriage: true,
     notPaid: true,
   });
 });
@@ -71,18 +68,15 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
     firstName: "foo",
     post: "the British Consulate General Istanbul",
     country: "Spain",
-    croatiaCertNeeded: false,
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
+    livesOutsideApplicationCountry: false,
     localRequirements:
       "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you're holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application.",
+    partnerHadPreviousMarriage: true,
     civilPartnership: false,
     reference: "1234",
     postAddress: "",
-    previousMarriage: false,
-    spainProofOfAddressNeeded: true,
-    italySpainPartnerPreviousMarriageDocNeeded: true,
-    ukProofOfAddressNeeded: false,
-    showSpainContent: true,
+    userHadPreviousMarriage: false,
     notPaid: true,
   });
 });
@@ -98,18 +92,15 @@ test("buildSendEmailArgs should return the correct personalisation for Italy whe
     firstName: "foo",
     post: "the British Consulate General Istanbul",
     country: "Italy",
-    croatiaCertNeeded: false,
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
+    livesOutsideApplicationCountry: false,
     localRequirements:
       "\nA CNI is equivalent to a 'Nulla Osta' in Italy. \nIf you decide to apply by post, you will pay an additional fee to a notary public. ‘Ask the notary to use the 'Vera di Firma procedure’.",
     civilPartnership: true,
     reference: "1234",
+    partnerHadPreviousMarriage: true,
     postAddress: "",
-    previousMarriage: false,
-    spainProofOfAddressNeeded: false,
-    italySpainPartnerPreviousMarriageDocNeeded: true,
-    ukProofOfAddressNeeded: true,
-    showSpainContent: false,
+    userHadPreviousMarriage: false,
     notPaid: true,
   });
 });
@@ -196,6 +187,7 @@ test("getCNIPersonalisations returns the correct personalisations given all posi
     maritalStatus: "Divorced",
     oathType: "Religious",
     certRequired: true,
+    country: "Italy",
   };
 
   expect(getCNIPersonalisations(answers)).toStrictEqual({
@@ -204,6 +196,7 @@ test("getCNIPersonalisations returns the correct personalisations given all posi
     livesAbroad: false,
     previouslyMarried: true,
     religious: true,
+    countryIsItaly: true,
   });
 });
 
@@ -213,6 +206,7 @@ test("getCNIPersonalisations returns the correct personalisations given all nega
     maritalStatus: "Never married",
     oathType: "Non-religious",
     certRequired: false,
+    country: "Croatia",
   };
 
   expect(getCNIPersonalisations(answers)).toStrictEqual({
@@ -221,5 +215,6 @@ test("getCNIPersonalisations returns the correct personalisations given all nega
     livesAbroad: true,
     previouslyMarried: false,
     religious: false,
+    countryIsItaly: false,
   });
 });

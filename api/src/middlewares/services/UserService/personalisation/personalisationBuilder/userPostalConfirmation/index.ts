@@ -2,7 +2,6 @@ import * as additionalContexts from "../../../../utils/additionalContexts.json";
 import { getPost } from "../../../../utils/getPost";
 import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
 import { PayMetadata } from "../../../../../../types/FormDataBody";
-import { postalPersonalisationsByCountry } from "./getAdditionalPersonalisations";
 
 export function getUserPostalConfirmationAdditionalContext(country: string, post?: string) {
   const postName = getPost(country, post);
@@ -18,17 +17,9 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
   const country = answers["country"] as string;
   const post = answers["post"] as string;
-  const previousMarriage = answers.maritalStatus && answers.maritalStatus !== "Never married";
-  const getAdditionalCountryPersonalisation = postalPersonalisationsByCountry[country];
-
-  const additionalPersonalisations = {
-    ukProofOfAddressNeeded: false,
-    spainProofOfAddressNeeded: false,
-    croatiaCertNeeded: false,
-    italySpainPartnerPreviousMarriageDocNeeded: false,
-    showSpainContent: false,
-    ...getAdditionalCountryPersonalisation?.(answers),
-  };
+  const userHadPreviousMarriage = answers.maritalStatus !== "Never married";
+  const livesOutsideApplicationCountry = answers.livesInCountry === false;
+  const partnerHadPreviousMarriage = answers.partnerMaritalStatus !== "Never married";
 
   const additionalContext = getUserPostalConfirmationAdditionalContext(country, post);
 
@@ -39,10 +30,11 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     bookingLink: additionalContext.bookingLink,
     localRequirements: additionalContext.localRequirements,
     civilPartnership: additionalContext.civilPartnership,
-    previousMarriage,
+    userHadPreviousMarriage,
+    livesOutsideApplicationCountry,
+    partnerHadPreviousMarriage,
     reference: metadata.reference,
     postAddress: additionalContext.postAddress,
     notPaid: !isSuccessfulPayment,
-    ...additionalPersonalisations,
   };
 }
