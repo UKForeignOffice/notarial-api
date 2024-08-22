@@ -25,9 +25,9 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const partnerHadPreviousMarriage = answers.partnerMaritalStatus !== "Never married";
 
   const additionalContext = getUserPostalConfirmationAdditionalContext(country, post);
-  const getAdditionalDocs = getAdditionalDocsForCountry[country];
-  const additionalDocs = getAdditionalDocs?.(answers, additionalContext, metadata) ?? additionalContext.additionalDocs;
-
+  /**
+   * TODO: - Some of these personalisations are not used in email templates. They need to be removed.
+   */
   return {
     firstName: answers.firstName,
     post: additionalContext.post,
@@ -42,7 +42,9 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     reference: metadata.reference,
     postAddress: additionalContext.postAddress,
     notPaid: !isSuccessfulPayment,
-    additionalDocs,
+    additionalDocs: additionalContext.additionalDocs,
     countryIsItalyAndPartnerHadPreviousMarriage: country === "Italy" && partnerHadPreviousMarriage,
+    countryIsItalyAndDoesNotLiveInItaly: country === "Italy" && livesOutsideApplicationCountry,
+    countryIsCroatia: country === "Croatia",
   };
 }
