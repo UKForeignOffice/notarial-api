@@ -1,7 +1,7 @@
 import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
 
 export const getAdditionalDocsForCountry = {
-  Italy: (answers: AnswersHashMap) => {
+  Italy: (answers: AnswersHashMap, _additionalContext) => {
     const partnerHadPreviousMarriage = answers.partnerMaritalStatus !== "Never married";
     const livesInItaly = answers.livesInCountry === true;
 
@@ -20,5 +20,10 @@ export const getAdditionalDocsForCountry = {
     }
 
     return additionalDocs;
+  },
+
+  Croatia: (answers: AnswersHashMap, additionalContext) => {
+    const additionalDocs = additionalContext?.additionalDocs ?? [];
+    return [...additionalDocs, "certified copy of passport by a UK lawyer or a public notary"];
   },
 };
