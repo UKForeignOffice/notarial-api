@@ -16,7 +16,7 @@ export const getAdditionalDocsForCountry = {
     }
 
     if (partnerHadPreviousMarriage) {
-      additionalDocs.push("the document that proves any previous marriages or civil partnerships hav ended");
+      additionalDocs.push("the document that proves any previous marriages or civil partnerships has ended");
     }
 
     return additionalDocs;
