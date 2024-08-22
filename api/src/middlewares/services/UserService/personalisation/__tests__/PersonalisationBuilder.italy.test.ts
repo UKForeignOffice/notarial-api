@@ -29,7 +29,7 @@ describe("buildSendEmailArgs for Italy", () => {
     expect(personalisation.additionalDocs).toEqual([
       "your parents’ full names",
       "original proof of address or a certified copy if your permanent address is outside Italy",
-      "the document that proves any previous marriages or civil partnerships hav ended",
+      "the document that proves any previous marriages or civil partnerships has ended",
     ]);
   });
   test("when the user lives in Italy", () => {

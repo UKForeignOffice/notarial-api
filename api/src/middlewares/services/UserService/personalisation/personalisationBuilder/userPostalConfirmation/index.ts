@@ -43,5 +43,6 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     postAddress: additionalContext.postAddress,
     notPaid: !isSuccessfulPayment,
     additionalDocs,
+    countryIsItalyAndPartnerHadPreviousMarriage: country === "Italy" && partnerHadPreviousMarriage,
   };
 }
