@@ -2,6 +2,7 @@ import * as additionalContexts from "../../../../utils/additionalContexts.json";
 import { getPost } from "../../../../utils/getPost";
 import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
 import { PayMetadata } from "../../../../../../types/FormDataBody";
+import { getAdditionalDocsForCountry } from "./getAdditionalDocsForCountry";
 
 export function getUserPostalConfirmationAdditionalContext(country: string, post?: string) {
   const postName = getPost(country, post);
@@ -13,6 +14,7 @@ export function getUserPostalConfirmationAdditionalContext(country: string, post
     ...additionalPostContext,
   };
 }
+
 export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata }) {
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
   const country = answers["country"] as string;
@@ -23,6 +25,8 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const partnerHadPreviousMarriage = answers.partnerMaritalStatus !== "Never married";
 
   const additionalContext = getUserPostalConfirmationAdditionalContext(country, post);
+  const getAdditionalDocs = getAdditionalDocsForCountry[country];
+  const additionalDocs = getAdditionalDocs?.(answers, additionalContext, metadata) ?? additionalContext.additionalDocs;
 
   return {
     firstName: answers.firstName,
@@ -38,6 +42,7 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
     reference: metadata.reference,
     postAddress: additionalContext.postAddress,
     notPaid: !isSuccessfulPayment,
-    additionalDocs: additionalContext.additionalDocs,
+    additionalDocs,
+    countryIsItalyAndPartnerHadPreviousMarriage: country === "Italy" && partnerHadPreviousMarriage,
   };
 }

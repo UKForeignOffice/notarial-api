@@ -4,6 +4,7 @@ import { ApplicationError } from "../../../../../../ApplicationError";
 import * as additionalContexts from "../../../../utils/additionalContexts.json";
 import { getPost } from "../../../../utils/getPost";
 import { personalisationTypeMap } from "./getAdditionalPersonalisations";
+import { getAdditionalDocsForCountry } from "./getAdditionalDocsForCountry";
 
 export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
@@ -26,6 +27,10 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
     ...(additionalContexts.posts[post] ?? additionalContexts.countries[country].post ?? {}),
   };
 
+  const getAdditionalDocs = getAdditionalDocsForCountry[country];
+
+  const additionalDocs = getAdditionalDocs?.(answers, additionalContext) ?? additionalContext.additionalDocs;
+
   return {
     firstName: answers.firstName,
     post: getPost(country, post),
@@ -37,6 +42,6 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
     confirmationDelay: additionalContext.confirmationDelay ?? "2 weeks",
     notPaid: !isSuccessfulPayment,
     ...additionalPersonalisations,
-    additionalDocs: additionalContext.additionalDocs ?? "",
+    additionalDocs: additionalDocs ?? "",
   };
 }

@@ -9,7 +9,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nAlbanian authorities will ask for your birth certificate. This will be retained by the authorities so you should provide a [certified copy from a local notary](https://www.gov.uk/guidance/find-a-notary-abroad). If the authorities ask for your original birth certificate, explain that they are only issued once in the UK. You can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea53e49b9c0597fdafa8f/Albania_-_standard_letter_-_birth_certificate.pdf) to help you.  \nAlbanian authorities may ask you to provide a vërtetim banimi (proof of address template). If you live in the UK you can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea57da3c2a28abb50cd58/Albania_-_standard_letter_-_proof_of_address.pdf) to help you explain that there‘s no equivalent document in the UK."
+      "localRequirements": " \nAlbanian authorities will ask for your birth certificate. This will be retained by the authorities so you should provide a [certified copy from a local notary](https://www.gov.uk/guidance/find-a-notary-abroad). If the authorities ask for your original birth certificate, explain that they are only issued once in the UK. You can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea53e49b9c0597fdafa8f/Albania_-_standard_letter_-_birth_certificate.pdf) to help you.  \nAlbanian authorities may ask you to provide a vërtetim banimi (proof of address template). If you live in the UK you can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea57da3c2a28abb50cd58/Albania_-_standard_letter_-_proof_of_address.pdf) to help you explain that there’s no equivalent document in the UK."
     },
     "Algeria": {
       "post": "the British Embassy Algiers",
@@ -110,7 +110,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": true,
-      "localRequirements": "\nYou‘ll also need to give the registrar in Bolivia a legalised (apostilled) birth certificate. You need to [apply for legalisation](https://www.gov.uk/get-document-legalised) separately."
+      "localRequirements": "\nYou’ll also need to give the registrar in Bolivia a legalised (apostilled) birth certificate. You need to [apply for legalisation](https://www.gov.uk/get-document-legalised) separately."
     },
     "Bosnia and Herzegovina": {
       "post": "the British Embassy Sarajevo",
@@ -200,7 +200,7 @@
       "postal": true,
       "additionalDocs": "",
       "cniDelivery": true,
-      "localRequirements": "\nThe CNI and the certificate of custom law will be issued in Croatian. You‘ll need to get both certified by the Ministry of Foreign and European Affairs in Zagreb before they‘ll be accepted by your registrar.  \nYou‘ll also need to give the registrar a [legalised (apostilled)](https://www.gov.uk/get-document-legalised) and [translated](https://find-a-professional-service-abroad.service.csd.fcdo.gov.uk/find/translators-interpreters) birth certificate. If your name is different on your birth certificate and your passport the local registrar will ask for evidence of your name change, for example deed poll or previous marriage certificate."
+      "localRequirements": "\nThe CNI and the certificate of custom law will be issued in Croatian. You’ll need to get both certified by the Ministry of Foreign and European Affairs in Zagreb before they‘ll be accepted by your registrar.  \nYou’ll also need to give the registrar a [legalised (apostilled)](https://www.gov.uk/get-document-legalised) and [translated](https://find-a-professional-service-abroad.service.csd.fcdo.gov.uk/find/translators-interpreters) birth certificate. If your name is different on your birth certificate and your passport the local registrar will ask for evidence of your name change, for example deed poll or previous marriage certificate."
     },
     "Cuba": {
       "post": "the British Embassy Havana",
@@ -352,7 +352,7 @@
         "proof of permanent address if you live outside of Italy"
       ],
       "cniDelivery": true,
-      "localRequirements": "\nA CNI is equivalent to a ‘Nulla Osta‘ in Italy. "
+      "localRequirements": "\nA CNI is equivalent to a ‘Nulla Osta’ in Italy. "
     },
     "Jordan": {
       "post": "the British Embassy Amman",
@@ -363,7 +363,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nThe marital status affirmation you‘ll swear will be slightly different depending on your type of marriage. \nFor Islamic marriages at the Sharia Court, you‘ll swear a single declaration document to prove you‘re allowed to marry or a single divorced declaration document if you‘re divorced. \nFor Christian marriages, you‘ll swear a marital status affidavit. \nBefore your appointment, the British Embassy Amman will contact you to ask which document you need."
+      "localRequirements": "\nThe marital status affirmation you’ll swear will be slightly different depending on your type of marriage. \nFor Islamic marriages at the Sharia Court, you’ll swear a single declaration document to prove you’re allowed to marry or a single divorced declaration document if you’re divorced. \nFor Christian marriages, you’ll swear a marital status affidavit. \nBefore your appointment, the British Embassy Amman will contact you to ask which document you need."
     },
     "Kazakhstan": {
       "post": "the British Embassy Astana",
@@ -537,9 +537,9 @@
       "civilPartnership": false,
       "duration": "3 months",
       "postal": false,
-      "additionalDocs": ["UK CNI issued by a UK register office"],
+      "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nTo get married in Montenegro you‘ll need a certificate of no impediment (CNI) and a marital status affirmation, both issued by the British Embassy Podgorica. Your online application includes both documents."
+      "localRequirements": "\nTo get married in Montenegro you’ll need a certificate of no impediment (CNI) and a marital status affirmation, both issued by the British Embassy Podgorica. Your online application includes both documents."
     },
     "Nepal": {
       "post": "the British Embassy Kathmandu",
@@ -572,7 +572,7 @@
       "postal": false,
       "additionalDocs": ["proof you live in Norway (this should also be your proof of address)"],
       "cniDelivery": false,
-      "localRequirements": "\nAppointments are only available at the British Embassy Oslo. You‘ll need to travel to Oslo for your appointment."
+      "localRequirements": "\nAppointments are only available at the British Embassy Oslo. You’ll need to travel to Oslo for your appointment."
     },
     "Oman": {
       "post": "the British Embassy Muscat",
@@ -594,7 +594,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nYou‘ll also need to provide your legalised (apostilled) birth certificate. You need to [apply for legalisation](https://www.gov.uk/get-document-legalised) separately. Any other documents requested by the authorities that were issued outside of Peru will also need to be legalised and translated before they‘ll be accepted."
+      "localRequirements": "\nYou’ll also need to provide your legalised (apostilled) birth certificate. You need to [apply for legalisation](https://www.gov.uk/get-document-legalised) separately. Any other documents requested by the authorities that were issued outside of Peru will also need to be legalised and translated before they‘ll be accepted."
     },
     "Poland": {
       "post": "the British Embassy Warsaw",
@@ -707,7 +707,7 @@
         "if you live in Spain, use your registration certificate for the town hall register (padrón municipal) as proof of address"
       ],
       "cniDelivery": true,
-      "localRequirements": "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you‘re holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application."
+      "localRequirements": "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application."
     },
     "Sweden": {
       "post": "the British Embassy Stockholm",
@@ -908,7 +908,7 @@
       "postal": false,
       "additionalDocs": "",
       "cniDelivery": false,
-      "localRequirements": "\nThere are no British consular facilities to get legal documents to prove you’re eligible to marry in Macao. You‘ll need to travel to the British Consulate General Hong Kong for your appointment to get a marital status affirmation. "
+      "localRequirements": "\nThere are no British consular facilities to get legal documents to prove you’re eligible to marry in Macao. You’ll need to travel to the British Consulate General Hong Kong for your appointment to get a marital status affirmation. "
     },
     "Madagascar": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
     "Malawi": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
@@ -1039,7 +1039,7 @@
       "duration": "3 months",
       "postal": false,
       "additionalDocs": [
-        "if you‘re planning a religious ceremony and you‘re not a resident in UAE you‘ll need to provide your partner‘s proof of UAE residency ",
+        "if you’re planning a religious ceremony and you’re not a resident in UAE you’ll need to provide your partner‘s proof of UAE residency ",
         "letter from your employer or the local mayor that shows your address can also be used as proof of permanent address in UAE"
       ],
       "cniDelivery": false,

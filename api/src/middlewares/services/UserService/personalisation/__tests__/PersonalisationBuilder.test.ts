@@ -45,6 +45,7 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
     firstName: "foo",
     post: "the British Consulate General Istanbul",
     country: "Turkey",
+    countryIsItalyAndPartnerHadPreviousMarriage: false,
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
     localRequirements: "",
     civilPartnership: false,
@@ -74,44 +75,15 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
     firstName: "foo",
     post: "the British Consulate General Istanbul",
     country: "Spain",
+    countryIsItalyAndPartnerHadPreviousMarriage: false,
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
     livesInCountry: true,
     livesOutsideApplicationCountry: false,
     localRequirements:
-      "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you‘re holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application.",
+      "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application.",
     partnerHadPreviousMarriage: true,
     civilPartnership: false,
     reference: "1234",
-    postAddress: "",
-    userHadPreviousMarriage: false,
-    notPaid: true,
-  });
-});
-
-test("buildSendEmailArgs should return the correct personalisation for Italy when the user's partner has been married before", () => {
-  const italyAnswers = {
-    ...answers,
-    country: "Italy",
-    partnerMaritalStatus: "Divorced",
-    livesInCountry: true,
-  };
-  const personalisation = PersonalisationBuilder.userPostalConfirmation(italyAnswers, { reference: "1234" });
-  expect(personalisation).toEqual({
-    additionalDocs: [
-      "your parents‘ full names ",
-      "partner‘s proof any previous marriages or civil partnerships have ended ",
-      "proof of permanent address if you live outside of Italy",
-    ],
-    firstName: "foo",
-    post: "the British Consulate General Istanbul",
-    country: "Italy",
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
-    livesInCountry: true,
-    livesOutsideApplicationCountry: false,
-    localRequirements: "\nA CNI is equivalent to a ‘Nulla Osta‘ in Italy. ",
-    civilPartnership: true,
-    reference: "1234",
-    partnerHadPreviousMarriage: true,
     postAddress: "",
     userHadPreviousMarriage: false,
     notPaid: true,
@@ -129,7 +101,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
     civilPartnership: true,
     cniDelivery: true,
     duration: "6 months",
-    localRequirements: `\nA CNI is equivalent to a ‘Nulla Osta‘ in Italy. `,
+    localRequirements: `\nA CNI is equivalent to a ‘Nulla Osta’ in Italy. `,
     post: "the British Embassy Rome",
     postAddress: `\nBritish Embassy Rome \nVia XX Settembre 80/a \n00187 Rome \nItaly`,
     postal: true,
