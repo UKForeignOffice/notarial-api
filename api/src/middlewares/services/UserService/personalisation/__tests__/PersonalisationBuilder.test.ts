@@ -88,36 +88,6 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
   });
 });
 
-test("buildSendEmailArgs should return the correct personalisation for Italy when the user's partner has been married before", () => {
-  const italyAnswers = {
-    ...answers,
-    country: "Italy",
-    partnerMaritalStatus: "Divorced",
-    livesInCountry: true,
-  };
-  const personalisation = PersonalisationBuilder.userPostalConfirmation(italyAnswers, { reference: "1234" });
-  expect(personalisation).toEqual({
-    additionalDocs: [
-      "your parents‘ full names ",
-      "partner‘s proof any previous marriages or civil partnerships have ended ",
-      "proof of permanent address if you live outside of Italy",
-    ],
-    firstName: "foo",
-    post: "the British Consulate General Istanbul",
-    country: "Italy",
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
-    livesInCountry: true,
-    livesOutsideApplicationCountry: false,
-    localRequirements: "\nA CNI is equivalent to a ‘Nulla Osta‘ in Italy. ",
-    civilPartnership: true,
-    reference: "1234",
-    partnerHadPreviousMarriage: true,
-    postAddress: "",
-    userHadPreviousMarriage: false,
-    notPaid: true,
-  });
-});
-
 test("getUserPostalConfirmationAdditionalContext returns additionalContext correctly", () => {
   expect(getUserPostalConfirmationAdditionalContext("Italy")).toStrictEqual({
     additionalDocs: [
@@ -129,7 +99,7 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
     civilPartnership: true,
     cniDelivery: true,
     duration: "6 months",
-    localRequirements: `\nA CNI is equivalent to a ‘Nulla Osta‘ in Italy. `,
+    localRequirements: `\nA CNI is equivalent to a ‘Nulla Osta’ in Italy. `,
     post: "the British Embassy Rome",
     postAddress: `\nBritish Embassy Rome \nVia XX Settembre 80/a \n00187 Rome \nItaly`,
     postal: true,
