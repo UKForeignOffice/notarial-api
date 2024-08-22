@@ -29,7 +29,7 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
 
   const getAdditionalDocs = getAdditionalDocsForCountry[country];
 
-  const additionalDocs = getAdditionalDocs?.(answers, additionalContext) ?? additionalContext.additionalDocs;
+  const additionalDocs = getAdditionalDocs?.(answers, additionalContext, metadata) ?? additionalContext.additionalDocs;
 
   return {
     firstName: answers.firstName,
