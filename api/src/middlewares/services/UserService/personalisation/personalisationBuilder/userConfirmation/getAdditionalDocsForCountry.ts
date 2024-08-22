@@ -1,8 +1,7 @@
 import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
 
 export const getAdditionalDocsForCountry = {
-  Montenegro: (_answers: AnswersHashMap, additionalContext) => {
-    const additionalDocs = additionalContext.additionalDocss;
-    return [...additionalDocs, "UK CNI issued by a UK register office"];
+  Montenegro: (_answers: AnswersHashMap, _additionalContext) => {
+    return ["UK CNI issued by a UK register office"];
   },
 };
