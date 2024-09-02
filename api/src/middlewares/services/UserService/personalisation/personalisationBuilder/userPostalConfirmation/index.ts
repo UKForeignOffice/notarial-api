@@ -1,7 +1,9 @@
 import * as additionalContexts from "../../../../utils/additionalContexts.json";
 import { getPost } from "../../../../utils/getPost";
 import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
-import { PayMetadata } from "../../../../../../types/FormDataBody";
+import { FormType, PayMetadata } from "../../../../../../types/FormDataBody";
+import { personalisationTypeMap } from "./getAdditionalPersonalisations";
+import { ApplicationError } from "../../../../../../ApplicationError";
 
 export function getUserPostalConfirmationAdditionalContext(country: string, post?: string) {
   const postName = getPost(country, post);
@@ -14,36 +16,28 @@ export function getUserPostalConfirmationAdditionalContext(country: string, post
   };
 }
 
-export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata }) {
+export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
   const country = answers["country"] as string;
   const post = answers["post"] as string;
   const userHadPreviousMarriage = answers.maritalStatus !== "Never married";
-  const livesInCountry = answers.livesInCountry === true;
-  const livesOutsideApplicationCountry = answers.livesInCountry === false;
-  const partnerHadPreviousMarriage = answers.partnerMaritalStatus !== "Never married";
 
   const additionalContext = getUserPostalConfirmationAdditionalContext(country, post);
-  /**
-   * TODO: - Some of these personalisations are not used in email templates. They need to be removed.
-   */
+  const getAdditionalPersonalisations = personalisationTypeMap[metadata.type!];
+  if (!getAdditionalPersonalisations) {
+    throw new ApplicationError("WEBHOOK", "VALIDATION", 500, `No personalisation mapper set for form type: ${metadata.type}`);
+  }
+  const additionalPersonalisations = getAdditionalPersonalisations(answers);
   return {
     firstName: answers.firstName,
     post: additionalContext.post,
     country,
-    bookingLink: additionalContext.bookingLink,
     localRequirements: additionalContext.localRequirements,
     civilPartnership: additionalContext.civilPartnership,
     userHadPreviousMarriage,
-    livesInCountry,
-    livesOutsideApplicationCountry,
-    partnerHadPreviousMarriage,
+    ...additionalPersonalisations,
     reference: metadata.reference,
     postAddress: additionalContext.postAddress,
     notPaid: !isSuccessfulPayment,
-    additionalDocs: additionalContext.additionalDocs,
-    countryIsItalyAndPartnerHadPreviousMarriage: country === "Italy" && partnerHadPreviousMarriage,
-    countryIsItalyAndDoesNotLiveInItaly: country === "Italy" && livesOutsideApplicationCountry,
-    countryIsCroatia: country === "Croatia",
   };
 }
