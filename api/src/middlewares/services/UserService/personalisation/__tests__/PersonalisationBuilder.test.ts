@@ -124,6 +124,22 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
   });
 });
 
+test("buildUserPostalConfirmationPersonalisation returns correct personalisations for msc", () => {
+  let personalisation = buildUserPostalConfirmationPersonalisation({ country: "Spain" }, { reference: "1234", type: "msc" });
+  expect(personalisation.countryIsCroatia).toBe(undefined);
+  expect(personalisation.livesInCountry).toBe(undefined);
+});
+
+test("buildUserPostalConfirmationPersonalisation returns correct personalisations for cni and msc", () => {
+  let personalisation = buildUserPostalConfirmationPersonalisation(
+    { country: "Spain", livesInCountry: true, partnerMaritalStatus: "Never married" },
+    { reference: "1234", type: "cniAndMsc" }
+  );
+  expect(personalisation.livesInCountry).toBe(true);
+  expect(personalisation.livesOutsideApplicationCountry).toBe(false);
+  expect(personalisation.partnerHadPreviousMarriage).toBe(false);
+});
+
 test("buildUserPostalConfirmationPersonalisation renders countries with default posts", () => {
   let personalisation = buildUserPostalConfirmationPersonalisation({ country: "Italy" }, { reference: "1234", type: "cni" });
   expect(personalisation.post).toBe("the British Embassy Rome");
