@@ -39,7 +39,6 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
     localRequirements: additionalContext.localRequirements,
     civilPartnership: additionalContext.civilPartnership,
     reference: metadata.reference,
-    confirmationDelay: additionalContext.confirmationDelay ?? "2 weeks",
     notPaid: !isSuccessfulPayment,
     ...additionalPersonalisations,
     additionalDocs: additionalDocs ?? "",

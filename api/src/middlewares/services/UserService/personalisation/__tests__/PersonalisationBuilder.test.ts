@@ -32,31 +32,25 @@ test("buildSendEmailArgs should return the correct personalisation for an in-per
     notPaid: true,
     post: "the British Consulate General Istanbul",
     previouslyMarried: false,
-    confirmationDelay: "2 weeks",
     reference: "1234",
     religious: false,
   });
 });
 
 test("buildSendEmailArgs should return the correct personalisation for a postal email", () => {
-  const personalisation = PersonalisationBuilder.userPostalConfirmation(answers, { reference: "1234" });
+  const personalisation = PersonalisationBuilder.userPostalConfirmation(answers, { reference: "1234", type: "cni" });
   expect(personalisation).toEqual({
-    additionalDocs: "",
     firstName: "foo",
     post: "the British Consulate General Istanbul",
     country: "Turkey",
     countryIsCroatia: false,
     countryIsItalyAndDoesNotLiveInItaly: false,
     countryIsItalyAndPartnerHadPreviousMarriage: false,
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
     localRequirements: "",
     civilPartnership: false,
     reference: "1234",
     postAddress: "",
     userHadPreviousMarriage: false,
-    livesInCountry: false,
-    livesOutsideApplicationCountry: false,
-    partnerHadPreviousMarriage: true,
     notPaid: true,
   });
 });
@@ -68,24 +62,16 @@ test("buildSendEmailArgs should return the correct personalisation for Spain whe
     partnerMaritalStatus: "Divorced",
     livesInCountry: true,
   };
-  const personalisation = PersonalisationBuilder.userPostalConfirmation(spainAnswers, { reference: "1234" });
+  const personalisation = PersonalisationBuilder.userPostalConfirmation(spainAnswers, { reference: "1234", type: "cni" });
   expect(personalisation).toEqual({
-    additionalDocs: [
-      "partner‘s proof any previous marriages or civil partnerships have ended ",
-      "if you live in Spain, use your registration certificate for the town hall register (padrón municipal) as proof of address",
-    ],
     firstName: "foo",
     post: "the British Consulate General Istanbul",
     country: "Spain",
     countryIsCroatia: false,
     countryIsItalyAndDoesNotLiveInItaly: false,
     countryIsItalyAndPartnerHadPreviousMarriage: false,
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
-    livesInCountry: true,
-    livesOutsideApplicationCountry: false,
     localRequirements:
       "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application.",
-    partnerHadPreviousMarriage: true,
     civilPartnership: false,
     reference: "1234",
     postAddress: "",
@@ -138,8 +124,23 @@ test("getUserPostalConfirmationAdditionalContext returns additionalContext corre
   });
 });
 
+test("buildUserPostalConfirmationPersonalisation returns correct personalisations for msc", () => {
+  let personalisation = buildUserPostalConfirmationPersonalisation({ country: "Spain" }, { reference: "1234", type: "msc" });
+  expect(personalisation.countryIsCroatia).toBe(undefined);
+  expect(personalisation.livesInCountry).toBe(undefined);
+});
+
+test("buildUserPostalConfirmationPersonalisation returns correct personalisations for cni and msc", () => {
+  let personalisation = buildUserPostalConfirmationPersonalisation(
+    { country: "Spain", livesInCountry: true, partnerMaritalStatus: "Never married" },
+    { reference: "1234", type: "cniAndMsc" }
+  );
+  expect(personalisation.livesInCountry).toBe(true);
+  expect(personalisation.livesOutsideApplicationCountry).toBe(false);
+});
+
 test("buildUserPostalConfirmationPersonalisation renders countries with default posts", () => {
-  let personalisation = buildUserPostalConfirmationPersonalisation({ country: "Italy" }, { reference: "1234" });
+  let personalisation = buildUserPostalConfirmationPersonalisation({ country: "Italy" }, { reference: "1234", type: "cni" });
   expect(personalisation.post).toBe("the British Embassy Rome");
 });
 

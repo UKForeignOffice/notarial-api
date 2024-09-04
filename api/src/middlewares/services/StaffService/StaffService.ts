@@ -14,7 +14,6 @@ import * as handlebars from "handlebars";
 import { isFieldType } from "../../../utils";
 import { getPost } from "../utils/getPost";
 import { getPostEmailAddress } from "../utils/getPostEmailAddress";
-import { PersonalisationBuilder } from "../UserService/personalisation/PersonalisationBuilder";
 import { SESEmailTemplate } from "../utils/types";
 
 type PaymentViewModel = {
@@ -129,7 +128,7 @@ export class StaffService {
     const country = answers.country as string;
     const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal }, template, type);
     const post = getPost(country, answers.post as string);
-    const onCompleteJob = this.getPostAlertOptions(answers, type, reference);
+    const onCompleteJob = this.getPostAlertOptions(answers, reference);
     return {
       subject: `Local marriage application - ${post} – ${reference}`,
       body: emailBody,
@@ -166,11 +165,10 @@ export class StaffService {
     };
   }
 
-  getPostAlertOptions(answers: AnswersHashMap, type: FormType, reference: string) {
+  getPostAlertOptions(answers: AnswersHashMap, reference: string) {
     const country = answers["country"] as string;
-    const post = answers["post"] as string;
+    const post = getPost(country, answers["post"] as string);
     const emailAddress = getPostEmailAddress(country, post);
-    const personalisation = PersonalisationBuilder.postNotification(answers, type, reference);
     if (!emailAddress) {
       this.logger.error(
         { code: "UNRECOGNISED_SERVICE_APPLICATION" },
@@ -184,7 +182,10 @@ export class StaffService {
       emailAddress,
       reference,
       options: {
-        personalisation,
+        personalisation: {
+          post,
+          reference,
+        },
         reference,
       },
     };
