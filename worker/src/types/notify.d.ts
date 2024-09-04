@@ -8,7 +8,7 @@ declare module "notifications-node-client" {
 
     getNotificationById: (notificationId: string) => Response<GetNotificationByIdResponse>;
 
-    getNotifications: (templateType?: string, status?: Status, reference?: string, olderThan?: string) => Response<GetNotificationByIdResponse>;
+    getNotifications: (templateType?: string, status?: Status, reference?: string, olderThan?: string) => Response<GetNotificationsResponse>;
 
     prepareUpload: (fileData: Buffer, isCsv: boolean) => PreparedUpload;
   }
