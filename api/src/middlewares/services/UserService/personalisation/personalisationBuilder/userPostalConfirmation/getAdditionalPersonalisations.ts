@@ -29,10 +29,8 @@ function getMSCPersonalisations(_fields: AnswersHashMap) {
 function getCNIAndMSCPersonalisations(fields: AnswersHashMap) {
   const livesInCountry = fields.livesInCountry === true;
   const livesOutsideApplicationCountry = fields.livesInCountry === false;
-  const partnerHadPreviousMarriage = fields.partnerMaritalStatus !== "Never married";
   return {
     livesInCountry,
     livesOutsideApplicationCountry,
-    partnerHadPreviousMarriage,
   };
 }
