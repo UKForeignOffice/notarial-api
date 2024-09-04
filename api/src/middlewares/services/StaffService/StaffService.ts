@@ -14,8 +14,8 @@ import * as handlebars from "handlebars";
 import { isFieldType } from "../../../utils";
 import { getPost } from "../utils/getPost";
 import { getPostEmailAddress } from "../utils/getPostEmailAddress";
-import { PersonalisationBuilder } from "../UserService/personalisation/PersonalisationBuilder";
 import { SESEmailTemplate } from "../utils/types";
+import * as additionalContexts from "../utils/additionalContexts.json";
 
 type PaymentViewModel = {
   id: string;
@@ -168,9 +168,8 @@ export class StaffService {
 
   getPostAlertOptions(answers: AnswersHashMap, reference: string) {
     const country = answers["country"] as string;
-    const post = answers["post"] as string;
+    const post = (answers["post"] ?? additionalContexts.countries?.[country]?.post) as string;
     const emailAddress = getPostEmailAddress(country, post);
-    const personalisation = PersonalisationBuilder.postNotification(answers, reference);
     if (!emailAddress) {
       this.logger.error(
         { code: "UNRECOGNISED_SERVICE_APPLICATION" },
@@ -184,7 +183,10 @@ export class StaffService {
       emailAddress,
       reference,
       options: {
-        personalisation,
+        personalisation: {
+          post,
+          reference,
+        },
         reference,
       },
     };
