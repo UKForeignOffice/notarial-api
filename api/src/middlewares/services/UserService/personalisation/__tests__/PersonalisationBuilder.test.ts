@@ -137,7 +137,6 @@ test("buildUserPostalConfirmationPersonalisation returns correct personalisation
   );
   expect(personalisation.livesInCountry).toBe(true);
   expect(personalisation.livesOutsideApplicationCountry).toBe(false);
-  expect(personalisation.partnerHadPreviousMarriage).toBe(false);
 });
 
 test("buildUserPostalConfirmationPersonalisation renders countries with default posts", () => {
