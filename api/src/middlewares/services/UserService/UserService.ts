@@ -15,32 +15,26 @@ export class UserService {
     this.logger = pino().child({ service: "Notify" });
     this.queueService = queueService;
     try {
-      const postNotification = config.get<string>("Notify.Template.postNotification");
       this.templates = {
         affirmation: {
           userConfirmation: config.get<string>("Notify.Template.affirmationUserConfirmation"),
           userPostalConfirmation: config.get<string>("Notify.Template.affirmationUserConfirmation"),
-          postNotification,
         },
         cni: {
           userConfirmation: config.get<string>("Notify.Template.cniUserConfirmation"),
           userPostalConfirmation: config.get<string>("Notify.Template.cniUserPostalConfirmation"),
-          postNotification,
         },
         exchange: {
           userConfirmation: config.get<string>("Notify.Template.exchangeUserConfirmation"),
           userPostalConfirmation: config.get<string>("Notify.Template.exchangeUserPostalConfirmation"),
-          postNotification,
         },
         msc: {
           userConfirmation: config.get<string>("Notify.Template.mscUserConfirmation"),
           userPostalConfirmation: config.get<string>("Notify.Template.mscUserConfirmation"),
-          postNotification,
         },
         cniAndMsc: {
           userConfirmation: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
           userPostalConfirmation: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-          postNotification,
         },
       };
     } catch (err) {

@@ -7,5 +7,5 @@ export interface NotifySendEmailArgs {
 }
 
 export type SESEmailTemplate = "submission";
-type NotifyEmailTemplate = "userConfirmation" | "postNotification" | "userPostalConfirmation";
+type NotifyEmailTemplate = "userConfirmation" | "userPostalConfirmation";
 export type NotifyTemplateGroup = Record<NotifyEmailTemplate, string>;
