@@ -15,7 +15,6 @@ import { isFieldType } from "../../../utils";
 import { getPost } from "../utils/getPost";
 import { getPostEmailAddress } from "../utils/getPostEmailAddress";
 import { SESEmailTemplate } from "../utils/types";
-import * as additionalContexts from "../utils/additionalContexts.json";
 
 type PaymentViewModel = {
   id: string;
@@ -168,7 +167,7 @@ export class StaffService {
 
   getPostAlertOptions(answers: AnswersHashMap, reference: string) {
     const country = answers["country"] as string;
-    const post = (answers["post"] ?? additionalContexts.countries?.[country]?.post) as string;
+    const post = getPost(country, answers["post"] as string);
     const emailAddress = getPostEmailAddress(country, post);
     if (!emailAddress) {
       this.logger.error(

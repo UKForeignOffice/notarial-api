@@ -16,7 +16,7 @@ export function getUserPostalConfirmationAdditionalContext(country: string, post
   };
 }
 
-export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
+export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType }) {
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
   const country = answers["country"] as string;
   const post = answers["post"] as string;
