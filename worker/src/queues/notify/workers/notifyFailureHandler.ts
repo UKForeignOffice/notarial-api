@@ -17,7 +17,9 @@ const notifyClient = new NotifyClient(config.get<string>("Notify.apiKey"));
 export async function notifyFailureHandler(job: Job) {
   const jobId = job.id;
   logger.info({ jobId }, `received ${worker} job`);
-  const failures = await getFailureResponses(jobId);
+  const failureCheckDate = new Date();
+  failureCheckDate.setDate(failureCheckDate.getDate() - 1);
+  const failures = await getFailureResponses(jobId, failureCheckDate);
   if (failures.length === 0) {
     logger.info({ jobId }, `No email failures found in Notify failure check run.`);
     return;
@@ -29,12 +31,12 @@ export async function notifyFailureHandler(job: Job) {
     },
     `Received user confirmation email send errors from Notify. Check output for reference numbers.`
   );
-  return failures.map((failure) => failure.reference);
+  return failures.map((failure) => ({ reference: failure.reference, emailAddress: failure.email_address }));
 }
 
 const failureStatuses: Status[] = ["permanent-failure", "temporary-failure", "technical-failure"];
 
-async function getFailureResponses(jobId: string) {
+async function getFailureResponses(jobId: string, failureCheckDate: Date) {
   let responses: GetNotificationByIdResponse[] = [];
   for (const status of failureStatuses) {
     try {
@@ -55,7 +57,7 @@ async function getFailureResponses(jobId: string) {
       );
     }
   }
-  return responses;
+  return responses.filter((response) => new Date(response.completed_at) >= failureCheckDate);
 }
 
 function isGetNotificationsResponse(response: ErrorResponse | GetNotificationsResponse): response is GetNotificationsResponse {
