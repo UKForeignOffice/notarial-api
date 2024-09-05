@@ -22,6 +22,6 @@ export async function setupNotifyWorker() {
 
   logger.info({ FAILURE_CHECK_QUEUE }, `starting 'notifyFailureHandler' on ${FAILURE_CHECK_QUEUE} listeners`);
   await consumer.schedule(FAILURE_CHECK_QUEUE, config.get<string>("Notify.failureCheckSchedule"));
-  const failureConsumerCheckInterval = 1000 * 60 * 60 * 6;
+  const failureConsumerCheckInterval = 1000 * 60 * 60 * 12;
   await consumer.work(FAILURE_CHECK_QUEUE, { newJobCheckInterval: failureConsumerCheckInterval }, notifyFailureHandler);
 }
