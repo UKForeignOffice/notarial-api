@@ -22,16 +22,14 @@ export async function notifyFailureHandler(job: Job) {
     logger.info({ jobId }, `No email failures found in Notify failure check run.`);
     return;
   }
-  failures.forEach((failure) => {
-    logger.warn(
-      {
-        jobId,
-        errorCode: "NOTIFY_EMAIL_FAILURE_TO_SEND",
-      },
-      `Received user confirmation email send error from Notify. Reference: ${failure.reference}`
-    );
-  });
-  return;
+  logger.warn(
+    {
+      jobId,
+      errorCode: "NOTIFY_EMAIL_FAILURE_TO_SEND",
+    },
+    `Received user confirmation email send errors from Notify. Check output for reference numbers.`
+  );
+  return failures.map((failure) => failure.reference);
 }
 
 const failureStatuses: Status[] = ["permanent-failure", "temporary-failure", "technical-failure"];
@@ -42,7 +40,7 @@ async function getFailureResponses(jobId: string) {
     try {
       const { data } = await notifyClient.getNotifications("email", status);
       if (isGetNotificationsResponse(data)) {
-        responses.concat(data.notifications);
+        responses = responses.concat(data.notifications);
         continue;
       }
       logger.warn(`Could not fetch email failures for status: ${status}`);
