@@ -17,7 +17,7 @@ const notifyClient = new NotifyClient(config.get<string>("Notify.apiKey"));
 export async function notifyFailureHandler(job: Job) {
   const jobId = job.id;
   logger.info({ jobId }, `received ${worker} job`);
-  const failures = await getFailureResponses();
+  const failures = await getFailureResponses(jobId);
   if (failures.length === 0) {
     logger.info({ jobId }, `No email failures found in Notify failure check run.`);
     return;
@@ -36,16 +36,25 @@ export async function notifyFailureHandler(job: Job) {
 
 const failureStatuses: Status[] = ["permanent-failure", "temporary-failure", "technical-failure"];
 
-async function getFailureResponses() {
+async function getFailureResponses(jobId: string) {
   let responses: GetNotificationByIdResponse[] = [];
   for (const status of failureStatuses) {
     try {
       const { data } = await notifyClient.getNotifications("email", status);
       if (isGetNotificationsResponse(data)) {
         responses.concat(data.notifications);
+        continue;
       }
-    } catch (err) {
       logger.warn(`Could not fetch email failures for status: ${status}`);
+    } catch (err) {
+      logger.error(
+        {
+          jobId,
+          errorCode: NOTIFY_FAILURE_ERRORS.REQUEST,
+          err,
+        },
+        `Could not retrieve email failure information from Notify.`
+      );
     }
   }
   return responses;
