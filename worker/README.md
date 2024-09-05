@@ -29,6 +29,7 @@ A simplified diagram of this flow can be found in [simplified_flow.svg](./docs/a
 
 - `NOTIFY_PROCESS` is handled by [notifyProcessHandler](queues/notify/workers/notifyProcessHandler.ts)
 - `NOTIFY_SEND` is handled by [notifySendHandler](queues/notify/workers/notifySendHandler.ts)
+- `NOTIFY_FAILURE_CHECK` is handled by [notifyFailureHandler](queues/notify/workers/notifyFailureHandler.ts)
 - `SES_PROCESS` is handled by [sesProcessHandler](queues/ses/workers/sesProcessHandler.ts)
 - `SES_SEND` is handled by [sesSendHandler](queues/ses/workers/sesSendHandler.ts)
 
@@ -105,6 +106,23 @@ For example:
   }
 }
 ```
+
+## `notifyFailureHandler`
+
+[notifyFailureHandler](queues/notify/workers/notifyFailureHandler.ts)
+
+After messages have been sent to Notify, Notify responds with either a success or error response describing whether the message was added to the notify queue successfully.
+This does not, however, describe whether the message was sent to the specified email address successfully or not.
+If a confirmation email fails to send to a user, for example if they inputted their email address incorrectly, posts need to be notified so they can resolve the issue.
+
+To overcome this issue, we have added a `NOTIFY_FAILURE_CHECK` queue to handle checking for failed emails every day.
+The schedule for running the checks defaults to 9am every day, but can be configured by passing a cron string to the environment variable `NOTIFY_FAILURE_CHECK_SCHEDULE`.
+The handler will make calls to Notify to find any messages with one of three statuses:
+- `temporary-failure`
+- `permanent-failure`
+- `technical-failure`
+
+If any failed messages are found, this raises an alert which can then be caught and relayed to the relevant post.
 
 ## `sesProcessHandler`
 
