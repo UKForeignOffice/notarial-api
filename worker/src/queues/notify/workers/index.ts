@@ -4,6 +4,7 @@ import PgBoss from "pg-boss";
 import { notifySendHandler } from "./notifySendHandler";
 import { notifyProcessHandler } from "./notifyProcessHandler";
 import { notifyFailureHandler } from "./notifyFailureHandler";
+import config from "config";
 
 const logger = pino();
 const SEND_QUEUE = "NOTIFY_SEND";
@@ -20,6 +21,7 @@ export async function setupNotifyWorker() {
   await consumer.work(PROCESS_QUEUE, { newJobCheckInterval: 2000 }, notifyProcessHandler);
 
   logger.info({ FAILURE_CHECK_QUEUE }, `starting 'notifyFailureHandler' on ${FAILURE_CHECK_QUEUE} listeners`);
-  await consumer.schedule(FAILURE_CHECK_QUEUE, `0 0 0 * *`);
-  await consumer.work(FAILURE_CHECK_QUEUE, { newJobCheckInterval: 43200000 }, notifyFailureHandler);
+  await consumer.schedule(FAILURE_CHECK_QUEUE, config.get<string>("Notify.failureCheckSchedule"));
+  const failureConsumerCheckInterval = 1000 * 60 * 60 * 6;
+  await consumer.work(FAILURE_CHECK_QUEUE, { newJobCheckInterval: failureConsumerCheckInterval }, notifyFailureHandler);
 }
