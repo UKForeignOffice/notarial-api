@@ -6,7 +6,8 @@
     "monitorStateIntervalInSeconds": "MONITOR_STATE_INTERVAL_IN_SECONDS"
   },
   "Notify": {
-    "apiKey": "NOTIFY_API_KEY"
+    "apiKey": "NOTIFY_API_KEY",
+    "failureCheckSchedule": "NOTIFY_FAILURE_CHECK_SCHEDULE"
   },
   "SES": {
     "Sender": {

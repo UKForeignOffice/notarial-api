@@ -20,6 +20,9 @@ module.exports = {
       emailAddress: "pye@cautionyourblast.com",
     },
   },
+  Notify: {
+    failureCheckSchedule: "0 9 * * *",
+  },
   NotarialApi: {
     createSESEmailUrl: "http://localhost:9000/forms/emails/ses",
     createNotifyEmailUrl: "http://localhost:9000/forms/emails/notify",
