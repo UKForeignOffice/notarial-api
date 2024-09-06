@@ -111,12 +111,12 @@ For example:
 
 [notifyFailureHandler](queues/notify/workers/notifyFailureHandler.ts)
 
-After messages have been sent to Notify, Notify responds with either a success or error response describing whether the message was added to the notify queue successfully.
-This does not, however, describe whether the message was sent to the specified email address successfully or not.
-If a confirmation email fails to send to a user, for example if they inputted their email address incorrectly, posts need to be notified so they can resolve the issue.
+After messages have been sent to GOV.UK Notify, it responds with a success or error depending on if the request to their API was valid.
 
-To overcome this issue, we have added a `NOTIFY_FAILURE_CHECK` queue to handle checking for failed emails every day.
-The schedule for running the checks defaults to 9am every day, but can be configured by passing a cron string to the environment variable `NOTIFY_FAILURE_CHECK_SCHEDULE`.
+GOV.UK Notify will attempt to send the message, and will retry it if there was a failure. Failures may occur when the user has not provided us with the correct email address. A separate GOV.UK Notify request must be made to check for these types of failures.
+
+`NOTIFY_FAILURE_CHECK` is scheduled to check for failed emails every day, and will store a digest of failed email sends.
+
 The handler will make calls to Notify to find any messages with one of three statuses:
 - `temporary-failure`
 - `permanent-failure`
@@ -197,6 +197,7 @@ See [TROUBLESHOOTING.md](./../TROUBLESHOOTING.md) for more information.
 | `DELETE_ARCHIVED_AFTER_DAYS`           | In days, how long to keep any jobs in `pgboss.archive` before deleting                                  | 7                                            |
 | `MONITOR_STATE_INTERVAL_SECONDS`       | In seconds, how often to log the statuses of each queue                                                 | 10                                           |
 | `NOTIFY_API_KEY`                       | Notify API key to send emails from                                                                      |                                              |
+| `NOTIFY_FAILURE_CHECK_SCHEDULE`        | Cron string determining the schedule for checking for failed notify sends                               | 0 9 * * *                                    |
 | `SES_SENDER_NAME`                      | The name to display when sending an email via SES                                                       | Getting Married Abroad Service               |
 | `SENDER_EMAIL_ADDRESS`                 | Where the email should be sent from. There must be an SES domain identity matching this email address   | pye@cautionyourblast.com                     |
 | `SUBMISSION_ADDRESS`                   | Where to send the emails to                                                                             | pye@cautionyourblast.com                     |
