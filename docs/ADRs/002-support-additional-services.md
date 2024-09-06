@@ -1,8 +1,7 @@
 # ADR 002: Additional Services
 Date: 2024-09-05
 ## Status
-[Proposed | Accepted | Deprecated | Superseded]
-If deprecated, indicate why. If superseded, include a link to the new ADR.
+[Proposed]
 
 Notarial-api is currently used to handle marriage cases, but will be expanded to support additional services, 
 for example, certifying documents. 
