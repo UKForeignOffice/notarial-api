@@ -29,6 +29,7 @@ A simplified diagram of this flow can be found in [simplified_flow.svg](./docs/a
 
 - `NOTIFY_PROCESS` is handled by [notifyProcessHandler](queues/notify/workers/notifyProcessHandler.ts)
 - `NOTIFY_SEND` is handled by [notifySendHandler](queues/notify/workers/notifySendHandler.ts)
+- `NOTIFY_FAILURE_CHECK` is handled by [notifyFailureHandler](queues/notify/workers/notifyFailureHandler.ts)
 - `SES_PROCESS` is handled by [sesProcessHandler](queues/ses/workers/sesProcessHandler.ts)
 - `SES_SEND` is handled by [sesSendHandler](queues/ses/workers/sesSendHandler.ts)
 
@@ -106,6 +107,23 @@ For example:
 }
 ```
 
+## `notifyFailureHandler`
+
+[notifyFailureHandler](queues/notify/workers/notifyFailureHandler.ts)
+
+After messages have been sent to GOV.UK Notify, it responds with a success or error depending on if the request to their API was valid.
+
+GOV.UK Notify will attempt to send the message, and will retry it if there was a failure. Failures may occur when the user has not provided us with the correct email address. A separate GOV.UK Notify request must be made to check for these types of failures.
+
+`NOTIFY_FAILURE_CHECK` is scheduled to check for failed emails every day, and will store a digest of failed email sends.
+
+The handler will make calls to Notify to find any messages with one of three statuses:
+- `temporary-failure`
+- `permanent-failure`
+- `technical-failure`
+
+If any failed messages are found, this raises an alert which can then be caught and relayed to the relevant post.
+
 ## `sesProcessHandler`
 
 [sesProcessHandler](./queues/ses/workers/sesProcessHandler.ts)
@@ -179,6 +197,7 @@ See [TROUBLESHOOTING.md](./../TROUBLESHOOTING.md) for more information.
 | `DELETE_ARCHIVED_AFTER_DAYS`           | In days, how long to keep any jobs in `pgboss.archive` before deleting                                  | 7                                            |
 | `MONITOR_STATE_INTERVAL_SECONDS`       | In seconds, how often to log the statuses of each queue                                                 | 10                                           |
 | `NOTIFY_API_KEY`                       | Notify API key to send emails from                                                                      |                                              |
+| `NOTIFY_FAILURE_CHECK_SCHEDULE`        | Cron string determining the schedule for checking for failed notify sends                               | 0 9 * * *                                    |
 | `SES_SENDER_NAME`                      | The name to display when sending an email via SES                                                       | Getting Married Abroad Service               |
 | `SENDER_EMAIL_ADDRESS`                 | Where the email should be sent from. There must be an SES domain identity matching this email address   | pye@cautionyourblast.com                     |
 | `SUBMISSION_ADDRESS`                   | Where to send the emails to                                                                             | pye@cautionyourblast.com                     |

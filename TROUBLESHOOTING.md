@@ -296,19 +296,20 @@ The following are logged errors and related to sending requests. These errors ar
 minimal parsing to preserve as much data as possible. 
 
 
-| Error code                     | Comment                                                             |
-|--------------------------------|---------------------------------------------------------------------|
-| NOTIFY_PROCESS_REQUEST_ERROR   | Error sending request to notarial-api                               |
-| NOTIFY_PROCESS_RESPONSE_ERROR  | notarial-api responded with an error                                |
-| NOTIFY_PROCESS_AGGREGATE_ERROR | Multiple errors occurred whilst making the request to notarial-api  |
-| NOTIFY_PROCESS_UNKNOWN_ERROR   | An error was identified as relating to GOV.UK Notify                |
-| NOTIFY_SEND_REQUEST_ERROR      | Error sending request to GOV.UK Notify                              |
-| NOTIFY_SEND_RESPONSE_ERROR     | GOV.UK Notify responded with an error                               |
-| NOTIFY_SEND_AGGREGATE_ERROR    | Multiple errors occurred whilst making the request to GOV.UK Notify |
-| NOTIFY_SEND_UNKNOWN_ERROR      | An error was identified as relating to GOV.UK Notify                |
-| SES_PROCESS_REQUEST_ERROR      | Error sending request to notarial-api                               |
-| SES_PROCESS_RESPONSE_ERROR     | notarial-api responded with an error                                |
-| SES_PROCESS_AGGREGATE_ERROR    | Multiple errors occurred whilst making the request to notarial-api  |
-| SES_PROCESS_UNKNOWN_ERROR      | An error was identified as relating to SES                          |
-| SES_SEND_SES_EXCEPTION         | SES responded with an error                                         |
-| SES_SEND_ON_COMPLETE           | The completion handler failed with an error                         |
+| Error code                         | Comment                                                                                     |
+|------------------------------------|---------------------------------------------------------------------------------------------|
+| NOTIFY_PROCESS_REQUEST_ERROR       | Error sending request to notarial-api                                                       |
+| NOTIFY_PROCESS_RESPONSE_ERROR      | notarial-api responded with an error                                                        |
+| NOTIFY_PROCESS_AGGREGATE_ERROR     | Multiple errors occurred whilst making the request to notarial-api                          |
+| NOTIFY_PROCESS_UNKNOWN_ERROR       | An error was identified as relating to GOV.UK Notify                                        |
+| NOTIFY_SEND_REQUEST_ERROR          | Error sending request to GOV.UK Notify                                                      |
+| NOTIFY_SEND_RESPONSE_ERROR         | GOV.UK Notify responded with an error                                                       |
+| NOTIFY_SEND_AGGREGATE_ERROR        | Multiple errors occurred whilst making the request to GOV.UK Notify                         |
+| NOTIFY_SEND_UNKNOWN_ERROR          | An error was identified as relating to GOV.UK Notify                                        |
+| NOTIFY_FAILURE_CHECK_REQUEST_ERROR | An error occurred while trying to retrieve a list of email send failures from GOV.UK Notify |
+| SES_PROCESS_REQUEST_ERROR          | Error sending request to notarial-api                                                       |
+| SES_PROCESS_RESPONSE_ERROR         | notarial-api responded with an error                                                        |
+| SES_PROCESS_AGGREGATE_ERROR        | Multiple errors occurred whilst making the request to notarial-api                          |
+| SES_PROCESS_UNKNOWN_ERROR          | An error was identified as relating to SES                                                  |
+| SES_SEND_SES_EXCEPTION             | SES responded with an error                                                                 |
+| SES_SEND_ON_COMPLETE               | The completion handler failed with an error                                                 |
