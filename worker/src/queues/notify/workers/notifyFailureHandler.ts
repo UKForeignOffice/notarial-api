@@ -29,7 +29,7 @@ export async function notifyFailureHandler(job: Job) {
       jobId,
       errorCode: "NOTIFY_EMAIL_FAILURE_TO_SEND",
     },
-    `Received user confirmation email send errors from Notify. Check output for reference numbers.`
+    `Found ${failures.length} failed notify sends since ${failureCheckDate.toDateString()}. Check output for reference numbers.`
   );
   return failures.map((failure) => ({ reference: failure.reference, emailAddress: failure.email_address }));
 }
@@ -55,6 +55,7 @@ async function getFailureResponses(jobId: string, failureCheckDate: Date) {
         },
         `Could not retrieve email failure information from Notify.`
       );
+      throw err;
     }
   }
   return responses.filter((response) => new Date(response.completed_at) >= failureCheckDate);
