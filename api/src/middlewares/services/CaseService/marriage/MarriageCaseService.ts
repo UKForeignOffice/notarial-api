@@ -2,7 +2,7 @@ import logger, { Logger } from "pino";
 import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
 import * as templates from "./../templates";
-import { FormType, PayMetadata } from "../../../../types/FormDataBody";
+import { MarriageFormType, PayMetadata } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
 import { reorderers } from "./reorderers";
@@ -51,7 +51,7 @@ export class MarriageCaseService implements CaseService {
     metadata: {
       reference: string;
       payment?: PayMetadata;
-      type: FormType;
+      type: MarriageFormType;
       postal?: boolean;
     }
   ) {
@@ -63,7 +63,11 @@ export class MarriageCaseService implements CaseService {
     return await this.queueService.sendToQueue("SES_SEND", jobData);
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string; postal?: boolean }, template: SESEmailTemplate, type: FormType) {
+  getEmailBody(
+    data: { fields: FormField[]; payment?: PaymentViewModel; reference: string; postal?: boolean },
+    template: SESEmailTemplate,
+    type: MarriageFormType
+  ) {
     const { fields, payment, reference, postal } = data;
     const remapperName = postal ? `${type}Postal` : type;
 
