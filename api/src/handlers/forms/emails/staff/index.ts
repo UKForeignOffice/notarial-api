@@ -29,10 +29,10 @@ export function validate(req: Request, _res: Response, next: NextFunction) {
   next();
 }
 export async function post(req: Request, res: Response, next: NextFunction) {
-  const { staffService } = res.app.services;
+  const { marriageCaseService } = res.app.services;
 
   try {
-    const jobId = await staffService.sendEmail(req.body);
+    const jobId = await marriageCaseService.sendEmail(req.body);
     return res.send({
       jobId,
     });

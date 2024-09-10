@@ -10,12 +10,12 @@ const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
 export class SubmitService {
   logger: Logger;
   userService: UserService;
-  staffService: MarriageCaseService;
+  marriageCaseService: MarriageCaseService;
 
-  constructor({ userService, staffService }) {
+  constructor({ userService, marriageCaseService }) {
     this.logger = logger().child({ service: "Submit" });
     this.userService = userService;
-    this.staffService = staffService;
+    this.marriageCaseService = marriageCaseService;
   }
   generateId() {
     return nanoid();
@@ -34,7 +34,7 @@ export class SubmitService {
     }
 
     try {
-      const staffProcessJob = await this.staffService.sendToProcessQueue(formFields, "submission", {
+      const staffProcessJob = await this.marriageCaseService.sendToProcessQueue(formFields, "submission", {
         reference,
         payment: metadata.pay,
         type,

@@ -4,7 +4,7 @@ declare global {
   namespace Express {
     interface Application {
       services: {
-        staffService: MarriageCaseService;
+        marriageCaseService: MarriageCaseService;
         userService: UserService;
         submitService: SubmitService;
       };
