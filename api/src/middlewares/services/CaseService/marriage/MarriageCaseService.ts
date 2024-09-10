@@ -43,7 +43,7 @@ export class MarriageCaseService implements CaseService {
   /**
    * This will add all the parameters needed to process the email to the queue. The NOTIFY_PROCESS queue will pick up
    * this message and make a post request to notarial-api/forms/emails/staff
-   * TODO:- create a MarriageCaseServiceMetadata type to be used with the http request
+   * TODO:- create a MarriageCaseServiceMetadata type
    */
   async sendToProcessQueue(
     fields: FormField[],
