@@ -1,5 +1,5 @@
 import { FormField } from "../../../types/FormField";
-import { SESEmailTemplate } from "../utils/types";
+import { NotifySendEmailArgs, SESEmailTemplate } from "../utils/types";
 import { FormType, PayMetadata } from "../../../types/FormDataBody";
 
 export type PaymentViewModel = {
@@ -21,5 +21,17 @@ export type ProcessQueueData = {
     payment?: PayMetadata;
     type: FormType;
     postal?: boolean;
+  };
+};
+
+// TODO:- share this type between worker and api
+export type SESSendJob = {
+  subject: string;
+  body: string;
+  attachments: FormField[];
+  reference: string;
+  onComplete?: {
+    queue: string;
+    job?: SESSendJob | NotifySendEmailArgs;
   };
 };

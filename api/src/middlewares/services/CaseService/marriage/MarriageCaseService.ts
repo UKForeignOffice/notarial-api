@@ -16,8 +16,9 @@ import { getPost } from "../../utils/getPost";
 import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
 import { SESEmailTemplate } from "../../utils/types";
 import { PaymentViewModel, ProcessQueueData } from "../types";
+import { CaseService } from "../CaseService";
 
-export class MarriageCaseService {
+export class MarriageCaseService implements CaseService {
   logger: Logger;
   templates: {
     SES: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
@@ -93,7 +94,7 @@ export class MarriageCaseService {
     });
   }
 
-  private buildSendEmailArgs(data: ProcessQueueData) {
+  buildSendEmailArgs(data: ProcessQueueData) {
     const { fields, template, metadata } = data;
     const { reference, payment, type, postal } = metadata;
     const answers = answersHashMap(fields);
