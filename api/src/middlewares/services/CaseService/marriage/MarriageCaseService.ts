@@ -1,21 +1,21 @@
 import logger, { Logger } from "pino";
-import { QueueService } from "../QueueService";
-import { FormField } from "../../../types/FormField";
-import * as templates from "./templates";
-import { FormType, PayMetadata } from "../../../types/FormDataBody";
+import { QueueService } from "../../QueueService";
+import { FormField } from "../../../../types/FormField";
+import * as templates from "./../templates";
+import { FormType, PayMetadata } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
-import { getAnswerOrThrow } from "./utils/getAnswerOrThrow";
+import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
 import { reorderers } from "./reorderers";
-import { getApplicationTypeName } from "./utils/getApplicationTypeName";
-import { answersHashMap } from "../helpers";
-import { AnswersHashMap } from "../../../types/AnswersHashMap";
+import { getApplicationTypeName } from "../utils/getApplicationTypeName";
+import { answersHashMap } from "../../helpers";
+import { AnswersHashMap } from "../../../../types/AnswersHashMap";
 import config from "config";
 import * as handlebars from "handlebars";
-import { isFieldType } from "../../../utils";
-import { getPost } from "../utils/getPost";
-import { getPostEmailAddress } from "../utils/getPostEmailAddress";
-import { SESEmailTemplate } from "../utils/types";
-import { PaymentViewModel, ProcessQueueData } from "./types";
+import { isFieldType } from "../../../../utils";
+import { getPost } from "../../utils/getPost";
+import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
+import { SESEmailTemplate } from "../../utils/types";
+import { PaymentViewModel, ProcessQueueData } from "../types";
 
 export class MarriageCaseService {
   logger: Logger;

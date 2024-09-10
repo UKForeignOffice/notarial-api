@@ -3,7 +3,7 @@ import * as cniPostalMappings from "./mappings/cniPostal";
 import * as exchangeMappings from "./mappings/exchange";
 import * as mscMappings from "./mappings/msc";
 import * as cniMSCCombinedMappings from "./mappings/CNIAndMSC";
-import { createRemapper } from "./utils/createRemapper";
+import { createRemapper } from "../utils/createRemapper";
 
 export const remappers = {
   affirmation: createRemapper(affirmationMappings.remap, [], ["file"]),

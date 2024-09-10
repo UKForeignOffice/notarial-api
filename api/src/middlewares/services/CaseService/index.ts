@@ -1,1 +1,1 @@
-export { MarriageCaseService } from "./MarriageCaseService";
+export { MarriageCaseService } from "./marriage/MarriageCaseService";
