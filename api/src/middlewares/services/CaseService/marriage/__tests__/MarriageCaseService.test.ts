@@ -87,7 +87,7 @@ test("sendEmail throws ApplicationError when no jobId is returned", async () => 
   }
 });
 
-test("buildSendEmailArgs returns an object with subject, body, attachments and reference", async () => {
+test("buildJobData returns an object with subject, body, attachments and reference", async () => {
   const result = marriageCaseService.buildJobData({
     fields: allOtherFields,
     template: "submission",
@@ -111,6 +111,7 @@ test("buildSendEmailArgs returns an object with subject, body, attachments and r
     attachments: [],
     metadata: {
       reference: "1234",
+      type: "affirmation",
     },
     reference: "1234",
   });
@@ -140,7 +141,7 @@ test("paymentViewModel returns a PaymentViewModel", () => {
     id: "123",
     status: "success",
     url: "https://selfservice.payments.service.gov.uk/account/ACCOUNT_ID/123",
-    total: "Unpaid",
+    total: "100.00",
   });
 });
 
