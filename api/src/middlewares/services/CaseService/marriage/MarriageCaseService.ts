@@ -118,6 +118,7 @@ export class MarriageCaseService implements CaseService {
       reference,
       metadata: {
         reference,
+        type,
       },
       onComplete: {
         queue: "NOTIFY_SEND",
