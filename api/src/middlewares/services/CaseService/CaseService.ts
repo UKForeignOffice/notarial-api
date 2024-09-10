@@ -1,5 +1,5 @@
 import { Logger } from "pino";
-import { AlertJob, SESEmailTemplate } from "../utils/types";
+import { AlertJob } from "../utils/types";
 import { QueueService } from "../QueueService";
 import { FormField } from "../../../types/FormField";
 import { FormType, PayMetadata } from "../../../types/FormDataBody";
@@ -9,7 +9,7 @@ import { AnswersHashMap } from "../../../types/AnswersHashMap";
 export interface CaseService {
   logger: Logger;
   templates: {
-    SES: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
+    SES: HandlebarsTemplateDelegate;
     Notify: Record<"postAlert", string>;
   };
 
@@ -17,7 +17,6 @@ export interface CaseService {
 
   sendToProcessQueue(
     fields: FormField[],
-    template: SESEmailTemplate,
     metadata: {
       reference: string;
       payment?: PayMetadata;
@@ -31,7 +30,7 @@ export interface CaseService {
   /**
    * Builds the email body
    */
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, template: SESEmailTemplate, type: FormType): string;
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, type: FormType): string;
 
   /**
    * Parses the payment data in metadata

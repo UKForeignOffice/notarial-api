@@ -16,6 +16,5 @@ export type AlertJob = {
   }>;
 };
 
-export type SESEmailTemplate = "submission";
 type NotifyEmailTemplate = "userConfirmation" | "userPostalConfirmation";
 export type NotifyTemplateGroup = Record<NotifyEmailTemplate, string>;

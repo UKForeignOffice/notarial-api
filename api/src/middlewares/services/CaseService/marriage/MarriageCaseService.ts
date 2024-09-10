@@ -14,14 +14,13 @@ import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
 import { getPost } from "../../utils/getPost";
 import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
-import { SESEmailTemplate } from "../../utils/types";
 import { PaymentViewModel, ProcessQueueData } from "../types";
 import { CaseService } from "../CaseService";
 
 export class MarriageCaseService implements CaseService {
   logger: Logger;
   templates: {
-    SES: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
+    SES: HandlebarsTemplateDelegate;
     Notify: Record<"postAlert", string>;
   };
 
@@ -31,9 +30,7 @@ export class MarriageCaseService implements CaseService {
     this.queueService = queueService;
     this.logger = logger().child({ service: "SES" });
     this.templates = {
-      SES: {
-        submission: MarriageCaseService.createTemplate(templates.submission),
-      },
+      SES: MarriageCaseService.createTemplate(templates.submission),
       Notify: {
         postAlert: config.get<string>("Notify.Template.postNotification"),
       },
@@ -47,7 +44,6 @@ export class MarriageCaseService implements CaseService {
    */
   async sendToProcessQueue(
     fields: FormField[],
-    template: SESEmailTemplate,
     metadata: {
       reference: string;
       payment?: PayMetadata;
@@ -55,7 +51,7 @@ export class MarriageCaseService implements CaseService {
       postal?: boolean;
     }
   ) {
-    return await this.queueService.sendToQueue("SES_PROCESS", { fields, template, metadata });
+    return await this.queueService.sendToQueue("SES_PROCESS", { fields, metadata });
   }
 
   async sendEmail(data: ProcessQueueData) {
@@ -63,11 +59,7 @@ export class MarriageCaseService implements CaseService {
     return await this.queueService.sendToQueue("SES_SEND", jobData);
   }
 
-  getEmailBody(
-    data: { fields: FormField[]; payment?: PaymentViewModel; reference: string; postal?: boolean },
-    template: SESEmailTemplate,
-    type: MarriageFormType
-  ) {
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string; postal?: boolean }, type: MarriageFormType) {
     const { fields, payment, reference, postal } = data;
     const remapperName = postal ? `${type}Postal` : type;
 
@@ -86,7 +78,7 @@ export class MarriageCaseService implements CaseService {
       oathType = getAnswerOrThrow(information, "oathType");
       jurats = getAnswerOrThrow(information, "jurats");
     }
-    return this.templates.SES[template]({
+    return this.templates.SES({
       post,
       type: getApplicationTypeName(type),
       reference,
@@ -100,7 +92,7 @@ export class MarriageCaseService implements CaseService {
   }
 
   buildJobData(data: ProcessQueueData) {
-    const { fields, template, metadata } = data;
+    const { fields, metadata } = data;
     const { reference, payment, type, postal } = metadata;
     const answers = answersHashMap(fields);
     let paymentViewModel: PaymentViewModel | undefined;
@@ -112,7 +104,7 @@ export class MarriageCaseService implements CaseService {
     }
 
     const country = answers.country as string;
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal }, template, type);
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal }, type);
     const post = getPost(country, answers.post as string);
     const onCompleteJob = this.getPostAlertData(answers, reference);
     return {
