@@ -2,7 +2,7 @@ import logger, { Logger } from "pino";
 import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
 import { UserService } from "../UserService";
-import { StaffService } from "../StaffService";
+import { StaffService } from "../CaseService";
 import { FormType } from "../../../types/FormDataBody";
 const { customAlphabet } = require("nanoid");
 
