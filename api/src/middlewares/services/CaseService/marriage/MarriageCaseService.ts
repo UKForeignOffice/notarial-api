@@ -43,6 +43,7 @@ export class MarriageCaseService implements CaseService {
   /**
    * This will add all the parameters needed to process the email to the queue. The NOTIFY_PROCESS queue will pick up
    * this message and make a post request to notarial-api/forms/emails/staff
+   * TODO:- create a MarriageCaseServiceMetadata type to be used with the http request
    */
   async sendToProcessQueue(
     fields: FormField[],
@@ -58,8 +59,8 @@ export class MarriageCaseService implements CaseService {
   }
 
   async sendEmail(data: ProcessQueueData) {
-    const emailArgs = this.buildSendEmailArgs(data);
-    return await this.queueService.sendToQueue("SES_SEND", emailArgs);
+    const jobData = this.buildJobData(data);
+    return await this.queueService.sendToQueue("SES_SEND", jobData);
   }
 
   getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string; postal?: boolean }, template: SESEmailTemplate, type: FormType) {
@@ -94,7 +95,7 @@ export class MarriageCaseService implements CaseService {
     });
   }
 
-  buildSendEmailArgs(data: ProcessQueueData) {
+  buildJobData(data: ProcessQueueData) {
     const { fields, template, metadata } = data;
     const { reference, payment, type, postal } = metadata;
     const answers = answersHashMap(fields);
@@ -109,7 +110,7 @@ export class MarriageCaseService implements CaseService {
     const country = answers.country as string;
     const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal }, template, type);
     const post = getPost(country, answers.post as string);
-    const onCompleteJob = this.getPostAlertOptions(answers, reference);
+    const onCompleteJob = this.getPostAlertData(answers, reference);
     return {
       subject: `Local marriage application - ${post} – ${reference}`,
       body: emailBody,
@@ -146,7 +147,7 @@ export class MarriageCaseService implements CaseService {
     };
   }
 
-  getPostAlertOptions(answers: AnswersHashMap, reference: string) {
+  getPostAlertData(answers: AnswersHashMap, reference: string) {
     const country = answers["country"] as string;
     const post = getPost(country, answers["post"] as string);
     const emailAddress = getPostEmailAddress(country, post);
