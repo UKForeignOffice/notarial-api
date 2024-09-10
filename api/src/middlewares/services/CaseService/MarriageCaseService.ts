@@ -15,29 +15,9 @@ import { isFieldType } from "../../../utils";
 import { getPost } from "../utils/getPost";
 import { getPostEmailAddress } from "../utils/getPostEmailAddress";
 import { SESEmailTemplate } from "../utils/types";
+import { PaymentViewModel, ProcessQueueData } from "./types";
 
-type PaymentViewModel = {
-  id: string;
-  status: string;
-  total: string;
-  url: string;
-  allTransactionsByCountry: {
-    url: string;
-    country: string;
-  };
-};
-
-type ProcessQueueData = {
-  fields: FormField[];
-  template: SESEmailTemplate;
-  metadata: {
-    reference: string;
-    payment?: PayMetadata;
-    type: FormType;
-    postal?: boolean;
-  };
-};
-export class StaffService {
+export class MarriageCaseService {
   logger: Logger;
   templates: {
     SES: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
@@ -51,7 +31,7 @@ export class StaffService {
     this.logger = logger().child({ service: "SES" });
     this.templates = {
       SES: {
-        submission: StaffService.createTemplate(templates.submission),
+        submission: MarriageCaseService.createTemplate(templates.submission),
       },
       Notify: {
         postAlert: config.get<string>("Notify.Template.postNotification"),

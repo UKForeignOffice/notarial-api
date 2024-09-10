@@ -2,7 +2,7 @@ import logger, { Logger } from "pino";
 import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
 import { UserService } from "../UserService";
-import { StaffService } from "../CaseService";
+import { MarriageCaseService } from "../CaseService";
 import { FormType } from "../../../types/FormDataBody";
 const { customAlphabet } = require("nanoid");
 
@@ -10,7 +10,7 @@ const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
 export class SubmitService {
   logger: Logger;
   userService: UserService;
-  staffService: StaffService;
+  staffService: MarriageCaseService;
 
   constructor({ userService, staffService }) {
     this.logger = logger().child({ service: "Submit" });

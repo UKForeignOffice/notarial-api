@@ -1,5 +1,5 @@
 import { testData } from "./fixtures";
-import { StaffService } from "../StaffService";
+import { MarriageCaseService } from "../MarriageCaseService";
 import "pg-boss";
 import { flattenQuestions } from "../../helpers";
 import { isNotFieldType } from "../../../../utils";
@@ -12,7 +12,7 @@ const queueService = {
   sendToQueue,
 };
 
-const emailService = new StaffService({ queueService });
+const emailService = new MarriageCaseService({ queueService });
 
 const formFields = flattenQuestions(testData.questions);
 const allOtherFields = formFields.filter(isNotFieldType("file"));
