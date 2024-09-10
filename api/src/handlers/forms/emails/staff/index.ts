@@ -35,11 +35,9 @@ export function validate(req: Request, _res: Response, next: NextFunction) {
 
 export async function post(req: Request, res: Response, next: NextFunction) {
   const formType = req.body.metadata.type;
-  if (!formType) {
-    req.log.warn({ path: req.path }, `formType was missing from metadata, defaulting to marriageCaseService`);
-  }
 
   const caseServiceName = getCaseServiceName(formType);
+  req.log.info({ path: req.path, formType }, `FormType ${formType} detected, using ${caseServiceName}`);
   const caseService: MarriageCaseService = res.app.services[caseServiceName];
 
   try {
