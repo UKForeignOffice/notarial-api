@@ -9,6 +9,7 @@ export const personalisationTypeMap: Record<FormType, PersonalisationFunction> =
   exchange: (_fields: AnswersHashMap) => ({}),
   msc: getMSCPersonalisations,
   cniAndMsc: getCNIAndMSCPersonalisations,
+  certifyDocument: (_fields: AnswersHashMap) => ({}),
 };
 
 function getCNIPersonalisations(fields: AnswersHashMap) {

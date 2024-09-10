@@ -2,14 +2,14 @@ import config from "config";
 import pino, { Logger } from "pino";
 import { PersonalisationBuilder } from "./personalisation/PersonalisationBuilder";
 import { QueueService } from "../QueueService";
-import { FormType, PayMetadata } from "../../../types/FormDataBody";
+import { FormType, MarriageFormType, PayMetadata } from "../../../types/FormDataBody";
 import { NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import { getUserTemplate } from "./getUserTemplate";
 
 export class UserService {
   logger: Logger;
-  templates: Record<FormType, NotifyTemplateGroup>;
+  templates: Record<MarriageFormType, NotifyTemplateGroup>;
   queueService: QueueService;
   constructor({ queueService }: { queueService: QueueService }) {
     this.logger = pino().child({ service: "Notify" });

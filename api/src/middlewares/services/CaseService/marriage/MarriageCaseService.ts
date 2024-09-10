@@ -14,7 +14,7 @@ import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
 import { getPost } from "../../utils/getPost";
 import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
-import { PaymentViewModel, ProcessQueueData } from "../types";
+import { MarriageProcessQueueData, PaymentViewModel, ProcessQueueData } from "../types";
 import { CaseService } from "../CaseService";
 
 export class MarriageCaseService implements CaseService {
@@ -91,7 +91,7 @@ export class MarriageCaseService implements CaseService {
     });
   }
 
-  buildJobData(data: ProcessQueueData) {
+  buildJobData(data: MarriageProcessQueueData) {
     const { fields, metadata } = data;
     const { reference, payment, type, postal } = metadata;
     const answers = answersHashMap(fields);

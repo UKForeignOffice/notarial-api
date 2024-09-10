@@ -1,4 +1,4 @@
-import { FormField } from "../../../../../../types/FormField";
+import { FormField } from "../../../../../../../types/FormField";
 
 export const affirmation: {
   remap: FormField[];
