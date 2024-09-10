@@ -8,10 +8,6 @@ import { AnswersHashMap } from "../../../types/AnswersHashMap";
 
 export interface CaseService {
   logger: Logger;
-  templates: {
-    SES: HandlebarsTemplateDelegate;
-    Notify: Record<"postAlert", string>;
-  };
 
   queueService: QueueService;
 
