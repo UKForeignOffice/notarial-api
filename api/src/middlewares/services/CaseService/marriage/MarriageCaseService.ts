@@ -1,46 +1,26 @@
 import logger, { Logger } from "pino";
-import { QueueService } from "../QueueService";
-import { FormField } from "../../../types/FormField";
-import * as templates from "./templates";
-import { FormType, PayMetadata } from "../../../types/FormDataBody";
+import { QueueService } from "../../QueueService";
+import { FormField } from "../../../../types/FormField";
+import * as templates from "./../templates";
+import { MarriageFormType, PayMetadata } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
-import { getAnswerOrThrow } from "./utils/getAnswerOrThrow";
+import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
 import { reorderers } from "./reorderers";
-import { getApplicationTypeName } from "./utils/getApplicationTypeName";
-import { answersHashMap } from "../helpers";
-import { AnswersHashMap } from "../../../types/AnswersHashMap";
+import { getApplicationTypeName } from "../utils/getApplicationTypeName";
+import { answersHashMap } from "../../helpers";
+import { AnswersHashMap } from "../../../../types/AnswersHashMap";
 import config from "config";
 import * as handlebars from "handlebars";
-import { isFieldType } from "../../../utils";
-import { getPost } from "../utils/getPost";
-import { getPostEmailAddress } from "../utils/getPostEmailAddress";
-import { SESEmailTemplate } from "../utils/types";
+import { isFieldType } from "../../../../utils";
+import { getPost } from "../../utils/getPost";
+import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
+import { MarriageProcessQueueData, PaymentViewModel, ProcessQueueData } from "../types";
+import { CaseService } from "../CaseService";
 
-type PaymentViewModel = {
-  id: string;
-  status: string;
-  total: string;
-  url: string;
-  allTransactionsByCountry: {
-    url: string;
-    country: string;
-  };
-};
-
-type ProcessQueueData = {
-  fields: FormField[];
-  template: SESEmailTemplate;
-  metadata: {
-    reference: string;
-    payment?: PayMetadata;
-    type: FormType;
-    postal?: boolean;
-  };
-};
-export class StaffService {
+export class MarriageCaseService implements CaseService {
   logger: Logger;
   templates: {
-    SES: Record<SESEmailTemplate, HandlebarsTemplateDelegate>;
+    SES: HandlebarsTemplateDelegate;
     Notify: Record<"postAlert", string>;
   };
 
@@ -50,9 +30,7 @@ export class StaffService {
     this.queueService = queueService;
     this.logger = logger().child({ service: "SES" });
     this.templates = {
-      SES: {
-        submission: StaffService.createTemplate(templates.submission),
-      },
+      SES: MarriageCaseService.createTemplate(templates.submission),
       Notify: {
         postAlert: config.get<string>("Notify.Template.postNotification"),
       },
@@ -62,26 +40,26 @@ export class StaffService {
   /**
    * This will add all the parameters needed to process the email to the queue. The NOTIFY_PROCESS queue will pick up
    * this message and make a post request to notarial-api/forms/emails/staff
+   * TODO:- create a MarriageCaseServiceMetadata type
    */
   async sendToProcessQueue(
     fields: FormField[],
-    template: SESEmailTemplate,
     metadata: {
       reference: string;
       payment?: PayMetadata;
-      type: FormType;
+      type: MarriageFormType;
       postal?: boolean;
     }
   ) {
-    return await this.queueService.sendToQueue("SES_PROCESS", { fields, template, metadata });
+    return await this.queueService.sendToQueue("SES_PROCESS", { fields, metadata });
   }
 
   async sendEmail(data: ProcessQueueData) {
-    const emailArgs = this.buildSendEmailArgs(data);
-    return await this.queueService.sendToQueue("SES_SEND", emailArgs);
+    const jobData = this.buildJobData(data);
+    return await this.queueService.sendToQueue("SES_SEND", jobData);
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string; postal?: boolean }, template: SESEmailTemplate, type: FormType) {
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string; postal?: boolean }, type: MarriageFormType) {
     const { fields, payment, reference, postal } = data;
     const remapperName = postal ? `${type}Postal` : type;
 
@@ -100,7 +78,7 @@ export class StaffService {
       oathType = getAnswerOrThrow(information, "oathType");
       jurats = getAnswerOrThrow(information, "jurats");
     }
-    return this.templates.SES[template]({
+    return this.templates.SES({
       post,
       type: getApplicationTypeName(type),
       reference,
@@ -113,8 +91,8 @@ export class StaffService {
     });
   }
 
-  private buildSendEmailArgs(data: ProcessQueueData) {
-    const { fields, template, metadata } = data;
+  buildJobData(data: MarriageProcessQueueData) {
+    const { fields, metadata } = data;
     const { reference, payment, type, postal } = metadata;
     const answers = answersHashMap(fields);
     let paymentViewModel: PaymentViewModel | undefined;
@@ -126,9 +104,9 @@ export class StaffService {
     }
 
     const country = answers.country as string;
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal }, template, type);
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal }, type);
     const post = getPost(country, answers.post as string);
-    const onCompleteJob = this.getPostAlertOptions(answers, reference);
+    const onCompleteJob = this.getPostAlertData(answers, reference);
     return {
       subject: `Local marriage application - ${post} – ${reference}`,
       body: emailBody,
@@ -136,6 +114,7 @@ export class StaffService {
       reference,
       metadata: {
         reference,
+        type,
       },
       onComplete: {
         queue: "NOTIFY_SEND",
@@ -165,7 +144,7 @@ export class StaffService {
     };
   }
 
-  getPostAlertOptions(answers: AnswersHashMap, reference: string) {
+  getPostAlertData(answers: AnswersHashMap, reference: string) {
     const country = answers["country"] as string;
     const post = getPost(country, answers["post"] as string);
     const emailAddress = getPostEmailAddress(country, post);

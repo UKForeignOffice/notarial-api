@@ -1,4 +1,4 @@
-import { FormField } from "../../../../../../types/FormField";
+import { FormField } from "../../../../../../../types/FormField";
 
 export const cniPostal: {
   remap: FormField[];

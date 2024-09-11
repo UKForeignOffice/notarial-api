@@ -2,20 +2,20 @@ import logger, { Logger } from "pino";
 import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
 import { UserService } from "../UserService";
-import { StaffService } from "../StaffService";
-import { FormType } from "../../../types/FormDataBody";
+import { MarriageCaseService } from "../CaseService";
+import { FormType, MarriageFormType } from "../../../types/FormDataBody";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
 export class SubmitService {
   logger: Logger;
   userService: UserService;
-  staffService: StaffService;
+  marriageCaseService: MarriageCaseService;
 
-  constructor({ userService, staffService }) {
+  constructor({ userService, marriageCaseService }) {
     this.logger = logger().child({ service: "Submit" });
     this.userService = userService;
-    this.staffService = staffService;
+    this.marriageCaseService = marriageCaseService;
   }
   generateId() {
     return nanoid();
@@ -27,6 +27,7 @@ export class SubmitService {
     const answers = answersHashMap(formFields);
     const reference = metadata?.pay?.reference ?? this.generateId();
 
+    //TODO:- Handle different caseServices
     // forms with multiple services will receive the correct form type from answers.service
     const type = (answers.service as FormType) ?? metadata?.type ?? "affirmation";
     if (metadata.pay) {
@@ -34,10 +35,10 @@ export class SubmitService {
     }
 
     try {
-      const staffProcessJob = await this.staffService.sendToProcessQueue(formFields, "submission", {
+      const staffProcessJob = await this.marriageCaseService.sendToProcessQueue(formFields, {
         reference,
         payment: metadata.pay,
-        type,
+        type: type as MarriageFormType,
         postal: metadata.postal,
       });
       this.logger.info({ reference, staffProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);

@@ -1,8 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import joi from "joi";
 import { ApplicationError } from "../../../../ApplicationError";
+import { FormType } from "../../../../types/FormDataBody";
+import { MarriageCaseService } from "../../../../middlewares/services";
+
 const schema = joi.object({
-  template: joi.string().valid("submission").required(),
   fields: joi
     .array()
     .items(
@@ -16,6 +18,7 @@ const schema = joi.object({
     .required(),
   metadata: {
     reference: joi.string().required(),
+    type: joi.string().valid("affirmation", "cni", "exchange", "msc", "cniAndMsc"),
     payment: joi.object(),
   },
 });
@@ -28,11 +31,16 @@ export function validate(req: Request, _res: Response, next: NextFunction) {
   }
   next();
 }
+
 export async function post(req: Request, res: Response, next: NextFunction) {
-  const { staffService } = res.app.services;
+  const formType = req.body.metadata.type;
+
+  const caseServiceName = getCaseServiceName(formType);
+  req.log.info({ path: req.path, formType }, `FormType ${formType} detected, using ${caseServiceName}`);
+  const caseService: MarriageCaseService = res.app.services[caseServiceName];
 
   try {
-    const jobId = await staffService.sendEmail(req.body);
+    const jobId = await caseService.sendEmail(req.body);
     return res.send({
       jobId,
     });
@@ -40,4 +48,14 @@ export async function post(req: Request, res: Response, next: NextFunction) {
     next(e);
     return;
   }
+}
+
+const MARRIAGE_CASE_TYPES = new Set(["affirmation", "cni", "exchange", "msc", "cniAndMsc"]);
+type ExpressCaseServices = Pick<Express.Application["services"], "marriageCaseService">;
+
+function getCaseServiceName(formType: FormType): keyof ExpressCaseServices {
+  if (MARRIAGE_CASE_TYPES.has(formType)) {
+    return "marriageCaseService";
+  }
+  return "marriageCaseService";
 }

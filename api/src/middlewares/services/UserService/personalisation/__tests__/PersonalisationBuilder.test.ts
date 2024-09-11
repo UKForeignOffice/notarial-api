@@ -20,7 +20,7 @@ jest.mock("pg-boss", () => {
 const formFields = flattenQuestions(testData.questions);
 const answers = answersHashMap(formFields);
 
-test("buildSendEmailArgs should return the correct personalisation for an in-person email", () => {
+test("buildJobData should return the correct personalisation for an in-person email", () => {
   const personalisation = PersonalisationBuilder.userConfirmation(answers, { type: "affirmation", reference: "1234" });
   expect(personalisation).toEqual({
     firstName: "foo",
@@ -37,7 +37,7 @@ test("buildSendEmailArgs should return the correct personalisation for an in-per
   });
 });
 
-test("buildSendEmailArgs should return the correct personalisation for a postal email", () => {
+test("buildJobData should return the correct personalisation for a postal email", () => {
   const personalisation = PersonalisationBuilder.userPostalConfirmation(answers, { reference: "1234", type: "cni" });
   expect(personalisation).toEqual({
     firstName: "foo",
@@ -55,7 +55,7 @@ test("buildSendEmailArgs should return the correct personalisation for a postal 
   });
 });
 
-test("buildSendEmailArgs should return the correct personalisation for Spain when the user's partner has been married before", () => {
+test("buildJobData should return the correct personalisation for Spain when the user's partner has been married before", () => {
   const spainAnswers = {
     ...answers,
     country: "Spain",

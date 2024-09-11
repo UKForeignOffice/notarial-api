@@ -1,4 +1,4 @@
 export { QueueService } from "./QueueService";
-export { StaffService } from "./StaffService";
+export { MarriageCaseService } from "./CaseService";
 export { UserService } from "./UserService";
 export { SubmitService } from "./SubmitService";

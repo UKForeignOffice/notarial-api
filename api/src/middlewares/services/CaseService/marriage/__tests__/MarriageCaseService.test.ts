@@ -1,18 +1,18 @@
 import { testData } from "./fixtures";
-import { StaffService } from "../StaffService";
+import { MarriageCaseService } from "../MarriageCaseService";
 import "pg-boss";
-import { flattenQuestions } from "../../helpers";
-import { isNotFieldType } from "../../../../utils";
-import { PayMetadata } from "../../../../types/FormDataBody";
+import { flattenQuestions } from "../../../helpers";
+import { isNotFieldType } from "../../../../../utils";
+import { PayMetadata } from "../../../../../types/FormDataBody";
 import * as fields from "./fixtures/fields";
-import { ApplicationError } from "../../../../ApplicationError";
+import { ApplicationError } from "../../../../../ApplicationError";
 const sendToQueue = jest.fn();
 
 const queueService = {
   sendToQueue,
 };
 
-const emailService = new StaffService({ queueService });
+const marriageCaseService = new MarriageCaseService({ queueService });
 
 const formFields = flattenQuestions(testData.questions);
 const allOtherFields = formFields.filter(isNotFieldType("file"));
@@ -24,34 +24,35 @@ const paymentViewModel = {
     url: "https://payments.gov.uk",
     country: "italy",
   },
+  total: 100,
 };
 
 test("getEmailBody renders oath email correctly", () => {
-  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" }, "submission", "affirmation");
+  const emailBody = marriageCaseService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" }, "affirmation");
   expect(emailBody).toContain("<li>First name: foo</li>");
   expect(emailBody).toContain("marital status affirmation");
 });
 
 test("getEmailBody renders cni template correctly", () => {
-  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" }, "submission", "cni");
+  const emailBody = marriageCaseService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" }, "cni");
   expect(emailBody).toContain("<li>First name: foo</li>");
   expect(emailBody).toContain("notice of marriage and marital status affirmation");
 });
 
 test("getEmailBody handles a cni postal form properly", () => {
-  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234", postal: true }, "submission", "cni");
+  const emailBody = marriageCaseService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234", postal: true }, "cni");
   expect(emailBody).toContain("<li>First name: bar</li>");
 });
 
 test("getEmailBody handles a cni form with postal set to false properly", () => {
-  const emailBody = emailService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234", postal: false }, "submission", "cni");
+  const emailBody = marriageCaseService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234", postal: false }, "cni");
   expect(emailBody).toContain("<li>First name: foo</li>");
   expect(emailBody).toContain("notice of marriage and marital status affirmation");
 });
 
 test("sendEmail returns a jobId", async () => {
   sendToQueue.mockResolvedValueOnce("ABC-123");
-  const jobId = await emailService.sendEmail({
+  const jobId = await marriageCaseService.sendEmail({
     fields: fields.affirmation.remap,
     template: "submission",
     metadata: {
@@ -70,7 +71,7 @@ test("sendEmail returns a jobId", async () => {
 test("sendEmail throws ApplicationError when no jobId is returned", async () => {
   sendToQueue.mockRejectedValue(new ApplicationError("QUEUE", `SES_SEND_ERROR`, 500));
   try {
-    await emailService.sendEmail({
+    await marriageCaseService.sendEmail({
       fields: fields.affirmation.remap,
       template: "submission",
       metadata: {
@@ -86,8 +87,8 @@ test("sendEmail throws ApplicationError when no jobId is returned", async () => 
   }
 });
 
-test("buildSendEmailArgs returns an object with subject, body, attachments and reference", async () => {
-  const result = emailService.buildSendEmailArgs({
+test("buildJobData returns an object with subject, body, attachments and reference", async () => {
+  const result = marriageCaseService.buildJobData({
     fields: allOtherFields,
     template: "submission",
     payment: testData.metadata.pay,
@@ -110,13 +111,14 @@ test("buildSendEmailArgs returns an object with subject, body, attachments and r
     attachments: [],
     metadata: {
       reference: "1234",
+      type: "affirmation",
     },
     reference: "1234",
   });
 });
 
 test("paymentViewModel returns undefined when no payment is provided", () => {
-  const result = emailService.paymentViewModel(undefined, "italy");
+  const result = marriageCaseService.paymentViewModel(undefined, "italy");
   expect(result).toBeUndefined();
 });
 
@@ -128,8 +130,9 @@ test("paymentViewModel returns a PaymentViewModel", () => {
       status: "success",
       finished: true,
     },
+    total: 10000,
   };
-  const result = emailService.paymentViewModel(payMetadata, "italy");
+  const result = marriageCaseService.paymentViewModel(payMetadata, "italy");
   expect(result).toEqual({
     allTransactionsByCountry: {
       country: "italy",
@@ -138,6 +141,39 @@ test("paymentViewModel returns a PaymentViewModel", () => {
     id: "123",
     status: "success",
     url: "https://selfservice.payments.service.gov.uk/account/ACCOUNT_ID/123",
-    total: "Unpaid",
+    total: "100.00",
   });
+});
+
+test("generated paymentViewModel is rendered correctly", () => {
+  const payMetadata: PayMetadata = {
+    payId: "123",
+    reference: "ref",
+    state: {
+      status: "success",
+      finished: true,
+    },
+    total: 50000,
+  };
+  const result = marriageCaseService.paymentViewModel(payMetadata, "italy");
+
+  const emailBody = marriageCaseService.getEmailBody({ fields: allOtherFields, payment: result, reference: "1234" }, "affirmation");
+  expect(emailBody).toContain("Payment amount: 500");
+});
+
+test("Failed payments renders 'unpaid'", () => {
+  const payMetadata: PayMetadata = {
+    payId: "123",
+    reference: "ref",
+    state: {
+      code: "",
+      finished: true,
+      message: "Some error",
+      status: "failed",
+    },
+  };
+  const result = marriageCaseService.paymentViewModel(payMetadata, "italy");
+
+  const emailBody = marriageCaseService.getEmailBody({ fields: allOtherFields, payment: result, reference: "1234" }, "affirmation");
+  expect(emailBody).toContain("Payment amount: Unpaid");
 });

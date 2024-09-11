@@ -6,6 +6,15 @@ export interface NotifySendEmailArgs {
   options: SendEmailOptions<any>;
 }
 
-export type SESEmailTemplate = "submission";
+export type AlertJob = {
+  template: string;
+  emailAddress: string;
+  reference: string;
+  options: SendEmailOptions<{
+    post: string;
+    reference: string;
+  }>;
+};
+
 type NotifyEmailTemplate = "userConfirmation" | "userPostalConfirmation";
 export type NotifyTemplateGroup = Record<NotifyEmailTemplate, string>;
