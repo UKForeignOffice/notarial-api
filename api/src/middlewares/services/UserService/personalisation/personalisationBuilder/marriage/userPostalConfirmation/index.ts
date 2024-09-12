@@ -1,9 +1,9 @@
-import * as additionalContexts from "../../../../utils/additionalContexts.json";
-import { getPost } from "../../../../utils/getPost";
-import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
-import { FormType, PayMetadata } from "../../../../../../types/FormDataBody";
+import * as additionalContexts from "../../../../../utils/additionalContexts.json";
+import { getPost } from "../../../../../utils/getPost";
+import { AnswersHashMap } from "../../../../../../../types/AnswersHashMap";
+import { FormType, PayMetadata } from "../../../../../../../types/FormDataBody";
 import { personalisationTypeMap } from "./getAdditionalPersonalisations";
-import { ApplicationError } from "../../../../../../ApplicationError";
+import { ApplicationError } from "../../../../../../../ApplicationError";
 
 export function getUserPostalConfirmationAdditionalContext(country: string, post?: string) {
   const postName = getPost(country, post);

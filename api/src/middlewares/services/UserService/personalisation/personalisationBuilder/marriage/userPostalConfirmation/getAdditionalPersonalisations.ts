@@ -1,5 +1,5 @@
-import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
-import { FormType } from "../../../../../../types/FormDataBody";
+import { AnswersHashMap } from "../../../../../../../types/AnswersHashMap";
+import { FormType } from "../../../../../../../types/FormDataBody";
 
 type PersonalisationFunction = (fields: AnswersHashMap) => Record<string, boolean>;
 
