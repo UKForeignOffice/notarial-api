@@ -3,6 +3,7 @@ import joi from "joi";
 import { ApplicationError } from "../../../../ApplicationError";
 import { FormType } from "../../../../types/FormDataBody";
 import { MarriageCaseService } from "../../../../middlewares/services";
+import { MARRIAGE_CASE_TYPES } from "../../../../utils/formTypes";
 
 const schema = joi.object({
   fields: joi
@@ -50,7 +51,6 @@ export async function post(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-const MARRIAGE_CASE_TYPES = new Set(["affirmation", "cni", "exchange", "msc", "cniAndMsc"]);
 type ExpressCaseServices = Pick<Express.Application["services"], "marriageCaseService">;
 
 function getCaseServiceName(formType: FormType): keyof ExpressCaseServices {
