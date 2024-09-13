@@ -18,24 +18,24 @@ export class UserService {
     try {
       this.templates = {
         affirmation: {
-          userConfirmation: config.get<string>("Notify.Template.affirmationUserConfirmation"),
-          userPostalConfirmation: config.get<string>("Notify.Template.affirmationUserConfirmation"),
+          inPerson: config.get<string>("Notify.Template.affirmationUserConfirmation"),
+          postal: config.get<string>("Notify.Template.affirmationUserConfirmation"),
         },
         cni: {
-          userConfirmation: config.get<string>("Notify.Template.cniUserConfirmation"),
-          userPostalConfirmation: config.get<string>("Notify.Template.cniUserPostalConfirmation"),
+          inPerson: config.get<string>("Notify.Template.cniUserConfirmation"),
+          postal: config.get<string>("Notify.Template.cniUserPostalConfirmation"),
         },
         exchange: {
-          userConfirmation: config.get<string>("Notify.Template.exchangeUserConfirmation"),
-          userPostalConfirmation: config.get<string>("Notify.Template.exchangeUserPostalConfirmation"),
+          inPerson: config.get<string>("Notify.Template.exchangeUserConfirmation"),
+          postal: config.get<string>("Notify.Template.exchangeUserPostalConfirmation"),
         },
         msc: {
-          userConfirmation: config.get<string>("Notify.Template.mscUserConfirmation"),
-          userPostalConfirmation: config.get<string>("Notify.Template.mscUserConfirmation"),
+          inPerson: config.get<string>("Notify.Template.mscUserConfirmation"),
+          postal: config.get<string>("Notify.Template.mscUserConfirmation"),
         },
         cniAndMsc: {
-          userConfirmation: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-          userPostalConfirmation: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
+          inPerson: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
+          postal: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
         },
       };
     } catch (err) {
@@ -54,13 +54,13 @@ export class UserService {
   async sendEmailToUser(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean } }) {
     const { answers, metadata } = data;
     const { reference, type } = data.metadata;
-    let postal = metadata.postal;
+    let isPostalApplication = metadata.postal;
 
     if (!MARRIAGE_CASE_TYPES.has(metadata.type)) {
-      postal = answers.applicationType === "postal";
+      isPostalApplication = answers.applicationType === "postal";
     }
 
-    const templateName = getUserTemplate(answers.country as string, type, postal);
+    const templateName = getUserTemplate(answers.country as string, type, isPostalApplication);
     const personalisationBuilder = getPersonalisationBuilder(type);
     const buildPersonalisationForTemplate = personalisationBuilder[templateName];
     const personalisation = buildPersonalisationForTemplate(answers, metadata);
