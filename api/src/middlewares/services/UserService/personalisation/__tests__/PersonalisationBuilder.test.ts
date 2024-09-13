@@ -1,7 +1,8 @@
 import "pg-boss";
-import { testData } from "./fixtures";
+import { marriageTestData, certifyCopyTestData } from "./fixtures";
 import { answersHashMap, flattenQuestions } from "../../../helpers";
 import { MarriagePersonalisationBuilder } from "../PersonalisationBuilder/marriage/PersonalisationBuilder";
+import { CertifyCopyPersonalisationBuilder } from "../PersonalisationBuilder/certifyCopy/PersonalisationBuilder";
 import {
   buildUserPostalConfirmationPersonalisation,
   getUserPostalConfirmationAdditionalContext,
@@ -20,11 +21,14 @@ jest.mock("pg-boss", () => {
   return jest.fn().mockImplementation(() => pgBossMock);
 });
 
-const formFields = flattenQuestions(testData.questions);
-const answers = answersHashMap(formFields);
+const marriageFormFields = flattenQuestions(marriageTestData.questions);
+const marriageAnswers = answersHashMap(marriageFormFields);
+
+const certifyCopyFormFields = flattenQuestions(certifyCopyTestData.questions);
+const certifyCopyAnswers = answersHashMap(certifyCopyFormFields);
 
 test("buildJobData should return the correct personalisation for an in-person email", () => {
-  const personalisation = MarriagePersonalisationBuilder.userConfirmation(answers, { type: "affirmation", reference: "1234" });
+  const personalisation = MarriagePersonalisationBuilder.userConfirmation(marriageAnswers, { type: "affirmation", reference: "1234" });
   expect(personalisation).toEqual({
     firstName: "foo",
     additionalDocs: "",
@@ -41,7 +45,7 @@ test("buildJobData should return the correct personalisation for an in-person em
 });
 
 test("buildJobData should return the correct personalisation for a postal email", () => {
-  const personalisation = MarriagePersonalisationBuilder.userPostalConfirmation(answers, { reference: "1234", type: "cni" });
+  const personalisation = MarriagePersonalisationBuilder.userPostalConfirmation(marriageAnswers, { reference: "1234", type: "cni" });
   expect(personalisation).toEqual({
     firstName: "foo",
     post: "the British Consulate General Istanbul",
@@ -60,7 +64,7 @@ test("buildJobData should return the correct personalisation for a postal email"
 
 test("buildJobData should return the correct personalisation for Spain when the user's partner has been married before", () => {
   const spainAnswers = {
-    ...answers,
+    ...marriageAnswers,
     country: "Spain",
     partnerMaritalStatus: "Divorced",
     livesInCountry: true,
@@ -206,5 +210,33 @@ test("getCNIPersonalisations returns the correct personalisations given all nega
     previouslyMarried: false,
     religious: false,
     countryIsItaly: false,
+  });
+});
+
+test("buildJobData should return the correct personalisation for a certify a copy in-person email", () => {
+  const personalisation = CertifyCopyPersonalisationBuilder.userConfirmation(certifyCopyAnswers, { type: "certifyCopy", reference: "1234" });
+
+  expect(personalisation).toEqual({
+    firstName: "test",
+    post: "the British embassy Hanoi",
+    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=115&service=13",
+    reference: "1234",
+    notPaid: true,
+  });
+});
+
+test("buildJobData should return the correct personalisation for a certify copy postal email", () => {
+  const answers = {
+    ...certifyCopyAnswers,
+    country: "Kosovo",
+  };
+  const personalisation = CertifyCopyPersonalisationBuilder.userPostalConfirmation(answers, { type: "certifyCopy", reference: "1234" });
+
+  expect(personalisation).toEqual({
+    firstName: "test",
+    post: "the British Embassy Tirana (for Kosovo)",
+    reference: "1234",
+    postAddress: "\nBritish Embassy Tirana\nRruga Skenderbeg 12\nTirana\nAlbania",
+    notPaid: true,
   });
 });
