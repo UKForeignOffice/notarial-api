@@ -1,5 +1,5 @@
-import { MarriagePersonalisationBuilder } from "./personalisation/personalisationBuilder/marriage/PersonalisationBuilder";
-import { CertifyCopyPersonalisationBuilder } from "./personalisation/personalisationBuilder/certifyCopy/PersonalisationBuilder";
+import { MarriagePersonalisationBuilder } from "./personalisation/PersonalisationBuilder/marriage/PersonalisationBuilder";
+import { CertifyCopyPersonalisationBuilder } from "./personalisation/PersonalisationBuilder/certifyCopy/PersonalisationBuilder";
 import { FormType } from "../../../types/FormDataBody";
 import { MARRIAGE_CASE_TYPES } from "../../../utils/formTypes";
 
