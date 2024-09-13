@@ -1,1 +1,2 @@
-export { testData } from "./testData";
+export { marriageTestData } from "./marriageTestData";
+export { certifyCopyTestData } from "./certifyCopyTestData";

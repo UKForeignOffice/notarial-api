@@ -1,4 +1,4 @@
-export const testData = {
+export const marriageTestData = {
   name: "Digital Form Builder - Runner affirmation",
   questions: [
     {
