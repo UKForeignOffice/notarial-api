@@ -5,7 +5,7 @@ import { FormType, MarriageFormType, PayMetadata } from "../../../types/FormData
 import { NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import { getUserTemplate } from "./getUserTemplate";
-import { MARRIAGE_CASE_TYPES } from "../../../utils/formTypes";
+import { MARRIAGE_FORM_TYPES } from "../../../utils/formTypes";
 import { getPersonalisationBuilder } from "./getPersonalisationBuilder";
 
 export class UserService {
@@ -56,7 +56,7 @@ export class UserService {
     const { reference, type } = data.metadata;
     let isPostalApplication = metadata.postal;
 
-    if (!MARRIAGE_CASE_TYPES.has(metadata.type)) {
+    if (!MARRIAGE_FORM_TYPES.has(metadata.type)) {
       isPostalApplication = answers.applicationType === "postal";
     }
 
