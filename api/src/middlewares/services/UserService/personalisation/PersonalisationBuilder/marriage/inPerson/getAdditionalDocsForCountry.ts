@@ -1,5 +1,5 @@
-import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
-import { FormType, PayMetadata } from "../../../../../../types/FormDataBody";
+import { AnswersHashMap } from "../../../../../../../types/AnswersHashMap";
+import { FormType, PayMetadata } from "../../../../../../../types/FormDataBody";
 
 type Metadata = { type: FormType; reference: string; payment?: PayMetadata };
 

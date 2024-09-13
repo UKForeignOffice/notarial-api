@@ -1,15 +1,14 @@
-import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
-import { FormType } from "../../../../../../types/FormDataBody";
+import { AnswersHashMap } from "../../../../../../../types/AnswersHashMap";
+import { MarriageFormType } from "../../../../../../../types/FormDataBody";
 
 type PersonalisationFunction = (fields: AnswersHashMap) => Record<string, boolean>;
 
-export const personalisationTypeMap: Record<FormType, PersonalisationFunction> = {
+export const personalisationTypeMap: Record<MarriageFormType, PersonalisationFunction> = {
   affirmation: (_fields: AnswersHashMap) => ({}),
   cni: getCNIPersonalisations,
   exchange: (_fields: AnswersHashMap) => ({}),
   msc: getMSCPersonalisations,
   cniAndMsc: getCNIAndMSCPersonalisations,
-  certifyDocument: (_fields: AnswersHashMap) => ({}),
 };
 
 function getCNIPersonalisations(fields: AnswersHashMap) {

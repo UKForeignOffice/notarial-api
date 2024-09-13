@@ -16,5 +16,5 @@ export type AlertJob = {
   }>;
 };
 
-type NotifyEmailTemplate = "userConfirmation" | "userPostalConfirmation";
+type NotifyEmailTemplate = "inPerson" | "postal";
 export type NotifyTemplateGroup = Record<NotifyEmailTemplate, string>;

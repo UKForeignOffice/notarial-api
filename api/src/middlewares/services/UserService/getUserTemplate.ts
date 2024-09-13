@@ -11,7 +11,7 @@ export function getUserTemplate(country: string, type: FormType, postal?: boolea
   const postalSupport = postal ?? (type === "exchange" && countryOffersPostalRoute && !countryIsCroatia);
 
   if (!postalSupport) {
-    return "userConfirmation";
+    return "inPerson";
   }
-  return "userPostalConfirmation";
+  return "postal";
 }

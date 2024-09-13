@@ -1,12 +1,12 @@
-import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
-import { FormType, PayMetadata } from "../../../../../../types/FormDataBody";
-import { ApplicationError } from "../../../../../../ApplicationError";
-import * as additionalContexts from "../../../../utils/additionalContexts.json";
-import { getPost } from "../../../../utils/getPost";
+import { AnswersHashMap } from "../../../../../../../types/AnswersHashMap";
+import { FormType, PayMetadata } from "../../../../../../../types/FormDataBody";
+import { ApplicationError } from "../../../../../../../ApplicationError";
+import * as additionalContexts from "../../../../../utils/additionalContexts.json";
+import { getPost } from "../../../../../utils/getPost";
 import { personalisationTypeMap } from "./getAdditionalPersonalisations";
 import { getAdditionalDocsForCountry } from "./getAdditionalDocsForCountry";
 
-export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
+export function buildInPersonPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
 
   if (!answers) {

@@ -1,11 +1,11 @@
-import * as additionalContexts from "../../../../utils/additionalContexts.json";
-import { getPost } from "../../../../utils/getPost";
-import { AnswersHashMap } from "../../../../../../types/AnswersHashMap";
-import { FormType, PayMetadata } from "../../../../../../types/FormDataBody";
+import * as additionalContexts from "../../../../../utils/additionalContexts.json";
+import { getPost } from "../../../../../utils/getPost";
+import { AnswersHashMap } from "../../../../../../../types/AnswersHashMap";
+import { FormType, PayMetadata } from "../../../../../../../types/FormDataBody";
 import { personalisationTypeMap } from "./getAdditionalPersonalisations";
-import { ApplicationError } from "../../../../../../ApplicationError";
+import { ApplicationError } from "../../../../../../../ApplicationError";
 
-export function getUserPostalConfirmationAdditionalContext(country: string, post?: string) {
+export function getPostalAdditionalContext(country: string, post?: string) {
   const postName = getPost(country, post);
   const additionalCountryContext = additionalContexts.countries[country];
   const additionalPostContext = additionalContexts.posts[postName];
@@ -16,13 +16,13 @@ export function getUserPostalConfirmationAdditionalContext(country: string, post
   };
 }
 
-export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType }) {
+export function buildPostalPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType }) {
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
   const country = answers["country"] as string;
   const post = answers["post"] as string;
   const userHadPreviousMarriage = answers.maritalStatus !== "Never married";
 
-  const additionalContext = getUserPostalConfirmationAdditionalContext(country, post);
+  const additionalContext = getPostalAdditionalContext(country, post);
   const getAdditionalPersonalisations = personalisationTypeMap[metadata.type!];
   if (!getAdditionalPersonalisations) {
     throw new ApplicationError("WEBHOOK", "VALIDATION", 500, `No personalisation mapper set for form type: ${metadata.type}`);
