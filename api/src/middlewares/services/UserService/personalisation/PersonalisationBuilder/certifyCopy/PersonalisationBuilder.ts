@@ -1,7 +1,7 @@
-import { buildUserPostalConfirmationPersonalisation } from "./personalisationBuilder.userPostalConfirmation";
-import { buildUserConfirmationPersonalisation } from "./personalisationBuilder.userConfirmation";
+import { buildPostalPersonalisation } from "./personalisationBuilder.postal";
+import { buildInPersonPersonalisation } from "./personalisationBuilder.inPerson";
 
 export const CertifyCopyPersonalisationBuilder = {
-  userConfirmation: buildUserConfirmationPersonalisation,
-  userPostalConfirmation: buildUserPostalConfirmationPersonalisation,
+  inPerson: buildInPersonPersonalisation,
+  postal: buildPostalPersonalisation,
 };
