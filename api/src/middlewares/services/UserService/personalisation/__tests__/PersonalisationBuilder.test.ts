@@ -1,9 +1,12 @@
 import "pg-boss";
 import { testData } from "./fixtures";
 import { answersHashMap, flattenQuestions } from "../../../helpers";
-import { PersonalisationBuilder } from "../PersonalisationBuilder";
-import { getAffirmationPersonalisations, getCNIPersonalisations } from "../personalisationBuilder/userConfirmation/getAdditionalPersonalisations";
-import { buildUserPostalConfirmationPersonalisation, getUserPostalConfirmationAdditionalContext } from "../personalisationBuilder/userPostalConfirmation";
+import { MarriagePersonalisationBuilder } from "../PersonalisationBuilder/marriage/PersonalisationBuilder";
+import {
+  buildUserPostalConfirmationPersonalisation,
+  getUserPostalConfirmationAdditionalContext,
+} from "../PersonalisationBuilder/marriage/userPostalConfirmation";
+import { getAffirmationPersonalisations, getCNIPersonalisations } from "../PersonalisationBuilder/marriage/userConfirmation/getAdditionalPersonalisations";
 const pgBossMock = {
   async start() {
     return this;
@@ -21,7 +24,7 @@ const formFields = flattenQuestions(testData.questions);
 const answers = answersHashMap(formFields);
 
 test("buildJobData should return the correct personalisation for an in-person email", () => {
-  const personalisation = PersonalisationBuilder.userConfirmation(answers, { type: "affirmation", reference: "1234" });
+  const personalisation = MarriagePersonalisationBuilder.userConfirmation(answers, { type: "affirmation", reference: "1234" });
   expect(personalisation).toEqual({
     firstName: "foo",
     additionalDocs: "",
@@ -38,7 +41,7 @@ test("buildJobData should return the correct personalisation for an in-person em
 });
 
 test("buildJobData should return the correct personalisation for a postal email", () => {
-  const personalisation = PersonalisationBuilder.userPostalConfirmation(answers, { reference: "1234", type: "cni" });
+  const personalisation = MarriagePersonalisationBuilder.userPostalConfirmation(answers, { reference: "1234", type: "cni" });
   expect(personalisation).toEqual({
     firstName: "foo",
     post: "the British Consulate General Istanbul",
@@ -62,7 +65,7 @@ test("buildJobData should return the correct personalisation for Spain when the 
     partnerMaritalStatus: "Divorced",
     livesInCountry: true,
   };
-  const personalisation = PersonalisationBuilder.userPostalConfirmation(spainAnswers, { reference: "1234", type: "cni" });
+  const personalisation = MarriagePersonalisationBuilder.userPostalConfirmation(spainAnswers, { reference: "1234", type: "cni" });
   expect(personalisation).toEqual({
     firstName: "foo",
     post: "the British Consulate General Istanbul",
