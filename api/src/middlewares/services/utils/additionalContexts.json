@@ -1,4 +1,16 @@
 {
+  "certifyCopy": {
+    "countries": {
+      "Kosovo": {
+        "post": "the British Embassy Tirana (for Kosovo)",
+        "postAddress": "\nBritish Embassy Tirana\nRruga Skenderbeg 12\nTirana\nAlbania"
+      },
+      "Vietnam": {
+        "post": "the British embassy Hanoi",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=115&service=13"
+      }
+    }
+  },
   "countries": {
     "Albania": {
       "post": "the British Embassy Tirana",
