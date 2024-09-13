@@ -14,7 +14,7 @@ import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
 import { getPost } from "../../utils/getPost";
 import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
-import { MarriageProcessQueueData, PaymentViewModel, ProcessQueueData } from "../types";
+import { MarriageFormMetadata, MarriageProcessQueueData, PaymentViewModel, ProcessQueueData } from "../types";
 import { CaseService } from "../CaseService";
 
 export class MarriageCaseService implements CaseService {
@@ -30,7 +30,7 @@ export class MarriageCaseService implements CaseService {
     this.queueService = queueService;
     this.logger = logger().child({ service: "SES" });
     this.templates = {
-      SES: MarriageCaseService.createTemplate(templates.submission),
+      SES: MarriageCaseService.createTemplate(templates.marriageSubmission),
       Notify: {
         postAlert: config.get<string>("Notify.Template.postNotification"),
       },
@@ -40,17 +40,8 @@ export class MarriageCaseService implements CaseService {
   /**
    * This will add all the parameters needed to process the email to the queue. The NOTIFY_PROCESS queue will pick up
    * this message and make a post request to notarial-api/forms/emails/staff
-   * TODO:- create a MarriageCaseServiceMetadata type
    */
-  async sendToProcessQueue(
-    fields: FormField[],
-    metadata: {
-      reference: string;
-      payment?: PayMetadata;
-      type: MarriageFormType;
-      postal?: boolean;
-    }
-  ) {
+  async sendToProcessQueue(fields: FormField[], metadata: MarriageFormMetadata) {
     return await this.queueService.sendToQueue("SES_PROCESS", { fields, metadata });
   }
 

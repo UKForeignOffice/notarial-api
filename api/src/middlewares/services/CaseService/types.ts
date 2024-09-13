@@ -1,6 +1,6 @@
 import { FormField } from "../../../types/FormField";
 import { NotifySendEmailArgs } from "../utils/types";
-import { CertifyCopyFormType, MarriageFormType, PayMetadata } from "../../../types/FormDataBody";
+import { CertifyCopyFormType, FormType, MarriageFormType, PayMetadata } from "../../../types/FormDataBody";
 
 export type PaymentViewModel = {
   id: string;
@@ -12,6 +12,21 @@ export type PaymentViewModel = {
     country: string;
   };
 };
+
+export interface FormMetadata {
+  reference: string;
+  payment?: PayMetadata;
+  type: FormType;
+}
+
+export interface MarriageFormMetadata extends FormMetadata {
+  type: MarriageFormType;
+  postal?: boolean;
+}
+
+export interface CertifyCopyFormMetadata extends FormMetadata {
+  type: CertifyCopyFormType;
+}
 
 export type CertifyCopyProcessQueueData = {
   fields: FormField[];

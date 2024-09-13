@@ -12,8 +12,8 @@ We will implement Option 1, since it gives us most flexibility if partial rollou
 ## Options / Rationale
 
 ### Option 1
-- Change `staffService` to be `MarriageCaseService` and add `CertifyDocumentCaseService`. There should be a new abstract class, `CaseService`, which both services extend
-- Update `/emails/ses` to check for the correct types, and call the appropriate service (e.g. `MarriageCaseService` or `CertifyDocumentCaseService`)
+- Change `staffService` to be `CertifyCopyCaseService` and add `CertifyDocumentCaseService`. There should be a new abstract class, `CaseService`, which both services extend
+- Update `/emails/ses` to check for the correct types, and call the appropriate service (e.g. `CertifyCopyCaseService` or `CertifyDocumentCaseService`)
 - Update `SubmitService.submitForm` to check `metadata.type` and call the appropriate service
 
 `UserService` does not need to be changed significantly, only updated to accept new template types.

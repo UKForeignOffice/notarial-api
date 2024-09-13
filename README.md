@@ -47,7 +47,7 @@ at the same time. If you are running postgres from this repo, you do not need to
 1. If you wish to send emails locally, you will need to authenticate your terminal with AWS. (`formsawsauth prod`)
 2. Start the api `yarn api start:local`
 3. start the worker `NOTIFY_API_KEY=".." yarn worker start:local`
-4. Send a post request to `http://localhost:9000/forms`, use the payload found in `notarial-api/api/src/middlewares/services/UserService/personalisation/__tests__/fixtures/testData.ts`, or run the form runner locally, with the webhook configured to `http://localhost:9000/forms`. 
+4. Send a post request to `http://localhost:9000/forms`, use the payload found in `notarial-api/api/src/middlewares/services/UserService/personalisation/__tests__/fixtures/marriageTestData.ts`, or run the form runner locally, with the webhook configured to `http://localhost:9000/forms`. 
 
 
 ### Formatting

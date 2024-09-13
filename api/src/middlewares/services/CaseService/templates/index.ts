@@ -1,3 +1,4 @@
-import submission from "./submission";
+import marriageSubmission from "./marriageSubmission";
+import certifyCopySubmission from "./certifyCopySubmission";
 
-export { submission };
+export { marriageSubmission, certifyCopySubmission };
