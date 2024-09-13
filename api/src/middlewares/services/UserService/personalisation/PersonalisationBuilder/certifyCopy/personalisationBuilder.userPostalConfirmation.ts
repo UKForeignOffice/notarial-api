@@ -6,11 +6,15 @@ export function buildUserPostalConfirmationPersonalisation(answers: AnswersHashM
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
   const country = answers["country"] as string;
 
+  const additionalContext = {
+    ...(additionalContexts.certifyCopy.countries[country] ?? {}),
+  };
+
   return {
     firstName: answers.firstName,
-    post: additionalContexts.countries[country].post,
+    post: additionalContext.post,
     reference: metadata.reference,
-    postAddress: additionalContexts.countries[country].postAddress,
+    postAddress: additionalContext.postAddress,
     notPaid: !isSuccessfulPayment,
   };
 }

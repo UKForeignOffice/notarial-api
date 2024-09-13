@@ -13,12 +13,12 @@ export function buildUserConfirmationPersonalisation(answers: AnswersHashMap, me
   const country = answers["country"] as string;
 
   const additionalContext = {
-    ...(additionalContexts.countries[country] ?? {}),
+    ...(additionalContexts.certifyCopy.countries[country] ?? {}),
   };
 
   return {
     firstName: answers.firstName,
-    post: additionalContexts.countries?.[country]?.post,
+    post: additionalContext.post,
     bookingLink: additionalContext.bookingLink,
     reference: metadata.reference,
     notPaid: !isSuccessfulPayment,
