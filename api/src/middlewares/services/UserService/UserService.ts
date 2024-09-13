@@ -1,11 +1,12 @@
 import config from "config";
 import pino, { Logger } from "pino";
-import { PersonalisationBuilder } from "./personalisation/PersonalisationBuilder";
 import { QueueService } from "../QueueService";
 import { FormType, MarriageFormType, PayMetadata } from "../../../types/FormDataBody";
 import { NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import { getUserTemplate } from "./getUserTemplate";
+import { MARRIAGE_CASE_TYPES } from "../../../utils/formTypes";
+import { getPersonalisationBuilder } from "./getPersonalisationBuilder";
 
 export class UserService {
   logger: Logger;
@@ -53,9 +54,15 @@ export class UserService {
   async sendEmailToUser(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean } }) {
     const { answers, metadata } = data;
     const { reference, type } = data.metadata;
+    let postal = metadata.postal;
 
-    const templateName = getUserTemplate(answers.country as string, type, metadata.postal);
-    const buildPersonalisationForTemplate = PersonalisationBuilder[templateName];
+    if (!MARRIAGE_CASE_TYPES.has(metadata.type)) {
+      postal = answers.applicationType === "postal";
+    }
+
+    const templateName = getUserTemplate(answers.country as string, type, postal);
+    const personalisationBuilder = getPersonalisationBuilder(type);
+    const buildPersonalisationForTemplate = personalisationBuilder[templateName];
     const personalisation = buildPersonalisationForTemplate(answers, metadata);
     const emailArgs = {
       template: this.templates[type][templateName],
