@@ -1,6 +1,6 @@
 import { FormField } from "../../../types/FormField";
 import { NotifySendEmailArgs } from "../utils/types";
-import { CertifyDocumentFormType, MarriageFormType, PayMetadata } from "../../../types/FormDataBody";
+import { CertifyCopyFormType, MarriageFormType, PayMetadata } from "../../../types/FormDataBody";
 
 export type PaymentViewModel = {
   id: string;
@@ -13,12 +13,12 @@ export type PaymentViewModel = {
   };
 };
 
-export type CertifyDocumentProcessQueueData = {
+export type CertifyCopyProcessQueueData = {
   fields: FormField[];
   metadata: {
     reference: string;
     payment?: PayMetadata;
-    type: CertifyDocumentFormType;
+    type: CertifyCopyFormType;
   };
 };
 
@@ -31,7 +31,7 @@ export type MarriageProcessQueueData = {
     postal?: boolean;
   };
 };
-export type ProcessQueueData = CertifyDocumentProcessQueueData & MarriageProcessQueueData;
+export type ProcessQueueData = CertifyCopyProcessQueueData & MarriageProcessQueueData;
 
 // TODO:- share this type between worker and api
 export type SESSendJob = {

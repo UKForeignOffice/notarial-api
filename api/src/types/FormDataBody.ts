@@ -6,8 +6,8 @@ type PayState = {
 };
 
 export type MarriageFormType = "affirmation" | "cni" | "exchange" | "msc" | "cniAndMsc";
-export type CertifyDocumentFormType = "certifyCopy";
-export type FormType = MarriageFormType | CertifyDocumentFormType;
+export type CertifyCopyFormType = "certifyCopy";
+export type FormType = MarriageFormType | CertifyCopyFormType;
 
 type FailedPayState = {
   status: "failed";
