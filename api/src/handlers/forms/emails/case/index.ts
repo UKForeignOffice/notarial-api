@@ -2,8 +2,8 @@ import { NextFunction, Request, Response } from "express";
 import joi from "joi";
 import { ApplicationError } from "../../../../ApplicationError";
 import { FormType } from "../../../../types/FormDataBody";
-import { MarriageCaseService } from "../../../../middlewares/services";
 import { MARRIAGE_FORM_TYPES } from "../../../../utils/formTypes";
+import { CaseService } from "../../../../middlewares/services/CaseService/CaseService";
 
 const schema = joi.object({
   fields: joi
@@ -38,7 +38,7 @@ export async function post(req: Request, res: Response, next: NextFunction) {
 
   const caseServiceName = getCaseServiceName(formType);
   req.log.info({ path: req.path, formType }, `FormType ${formType} detected, using ${caseServiceName}`);
-  const caseService: MarriageCaseService = res.app.services[caseServiceName];
+  const caseService: CaseService = res.app.services[caseServiceName];
 
   try {
     const jobId = await caseService.sendEmail(req.body);
@@ -51,11 +51,11 @@ export async function post(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-type ExpressCaseServices = Pick<Express.Application["services"], "marriageCaseService">;
+type ExpressCaseServices = Pick<Express.Application["services"], "marriageCaseService" | "certifyCopyCaseService">;
 
 function getCaseServiceName(formType: FormType): keyof ExpressCaseServices {
   if (MARRIAGE_FORM_TYPES.has(formType)) {
     return "marriageCaseService";
   }
-  return "marriageCaseService";
+  return "certifyCopyCaseService";
 }
