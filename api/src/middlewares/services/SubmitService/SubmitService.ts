@@ -3,7 +3,9 @@ import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
 import { UserService } from "../UserService";
 import { MarriageCaseService } from "../CaseService";
-import { FormType, MarriageFormType } from "../../../types/FormDataBody";
+import { FormType } from "../../../types/FormDataBody";
+import { CertifyCopyCaseService } from "../CaseService/certifyCopy/CertifyCopyCaseService";
+import { getCaseServiceName } from "../utils/getCaseServiceName";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
@@ -11,11 +13,13 @@ export class SubmitService {
   logger: Logger;
   userService: UserService;
   marriageCaseService: MarriageCaseService;
+  certifyCopyCaseService: CertifyCopyCaseService;
 
-  constructor({ userService, marriageCaseService }) {
+  constructor({ userService, marriageCaseService, certifyCopyCaseService }) {
     this.logger = logger().child({ service: "Submit" });
     this.userService = userService;
     this.marriageCaseService = marriageCaseService;
+    this.certifyCopyCaseService = certifyCopyCaseService;
   }
   generateId() {
     return nanoid();
@@ -27,20 +31,16 @@ export class SubmitService {
     const answers = answersHashMap(formFields);
     const reference = metadata?.pay?.reference ?? this.generateId();
 
-    //TODO:- Handle different caseServices
-    // forms with multiple services will receive the correct form type from answers.service
     const type = (answers.service as FormType) ?? metadata?.type ?? "affirmation";
+    const caseServiceName = getCaseServiceName(type);
     if (metadata.pay) {
       metadata.pay.total = fees?.total;
     }
 
     try {
-      const staffProcessJob = await this.marriageCaseService.sendToProcessQueue(formFields, {
-        reference,
-        payment: metadata.pay,
-        type: type as MarriageFormType,
-        postal: metadata.postal,
-      });
+      const caseService = this[caseServiceName];
+      const processQueueData = caseService.buildProcessQueueData(formFields, reference, type, metadata);
+      const staffProcessJob = await this[caseServiceName].sendToProcessQueue(processQueueData);
       this.logger.info({ reference, staffProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
 
       const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type, postal: metadata.postal });

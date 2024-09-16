@@ -13,6 +13,7 @@ export function initMiddleware(server: Application) {
   const submitService = new SubmitService({
     userService,
     marriageCaseService,
+    certifyCopyCaseService,
   });
   server.services = {
     userService,
