@@ -54,8 +54,7 @@ export class MarriageCaseService implements CaseService {
    * this message and make a post request to notarial-api/forms/emails/staff
    */
   async sendToProcessQueue(data: MarriageProcessQueueData) {
-    const { fields, metadata } = data;
-    return await this.queueService.sendToQueue("SES_PROCESS", { fields, metadata });
+    return await this.queueService.sendToQueue("SES_PROCESS", data);
   }
 
   async sendEmail(data: MarriageProcessQueueData) {
