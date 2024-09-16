@@ -33,7 +33,7 @@ export function buildInPersonPersonalisation(answers: AnswersHashMap, metadata: 
 
   return {
     firstName: answers.firstName,
-    post: getPost(country, post),
+    post: getPost(country, metadata.type!, post),
     country,
     bookingLink: additionalContext.bookingLink,
     localRequirements: additionalContext.localRequirements,
