@@ -46,7 +46,7 @@ export type MarriageProcessQueueData = {
     postal?: boolean;
   };
 };
-export type ProcessQueueData = CertifyCopyProcessQueueData & MarriageProcessQueueData;
+export type ProcessQueueData = CertifyCopyProcessQueueData | MarriageProcessQueueData;
 
 // TODO:- share this type between worker and api
 export type SESSendJob = {

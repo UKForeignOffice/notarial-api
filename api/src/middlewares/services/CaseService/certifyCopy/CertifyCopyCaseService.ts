@@ -2,7 +2,7 @@ import logger, { Logger } from "pino";
 import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
 import * as templates from "./../templates";
-import { CertifyCopyFormType, PayMetadata } from "../../../../types/FormDataBody";
+import { CertifyCopyFormType, FormDataBody, PayMetadata } from "../../../../types/FormDataBody";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
 import { answersHashMap } from "../../helpers";
 import { AnswersHashMap } from "../../../../types/AnswersHashMap";
@@ -11,7 +11,7 @@ import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
 import { getPost } from "../../utils/getPost";
 import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
-import { CertifyCopyFormMetadata, CertifyCopyProcessQueueData, PaymentViewModel } from "../types";
+import { CertifyCopyProcessQueueData, PaymentViewModel } from "../types";
 import { CaseService } from "../CaseService";
 import { reorderSectionsWithNewName } from "../utils/reorderSectionsWithNewName";
 import { order, remap } from "./mappings";
@@ -37,12 +37,23 @@ export class CertifyCopyCaseService implements CaseService {
     };
   }
 
+  buildProcessQueueData(fields: FormField[], reference: string, type: CertifyCopyFormType, metadata: FormDataBody["metadata"]): CertifyCopyProcessQueueData {
+    return {
+      fields,
+      metadata: {
+        reference,
+        payment: metadata.pay,
+        type,
+      },
+    };
+  }
+
   /**
    * This will add all the parameters needed to process the email to the queue. The NOTIFY_PROCESS queue will pick up
    * this message and make a post request to notarial-api/forms/emails/staff
    */
-  async sendToProcessQueue(fields: FormField[], metadata: CertifyCopyFormMetadata) {
-    return await this.queueService.sendToQueue("SES_PROCESS", { fields, metadata });
+  async sendToProcessQueue(data: CertifyCopyProcessQueueData) {
+    return await this.queueService.sendToQueue("SES_PROCESS", data);
   }
 
   async sendEmail(data: CertifyCopyProcessQueueData) {

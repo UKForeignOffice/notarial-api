@@ -2,7 +2,7 @@ import logger, { Logger } from "pino";
 import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
 import * as templates from "./../templates";
-import { FormType, MarriageFormType, PayMetadata } from "../../../../types/FormDataBody";
+import { FormDataBody, FormType, MarriageFormType, PayMetadata } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
 import { reorderers } from "./reorderers";
@@ -14,7 +14,7 @@ import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
 import { getPost } from "../../utils/getPost";
 import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
-import { MarriageFormMetadata, MarriageProcessQueueData, PaymentViewModel, ProcessQueueData } from "../types";
+import { MarriageProcessQueueData, PaymentViewModel } from "../types";
 import { CaseService } from "../CaseService";
 
 export class MarriageCaseService implements CaseService {
@@ -37,15 +37,28 @@ export class MarriageCaseService implements CaseService {
     };
   }
 
+  buildProcessQueueData(fields: FormField[], reference: string, type: MarriageFormType, metadata: FormDataBody["metadata"]): MarriageProcessQueueData {
+    return {
+      fields,
+      metadata: {
+        reference,
+        payment: metadata.pay,
+        type: type as MarriageFormType,
+        postal: metadata.postal,
+      },
+    };
+  }
+
   /**
    * This will add all the parameters needed to process the email to the queue. The NOTIFY_PROCESS queue will pick up
    * this message and make a post request to notarial-api/forms/emails/staff
    */
-  async sendToProcessQueue(fields: FormField[], metadata: MarriageFormMetadata) {
+  async sendToProcessQueue(data: MarriageProcessQueueData) {
+    const { fields, metadata } = data;
     return await this.queueService.sendToQueue("SES_PROCESS", { fields, metadata });
   }
 
-  async sendEmail(data: ProcessQueueData) {
+  async sendEmail(data: MarriageProcessQueueData) {
     const jobData = this.buildJobData(data);
     return await this.queueService.sendToQueue("SES_SEND", jobData);
   }

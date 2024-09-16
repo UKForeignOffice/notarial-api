@@ -2,7 +2,7 @@ import { Logger } from "pino";
 import { AlertJob } from "../utils/types";
 import { QueueService } from "../QueueService";
 import { FormField } from "../../../types/FormField";
-import { FormType, PayMetadata } from "../../../types/FormDataBody";
+import { FormDataBody, FormType, PayMetadata } from "../../../types/FormDataBody";
 import { PaymentViewModel, ProcessQueueData, SESSendJob } from "./types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 
@@ -11,15 +11,7 @@ export interface CaseService {
 
   queueService: QueueService;
 
-  sendToProcessQueue(
-    fields: FormField[],
-    metadata: {
-      reference: string;
-      payment?: PayMetadata;
-      type: FormType;
-      postal?: boolean;
-    }
-  ): Promise<string>;
+  sendToProcessQueue(data: ProcessQueueData): Promise<string>;
 
   sendEmail(data: ProcessQueueData): Promise<string>;
 
@@ -33,6 +25,11 @@ export interface CaseService {
    * TODO:- refactor into own class or function
    */
   paymentViewModel(payment: PayMetadata | undefined, country: string): PaymentViewModel | undefined;
+
+  /**
+   * builds the data required for the SES_PROCESS job
+   */
+  buildProcessQueueData(fields: FormField[], reference: string, type: FormType, metadata: FormDataBody["metadata"]): ProcessQueueData;
 
   /**
    * builds the data required for the SES_SEND job
