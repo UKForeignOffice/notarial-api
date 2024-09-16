@@ -85,7 +85,7 @@ test("buildJobData should return the correct personalisation for Spain when the 
 });
 
 test("getPostalAdditionalContext returns additionalContext correctly", () => {
-  expect(getPostalAdditionalContext("Italy")).toStrictEqual({
+  expect(getPostalAdditionalContext("Italy", "cni")).toStrictEqual({
     additionalDocs: [
       "your parents‘ full names ",
       "partner‘s proof any previous marriages or civil partnerships have ended ",
@@ -101,7 +101,7 @@ test("getPostalAdditionalContext returns additionalContext correctly", () => {
     postal: true,
   });
 
-  expect(getPostalAdditionalContext("Russia", "the British Embassy Moscow")).toStrictEqual({
+  expect(getPostalAdditionalContext("Russia", "cni", "the British Embassy Moscow")).toStrictEqual({
     additionalDocs: [
       "a piece of paper with the Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities)",
     ],
@@ -115,7 +115,7 @@ test("getPostalAdditionalContext returns additionalContext correctly", () => {
     postal: true,
   });
 
-  expect(getPostalAdditionalContext("Poland")).toStrictEqual({
+  expect(getPostalAdditionalContext("Poland", "cni")).toStrictEqual({
     additionalDocs: "",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10",
     civilPartnership: false,

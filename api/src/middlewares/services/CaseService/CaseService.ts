@@ -42,5 +42,5 @@ export interface CaseService {
   /**
    * builds the data required for an onComplete handler.
    */
-  getPostAlertData(answers: AnswersHashMap, reference: string): AlertJob | undefined;
+  getPostAlertData(answers: AnswersHashMap, reference: string, type: FormType): AlertJob | undefined;
 }

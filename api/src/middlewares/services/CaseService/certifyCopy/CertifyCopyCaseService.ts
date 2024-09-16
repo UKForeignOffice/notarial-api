@@ -2,7 +2,7 @@ import logger, { Logger } from "pino";
 import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
 import * as templates from "./../templates";
-import { PayMetadata } from "../../../../types/FormDataBody";
+import { CertifyCopyFormType, PayMetadata } from "../../../../types/FormDataBody";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
 import { answersHashMap } from "../../helpers";
 import { AnswersHashMap } from "../../../../types/AnswersHashMap";
@@ -11,7 +11,7 @@ import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
 import { getPost } from "../../utils/getPost";
 import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
-import { CertifyCopyFormMetadata, CertifyCopyProcessQueueData, PaymentViewModel, ProcessQueueData } from "../types";
+import { CertifyCopyFormMetadata, CertifyCopyProcessQueueData, PaymentViewModel } from "../types";
 import { CaseService } from "../CaseService";
 import { reorderSectionsWithNewName } from "../utils/reorderSectionsWithNewName";
 import { order, remap } from "./mappings";
@@ -45,12 +45,12 @@ export class CertifyCopyCaseService implements CaseService {
     return await this.queueService.sendToQueue("SES_PROCESS", { fields, metadata });
   }
 
-  async sendEmail(data: ProcessQueueData) {
+  async sendEmail(data: CertifyCopyProcessQueueData) {
     const jobData = this.buildJobData(data);
     return await this.queueService.sendToQueue("SES_SEND", jobData);
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }) {
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, type: CertifyCopyFormType) {
     const { fields, payment, reference } = data;
 
     const remapFields = createRemapper(remap);
@@ -62,13 +62,12 @@ export class CertifyCopyCaseService implements CaseService {
     const reordered = reorderer(remapped);
 
     const country = getAnswerOrThrow(information, "country");
-    const post = getPost(country, information.post?.answer);
+    const post = getPost(country, type, information.post?.answer);
     return this.templates.SES({
       post,
       reference,
       payment,
       country,
-      certifyPassport: information.certifyPassport?.answer ?? false,
       questions: reordered,
     });
   }
@@ -86,11 +85,11 @@ export class CertifyCopyCaseService implements CaseService {
     }
 
     const country = answers.country as string;
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference });
-    const post = getPost(country, answers.post as string);
-    const onCompleteJob = this.getPostAlertData(answers, reference);
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference }, type);
+    const post = getPost(country, type, answers.post as string);
+    const onCompleteJob = this.getPostAlertData(answers, reference, type);
     return {
-      subject: `Local marriage application - ${post} – ${reference}`,
+      subject: `Certify a copy of a passport application - ${post} – ${reference}`,
       body: emailBody,
       attachments: fields.filter(isFieldType("file")),
       reference,
@@ -126,9 +125,9 @@ export class CertifyCopyCaseService implements CaseService {
     };
   }
 
-  getPostAlertData(answers: AnswersHashMap, reference: string) {
+  getPostAlertData(answers: AnswersHashMap, reference: string, type: CertifyCopyFormType) {
     const country = answers["country"] as string;
-    const post = getPost(country, answers["post"] as string);
+    const post = getPost(country, type, answers["post"] as string);
     const emailAddress = getPostEmailAddress(country, post);
     if (!emailAddress) {
       this.logger.error(
