@@ -41,8 +41,8 @@ export class SubmitService {
     try {
       const caseService: CaseService = this[caseServiceName];
       const processQueueData = caseService.buildProcessQueueData(formFields, reference, type, metadata);
-      const staffProcessJob = await caseService.sendToProcessQueue(processQueueData);
-      this.logger.info({ reference, staffProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
+      const caseProcessJob = await caseService.sendToProcessQueue(processQueueData);
+      this.logger.info({ reference, caseProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
 
       const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type, postal: metadata.postal });
 
