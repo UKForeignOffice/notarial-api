@@ -6,6 +6,7 @@ import { MarriageCaseService } from "../CaseService";
 import { FormType } from "../../../types/FormDataBody";
 import { CertifyCopyCaseService } from "../CaseService/certifyCopy/CertifyCopyCaseService";
 import { getCaseServiceName } from "../utils/getCaseServiceName";
+import { CaseService } from "../CaseService/CaseService";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
@@ -38,9 +39,9 @@ export class SubmitService {
     }
 
     try {
-      const caseService = this[caseServiceName];
+      const caseService: CaseService = this[caseServiceName];
       const processQueueData = caseService.buildProcessQueueData(formFields, reference, type, metadata);
-      const staffProcessJob = await this[caseServiceName].sendToProcessQueue(processQueueData);
+      const staffProcessJob = await caseService.sendToProcessQueue(processQueueData);
       this.logger.info({ reference, staffProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
 
       const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type, postal: metadata.postal });
