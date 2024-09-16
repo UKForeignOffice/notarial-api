@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`certifyCopy is successfully remapped 1`] = `
+{
+  "applicantBirth": {
+    "countryOfBirth": {
+      "answer": "United Kingdom",
+      "category": "applicantDetails",
+      "key": "countryOfBirth",
+      "title": "Country of birth",
+      "type": "list",
+    },
+    "dateOfBirth": {
+      "answer": "1998-01-19",
+      "category": "applicantDetails",
+      "key": "dateOfBirth",
+      "title": "Date of birth",
+      "type": "date",
+    },
+    "placeOfBirth": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "placeOfBirth",
+      "title": "Place of birth ",
+      "type": "text",
+    },
+  },
+  "applicantDetails": {
+    "firstName": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "firstName",
+      "title": "First name",
+      "type": "text",
+    },
+    "middleName": {
+      "answer": null,
+      "category": "applicantDetails",
+      "key": "middleName",
+      "title": "Middle name",
+      "type": "text",
+    },
+    "sex": {
+      "answer": "Male",
+      "category": "applicantDetails",
+      "key": "sex",
+      "title": "Male or female",
+      "type": "list",
+    },
+    "surname": {
+      "answer": "test",
+      "category": "applicantDetails",
+      "key": "surname",
+      "title": "Surname",
+      "type": "text",
+    },
+  },
+  "applicantPassport": {
+    "answer": "https://document-upload-endpoint",
+    "category": "documents",
+    "dateOfIssue": {
+      "answer": "1998-01-19",
+      "category": "applicantDetails",
+      "key": "passportDateOfIssue",
+      "title": "Date of issue of passport",
+      "type": "date",
+    },
+    "key": "applicantPassport",
+    "number": {
+      "answer": "12345678890",
+      "category": "applicantDetails",
+      "key": "passportNumber",
+      "title": "Passport number",
+      "type": "text",
+    },
+    "title": "Upload your UK passport",
+    "type": "file",
+  },
+  "contactDetails": {
+    "emailAddress": {
+      "answer": "luke@cautionyourblast.com",
+      "category": "contact",
+      "key": "emailAddress",
+      "title": "Confirm email address",
+      "type": "text",
+    },
+    "phoneNumber": {
+      "answer": "+44 1234 567809",
+      "category": "contact",
+      "key": "phoneNumber",
+      "title": "Confirm phone number",
+      "type": "text",
+    },
+  },
+  "declaration": {
+    "answer": true,
+    "key": "declaration",
+    "title": "Declaration",
+    "type": "boolean",
+  },
+  "feedbackConsent": {
+    "feedbackConsent": {
+      "answer": false,
+      "category": "feedback",
+      "key": "feedbackConsent",
+      "title": "Can our partner contact you for feedback to help improve this service?",
+      "type": "list",
+    },
+  },
+  "information": {
+    "country": {
+      "answer": "Vietnam",
+      "category": "beforeYouStart",
+      "key": "country",
+      "title": "Application country",
+      "type": "list",
+    },
+    "typeOfDocument": {
+      "answer": "adult passport",
+      "category": "beforeYouStart",
+      "key": "typeOfDoc",
+      "title": "Type of document to certify",
+      "type": "list",
+    },
+  },
+  "thirdParty": {
+    "answer": false,
+    "category": "beforeYouStart",
+    "key": "thirdParty",
+    "title": "Applying on behalf of someone else",
+    "type": "list",
+  },
+}
+`;
