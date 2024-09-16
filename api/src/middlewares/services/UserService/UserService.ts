@@ -1,7 +1,7 @@
 import config from "config";
 import pino, { Logger } from "pino";
 import { QueueService } from "../QueueService";
-import { FormType, MarriageFormType, PayMetadata } from "../../../types/FormDataBody";
+import { FormType, PayMetadata } from "../../../types/FormDataBody";
 import { NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import { getUserTemplate } from "./getUserTemplate";
@@ -10,7 +10,7 @@ import { getPersonalisationBuilder } from "./getPersonalisationBuilder";
 
 export class UserService {
   logger: Logger;
-  templates: Record<MarriageFormType, NotifyTemplateGroup>;
+  templates: Record<FormType, NotifyTemplateGroup>;
   queueService: QueueService;
   constructor({ queueService }: { queueService: QueueService }) {
     this.logger = pino().child({ service: "Notify" });
@@ -36,6 +36,10 @@ export class UserService {
         cniAndMsc: {
           inPerson: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
           postal: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
+        },
+        certifyCopy: {
+          inPerson: config.get<string>("Notify.Template.certifyCopyUserConfirmation"),
+          postal: config.get<string>("Notify.Template.certifyCopyUserPostalConfirmation"),
         },
       };
     } catch (err) {
