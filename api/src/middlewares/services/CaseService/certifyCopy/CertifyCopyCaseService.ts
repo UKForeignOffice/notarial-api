@@ -139,7 +139,7 @@ export class CertifyCopyCaseService implements CaseService {
   getPostAlertData(answers: AnswersHashMap, reference: string, type: CertifyCopyFormType) {
     const country = answers["country"] as string;
     const post = getPost(country, type, answers["post"] as string);
-    const emailAddress = getPostEmailAddress(country, post);
+    const emailAddress = getPostEmailAddress(post);
     if (!emailAddress) {
       this.logger.error(
         { code: "UNRECOGNISED_SERVICE_APPLICATION" },
