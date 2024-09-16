@@ -2,13 +2,12 @@ import logger, { Logger } from "pino";
 import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
 import * as templates from "./../templates";
-import { FormDataBody, FormType, MarriageFormType, PayMetadata } from "../../../../types/FormDataBody";
+import { FormDataBody, MarriageFormType, PayMetadata } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
 import { reorderers } from "./reorderers";
 import { getApplicationTypeName } from "../utils/getApplicationTypeName";
 import { answersHashMap } from "../../helpers";
-import { AnswersHashMap } from "../../../../types/AnswersHashMap";
 import config from "config";
 import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
@@ -109,7 +108,7 @@ export class MarriageCaseService implements CaseService {
     const country = answers.country as string;
     const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal }, type);
     const post = getPost(country, type, answers.post as string);
-    const onCompleteJob = this.getPostAlertData(answers, reference, type);
+    const onCompleteJob = this.getPostAlertData(country, post, reference);
     return {
       subject: `Local marriage application - ${post} – ${reference}`,
       body: emailBody,
@@ -147,9 +146,7 @@ export class MarriageCaseService implements CaseService {
     };
   }
 
-  getPostAlertData(answers: AnswersHashMap, reference: string, type: FormType) {
-    const country = answers["country"] as string;
-    const post = getPost(country, type, answers["post"] as string);
+  getPostAlertData(country: string, post: string, reference: string) {
     const emailAddress = getPostEmailAddress(post);
     if (!emailAddress) {
       this.logger.error(

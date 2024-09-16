@@ -4,7 +4,6 @@ import { QueueService } from "../QueueService";
 import { FormField } from "../../../types/FormField";
 import { FormDataBody, FormType, PayMetadata } from "../../../types/FormDataBody";
 import { PaymentViewModel, ProcessQueueData, SESSendJob } from "./types";
-import { AnswersHashMap } from "../../../types/AnswersHashMap";
 
 export interface CaseService {
   logger: Logger;
@@ -39,5 +38,5 @@ export interface CaseService {
   /**
    * builds the data required for an onComplete handler.
    */
-  getPostAlertData(answers: AnswersHashMap, reference: string, type: FormType): AlertJob | undefined;
+  getPostAlertData(country: string, post: string, reference: string): AlertJob | undefined;
 }
