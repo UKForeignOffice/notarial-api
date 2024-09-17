@@ -1,13 +1,12 @@
 import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
 import * as templates from "./../templates";
-import { CertifyCopyFormType } from "../../../../types/FormDataBody";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
 import { answersHashMap } from "../../helpers";
 import config from "config";
 import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
-import { getPost } from "../../utils/getPost";
+import { getPostForCertifyCopy } from "../../utils/getPost";
 import { CertifyCopyProcessQueueData, PaymentViewModel } from "../types";
 import { CaseService } from "../types";
 import { reorderSectionsWithNewName } from "../utils/reorderSectionsWithNewName";
@@ -49,7 +48,7 @@ export class CertifyCopyCaseService extends CaseServiceBase implements CaseServi
     return await this.queueService.sendToQueue("SES_SEND", jobData);
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }, type: CertifyCopyFormType) {
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }) {
     const { fields, payment, reference } = data;
 
     const remapFields = createRemapper(remap);
@@ -61,7 +60,7 @@ export class CertifyCopyCaseService extends CaseServiceBase implements CaseServi
     const reordered = reorderer(remapped);
 
     const country = getAnswerOrThrow(information, "country");
-    const post = getPost(country, type, information.post?.answer);
+    const post = getPostForCertifyCopy(country, information.post?.answer);
     return this.templates.SES({
       post,
       reference,
@@ -84,8 +83,8 @@ export class CertifyCopyCaseService extends CaseServiceBase implements CaseServi
     }
 
     const country = answers.country as string;
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference }, type);
-    const post = getPost(country, type, answers.post as string);
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference });
+    const post = getPostForCertifyCopy(country, answers.post as string);
     const onCompleteJob = this.getPostAlertData(country, post, reference);
     return {
       subject: `Certify a copy of a passport application - ${post} – ${reference}`,

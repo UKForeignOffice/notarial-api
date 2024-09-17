@@ -2,7 +2,7 @@ import { AnswersHashMap } from "../../../../../../../types/AnswersHashMap";
 import { FormType, PayMetadata } from "../../../../../../../types/FormDataBody";
 import { ApplicationError } from "../../../../../../../ApplicationError";
 import * as additionalContexts from "../../../../../utils/additionalContexts.json";
-import { getPost } from "../../../../../utils/getPost";
+import { getPostForMarriage } from "../../../../../utils/getPost";
 import { personalisationTypeMap } from "./getAdditionalPersonalisations";
 import { getAdditionalDocsForCountry } from "./getAdditionalDocsForCountry";
 
@@ -33,7 +33,7 @@ export function buildInPersonPersonalisation(answers: AnswersHashMap, metadata: 
 
   return {
     firstName: answers.firstName,
-    post: getPost(country, metadata.type!, post),
+    post: getPostForMarriage(country, post),
     country,
     bookingLink: additionalContext.bookingLink,
     localRequirements: additionalContext.localRequirements,

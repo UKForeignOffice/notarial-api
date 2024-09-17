@@ -10,7 +10,7 @@ import { answersHashMap } from "../../helpers";
 import config from "config";
 import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
-import { getPost } from "../../utils/getPost";
+import { getPostForMarriage } from "../../utils/getPost";
 import { MarriageProcessQueueData, PaymentViewModel } from "../types";
 import { CaseService } from "../types";
 import { CaseServiceBase } from "../utils/CaseServiceBase";
@@ -63,7 +63,7 @@ export class MarriageCaseService extends CaseServiceBase implements CaseService 
     const reordered = reorderer(remapped);
 
     const country = getAnswerOrThrow(information, "country");
-    const post = getPost(country, information.post?.answer);
+    const post = getPostForMarriage(country, information.post?.answer);
     let oathType, jurats;
     if ((type === "affirmation" || type === "cni") && !postal) {
       oathType = getAnswerOrThrow(information, "oathType");
@@ -96,7 +96,7 @@ export class MarriageCaseService extends CaseServiceBase implements CaseService 
 
     const country = answers.country as string;
     const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal }, type);
-    const post = getPost(country, type, answers.post as string);
+    const post = getPostForMarriage(country, answers.post as string);
     const onCompleteJob = this.getPostAlertData(country, post, reference);
     return {
       subject: `Local marriage application - ${post} – ${reference}`,
