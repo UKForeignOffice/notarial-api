@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import joi from "joi";
 import { ApplicationError } from "../../../../ApplicationError";
-import { CaseService } from "../../../../middlewares/services/CaseService/utils/CaseService";
+import { CaseService } from "../../../../middlewares/services/CaseService/types";
 import { getCaseServiceName } from "../../../../middlewares/services/utils/getCaseServiceName";
 
 const schema = joi.object({
