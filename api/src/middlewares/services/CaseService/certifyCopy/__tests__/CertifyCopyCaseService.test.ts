@@ -6,7 +6,8 @@ import { isNotFieldType } from "../../../../../utils";
 import { PayMetadata } from "../../../../../types/FormDataBody";
 import * as fields from "./fixtures/fields";
 import { ApplicationError } from "../../../../../ApplicationError";
-import { PaymentViewModel } from "../../types";
+import { PaymentViewModel } from "../../utils/PaymentViewModel";
+import { PaymentData } from "../../types";
 const sendToQueue = jest.fn();
 
 const queueService = {
@@ -17,7 +18,7 @@ const certifyCopyCaseService = new CertifyCopyCaseService({ queueService });
 
 const formFields = flattenQuestions(certifyCopyTestData.questions);
 const allOtherFields = formFields.filter(isNotFieldType("file"));
-const paymentViewModel: PaymentViewModel = {
+const paymentViewModel: PaymentData = {
   id: "govuk-pay-id",
   status: "success",
   url: "https://payments.gov.uk",
@@ -99,50 +100,6 @@ test("buildJobData returns an object with subject, body, attachments and referen
   });
 });
 
-test("paymentViewModel returns undefined when no payment is provided", () => {
-  const result = certifyCopyCaseService.paymentViewModel(undefined, "italy");
-  expect(result).toBeUndefined();
-});
-
-test("paymentViewModel returns a PaymentViewModel", () => {
-  const payMetadata: PayMetadata = {
-    payId: "123",
-    reference: "ref",
-    state: {
-      status: "success",
-      finished: true,
-    },
-    total: 10000,
-  };
-  const result = certifyCopyCaseService.paymentViewModel(payMetadata, "italy");
-  expect(result).toEqual({
-    allTransactionsByCountry: {
-      country: "italy",
-      url: "https://selfservice.payments.service.gov.uk/account/ACCOUNT_ID/transactions?metadataValue=italy",
-    },
-    id: "123",
-    status: "success",
-    url: "https://selfservice.payments.service.gov.uk/account/ACCOUNT_ID/123",
-    total: "100.00",
-  });
-});
-
-test("generated paymentViewModel is rendered correctly", () => {
-  const payMetadata: PayMetadata = {
-    payId: "123",
-    reference: "ref",
-    state: {
-      status: "success",
-      finished: true,
-    },
-    total: 50000,
-  };
-  const result = certifyCopyCaseService.paymentViewModel(payMetadata, "italy");
-
-  const emailBody = certifyCopyCaseService.getEmailBody({ fields: allOtherFields, payment: result, reference: "1234" });
-  expect(emailBody).toContain("Payment amount: 500");
-});
-
 test("Failed payments renders 'unpaid'", () => {
   const payMetadata: PayMetadata = {
     payId: "123",
@@ -154,7 +111,7 @@ test("Failed payments renders 'unpaid'", () => {
       status: "failed",
     },
   };
-  const result = certifyCopyCaseService.paymentViewModel(payMetadata, "italy");
+  const result = PaymentViewModel(payMetadata, "italy");
 
   const emailBody = certifyCopyCaseService.getEmailBody({ fields: allOtherFields, payment: result, reference: "1234" });
   expect(emailBody).toContain("Payment amount: Unpaid");
