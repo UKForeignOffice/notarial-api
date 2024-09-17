@@ -1,11 +1,12 @@
 import { AlertJob } from "../../utils/types";
 import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
-import { FormDataBody, FormType, PayMetadata } from "../../../../types/FormDataBody";
+import { FormType, PayMetadata } from "../../../../types/FormDataBody";
 import { SESSendJob } from "./SESSendJob";
 import { ProcessQueueData } from "./ProcessQueueData";
 import { PaymentViewModel } from "./PaymentViewModel";
 import { CaseServiceBaseType } from "./CaseServiceBase";
+import { ProcessQueueDataInput } from "./ProcessQueueDataInput";
 
 export interface CaseService extends CaseServiceBaseType {
   queueService: QueueService;
@@ -28,7 +29,7 @@ export interface CaseService extends CaseServiceBaseType {
   /**
    * builds the data required for the SES_PROCESS job
    */
-  buildProcessQueueData(fields: FormField[], reference: string, type: FormType, metadata: FormDataBody["metadata"]): ProcessQueueData;
+  buildProcessQueueData(input: ProcessQueueDataInput): ProcessQueueData;
 
   /**
    * builds the data required for the SES_SEND job

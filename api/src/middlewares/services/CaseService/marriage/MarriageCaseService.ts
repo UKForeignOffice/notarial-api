@@ -1,7 +1,7 @@
 import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
 import * as templates from "./../templates";
-import { FormDataBody, MarriageFormType } from "../../../../types/FormDataBody";
+import { MarriageFormType } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
 import { reorderers } from "./reorderers";
@@ -14,6 +14,7 @@ import { getPost } from "../../utils/getPost";
 import { MarriageProcessQueueData, PaymentViewModel } from "../types";
 import { CaseService } from "../types";
 import { CaseServiceBase } from "../utils/CaseServiceBase";
+import { MarriageProcessQueueDataInput } from "../types";
 
 export class MarriageCaseService extends CaseServiceBase implements CaseService {
   queueService: QueueService;
@@ -23,7 +24,8 @@ export class MarriageCaseService extends CaseServiceBase implements CaseService 
     this.queueService = queueService;
   }
 
-  buildProcessQueueData(fields: FormField[], reference: string, type: MarriageFormType, metadata: FormDataBody["metadata"]): MarriageProcessQueueData {
+  buildProcessQueueData(input: MarriageProcessQueueDataInput): MarriageProcessQueueData {
+    const { fields, reference, metadata, type } = input;
     return {
       fields,
       metadata: {

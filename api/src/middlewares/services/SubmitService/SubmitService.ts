@@ -40,7 +40,12 @@ export class SubmitService {
 
     try {
       const caseService: CaseService = this[caseServiceName];
-      const processQueueData = caseService.buildProcessQueueData(formFields, reference, type, metadata);
+      const processQueueData = caseService.buildProcessQueueData({
+        fields: formFields,
+        reference,
+        type,
+        metadata,
+      });
       const caseProcessJob = await caseService.sendToProcessQueue(processQueueData);
       this.logger.info({ reference, caseProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
 

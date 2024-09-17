@@ -1,7 +1,7 @@
 import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
 import * as templates from "./../templates";
-import { CertifyCopyFormType, FormDataBody } from "../../../../types/FormDataBody";
+import { CertifyCopyFormType } from "../../../../types/FormDataBody";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
 import { answersHashMap } from "../../helpers";
 import config from "config";
@@ -14,6 +14,7 @@ import { reorderSectionsWithNewName } from "../utils/reorderSectionsWithNewName"
 import { order, remap } from "./mappings";
 import { createRemapper } from "../utils/createRemapper";
 import { CaseServiceBase } from "../utils/CaseServiceBase";
+import { CertifyCopyProcessQueueDataInput } from "../types";
 
 export class CertifyCopyCaseService extends CaseServiceBase implements CaseService {
   queueService: QueueService;
@@ -23,7 +24,8 @@ export class CertifyCopyCaseService extends CaseServiceBase implements CaseServi
     this.queueService = queueService;
   }
 
-  buildProcessQueueData(fields: FormField[], reference: string, type: CertifyCopyFormType, metadata: FormDataBody["metadata"]): CertifyCopyProcessQueueData {
+  buildProcessQueueData(input: CertifyCopyProcessQueueDataInput): CertifyCopyProcessQueueData {
+    const { fields, reference, metadata, type } = input;
     return {
       fields,
       metadata: {
