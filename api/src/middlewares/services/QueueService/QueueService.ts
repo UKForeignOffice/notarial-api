@@ -17,6 +17,7 @@ export class QueueService {
     this.logger = logger().child({ service: "Queue" });
     const boss = new PgBoss({
       connectionString: config.get<string>("Queue.url"),
+      schema: config.get<string>("Queue.schema"),
     });
     this.configs = {
       SES_PROCESS: new QueueConfig("SES_PROCESS"),
