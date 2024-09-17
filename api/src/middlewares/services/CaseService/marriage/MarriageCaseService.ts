@@ -1,5 +1,5 @@
 import { FormField } from "../../../../types/FormField";
-import * as templates from "./../templates";
+import marriageSubmissionTemplate from "./marriageSubmissionTemplate";
 import { MarriageFormType } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
@@ -27,7 +27,7 @@ export class MarriageCaseService implements CaseService {
   constructor({ queueService }) {
     this.queueService = queueService;
     this.templates = {
-      SES: MarriageCaseService.createTemplate(templates.certifyCopySubmission),
+      SES: MarriageCaseService.createTemplate(marriageSubmissionTemplate),
       Notify: {
         postAlert: config.get<string>("Notify.Template.postNotification"),
       },

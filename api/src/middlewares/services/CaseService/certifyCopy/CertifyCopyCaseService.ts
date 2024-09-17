@@ -1,5 +1,5 @@
 import { FormField } from "../../../../types/FormField";
-import * as templates from "./../templates";
+import certifyCopySubmissionTemplate from "./certifyCopySubmissionTemplate";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
 import { answersHashMap } from "../../helpers";
 import config from "config";
@@ -28,7 +28,7 @@ export class CertifyCopyCaseService implements CaseService {
   constructor({ queueService }) {
     this.queueService = queueService;
     this.templates = {
-      SES: CertifyCopyCaseService.createTemplate(templates.certifyCopySubmission),
+      SES: CertifyCopyCaseService.createTemplate(certifyCopySubmissionTemplate),
       Notify: {
         postAlert: config.get<string>("Notify.Template.certifyCopyPostNotification"),
       },
