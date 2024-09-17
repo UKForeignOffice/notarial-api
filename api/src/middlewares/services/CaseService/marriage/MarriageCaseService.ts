@@ -1,8 +1,7 @@
-import logger, { Logger } from "pino";
 import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
 import * as templates from "./../templates";
-import { FormDataBody, MarriageFormType, PayMetadata } from "../../../../types/FormDataBody";
+import { FormDataBody, MarriageFormType } from "../../../../types/FormDataBody";
 import { remappers } from "./remappers";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
 import { reorderers } from "./reorderers";
@@ -12,28 +11,16 @@ import config from "config";
 import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
 import { getPost } from "../../utils/getPost";
-import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
 import { MarriageProcessQueueData, PaymentViewModel } from "../types";
-import { CaseService } from "../CaseService";
+import { CaseService } from "../types";
+import { CaseServiceBase } from "../utils/CaseServiceBase";
 
-export class MarriageCaseService implements CaseService {
-  logger: Logger;
-  templates: {
-    SES: HandlebarsTemplateDelegate;
-    Notify: Record<"postAlert", string>;
-  };
-
+export class MarriageCaseService extends CaseServiceBase implements CaseService {
   queueService: QueueService;
 
   constructor({ queueService }) {
+    super(MarriageCaseService.createTemplate(templates.marriageSubmission), config.get<string>("Notify.Template.postNotification"));
     this.queueService = queueService;
-    this.logger = logger().child({ service: "SES" });
-    this.templates = {
-      SES: MarriageCaseService.createTemplate(templates.marriageSubmission),
-      Notify: {
-        postAlert: config.get<string>("Notify.Template.postNotification"),
-      },
-    };
   }
 
   buildProcessQueueData(fields: FormField[], reference: string, type: MarriageFormType, metadata: FormDataBody["metadata"]): MarriageProcessQueueData {
@@ -121,51 +108,6 @@ export class MarriageCaseService implements CaseService {
       onComplete: {
         queue: "NOTIFY_SEND",
         ...(onCompleteJob && { job: onCompleteJob }),
-      },
-    };
-  }
-
-  paymentViewModel(payment: PayMetadata | undefined, country: string) {
-    if (!payment) {
-      return;
-    }
-    const paymentUrl = new URL(payment.payId, config.get<string>("Pay.accountTransactionsUrl"));
-    const allTransactionsByCountryUrl = new URL(config.get<string>("Pay.accountTransactionsUrl"));
-    const total = payment.total ? (payment.total / 100).toFixed(2) : "Unpaid";
-    allTransactionsByCountryUrl.searchParams.set("metadataValue", country);
-
-    return {
-      id: payment.payId,
-      status: payment.state.status === "success" ? "success" : "cancelled or failed",
-      url: paymentUrl.toString(),
-      total,
-      allTransactionsByCountry: {
-        url: allTransactionsByCountryUrl.toString(),
-        country,
-      },
-    };
-  }
-
-  getPostAlertData(country: string, post: string, reference: string) {
-    const emailAddress = getPostEmailAddress(post);
-    if (!emailAddress) {
-      this.logger.error(
-        { code: "UNRECOGNISED_SERVICE_APPLICATION" },
-        `No email address found for the specified post – ${country} - ${post} – reference ${reference}.`
-      );
-      return;
-    }
-
-    return {
-      template: this.templates.Notify.postAlert,
-      emailAddress,
-      reference,
-      options: {
-        personalisation: {
-          post,
-          reference,
-        },
-        reference,
       },
     };
   }
