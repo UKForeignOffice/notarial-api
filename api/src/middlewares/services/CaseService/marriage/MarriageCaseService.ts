@@ -42,7 +42,7 @@ export class MarriageCaseService implements CaseService {
       metadata: {
         reference,
         payment: metadata.pay,
-        type: type as MarriageFormType,
+        type: type,
         postal: metadata.postal,
       },
     };
