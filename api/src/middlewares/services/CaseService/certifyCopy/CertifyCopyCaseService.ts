@@ -1,4 +1,3 @@
-import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
 import * as templates from "./../templates";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
@@ -8,19 +7,22 @@ import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
 import { getPostForCertifyCopy } from "../../utils/getPost";
 import { CertifyCopyProcessQueueData, PaymentViewModel } from "../types";
-import { CaseService } from "../types";
+import { CaseService } from "../utils/CaseService";
 import { reorderSectionsWithNewName } from "../utils/reorderSectionsWithNewName";
 import { order, remap } from "./mappings";
 import { createRemapper } from "../utils/createRemapper";
-import { CaseServiceBase } from "../utils/CaseServiceBase";
 import { CertifyCopyProcessQueueDataInput } from "../types";
 
-export class CertifyCopyCaseService extends CaseServiceBase implements CaseService {
-  queueService: QueueService;
-
+export class CertifyCopyCaseService extends CaseService {
   constructor({ queueService }) {
-    super(CertifyCopyCaseService.createTemplate(templates.certifyCopySubmission), config.get<string>("Notify.Template.certifyCopyPostNotification"));
-    this.queueService = queueService;
+    const props = {
+      queueService,
+      templates: {
+        SES: CertifyCopyCaseService.createTemplate(templates.certifyCopySubmission),
+        Notify: config.get<string>("Notify.Template.certifyCopyPostNotification"),
+      },
+    };
+    super(props);
   }
 
   buildProcessQueueData(input: CertifyCopyProcessQueueDataInput): CertifyCopyProcessQueueData {

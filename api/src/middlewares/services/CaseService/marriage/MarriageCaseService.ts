@@ -1,4 +1,3 @@
-import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
 import * as templates from "./../templates";
 import { MarriageFormType } from "../../../../types/FormDataBody";
@@ -12,16 +11,21 @@ import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
 import { getPostForMarriage } from "../../utils/getPost";
 import { MarriageProcessQueueData, PaymentViewModel } from "../types";
-import { CaseService } from "../types";
-import { CaseServiceBase } from "../utils/CaseServiceBase";
+import { CaseService } from "../utils/CaseService";
 import { MarriageProcessQueueDataInput } from "../types";
 
-export class MarriageCaseService extends CaseServiceBase implements CaseService {
-  queueService: QueueService;
-
+export class MarriageCaseService extends CaseService {
   constructor({ queueService }) {
-    super(MarriageCaseService.createTemplate(templates.marriageSubmission), config.get<string>("Notify.Template.postNotification"));
-    this.queueService = queueService;
+    const props = {
+      queueService,
+      templates: {
+        SES: MarriageCaseService.createTemplate(templates.marriageSubmission),
+        Notify: {
+          postAlert: config.get<string>("Notify.Template.postNotification"),
+        },
+      },
+    };
+    super(props);
   }
 
   buildProcessQueueData(input: MarriageProcessQueueDataInput): MarriageProcessQueueData {

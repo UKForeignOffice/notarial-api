@@ -6,7 +6,7 @@ import { MarriageCaseService } from "../CaseService";
 import { FormType } from "../../../types/FormDataBody";
 import { CertifyCopyCaseService } from "../CaseService/certifyCopy/CertifyCopyCaseService";
 import { getCaseServiceName } from "../utils/getCaseServiceName";
-import { CaseService } from "../CaseService/types";
+import { CaseService } from "../CaseService/utils/CaseService";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
