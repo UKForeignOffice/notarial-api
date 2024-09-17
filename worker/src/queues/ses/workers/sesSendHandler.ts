@@ -48,6 +48,10 @@ export async function sesSendHandler(job: Job<SESJob>) {
   try {
     response = await sesClient.send(emailCommand);
     logger.info(`Reference ${reference} staff email sent successfully with SES message id: ${response.MessageId}`);
+
+    if (data.onComplete) {
+      await sendAlertToPost(jobId, data.onComplete);
+    }
   } catch (err: SESv2ServiceException | any) {
     logger.error({ jobId, reference, err, errorCode: SES_SEND_ERRORS.SES }, "SES could not send the email");
     throw err;
@@ -56,31 +60,22 @@ export async function sesSendHandler(job: Job<SESJob>) {
   return response;
 }
 
-const consumerPromise = getConsumer();
 /**
  * Sends an alert to individual posts, notifying them that a form has been submitted to the shared inbox.
  */
-export async function onComplete(job: Job<{ request: Job<SESJob> }>) {
-  const consumer = await consumerPromise;
-  const jobId = job.id;
-  const completedJobId = job.data.request.id;
-  logger.info({ jobId, completedJobId }, `completed ${completedJobId} on ${worker}. onComplete flag detected`);
-  const onComplete = job.data.request.data?.onComplete;
-
-  if (!onComplete) {
-    logger.warn({ jobId }, "onComplete flag was detected, but onComplete data is empty");
+export async function sendAlertToPost(completedJobId: string, data: SESJob["onComplete"]) {
+  if (!data) {
+    logger.warn({ completedJobId }, "sendAlertToPost was triggered, but onComplete data is empty");
     return;
   }
 
-  const { queue, job: onCompleteJobArgs } = onComplete;
+  const consumer = await getConsumer();
+  logger.info({ completedJobId }, `completed ${completedJobId} on ${worker}, sending alert to post`);
 
   try {
-    await consumer.send(queue, onCompleteJobArgs);
+    await consumer.send(data.queue, data.job);
   } catch (e) {
-    logger.error(
-      { jobId, completedJobId, err: e, errorCode: SES_SEND_ERRORS.ON_COMPLETE },
-      `Failed to send onComplete ${queue} job triggered by ${completedJobId}`
-    );
+    logger.error({ completedJobId, err: e, errorCode: SES_SEND_ERRORS.ON_COMPLETE }, `Failed to send onComplete ${queue} job triggered by ${completedJobId}`);
     throw e;
   }
 }

@@ -24,23 +24,19 @@
     "schema": "QUEUE_SCHEMA",
     "SES_SEND": {
       "retryBackoff": "SES_SEND_RETRY_BACKOFF",
-      "retryLimit": "SES_SEND_RETRY_LIMIT",
-      "onComplete": "SES_SEND_ON_COMPLETE"
+      "retryLimit": "SES_SEND_RETRY_LIMIT"
     },
     "SES_PROCESS": {
         "retryBackoff": "SES_PROCESS_RETRY_BACKOFF",
-        "retryLimit": "SES_PROCESS_RETRY_LIMIT",
-        "onComplete": "SES_PROCESS_ON_COMPLETE"
+        "retryLimit": "SES_PROCESS_RETRY_LIMIT"
     },
     "NOTIFY_SEND": {
       "retryBackoff": "NOTIFY_SEND_RETRY_BACKOFF",
-      "retryLimit": "NOTIFY_SEND_RETRY_LIMIT",
-      "onComplete": "NOTIFY_SEND_ON_COMPLETE"
+      "retryLimit": "NOTIFY_SEND_RETRY_LIMIT"
     },
     "NOTIFY_PROCESS": {
       "retryBackoff": "NOTIFY_PROCESS_RETRY_BACKOFF",
-      "retryLimit": "NOTIFY_PROCESS_RETRY_LIMIT",
-      "onComplete": "NOTIFY_PROCESS_ON_COMPLETE"
+      "retryLimit": "NOTIFY_PROCESS_RETRY_LIMIT"
     }
   },
   "Pay": {
