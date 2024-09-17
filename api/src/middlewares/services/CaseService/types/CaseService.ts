@@ -1,13 +1,13 @@
-import { Logger } from "pino";
-import { AlertJob } from "../utils/types";
-import { QueueService } from "../QueueService";
-import { FormField } from "../../../types/FormField";
-import { FormDataBody, FormType, PayMetadata } from "../../../types/FormDataBody";
-import { PaymentViewModel, ProcessQueueData, SESSendJob } from "./types";
+import { AlertJob } from "../../utils/types";
+import { QueueService } from "../../QueueService";
+import { FormField } from "../../../../types/FormField";
+import { FormDataBody, FormType, PayMetadata } from "../../../../types/FormDataBody";
+import { SESSendJob } from "./SESSendJob";
+import { ProcessQueueData } from "./ProcessQueueData";
+import { PaymentViewModel } from "./PaymentViewModel";
+import { CaseServiceBaseType } from "./CaseServiceBase";
 
-export interface CaseService {
-  logger: Logger;
-
+export interface CaseService extends CaseServiceBaseType {
   queueService: QueueService;
 
   sendToProcessQueue(data: ProcessQueueData): Promise<string>;
