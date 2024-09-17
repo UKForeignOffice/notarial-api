@@ -33,6 +33,7 @@ export async function create(options: ConsumerOptions) {
     connectionString,
     archiveFailedAfterSeconds: archiveFailedAfterDays * DAY_IN_S,
     deleteAfterDays,
+    monitorStateIntervalSeconds,
     schema,
   });
 
