@@ -10,22 +10,29 @@ import config from "config";
 import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
 import { getPostForMarriage } from "../../utils/getPost";
-import { MarriageProcessQueueData, PaymentViewModel } from "../types";
-import { CaseService } from "../utils/CaseService";
+import { MarriageProcessQueueData, PaymentData, CaseService } from "../types";
+import { PaymentViewModel } from "../utils/PaymentViewModel";
 import { MarriageProcessQueueDataInput } from "../types";
+import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
+import logger, { Logger } from "pino";
+import { QueueService } from "../../QueueService";
 
-export class MarriageCaseService extends CaseService {
+export class MarriageCaseService implements CaseService {
+  logger: Logger;
+  queueService: QueueService;
+  templates: {
+    SES: HandlebarsTemplateDelegate;
+    Notify: Record<"postAlert", string>;
+  };
   constructor({ queueService }) {
-    const props = {
-      queueService,
-      templates: {
-        SES: MarriageCaseService.createTemplate(templates.marriageSubmission),
-        Notify: {
-          postAlert: config.get<string>("Notify.Template.postNotification"),
-        },
+    this.queueService = queueService;
+    this.templates = {
+      SES: MarriageCaseService.createTemplate(templates.certifyCopySubmission),
+      Notify: {
+        postAlert: config.get<string>("Notify.Template.postNotification"),
       },
     };
-    super(props);
+    this.logger = logger().child({ service: "SES" });
   }
 
   buildProcessQueueData(input: MarriageProcessQueueDataInput): MarriageProcessQueueData {
@@ -54,7 +61,7 @@ export class MarriageCaseService extends CaseService {
     return await this.queueService.sendToQueue("SES_SEND", jobData);
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string; postal?: boolean }, type: MarriageFormType) {
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentData; reference: string; postal?: boolean }, type: MarriageFormType) {
     const { fields, payment, reference, postal } = data;
     const remapperName = postal ? `${type}Postal` : type;
 
@@ -90,10 +97,10 @@ export class MarriageCaseService extends CaseService {
     const { fields, metadata } = data;
     const { reference, payment, type, postal } = metadata;
     const answers = answersHashMap(fields);
-    let paymentViewModel: PaymentViewModel | undefined;
+    let paymentViewModel: PaymentData | undefined;
 
     try {
-      paymentViewModel = this.paymentViewModel(payment, answers.country as string);
+      paymentViewModel = PaymentViewModel(payment, answers.country as string);
     } catch (e) {
       this.logger.warn(`Payment details for ${reference} could not be parsed. Payment details will not be shown on the email.`);
     }
@@ -114,6 +121,30 @@ export class MarriageCaseService extends CaseService {
       onComplete: {
         queue: "NOTIFY_SEND",
         ...(onCompleteJob && { job: onCompleteJob }),
+      },
+    };
+  }
+
+  getPostAlertData(country: string, post: string, reference: string) {
+    const emailAddress = getPostEmailAddress(post);
+    if (!emailAddress) {
+      this.logger.error(
+        { code: "UNRECOGNISED_SERVICE_APPLICATION" },
+        `No email address found for the specified post – ${country} - ${post} – reference ${reference}.`
+      );
+      return;
+    }
+
+    return {
+      template: this.templates.Notify.postAlert,
+      emailAddress,
+      reference,
+      options: {
+        personalisation: {
+          post,
+          reference,
+        },
+        reference,
       },
     };
   }

@@ -6,23 +6,34 @@ import config from "config";
 import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
 import { getPostForCertifyCopy } from "../../utils/getPost";
-import { CertifyCopyProcessQueueData, PaymentViewModel } from "../types";
-import { CaseService } from "../utils/CaseService";
+import { CertifyCopyProcessQueueData, PaymentData } from "../types";
+import { PaymentViewModel } from "../utils/PaymentViewModel";
+import { CaseService } from "../types";
 import { reorderSectionsWithNewName } from "../utils/reorderSectionsWithNewName";
 import { order, remap } from "./mappings";
 import { createRemapper } from "../utils/createRemapper";
 import { CertifyCopyProcessQueueDataInput } from "../types";
+import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
+import { QueueService } from "../../QueueService";
+import logger, { Logger } from "pino";
 
-export class CertifyCopyCaseService extends CaseService {
+export class CertifyCopyCaseService implements CaseService {
+  logger: Logger;
+  queueService: QueueService;
+  templates: {
+    SES: HandlebarsTemplateDelegate;
+    Notify: Record<"postAlert", string>;
+  };
+
   constructor({ queueService }) {
-    const props = {
-      queueService,
-      templates: {
-        SES: CertifyCopyCaseService.createTemplate(templates.certifyCopySubmission),
-        Notify: config.get<string>("Notify.Template.certifyCopyPostNotification"),
+    this.queueService = queueService;
+    this.templates = {
+      SES: CertifyCopyCaseService.createTemplate(templates.certifyCopySubmission),
+      Notify: {
+        postAlert: config.get<string>("Notify.Template.certifyCopyPostNotification"),
       },
     };
-    super(props);
+    this.logger = logger().child({ service: "SES" });
   }
 
   buildProcessQueueData(input: CertifyCopyProcessQueueDataInput): CertifyCopyProcessQueueData {
@@ -50,7 +61,7 @@ export class CertifyCopyCaseService extends CaseService {
     return await this.queueService.sendToQueue("SES_SEND", jobData);
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentViewModel; reference: string }) {
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentData; reference: string }) {
     const { fields, payment, reference } = data;
 
     const remapFields = createRemapper(remap);
@@ -76,10 +87,10 @@ export class CertifyCopyCaseService extends CaseService {
     const { fields, metadata } = data;
     const { reference, payment, type } = metadata;
     const answers = answersHashMap(fields);
-    let paymentViewModel: PaymentViewModel | undefined;
+    let paymentViewModel: PaymentData | undefined;
 
     try {
-      paymentViewModel = this.paymentViewModel(payment, answers.country as string);
+      paymentViewModel = PaymentViewModel(payment, answers.country as string);
     } catch (e) {
       this.logger.warn(`Payment details for ${reference} could not be parsed. Payment details will not be shown on the email.`);
     }
@@ -100,6 +111,30 @@ export class CertifyCopyCaseService extends CaseService {
       onComplete: {
         queue: "NOTIFY_SEND",
         ...(onCompleteJob && { job: onCompleteJob }),
+      },
+    };
+  }
+
+  getPostAlertData(country: string, post: string, reference: string) {
+    const emailAddress = getPostEmailAddress(post);
+    if (!emailAddress) {
+      this.logger.error(
+        { code: "UNRECOGNISED_SERVICE_APPLICATION" },
+        `No email address found for the specified post – ${country} - ${post} – reference ${reference}.`
+      );
+      return;
+    }
+
+    return {
+      template: this.templates.Notify.postAlert,
+      emailAddress,
+      reference,
+      options: {
+        personalisation: {
+          post,
+          reference,
+        },
+        reference,
       },
     };
   }

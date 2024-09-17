@@ -1,4 +1,4 @@
-export type PaymentViewModel = {
+export type PaymentData = {
   id: string;
   status: string;
   total: string;
