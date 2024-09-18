@@ -1,49 +1,49 @@
 import { FormField } from "../../../../types/FormField";
-import marriageSubmissionTemplate from "./marriageSubmissionTemplate";
-import { MarriageFormType } from "../../../../types/FormDataBody";
-import { remappers } from "./remappers";
+import certifyCopySubmissionTemplate from "./certifyCopySubmissionTemplate";
 import { getAnswerOrThrow } from "../utils/getAnswerOrThrow";
-import { reorderers } from "./reorderers";
-import { getApplicationTypeName } from "../utils/getApplicationTypeName";
 import { answersHashMap } from "../../helpers";
 import config from "config";
 import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
-import { getPostForMarriage } from "../../utils/getPost";
-import { MarriageProcessQueueData, PaymentData, CaseService } from "../types";
+import { getPostForCertifyCopy } from "../../utils/getPost";
+import { CertifyCopyProcessQueueData, PaymentData } from "../types";
 import { PaymentViewModel } from "../utils/PaymentViewModel";
-import { MarriageProcessQueueDataInput } from "../types";
+import { CaseService } from "../types";
+import { reorderSectionsWithNewName } from "../utils/reorderSectionsWithNewName";
+import { order, remap } from "./mappings";
+import { createRemapper } from "../utils/createRemapper";
+import { CertifyCopyProcessQueueDataInput } from "../types";
 import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
-import logger, { Logger } from "pino";
 import { QueueService } from "../../QueueService";
+import logger, { Logger } from "pino";
 
-export class MarriageCaseService implements CaseService {
+export class CertifyCopyCaseService implements CaseService {
   logger: Logger;
   queueService: QueueService;
   templates: {
     SES: HandlebarsTemplateDelegate;
     Notify: Record<"postAlert", string>;
   };
+
   constructor({ queueService }) {
     this.queueService = queueService;
     this.templates = {
-      SES: MarriageCaseService.createTemplate(marriageSubmissionTemplate),
+      SES: CertifyCopyCaseService.createTemplate(certifyCopySubmissionTemplate),
       Notify: {
-        postAlert: config.get<string>("Notify.Template.postNotification"),
+        postAlert: config.get<string>("Notify.Template.certifyCopyPostNotification"),
       },
     };
     this.logger = logger().child({ service: "SES" });
   }
 
-  buildProcessQueueData(input: MarriageProcessQueueDataInput): MarriageProcessQueueData {
+  buildProcessQueueData(input: CertifyCopyProcessQueueDataInput): CertifyCopyProcessQueueData {
     const { fields, reference, metadata, type } = input;
     return {
       fields,
       metadata: {
         reference,
         payment: metadata.pay,
-        type: type,
-        postal: metadata.postal,
+        type,
       },
     };
   }
@@ -52,50 +52,40 @@ export class MarriageCaseService implements CaseService {
    * This will add all the parameters needed to process the email to the queue. The NOTIFY_PROCESS queue will pick up
    * this message and make a post request to notarial-api/forms/emails/staff
    */
-  async sendToProcessQueue(data: MarriageProcessQueueData) {
+  async sendToProcessQueue(data: CertifyCopyProcessQueueData) {
     return await this.queueService.sendToQueue("SES_PROCESS", data);
   }
 
-  async sendEmail(data: MarriageProcessQueueData) {
+  async sendEmail(data: CertifyCopyProcessQueueData) {
     const jobData = this.buildJobData(data);
     return await this.queueService.sendToQueue("SES_SEND", jobData);
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentData; reference: string; postal?: boolean }, type: MarriageFormType) {
-    const { fields, payment, reference, postal } = data;
-    const remapperName = postal ? `${type}Postal` : type;
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentData; reference: string }) {
+    const { fields, payment, reference } = data;
 
-    const remapFields = remappers[remapperName];
+    const remapFields = createRemapper(remap);
     const remapped = remapFields(fields);
 
     const { information } = remapped;
 
-    const reorderer = reorderers[remapperName];
+    const reorderer = reorderSectionsWithNewName(order);
     const reordered = reorderer(remapped);
 
     const country = getAnswerOrThrow(information, "country");
-    const post = getPostForMarriage(country, information.post?.answer);
-    let oathType, jurats;
-    if ((type === "affirmation" || type === "cni") && !postal) {
-      oathType = getAnswerOrThrow(information, "oathType");
-      jurats = getAnswerOrThrow(information, "jurats");
-    }
+    const post = getPostForCertifyCopy(country, information.post?.answer);
     return this.templates.SES({
       post,
-      type: getApplicationTypeName(type),
       reference,
       payment,
       country,
-      oathType,
-      jurats,
-      certifyPassport: information.certifyPassport?.answer ?? false,
       questions: reordered,
     });
   }
 
-  buildJobData(data: MarriageProcessQueueData) {
+  buildJobData(data: CertifyCopyProcessQueueData) {
     const { fields, metadata } = data;
-    const { reference, payment, type, postal } = metadata;
+    const { reference, payment, type } = metadata;
     const answers = answersHashMap(fields);
     let paymentViewModel: PaymentData | undefined;
 
@@ -106,11 +96,11 @@ export class MarriageCaseService implements CaseService {
     }
 
     const country = answers.country as string;
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal }, type);
-    const post = getPostForMarriage(country, answers.post as string);
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference });
+    const post = getPostForCertifyCopy(country, answers.post as string);
     const onCompleteJob = this.getPostAlertData(country, post, reference);
     return {
-      subject: `Local marriage application - ${post} – ${reference}`,
+      subject: `Certify a copy of a passport application - ${post} – ${reference}`,
       body: emailBody,
       attachments: fields.filter(isFieldType("file")),
       reference,

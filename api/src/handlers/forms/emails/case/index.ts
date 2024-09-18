@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import joi from "joi";
 import { ApplicationError } from "../../../../ApplicationError";
-import { FormType } from "../../../../types/FormDataBody";
-import { MarriageCaseService } from "../../../../middlewares/services";
-import { MARRIAGE_FORM_TYPES } from "../../../../utils/formTypes";
+import { CaseService } from "../../../../middlewares/services/CaseService/types";
+import { getCaseServiceName } from "../../../../middlewares/services/utils/getCaseServiceName";
 
 const schema = joi.object({
   fields: joi
@@ -19,7 +18,7 @@ const schema = joi.object({
     .required(),
   metadata: {
     reference: joi.string().required(),
-    type: joi.string().valid("affirmation", "cni", "exchange", "msc", "cniAndMsc"),
+    type: joi.string().valid("affirmation", "cni", "exchange", "msc", "cniAndMsc", "certifyCopy"),
     payment: joi.object(),
   },
 });
@@ -38,7 +37,7 @@ export async function post(req: Request, res: Response, next: NextFunction) {
 
   const caseServiceName = getCaseServiceName(formType);
   req.log.info({ path: req.path, formType }, `FormType ${formType} detected, using ${caseServiceName}`);
-  const caseService: MarriageCaseService = res.app.services[caseServiceName];
+  const caseService: CaseService = res.app.services[caseServiceName];
 
   try {
     const jobId = await caseService.sendEmail(req.body);
@@ -49,13 +48,4 @@ export async function post(req: Request, res: Response, next: NextFunction) {
     next(e);
     return;
   }
-}
-
-type ExpressCaseServices = Pick<Express.Application["services"], "marriageCaseService">;
-
-function getCaseServiceName(formType: FormType): keyof ExpressCaseServices {
-  if (MARRIAGE_FORM_TYPES.has(formType)) {
-    return "marriageCaseService";
-  }
-  return "marriageCaseService";
 }

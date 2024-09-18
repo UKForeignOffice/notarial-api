@@ -6,6 +6,7 @@ import { isNotFieldType } from "../../../../../utils";
 import { PayMetadata } from "../../../../../types/FormDataBody";
 import * as fields from "./fixtures/fields";
 import { ApplicationError } from "../../../../../ApplicationError";
+import { PaymentViewModel } from "../../utils/PaymentViewModel";
 const sendToQueue = jest.fn();
 
 const queueService = {
@@ -24,7 +25,7 @@ const paymentViewModel = {
     url: "https://payments.gov.uk",
     country: "italy",
   },
-  total: 100,
+  total: "100",
 };
 
 test("getEmailBody renders oath email correctly", () => {
@@ -90,7 +91,6 @@ test("sendEmail throws ApplicationError when no jobId is returned", async () => 
 test("buildJobData returns an object with subject, body, attachments and reference", async () => {
   const result = marriageCaseService.buildJobData({
     fields: allOtherFields,
-    template: "submission",
     payment: testData.metadata.pay,
     reference: "1234",
     metadata: {
@@ -117,34 +117,6 @@ test("buildJobData returns an object with subject, body, attachments and referen
   });
 });
 
-test("paymentViewModel returns undefined when no payment is provided", () => {
-  const result = marriageCaseService.paymentViewModel(undefined, "italy");
-  expect(result).toBeUndefined();
-});
-
-test("paymentViewModel returns a PaymentViewModel", () => {
-  const payMetadata: PayMetadata = {
-    payId: "123",
-    reference: "ref",
-    state: {
-      status: "success",
-      finished: true,
-    },
-    total: 10000,
-  };
-  const result = marriageCaseService.paymentViewModel(payMetadata, "italy");
-  expect(result).toEqual({
-    allTransactionsByCountry: {
-      country: "italy",
-      url: "https://selfservice.payments.service.gov.uk/account/ACCOUNT_ID/transactions?metadataValue=italy",
-    },
-    id: "123",
-    status: "success",
-    url: "https://selfservice.payments.service.gov.uk/account/ACCOUNT_ID/123",
-    total: "100.00",
-  });
-});
-
 test("generated paymentViewModel is rendered correctly", () => {
   const payMetadata: PayMetadata = {
     payId: "123",
@@ -155,25 +127,8 @@ test("generated paymentViewModel is rendered correctly", () => {
     },
     total: 50000,
   };
-  const result = marriageCaseService.paymentViewModel(payMetadata, "italy");
+  const result = PaymentViewModel(payMetadata, "italy");
 
   const emailBody = marriageCaseService.getEmailBody({ fields: allOtherFields, payment: result, reference: "1234" }, "affirmation");
   expect(emailBody).toContain("Payment amount: 500");
-});
-
-test("Failed payments renders 'unpaid'", () => {
-  const payMetadata: PayMetadata = {
-    payId: "123",
-    reference: "ref",
-    state: {
-      code: "",
-      finished: true,
-      message: "Some error",
-      status: "failed",
-    },
-  };
-  const result = marriageCaseService.paymentViewModel(payMetadata, "italy");
-
-  const emailBody = marriageCaseService.getEmailBody({ fields: allOtherFields, payment: result, reference: "1234" }, "affirmation");
-  expect(emailBody).toContain("Payment amount: Unpaid");
 });

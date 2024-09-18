@@ -1,12 +1,12 @@
 import * as additionalContexts from "../../../../../utils/additionalContexts.json";
-import { getPost } from "../../../../../utils/getPost";
+import { getPostForMarriage } from "../../../../../utils/getPost";
 import { AnswersHashMap } from "../../../../../../../types/AnswersHashMap";
-import { FormType, PayMetadata } from "../../../../../../../types/FormDataBody";
+import { MarriageFormType, PayMetadata } from "../../../../../../../types/FormDataBody";
 import { personalisationTypeMap } from "./getAdditionalPersonalisations";
 import { ApplicationError } from "../../../../../../../ApplicationError";
 
 export function getPostalAdditionalContext(country: string, post?: string) {
-  const postName = getPost(country, post);
+  const postName = getPostForMarriage(country, post);
   const additionalCountryContext = additionalContexts.countries[country];
   const additionalPostContext = additionalContexts.posts[postName];
 
@@ -16,7 +16,7 @@ export function getPostalAdditionalContext(country: string, post?: string) {
   };
 }
 
-export function buildPostalPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType }) {
+export function buildPostalPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: MarriageFormType }) {
   const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
   const country = answers["country"] as string;
   const post = answers["post"] as string;

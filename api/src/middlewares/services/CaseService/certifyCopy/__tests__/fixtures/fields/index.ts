@@ -1,0 +1,1 @@
+export { certifyCopy } from "./certifyCopy";
