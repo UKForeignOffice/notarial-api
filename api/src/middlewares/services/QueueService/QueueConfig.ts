@@ -14,7 +14,6 @@ const queueLogger = logger();
 export const schema = joi.object({
   retryBackoff: joi.boolean().optional(),
   retryLimit: joi.number().optional(),
-  onComplete: joi.boolean().default(false),
 });
 
 export class QueueConfig {
