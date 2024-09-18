@@ -32,7 +32,7 @@ export async function sendAlertToPost(completedJobId: string, data: SESJob["onCo
         err: e,
         errorCode: SES_SEND_ERRORS.ON_COMPLETE,
       },
-      `Failed to send onComplete ${queue} job triggered by ${completedJobId}`
+      `Failed to send ${queue} job triggered by ${completedJobId}`
     );
     throw e;
   }
