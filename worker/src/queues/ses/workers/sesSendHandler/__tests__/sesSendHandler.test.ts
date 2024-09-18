@@ -28,7 +28,7 @@ test("sesSendHandler throws an File application error if attachments are empty",
   ).rejects.toEqual(new ApplicationError("FILE", "URL_INVALID", "url: undefined was invalid"));
 });
 
-test("sesSendHandler calls sendToPost", async () => {
+test("sesSendHandler calls sendAlertToPost", async () => {
   const job = {
     id: "job-id",
     name: "SES_SEND",
