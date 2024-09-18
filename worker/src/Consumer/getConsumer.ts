@@ -3,7 +3,7 @@ import PgBoss from "pg-boss";
 import { ApplicationError } from "../utils/ApplicationError";
 import pino from "pino";
 
-const DEFAULT_URL = config.get<string>("Queue.url");
+const connectionString = config.get<string>("Queue.url");
 const logger = pino().child({
   method: "Consumer",
 });
@@ -15,19 +15,26 @@ const archiveFailedAfterDays = parseInt(config.get<string>("Queue.archiveFailedI
 const deleteAfterDays = parseInt(config.get<string>("Queue.deleteArchivedAfterDays"));
 const monitorStateIntervalSeconds = parseInt(config.get<string>("Queue.monitorStateIntervalSeconds"));
 
+const schema = config.get<string>("Queue.schema");
+
 logger.info(
   `archiveFailedAfterDays: ${archiveFailedAfterDays}, deleteAfterDays: ${deleteAfterDays}, monitorStateIntervalSeconds: ${monitorStateIntervalSeconds}`
 );
 
-let consumer;
+const registeredConsumers = {};
 
-export async function create(url: string = DEFAULT_URL) {
-  logger.info(`Starting consumer at ${url}`);
+type ConsumerOptions = {
+  schema?: string;
+};
+
+export async function create(options: ConsumerOptions) {
+  const { schema } = options;
   const boss = new PgBoss({
-    connectionString: url,
+    connectionString,
     archiveFailedAfterSeconds: archiveFailedAfterDays * DAY_IN_S,
     deleteAfterDays,
     monitorStateIntervalSeconds,
+    schema,
   });
 
   boss.on("error", (error) => {
@@ -45,17 +52,18 @@ export async function create(url: string = DEFAULT_URL) {
     throw new ApplicationError("CONSUMER", "START_FAILED", `Failed to start listener ${e.message}. Exiting`);
   }
 
-  logger.info({ method: "Consumer.create" }, `Successfully started consumer at ${url}`);
+  logger.info({ method: "Consumer.create" }, `Successfully started consumer at ${connectionString}`);
   return boss;
 }
 
-export async function getConsumer() {
+export async function getConsumer(name?: string) {
+  const consumerSchema = name ?? schema;
+  const consumer = registeredConsumers[consumerSchema];
   try {
     if (!consumer) {
-      const boss = await create();
-      consumer = boss;
+      registeredConsumers[consumerSchema] = await create({ schema: consumerSchema });
     }
-    return consumer;
+    return registeredConsumers[consumerSchema];
   } catch (e) {
     logger.error(e);
     process.exit(1);

@@ -3,7 +3,8 @@
     "url": "QUEUE_URL",
     "archiveFailedAfterDays": "ARCHIVE_FAILED_AFTER_DAYS",
     "deleteArchivedAfterDays": "DELETE_ARCHIVED_IN_DAYS",
-    "monitorStateIntervalInSeconds": "MONITOR_STATE_INTERVAL_IN_SECONDS"
+    "monitorStateIntervalInSeconds": "MONITOR_STATE_INTERVAL_IN_SECONDS",
+    "schema": "QUEUE_SCHEMA"
   },
   "Notify": {
     "apiKey": "NOTIFY_API_KEY",
