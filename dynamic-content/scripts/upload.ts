@@ -9,8 +9,9 @@ import _ from "lodash";
  * Some basic validation happens here, as well as top level console logs to update on the progress of the upload.
  */
 function main() {
+  const additionalContexts = helpers.getFileJson(constants.CONTENT_TARGET);
   const bookingRows = helpers.prepareUpdateFile("booking-links.tsv", constants.CONTENT_MAP["booking-links"]);
-  let newContent = uploadContent(constants.CONTENT_MAP["booking-links"], bookingRows, "booking-links");
+  let newContent = uploadContent(constants.CONTENT_MAP["booking-links"], bookingRows, "booking-links", { certifyCopy: { ...additionalContexts.certifyCopy } });
 
   const contentRows = helpers.prepareUpdateFile("content.tsv", constants.CONTENT_MAP["content"]);
   newContent = uploadContent(constants.CONTENT_MAP["content"], contentRows, "content", newContent);
@@ -36,7 +37,7 @@ function uploadContent(
       const contentFamily = contentType === "content" ? "countries" : helpers.determineBookingContentFamily(rowObjects, curr);
       const relevantFields = helpers.getRelevantFields(curr, fileConstants.relevant);
       const contentSubject = contentFamily === "countries" ? curr.country : curr.post;
-      const setPath = `${contentFamily}.${contentSubject}`;
+      const setPath = `marriage.${contentFamily}.${contentSubject}`;
       const currentFields = _.get(acc, setPath) ?? {};
       _.set(acc, setPath, { ...currentFields, ...relevantFields });
       return acc;
