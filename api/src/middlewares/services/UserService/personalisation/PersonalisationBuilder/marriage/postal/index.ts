@@ -7,8 +7,8 @@ import { ApplicationError } from "../../../../../../../ApplicationError";
 
 export function getPostalAdditionalContext(country: string, post?: string) {
   const postName = getPostForMarriage(country, post);
-  const additionalCountryContext = additionalContexts.countries[country];
-  const additionalPostContext = additionalContexts.posts[postName];
+  const additionalCountryContext = additionalContexts.marriage.countries[country];
+  const additionalPostContext = additionalContexts.marriage.posts[postName];
 
   return {
     ...additionalCountryContext,

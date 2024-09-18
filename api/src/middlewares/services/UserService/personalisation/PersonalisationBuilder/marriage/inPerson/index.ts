@@ -23,8 +23,8 @@ export function buildInPersonPersonalisation(answers: AnswersHashMap, metadata: 
   const post = answers["post"] as string;
 
   const additionalContext = {
-    ...(additionalContexts.countries[country] ?? {}),
-    ...(additionalContexts.posts[post] ?? additionalContexts.countries[country].post ?? {}),
+    ...(additionalContexts.marriage.countries[country] ?? {}),
+    ...(additionalContexts.marriage.posts[post] ?? additionalContexts.marriage.countries[country].post ?? {}),
   };
 
   const getAdditionalDocs = getAdditionalDocsForCountry[country];
