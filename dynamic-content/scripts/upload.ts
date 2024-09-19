@@ -11,12 +11,14 @@ import _ from "lodash";
 function main() {
   const additionalContexts = helpers.getFileJson(constants.CONTENT_TARGET);
   const bookingRows = helpers.prepareUpdateFile("booking-links.tsv", constants.CONTENT_MAP["booking-links"]);
-  let newContent = uploadContent(constants.CONTENT_MAP["booking-links"], bookingRows, "booking-links", { certifyCopy: { ...additionalContexts.certifyCopy } });
+  let newContent = uploadContent(constants.CONTENT_MAP["booking-links"], bookingRows, "booking-links");
 
   const contentRows = helpers.prepareUpdateFile("content.tsv", constants.CONTENT_MAP["content"]);
   newContent = uploadContent(constants.CONTENT_MAP["content"], contentRows, "content", newContent);
 
-  fs.writeFileSync(constants.CONTENT_TARGET, JSON.stringify(newContent));
+  additionalContexts.marriage = newContent;
+
+  fs.writeFileSync(constants.CONTENT_TARGET, JSON.stringify(additionalContexts));
 }
 
 /**
@@ -37,7 +39,7 @@ function uploadContent(
       const contentFamily = contentType === "content" ? "countries" : helpers.determineBookingContentFamily(rowObjects, curr);
       const relevantFields = helpers.getRelevantFields(curr, fileConstants.relevant);
       const contentSubject = contentFamily === "countries" ? curr.country : curr.post;
-      const setPath = `marriage.${contentFamily}.${contentSubject}`;
+      const setPath = `${contentFamily}.${contentSubject}`;
       const currentFields = _.get(acc, setPath) ?? {};
       _.set(acc, setPath, { ...currentFields, ...relevantFields });
       return acc;
