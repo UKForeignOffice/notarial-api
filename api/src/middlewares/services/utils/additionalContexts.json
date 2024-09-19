@@ -2,9 +2,19 @@
   "certifyCopy": {
     "countries": {
       "Kosovo": { "post": "the British Embassy Tirana (for Kosovo)", "postAddress": "\nBritish Embassy Tirana\nRruga Skenderbeg 12\nTirana\nAlbania" },
+      "Sweden": {
+        "post": "the British embassy Stockholm",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=35&service=4",
+        "postAddress": "\nBritish Embassy Consular Section\nBox 27819\nSkarpögatan 8\n115 93 Stockholm"
+      },
       "Vietnam": {
         "post": "the British embassy Hanoi",
         "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=115&service=13"
+      },
+      "Thailand": {
+        "post": "the British Embassy Bangkok",
+        "bookingLink": "",
+        "postAddress": "\nConsular Services<br>British Embassy Bangkok\nAIA Sathorn Tower\nFloor 12A\n11/1 South Sathorn Road\nSathorn\nBangkok\n10120"
       }
     }
   },
