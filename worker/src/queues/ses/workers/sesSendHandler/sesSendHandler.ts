@@ -1,11 +1,11 @@
 import pino from "pino";
 import { Job } from "pg-boss";
-import { SESJob } from "../types";
-import { sesClient, SESEmail } from "../helpers";
+import { SESJob } from "../../types";
+import { sesClient, SESEmail } from "../../helpers";
 
-import { SESv2ServiceException, SendEmailCommand } from "@aws-sdk/client-sesv2";
-import { getConsumer } from "../../../Consumer";
-import { SES_SEND_ERRORS } from "./errors";
+import { SendEmailCommand, SESv2ServiceException } from "@aws-sdk/client-sesv2";
+import { SES_SEND_ERRORS } from "../errors";
+import { sendAlertToPost } from "./sendAlertToPost";
 
 const queue = "SES_SEND";
 const worker = "sesSendHandler";
@@ -53,34 +53,9 @@ export async function sesSendHandler(job: Job<SESJob>) {
     throw err;
   }
 
+  if (data.onComplete) {
+    await sendAlertToPost(jobId, data.onComplete);
+  }
+
   return response;
-}
-
-const consumerPromise = getConsumer();
-/**
- * Sends an alert to individual posts, notifying them that a form has been submitted to the shared inbox.
- */
-export async function onComplete(job: Job<{ request: Job<SESJob> }>) {
-  const consumer = await consumerPromise;
-  const jobId = job.id;
-  const completedJobId = job.data.request.id;
-  logger.info({ jobId, completedJobId }, `completed ${completedJobId} on ${worker}. onComplete flag detected`);
-  const onComplete = job.data.request.data?.onComplete;
-
-  if (!onComplete) {
-    logger.warn({ jobId }, "onComplete flag was detected, but onComplete data is empty");
-    return;
-  }
-
-  const { queue, job: onCompleteJobArgs } = onComplete;
-
-  try {
-    await consumer.send(queue, onCompleteJobArgs);
-  } catch (e) {
-    logger.error(
-      { jobId, completedJobId, err: e, errorCode: SES_SEND_ERRORS.ON_COMPLETE },
-      `Failed to send onComplete ${queue} job triggered by ${completedJobId}`
-    );
-    throw e;
-  }
 }

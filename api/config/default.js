@@ -20,22 +20,18 @@ module.exports = {
     SES_SEND: {
       retryBackoff: "true",
       retryLimit: "50",
-      onComplete: "true",
     },
     NOTIFY_SEND: {
       retryBackoff: "true",
       retryLimit: "50",
-      onComplete: "false",
     },
     SES_PROCESS: {
       retryBackoff: "true",
       retryLimit: "50",
-      onComplete: "false",
     },
     NOTIFY_PROCESS: {
       retryBackoff: "true",
       retryLimit: "50",
-      onComplete: "false",
     },
   },
   Notify: {
