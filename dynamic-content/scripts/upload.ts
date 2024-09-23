@@ -9,13 +9,16 @@ import _ from "lodash";
  * Some basic validation happens here, as well as top level console logs to update on the progress of the upload.
  */
 function main() {
+  const additionalContexts = helpers.getFileJson(constants.CONTENT_TARGET);
   const bookingRows = helpers.prepareUpdateFile("booking-links.tsv", constants.CONTENT_MAP["booking-links"]);
   let newContent = uploadContent(constants.CONTENT_MAP["booking-links"], bookingRows, "booking-links");
 
   const contentRows = helpers.prepareUpdateFile("content.tsv", constants.CONTENT_MAP["content"]);
   newContent = uploadContent(constants.CONTENT_MAP["content"], contentRows, "content", newContent);
 
-  fs.writeFileSync(constants.CONTENT_TARGET, JSON.stringify(newContent));
+  additionalContexts.marriage = newContent;
+
+  fs.writeFileSync(constants.CONTENT_TARGET, JSON.stringify(additionalContexts));
 }
 
 /**

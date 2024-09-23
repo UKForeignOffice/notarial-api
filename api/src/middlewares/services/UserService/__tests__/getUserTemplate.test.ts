@@ -2,21 +2,23 @@ import { getUserTemplate } from "../getUserTemplate";
 
 jest.mock("../../utils/additionalContexts.json", () => {
   return {
-    countries: {
-      Turkey: {
-        postal: true,
-      },
-      Sweden: {
-        postal: true,
-        cniDelivery: true,
-      },
-      Russia: {
-        postal: true,
-        cniDelivery: false,
-      },
-      Croatia: {
-        postal: true,
-        cniDelivery: true,
+    marriage: {
+      countries: {
+        Turkey: {
+          postal: true,
+        },
+        Sweden: {
+          postal: true,
+          cniDelivery: true,
+        },
+        Russia: {
+          postal: true,
+          cniDelivery: false,
+        },
+        Croatia: {
+          postal: true,
+          cniDelivery: true,
+        },
       },
     },
   };

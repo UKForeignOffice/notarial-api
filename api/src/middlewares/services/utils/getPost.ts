@@ -1,7 +1,7 @@
 import * as additionalContexts from "./additionalContexts.json";
 
 export function getPostForMarriage(country: string, post?: string) {
-  return post ?? additionalContexts.countries?.[country]?.post;
+  return post ?? additionalContexts.marriage.countries?.[country]?.post;
 }
 
 export function getPostForCertifyCopy(country: string, post?: string) {
