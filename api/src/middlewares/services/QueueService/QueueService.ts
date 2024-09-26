@@ -28,7 +28,7 @@ export class QueueService {
       NOTIFY_PROCESS: new QueueConfig("NOTIFY_PROCESS"),
     };
     boss.start().then(() => {
-      this.logger.info("Starting queues");
+      this.logger.info("Creating queues");
       this.createQueues();
     });
   }
