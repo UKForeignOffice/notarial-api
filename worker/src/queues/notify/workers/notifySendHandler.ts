@@ -19,7 +19,7 @@ const notifyClient = new NotifyClient(config.get<string>("Notify.apiKey"));
  * When a "notify" event is detected, this worker uses the GOV.UK Notify client to send the email.
  * The source of this event is the runner, after a user has submitted a form.
  */
-export async function notifySendHandler(job: Job<NotifyJob>) {
+export async function notifySendHandler([job]: Job<NotifyJob>[]) {
   const jobId = job.id;
   logger.info({ jobId }, `received ${worker} job`);
   const { data } = job;
