@@ -197,6 +197,7 @@ See [TROUBLESHOOTING.md](./../TROUBLESHOOTING.md) for more information.
 | `DELETE_ARCHIVED_AFTER_DAYS`           | In days, how long to keep any jobs in `pgboss.archive` before deleting                                                    | 7                                            |
 | `MONITOR_STATE_INTERVAL_SECONDS`       | In seconds, how often to log the statuses of each queue                                                                   | 10                                           |
 | `QUEUE_SCHEMA`                         | The schema name for pgboss to use. If it does not exist, pgboss will create the schema and related tables in this schema. | pgboss                                       |
+| `DRAIN_SCHEMA`                         | Moves inflight (created) messages from this schema to QUEUE_SCHEMA                                                        |                                              |
 | `NOTIFY_API_KEY`                       | Notify API key to send emails from                                                                                        |                                              |
 | `NOTIFY_FAILURE_CHECK_SCHEDULE`        | Cron string determining the schedule for checking for failed notify sends                                                 | 0 9 * * *                                    |
 | `SES_SENDER_NAME`                      | The name to display when sending an email via SES                                                                         | Getting Married Abroad Service               |
