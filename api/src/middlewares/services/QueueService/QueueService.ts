@@ -10,7 +10,7 @@ type JobWithMetadata<T = {}> = T & {
 };
 export class QueueService {
   logger: Logger;
-  boss?: PgBoss;
+  boss: PgBoss;
   configs: Record<QueueName, QueueConfig>;
 
   constructor() {
@@ -19,15 +19,25 @@ export class QueueService {
       connectionString: config.get<string>("Queue.url"),
       schema: config.get<string>("Queue.schema"),
     });
+    this.boss = boss;
+
     this.configs = {
       SES_PROCESS: new QueueConfig("SES_PROCESS"),
       SES_SEND: new QueueConfig("SES_SEND"),
       NOTIFY_SEND: new QueueConfig("NOTIFY_SEND"),
       NOTIFY_PROCESS: new QueueConfig("NOTIFY_PROCESS"),
     };
-    boss.start().then((pgboss) => {
-      this.boss = pgboss;
+    boss.start().then(() => {
+      this.logger.info("Creating queues");
+      this.createQueues();
     });
+  }
+
+  async createQueues() {
+    const configs = Object.keys(this.configs);
+    for (const key in configs) {
+      await this.boss.createQueue(key);
+    }
   }
 
   async sendToQueue<T>(queueName: QueueName, data: JobWithMetadata<T>) {

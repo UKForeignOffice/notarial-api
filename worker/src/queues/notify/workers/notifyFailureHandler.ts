@@ -14,7 +14,7 @@ const logger = pino().child({
 
 const notifyClient = new NotifyClient(config.get<string>("Notify.apiKey"));
 
-export async function notifyFailureHandler(job: Job) {
+export async function notifyFailureHandler([job]: Job[]) {
   const jobId = job.id;
   logger.info({ jobId }, `received ${worker} job`);
   const failureCheckDate = new Date();

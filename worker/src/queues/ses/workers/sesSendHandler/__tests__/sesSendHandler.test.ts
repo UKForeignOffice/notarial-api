@@ -20,11 +20,13 @@ jest.mock("./../sendAlertToPost");
 
 test("sesSendHandler throws an File application error if attachments are empty", async () => {
   expect(
-    sesSend.sesSendHandler({
-      data: {
-        attachments: [{}],
+    sesSend.sesSendHandler([
+      {
+        data: {
+          attachments: [{}],
+        },
       },
-    })
+    ])
   ).rejects.toEqual(new ApplicationError("FILE", "URL_INVALID", "url: undefined was invalid"));
 });
 
@@ -52,7 +54,7 @@ test("sesSendHandler calls sendAlertToPost", async () => {
       subject: "",
     },
   };
-  await sesSend.sesSendHandler(job);
+  await sesSend.sesSendHandler([job]);
   expect(sesSendHelper.sendAlertToPost).toHaveBeenCalled();
   expect(sesSendHelper.sendAlertToPost).toBeCalledWith("job-id", job.data.onComplete);
 });

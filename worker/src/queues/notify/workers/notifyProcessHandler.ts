@@ -23,7 +23,7 @@ type NotifyParseJob = {
  * The source of this event is the notarial-api, after the user has submitted a form. The purpose of this handler is
  * to simply store the data required to create an SES event, and be able to edit it simply.
  */
-export async function notifyProcessHandler(job: Job<NotifyParseJob>) {
+export async function notifyProcessHandler([job]: Job<NotifyParseJob>[]) {
   const jobId = job.id;
   logger.info({ jobId }, `received ${worker} job`);
 
