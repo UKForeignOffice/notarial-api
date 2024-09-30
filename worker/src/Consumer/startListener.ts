@@ -1,12 +1,12 @@
-import { WorkHandler, WorkOptions } from "pg-boss";
+import PgBoss, { WorkHandler, WorkOptions } from "pg-boss";
 import { drainQueue } from "./migrate";
 import { getConsumer } from "./getConsumer";
 import pino from "pino";
 import config from "config";
 const logger = pino();
 
-export async function startListener<T>(queueName: string, handler: WorkHandler<T>, options?: WorkOptions) {
-  const consumer = await getConsumer();
+export async function startListener<T>(queueName: string, handler: WorkHandler<T>, options: WorkOptions = {}) {
+  const consumer: PgBoss = await getConsumer();
 
   logger.info({ queue: queueName, options }, `Creating queue ${queueName}`);
   await consumer.createQueue(queueName);
@@ -24,9 +24,5 @@ export async function startListener<T>(queueName: string, handler: WorkHandler<T
 
   logger.info({ queue: queueName, options }, `Creating listener '${handler.name}' on ${queueName}`);
 
-  if (options) {
-    await consumer.work(queueName, options, handler);
-  } else {
-    await consumer.work(queueName, handler);
-  }
+  await consumer.work(queueName, options, handler);
 }
