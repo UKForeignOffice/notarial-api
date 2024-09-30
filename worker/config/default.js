@@ -10,7 +10,7 @@ module.exports = {
     archiveFailedInDays: 30,
     deleteArchivedAfterDays: 7,
     monitorStateIntervalSeconds: 10,
-    schema: "pgboss",
+    schema: "pgboss_v10",
   },
   SES: {
     Sender: {

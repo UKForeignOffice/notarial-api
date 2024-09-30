@@ -12,7 +12,7 @@ module.exports = {
   rateLimit: 1200,
   Queue: {
     url: "postgresql://user:root@localhost:5432/notarial",
-    schema: "pgboss",
+    schema: "pgboss_v10",
     defaultOptions: {
       retryBackoff: "true",
       retryLimit: "50",
