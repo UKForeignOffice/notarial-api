@@ -29,6 +29,7 @@ test("migrateInflightMessagesFromV9 calls ROLLBACK is called if transaction fail
   expect(pool.query.mock.calls[0]).toStrictEqual(["BEGIN"]);
   expect(pool.query.mock.calls[1][0]).toContain("INSERT INTO pgboss_test.job");
   expect(pool.query).toHaveBeenCalledWith("ROLLBACK");
+  expect(pool.query).not.toHaveBeenCalledWith("COMMIT");
   expect(pool.release).toHaveBeenCalled();
 });
 
@@ -41,5 +42,6 @@ test("migrateInflightMessagesFromV9 calls COMMIT is called if queries succeed", 
   expect(pool.query.mock.calls[0]).toStrictEqual(["BEGIN"]);
   expect(pool.query.mock.calls[1][0]).toContain("INSERT INTO pgboss_test.job");
   expect(pool.query).toHaveBeenCalledWith("COMMIT");
+  expect(pool.query).not.toHaveBeenCalledWith("ROLLBACK");
   expect(pool.release).toHaveBeenCalled();
 });
