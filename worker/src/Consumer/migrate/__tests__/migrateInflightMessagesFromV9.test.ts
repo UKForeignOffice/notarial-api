@@ -18,16 +18,28 @@ beforeEach(() => {
   pool = new Pool();
 });
 
-test("Rollback is called if transaction fails", async () => {
+test("migrateInflightMessagesFromV9 calls ROLLBACK is called if transaction fails", async () => {
   pool.query
-    .mockResolvedValueOnce() // BEGIN query
+    .mockResolvedValueOnce() // resolve the BEGIN query
     .mockRejectedValue(new Error("DB error"));
 
-  const query = pool.query;
   await expect(migrateInflightMessagesFromV9("test", "pgboss")).rejects.toThrow();
   expect(pool.connect).toBeCalled();
-  expect(query).toBeCalledTimes(3);
-  expect(query.mock.calls[0]).toStrictEqual(["BEGIN"]);
-  expect(query.mock.calls[1][0]).toContain("INSERT INTO pgboss.job");
+  expect(pool.query).toBeCalledTimes(3);
+  expect(pool.query.mock.calls[0]).toStrictEqual(["BEGIN"]);
+  expect(pool.query.mock.calls[1][0]).toContain("INSERT INTO pgboss_test.job");
   expect(pool.query).toHaveBeenCalledWith("ROLLBACK");
+  expect(pool.release).toHaveBeenCalled();
+});
+
+test("migrateInflightMessagesFromV9 calls COMMIT is called if queries succeed", async () => {
+  pool.query.mockResolvedValue();
+
+  await migrateInflightMessagesFromV9("test", "pgboss");
+  expect(pool.connect).toBeCalled();
+  expect(pool.query).toBeCalledTimes(4);
+  expect(pool.query.mock.calls[0]).toStrictEqual(["BEGIN"]);
+  expect(pool.query.mock.calls[1][0]).toContain("INSERT INTO pgboss_test.job");
+  expect(pool.query).toHaveBeenCalledWith("COMMIT");
+  expect(pool.release).toHaveBeenCalled();
 });
