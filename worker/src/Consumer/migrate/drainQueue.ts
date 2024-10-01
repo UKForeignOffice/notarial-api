@@ -15,6 +15,13 @@ export async function drainQueue(queue: string, drainSchema: string) {
     return;
   }
 
+  const IGNORE_QUEUES = new Set(["NOTIFY_CHECK_FAILURE"]);
+
+  if (IGNORE_QUEUES.has(queue)) {
+    drainLogger.warn(`skipping migration of ${queue}`);
+    return;
+  }
+
   const schemaVersion = await getSchemaVersion(currentSchema);
   const drainSchemaVersion = await getSchemaVersion(drainSchema);
 

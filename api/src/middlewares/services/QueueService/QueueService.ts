@@ -35,7 +35,8 @@ export class QueueService {
 
   async createQueues() {
     const configs = Object.keys(this.configs);
-    for (const key in configs) {
+    for (const key of configs) {
+      this.logger.info(`Creating queue ${key}`);
       await this.boss.createQueue(key);
     }
   }
