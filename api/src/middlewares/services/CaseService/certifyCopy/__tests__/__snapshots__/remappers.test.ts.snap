@@ -40,13 +40,6 @@ exports[`certifyCopy is successfully remapped 1`] = `
       "title": "Middle name",
       "type": "text",
     },
-    "sex": {
-      "answer": "Male",
-      "category": "applicantDetails",
-      "key": "sex",
-      "title": "Male or female",
-      "type": "list",
-    },
     "surname": {
       "answer": "test",
       "category": "applicantDetails",
@@ -122,6 +115,13 @@ exports[`certifyCopy is successfully remapped 1`] = `
       "title": "Type of document to certify",
       "type": "list",
     },
+  },
+  "sex": {
+    "answer": "Male",
+    "category": "applicantDetails",
+    "key": "sex",
+    "title": "Male or female",
+    "type": "list",
   },
   "thirdParty": {
     "answer": false,

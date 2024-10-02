@@ -32,7 +32,7 @@ const paymentViewModel: PaymentData = {
 test("getEmailBody renders certify copy email correctly", () => {
   const emailBody = certifyCopyCaseService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" });
   expect(emailBody).toContain("<li>First name: test</li>");
-  expect(emailBody).toContain("certifying a copy of a passport");
+  expect(emailBody).toContain("certifying a copy of a document");
 });
 
 test("sendEmail returns a jobId", async () => {
@@ -86,7 +86,7 @@ test("buildJobData returns an object with subject, body, attachments and referen
     },
   });
   expect(result).toEqual({
-    subject: "Certify a copy of a passport application - the British embassy Hanoi – 1234",
+    subject: "Certify a copy application, Vietnam, the British embassy Hanoi – 1234",
     body: expect.any(String),
     onComplete: {
       queue: "NOTIFY_SEND",
