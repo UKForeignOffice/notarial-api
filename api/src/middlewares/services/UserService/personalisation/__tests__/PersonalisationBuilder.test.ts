@@ -218,7 +218,6 @@ test("buildJobData should return the correct personalisation for a certify a cop
     post: "the British embassy Hanoi",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=115&service=13",
     reference: "1234",
-    notPaid: true,
   });
 });
 
@@ -234,6 +233,5 @@ test("buildJobData should return the correct personalisation for a certify copy 
     post: "the British Embassy Tirana (for Kosovo)",
     reference: "1234",
     postAddress: "\nBritish Embassy Tirana\nRruga Skenderbeg 12\nTirana\nAlbania",
-    notPaid: true,
   });
 });
