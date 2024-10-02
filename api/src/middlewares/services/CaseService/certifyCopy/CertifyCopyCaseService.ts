@@ -100,7 +100,7 @@ export class CertifyCopyCaseService implements CaseService {
     const post = getPostForCertifyCopy(country, answers.post as string);
     const onCompleteJob = this.getPostAlertData(country, post, reference);
     return {
-      subject: `Certify a copy of a passport application - ${post} – ${reference}`,
+      subject: `Certify a copy application, ${country}, ${post} – ${reference}`,
       body: emailBody,
       attachments: fields.filter(isFieldType("file")),
       reference,
