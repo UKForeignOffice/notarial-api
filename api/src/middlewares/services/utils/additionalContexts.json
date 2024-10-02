@@ -1,20 +1,41 @@
 {
   "certifyCopy": {
     "countries": {
-      "Kosovo": { "post": "the British Embassy Tirana (for Kosovo)", "postAddress": "\nBritish Embassy Tirana\nRruga Skenderbeg 12\nTirana\nAlbania" },
+      "Bulgaria": {
+        "postal": "TRUE",
+        "post": "the British Embassy Sofia",
+        "postAddress": "\nBritish Embassy Sofia\n9, Moskovska St\n1000 Sofia\nBulgaria"
+      },
+      "Greece": {
+        "post": "the British Embassy Athens",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=15&service=8",
+        "postAddress": "\nBritish Embassy Athens\n1, Ploutarchou str\n106 75 Athens\nGreece"
+      },
+      "Kosovo": {
+        "post": "the British Embassy Tirana (for Kosovo)",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=137&service=9",
+        "localInfo": "\nThe British Embassy Pristina is unable to certify copies of passports. You will need to post the passport to the British Embassy Tirana to receive a certified copy."
+      },
       "Sweden": {
-        "post": "the British embassy Stockholm",
+        "post": "the British Embassy Stockholm",
         "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=35&service=4",
         "postAddress": "\nBritish Embassy Consular Section\nBox 27819\nSkarpögatan 8\n115 93 Stockholm"
       },
-      "Vietnam": {
-        "post": "the British embassy Hanoi",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=115&service=13"
-      },
       "Thailand": {
         "post": "the British Embassy Bangkok",
-        "bookingLink": "",
-        "postAddress": "\nConsular Services<br>British Embassy Bangkok\nAIA Sathorn Tower\nFloor 12A\n11/1 South Sathorn Road\nSathorn\nBangkok\n10120"
+        "localInfo": "\nDo not use this service if you need a certified copy of your passport to open a bank account. The British Embassy Bangkok cannot certify copies of passports for this purpose.",
+        "postAddress": "\nConsular Services<br>British Embassy Bangkok\nAIA Sathorn Tower\nFloor 12A\n11/1 South Sathorn Road\nSathorn\nBangkok\n10120",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=53&service=9"
+      },
+      "United States": {
+        "postal": "FALSE",
+        "localInfoNoService": "<p class=\"govuk-body\">A certified copy of British passports for Internal Revenue Service (IRS) Individual Tax Payer Identification Number purposes (ITIN) should be obtained through an <a class=\"govuk-link\" href=\"https://www.irs.gov/help/tac-locations-where-in-person-document-verification-is-provided\">IRS taxpayer assistance centre</a>.</p><p class=\"govuk-body\">If the IRS is unable to certify a copy of your passport, you can <a class=\"govuk-link\" href=\"/certify-a-copy/type-of-document\">request a certified copy from a British embassy or consulate</a>. You will need written confirmation from the IRS that they are unable to certify a copy of your passport at a specified location. Written confirmation from a third party, such as a company preparing taxes on your behalf, will not be accepted.</p>",
+        "localInfo": "<p class=\"govuk-body\">At your appointment, you will need written confirmation from the IRS that they are unable to certify a copy of your passport at a specified location. Written confirmation from a third party, such as a company preparing taxes on your behalf, will not be accepted.</p>"
+      },
+      "Vietnam": {
+        "postal": "FALSE",
+        "post": "the British Consulate General Ho Chi Minh City",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=64&service=13"
       }
     }
   },
