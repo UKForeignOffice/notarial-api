@@ -1,9 +1,6 @@
 export const order = {
   contactDetails: "Contact details",
   applicantDetails: "Applicant's details",
-  childName: "Child's details",
-  childBirth: "Child's birth details",
-  childPassport: "Child's passport details",
   applicantBirth: "Applicant's birth details",
   applicantPassport: "Applicant's passport",
   postalAddress: "Postal address",
@@ -19,18 +16,6 @@ export const remap = {
   phoneNumber: "contactDetails.phoneNumber",
   emailAddress: "contactDetails.emailAddress",
 
-  childFirstName: "childName.childFirstName",
-  childMiddleName: "childName.childMiddleName",
-  childSurname: "childName.childSurname",
-  childSex: "childName.childSex",
-
-  childDateOfBirth: "childBirth.dateOfBirth",
-  childPlaceOfBirth: "childBirth.placeOfBirth",
-  childCountryOfBirth: "childBirth.countryOfBirth",
-
-  childPassportNumber: "applicantPassport.number",
-  childPassportDateOfIssue: "applicantPassport.dateOfIssue",
-
   firstName: "applicantDetails.firstName",
   middleName: "applicantDetails.middleName",
   surname: "applicantDetails.surname",
@@ -42,6 +27,18 @@ export const remap = {
 
   passportNumber: "applicantPassport.number",
   passportDateOfIssue: "applicantPassport.dateOfIssue",
+
+  childFirstName: "applicantDetails.firstName",
+  childMiddleName: "applicantDetails.childMiddleName",
+  childSurname: "applicantDetails.childSurname",
+  childSex: "applicantDetails.childSex",
+
+  childDateOfBirth: "applicantBirth.dateOfBirth",
+  childPlaceOfBirth: "applicantBirth.placeOfBirth",
+  childCountryOfBirth: "applicantBirth.countryOfBirth",
+
+  childPassportNumber: "applicantPassport.number",
+  childPassportDateOfIssue: "applicantPassport.dateOfIssue",
 
   deliveryAddressLine1: "postalAddress.addressLine1",
   deliveryAddressLine2: "postalAddress.addressLine2",
