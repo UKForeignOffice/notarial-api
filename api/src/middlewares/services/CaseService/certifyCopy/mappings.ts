@@ -1,9 +1,8 @@
 export const order = {
-  contactDetails: "Contact details",
   applicantDetails: "Applicant's details",
-  applicantBirth: "Applicant's birth details",
-  applicantPassport: "Applicant's passport",
-  postalAddress: "Postal address",
+  applicantPassport: "Applicant's passport details",
+  deliveryAddress: "Delivery address",
+  contactDetails: "Contact details",
   feedbackConsent: "Feedback consent",
 };
 
@@ -19,7 +18,6 @@ export const remap = {
   firstName: "applicantDetails.firstName",
   middleName: "applicantDetails.middleName",
   surname: "applicantDetails.surname",
-  sex: "applicantDetails.sex",
 
   dateOfBirth: "applicantBirth.dateOfBirth",
   placeOfBirth: "applicantBirth.placeOfBirth",
@@ -31,20 +29,18 @@ export const remap = {
   childFirstName: "applicantDetails.firstName",
   childMiddleName: "applicantDetails.childMiddleName",
   childSurname: "applicantDetails.childSurname",
-  childSex: "applicantDetails.childSex",
-
-  childDateOfBirth: "applicantBirth.dateOfBirth",
-  childPlaceOfBirth: "applicantBirth.placeOfBirth",
-  childCountryOfBirth: "applicantBirth.countryOfBirth",
 
   childPassportNumber: "applicantPassport.number",
-  childPassportDateOfIssue: "applicantPassport.dateOfIssue",
+  childCountryOfBirth: "applicantPassport.countryOfBirth",
+  childDateOfBirth: "applicantPassport.dateOfBirth",
+  childPlaceOfBirth: "applicantPassport.placeOfBirth",
+  childPassportDateOfIssue: "applicantPassport.dateOfIssueOfPassport",
 
-  deliveryAddressLine1: "postalAddress.addressLine1",
-  deliveryAddressLine2: "postalAddress.addressLine2",
-  deliveryCity: "postalAddress.city",
-  deliveryPostcode: "postalAddress.postcode",
-  deliveryCountry: "postalAddress.country",
+  deliveryAddressLine1: "deliveryAddress.addressLine1",
+  deliveryAddressLine2: "deliveryAddress.addressLine2",
+  deliveryCity: "deliveryAddress.townOrCity",
+  deliveryPostcode: "deliveryAddress.postcodeOrZipCode",
+  deliveryCountry: "deliveryAddress.country",
 
   feedbackConsent: "feedbackConsent.feedbackConsent",
 };
