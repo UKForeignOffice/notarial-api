@@ -4,8 +4,6 @@ import { ApplicationError } from "../../../../../../ApplicationError";
 import * as additionalContexts from "../../../../utils/additionalContexts.json";
 
 export function buildInPersonPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
-  const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
-
   if (!answers) {
     throw new ApplicationError("WEBHOOK", "VALIDATION", 500, "Fields are empty");
   }
@@ -21,6 +19,5 @@ export function buildInPersonPersonalisation(answers: AnswersHashMap, metadata: 
     post: additionalContext.post,
     bookingLink: additionalContext.bookingLink,
     reference: metadata.reference,
-    notPaid: !isSuccessfulPayment,
   };
 }
