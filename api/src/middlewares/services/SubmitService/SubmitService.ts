@@ -3,10 +3,10 @@ import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
 import { UserService } from "../UserService";
 import { MarriageCaseService } from "../CaseService";
-import { FormType } from "../../../types/FormDataBody";
 import { CertifyCopyCaseService } from "../CaseService/certifyCopy/CertifyCopyCaseService";
 import { getCaseServiceName } from "../utils/getCaseServiceName";
 import { CaseService } from "../CaseService/types";
+import { getFormType } from "../utils/getFormType";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
@@ -32,7 +32,7 @@ export class SubmitService {
     const answers = answersHashMap(formFields);
     const reference = metadata?.pay?.reference ?? this.generateId();
 
-    const type = (answers.service as FormType) ?? metadata?.type ?? "affirmation";
+    const type = getFormType(answers, metadata.type);
     const caseServiceName = getCaseServiceName(type);
     if (metadata.pay) {
       metadata.pay.total = fees?.total;
