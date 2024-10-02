@@ -37,9 +37,13 @@ export class UserService {
           inPerson: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
           postal: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
         },
-        certifyCopy: {
-          inPerson: config.get<string>("Notify.Template.certifyCopyUserConfirmation"),
-          postal: config.get<string>("Notify.Template.certifyCopyUserPostalConfirmation"),
+        certifyCopyAdult: {
+          inPerson: config.get<string>("Notify.Template.certifyCopyAdultUserConfirmation"),
+          postal: config.get<string>("Notify.Template.certifyCopyAdultUserPostalConfirmation"),
+        },
+        certifyCopyChild: {
+          inPerson: config.get<string>("Notify.Template.certifyCopyChildUserConfirmation"),
+          postal: config.get<string>("Notify.Template.certifyCopyChildUserPostalConfirmation"),
         },
       };
     } catch (err) {
