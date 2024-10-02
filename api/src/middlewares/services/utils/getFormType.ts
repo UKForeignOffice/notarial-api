@@ -5,8 +5,8 @@ export function getFormType(answers: AnswersHashMap, type: FormType): FormType {
   if (answers.service) {
     return answers.service as FormType;
   }
-  if (answers.over16) {
+  if (answers.over16 !== undefined) {
     return answers.over16 ? "certifyCopyAdult" : "certifyCopyChild";
   }
-  return type ?? "affirmation";
+  return type;
 }
