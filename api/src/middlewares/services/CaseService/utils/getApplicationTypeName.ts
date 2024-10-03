@@ -1,6 +1,6 @@
-import { MarriageFormType } from "../../../../types/FormDataBody";
+import { MarriageTemplateType } from "../../utils/types";
 
-const applicationTypeNames: Record<MarriageFormType, string> = {
+const applicationTypeNames: Record<MarriageTemplateType, string> = {
   affirmation: "a marital status affirmation",
   cni: "a notice of marriage and marital status affirmation",
   exchange: "to exchange a UK issued Certificate of No Impediment for a local notice of marriage",
@@ -8,6 +8,6 @@ const applicationTypeNames: Record<MarriageFormType, string> = {
   cniAndMsc: "a notice of marriage and marital status certificate",
 };
 
-export function getApplicationTypeName(type: MarriageFormType) {
+export function getApplicationTypeName(type: MarriageTemplateType) {
   return applicationTypeNames[type];
 }

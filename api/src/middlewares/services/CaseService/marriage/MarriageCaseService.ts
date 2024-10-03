@@ -16,6 +16,8 @@ import { MarriageProcessQueueDataInput } from "../types";
 import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
 import logger, { Logger } from "pino";
 import { QueueService } from "../../QueueService";
+import { AnswersHashMap } from "../../../../types/AnswersHashMap";
+import { MarriageTemplateType } from "../../utils/types";
 
 export class MarriageCaseService implements CaseService {
   logger: Logger;
@@ -61,7 +63,7 @@ export class MarriageCaseService implements CaseService {
     return await this.queueService.sendToQueue("SES_SEND", jobData);
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentData; reference: string; postal?: boolean }, type: MarriageFormType) {
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentData; reference: string; postal?: boolean }, type: MarriageTemplateType) {
     const { fields, payment, reference, postal } = data;
     const remapperName = postal ? `${type}Postal` : type;
 
@@ -106,7 +108,8 @@ export class MarriageCaseService implements CaseService {
     }
 
     const country = answers.country as string;
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal }, type);
+    const templateType = this.getTemplateType(answers, type);
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, postal }, templateType);
     const post = getPostForMarriage(country, answers.post as string);
     const onCompleteJob = this.getPostAlertData(country, post, reference);
     return {
@@ -147,6 +150,13 @@ export class MarriageCaseService implements CaseService {
         reference,
       },
     };
+  }
+
+  getTemplateType(answers: AnswersHashMap, type: MarriageFormType): MarriageTemplateType {
+    if (answers.service) {
+      return answers.service as MarriageTemplateType;
+    }
+    return type;
   }
 
   private static createTemplate(template: string) {

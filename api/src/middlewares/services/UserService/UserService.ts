@@ -2,7 +2,7 @@ import config from "config";
 import pino, { Logger } from "pino";
 import { QueueService } from "../QueueService";
 import { FormType, PayMetadata } from "../../../types/FormDataBody";
-import { NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
+import { CertifyCopyTemplateType, MarriageTemplateType, NotifyEmailTemplate, NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import { getUserTemplate } from "./getUserTemplate";
 import { MARRIAGE_FORM_TYPES } from "../../../utils/formTypes";
@@ -73,14 +73,12 @@ export class UserService {
       isPostalApplication = answers.applicationType === "postal";
     }
 
-    const templateType = this.getTemplateType(answers, type);
-
     const templateName = getUserTemplate(answers.country as string, type, isPostalApplication);
     const personalisationBuilder = getPersonalisationBuilder(type);
     const buildPersonalisationForTemplate = personalisationBuilder[templateName];
     const personalisation = buildPersonalisationForTemplate(answers, metadata);
     const emailArgs = {
-      template: _.get(this.templates, `${templateType}.${templateName}`),
+      template: this.getTemplate(answers, type, templateName),
       emailAddress: answers.emailAddress as string,
       metadata: {
         reference,
@@ -97,13 +95,13 @@ export class UserService {
     return await this.queueService.sendToQueue("NOTIFY_SEND", notifySendEmailArgs);
   }
 
-  getTemplateType(answers: AnswersHashMap, type: FormType) {
+  getTemplate(answers: AnswersHashMap, type: FormType, templateName: NotifyEmailTemplate) {
     if (answers.service) {
-      return `cni.${answers.service as FormType}`;
+      return this.templates.cni[answers.service as MarriageTemplateType][templateName];
     }
     if (answers.over16 !== undefined) {
-      return answers.over16 ? "certifyCopy.adult" : "certifyCopy.child";
+      return this.templates.certifyCopy[answers.over16 as CertifyCopyTemplateType][templateName];
     }
-    return type;
+    return this.templates[type][templateName];
   }
 }

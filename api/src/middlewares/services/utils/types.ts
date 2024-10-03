@@ -1,5 +1,5 @@
 import { SendEmailOptions } from "notifications-node-client";
-import { FormType } from "../../../types/FormDataBody";
+import { CertifyCopyFormType, FormType, MarriageFormType } from "../../../types/FormDataBody";
 
 export interface NotifySendEmailArgs {
   template: string;
@@ -17,8 +17,12 @@ export type AlertJob = {
   }>;
 };
 
-type NotifyEmailTemplate = "inPerson" | "postal";
+export type NotifyEmailTemplate = "inPerson" | "postal";
 type NotifyCNISubGroup = Record<"cni" | "msc" | "cniAndMsc", NotifyTemplateSubGroup>;
 type NotifyCertifyCopySubGroup = Record<"adult" | "child", NotifyTemplateSubGroup>;
 type NotifyTemplateSubGroup = Record<NotifyEmailTemplate, string>;
 export type NotifyTemplateGroup = Record<FormType, NotifyCNISubGroup | NotifyCertifyCopySubGroup | NotifyTemplateSubGroup>;
+
+export type CertifyCopyTemplateType = CertifyCopyFormType | "adult" | "child";
+export type MarriageTemplateType = MarriageFormType | "msc" | "cniAndMsc";
+export type TemplateType = MarriageTemplateType | CertifyCopyTemplateType;
