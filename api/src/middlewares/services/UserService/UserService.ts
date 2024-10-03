@@ -74,10 +74,11 @@ export class UserService {
     }
 
     const personalisationBuilder = getPersonalisationBuilder(type);
-    const buildPersonalisationForTemplate = personalisationBuilder[type];
+    const personalisationType = this.getPersonalisationType(answers, isPostalApplication, type);
+    const buildPersonalisationForTemplate = personalisationBuilder[personalisationType];
     const personalisation = buildPersonalisationForTemplate(answers, metadata);
     const emailArgs = {
-      template: this.getTemplate({ answers, type, postal: isPostalApplication }),
+      template: this.getTemplate({ answers, type, personalisationType: personalisationType }),
       emailAddress: answers.emailAddress as string,
       metadata: {
         reference,
@@ -94,7 +95,7 @@ export class UserService {
     return await this.queueService.sendToQueue("NOTIFY_SEND", notifySendEmailArgs);
   }
 
-  getTemplate({ answers, type, postal }: { answers: AnswersHashMap; type: FormType; postal: boolean | undefined }) {
+  getPersonalisationType(answers: AnswersHashMap, postal: boolean | undefined, type: FormType) {
     const country = answers.country as string;
     // for exchange forms, any country that offers a postal journey and cni delivery should be a postal application.
     const countryOffersPostalRoute = additionalContexts.marriage.countries[country]?.postal && additionalContexts.marriage.countries[country]?.cniDelivery;
@@ -104,14 +105,16 @@ export class UserService {
 
     const postalSupport = postal ?? (type === "exchange" && countryOffersPostalRoute && !countryIsCroatia);
 
-    const postalOrInPerson = postalSupport ? "postal" : "inPerson";
+    return postalSupport ? "postal" : "inPerson";
+  }
 
+  getTemplate({ answers, type, personalisationType }: { answers: AnswersHashMap; type: FormType; personalisationType: "postal" | "inPerson" }) {
     if (answers.service) {
-      return this.templates.cni[answers.service as MarriageTemplateType][type][postalOrInPerson];
+      return this.templates.cni[answers.service as MarriageTemplateType][type][personalisationType];
     }
     if (answers.over16 !== undefined) {
-      return this.templates.certifyCopy[answers.over16 as CertifyCopyTemplateType][type][postalOrInPerson];
+      return this.templates.certifyCopy[answers.over16 as CertifyCopyTemplateType][type][personalisationType];
     }
-    return this.templates[type][postalOrInPerson];
+    return this.templates[type][personalisationType];
   }
 }
