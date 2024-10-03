@@ -2,11 +2,12 @@ import config from "config";
 import pino, { Logger } from "pino";
 import { QueueService } from "../QueueService";
 import { FormType, PayMetadata } from "../../../types/FormDataBody";
-import { CertifyCopyTemplateType, MarriageTemplateType, NotifyEmailTemplate, NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
+import { CertifyCopyTemplateType, MarriageTemplateType, NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
-import { getUserTemplate } from "./getUserTemplate";
+
 import { MARRIAGE_FORM_TYPES } from "../../../utils/formTypes";
 import { getPersonalisationBuilder } from "./getPersonalisationBuilder";
+import * as additionalContexts from "../utils/additionalContexts.json";
 
 export class UserService {
   logger: Logger;
@@ -72,12 +73,11 @@ export class UserService {
       isPostalApplication = answers.applicationType === "postal";
     }
 
-    const templateName = getUserTemplate(answers.country as string, type, isPostalApplication);
     const personalisationBuilder = getPersonalisationBuilder(type);
-    const buildPersonalisationForTemplate = personalisationBuilder[templateName];
+    const buildPersonalisationForTemplate = personalisationBuilder[type];
     const personalisation = buildPersonalisationForTemplate(answers, metadata);
     const emailArgs = {
-      template: this.getTemplate(answers, type, templateName),
+      template: this.getTemplate({ answers, type, postal: isPostalApplication }),
       emailAddress: answers.emailAddress as string,
       metadata: {
         reference,
@@ -94,13 +94,24 @@ export class UserService {
     return await this.queueService.sendToQueue("NOTIFY_SEND", notifySendEmailArgs);
   }
 
-  getTemplate(answers: AnswersHashMap, type: FormType, templateName: NotifyEmailTemplate) {
+  getTemplate({ answers, type, postal }: { answers: AnswersHashMap; type: FormType; postal: boolean | undefined }) {
+    const country = answers.country as string;
+    // for exchange forms, any country that offers a postal journey and cni delivery should be a postal application.
+    const countryOffersPostalRoute = additionalContexts.marriage.countries[country]?.postal && additionalContexts.marriage.countries[country]?.cniDelivery;
+
+    // Croatia is an exception to this, and only offers in-person applications for exchange
+    const countryIsCroatia = country === "Croatia";
+
+    const postalSupport = postal ?? (type === "exchange" && countryOffersPostalRoute && !countryIsCroatia);
+
+    const postalOrInPerson = postalSupport ? "postal" : "inPerson";
+
     if (answers.service) {
-      return this.templates.cni[answers.service as MarriageTemplateType][templateName];
+      return this.templates.cni[answers.service as MarriageTemplateType][type][postalOrInPerson];
     }
     if (answers.over16 !== undefined) {
-      return this.templates.certifyCopy[answers.over16 as CertifyCopyTemplateType][templateName];
+      return this.templates.certifyCopy[answers.over16 as CertifyCopyTemplateType][type][postalOrInPerson];
     }
-    return this.templates[type][templateName];
+    return this.templates[type][postalOrInPerson];
   }
 }
