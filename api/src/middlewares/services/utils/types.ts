@@ -1,4 +1,5 @@
 import { SendEmailOptions } from "notifications-node-client";
+import { FormType } from "../../../types/FormDataBody";
 
 export interface NotifySendEmailArgs {
   template: string;
@@ -17,4 +18,7 @@ export type AlertJob = {
 };
 
 type NotifyEmailTemplate = "inPerson" | "postal";
-export type NotifyTemplateGroup = Record<NotifyEmailTemplate, string>;
+type NotifyCNISubGroup = Record<"cni" | "msc" | "cniAndMsc", NotifyTemplateSubGroup>;
+type NotifyCertifyCopySubGroup = Record<"adult" | "child", NotifyTemplateSubGroup>;
+type NotifyTemplateSubGroup = Record<NotifyEmailTemplate, string>;
+export type NotifyTemplateGroup = Record<FormType, NotifyCNISubGroup | NotifyCertifyCopySubGroup | NotifyTemplateSubGroup>;

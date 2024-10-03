@@ -5,8 +5,8 @@ type PayState = {
   finished: boolean;
 };
 
-export type MarriageFormType = "affirmation" | "cni" | "exchange" | "msc" | "cniAndMsc";
-export type CertifyCopyFormType = "certifyCopyAdult" | "certifyCopyChild";
+export type MarriageFormType = "affirmation" | "cni" | "exchange";
+export type CertifyCopyFormType = "certifyCopy";
 export type FormType = MarriageFormType | CertifyCopyFormType;
 
 type FailedPayState = {
