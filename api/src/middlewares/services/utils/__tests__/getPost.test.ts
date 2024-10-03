@@ -21,5 +21,5 @@ test("getPost returns the correct post if the country has multiple posts but no 
 });
 
 test("getPostForCertifyCopy returns the correct post for a certify copy form instead of a marriage form", () => {
-  expect(getPostForCertifyCopy("Vietnam")).toBe("the British embassy Hanoi");
+  expect(getPostForCertifyCopy("Vietnam")).toBe("the British Consulate General Ho Chi Minh City");
 });
