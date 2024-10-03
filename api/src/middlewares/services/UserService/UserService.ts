@@ -74,11 +74,11 @@ export class UserService {
     }
 
     const personalisationBuilder = getPersonalisationBuilder(type);
-    const personalisationType = this.getPersonalisationType(answers, isPostalApplication, type);
-    const buildPersonalisationForTemplate = personalisationBuilder[personalisationType];
+    const postalVariant = this.getPostalVariant(answers, isPostalApplication, type);
+    const buildPersonalisationForTemplate = personalisationBuilder[postalVariant];
     const personalisation = buildPersonalisationForTemplate(answers, metadata);
     const emailArgs = {
-      template: this.getTemplate({ answers, type, personalisationType: personalisationType }),
+      template: this.getTemplate({ answers, type, postalVariant: postalVariant }),
       emailAddress: answers.emailAddress as string,
       metadata: {
         reference,
@@ -95,7 +95,7 @@ export class UserService {
     return await this.queueService.sendToQueue("NOTIFY_SEND", notifySendEmailArgs);
   }
 
-  getPersonalisationType(answers: AnswersHashMap, postal: boolean | undefined, type: FormType) {
+  getPostalVariant(answers: AnswersHashMap, postal: boolean | undefined, type: FormType) {
     const country = answers.country as string;
     // for exchange forms, any country that offers a postal journey and cni delivery should be a postal application.
     const countryOffersPostalRoute = additionalContexts.marriage.countries[country]?.postal && additionalContexts.marriage.countries[country]?.cniDelivery;
@@ -108,13 +108,13 @@ export class UserService {
     return postalSupport ? "postal" : "inPerson";
   }
 
-  getTemplate({ answers, type, personalisationType }: { answers: AnswersHashMap; type: FormType; personalisationType: "postal" | "inPerson" }) {
+  getTemplate({ answers, type, postalVariant }: { answers: AnswersHashMap; type: FormType; postalVariant: "postal" | "inPerson" }) {
     if (answers.service) {
-      return this.templates.cni[answers.service as MarriageTemplateType][type][personalisationType];
+      return this.templates.cni[answers.service as MarriageTemplateType][type][postalVariant];
     }
     if (answers.over16 !== undefined) {
-      return this.templates.certifyCopy[answers.over16 as CertifyCopyTemplateType][type][personalisationType];
+      return this.templates.certifyCopy[answers.over16 as CertifyCopyTemplateType][type][postalVariant];
     }
-    return this.templates[type][personalisationType];
+    return this.templates[type][postalVariant];
   }
 }
