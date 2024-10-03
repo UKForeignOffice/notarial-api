@@ -1,9 +1,9 @@
 import { AnswersHashMap } from "../../../../../../../types/AnswersHashMap";
-import { MarriageFormType } from "../../../../../../../types/FormDataBody";
+import { MarriageTemplateType } from "../../../../../utils/types";
 
 type PersonalisationFunction = (fields: AnswersHashMap) => Record<string, boolean>;
 
-export const personalisationTypeMap: Record<MarriageFormType, PersonalisationFunction> = {
+export const personalisationTypeMap: Record<MarriageTemplateType, PersonalisationFunction> = {
   affirmation: (_fields: AnswersHashMap) => ({}),
   cni: getCNIPersonalisations,
   exchange: (_fields: AnswersHashMap) => ({}),

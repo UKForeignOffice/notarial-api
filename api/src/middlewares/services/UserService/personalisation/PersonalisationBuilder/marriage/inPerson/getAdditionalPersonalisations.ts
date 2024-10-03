@@ -7,8 +7,6 @@ export const personalisationTypeMap: Record<MarriageFormType, PersonalisationFun
   affirmation: getAffirmationPersonalisations,
   cni: getCNIPersonalisations,
   exchange: getExchangePersonalisations,
-  msc: (_fields: AnswersHashMap) => ({}),
-  cniAndMsc: (_fields: AnswersHashMap) => ({}),
 };
 
 export function getAffirmationPersonalisations(fields: AnswersHashMap) {

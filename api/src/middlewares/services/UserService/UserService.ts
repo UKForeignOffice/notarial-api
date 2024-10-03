@@ -7,7 +7,6 @@ import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import { getUserTemplate } from "./getUserTemplate";
 import { MARRIAGE_FORM_TYPES } from "../../../utils/formTypes";
 import { getPersonalisationBuilder } from "./getPersonalisationBuilder";
-import _ from "lodash";
 
 export class UserService {
   logger: Logger;
