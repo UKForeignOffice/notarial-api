@@ -7,10 +7,11 @@ import { AnswersHashMap } from "../../../types/AnswersHashMap";
 import { getUserTemplate } from "./getUserTemplate";
 import { MARRIAGE_FORM_TYPES } from "../../../utils/formTypes";
 import { getPersonalisationBuilder } from "./getPersonalisationBuilder";
+import _ from "lodash";
 
 export class UserService {
   logger: Logger;
-  templates: Record<FormType, NotifyTemplateGroup>;
+  templates: NotifyTemplateGroup;
   queueService: QueueService;
   constructor({ queueService }: { queueService: QueueService }) {
     this.logger = pino().child({ service: "Notify" });
@@ -22,28 +23,32 @@ export class UserService {
           postal: config.get<string>("Notify.Template.affirmationUserConfirmation"),
         },
         cni: {
-          inPerson: config.get<string>("Notify.Template.cniUserConfirmation"),
-          postal: config.get<string>("Notify.Template.cniUserPostalConfirmation"),
+          cni: {
+            inPerson: config.get<string>("Notify.Template.cniUserConfirmation"),
+            postal: config.get<string>("Notify.Template.cniUserPostalConfirmation"),
+          },
+          msc: {
+            inPerson: config.get<string>("Notify.Template.mscUserConfirmation"),
+            postal: config.get<string>("Notify.Template.mscUserConfirmation"),
+          },
+          cniAndMsc: {
+            inPerson: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
+            postal: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
+          },
         },
         exchange: {
           inPerson: config.get<string>("Notify.Template.exchangeUserConfirmation"),
           postal: config.get<string>("Notify.Template.exchangeUserPostalConfirmation"),
         },
-        msc: {
-          inPerson: config.get<string>("Notify.Template.mscUserConfirmation"),
-          postal: config.get<string>("Notify.Template.mscUserConfirmation"),
-        },
-        cniAndMsc: {
-          inPerson: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-          postal: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-        },
-        certifyCopyAdult: {
-          inPerson: config.get<string>("Notify.Template.certifyCopyAdultUserConfirmation"),
-          postal: config.get<string>("Notify.Template.certifyCopyAdultUserPostalConfirmation"),
-        },
-        certifyCopyChild: {
-          inPerson: config.get<string>("Notify.Template.certifyCopyChildUserConfirmation"),
-          postal: config.get<string>("Notify.Template.certifyCopyChildUserPostalConfirmation"),
+        certifyCopy: {
+          adult: {
+            inPerson: config.get<string>("Notify.Template.certifyCopyAdultUserConfirmation"),
+            postal: config.get<string>("Notify.Template.certifyCopyAdultUserPostalConfirmation"),
+          },
+          child: {
+            inPerson: config.get<string>("Notify.Template.certifyCopyChildUserConfirmation"),
+            postal: config.get<string>("Notify.Template.certifyCopyChildUserPostalConfirmation"),
+          },
         },
       };
     } catch (err) {
@@ -68,12 +73,14 @@ export class UserService {
       isPostalApplication = answers.applicationType === "postal";
     }
 
+    const templateType = this.getTemplateType(answers, type);
+
     const templateName = getUserTemplate(answers.country as string, type, isPostalApplication);
     const personalisationBuilder = getPersonalisationBuilder(type);
     const buildPersonalisationForTemplate = personalisationBuilder[templateName];
     const personalisation = buildPersonalisationForTemplate(answers, metadata);
     const emailArgs = {
-      template: this.templates[type][templateName],
+      template: _.get(this.templates, `${templateType}.${templateName}`),
       emailAddress: answers.emailAddress as string,
       metadata: {
         reference,
@@ -88,5 +95,15 @@ export class UserService {
 
   async sendEmail(notifySendEmailArgs: NotifySendEmailArgs) {
     return await this.queueService.sendToQueue("NOTIFY_SEND", notifySendEmailArgs);
+  }
+
+  getTemplateType(answers: AnswersHashMap, type: FormType) {
+    if (answers.service) {
+      return `cni.${answers.service as FormType}`;
+    }
+    if (answers.over16 !== undefined) {
+      return answers.over16 ? "certifyCopy.adult" : "certifyCopy.child";
+    }
+    return type;
   }
 }
