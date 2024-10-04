@@ -2,7 +2,7 @@ import config from "config";
 import pino, { Logger } from "pino";
 import { QueueService } from "../QueueService";
 import { FormType, PayMetadata } from "../../../types/FormDataBody";
-import { CertifyCopyTemplateType, MarriageTemplateType, NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
+import { MarriageTemplateType, NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 
 import { MARRIAGE_FORM_TYPES } from "../../../utils/formTypes";
