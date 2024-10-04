@@ -2,7 +2,7 @@ import config from "config";
 import pino, { Logger } from "pino";
 import { QueueService } from "../QueueService";
 import { FormType, PayMetadata } from "../../../types/FormDataBody";
-import { CertifyCopyTemplateType, MarriageTemplateType, NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
+import { MarriageTemplateType, NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 
 import { MARRIAGE_FORM_TYPES } from "../../../utils/formTypes";
@@ -110,10 +110,11 @@ export class UserService {
 
   getTemplate({ answers, type, postalVariant }: { answers: AnswersHashMap; type: FormType; postalVariant: "postal" | "inPerson" }) {
     if (answers.service) {
-      return this.templates.cni[answers.service as MarriageTemplateType][type][postalVariant];
+      return this.templates.cni[answers.service as MarriageTemplateType][postalVariant];
     }
     if (answers.over16 !== undefined) {
-      return this.templates.certifyCopy[answers.over16 as CertifyCopyTemplateType][type][postalVariant];
+      const certifyCopyVariant = answers.over16 ? "adult" : "child";
+      return this.templates.certifyCopy[certifyCopyVariant][postalVariant];
     }
     return this.templates[type][postalVariant];
   }
