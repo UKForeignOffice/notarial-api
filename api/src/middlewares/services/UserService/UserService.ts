@@ -2,15 +2,16 @@ import config from "config";
 import pino, { Logger } from "pino";
 import { QueueService } from "../QueueService";
 import { FormType, PayMetadata } from "../../../types/FormDataBody";
-import { NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
+import { CertifyCopyTemplateType, MarriageTemplateType, NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
-import { getUserTemplate } from "./getUserTemplate";
+
 import { MARRIAGE_FORM_TYPES } from "../../../utils/formTypes";
 import { getPersonalisationBuilder } from "./getPersonalisationBuilder";
+import * as additionalContexts from "../utils/additionalContexts.json";
 
 export class UserService {
   logger: Logger;
-  templates: Record<FormType, NotifyTemplateGroup>;
+  templates: NotifyTemplateGroup;
   queueService: QueueService;
   constructor({ queueService }: { queueService: QueueService }) {
     this.logger = pino().child({ service: "Notify" });
@@ -22,24 +23,32 @@ export class UserService {
           postal: config.get<string>("Notify.Template.affirmationUserConfirmation"),
         },
         cni: {
-          inPerson: config.get<string>("Notify.Template.cniUserConfirmation"),
-          postal: config.get<string>("Notify.Template.cniUserPostalConfirmation"),
+          cni: {
+            inPerson: config.get<string>("Notify.Template.cniUserConfirmation"),
+            postal: config.get<string>("Notify.Template.cniUserPostalConfirmation"),
+          },
+          msc: {
+            inPerson: config.get<string>("Notify.Template.mscUserConfirmation"),
+            postal: config.get<string>("Notify.Template.mscUserConfirmation"),
+          },
+          cniAndMsc: {
+            inPerson: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
+            postal: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
+          },
         },
         exchange: {
           inPerson: config.get<string>("Notify.Template.exchangeUserConfirmation"),
           postal: config.get<string>("Notify.Template.exchangeUserPostalConfirmation"),
         },
-        msc: {
-          inPerson: config.get<string>("Notify.Template.mscUserConfirmation"),
-          postal: config.get<string>("Notify.Template.mscUserConfirmation"),
-        },
-        cniAndMsc: {
-          inPerson: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-          postal: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-        },
         certifyCopy: {
-          inPerson: config.get<string>("Notify.Template.certifyCopyUserConfirmation"),
-          postal: config.get<string>("Notify.Template.certifyCopyUserPostalConfirmation"),
+          adult: {
+            inPerson: config.get<string>("Notify.Template.certifyCopyAdultUserConfirmation"),
+            postal: config.get<string>("Notify.Template.certifyCopyAdultUserPostalConfirmation"),
+          },
+          child: {
+            inPerson: config.get<string>("Notify.Template.certifyCopyChildUserConfirmation"),
+            postal: config.get<string>("Notify.Template.certifyCopyChildUserPostalConfirmation"),
+          },
         },
       };
     } catch (err) {
@@ -64,12 +73,12 @@ export class UserService {
       isPostalApplication = answers.applicationType === "postal";
     }
 
-    const templateName = getUserTemplate(answers.country as string, type, isPostalApplication);
     const personalisationBuilder = getPersonalisationBuilder(type);
-    const buildPersonalisationForTemplate = personalisationBuilder[templateName];
+    const postalVariant = this.getPostalVariant(answers, isPostalApplication, type);
+    const buildPersonalisationForTemplate = personalisationBuilder[postalVariant];
     const personalisation = buildPersonalisationForTemplate(answers, metadata);
     const emailArgs = {
-      template: this.templates[type][templateName],
+      template: this.getTemplate({ answers, type, postalVariant: postalVariant }),
       emailAddress: answers.emailAddress as string,
       metadata: {
         reference,
@@ -84,5 +93,28 @@ export class UserService {
 
   async sendEmail(notifySendEmailArgs: NotifySendEmailArgs) {
     return await this.queueService.sendToQueue("NOTIFY_SEND", notifySendEmailArgs);
+  }
+
+  getPostalVariant(answers: AnswersHashMap, postal: boolean | undefined, type: FormType) {
+    const country = answers.country as string;
+    // for exchange forms, any country that offers a postal journey and cni delivery should be a postal application.
+    const countryOffersPostalRoute = additionalContexts.marriage.countries[country]?.postal && additionalContexts.marriage.countries[country]?.cniDelivery;
+
+    // Croatia is an exception to this, and only offers in-person applications for exchange
+    const countryIsCroatia = country === "Croatia";
+
+    const postalSupport = postal ?? (type === "exchange" && countryOffersPostalRoute && !countryIsCroatia);
+
+    return postalSupport ? "postal" : "inPerson";
+  }
+
+  getTemplate({ answers, type, postalVariant }: { answers: AnswersHashMap; type: FormType; postalVariant: "postal" | "inPerson" }) {
+    if (answers.service) {
+      return this.templates.cni[answers.service as MarriageTemplateType][type][postalVariant];
+    }
+    if (answers.over16 !== undefined) {
+      return this.templates.certifyCopy[answers.over16 as CertifyCopyTemplateType][type][postalVariant];
+    }
+    return this.templates[type][postalVariant];
   }
 }

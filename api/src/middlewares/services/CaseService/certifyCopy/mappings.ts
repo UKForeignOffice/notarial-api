@@ -1,12 +1,8 @@
 export const order = {
-  contactDetails: "Contact details",
   applicantDetails: "Applicant's details",
-  childName: "Child's details",
-  childBirth: "Child's birth details",
-  childPassport: "Child's passport details",
-  applicantBirth: "Applicant's birth details",
-  applicantPassport: "Applicant's passport",
-  postalAddress: "Postal address",
+  applicantPassport: "Applicant's passport details",
+  deliveryAddress: "Delivery address",
+  contactDetails: "Contact details",
   feedbackConsent: "Feedback consent",
 };
 
@@ -19,22 +15,9 @@ export const remap = {
   phoneNumber: "contactDetails.phoneNumber",
   emailAddress: "contactDetails.emailAddress",
 
-  childFirstName: "childName.childFirstName",
-  childMiddleName: "childName.childMiddleName",
-  childSurname: "childName.childSurname",
-  childSex: "childName.childSex",
-
-  childDateOfBirth: "childBirth.dateOfBirth",
-  childPlaceOfBirth: "childBirth.placeOfBirth",
-  childCountryOfBirth: "childBirth.countryOfBirth",
-
-  childPassportNumber: "applicantPassport.number",
-  childPassportDateOfIssue: "applicantPassport.dateOfIssue",
-
   firstName: "applicantDetails.firstName",
   middleName: "applicantDetails.middleName",
   surname: "applicantDetails.surname",
-  sex: "applicantDetails.sex",
 
   dateOfBirth: "applicantBirth.dateOfBirth",
   placeOfBirth: "applicantBirth.placeOfBirth",
@@ -43,11 +26,21 @@ export const remap = {
   passportNumber: "applicantPassport.number",
   passportDateOfIssue: "applicantPassport.dateOfIssue",
 
-  deliveryAddressLine1: "postalAddress.addressLine1",
-  deliveryAddressLine2: "postalAddress.addressLine2",
-  deliveryCity: "postalAddress.city",
-  deliveryPostcode: "postalAddress.postcode",
-  deliveryCountry: "postalAddress.country",
+  childFirstName: "applicantDetails.firstName",
+  childMiddleName: "applicantDetails.childMiddleName",
+  childSurname: "applicantDetails.childSurname",
+
+  childPassportNumber: "applicantPassport.number",
+  childCountryOfBirth: "applicantPassport.countryOfBirth",
+  childDateOfBirth: "applicantPassport.dateOfBirth",
+  childPlaceOfBirth: "applicantPassport.placeOfBirth",
+  childPassportDateOfIssue: "applicantPassport.dateOfIssueOfPassport",
+
+  deliveryAddressLine1: "deliveryAddress.addressLine1",
+  deliveryAddressLine2: "deliveryAddress.addressLine2",
+  deliveryCity: "deliveryAddress.townOrCity",
+  deliveryPostcode: "deliveryAddress.postcodeOrZipCode",
+  deliveryCountry: "deliveryAddress.country",
 
   feedbackConsent: "feedbackConsent.feedbackConsent",
 };

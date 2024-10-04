@@ -1,7 +1,6 @@
-import { AlertJob } from "../../utils/types";
+import { AlertJob, TemplateType } from "../../utils/types";
 import { QueueService } from "../../QueueService";
 import { FormField } from "../../../../types/FormField";
-import { FormType } from "../../../../types/FormDataBody";
 import { SESSendJob } from "./SESSendJob";
 import { ProcessQueueData } from "./ProcessQueueData";
 import { PaymentData } from "./PaymentData";
@@ -19,7 +18,7 @@ export interface CaseService {
   /**
    * Builds the email body
    */
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentData; reference: string }, type: FormType): string;
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentData; reference: string }, type: TemplateType): string;
 
   /**
    * builds the data required for the SES_PROCESS job

@@ -2,29 +2,6 @@
 
 exports[`certifyCopy is successfully remapped 1`] = `
 {
-  "Applicant's birth details": {
-    "countryOfBirth": {
-      "answer": "United Kingdom",
-      "category": "applicantDetails",
-      "key": "countryOfBirth",
-      "title": "Country of birth",
-      "type": "list",
-    },
-    "dateOfBirth": {
-      "answer": "1998-01-19",
-      "category": "applicantDetails",
-      "key": "dateOfBirth",
-      "title": "Date of birth",
-      "type": "date",
-    },
-    "placeOfBirth": {
-      "answer": "test",
-      "category": "applicantDetails",
-      "key": "placeOfBirth",
-      "title": "Place of birth ",
-      "type": "text",
-    },
-  },
   "Applicant's details": {
     "firstName": {
       "answer": "test",
@@ -55,7 +32,7 @@ exports[`certifyCopy is successfully remapped 1`] = `
       "type": "text",
     },
   },
-  "Applicant's passport": {
+  "Applicant's passport details": {
     "answer": "https://document-upload-endpoint",
     "category": "documents",
     "dateOfIssue": {
@@ -76,9 +53,6 @@ exports[`certifyCopy is successfully remapped 1`] = `
     "title": "Upload your UK passport",
     "type": "file",
   },
-  "Child's birth details": undefined,
-  "Child's details": undefined,
-  "Child's passport details": undefined,
   "Contact details": {
     "emailAddress": {
       "answer": "luke@cautionyourblast.com",
@@ -95,6 +69,7 @@ exports[`certifyCopy is successfully remapped 1`] = `
       "type": "text",
     },
   },
+  "Delivery address": undefined,
   "Feedback consent": {
     "feedbackConsent": {
       "answer": false,
@@ -104,6 +79,5 @@ exports[`certifyCopy is successfully remapped 1`] = `
       "type": "list",
     },
   },
-  "Postal address": undefined,
 }
 `;

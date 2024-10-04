@@ -1,10 +1,13 @@
 const template = `
 <p>Dear {{post}}, </p>
 
-<p>You have a new application for certifying a copy of a passport.</p>
+<p>You have a new application for certifying a copy of a document.</p>
 <p>
     Below is the information the applicant entered in their online application. Attached are the documents they submitted.
     Use them to create a new case in Orbit.
+</p>
+<p>
+    If the applicant needs to book an appointment, you’ll get a separate email from CABS when they complete their booking.
 </p>
 <p>
     Do not forward this email. Enter the details into Orbit and delete it from the shared mailbox once you have processed the application.
