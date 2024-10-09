@@ -1,11 +1,7 @@
 {
   "certifyCopy": {
     "countries": {
-      "Bulgaria": {
-        "postal": "TRUE",
-        "post": "the British Embassy Sofia",
-        "postAddress": "\nBritish Embassy Sofia\n9, Moskovska St\n1000 Sofia\nBulgaria"
-      },
+      "Bulgaria": { "postal": "TRUE", "post": "the British Embassy Sofia", "postAddress": "\nBritish Embassy Sofia\n9, Moskovska St\n1000 Sofia\nBulgaria" },
       "Greece": {
         "post": "the British Embassy Athens",
         "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=15&service=8",
@@ -50,7 +46,7 @@
         "postal": false,
         "additionalDocs": "",
         "cniDelivery": false,
-        "localRequirements": " \nAlbanian authorities will ask for your birth certificate. This will be retained by the authorities so you should provide a [certified copy from a local notary](https://www.gov.uk/guidance/find-a-notary-abroad). If the authorities ask for your original birth certificate, explain that they are only issued once in the UK. You can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea53e49b9c0597fdafa8f/Albania_-_standard_letter_-_birth_certificate.pdf) to help you.  \nAlbanian authorities may ask you to provide a vërtetim banimi (proof of address template). If you live in the UK you can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea57da3c2a28abb50cd58/Albania_-_standard_letter_-_proof_of_address.pdf) to help you explain that there’s no equivalent document in the UK."
+        "localRequirements": "\nAlbanian authorities will ask for your birth certificate. This will be retained by the authorities so you should provide a [certified copy from a local notary](https://www.gov.uk/guidance/find-a-notary-abroad). If the authorities ask for your original birth certificate, explain that they are only issued once in the UK. You can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea53e49b9c0597fdafa8f/Albania_-_standard_letter_-_birth_certificate.pdf) to help you.\nAlbanian authorities may ask you to provide a vërtetim banimi (proof of address template). If you live in the UK you can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea57da3c2a28abb50cd58/Albania_-_standard_letter_-_proof_of_address.pdf) to help you explain that there’s no equivalent document in the UK."
       },
       "Algeria": {
         "post": "the British Embassy Algiers",
@@ -241,7 +237,7 @@
         "postal": true,
         "additionalDocs": "",
         "cniDelivery": true,
-        "localRequirements": "\nThe CNI and the certificate of custom law will be issued in Croatian. You’ll need to get both certified by the Ministry of Foreign and European Affairs in Zagreb before they‘ll be accepted by your registrar.  \nYou’ll also need to give the registrar a [legalised (apostilled)](https://www.gov.uk/get-document-legalised) and [translated](https://find-a-professional-service-abroad.service.csd.fcdo.gov.uk/find/translators-interpreters) birth certificate. If your name is different on your birth certificate and your passport the local registrar will ask for evidence of your name change, for example deed poll or previous marriage certificate."
+        "localRequirements": "\nThe CNI and the certificate of custom law will be issued in Croatian. You’ll need to get both certified by the Ministry of Foreign and European Affairs in Zagreb before they‘ll be accepted by your registrar.\nYou’ll also need to give the registrar a [legalised (apostilled)](https://www.gov.uk/get-document-legalised) and [translated](https://find-a-professional-service-abroad.service.csd.fcdo.gov.uk/find/translators-interpreters) birth certificate. If your name is different on your birth certificate and your passport the local registrar will ask for evidence of your name change, for example deed poll or previous marriage certificate."
       },
       "Cuba": {
         "post": "the British Embassy Havana",
@@ -330,7 +326,7 @@
         "duration": "around 3 months (check with local marriage authorities)",
         "postal": false,
         "additionalDocs": [
-          "residence permit card issued by Finnish Immigration Service (or equivalent for the country you live in) ",
+          "residence permit card issued by Finnish Immigration Service (or equivalent for the country you live in) – this serves as your proof of address",
           "partner‘s DVV certificate (this can also be their proof of address)"
         ],
         "cniDelivery": false,
@@ -393,7 +389,7 @@
           "proof of permanent address if you live outside of Italy"
         ],
         "cniDelivery": true,
-        "localRequirements": "\nA CNI is equivalent to a ‘Nulla Osta’ in Italy. "
+        "localRequirements": "\nA CNI is equivalent to a ‘Nulla Osta’ in Italy."
       },
       "Jordan": {
         "post": "the British Embassy Amman",
@@ -404,7 +400,7 @@
         "postal": false,
         "additionalDocs": "",
         "cniDelivery": false,
-        "localRequirements": "\nThe marital status affirmation you’ll swear will be slightly different depending on your type of marriage. \nFor Islamic marriages at the Sharia Court, you’ll swear a single declaration document to prove you’re allowed to marry or a single divorced declaration document if you’re divorced. \nFor Christian marriages, you’ll swear a marital status affidavit. \nBefore your appointment, the British Embassy Amman will contact you to ask which document you need."
+        "localRequirements": "\nThe marital status affirmation you’ll swear will be slightly different depending on your type of marriage. \nFor Islamic marriages at the Sharia Court, you’ll swear a single declaration document to prove you’re allowed to marry or a single divorced declaration document if you’re divorced.\nFor Christian marriages, you’ll swear a marital status affidavit.\nBefore your appointment, the British Embassy Amman will contact you to ask which document you need."
       },
       "Kazakhstan": {
         "post": "the British Embassy Astana",
@@ -748,7 +744,7 @@
           "if you live in Spain, use your registration certificate for the town hall register (padrón municipal) as proof of address"
         ],
         "cniDelivery": true,
-        "localRequirements": "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application."
+        "localRequirements": "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards.\nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application."
       },
       "Sweden": {
         "post": "the British Embassy Stockholm",
@@ -1122,7 +1118,7 @@
       "Western Sahara": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Yemen": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Zambia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-      "Zimbabwe": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" }
+      "Zimbabwe": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false }
     },
     "posts": {
       "the British Embassy Brasilia": {
