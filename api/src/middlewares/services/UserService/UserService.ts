@@ -109,8 +109,8 @@ export class UserService {
   }
 
   getTemplate({ answers, type, postalVariant }: { answers: AnswersHashMap; type: FormType; postalVariant: "postal" | "inPerson" }) {
-    if (answers.service) {
-      return this.templates.cni[answers.service as MarriageTemplateType][postalVariant];
+    if (type === "cni") {
+      return this.templates.cni[(answers.service as MarriageTemplateType) ?? "cni"][postalVariant];
     }
     if (answers.over16 !== undefined) {
       const certifyCopyVariant = answers.over16 ? "adult" : "child";
