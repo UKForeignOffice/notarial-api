@@ -36,7 +36,7 @@ export function buildInPersonPersonalisation(answers: AnswersHashMap, metadata: 
     post: getPostForMarriage(country, post),
     country,
     bookingLink: additionalContext.bookingLink,
-    localRequirements: additionalContext.localRequirements,
+    localRequirements: additionalContext.localRequirements ?? "",
     civilPartnership: additionalContext.civilPartnership,
     reference: metadata.reference,
     notPaid: !isSuccessfulPayment,
