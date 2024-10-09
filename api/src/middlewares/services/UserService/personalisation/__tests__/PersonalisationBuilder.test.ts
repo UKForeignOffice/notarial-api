@@ -75,7 +75,7 @@ test("buildJobData should return the correct personalisation for Spain when the 
     countryIsItalyAndDoesNotLiveInItaly: false,
     countryIsItalyAndPartnerHadPreviousMarriage: false,
     localRequirements:
-      "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application.",
+      "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards.\nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application.",
     civilPartnership: false,
     reference: "1234",
     postAddress: "",
@@ -95,7 +95,7 @@ test("getPostalAdditionalContext returns additionalContext correctly", () => {
     civilPartnership: true,
     cniDelivery: true,
     duration: "6 months",
-    localRequirements: `\nA CNI is equivalent to a ‘Nulla Osta’ in Italy. `,
+    localRequirements: `\nA CNI is equivalent to a ‘Nulla Osta’ in Italy.`,
     post: "the British Embassy Rome",
     postAddress: `\nBritish Embassy Rome \nVia XX Settembre 80/a \n00187 Rome \nItaly`,
     postal: true,
