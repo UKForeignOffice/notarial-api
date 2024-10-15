@@ -20,7 +20,7 @@ jest.mock("config", () => ({
   },
 }));
 
-jest.mock("../../userService");
+jest.mock("../../UserService");
 jest.mock("./../getPersonalisationBuilder");
 const queueService = { sendToQueue: jest.fn() };
 const userService = new UserService({ queueService });
@@ -47,7 +47,7 @@ describe("sendEmailToUser - Marriage templates", () => {
     ${"cni - country supports postal / delivery"} | ${{ country: "Bulgaria" }}  | ${{ type: "cni", postal: true }}       | ${"cni-postal-template"}
     ${"cni - msc"}                                | ${{ service: "msc" }}       | ${{ type: "cni" }}                     | ${"msc-template"}
     ${"cni - defaults to cni"}                    | ${{ service: "cniAndMsc" }} | ${{ type: "cni" }}                     | ${"cni-msc-template"}
-  `(`$label should return $template`, async ({ answers, metadata, template }) => {
+  `(`$template is returned for $label`, async ({ answers, metadata, template }) => {
     await userService.sendEmailToUser({ answers, metadata });
 
     expect(sendEmailSpy).toHaveBeenCalledWith(
@@ -65,7 +65,7 @@ describe("sendEmailToUser - certifyCopy", () => {
     ${"certifyCopy - adult - postal"}   | ${{ over16: true, applicationType: "postal" }}  | ${{ type: "certifyCopy" }} | ${"certify-copy-adult-postal-template"}
     ${"certifyCopy - child - inPerson"} | ${{ over16: false }}                            | ${{ type: "certifyCopy" }} | ${"certify-copy-child-template"}
     ${"certifyCopy - adult - postal"}   | ${{ over16: false, applicationType: "postal" }} | ${{ type: "certifyCopy" }} | ${"certify-copy-child-postal-template"}
-  `(`$label should return $template`, async ({ answers, metadata, template }) => {
+  `(`$template is returned for $label`, async ({ answers, metadata, template }) => {
     await userService.sendEmailToUser({ answers, metadata });
 
     expect(sendEmailSpy).toHaveBeenCalledWith(
