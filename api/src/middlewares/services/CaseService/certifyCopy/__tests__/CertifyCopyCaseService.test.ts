@@ -65,7 +65,6 @@ test("sendEmail throws ApplicationError when no jobId is returned", async () => 
       },
     });
   } catch (e) {
-    console.log(e);
     expect(e.code).toBe("SES_SEND_ERROR");
     expect(e.name).toBe("QUEUE");
   }

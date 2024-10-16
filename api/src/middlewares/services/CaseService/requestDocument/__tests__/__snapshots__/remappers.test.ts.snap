@@ -128,13 +128,6 @@ exports[`requestDocument is successfully remapped 1`] = `
 exports[`requestDocument is successfully reordered 1`] = `
 {
   "Applicant's details": {
-    "dateOfBirth": {
-      "answer": "2000-12-25",
-      "category": "applicantDetails",
-      "key": "dateOfBirth",
-      "title": "Date of birth",
-      "type": "date",
-    },
     "firstName": {
       "answer": "George",
       "category": "applicantDetails",
@@ -149,13 +142,6 @@ exports[`requestDocument is successfully reordered 1`] = `
       "title": "Middle name",
       "type": "text",
     },
-    "placeOfBirth": {
-      "answer": "london",
-      "category": "applicantDetails",
-      "key": "placeOfBirth",
-      "title": "Place of birth ",
-      "type": "text",
-    },
     "surname": {
       "answer": "Goofy",
       "category": "applicantDetails",
@@ -165,6 +151,13 @@ exports[`requestDocument is successfully reordered 1`] = `
     },
   },
   "Applicant's passport details": {
+    "dateOfBirth": {
+      "answer": "2000-12-25",
+      "category": "applicantDetails",
+      "key": "dateOfBirth",
+      "title": "Date of birth",
+      "type": "date",
+    },
     "dateOfIssue": {
       "answer": "2000-12-25",
       "category": "applicantDetails",
@@ -177,6 +170,13 @@ exports[`requestDocument is successfully reordered 1`] = `
       "category": "applicantDetails",
       "key": "passportNumber",
       "title": "Passport number",
+      "type": "text",
+    },
+    "placeOfBirth": {
+      "answer": "london",
+      "category": "applicantDetails",
+      "key": "placeOfBirth",
+      "title": "Place of birth ",
       "type": "text",
     },
   },
@@ -206,5 +206,6 @@ exports[`requestDocument is successfully reordered 1`] = `
       "type": "list",
     },
   },
+  "Marital status": undefined,
 }
 `;
