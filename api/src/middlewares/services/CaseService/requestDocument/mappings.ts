@@ -19,6 +19,7 @@ export const remap = {
   passportDateOfIssue: "applicantPassport.dateOfIssue",
   passportNumber: "applicantPassport.number",
   dateOfBirth: "applicantPassport.dateOfBirth",
+  countryOfBirth: "applicantPassport.dateOfBirth",
   placeOfBirth: "applicantPassport.placeOfBirth",
   sex: "applicantDetails.sex",
 

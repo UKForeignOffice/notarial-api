@@ -1232,5 +1232,157 @@
         "postAddress": ""
       }
     }
+  },
+  "requestDoc": {
+    "adoption": {
+      "India": {
+        "postal": "TRUE",
+        "delivery": "You will be notified when you need to arrange for your document to be collected by a prepaid courier during <a class=\"govuk-link\" href=\"https://www.gov.uk/world/embassies\">high commission or office opening hours</a>",
+        "customText": "<p class=\"govuk-body\">Your sworn statement must be on stamped paper. Speak to your lawyer about this.</p>",
+        "country": "India"
+      },
+      "Spain": {
+        "postal": "TRUE",
+        "delivery": "Your document will be posted to your chosen address in Spain. You'll be charged an additional £13 for postage.",
+        "post": "the British Consulate General Madrid",
+        "bookingLink": ""
+      },
+      "Thailand": {
+        "postal": "TRUE",
+        "delivery": "Your document will be posted to your chosen address in Thailand. You'll be charged an additional £2 for postage.",
+        "post": "the British Embassy Bangkok"
+      },
+      "United Arab Emirates": {
+        "postal": "FALSE",
+        "delivery": "Book an appointment at the British Embassy Abu Dhabi or Dubai to collect your document.",
+        "country": "United Arab Emirates"
+      },
+      "Vietnam": {
+        "postal": "FALSE",
+        "delivery": "Book an appointment at the British Embassy Hanoi or the British Consulate General Ho Chi Minh City to collect your document.",
+        "country": "Vietnam"
+      }
+    },
+    "services": {
+      "Mexico - criminal record certificate letter": {
+        "name": "criminal record certificate (certificado de datos registrales) letter",
+        "customText": "<p class=\"govuk-body\">To get a criminal record certificate you’ll need a letter from the British Embassy Mexico City requesting a criminal background check from Mexican authorities. The Mexican authorities are responsible for the process – the embassy cannot provide the certificate directly.</p>",
+        "postal": "FALSE",
+        "post": "the British Embassy Mexico City",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=129&service=18"
+      },
+      "Democratic Republic of the Congo - consular certificate": {
+        "name": "consular certificate (attestation consulaire)",
+        "customText": "<p class=\"govuk-body\">You might need a consular certificate so that you can work or renew your residency permit in the Democratic Republic of Congo.</p>",
+        "postal": "FALSE",
+        "post": "the British Embassy Kinshasa",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=122&service=18"
+      },
+      "India - organ transplant letter": {
+        "name": "organ transplant letter",
+        "customText": "<p class=\"govuk-body\">British high commissions in India can:</p><ul class=\"govuk-list\"><li>stamp and sign the Form 21 that you get from the hospital</li><li>give you a stamped and signed letter that says they cannot verify your relationship with the donor to issue a no objection certificate</li></ul><p class=\"govuk-body\">They cannot:</p><ul class=\"govuk-list govuk-list--bullet\"><li>certify a copy of your passport – you should <a class=\"govuk-link\" href=\"https://www.gov.uk/guidance/find-a-notary-abroad\">find a local notary</a> to do this</li><li>issue a no objection to organ donation certificate</li></ul><p class=\"govuk-body\">You’ll need to bring the original Form 21 to an appointment at the British high commission.</p>",
+        "additionalEvidence": "<li>Form 21 from the hospital</li>",
+        "postal": "FALSE",
+        "country": "India"
+      },
+      "India - letter to access Indian state or national archives": {
+        "name": "letter to access Indian state or national archives",
+        "delivery":  "Arrange for your document to be collected by a prepaid courier during <a class=\"govuk-link\" href=\"https://www.gov.uk/world/embassies\">high commission or office opening hours</a>.",
+        "additionalEvidence": "<li>letter from the college, university or institution saying what your research is</li>",
+        "postal": "TRUE",
+        "country": "India"
+      },
+      "India - letter of introduction for admission to an Indian university": {
+        "name": "letter of introduction for admission to an Indian university",
+        "delivery":  "Arrange for your document to be collected by a prepaid courier during <a class=\"govuk-link\" href=\"https://www.gov.uk/world/embassies\">high commission or office opening hours</a>.",
+        "additionalEvidence": "<li>completed university application form</li>",
+        "postal": "TRUE",
+        "country": "India"
+      },
+      "Panama - certificate of entitlement for a Panamanian driving licence": {
+        "name": "certificate of entitlement for a Panamanian driving licence",
+        "customText": "<p class=\"govuk-body\">You’ll need a DVLA  ‘check code’ to share with the British Embassy Panama City. They’ll use the information to check your UK driving licence.</p><p class=\"govuk-body\">To get a check code:</p><ol class=\"govuk-list govuk-list--number\"><li><a class=\"govuk-link\" href=\"https://www.gov.uk/view-driving-licence\">Go to DVLA to view your driving licence information</a> – you’ll need to enter your driving licence number, National Insurance number and postcode.</li><li>Click on the ‘get your check code’ tab.</li><li>Select ‘print’ or ‘print or save’ (this may be different depending on which device you’re using).</li><li>Download a DVLA licence summary – you’ll need the first page of the summary for this service, which includes the code and last 8 numbers of your driving licence number </li></ol><p class=\"govuk-body\">The check code is valid for 21 days and can only be used once, so get the code when you’re ready to apply and do not use it anywhere else.</p>",
+        "additionalEvidence": "<li><a class=\"govuk-link\" href=\"https://www.gov.uk/view-driving-licence\">DVLA licence summary</a></li>",
+        "postal": "FALSE",
+        "post":  "the British Embassy Panama City",
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=134&service=18"
+      },
+      "Thailand - letter supporting Thai citizenship": {
+        "name": "letter supporting Thai citizenship",
+        "customText": "<p class=\"govuk-body\">The law in Thailand needs you to give up (renounce) any existing citizenship to get Thai citizenship. You do not have to do this if you're a woman married to a Thai national.</p><p class=\"govuk-body\">Find out how to <a class=\"govuk-link\" href=\"https://www.gov.uk/renounce-british-nationality\">give up your British citizenship</a>.</p><p class=\"govuk-body\">You'll need to get a certified copy of your passport from the embassy, which costs an additional £25. Send your UK passport to the embassy after you've applied online.</p>",
+        "additionalEvidence": "<li>proof of your address</li>",
+        "delivery": "Your document will be posted to your chosen address in Thailand. You'll be charged an additional £2 for postage.",
+        "postal": "TRUE",
+        "post": "the British Embassy Bangkok"
+      },
+      "USA - J1 visa no objection statement": {
+        "name": "J1 visa no objection statement",
+        "customText": "<p class=\"govuk-body\">To apply for a no objection statement to get a waiver of the 2-year home residency requirement you’ll need to:</p><ul class=\"govuk-list govuk-list--bullet\"><li><a class=\"govuk-link\" href=\"https://travel.state.gov/content/travel/en/us-visas/study/exchange/waiver-of-the-exchange-visitor/how-to-apply-waiver.html\">complete form DS-3035 from the US Department of State</a></li><li>get a waiver case number and third party barcode page</li></ul>",
+        "additionalEvidence": "<li>completed application pack</li><li>waiver case number and third party barcode page</li>",
+        "delivery": "You'll receive confirmation in 2 to 3 working days that the no objection statement has been sent to the US Department of State.",
+        "postal": "TRUE",
+        "post": "the British Embassy Washington"
+      },
+      "Belgium - certificate of custom law": {
+        "name": "certificate of custom law for marriage",
+        "additionalEvidence": "<li>your partner's passport</li><li>your full birth certificate (this includes parents’ details)</li><li>proof any previous marriage or civil partnerships have ended</li>",
+        "delivery": "Your document will be posted to your chosen address in Belgium. You'll be charged an additional £5 for postage.",
+        "postal": "TRUE",
+        "post": "the British Embassy Brussels"
+      },
+      "Luxembourg - certificate of custom law": {
+        "name": "certificate of custom law for marriage or civil partnership",
+        "additionalEvidence": "<li>your partner's passport</li><li>your full birth certificate (this includes parents’ details)</li><li>proof any previous marriage or civil partnerships have ended</li>",
+        "delivery": "Your document will be posted to your chosen address in Luxembourg. You'll be charged an additional £5 for postage.",
+        "postal": "TRUE",
+        "post": "the British Embassy Luxembourg"
+      },
+      "Andorra - MSC": {
+        "name": "marital status certificate (MSC) for marriage, civil partnership or cohabitation",
+        "additionalEvidence": "<li>your partner's passport</li><li>your full birth certificate (this includes parents’ details)</li><li>proof of your address in Andorra, for example, your residence certificate or 'certificat d’empadronament'</li><li>proof any previous marriage or civil partnership has ended, for example, a decree absolute, annulment certificate or death certificate</li>",
+        "customText": "<p class=\"govuk-body\">You’ll need an appointment at the British Consulate General Barcelona to make an affirmation of your marital status and collect your certificate. Your MSC will cost £100 –  £50 to make the affirmation and £50 to issue the certificate.</p><p class=\"govuk-body\">You can only get an MSC to register a cohabitation arrangement (unió estable de parella) if you live in Andorra.</p>",
+        "postal": "FALSE",
+        "post": "the British Consulate General Barcelona (for Andorra)",
+        "bookingLink":  "mailto:BarcelonaConsularEscalations@fcdo.gov.uk"
+      },
+      "Vietnam - letter to support a permanent residency application": {
+        "name": "letter to support a permanent residency application",
+        "postal": "FALSE",
+        "country": "Vietnam",
+        "customText": "<p class=\"govuk-body\">At your appointment you will need to bring:</p><ul class=\"govuk-list govuk-list--bullet\"><li>your Vietnamese spouses's passport</li><li>your proof of address</li></ul>"
+      }
+    },
+    "posts": {
+      "the British Deputy High Commission Chennai": {
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=84&service=18"
+      },
+      "the British Deputy High Commission Mumbai": {
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=88&service=18"
+      },
+      "the British Nationals Assistance Office Goa": {
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=194&service=18"
+      },
+      "the British High Commission New Delhi": {
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=181&service=18"
+      },
+      "the British Deputy High Commission Kolkata": {
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=86&service=18"
+      },
+      "the British Deputy High Commission Chandigarh": {
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=200&service=18"
+      },
+      "the British Embassy Hanoi": {
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=115&service=9"
+      },
+      "the British Consulate General Ho Chi Minh City": {
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=64&service=9"
+      },
+      "the British Embassy Abu Dhabi": {
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=89&service=18"
+      },
+      "the British Embassy Dubai":  {
+        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=112&service=18"
+      }
+    }
   }
 }

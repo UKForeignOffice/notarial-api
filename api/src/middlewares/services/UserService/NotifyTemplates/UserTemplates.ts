@@ -39,8 +39,15 @@ export class UserTemplates {
         postal: config.get<string>("Notify.Template.certifyCopyChildUserPostalConfirmation"),
       },
     },
-    requestADocument: {},
+    requestDocument: {},
   };
+  constructor() {
+    try {
+    } catch (e) {
+      console.error("Notify templates have not been configured, exiting", e);
+      process.exit(1);
+    }
+  }
 
   getTemplate(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean } }) {
     const { answers, metadata } = data;

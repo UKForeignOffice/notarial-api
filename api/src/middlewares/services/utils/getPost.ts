@@ -12,8 +12,7 @@ export function getPostForRequestDocument(service: string, country?: string, pos
   if (post) {
     return post;
   }
-  //TODO:- add ctx
-  // @ts-ignore
+
   const context = additionalContexts.requestDoc;
 
   if (service === "adoption") {
@@ -24,5 +23,5 @@ export function getPostForRequestDocument(service: string, country?: string, pos
     return adoptionContext?.[country]?.post;
   }
 
-  return context[service]?.post;
+  return context.services[service]?.post;
 }
