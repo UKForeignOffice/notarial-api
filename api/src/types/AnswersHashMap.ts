@@ -1,1 +1,12 @@
-export type AnswersHashMap = Record<string, string | boolean>;
+import { MarriageTemplateType } from "../middlewares/services/utils/types";
+
+export type MarriageAnswersHashMap = {
+  service?: MarriageTemplateType;
+  [key: string]: string | boolean | undefined;
+};
+
+export type CertifyCopyAnswersHashmap = {
+  over16?: boolean;
+} & Record<string, string | boolean>;
+
+export type AnswersHashMap = MarriageAnswersHashMap | CertifyCopyAnswersHashmap;

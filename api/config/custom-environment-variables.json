@@ -16,7 +16,8 @@
       "certifyCopyChildUserConfirmation": "NOTIFY_TEMPLATE_CERTIFY_COPY_CHILD_USER_CONFIRMATION",
       "certifyCopyChildUserPostalConfirmation": "NOTIFY_TEMPLATE_CERTIFY_COPY_CHILD_USER_POSTAL_CONFIRMATION",
       "certifyCopyPostNotification": "NOTIFY_TEMPLATE_CERTIFY_COPY_POST_NOTIFICATION",
-      "postNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION"
+      "postNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION",
+      "requestDocumentPostNotification": "NOTIFY_TEMPLATE_REQUEST_DOCUMENT_POST_NOTIFICATION"
     }
   },
   "Queue": {
