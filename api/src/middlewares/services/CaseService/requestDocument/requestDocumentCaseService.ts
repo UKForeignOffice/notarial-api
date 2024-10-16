@@ -95,7 +95,7 @@ export class RequestDocumentCaseService implements CaseService {
     const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference });
 
     const post = getPostForRequestDocument(answers.serviceType, answers.country, answers.post);
-    const onCompleteJob = this.getPostAlertData(country, post, reference);
+    const onCompleteJob = this.getPostAlertData(post, reference);
     return {
       subject: `Prepare a document application, ${country}, ${post} – ${reference}`,
       body: emailBody,
@@ -112,13 +112,10 @@ export class RequestDocumentCaseService implements CaseService {
     };
   }
 
-  getPostAlertData(country: string, post: string, reference: string) {
+  getPostAlertData(post: string, reference: string) {
     const emailAddress = getPostEmailAddress(post);
     if (!emailAddress) {
-      this.logger.error(
-        { code: "UNRECOGNISED_SERVICE_APPLICATION" },
-        `No email address found for the specified post – ${country} - ${post} – reference ${reference}.`
-      );
+      this.logger.error({ code: "UNRECOGNISED_SERVICE_APPLICATION" }, `No email address found for the specified post – ${post} – reference ${reference}.`);
       return;
     }
 

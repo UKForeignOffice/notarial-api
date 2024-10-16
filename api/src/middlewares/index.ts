@@ -12,11 +12,14 @@ export function initMiddleware(server: Application) {
   const certifyCopyCaseService = new CertifyCopyCaseService({ queueService });
   const requestDocumentCaseService = new RequestDocumentCaseService({ queueService });
   const userService = new UserService({ queueService });
+
   const submitService = new SubmitService({
     userService,
     marriageCaseService,
     certifyCopyCaseService,
+    requestDocumentCaseService,
   });
+
   server.services = {
     userService,
     marriageCaseService,

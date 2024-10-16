@@ -17,7 +17,10 @@
       "certifyCopyChildUserPostalConfirmation": "NOTIFY_TEMPLATE_CERTIFY_COPY_CHILD_USER_POSTAL_CONFIRMATION",
       "certifyCopyPostNotification": "NOTIFY_TEMPLATE_CERTIFY_COPY_POST_NOTIFICATION",
       "postNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION",
-      "requestDocumentPostNotification": "NOTIFY_TEMPLATE_REQUEST_DOCUMENT_POST_NOTIFICATION"
+      "requestDocumentPostNotification": "NOTIFY_TEMPLATE_REQUEST_DOCUMENT_POST_NOTIFICATION",
+      "requestDocument": {
+        "J1": "NOTIFY_TEMPLATE_REQUEST_DOCUMENT_J1_USER_CONFIRMATION"
+      }
     }
   },
   "Queue": {

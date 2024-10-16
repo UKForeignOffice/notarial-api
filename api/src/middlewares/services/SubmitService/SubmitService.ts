@@ -2,7 +2,7 @@ import logger, { Logger } from "pino";
 import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
 import { UserService } from "../UserService";
-import { MarriageCaseService } from "../CaseService";
+import { MarriageCaseService, RequestDocumentCaseService } from "../CaseService";
 import { CertifyCopyCaseService } from "../CaseService/certifyCopy/CertifyCopyCaseService";
 import { getCaseServiceName } from "../utils/getCaseServiceName";
 import { CaseService } from "../CaseService/types";
@@ -14,12 +14,14 @@ export class SubmitService {
   userService: UserService;
   marriageCaseService: MarriageCaseService;
   certifyCopyCaseService: CertifyCopyCaseService;
+  requestDocumentCaseService: RequestDocumentCaseService;
 
-  constructor({ userService, marriageCaseService, certifyCopyCaseService }) {
+  constructor({ userService, marriageCaseService, certifyCopyCaseService, requestDocumentCaseService }) {
     this.logger = logger().child({ service: "Submit" });
     this.userService = userService;
     this.marriageCaseService = marriageCaseService;
     this.certifyCopyCaseService = certifyCopyCaseService;
+    this.requestDocumentCaseService = requestDocumentCaseService;
   }
   generateId() {
     return nanoid();

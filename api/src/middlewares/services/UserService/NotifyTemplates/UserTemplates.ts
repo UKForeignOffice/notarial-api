@@ -1,5 +1,5 @@
 import config from "config";
-import { AnswersHashMap } from "../../../../types/AnswersHashMap";
+import { AnswersHashMap, RequestDocumentAnswersHashmap } from "../../../../types/AnswersHashMap";
 import { FormType, MarriageFormType, PayMetadata } from "../../../../types/FormDataBody";
 import { MARRIAGE_FORM_TYPES } from "../../../../utils/formTypes";
 import { getPersonalisationBuilder } from "../getPersonalisationBuilder";
@@ -39,7 +39,9 @@ export class UserTemplates {
         postal: config.get<string>("Notify.Template.certifyCopyChildUserPostalConfirmation"),
       },
     },
-    requestDocument: {},
+    requestDocument: {
+      "USA - J1 visa no objection statement": config.get<string>("Notify.Template.requestDocument.J1"),
+    },
   };
   constructor() {
     try {
@@ -60,7 +62,7 @@ export class UserTemplates {
     }
 
     const postalVariant = this.getPostalVariant(answers, isPostalApplication, type);
-    let template;
+    let template, builder;
 
     if (type === "cni") {
       const serviceSubtype = (answers.service ?? "cni") as MarriageFormType;
@@ -72,10 +74,17 @@ export class UserTemplates {
       template ??= this.templates.certifyCopy[certifyCopyVariant][postalVariant];
     }
 
+    if (type === "requestDocument") {
+      const requestDocAnswers = answers as RequestDocumentAnswersHashmap;
+      template = this.templates.requestDocument[requestDocAnswers.serviceType];
+      builder = getPersonalisationBuilder(type);
+    }
+
     template ??= this.templates[type][postalVariant];
 
     const personalisationBuilder = getPersonalisationBuilder(type);
-    const builder = personalisationBuilder[postalVariant];
+
+    builder ??= personalisationBuilder[postalVariant];
 
     return {
       template,
