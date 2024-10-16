@@ -13,6 +13,5 @@ test("requestDocument is successfully reordered", () => {
   const flattened = flattenQuestions(data.data.questions);
   const remapped = requestDocumentRemapper(flattened);
   const reordered = requestDocumentReorderer(remapped);
-  console.log(reordered);
   expect(reordered).toMatchSnapshot();
 });
