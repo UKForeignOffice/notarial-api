@@ -11,7 +11,7 @@ export type CertifyCopyAnswersHashmap = {
 
 export type RequestDocumentAnswersHashmap = {
   serviceType: string;
-  country?: string;
+  applicationCountry?: string;
   post?: string;
 } & Record<string, string | boolean>;
 

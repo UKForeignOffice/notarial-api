@@ -41,6 +41,9 @@ export class UserTemplates {
     },
     requestDocument: {
       "USA - J1 visa no objection statement": config.get<string>("Notify.Template.requestDocument.J1"),
+      appointment: config.get<string>("Notify.Template.requestDocument.appointment"),
+      courier: config.get<string>("Notify.Template.requestDocument.courier"),
+      posted: config.get<string>("Notify.Template.requestDocument.posted"),
     },
   };
   constructor() {
@@ -76,7 +79,16 @@ export class UserTemplates {
 
     if (type === "requestDocument") {
       const requestDocAnswers = answers as RequestDocumentAnswersHashmap;
-      template = this.templates.requestDocument[requestDocAnswers.serviceType];
+      const documentType = requestDocAnswers.serviceType;
+
+      if (documentType === "No objection certificate to adopt a child") {
+        const country = requestDocAnswers.applicationCountry;
+        const adoptionTemplateName = getAdoptionTemplateName(country!);
+        template = this.templates.requestDocument[adoptionTemplateName];
+      }
+
+      template ??= this.templates.requestDocument[documentType];
+
       builder = getPersonalisationBuilder(type);
     }
 
@@ -103,4 +115,17 @@ export class UserTemplates {
 
     return postalSupport ? "postal" : "inPerson";
   }
+}
+
+type GenericRequestDocumentTemplates = "courier" | "appointment" | "posted";
+function getAdoptionTemplateName(country: string) {
+  const countryMap: { [key: string]: GenericRequestDocumentTemplates } = {
+    India: "courier",
+    Vietnam: "appointment",
+    Spain: "posted",
+    "United Arab Emirates": "appointment",
+    Thailand: "posted",
+  };
+
+  return countryMap[country];
 }
