@@ -5,7 +5,6 @@ import { data } from "./fixtures/data";
 test("requestDocument is successfully remapped", () => {
   const flattened = flattenQuestions(data.data.questions);
   const remapped = requestDocumentRemapper(flattened);
-  console.log(remapped);
   expect(remapped).toMatchSnapshot();
 });
 

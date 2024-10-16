@@ -78,13 +78,6 @@ exports[`requestDocument is successfully remapped 1`] = `
       "type": "text",
     },
   },
-  "countryOfBirth": {
-    "answer": "United Kingdom",
-    "category": "applicantDetails",
-    "key": "countryOfBirth",
-    "title": "Country of birth",
-    "type": "list",
-  },
   "declaration": {
     "answer": true,
     "category": null,
