@@ -10,7 +10,7 @@ export function requestDocumentPersonalisationBuilder(
   if (!answers) {
     throw new ApplicationError("WEBHOOK", "VALIDATION", 500, "Fields are empty");
   }
-  const post = getPostForRequestDocument(answers.serviceType, answers.country, answers.post);
+  const post = getPostForRequestDocument(answers.serviceType, answers.applicationCountry, answers.post);
 
   return {
     post,
