@@ -15,6 +15,7 @@ import { CertifyCopyProcessQueueDataInput } from "../types";
 import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
 import { QueueService } from "../../QueueService";
 import logger, { Logger } from "pino";
+import { RequestDocumentAnswersHashmap } from "../../../../types/AnswersHashMap";
 
 export class RequestDocumentCaseService implements CaseService {
   logger: Logger;
@@ -66,12 +67,14 @@ export class RequestDocumentCaseService implements CaseService {
     const reorderer = reorderSectionsWithNewName(order);
     const reordered = reorderer(remapped);
 
-    const post = getPostForRequestDocument(serviceType, applicantCountry, remapped.post?.answer);
+    const post = getPostForRequestDocument(serviceType.answer, applicantCountry, remapped.post?.answer);
+
     return this.templates.SES({
       post,
       reference,
       payment,
-      country: applicantCountry,
+      serviceType: serviceType.answer,
+      country: applicantCountry?.answer,
       questions: reordered,
     });
   }
@@ -79,18 +82,19 @@ export class RequestDocumentCaseService implements CaseService {
   buildJobData(data: CertifyCopyProcessQueueData) {
     const { fields, metadata } = data;
     const { reference, payment, type } = metadata;
-    const answers = answersHashMap(fields);
+    const answers = answersHashMap(fields) as RequestDocumentAnswersHashmap;
     let paymentViewModel: PaymentData | undefined;
 
     try {
-      paymentViewModel = PaymentViewModel(payment, answers.country as string);
+      paymentViewModel = PaymentViewModel(payment, answers.serviceType);
     } catch (e) {
       this.logger.warn(`Payment details for ${reference} could not be parsed. Payment details will not be shown on the email.`);
     }
 
     const country = answers.country as string;
     const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference });
-    const post = getPostForRequestDocument();
+
+    const post = getPostForRequestDocument(answers.serviceType, answers.country, answers.post);
     const onCompleteJob = this.getPostAlertData(country, post, reference);
     return {
       subject: `Prepare a document application, ${country}, ${post} – ${reference}`,

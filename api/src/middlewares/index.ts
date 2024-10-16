@@ -1,7 +1,8 @@
 import { Application, json } from "express";
 import pino from "pino-http";
 import { QueueService, MarriageCaseService, SubmitService, UserService } from "./services";
-import { CertifyCopyCaseService } from "./services/CaseService/certifyCopy/CertifyCopyCaseService";
+import { CertifyCopyCaseService } from "./services";
+import { RequestDocumentCaseService } from "./services";
 
 export function initMiddleware(server: Application) {
   server.use(pino());
@@ -9,6 +10,7 @@ export function initMiddleware(server: Application) {
   const queueService = new QueueService();
   const marriageCaseService = new MarriageCaseService({ queueService });
   const certifyCopyCaseService = new CertifyCopyCaseService({ queueService });
+  const requestDocumentCaseService = new RequestDocumentCaseService({ queueService });
   const userService = new UserService({ queueService });
   const submitService = new SubmitService({
     userService,
@@ -19,6 +21,7 @@ export function initMiddleware(server: Application) {
     userService,
     marriageCaseService,
     certifyCopyCaseService,
+    requestDocumentCaseService,
     submitService,
   };
 }

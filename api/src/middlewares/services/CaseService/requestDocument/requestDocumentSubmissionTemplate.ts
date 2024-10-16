@@ -1,7 +1,7 @@
 const template = `
 <p>Dear {{post}}, </p>
 
-<p>You have a new application for to prepare a document.</p>
+<p>You have a new application for prepare a document.</p>
 <p>
     Below is the information the applicant entered in their online application. Attached are the documents they submitted.
     Use them to create a new case in Orbit.
@@ -37,7 +37,7 @@ const template = `
         payment ID: {{ payment.id }} <a href="{{payment.url}}">(View payment details or refund)</a>
     </li>
     <li>
-        <a href="{{payment.allTransactionsByCountry.url}}"> View all transactions for {{payment.allTransactionsByCountry.country}}</a>
+        <a href="{{payment.allTransactionsByCountry.url}}"> View all transactions for {{payment.allTransactionsByCountry.service}}</a>
     </li> 
 </ul>
 

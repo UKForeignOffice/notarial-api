@@ -1,11 +1,9 @@
-import config from "config";
 import pino, { Logger } from "pino";
 import { QueueService } from "../QueueService";
 import { FormType, PayMetadata } from "../../../types/FormDataBody";
-import { NotifySendEmailArgs, NotifyTemplateGroup } from "../utils/types";
+import { NotifySendEmailArgs } from "../utils/types";
 import { AnswersHashMap } from "../../../types/AnswersHashMap";
 
-import { MARRIAGE_FORM_TYPES } from "../../../utils/formTypes";
 import { UserTemplates } from "./NotifyTemplates";
 
 export class UserService {
@@ -16,45 +14,6 @@ export class UserService {
     this.logger = pino().child({ service: "Notify" });
     this.queueService = queueService;
     this.templates = new UserTemplates();
-    // try {
-    //   this.templates = {
-    //     affirmation: {
-    //       inPerson: config.get<string>("Notify.Template.affirmationUserConfirmation"),
-    //       postal: config.get<string>("Notify.Template.affirmationUserConfirmation"),
-    //     },
-    //     cni: {
-    //       cni: {
-    //         inPerson: config.get<string>("Notify.Template.cniUserConfirmation"),
-    //         postal: config.get<string>("Notify.Template.cniUserPostalConfirmation"),
-    //       },
-    //       msc: {
-    //         inPerson: config.get<string>("Notify.Template.mscUserConfirmation"),
-    //         postal: config.get<string>("Notify.Template.mscUserConfirmation"),
-    //       },
-    //       cniAndMsc: {
-    //         inPerson: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-    //         postal: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-    //       },
-    //     },
-    //     exchange: {
-    //       inPerson: config.get<string>("Notify.Template.exchangeUserConfirmation"),
-    //       postal: config.get<string>("Notify.Template.exchangeUserPostalConfirmation"),
-    //     },
-    //     certifyCopy: {
-    //       adult: {
-    //         inPerson: config.get<string>("Notify.Template.certifyCopyAdultUserConfirmation"),
-    //         postal: config.get<string>("Notify.Template.certifyCopyAdultUserPostalConfirmation"),
-    //       },
-    //       child: {
-    //         inPerson: config.get<string>("Notify.Template.certifyCopyChildUserConfirmation"),
-    //         postal: config.get<string>("Notify.Template.certifyCopyChildUserPostalConfirmation"),
-    //       },
-    //     },
-    //   };
-    // } catch (err) {
-    //   this.logger.error({ err }, "Notify templates have not been configured, exiting");
-    //   process.exit(1);
-    // }
   }
 
   /**

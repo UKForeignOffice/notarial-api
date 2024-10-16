@@ -1,5 +1,4 @@
-import { UserService, MarriageCaseService, SubmitService } from "../middlewares/services";
-import { CertifyCopyCaseService } from "../middlewares/services/CaseService/certifyCopy/CertifyCopyCaseService";
+import { UserService, MarriageCaseService, CertifyCopyCaseService, RequestDocumentCaseService, SubmitService } from "../middlewares/services";
 
 declare global {
   namespace Express {
@@ -7,6 +6,7 @@ declare global {
       services: {
         marriageCaseService: MarriageCaseService;
         certifyCopyCaseService: CertifyCopyCaseService;
+        requestDocumentCaseService: RequestDocumentCaseService;
         userService: UserService;
         submitService: SubmitService;
       };
