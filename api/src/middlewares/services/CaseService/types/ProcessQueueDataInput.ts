@@ -1,5 +1,5 @@
 import { FormField } from "../../../../types/FormField";
-import { CertifyCopyFormType, FormDataBody, FormType, MarriageFormType } from "../../../../types/FormDataBody";
+import { CertifyCopyFormType, FormDataBody, FormType, MarriageFormType, RequestDocumentFormType } from "../../../../types/FormDataBody";
 
 export interface ProcessQueueDataInput {
   fields: FormField[];
@@ -14,4 +14,8 @@ export interface MarriageProcessQueueDataInput extends ProcessQueueDataInput {
 
 export interface CertifyCopyProcessQueueDataInput extends ProcessQueueDataInput {
   type: CertifyCopyFormType;
+}
+
+export interface RequestDocumentProcessQueueDataInput extends ProcessQueueDataInput {
+  type: RequestDocumentFormType;
 }
