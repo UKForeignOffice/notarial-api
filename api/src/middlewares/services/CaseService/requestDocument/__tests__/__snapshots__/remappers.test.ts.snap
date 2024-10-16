@@ -1,0 +1,210 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`requestDocument is successfully remapped 1`] = `
+{
+  "applicantDetails": {
+    "firstName": {
+      "answer": "George",
+      "category": "applicantDetails",
+      "key": "firstName",
+      "title": "First name",
+      "type": "text",
+    },
+    "middleName": {
+      "answer": "G",
+      "category": "applicantDetails",
+      "key": "middleName",
+      "title": "Middle name",
+      "type": "text",
+    },
+    "surname": {
+      "answer": "Goofy",
+      "category": "applicantDetails",
+      "key": "surname",
+      "title": "Surname",
+      "type": "text",
+    },
+  },
+  "applicantPassport": {
+    "dateOfBirth": {
+      "answer": "2000-12-25",
+      "category": "applicantDetails",
+      "key": "dateOfBirth",
+      "title": "Date of birth",
+      "type": "date",
+    },
+    "dateOfIssue": {
+      "answer": "2000-12-25",
+      "category": "applicantDetails",
+      "key": "passportDateOfIssue",
+      "title": "Date of issue of passport",
+      "type": "date",
+    },
+    "number": {
+      "answer": "123123",
+      "category": "applicantDetails",
+      "key": "passportNumber",
+      "title": "Passport number",
+      "type": "text",
+    },
+    "placeOfBirth": {
+      "answer": "london",
+      "category": "applicantDetails",
+      "key": "placeOfBirth",
+      "title": "Place of birth ",
+      "type": "text",
+    },
+  },
+  "applicationForm": {
+    "answer": "http://documentupload:9000/v1/files/a",
+    "category": "documents",
+    "key": "applicationForm",
+    "title": "Upload your application form",
+    "type": "file",
+  },
+  "contactDetails": {
+    "emailAddress": {
+      "answer": "test@test.com",
+      "category": "contact",
+      "key": "emailAddress",
+      "title": "Confirm email address",
+      "type": "text",
+    },
+    "phoneNumber": {
+      "answer": "+1 23",
+      "category": "contact",
+      "key": "phoneNumber",
+      "title": "Confirm phone number",
+      "type": "text",
+    },
+  },
+  "countryOfBirth": {
+    "answer": "United Kingdom",
+    "category": "applicantDetails",
+    "key": "countryOfBirth",
+    "title": "Country of birth",
+    "type": "list",
+  },
+  "declaration": {
+    "answer": true,
+    "category": null,
+    "key": "declaration",
+    "title": "Declaration",
+    "type": "boolean",
+  },
+  "feedbackConsent": {
+    "feedbackConsent": {
+      "answer": false,
+      "category": "feedback",
+      "key": "feedbackConsent",
+      "title": "Can our partner contact you for feedback to help improve this service?",
+      "type": "list",
+    },
+  },
+  "serviceType": {
+    "answer": "USA - J1 visa no objection statement",
+    "category": "beforeYouStart",
+    "key": "serviceType",
+    "title": "Service being applied for",
+    "type": "list",
+  },
+  "thirdPartyBarcode": {
+    "answer": "http://documentupload:9000/v1/files/b",
+    "category": "documents",
+    "key": "thirdPartyBarcode",
+    "title": "Upload your third party barcode page",
+    "type": "file",
+  },
+  "ukPassportFile": {
+    "answer": "http://documentupload:9000/v1/files/e95a22c4-6dd7-41b1-98cb-61685f508969.jpg",
+    "category": "documents",
+    "key": "ukPassportFile",
+    "title": "UK passport",
+    "type": "file",
+  },
+}
+`;
+
+exports[`requestDocument is successfully reordered 1`] = `
+{
+  "Applicant's details": {
+    "dateOfBirth": {
+      "answer": "2000-12-25",
+      "category": "applicantDetails",
+      "key": "dateOfBirth",
+      "title": "Date of birth",
+      "type": "date",
+    },
+    "firstName": {
+      "answer": "George",
+      "category": "applicantDetails",
+      "key": "firstName",
+      "title": "First name",
+      "type": "text",
+    },
+    "middleName": {
+      "answer": "G",
+      "category": "applicantDetails",
+      "key": "middleName",
+      "title": "Middle name",
+      "type": "text",
+    },
+    "placeOfBirth": {
+      "answer": "london",
+      "category": "applicantDetails",
+      "key": "placeOfBirth",
+      "title": "Place of birth ",
+      "type": "text",
+    },
+    "surname": {
+      "answer": "Goofy",
+      "category": "applicantDetails",
+      "key": "surname",
+      "title": "Surname",
+      "type": "text",
+    },
+  },
+  "Applicant's passport details": {
+    "dateOfIssue": {
+      "answer": "2000-12-25",
+      "category": "applicantDetails",
+      "key": "passportDateOfIssue",
+      "title": "Date of issue of passport",
+      "type": "date",
+    },
+    "number": {
+      "answer": "123123",
+      "category": "applicantDetails",
+      "key": "passportNumber",
+      "title": "Passport number",
+      "type": "text",
+    },
+  },
+  "Contact details": {
+    "emailAddress": {
+      "answer": "test@test.com",
+      "category": "contact",
+      "key": "emailAddress",
+      "title": "Confirm email address",
+      "type": "text",
+    },
+    "phoneNumber": {
+      "answer": "+1 23",
+      "category": "contact",
+      "key": "phoneNumber",
+      "title": "Confirm phone number",
+      "type": "text",
+    },
+  },
+  "Delivery address": undefined,
+  "Feedback consent": {
+    "feedbackConsent": {
+      "answer": false,
+      "category": "feedback",
+      "key": "feedbackConsent",
+      "title": "Can our partner contact you for feedback to help improve this service?",
+      "type": "list",
+    },
+  },
+}
+`;
