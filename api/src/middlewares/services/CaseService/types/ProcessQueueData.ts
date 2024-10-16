@@ -1,5 +1,5 @@
 import { FormField } from "../../../../types/FormField";
-import { CertifyCopyFormMetadata, FormMetadata, MarriageFormMetadata } from "./FormMetadata";
+import { CertifyCopyFormMetadata, FormMetadata, MarriageFormMetadata, RequestDocumentFormMetadata } from "./FormMetadata";
 
 interface ProcessQueueDataBase {
   fields: FormField[];
@@ -12,6 +12,10 @@ export interface CertifyCopyProcessQueueData extends ProcessQueueDataBase {
 
 export interface MarriageProcessQueueData extends ProcessQueueDataBase {
   metadata: MarriageFormMetadata;
+}
+
+export interface RequestDocumentProcessQueueData extends ProcessQueueDataBase {
+  metadata: RequestDocumentFormMetadata;
 }
 
 export type ProcessQueueData = CertifyCopyProcessQueueData | MarriageProcessQueueData;
