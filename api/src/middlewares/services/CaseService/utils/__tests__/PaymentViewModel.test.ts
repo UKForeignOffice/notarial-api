@@ -20,6 +20,7 @@ test("paymentViewModel returns a PaymentViewModel", () => {
   expect(result).toEqual({
     allTransactionsByCountry: {
       country: "italy",
+      service: "italy",
       url: "https://selfservice.payments.service.gov.uk/account/ACCOUNT_ID/transactions?metadataValue=italy",
     },
     id: "123",
