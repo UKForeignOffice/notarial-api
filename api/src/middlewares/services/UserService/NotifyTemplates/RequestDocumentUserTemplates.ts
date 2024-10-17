@@ -1,6 +1,5 @@
 import { UserTemplateGroup } from "./UserTemplateGroup";
 import { RequestDocumentAnswersHashmap } from "../../../../types/AnswersHashMap";
-import { getPersonalisationBuilder } from "../getPersonalisationBuilder";
 import config from "config";
 import { requestDocumentPersonalisationBuilder } from "../personalisation/PersonalisationBuilder/requestDocument";
 
