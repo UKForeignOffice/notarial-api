@@ -18,6 +18,8 @@ export type AlertJob = {
 };
 
 export type NotifyEmailTemplate = "inPerson" | "postal";
+export type PostalVariant = "inPerson" | "postal";
+
 type NotifyCNISubGroup = Record<"cni" | "msc" | "cniAndMsc", NotifyTemplateSubGroup>;
 type NotifyCertifyCopySubGroup = Record<"adult" | "child", NotifyTemplateSubGroup>;
 type NotifyTemplateSubGroup = Record<NotifyEmailTemplate, string>;

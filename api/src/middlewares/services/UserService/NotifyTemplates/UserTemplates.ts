@@ -5,20 +5,13 @@ import { MARRIAGE_FORM_TYPES } from "../../../../utils/formTypes";
 import { getPersonalisationBuilder } from "../getPersonalisationBuilder";
 import * as additionalContexts from "../../utils/additionalContexts.json";
 import { MarriageUserTemplates } from "./MarriageUserTemplates";
+import { CertifyCopyUserTemplates } from "./CertifyCopyUserTemplates";
 
 export class UserTemplates {
-  marriageTemplates: MarriageUserTemplates;
+  marriage: MarriageUserTemplates;
+  certifyCopy: CertifyCopyUserTemplates;
   templates = {
-    certifyCopy: {
-      adult: {
-        inPerson: config.get<string>("Notify.Template.certifyCopyAdultUserConfirmation"),
-        postal: config.get<string>("Notify.Template.certifyCopyAdultUserPostalConfirmation"),
-      },
-      child: {
-        inPerson: config.get<string>("Notify.Template.certifyCopyChildUserConfirmation"),
-        postal: config.get<string>("Notify.Template.certifyCopyChildUserPostalConfirmation"),
-      },
-    },
+    certifyCopy: {},
     requestDocument: {
       "USA - J1 visa no objection statement": config.get<string>("Notify.Template.requestDocument.J1"),
       "Democratic Republic of the Congo - consular certificate": config.get<string>("Notify.Template.requestDocument.appointment"),
@@ -29,7 +22,8 @@ export class UserTemplates {
   };
   constructor() {
     try {
-      this.marriageTemplates = new MarriageUserTemplates();
+      this.marriage = new MarriageUserTemplates();
+      this.certifyCopy = new CertifyCopyUserTemplates();
     } catch (e) {
       console.error("Notify templates have not been configured, exiting", e);
       process.exit(1);
@@ -41,27 +35,17 @@ export class UserTemplates {
     const { type } = data.metadata;
 
     if (MARRIAGE_FORM_TYPES.has(metadata.type)) {
-      return this.marriageTemplates.getTemplate(data);
+      return this.marriage.getTemplate(data);
+    }
+
+    if (metadata.type === "certifyCopy") {
+      return this.certifyCopy.getTemplate(data);
     }
 
     let isPostalApplication = metadata.postal;
 
-    if (!MARRIAGE_FORM_TYPES.has(metadata.type)) {
-      isPostalApplication = answers.applicationType === "postal";
-    }
-
     const postalVariant = this.getPostalVariant(answers, isPostalApplication, type);
     let template, builder;
-
-    if (type === "cni") {
-      const serviceSubtype = (answers.service ?? "cni") as MarriageFormType;
-      template = this.templates.cni[serviceSubtype][postalVariant];
-    }
-
-    if (answers.over16 !== undefined) {
-      const certifyCopyVariant = answers.over16 ? "adult" : "child";
-      template ??= this.templates.certifyCopy[certifyCopyVariant][postalVariant];
-    }
 
     if (type === "requestDocument") {
       const requestDocAnswers = answers as RequestDocumentAnswersHashmap;
