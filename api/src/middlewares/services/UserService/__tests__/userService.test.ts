@@ -20,7 +20,7 @@ jest.mock("config", () => ({
       "Notify.Template.requestDocument.courier": "request-document-courier",
       "Notify.Template.requestDocument.posted": "request-document-posted",
       "Notify.Template.requestDocument.indiaOrganTransplant": "request-document-india-organ",
-      "Notify.Template.requestDocument.indaUniversity": "request-document-india-university",
+      "Notify.Template.requestDocument.indiaUniversity": "request-document-india-university",
       "Notify.Template.requestDocument.indiaArchives": "request-document-india-archives",
       "Notify.Template.requestDocument.panamaDrivingLicence": "request-document-panama",
       "Notify.Template.requestDocument.vietnamResidency": "request-document-vietnam-residency",
@@ -98,7 +98,7 @@ describe("sendEmailToUser - requestDocument", () => {
     ${"Vietnam - letter to support a permanent residency application"}        | ${"request-document-vietnam-residency"}
     ${"Panama - certificate of entitlement for a Panamanian driving licence"} | ${"request-document-panama"}
     ${"India - letter to access Indian state or national archives"}           | ${"request-document-india-archives"}
-    ${"India - India - organ transplant letter"}                              | ${"request-document-india-organ"}
+    ${"India - organ transplant letter"}                                      | ${"request-document-india-organ"}
     ${"India - letter of introduction for admission to an Indian university"} | ${"request-document-india-university"}
     ${"Thailand - letter supporting Thai citizenship"}                        | ${"request-document-thailand-citizenship"}
     ${"Luxembourg - certificate of custom law"}                               | ${"request-document-custom-law"}
