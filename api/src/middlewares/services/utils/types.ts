@@ -23,6 +23,7 @@ type NotifyCertifyCopySubGroup = Record<"adult" | "child", NotifyTemplateSubGrou
 type NotifyTemplateSubGroup = Record<NotifyEmailTemplate, string>;
 export type NotifyTemplateGroup = Record<FormType, NotifyCNISubGroup | NotifyCertifyCopySubGroup | NotifyTemplateSubGroup>;
 
+export type CNISubGroup = "cni" | "msc" | "cniAndMsc";
 export type CertifyCopyTemplateType = CertifyCopyFormType | "adult" | "child";
 export type MarriageTemplateType = MarriageFormType | "msc" | "cniAndMsc";
 export type TemplateType = MarriageTemplateType | CertifyCopyTemplateType;
