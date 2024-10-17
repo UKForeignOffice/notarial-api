@@ -10,7 +10,7 @@ type Builder = (
   data: getTemplateParams["answers"],
   metadata: getTemplateParams["metadata"]
 ) => {
-  [key: string]: string;
+  [key: string]: string | boolean | undefined;
 };
 
 export interface UserTemplateGroup {
