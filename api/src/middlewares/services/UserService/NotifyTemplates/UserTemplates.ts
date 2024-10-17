@@ -41,6 +41,7 @@ export class UserTemplates {
     },
     requestDocument: {
       "USA - J1 visa no objection statement": config.get<string>("Notify.Template.requestDocument.J1"),
+      "Democratic Republic of the Congo - consular certificate": config.get<string>("Notify.Template.requestDocument.appointment"),
       appointment: config.get<string>("Notify.Template.requestDocument.appointment"),
       courier: config.get<string>("Notify.Template.requestDocument.courier"),
       posted: config.get<string>("Notify.Template.requestDocument.posted"),

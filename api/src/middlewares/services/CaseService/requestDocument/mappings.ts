@@ -5,6 +5,7 @@ export const order = {
   contactDetails: "Contact details",
   feedbackConsent: "Feedback consent",
   maritalStatus: "Marital status",
+  partnerDetails: "Partner's details",
 };
 
 export const remap = {
@@ -19,9 +20,17 @@ export const remap = {
   passportDateOfIssue: "applicantPassport.dateOfIssue",
   passportNumber: "applicantPassport.number",
   dateOfBirth: "applicantPassport.dateOfBirth",
-  countryOfBirth: "applicantPassport.dateOfBirth",
+  countryOfBirth: "applicantPassport.countryOfBirth",
   placeOfBirth: "applicantPassport.placeOfBirth",
-  sex: "applicantDetails.sex",
+
+  partnerIsBN: "partnerDetails.partnerIsBN",
+  partnerFirstName: "partnerDetails.partnerFirstName",
+  partnerMiddleName: "partnerDetails.partnerMiddleName",
+  partnerSurname: "partnerDetails.partnerSurname",
+  partnerPassportNumber: "partnerDetails.partnerPassportNumber",
+  partnerDateOfBirth: "partnerDetails.partnerDateOfBirth",
+  partnerCountryOfBirth: "partnerDetails.partnerCountryOfBirth",
+  partnerPassportDateOfIssue: "partnerDetails.partnerPassportDateOfIssue",
 
   emailAddress: "contactDetails.emailAddress",
   phoneNumber: "contactDetails.phoneNumber",

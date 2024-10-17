@@ -1,4 +1,4 @@
-import { data as testData } from "./fixtures/data";
+import { data as testData, fields } from "./fixtures/data";
 import "pg-boss";
 import { flattenQuestions } from "../../../helpers";
 import { isNotFieldType } from "../../../../../utils";
@@ -19,7 +19,8 @@ const paymentViewModel = {
   url: "https://payments.gov.uk",
   allTransactionsByCountry: {
     url: "https://payments.gov.uk",
-    country: "italy",
+    service: "any",
+    country: "any",
   },
   total: "100",
 };

@@ -26,6 +26,13 @@ exports[`requestDocument is successfully remapped 1`] = `
     },
   },
   "applicantPassport": {
+    "countryOfBirth": {
+      "answer": "United Kingdom",
+      "category": "applicantDetails",
+      "key": "countryOfBirth",
+      "title": "Country of birth",
+      "type": "list",
+    },
     "dateOfBirth": {
       "answer": "2000-12-25",
       "category": "applicantDetails",
@@ -144,6 +151,13 @@ exports[`requestDocument is successfully reordered 1`] = `
     },
   },
   "Applicant's passport details": {
+    "countryOfBirth": {
+      "answer": "United Kingdom",
+      "category": "applicantDetails",
+      "key": "countryOfBirth",
+      "title": "Country of birth",
+      "type": "list",
+    },
     "dateOfBirth": {
       "answer": "2000-12-25",
       "category": "applicantDetails",
@@ -200,5 +214,6 @@ exports[`requestDocument is successfully reordered 1`] = `
     },
   },
   "Marital status": undefined,
+  "Partner's details": undefined,
 }
 `;
