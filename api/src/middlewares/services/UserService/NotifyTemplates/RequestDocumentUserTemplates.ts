@@ -7,22 +7,27 @@ export class RequestDocumentUserTemplates implements UserTemplateGroup {
   templates: Record<RequestDocumentDocumentTemplateKeys, string>;
 
   constructor() {
-    this.templates = {
-      "USA - J1 visa no objection statement": config.get<string>("Notify.Template.requestDocument.J1"),
-      "Democratic Republic of the Congo - consular certificate": config.get<string>("Notify.Template.requestDocument.appointment"),
-      "Vietnam - letter to support a permanent residency application": config.get<string>("Notify.Template.requestDocument.vietnamResidency"),
-      "Panama - certificate of entitlement for a Panamanian driving licence": config.get<string>("Notify.Template.requestDocument.panamaDrivingLicence"),
-      "India - letter to access Indian state or national archives": config.get<string>("Notify.Template.requestDocument.indiaArchives"),
-      "India - organ transplant letter": config.get<string>("Notify.Template.requestDocument.indiaOrganTransplant"),
-      "India - letter of introduction for admission to an Indian university": config.get<string>("Notify.Template.requestDocument.indiaUniversity"),
-      "Thailand - letter supporting Thai citizenship": config.get<string>("Notify.Template.requestDocument.thailandCitizenship"),
-      "Luxembourg - certificate of custom law": config.get<string>("Notify.Template.requestDocument.certificateOfCustomLaw"),
-      "Belgium - certificate of custom law": config.get<string>("Notify.Template.requestDocument.certificateOfCustomLaw"),
-      "Andorra - MSC": config.get<string>("Notify.Template.requestDocument.andorraMSC"),
-      "Mexico - criminal record certificate letter": config.get<string>("Notify.Template.requestDocument.mexicoCriminalRecord"),
+    const sharedTemplates = {
       appointment: config.get<string>("Notify.Template.requestDocument.appointment"),
       courier: config.get<string>("Notify.Template.requestDocument.courier"),
       posted: config.get<string>("Notify.Template.requestDocument.posted"),
+      customLaw: config.get<string>("Notify.Template.requestDocument.certificateOfCustomLaw"),
+    };
+
+    this.templates = {
+      "USA - J1 visa no objection statement": config.get<string>("Notify.Template.requestDocument.J1"),
+      "Democratic Republic of the Congo - consular certificate": sharedTemplates.appointment,
+      "Vietnam - letter to support a permanent residency application": config.get<string>("Notify.Template.requestDocument.vietnamResidency"),
+      "Panama - certificate of entitlement for a Panamanian driving licence": config.get<string>("Notify.Template.requestDocument.panamaDrivingLicence"),
+      "India - letter to access Indian state or national archives": sharedTemplates.courier,
+      "India - organ transplant letter": config.get<string>("Notify.Template.requestDocument.indiaOrganTransplant"),
+      "India - letter of introduction for admission to an Indian university": sharedTemplates.courier,
+      "Thailand - letter supporting Thai citizenship": config.get<string>("Notify.Template.requestDocument.thailandCitizenship"),
+      "Luxembourg - certificate of custom law": sharedTemplates.customLaw,
+      "Belgium - certificate of custom law": sharedTemplates.customLaw,
+      "Andorra - MSC": config.get<string>("Notify.Template.requestDocument.andorraMSC"),
+      "Mexico - criminal record certificate letter": sharedTemplates.courier,
+      ...sharedTemplates,
     };
   }
 
@@ -57,6 +62,7 @@ export class RequestDocumentUserTemplates implements UserTemplateGroup {
 }
 
 type GenericRequestDocumentTemplates = "courier" | "appointment" | "posted";
+
 type RequestDocumentServiceTypes =
   | "USA - J1 visa no objection statement"
   | "Democratic Republic of the Congo - consular certificate"

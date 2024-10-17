@@ -20,14 +20,11 @@ jest.mock("config", () => ({
       "Notify.Template.requestDocument.courier": "request-document-courier",
       "Notify.Template.requestDocument.posted": "request-document-posted",
       "Notify.Template.requestDocument.indiaOrganTransplant": "request-document-india-organ",
-      "Notify.Template.requestDocument.indiaUniversity": "request-document-india-university",
-      "Notify.Template.requestDocument.indiaArchives": "request-document-india-archives",
       "Notify.Template.requestDocument.panamaDrivingLicence": "request-document-panama",
       "Notify.Template.requestDocument.vietnamResidency": "request-document-vietnam-residency",
       "Notify.Template.requestDocument.thailandCitizenship": "request-document-thailand-citizenship",
       "Notify.Template.requestDocument.andorraMSC": "request-document-andorra-msc",
       "Notify.Template.requestDocument.certificateOfCustomLaw": "request-document-custom-law",
-      "Notify.Template.requestDocument.mexicoCriminalRecord": "request-document-mexico",
     };
     return templates[setting];
   },
@@ -97,14 +94,14 @@ describe("sendEmailToUser - requestDocument", () => {
     ${"Democratic Republic of the Congo - consular certificate"}              | ${"request-document-appointment"}
     ${"Vietnam - letter to support a permanent residency application"}        | ${"request-document-vietnam-residency"}
     ${"Panama - certificate of entitlement for a Panamanian driving licence"} | ${"request-document-panama"}
-    ${"India - letter to access Indian state or national archives"}           | ${"request-document-india-archives"}
+    ${"India - letter to access Indian state or national archives"}           | ${"request-document-courier"}
     ${"India - organ transplant letter"}                                      | ${"request-document-india-organ"}
-    ${"India - letter of introduction for admission to an Indian university"} | ${"request-document-india-university"}
+    ${"India - letter of introduction for admission to an Indian university"} | ${"request-document-courier"}
     ${"Thailand - letter supporting Thai citizenship"}                        | ${"request-document-thailand-citizenship"}
     ${"Luxembourg - certificate of custom law"}                               | ${"request-document-custom-law"}
     ${"Belgium - certificate of custom law"}                                  | ${"request-document-custom-law"}
     ${"Andorra - MSC"}                                                        | ${"request-document-andorra-msc"}
-    ${"Mexico - criminal record certificate letter"}                          | ${"request-document-mexico"}
+    ${"Mexico - criminal record certificate letter"}                          | ${"request-document-courier"}
   `(`$template is returned for $document`, async ({ document, template }) => {
     const metadata = { reference: "ref", type: "requestDocument" };
     const answers = { serviceType: document };
