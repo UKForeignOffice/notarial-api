@@ -102,7 +102,7 @@ describe("sendEmailToUser - requestDocument", () => {
     ${"Belgium - certificate of custom law"}                                  | ${"request-document-custom-law"}
     ${"Andorra - MSC"}                                                        | ${"request-document-andorra-msc"}
     ${"Mexico - criminal record certificate letter"}                          | ${"request-document-courier"}
-  `(`$template is returned for $document`, async ({ document, template }) => {
+  `(`$template is used for $document`, async ({ document, template }) => {
     const metadata = { reference: "ref", type: "requestDocument" };
     const answers = { serviceType: document };
     await userService.sendEmailToUser({ answers, metadata });
@@ -114,26 +114,76 @@ describe("sendEmailToUser - requestDocument", () => {
     );
   });
 
-  test.each`
-    country                   | template
-    ${"India"}                | ${"request-document-courier"}
-    ${"Vietnam"}              | ${"request-document-appointment"}
-    ${"Spain"}                | ${"request-document-posted"}
-    ${"United Arab Emirates"} | ${"request-document-appointment"}
-    ${"Thailand"}             | ${"request-document-posted"}
-  `(`$template is returned for adoption - $country`, async ({ country, template }) => {
-    const answers = {
+  describe("No objection certificate to adopt a child", () => {
+    const baseAnswers = {
+      firstName: "test",
       serviceType: "No objection certificate to adopt a child",
-      applicationCountry: country,
     };
+
     const metadata = { reference: "ref", type: "requestDocument" };
 
-    await userService.sendEmailToUser({ answers, metadata });
+    describe.each`
+      country                   | post                                                | template
+      ${"India"}                | ${"the British Deputy High Commission Chandigarh"}  | ${"request-document-courier"}
+      ${"India"}                | ${"the British Deputy High Commission Chennai"}     | ${"request-document-courier"}
+      ${"India"}                | ${"the British Nationals Assistance Office Goa"}    | ${"request-document-courier"}
+      ${"India"}                | ${"the British Deputy High Commission Kolkata"}     | ${"request-document-courier"}
+      ${"India"}                | ${"the British Deputy High Commission Mumbai"}      | ${"request-document-courier"}
+      ${"India"}                | ${"the British High Commission New Delhi"}          | ${"request-document-courier"}
+      ${"Vietnam"}              | ${"the British Embassy Hanoi"}                      | ${"request-document-appointment"}
+      ${"Vietnam"}              | ${"the British Consulate General Ho Chi Minh City"} | ${"request-document-appointment"}
+      ${"United Arab Emirates"} | ${"the British Embassy Abu Dhabi"}                  | ${"request-document-appointment"}
+      ${"United Arab Emirates"} | ${"the British Embassy Dubai"}                      | ${"request-document-appointment"}
+    `(`$country with multiple posts`, ({ country, post, template }) => {
+      const answers = {
+        ...baseAnswers,
+        ...(post && { post }),
+        applicationCountry: country,
+      };
 
-    expect(sendEmailSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
-        template,
-      })
-    );
+      test(`returns ${template}`, async () => {
+        await userService.sendEmailToUser({ answers, metadata });
+        const sendEmailCall = sendEmailSpy.mock.calls[0][0];
+
+        expect(sendEmailCall.template).toBe(template);
+      });
+
+      test("returns correct personalisations", async () => {
+        await userService.sendEmailToUser({ answers, metadata });
+        const sendEmailCall = sendEmailSpy.mock.calls[0][0];
+        const { personalisation } = sendEmailCall.options;
+
+        expect(personalisation.firstName).toBe("test");
+        expect(personalisation.post).toBe(post);
+      });
+    });
+
+    describe.each`
+      country       | expectedPost                              | template
+      ${"Spain"}    | ${"the British Consulate General Madrid"} | ${"request-document-posted"}
+      ${"Thailand"} | ${"the British Embassy Bangkok"}          | ${"request-document-posted"}
+    `(`$country with defaulted posts`, ({ country, expectedPost, template }) => {
+      const answers = {
+        firstName: "test",
+        serviceType: "No objection certificate to adopt a child",
+        applicationCountry: country,
+      };
+
+      test(`returns ${template}`, async () => {
+        await userService.sendEmailToUser({ answers, metadata });
+        const sendEmailCall = sendEmailSpy.mock.calls[0][0];
+
+        expect(sendEmailCall.template).toBe(template);
+      });
+
+      test("returns correct personalisations", async () => {
+        await userService.sendEmailToUser({ answers, metadata });
+        const sendEmailCall = sendEmailSpy.mock.calls[0][0];
+        const { personalisation } = sendEmailCall.options;
+
+        expect(personalisation.firstName).toBe("test");
+        expect(personalisation.post).toBe(expectedPost);
+      });
+    });
   });
 });
