@@ -1313,7 +1313,8 @@
         "additionalEvidence": "<li>proof of your address</li>",
         "delivery": "Your document will be posted to your chosen address in Thailand. You'll be charged an additional £2 for postage.",
         "postal": "TRUE",
-        "post": "the British Embassy Bangkok"
+        "post": "the British Embassy Bangkok",
+        "postAddress": "Consular Services\nBritish Embassy Bangkok\nAIA Sathorn Tower\nFloor 12A\n11/1 South Sathorn Road\nSathorn\nBangkok\n10120"
       },
       "USA - J1 visa no objection statement": {
         "name": "J1 visa no objection statement",
@@ -1328,14 +1329,16 @@
         "additionalEvidence": "<li>your partner's passport</li><li>your full birth certificate (this includes parents’ details)</li><li>proof any previous marriage or civil partnerships have ended</li>",
         "delivery": "Your document will be posted to your chosen address in Belgium. You'll be charged an additional £5 for postage.",
         "postal": "TRUE",
-        "post": "the British Embassy Brussels"
+        "post": "the British Embassy Brussels",
+        "postAddress": "<British Embassy Brussels\nAvenue d’Auderghem 10\n1040 Brussels\nBelgium"
       },
       "Luxembourg - certificate of custom law": {
         "name": "certificate of custom law for marriage or civil partnership",
         "additionalEvidence": "<li>your partner's passport</li><li>your full birth certificate (this includes parents’ details)</li><li>proof any previous marriage or civil partnerships have ended</li>",
         "delivery": "Your document will be posted to your chosen address in Luxembourg. You'll be charged an additional £5 for postage.",
         "postal": "TRUE",
-        "post": "the British Embassy Luxembourg"
+        "post": "the British Embassy Luxembourg",
+        "postAddress": "British Embassy Luxembourg\n5, Boulevard Joseph II\nL-1840 Luxembourg\nLuxembourg"
       },
       "Andorra - MSC": {
         "name": "marital status certificate (MSC) for marriage, civil partnership or cohabitation",
