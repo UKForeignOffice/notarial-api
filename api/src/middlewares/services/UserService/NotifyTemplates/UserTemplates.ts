@@ -1,4 +1,3 @@
-import config from "config";
 import { AnswersHashMap } from "../../../../types/AnswersHashMap";
 import { FormType, MarriageFormType, PayMetadata } from "../../../../types/FormDataBody";
 import { MARRIAGE_FORM_TYPES } from "../../../../utils/formTypes";

@@ -13,35 +13,30 @@ export class MarriageUserTemplates implements UserTemplateGroup {
     cni: Record<CNISubGroup, Record<NotifyEmailTemplate, string>>;
   };
   constructor() {
-    try {
-      this.templates = {
-        affirmation: {
-          inPerson: config.get<string>("Notify.Template.affirmationUserConfirmation"),
-          postal: config.get<string>("Notify.Template.affirmationUserConfirmation"),
-        },
+    this.templates = {
+      affirmation: {
+        inPerson: config.get<string>("Notify.Template.affirmationUserConfirmation"),
+        postal: config.get<string>("Notify.Template.affirmationUserConfirmation"),
+      },
+      cni: {
         cni: {
-          cni: {
-            inPerson: config.get<string>("Notify.Template.cniUserConfirmation"),
-            postal: config.get<string>("Notify.Template.cniUserPostalConfirmation"),
-          },
-          msc: {
-            inPerson: config.get<string>("Notify.Template.mscUserConfirmation"),
-            postal: config.get<string>("Notify.Template.mscUserConfirmation"),
-          },
-          cniAndMsc: {
-            inPerson: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-            postal: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-          },
+          inPerson: config.get<string>("Notify.Template.cniUserConfirmation"),
+          postal: config.get<string>("Notify.Template.cniUserPostalConfirmation"),
         },
-        exchange: {
-          inPerson: config.get<string>("Notify.Template.exchangeUserConfirmation"),
-          postal: config.get<string>("Notify.Template.exchangeUserPostalConfirmation"),
+        msc: {
+          inPerson: config.get<string>("Notify.Template.mscUserConfirmation"),
+          postal: config.get<string>("Notify.Template.mscUserConfirmation"),
         },
-      };
-    } catch (e) {
-      console.error("Notify templates have not been configured, exiting", e);
-      process.exit(1);
-    }
+        cniAndMsc: {
+          inPerson: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
+          postal: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
+        },
+      },
+      exchange: {
+        inPerson: config.get<string>("Notify.Template.exchangeUserConfirmation"),
+        postal: config.get<string>("Notify.Template.exchangeUserPostalConfirmation"),
+      },
+    };
   }
 
   getTemplate(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean } }) {
