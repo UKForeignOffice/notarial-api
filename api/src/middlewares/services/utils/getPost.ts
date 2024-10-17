@@ -14,8 +14,7 @@ export function getPostForRequestDocument(service: string, country?: string, pos
   }
 
   const context = additionalContexts.requestDoc;
-
-  if (service === "adoption") {
+  if (service === "No objection certificate to adopt a child") {
     const adoptionContext = context["adoption"];
     if (!country) {
       return;
