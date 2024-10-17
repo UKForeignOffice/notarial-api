@@ -4,31 +4,11 @@ import { FormType, MarriageFormType, PayMetadata } from "../../../../types/FormD
 import { MARRIAGE_FORM_TYPES } from "../../../../utils/formTypes";
 import { getPersonalisationBuilder } from "../getPersonalisationBuilder";
 import * as additionalContexts from "../../utils/additionalContexts.json";
+import { MarriageUserTemplates } from "./MarriageUserTemplates";
 
 export class UserTemplates {
+  marriageTemplates: MarriageUserTemplates;
   templates = {
-    affirmation: {
-      inPerson: config.get<string>("Notify.Template.affirmationUserConfirmation"),
-      postal: config.get<string>("Notify.Template.affirmationUserConfirmation"),
-    },
-    cni: {
-      cni: {
-        inPerson: config.get<string>("Notify.Template.cniUserConfirmation"),
-        postal: config.get<string>("Notify.Template.cniUserPostalConfirmation"),
-      },
-      msc: {
-        inPerson: config.get<string>("Notify.Template.mscUserConfirmation"),
-        postal: config.get<string>("Notify.Template.mscUserConfirmation"),
-      },
-      cniAndMsc: {
-        inPerson: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-        postal: config.get<string>("Notify.Template.cniMSCUserConfirmation"),
-      },
-    },
-    exchange: {
-      inPerson: config.get<string>("Notify.Template.exchangeUserConfirmation"),
-      postal: config.get<string>("Notify.Template.exchangeUserPostalConfirmation"),
-    },
     certifyCopy: {
       adult: {
         inPerson: config.get<string>("Notify.Template.certifyCopyAdultUserConfirmation"),
@@ -49,6 +29,7 @@ export class UserTemplates {
   };
   constructor() {
     try {
+      this.marriageTemplates = new MarriageUserTemplates();
     } catch (e) {
       console.error("Notify templates have not been configured, exiting", e);
       process.exit(1);
@@ -58,6 +39,10 @@ export class UserTemplates {
   getTemplate(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean } }) {
     const { answers, metadata } = data;
     const { type } = data.metadata;
+
+    if (MARRIAGE_FORM_TYPES.has(metadata.type)) {
+      return this.marriageTemplates.getTemplate(data);
+    }
 
     let isPostalApplication = metadata.postal;
 
