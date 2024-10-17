@@ -18,7 +18,8 @@ export class UserTemplates {
       this.requestDocument = new RequestDocumentUserTemplates();
     } catch (e) {
       console.error("Notify templates have not been configured, exiting", e);
-      process.exit(1);
+      throw e;
+      // process.exit(e);
     }
   }
 
