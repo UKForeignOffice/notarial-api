@@ -18,6 +18,7 @@ test("requestDocument is successfully reordered", () => {
 describe("requestDocument - adoption letter - unique fields are included", () => {
   test("when partner is a British national", () => {
     const remapped = requestDocumentRemapper(fields.adoption.adoptionFields);
+    expect(remapped.country).toBeDefined();
     expect(remapped.partnerDetails.partnerFirstName).toBeDefined();
     expect(remapped.partnerDetails.partnerIsBN).toBeDefined();
     expect(remapped.partnerDetails.partnerPassportNumber).toBeDefined();
