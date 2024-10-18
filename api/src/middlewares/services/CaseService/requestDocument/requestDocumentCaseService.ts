@@ -62,19 +62,19 @@ export class RequestDocumentCaseService implements CaseService {
 
     const remapFields = createRemapper(remap);
     const remapped = remapFields(fields);
-    const { applicantCountry, serviceType } = remapped;
+    const { country, serviceType } = remapped;
 
     const reorderer = reorderSectionsWithNewName(order);
     const reordered = reorderer(remapped);
 
-    const post = getPostForRequestDocument(serviceType.answer, applicantCountry, remapped.post?.answer);
+    const post = getPostForRequestDocument(serviceType.answer, country?.answer, remapped.post?.answer);
 
     return this.templates.SES({
       post,
       reference,
       payment,
       serviceType: serviceType.answer,
-      country: applicantCountry?.answer,
+      country: country?.answer,
       questions: reordered,
     });
   }
