@@ -53,6 +53,7 @@ test("requestDocument - Belgium Certificate of custom law", () => {
   expect(remapped.delivery.addressLine2).toBeDefined();
   expect(remapped.delivery.city).toBeDefined();
   expect(remapped.delivery.country).toBeDefined();
+  expect(remapped.marriageDetails).toBeDefined();
 });
 
 test("request Document - Meixco - unique fields are included", () => {
