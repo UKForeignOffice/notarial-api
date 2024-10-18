@@ -3,14 +3,14 @@ import { AnswersHashMap } from "../../../../types/AnswersHashMap";
 import { FormType, MarriageFormType, PayMetadata } from "../../../../types/FormDataBody";
 import { getPersonalisationBuilder } from "../getPersonalisationBuilder";
 import * as additionalContexts from "../../utils/additionalContexts.json";
-import { CNISubGroup, NotifyEmailTemplate } from "../../utils/types";
+import { CNISubGroup, PostalVariant } from "../../utils/types";
 import { UserTemplateGroup } from "./UserTemplateGroup";
 
 export class MarriageUserTemplates implements UserTemplateGroup {
   templates: {
-    affirmation: Record<NotifyEmailTemplate, string>;
-    exchange: Record<NotifyEmailTemplate, string>;
-    cni: Record<CNISubGroup, Record<NotifyEmailTemplate, string>>;
+    affirmation: Record<PostalVariant, string>;
+    exchange: Record<PostalVariant, string>;
+    cni: Record<CNISubGroup, Record<PostalVariant, string>>;
   };
   constructor() {
     this.templates = {
