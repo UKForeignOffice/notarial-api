@@ -19,7 +19,6 @@ export class UserTemplates {
     } catch (e) {
       console.error("Notify templates have not been configured, exiting", e);
       throw e;
-      // process.exit(e);
     }
   }
 
