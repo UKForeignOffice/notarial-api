@@ -215,6 +215,7 @@ exports[`requestDocument is successfully reordered 1`] = `
     },
   },
   "Marital status": undefined,
+  "Marriage details": undefined,
   "Partner's details": undefined,
   "Reason for document": undefined,
 }
