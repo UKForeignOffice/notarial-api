@@ -5,6 +5,7 @@ export const order = {
   reason: "Reason for document",
   certificate: "Certificate details",
   maritalStatus: "Marital status",
+  marriageDetails: "Marriage details",
   partnerDetails: "Partner's details",
   delivery: "Delivery address",
   feedbackConsent: "Feedback consent",
@@ -26,11 +27,14 @@ export const remap = {
   placeOfBirth: "applicantPassport.placeOfBirth",
 
   docLanguage: "certificate.docLanguage",
+
   mscReason: "reason.reason",
   reasonForLetter: "reason.reason",
   reasonForLetterOther: "reason.other",
 
   previouslyMarried: "maritalStatus.previouslyMarried",
+
+  placeOfMarriage: "marriageDetails.placeOfMarriage",
 
   partnerIsBN: "partnerDetails.partnerIsBN",
   partnerFirstName: "partnerDetails.partnerFirstName",
