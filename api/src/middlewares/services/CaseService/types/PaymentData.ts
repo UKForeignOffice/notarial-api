@@ -6,5 +6,6 @@ export type PaymentData = {
   allTransactionsByCountry: {
     url: string;
     country: string;
+    service: string;
   };
 };

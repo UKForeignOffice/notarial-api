@@ -1,11 +1,14 @@
 import { FormType } from "../../../types/FormDataBody";
-import { MARRIAGE_FORM_TYPES } from "../../../utils/formTypes";
 
-type ExpressCaseServices = Pick<Express.Application["services"], "marriageCaseService" | "certifyCopyCaseService">;
+type ExpressCaseServices = Pick<Express.Application["services"], "marriageCaseService" | "certifyCopyCaseService" | "requestDocumentCaseService">;
 
 export function getCaseServiceName(formType: FormType): keyof ExpressCaseServices {
-  if (MARRIAGE_FORM_TYPES.has(formType)) {
-    return "marriageCaseService";
-  }
-  return "certifyCopyCaseService";
+  const services: Record<FormType, keyof ExpressCaseServices> = {
+    affirmation: "marriageCaseService",
+    requestDocument: "requestDocumentCaseService",
+    cni: "marriageCaseService",
+    exchange: "marriageCaseService",
+    certifyCopy: "certifyCopyCaseService",
+  };
+  return services[formType];
 }

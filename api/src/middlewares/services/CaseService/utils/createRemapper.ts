@@ -17,8 +17,20 @@ export function createRemapper<T>(mappings: T, ignoreKeys: string[] = [], ignore
   return function (data: FormField[]) {
     return data.reduce((acc, curr) => {
       const key = curr.key;
+      const keyWithSection = curr.category ? `${curr.category}.${key}` : key;
 
       if (ignoreKeysSet.has(key) || ignoreTypesSet.has(curr.type)) {
+        return acc;
+      }
+
+      /**
+       * If there are two sections with fields using the same key, you can use dot notation to remap this key.
+       * e.g. The mapping should be { "delivery.addressLine1": "delivery.addressLine1", "addressLine1": "permanentAddress.addressLine1" }
+       */
+      const keyWithSectionRemapping = mappings[keyWithSection];
+
+      if (keyWithSectionRemapping) {
+        set(acc, keyWithSectionRemapping, curr);
         return acc;
       }
 
