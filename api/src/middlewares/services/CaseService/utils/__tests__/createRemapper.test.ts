@@ -97,3 +97,30 @@ test("createRemapper returns a remapper which can ignore types", () => {
     },
   });
 });
+
+test("Remappers can use [category].[key] notation to get the fields for remapping", () => {
+  const mappings = {
+    "delivery.addressLine1": "delivery.addressLine1",
+    "delivery.addressLine2": "delivery.addressLine2",
+    addressLine1: "permanentAddress.addressLine1",
+    addressLine2: "permanentAddress.addressLine2",
+    "partner.addressLine1": "partnerAddress.addressLine1",
+  };
+
+  const fields = [
+    { key: "addressLine1", type: "text", answer: "delivery address 1", category: "delivery" },
+    { key: "addressLine2", type: "text", answer: "delivery address 2", category: "delivery" },
+    { key: "addressLine1", type: "text", answer: "partner address 1", category: "partner" },
+    { key: "addressLine1", type: "text", answer: "permanent address 1" },
+    { key: "addressLine2", type: "text", answer: "permanent address 2" },
+  ];
+
+  const remapper = createRemapper(mappings, [], []);
+  const remapped = remapper(fields);
+
+  expect(remapped.delivery.addressLine1.answer).toBe("delivery address 1");
+  expect(remapped.delivery.addressLine2.answer).toBe("delivery address 2");
+  expect(remapped.permanentAddress.addressLine1.answer).toBe("permanent address 1");
+  expect(remapped.permanentAddress.addressLine2.answer).toBe("permanent address 2");
+  expect(remapped.partnerAddress.addressLine1.answer).toBe("partner address 1");
+});

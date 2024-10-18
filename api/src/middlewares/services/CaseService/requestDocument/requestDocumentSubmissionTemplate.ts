@@ -1,7 +1,7 @@
 const template = `
 <p>Dear {{post}}, </p>
 
-<p>You have a new application for prepare a document.</p>
+<p>You have a new application to prepare a document.</p>
 <p>
     Below is the information the applicant entered in their online application. Attached are the documents they submitted.
     Use them to create a new case in Orbit.

@@ -187,6 +187,7 @@ exports[`requestDocument is successfully reordered 1`] = `
       "type": "text",
     },
   },
+  "Certificate details": undefined,
   "Contact details": {
     "emailAddress": {
       "answer": "test@test.com",
@@ -215,5 +216,6 @@ exports[`requestDocument is successfully reordered 1`] = `
   },
   "Marital status": undefined,
   "Partner's details": undefined,
+  "Reason for document": undefined,
 }
 `;

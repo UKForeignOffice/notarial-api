@@ -1,5 +1,5 @@
 import { SendEmailOptions } from "notifications-node-client";
-import { CertifyCopyFormType, FormType, MarriageFormType } from "../../../types/FormDataBody";
+import { CertifyCopyFormType, MarriageFormType } from "../../../types/FormDataBody";
 
 export interface NotifySendEmailArgs {
   template: string;

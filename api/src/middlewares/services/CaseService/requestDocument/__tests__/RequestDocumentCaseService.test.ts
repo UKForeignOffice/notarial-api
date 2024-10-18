@@ -25,5 +25,41 @@ const paymentViewModel = {
   total: "100",
 };
 
-test.todo("getEmailBody renders document name correctly");
-test.todo("getEmailBody renders country if the serviceType is adoption");
+test("getEmailBody renders document name correctly", () => {
+  console.log(allOtherFields);
+  const emailBody = requestDocumentCaseService.getEmailBody({
+    fields: allOtherFields,
+    payment: paymentViewModel,
+    reference: "ref",
+  });
+  expect(emailBody).toContain("Document: USA - J1 visa no objection statement");
+});
+
+describe("getEmailBody renders correct sections for adoption", () => {
+  test("when partner is BN", () => {
+    const adoptionFields = [...fields.adoption.adoptionFields].filter(isNotFieldType("file"));
+
+    const emailBody = requestDocumentCaseService.getEmailBody({
+      fields: adoptionFields,
+      payment: paymentViewModel,
+      reference: "ref",
+    });
+
+    expect(emailBody).toContain("Passport number: 123123");
+    expect(emailBody).toContain("Partner is a British National: true");
+    expect(emailBody).toContain("Passport number: 987987");
+  });
+  test("when partner is not BN", () => {
+    const adoptionFields = [...fields.adoption.adoptionFieldsPartnerIsNotBn].filter(isNotFieldType("file"));
+
+    const emailBody = requestDocumentCaseService.getEmailBody({
+      fields: adoptionFields,
+      payment: paymentViewModel,
+      reference: "ref",
+    });
+
+    expect(emailBody).toContain("Passport number: 123123");
+    expect(emailBody).toContain("Partner is a British National: false");
+    expect(emailBody).not.toContain("Passport number: 987987");
+  });
+});
