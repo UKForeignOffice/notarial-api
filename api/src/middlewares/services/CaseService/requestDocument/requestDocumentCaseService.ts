@@ -91,13 +91,12 @@ export class RequestDocumentCaseService implements CaseService {
       this.logger.warn(`Payment details for ${reference} could not be parsed. Payment details will not be shown on the email.`);
     }
 
-    const country = answers.applicationCountry;
     const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference });
-
     const post = getPostForRequestDocument(answers.serviceType, answers.applicationCountry, answers.post);
+
     const onCompleteJob = this.getPostAlertData(post, reference);
     return {
-      subject: `Prepare a document application, ${country}, ${post} – ${reference}`,
+      subject: `Prepare a document application, ${answers.serviceType}, ${post} – ${reference}`,
       body: emailBody,
       attachments: fields.filter(isFieldType("file")),
       reference,
