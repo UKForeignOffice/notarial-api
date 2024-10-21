@@ -1269,7 +1269,7 @@
     },
     "services": {
       "Mexico - criminal record certificate letter": {
-        "name": "criminal record certificate (certificado de datos registrales) letter",
+        "name": "letter for a registration data or criminal record certificate",
         "customText": "<p class=\"govuk-body\">To get a criminal record certificate you’ll need a letter from the British Embassy Mexico City requesting a criminal background check from Mexican authorities. The Mexican authorities are responsible for the process – the embassy cannot provide the certificate directly.</p>",
         "postal": "FALSE",
         "post": "the British Embassy Mexico City",
