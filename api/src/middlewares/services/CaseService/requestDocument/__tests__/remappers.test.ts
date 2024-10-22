@@ -49,10 +49,12 @@ test("requestDocument - Thailand Citizenship - unique fields are included", () =
 
 test("requestDocument - Belgium Certificate of custom law", () => {
   const remapped = requestDocumentRemapper(fields.belgiumCustomLaw);
-  expect(remapped.delivery.addressLine1).toBeDefined();
+  expect(remapped.permanentAddress.addressLine1.answer).toBe("Perm address line 1");
+  expect(remapped.delivery.addressLine1.answer).toBe("Global address line 1");
   expect(remapped.delivery.addressLine2).toBeDefined();
   expect(remapped.delivery.city).toBeDefined();
   expect(remapped.delivery.country).toBeDefined();
+
   expect(remapped.marriageDetails).toBeDefined();
 });
 

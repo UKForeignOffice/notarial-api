@@ -1,6 +1,7 @@
 export const order = {
   applicantDetails: "Applicant's details",
   applicantPassport: "Applicant's passport details",
+  permanentAddress: "Applicant's permanent address",
   contactDetails: "Contact details",
   reason: "Reason for document",
   certificate: "Certificate details",
@@ -26,6 +27,12 @@ export const remap = {
   countryOfBirth: "applicantPassport.countryOfBirth",
   placeOfBirth: "applicantPassport.placeOfBirth",
 
+  "permanentAddress.addressLine1": "permanentAddress.addressLine1",
+  "permanentAddress.addressLine2": "permanentAddress.addressLine2",
+  "permanentAddress.city": "permanentAddress.city",
+  "permanentAddress.postcode": "permanentAddress.postcode",
+  "permanentAddress.country": "permanentAddress.country",
+
   docLanguage: "certificate.docLanguage",
 
   mscReason: "reason.reason",
@@ -45,16 +52,18 @@ export const remap = {
   partnerCountryOfBirth: "partnerDetails.partnerCountryOfBirth",
   partnerPassportDateOfIssue: "partnerDetails.partnerPassportDateOfIssue",
 
-  addressLine1: "delivery.addressLine1",
-  addressLine2: "delivery.addressLine2",
-  city: "delivery.city",
-  postcode: "delivery.postcode",
   "delivery.country": "delivery.country",
 
   deliveryAddressLine1: "delivery.addressLine1",
   deliveryAddressLine2: "delivery.addressLine2",
   deliveryCity: "delivery.city",
   deliveryPostcode: "delivery.postCode",
+
+  globalDeliveryAddressLine1: "delivery.addressLine1",
+  globalDeliveryAddressLine2: "delivery.addressLine2",
+  globalDeliveryCity: "delivery.city",
+  globalDeliveryPostcode: "delivery.postCode",
+  globalDeliveryCountry: "delivery.country",
 
   emailAddress: "contactDetails.emailAddress",
   phoneNumber: "contactDetails.phoneNumber",

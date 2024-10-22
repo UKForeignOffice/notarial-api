@@ -26,7 +26,6 @@ const paymentViewModel = {
 };
 
 test("getEmailBody renders document name correctly", () => {
-  console.log(allOtherFields);
   const emailBody = requestDocumentCaseService.getEmailBody({
     fields: allOtherFields,
     payment: paymentViewModel,

@@ -187,6 +187,7 @@ exports[`requestDocument is successfully reordered 1`] = `
       "type": "text",
     },
   },
+  "Applicant's permanent address": undefined,
   "Certificate details": undefined,
   "Contact details": {
     "emailAddress": {
