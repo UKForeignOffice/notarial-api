@@ -51,4 +51,5 @@ export const FileMimeType = {
   "image/jpeg": "jpg",
   "application/pdf": "pdf",
   "image/png": "png",
+  "application/vnd.oasis.opendocument.text": "odt",
 };
