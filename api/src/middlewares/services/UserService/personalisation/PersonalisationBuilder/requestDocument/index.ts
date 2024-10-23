@@ -15,7 +15,7 @@ export function requestDocumentPersonalisationBuilder(answers: AnswersHashMap, m
   const post = getPostForRequestDocument(serviceType, applicationCountry, answersPost);
 
   const postAddress = getPostAddressForRequestDocument(serviceType);
-  const bookingLink = getBookingLinkForRequestDocument(post);
+  const bookingLink = getBookingLinkForRequestDocument(post, serviceType);
 
   return {
     post,
