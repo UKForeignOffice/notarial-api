@@ -2,14 +2,14 @@ import { PayMetadata } from "../../../../types/FormDataBody";
 import config from "config";
 import { PaymentData } from "../types";
 
-export function PaymentViewModel(payment: PayMetadata | undefined, country: string): PaymentData | undefined {
+export function PaymentViewModel(payment: PayMetadata | undefined, countryOrService: string): PaymentData | undefined {
   if (!payment) {
     return;
   }
   const paymentUrl = new URL(payment.payId, config.get<string>("Pay.accountTransactionsUrl"));
   const allTransactionsByCountryUrl = new URL(config.get<string>("Pay.accountTransactionsUrl"));
   const total = payment.total ? (payment.total / 100).toFixed(2) : "Unpaid";
-  allTransactionsByCountryUrl.searchParams.set("metadataValue", country);
+  allTransactionsByCountryUrl.searchParams.set("metadataValue", countryOrService);
 
   return {
     id: payment.payId,
@@ -18,7 +18,8 @@ export function PaymentViewModel(payment: PayMetadata | undefined, country: stri
     total,
     allTransactionsByCountry: {
       url: allTransactionsByCountryUrl.toString(),
-      country,
+      country: countryOrService,
+      service: countryOrService,
     },
   };
 }
