@@ -3,6 +3,7 @@ import { FormType, PayMetadata } from "../../../../../../types/FormDataBody";
 import { ApplicationError } from "../../../../../../ApplicationError";
 import { getPostForRequestDocument } from "../../../../utils/getPost";
 import { getPostAddressForRequestDocument } from "../../../../utils/getPostAddressForRequestDocument";
+import { getBookingLinkForRequestDocument } from "../../../../utils/getBookingLinkForRequestDocument";
 
 export function requestDocumentPersonalisationBuilder(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
   if (!answers) {
@@ -14,6 +15,7 @@ export function requestDocumentPersonalisationBuilder(answers: AnswersHashMap, m
   const post = getPostForRequestDocument(serviceType, applicationCountry, answersPost);
 
   const postAddress = getPostAddressForRequestDocument(serviceType);
+  const bookingLink = getBookingLinkForRequestDocument(post);
 
   return {
     post,
@@ -21,5 +23,6 @@ export function requestDocumentPersonalisationBuilder(answers: AnswersHashMap, m
     reference: metadata.reference,
     firstName: answers.firstName,
     postAddress,
+    bookingLink,
   };
 }
