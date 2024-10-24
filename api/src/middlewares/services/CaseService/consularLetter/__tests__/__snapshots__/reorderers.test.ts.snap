@@ -5,7 +5,7 @@ exports[`consularLetter is successfully remapped 1`] = `
   "Applicant's details": undefined,
   "Contact details": {
     "emailAddress": {
-      "answer": "luke@cautionyourblast.com",
+      "answer": "test@test.com",
       "category": "nextOfKinDetails",
       "key": "emailAddress",
       "title": "Email address of the next of kin",
