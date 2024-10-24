@@ -1,7 +1,7 @@
 import { UserTemplateGroup } from "./UserTemplateGroup";
 import { RequestDocumentAnswersHashmap } from "../../../../types/AnswersHashMap";
 import config from "config";
-import { requestDocumentPersonalisationBuilder } from "../personalisation/PersonalisationBuilder/requestDocument";
+import { RequestDocumentPersonalisationBuilder } from "../personalisation/PersonalisationBuilder/requestDocument";
 
 export class RequestDocumentUserTemplates implements UserTemplateGroup {
   templates: Record<RequestDocumentDocumentTemplateKeys, string>;
@@ -45,7 +45,7 @@ export class RequestDocumentUserTemplates implements UserTemplateGroup {
 
     template ??= this.templates[documentType];
 
-    return { personalisationBuilder: requestDocumentPersonalisationBuilder, template };
+    return { personalisationBuilder: RequestDocumentPersonalisationBuilder, template };
   }
 
   getAdoptionTemplateName(country: string) {
