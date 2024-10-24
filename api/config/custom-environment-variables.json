@@ -17,6 +17,9 @@
       "certifyCopyChildUserPostalConfirmation": "NOTIFY_TEMPLATE_CERTIFY_COPY_CHILD_USER_POSTAL_CONFIRMATION",
       "certifyCopyPostNotification": "NOTIFY_TEMPLATE_CERTIFY_COPY_POST_NOTIFICATION",
       "postNotification": "NOTIFY_TEMPLATE_POST_NOTIFICATION",
+      "consularLetterPostNotification": "NOTIFY_TEMPLATE_CONSULAR_LETTER_POST_NOTIFICATION",
+      "consularLetterUserConfirmation": "NOTIFY_TEMPLATE_CONSULAR_LETTER_USER_CONFIRMATION",
+      "consularLetterUserPostalConfirmation": "NOTIFY_TEMPLATE_CONSULAR_LETTER_USER_POSTAL_CONFIRMATION",
       "requestDocumentPostNotification": "NOTIFY_TEMPLATE_REQUEST_DOCUMENT_POST_NOTIFICATION",
       "requestDocument": {
         "J1": "NOTIFY_TEMPLATE_REQUEST_DOCUMENT_J1",
