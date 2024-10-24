@@ -1,0 +1,1 @@
+export { consularLetter } from "./consularLetter";
