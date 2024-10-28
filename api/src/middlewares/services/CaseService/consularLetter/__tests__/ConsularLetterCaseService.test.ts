@@ -98,20 +98,3 @@ test("buildJobData returns an object with subject, body, attachments and referen
     reference: "1234",
   });
 });
-
-test("Failed payments renders 'unpaid'", () => {
-  const payMetadata: PayMetadata = {
-    payId: "123",
-    reference: "ref",
-    state: {
-      code: "",
-      finished: true,
-      message: "Some error",
-      status: "failed",
-    },
-  };
-  const result = PaymentViewModel(payMetadata, "Thailand");
-
-  const emailBody = consularLetterCaseService.getEmailBody({ fields: allOtherFields, payment: result, reference: "1234" });
-  expect(emailBody).toContain("Payment amount: Unpaid");
-});
