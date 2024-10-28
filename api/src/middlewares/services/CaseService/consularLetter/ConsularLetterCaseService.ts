@@ -67,13 +67,13 @@ export class ConsularLetterCaseService implements CaseService {
     const reorderer = reorderSectionsWithNewName(order);
     const reordered = reorderer(remapped);
 
-    const country = "Thailand";
     const post = "the British Embassy Bangkok";
+    const applicantIsNok = remapped.information.applicantIsNextOfKin;
     return this.templates.SES({
       post,
+      applicantIsNok,
       reference,
       payment,
-      country,
       questions: reordered,
     });
   }

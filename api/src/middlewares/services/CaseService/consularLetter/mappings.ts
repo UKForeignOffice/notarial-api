@@ -9,7 +9,6 @@ export const order = {
 };
 
 export const remap = {
-  country: "information.country",
   post: "information.post",
   nextOfKin: "information.applicantIsNextOfKin",
 

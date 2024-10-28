@@ -21,20 +21,7 @@ const template = `
 
 <ul>
     <li>Reference: {{ reference }}</li>
-</ul>
-
-<h3>Fees:</h3>
-<ul>
-    <li>Paid: {{payment.status}}</li>
-    <li>
-        Payment amount: {{payment.total}}
-    </li>
-    <li>
-        payment ID: {{ payment.id }} <a href="{{payment.url}}">(View payment details or refund)</a>
-    </li>
-    <li>
-        <a href="{{payment.allTransactionsByCountry.url}}"> View all transactions for {{payment.allTransactionsByCountry.country}}</a>
-    </li> 
+    <li>Applicant is next of kin: {{ applicantIsNok }}</li>
 </ul>
 
 
