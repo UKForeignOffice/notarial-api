@@ -5,6 +5,7 @@ import { UserService } from "../UserService";
 import { MarriageCaseService, RequestDocumentCaseService, CertifyCopyCaseService } from "../CaseService";
 import { getCaseServiceName } from "../utils/getCaseServiceName";
 import { CaseService } from "../CaseService/types";
+import { ConsularLetterCaseService } from "../CaseService/consularLetter/ConsularLetterCaseService";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
@@ -14,13 +15,15 @@ export class SubmitService {
   marriageCaseService: MarriageCaseService;
   certifyCopyCaseService: CertifyCopyCaseService;
   requestDocumentCaseService: RequestDocumentCaseService;
+  consularLetterCaseService: ConsularLetterCaseService;
 
-  constructor({ userService, marriageCaseService, certifyCopyCaseService, requestDocumentCaseService }) {
+  constructor({ userService, marriageCaseService, certifyCopyCaseService, requestDocumentCaseService, consularLetterCaseService }) {
     this.logger = logger().child({ service: "Submit" });
     this.userService = userService;
     this.marriageCaseService = marriageCaseService;
     this.certifyCopyCaseService = certifyCopyCaseService;
     this.requestDocumentCaseService = requestDocumentCaseService;
+    this.consularLetterCaseService = consularLetterCaseService;
   }
   generateId() {
     return nanoid();

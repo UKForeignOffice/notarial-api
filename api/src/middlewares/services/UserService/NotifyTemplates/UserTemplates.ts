@@ -5,17 +5,20 @@ import { MarriageUserTemplates } from "./MarriageUserTemplates";
 import { CertifyCopyUserTemplates } from "./CertifyCopyUserTemplates";
 import { RequestDocumentUserTemplates } from "./RequestDocumentUserTemplates";
 import { ApplicationError } from "../../../../ApplicationError";
+import { ConsularLetterUserTemplates } from "./ConsularLetterUserTemplates";
 
 export class UserTemplates {
   marriage: MarriageUserTemplates;
   certifyCopy: CertifyCopyUserTemplates;
   requestDocument: RequestDocumentUserTemplates;
+  consularLetter: ConsularLetterUserTemplates;
 
   constructor() {
     try {
       this.marriage = new MarriageUserTemplates();
       this.certifyCopy = new CertifyCopyUserTemplates();
       this.requestDocument = new RequestDocumentUserTemplates();
+      this.consularLetter = new ConsularLetterUserTemplates();
     } catch (e) {
       console.error("Notify templates have not been configured, exiting", e);
       throw e;
@@ -35,6 +38,10 @@ export class UserTemplates {
 
     if (type === "requestDocument") {
       return this.requestDocument.getTemplate(data);
+    }
+
+    if (type === "consularLetter") {
+      return this.consularLetter.getTemplate(data);
     }
 
     throw new ApplicationError("NOTIFY", "UNKNOWN", 500, `Could not find the right template or builder for ${type}`);

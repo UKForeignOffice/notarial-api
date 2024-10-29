@@ -1,4 +1,4 @@
-import { CertifyCopyFormType, FormType, MarriageFormType, PayMetadata, RequestDocumentFormType } from "../../../../types/FormDataBody";
+import { CertifyCopyFormType, ConsularLetterFormType, FormType, MarriageFormType, PayMetadata, RequestDocumentFormType } from "../../../../types/FormDataBody";
 
 export interface FormMetadata {
   reference: string;
@@ -17,4 +17,8 @@ export interface CertifyCopyFormMetadata extends FormMetadata {
 
 export interface RequestDocumentFormMetadata extends FormMetadata {
   type: RequestDocumentFormType;
+}
+
+export interface ConsularLetterFormMetadata extends FormMetadata {
+  type: ConsularLetterFormType;
 }

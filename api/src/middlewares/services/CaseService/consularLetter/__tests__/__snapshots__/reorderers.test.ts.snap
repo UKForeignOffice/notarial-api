@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`consularLetter is successfully remapped 1`] = `
+{
+  "Applicant's details": undefined,
+  "Contact details": {
+    "emailAddress": {
+      "answer": "test@test.com",
+      "category": "nextOfKinDetails",
+      "key": "emailAddress",
+      "title": "Email address of the next of kin",
+      "type": "text",
+    },
+    "phoneNumber": {
+      "answer": "+44 1234 567890",
+      "category": "nextOfKinDetails",
+      "key": "phoneNumber",
+      "title": "Phone number of the next of kin",
+      "type": "text",
+    },
+  },
+  "Delivery address": {
+    "addressLine1": {
+      "answer": "test",
+      "category": "delivery",
+      "key": "addressLine1",
+      "title": "Address line 1",
+      "type": "text",
+    },
+    "addressLine2": {
+      "answer": null,
+      "category": "delivery",
+      "key": "addressLine2",
+      "title": "Address line 2",
+      "type": "text",
+    },
+    "addressLine3": {
+      "answer": null,
+      "category": "delivery",
+      "key": "addressLine3",
+      "title": "Address line 3",
+      "type": "text",
+    },
+    "postcodeOrZipCode": {
+      "answer": "test",
+      "category": "delivery",
+      "key": "postcode",
+      "title": "ZIP or Postcode",
+      "type": "text",
+    },
+    "townOrCity": {
+      "answer": "test",
+      "category": "delivery",
+      "key": "townOrCity",
+      "title": "Town or city",
+      "type": "text",
+    },
+  },
+  "Details of the deceased": {
+    "middleName": {
+      "answer": null,
+      "category": "deceasedsDetails",
+      "key": "deceasedMiddleName",
+      "title": "Middle name",
+      "type": "text",
+    },
+    "surname": {
+      "answer": "test",
+      "category": "deceasedsDetails",
+      "key": "deceasedSurname",
+      "title": "Surname",
+      "type": "text",
+    },
+  },
+  "Feedback consent": {
+    "feedbackConsent": {
+      "answer": false,
+      "category": "feedback",
+      "key": "feedbackConsent",
+      "title": "Can our partner contact you for feedback to help improve this service?",
+      "type": "list",
+    },
+  },
+  "Funeral director company address": {
+    "addressLine1": {
+      "answer": "test",
+      "category": "yourDetails",
+      "key": "funeralDirectorAddressLine1",
+      "title": "Address line 1",
+      "type": "text",
+    },
+    "addressLine2": {
+      "answer": null,
+      "category": "yourDetails",
+      "key": "funeralDirectorAddressLine2",
+      "title": "Address line 2",
+      "type": "text",
+    },
+    "addressLine3": {
+      "answer": null,
+      "category": "yourDetails",
+      "key": "funeralDirectorAddressLine3",
+      "title": "Address line 3",
+      "type": "text",
+    },
+    "companyName": {
+      "answer": "test",
+      "category": "yourDetails",
+      "key": "funeralDirectorCompanyName",
+      "title": "Company name",
+      "type": "text",
+    },
+    "postcodeOrZipCode": {
+      "answer": null,
+      "category": "yourDetails",
+      "key": "funeralDirectorPostcode",
+      "title": "Zip or postcode",
+      "type": "text",
+    },
+    "townOrCity": {
+      "answer": "test",
+      "category": "yourDetails",
+      "key": "funeralDirectorTownOrCity",
+      "title": "Town or city",
+      "type": "text",
+    },
+  },
+  "Next of kin's details": {
+    "applicantsRelationshipToDeceased": {
+      "answer": "Other",
+      "category": "nextOfKinDetails",
+      "key": "relationshipToDeceased",
+      "title": "Relationship of next of kin",
+      "type": "list",
+    },
+    "applicantsRelationshipToDeceasedIfOther": {
+      "answer": "test",
+      "category": "nextOfKinDetails",
+      "key": "relationshipToDeceasedOther",
+      "title": "Relationship to deceased if other",
+      "type": "text",
+    },
+    "firstName": {
+      "answer": "test",
+      "category": "nextOfKinDetails",
+      "key": "firstName",
+      "title": "First name",
+      "type": "text",
+    },
+    "middleName": {
+      "answer": null,
+      "category": "nextOfKinDetails",
+      "key": "middleName",
+      "title": "Middle name",
+      "type": "text",
+    },
+    "surname": {
+      "answer": "tes",
+      "category": "nextOfKinDetails",
+      "key": "surname",
+      "title": "Surname",
+      "type": "text",
+    },
+  },
+}
+`;
