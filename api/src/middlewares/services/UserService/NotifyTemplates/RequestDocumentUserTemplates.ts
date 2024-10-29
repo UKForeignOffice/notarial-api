@@ -37,7 +37,7 @@ export class RequestDocumentUserTemplates implements UserTemplateGroup {
     const documentType = requestDocAnswers.serviceType;
     let template;
 
-    if (documentType === "No objection certificate to adopt a child") {
+    if (documentType === "letter of no objection to adopt a child") {
       const country = requestDocAnswers.applicationCountry;
       const adoptionTemplateName = this.getAdoptionTemplateName(country!);
       template = this.templates[adoptionTemplateName];

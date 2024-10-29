@@ -114,10 +114,10 @@ describe("sendEmailToUser - requestDocument", () => {
     );
   });
 
-  describe("No objection certificate to adopt a child", () => {
+  describe("letter of no objection to adopt a child", () => {
     const baseAnswers = {
       firstName: "test",
-      serviceType: "No objection certificate to adopt a child",
+      serviceType: "letter of no objection to adopt a child",
     };
 
     const metadata = { reference: "ref", type: "requestDocument" };
@@ -165,7 +165,7 @@ describe("sendEmailToUser - requestDocument", () => {
     `(`$country with defaulted posts`, ({ country, expectedPost, template }) => {
       const answers = {
         firstName: "test",
-        serviceType: "No objection certificate to adopt a child",
+        serviceType: "letter of no objection to adopt a child",
         applicationCountry: country,
       };
 

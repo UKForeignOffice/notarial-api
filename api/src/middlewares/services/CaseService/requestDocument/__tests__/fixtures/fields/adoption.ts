@@ -3,7 +3,7 @@ export const adoptionFields = [
     key: "serviceType",
     type: "list",
     title: "Service being applied for",
-    answer: "No objection certificate to adopt a child",
+    answer: "letter of no objection to adopt a child",
     category: "beforeYouStart",
   },
   {
@@ -215,7 +215,7 @@ export const adoptionFieldsPartnerIsNotBn = [
     key: "serviceType",
     type: "list",
     title: "Service being applied for",
-    answer: "No objection certificate to adopt a child",
+    answer: "letter of no objection to adopt a child",
     category: "beforeYouStart",
   },
   {
