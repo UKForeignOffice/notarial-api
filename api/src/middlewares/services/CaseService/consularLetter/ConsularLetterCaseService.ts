@@ -59,7 +59,7 @@ export class ConsularLetterCaseService implements CaseService {
   }
 
   getEmailBody(data: { fields: FormField[]; payment?: PaymentData; reference: string }) {
-    const { fields, payment, reference } = data;
+    const { fields, reference } = data;
 
     const remapFields = createRemapper(remap);
     const remapped = remapFields(fields);
@@ -73,7 +73,6 @@ export class ConsularLetterCaseService implements CaseService {
       post,
       applicantIsNok,
       reference,
-      payment,
       questions: reordered,
     });
   }
