@@ -28,6 +28,8 @@ export const remap = {
   "nextOfKinDetails.relationshipToDeceased": "nokDetails.applicantsRelationshipToDeceased",
   "nextOfKinDetails.relationshipToDeceasedOther": "nokDetails.applicantsRelationshipToDeceasedIfOther",
   "nextOfKinDetails.travelPassportNo": "nokDetails.applicantsPassportOrThaiIdNumber",
+  "nextOfKinDetails.nokEmailAddress": "nokDetails.emailAddress",
+  "nextOfKinDetails.nokPhoneNumber": "nokDetails.phoneNumber",
 
   funeralDirectorCompanyName: "companyDetails.companyName",
   funeralDirectorAddressLine1: "companyDetails.addressLine1",
