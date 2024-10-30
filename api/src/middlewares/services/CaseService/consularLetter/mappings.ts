@@ -27,7 +27,7 @@ export const remap = {
   "nextOfKinDetails.surname": "nokDetails.surname",
   "nextOfKinDetails.relationshipToDeceased": "nokDetails.applicantsRelationshipToDeceased",
   "nextOfKinDetails.relationshipToDeceasedOther": "nokDetails.applicantsRelationshipToDeceasedIfOther",
-  "nextOfKinDetails.applicantPassportOrThaiID": "nokDetails.applicantsPassportOrThaiIdNumber",
+  "nextOfKinDetails.travelPassportNo": "nokDetails.applicantsPassportOrThaiIdNumber",
 
   funeralDirectorCompanyName: "companyDetails.companyName",
   funeralDirectorAddressLine1: "companyDetails.addressLine1",
@@ -36,9 +36,14 @@ export const remap = {
   funeralDirectorTownOrCity: "companyDetails.townOrCity",
   funeralDirectorPostcode: "companyDetails.postcodeOrZipCode",
 
-  deceasedFirstname: "deceasedDetails.firstName",
+  deceasedFirstName: "deceasedDetails.firstName",
   deceasedMiddleName: "deceasedDetails.middleName",
   deceasedSurname: "deceasedDetails.surname",
+
+  deceasedPassportNumber: "deceasedDetails.passportNumber",
+  deceasedDateOfBirth: "deceasedDetails.dateOfBirth",
+  deceasedPlaceOfDeath: "deceasedDetails.placeOfDeath",
+  deceasedDateOfDeath: "deceasedDetails.dateOfDeath",
 
   addressLine1: "deliveryAddress.addressLine1",
   addressLine2: "deliveryAddress.addressLine2",

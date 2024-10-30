@@ -68,7 +68,7 @@ export class ConsularLetterCaseService implements CaseService {
     const reordered = reorderer(remapped);
 
     const post = "the British Embassy Bangkok";
-    const applicantIsNok = remapped.information.applicantIsNextOfKin;
+    const applicantIsNok = remapped.information.applicantIsNextOfKin.answer;
     return this.templates.SES({
       post,
       applicantIsNok,
