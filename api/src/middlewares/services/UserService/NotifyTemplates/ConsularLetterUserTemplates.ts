@@ -17,7 +17,7 @@ export class ConsularLetterUserTemplates implements UserTemplateGroup {
     const answers = data.answers as ConsularLetterAnswersHashmap;
     const isPostalApplication = answers.letterChoice === "Post";
     const postalVariant: PostalVariant = isPostalApplication ? "postal" : "inPerson";
-    const personalisationBuilder = ConsularLetterPersonalisationBuilder[postalVariant];
+    const personalisationBuilder = ConsularLetterPersonalisationBuilder;
 
     return {
       template: this.templates[postalVariant],
