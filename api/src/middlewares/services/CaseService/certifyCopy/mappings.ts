@@ -16,7 +16,6 @@ export const remap = {
   phoneNumber: "contactDetails.phoneNumber",
   emailAddress: "contactDetails.emailAddress",
 
-  "parent2Contact.emailAddress": "parent2ContactDetails.emailAddress",
   "parent2Contact.phoneNumber": "parent2ContactDetails.phoneNumber",
 
   firstName: "applicantDetails.firstName",
