@@ -2,10 +2,9 @@ import logger, { Logger } from "pino";
 import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
 import { UserService } from "../UserService";
-import { MarriageCaseService, RequestDocumentCaseService, CertifyCopyCaseService } from "../CaseService";
+import { MarriageCaseService, RequestDocumentCaseService, CertifyCopyCaseService, ConsularLetterCaseService } from "../CaseService";
 import { getCaseServiceName } from "../utils/getCaseServiceName";
 import { CaseService } from "../CaseService/types";
-import { ConsularLetterCaseService } from "../CaseService/consularLetter/ConsularLetterCaseService";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
