@@ -1,16 +1,15 @@
-import { UserService, MarriageCaseService, CertifyCopyCaseService, RequestDocumentCaseService, SubmitService } from "../middlewares/services";
-import { ConsularLetterCaseService } from "../middlewares/services/CaseService/consularLetter/ConsularLetterCaseService";
+import * as Services from "../middlewares/services";
 
 declare global {
   namespace Express {
     interface Application {
       services: {
-        marriageCaseService: MarriageCaseService;
-        certifyCopyCaseService: CertifyCopyCaseService;
-        requestDocumentCaseService: RequestDocumentCaseService;
-        consularLetterCaseService: ConsularLetterCaseService;
-        userService: UserService;
-        submitService: SubmitService;
+        marriageCaseService: Services.CaseService.MarriageCaseService;
+        certifyCopyCaseService: Services.CaseService.CertifyCopyCaseService;
+        requestDocumentCaseService: Services.CaseService.RequestDocumentCaseService;
+        consularLetterCaseService: Services.CaseService.ConsularLetterCaseService;
+        userService: Services.UserService;
+        submitService: Services.SubmitService;
       };
     }
 
