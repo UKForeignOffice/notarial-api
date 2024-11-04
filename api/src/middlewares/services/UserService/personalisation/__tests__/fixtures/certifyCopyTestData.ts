@@ -4,7 +4,7 @@ export const certifyCopyTestData = {
     {
       category: "beforeYouStart",
       question: "Which country or territory has asked for this document?",
-      fields: [{ key: "country", title: "Application country", type: "list", answer: "Vietnam" }],
+      fields: [{ key: "country", title: "Application country", type: "list", answer: "Thailand" }],
       index: 0,
     },
     {
