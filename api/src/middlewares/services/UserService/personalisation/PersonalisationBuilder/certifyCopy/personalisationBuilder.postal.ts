@@ -9,6 +9,7 @@ export function buildPostalPersonalisation(answers: AnswersHashMap, metadata: { 
 
   const additionalContext = {
     ...(additionalContexts.certifyCopy.countries[country] ?? {}),
+    ...(additionalContexts.certifyCopy.posts[post] ?? {}),
   };
 
   return {
