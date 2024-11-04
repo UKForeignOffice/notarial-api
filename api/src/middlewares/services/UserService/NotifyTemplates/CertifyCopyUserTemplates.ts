@@ -26,7 +26,7 @@ export class CertifyCopyUserTemplates implements UserTemplateGroup {
     const answers = data.answers as CertifyCopyAnswersHashmap;
     const isPostalApplication = answers.applicationType === "postal";
     const postalVariant: PostalVariant = isPostalApplication ? "postal" : "inPerson";
-    const isAdult = answers.over16 || false;
+    const isAdult = answers.over18 || false;
     const userTypeVariant = isAdult ? "adult" : "child";
     const personalisationBuilder = CertifyCopyPersonalisationBuilder[postalVariant];
 
