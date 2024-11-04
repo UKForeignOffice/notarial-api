@@ -71,10 +71,10 @@ describe("sendEmailToUser - Marriage templates", () => {
 describe("sendEmailToUser - certifyCopy", () => {
   test.each`
     label                 | answers                                         | template
-    ${"adult - inPerson"} | ${{ over16: true }}                             | ${"certify-copy-adult-template"}
-    ${"adult - postal"}   | ${{ over16: true, applicationType: "postal" }}  | ${"certify-copy-adult-postal-template"}
-    ${"child - inPerson"} | ${{ over16: false }}                            | ${"certify-copy-child-template"}
-    ${"adult - postal"}   | ${{ over16: false, applicationType: "postal" }} | ${"certify-copy-child-postal-template"}
+    ${"adult - inPerson"} | ${{ over18: true }}                             | ${"certify-copy-adult-template"}
+    ${"adult - postal"}   | ${{ over18: true, applicationType: "postal" }}  | ${"certify-copy-adult-postal-template"}
+    ${"child - inPerson"} | ${{ over18: false }}                            | ${"certify-copy-child-template"}
+    ${"adult - postal"}   | ${{ over18: false, applicationType: "postal" }} | ${"certify-copy-child-postal-template"}
   `(`$template is returned for $label`, async ({ answers, template }) => {
     const metadata = { reference: "ref", type: "certifyCopy" };
     await userService.sendEmailToUser({ answers, metadata });
