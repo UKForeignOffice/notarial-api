@@ -85,7 +85,7 @@ test("buildJobData returns an object with subject, body, attachments and referen
     },
   });
   expect(result).toEqual({
-    subject: "Certify a copy application, Vietnam, the British Consulate General Ho Chi Minh City – 1234",
+    subject: "Certify a copy application, Thailand, the British Embassy Bangkok – 1234",
     body: expect.any(String),
     onComplete: {
       queue: "NOTIFY_SEND",
