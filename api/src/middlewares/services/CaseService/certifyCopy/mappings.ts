@@ -3,6 +3,7 @@ export const order = {
   applicantPassport: "Applicant's passport details",
   deliveryAddress: "Delivery address",
   contactDetails: "Contact details",
+  parent2ContactDetails: "Parent 2 contact details",
   feedbackConsent: "Feedback consent",
 };
 
@@ -14,6 +15,8 @@ export const remap = {
 
   phoneNumber: "contactDetails.phoneNumber",
   emailAddress: "contactDetails.emailAddress",
+
+  "parent2Contact.phoneNumber": "parent2ContactDetails.phoneNumber",
 
   firstName: "applicantDetails.firstName",
   middleName: "applicantDetails.middleName",

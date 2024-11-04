@@ -28,7 +28,7 @@ const webhookOutputSchema = joi.object().keys({
         reference: joi.string().optional(),
       })
       .optional(),
-    type: joi.string().valid("affirmation", "cni", "exchange", "certifyCopy").trim(),
+    type: joi.string().valid("affirmation", "cni", "exchange", "certifyCopy", "requestDocument", "consularLetter").trim(),
   }),
 });
 export function validationHandler(req: Request, _res: Response, next: NextFunction) {

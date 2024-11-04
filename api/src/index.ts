@@ -7,11 +7,7 @@ async function initApp(): Promise<void> {
   const server = createServer();
 
   server.listen(config.get("port"), () => {
-    initLogger.info(
-      `Server listening on PORT: ${config.get("port")}, NODE_ENV: ${config.get(
-        "env"
-      )}`
-    );
+    initLogger.info(`Server listening on PORT: ${config.get("port")}, NODE_ENV: ${config.get("env")}`);
   });
 
   process.on("exit", () => {
@@ -21,5 +17,6 @@ async function initApp(): Promise<void> {
 
 initApp().catch((err) => {
   initLogger.error(["Server initialisation error"], err);
-  process.exit(1);
+  throw err;
+  // process.exit(1);
 });

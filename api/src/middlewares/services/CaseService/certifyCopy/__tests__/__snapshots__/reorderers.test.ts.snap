@@ -79,5 +79,6 @@ exports[`certifyCopy is successfully remapped 1`] = `
       "type": "list",
     },
   },
+  "Parent 2 contact details": undefined,
 }
 `;

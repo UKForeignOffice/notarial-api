@@ -18,7 +18,7 @@ const schema = joi.object({
     .required(),
   metadata: {
     reference: joi.string().required(),
-    type: joi.string().valid("affirmation", "cni", "exchange", "certifyCopy"),
+    type: joi.string().valid("affirmation", "cni", "exchange", "certifyCopy", "requestDocument", "consularLetter"),
     payment: joi.object(),
   },
 });

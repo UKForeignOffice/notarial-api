@@ -215,8 +215,8 @@ test("buildJobData should return the correct personalisation for a certify a cop
 
   expect(personalisation).toEqual({
     firstName: "test",
-    post: "the British Consulate General Ho Chi Minh City",
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=64&service=13",
+    post: "the British Embassy Bangkok",
+    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=53&service=9",
     reference: "1234",
   });
 });

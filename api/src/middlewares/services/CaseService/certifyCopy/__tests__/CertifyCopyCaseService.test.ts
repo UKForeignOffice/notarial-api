@@ -65,7 +65,6 @@ test("sendEmail throws ApplicationError when no jobId is returned", async () => 
       },
     });
   } catch (e) {
-    console.log(e);
     expect(e.code).toBe("SES_SEND_ERROR");
     expect(e.name).toBe("QUEUE");
   }
@@ -86,7 +85,7 @@ test("buildJobData returns an object with subject, body, attachments and referen
     },
   });
   expect(result).toEqual({
-    subject: "Certify a copy application, Vietnam, the British Consulate General Ho Chi Minh City – 1234",
+    subject: "Certify a copy application, Thailand, the British Embassy Bangkok – 1234",
     body: expect.any(String),
     onComplete: {
       queue: "NOTIFY_SEND",
