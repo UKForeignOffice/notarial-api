@@ -5,7 +5,6 @@ import * as handlebars from "handlebars";
 import { isFieldType } from "../../../../utils";
 import { ConsularLetterProcessQueueData, PaymentData } from "../types";
 import { PaymentViewModel } from "../utils/PaymentViewModel";
-import { CaseService } from "../types";
 import { reorderSectionsWithNewName } from "../utils/reorderSectionsWithNewName";
 import { order, remap } from "./mappings";
 import { createRemapper } from "../utils/createRemapper";
@@ -13,8 +12,9 @@ import { ConsularLetterProcessQueueDataInput } from "../types";
 import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
 import { QueueService } from "../../QueueService";
 import logger, { Logger } from "pino";
+import { SESCaseService } from "../types/CaseService";
 
-export class ConsularLetterCaseService implements CaseService {
+export class ConsularLetterCaseService implements SESCaseService {
   logger: Logger;
   queueService: QueueService;
   templates: {
