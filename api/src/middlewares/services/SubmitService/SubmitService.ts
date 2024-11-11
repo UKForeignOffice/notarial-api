@@ -81,6 +81,16 @@ export class SubmitService {
 
       this.logger.info({ reference, userProcessJob }, `NOTIFY_PROCESS job queued successfully for ${reference}`);
     } catch (e) {
+      if (e.name === "ORBIT") {
+        /**
+         * Rethrown application errors will be caught by {@link errorHandler}, which will respond to
+         * the client (forms-worker) with a http error, and will keep the job in an error or retry state.
+         * It cannot be handled like SES Cases, since we are relying on Orbit's case reference.
+         *
+         */
+        throw e;
+      }
+
       /**
        * Even though the data did not queue correctly, the user's data is safe in the /queue database, so we can respond with the reference number.
        * The reference number is returned so that the user can get support / get refunds etc. The user's submission should be retried.
