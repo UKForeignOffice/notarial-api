@@ -36,7 +36,7 @@ export function buildInPersonPersonalisation(answers: AnswersHashMap, metadata: 
     post: getPostForMarriage(country, post),
     country,
     bookingLink: additionalContext.bookingLink,
-    cabsV3BookingLink: additionalContext.bookingLink?.replace('www.book-consular-appointment.service.gov.uk/TimeSelection', 'www.manage-consular-appointment.service.gov.uk/cabs/s/appointment-booking'),
+    cabsV3BookingLink: additionalContext.bookingLink?.replace('www.book-consular-appointment.service.gov.uk/TimeSelection', 'www.manage-consular-appointment.service.gov.uk/s/appointment-booking'),
     localRequirements: additionalContext.localRequirements ?? "",
     civilPartnership: additionalContext.civilPartnership,
     reference: metadata.reference,
