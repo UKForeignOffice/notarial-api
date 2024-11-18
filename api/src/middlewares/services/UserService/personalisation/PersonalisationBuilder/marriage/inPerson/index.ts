@@ -7,7 +7,7 @@ import { personalisationTypeMap } from "./getAdditionalPersonalisations";
 import { getAdditionalDocsForCountry } from "./getAdditionalDocsForCountry";
 
 export function buildInPersonPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
-  const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
+  const isSuccessfulPayment = metadata.payment?.state?.status === "success";
 
   if (!answers) {
     throw new ApplicationError("WEBHOOK", "VALIDATION", 500, "Fields are empty");
@@ -36,6 +36,7 @@ export function buildInPersonPersonalisation(answers: AnswersHashMap, metadata: 
     post: getPostForMarriage(country, post),
     country,
     bookingLink: additionalContext.bookingLink,
+    cabsV3BookingLink: additionalContext.bookingLink?.replace('www.book-consular-appointment.service.gov.uk/TimeSelection', 'www.manage-consular-appointment.service.gov.uk/s/appointment-booking'),
     localRequirements: additionalContext.localRequirements ?? "",
     civilPartnership: additionalContext.civilPartnership,
     reference: metadata.reference,

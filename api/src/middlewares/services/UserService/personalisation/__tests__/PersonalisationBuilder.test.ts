@@ -30,6 +30,7 @@ test("buildJobData should return the correct personalisation for an in-person em
     firstName: "foo",
     additionalDocs: "",
     bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
+    cabsV3BookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=67&service=13",
     civilPartnership: false,
     country: "Turkey",
     localRequirements: "",

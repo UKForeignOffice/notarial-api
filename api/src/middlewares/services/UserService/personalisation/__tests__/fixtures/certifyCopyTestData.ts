@@ -3,7 +3,7 @@ export const certifyCopyTestData = {
   questions: [
     {
       category: "beforeYouStart",
-      question: "Which country or territory has asked for this document?",
+      question: "Which country or territory are you in?",
       fields: [{ key: "country", title: "Application country", type: "list", answer: "Thailand" }],
       index: 0,
     },
