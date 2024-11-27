@@ -750,7 +750,7 @@
         "duration": "3 months",
         "postal": false,
         "additionalDocs": [
-          "<br> Proof of identity (British passport, copy of birth certificate), residence permit, evidence of local address (delivered at ‘fokontany’) and evidence of the termination of any previous marriages "
+          "Proof of identity (British passport, copy of birth certificate), residence permit, evidence of local address (delivered at ‘fokontany’) and evidence of the termination of any previous marriages "
         ],
         "cniDelivery": false,
         "localRequirements": ""
