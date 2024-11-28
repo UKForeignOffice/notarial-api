@@ -749,9 +749,7 @@
         "civilPartnership": false,
         "duration": "3 months",
         "postal": false,
-        "additionalDocs": [
-          "Proof of identity (British passport, copy of birth certificate), residence permit, evidence of local address (delivered at ‘fokontany’) and evidence of the termination of any previous marriages "
-        ],
+        "additionalDocs": "",
         "cniDelivery": false,
         "localRequirements": ""
       },
