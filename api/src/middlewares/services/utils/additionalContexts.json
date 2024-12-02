@@ -1341,7 +1341,7 @@
         "civilPartnership": false,
         "duration": "3 or 6 months (check with the local People‘s Committee)",
         "postal": false,
-        "additionalDocs": ["partner‘s birth certificate"],
+        "additionalDocs": "",
         "cniDelivery": false,
         "localRequirements": "\nYour proof that a previous marriage has ended, for example, your decree absolute or partner‘s death certificate, must be legalised if they were issued in the UK. You need to [apply for legalisation](https://www.gov.uk/get-document-legalised) separately. "
       },
