@@ -84,8 +84,8 @@ jobs:
                 name: Publish docker image - api
                 command: |
                   eval $(aws ecr get-login --no-include-email --region eu-west-2)
-                  docker build --build-arg DOCKER_TAG=$DOCKER_TAG -t 523508197323.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-api:$DOCKER_TAG -f ./api/Dockerfile .
-                  docker push 523508197323.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-api:$DOCKER_TAG
+                  docker build --build-arg DOCKER_TAG=$DOCKER_TAG -t 204473099916.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-api:$DOCKER_TAG -f ./api/Dockerfile .
+                  docker push 204473099916.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-api:$DOCKER_TAG
 
       - when:
           condition:
@@ -95,8 +95,8 @@ jobs:
                 name: Publish docker image - worker
                 command: |
                   eval $(aws ecr get-login --no-include-email --region eu-west-2)
-                  docker build --build-arg DOCKER_TAG=$DOCKER_TAG -t 523508197323.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-worker:$DOCKER_TAG -f ./worker/Dockerfile .
-                  docker push 523508197323.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-worker:$DOCKER_TAG
+                  docker build --build-arg DOCKER_TAG=$DOCKER_TAG -t 204473099916.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-worker:$DOCKER_TAG -f ./worker/Dockerfile .
+                  docker push 204473099916.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-worker:$DOCKER_TAG
 
   deploy:
     <<: *defaults
@@ -213,13 +213,13 @@ jobs:
 
       - kubernetes/update-container-image:
           namespace: << parameters.namespace >>
-          container-image-updates: notarial-api=523508197323.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-api:$DOCKER_TAG
+          container-image-updates: notarial-api=204473099916.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-api:$DOCKER_TAG
           resource-name: deployment/notarial-api
 
 
       - kubernetes/update-container-image:
           namespace: << parameters.namespace >>
-          container-image-updates: notarial-worker=523508197323.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-worker:$DOCKER_TAG
+          container-image-updates: notarial-worker=204473099916.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-worker:$DOCKER_TAG
           resource-name: deployment/notarial-worker
 
       - run:
@@ -249,7 +249,7 @@ workflows:
                 - deploy-test
           context:
             - VPN
-            - AWS
+            - AWS_MGMT
       - publish:
           name: publish-worker
           app: worker
@@ -261,7 +261,7 @@ workflows:
                 - deploy-test
           context:
             - VPN
-            - AWS
+            - AWS_MGMT
 
       - deploy:
           name: deploy-test
