@@ -7,7 +7,16 @@ import { PaymentData } from "./PaymentData";
 import { ProcessQueueDataInput } from "./ProcessQueueDataInput";
 import { Logger } from "pino";
 
-export interface CaseService {
+export type CaseService = OrbitCaseService | SESCaseService;
+
+export interface OrbitCaseService {
+  logger: Logger;
+  queueService: QueueService;
+
+  send(data): Promise<string>;
+}
+
+export interface SESCaseService {
   logger: Logger;
   queueService: QueueService;
 

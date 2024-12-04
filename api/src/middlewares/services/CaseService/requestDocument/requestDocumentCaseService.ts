@@ -7,7 +7,6 @@ import { isFieldType } from "../../../../utils";
 import { getPostForRequestDocument } from "../../utils/getPost";
 import { CertifyCopyProcessQueueData, PaymentData } from "../types";
 import { PaymentViewModel } from "../utils/PaymentViewModel";
-import { CaseService } from "../types";
 import { reorderSectionsWithNewName } from "../utils/reorderSectionsWithNewName";
 import { order, remap } from "./mappings";
 import { createRemapper } from "../utils/createRemapper";
@@ -16,8 +15,9 @@ import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
 import { QueueService } from "../../QueueService";
 import logger, { Logger } from "pino";
 import { RequestDocumentAnswersHashmap } from "../../../../types/AnswersHashMap";
+import { SESCaseService } from "../types/CaseService";
 
-export class RequestDocumentCaseService implements CaseService {
+export class RequestDocumentCaseService implements SESCaseService {
   logger: Logger;
   queueService: QueueService;
   templates: {

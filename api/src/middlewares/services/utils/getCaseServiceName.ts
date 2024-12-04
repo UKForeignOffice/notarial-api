@@ -1,6 +1,6 @@
 import { FormType } from "../../../types/FormDataBody";
 
-type ExpressCaseServices = Pick<
+export type ExpressCaseServices = Pick<
   Express.Application["services"],
   "marriageCaseService" | "certifyCopyCaseService" | "requestDocumentCaseService" | "consularLetterCaseService"
 >;

@@ -3,8 +3,9 @@ import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
 import { UserService } from "../UserService";
 import { MarriageCaseService, RequestDocumentCaseService, CertifyCopyCaseService, ConsularLetterCaseService } from "../CaseService";
-import { getCaseServiceName } from "../utils/getCaseServiceName";
+import { ExpressCaseServices, getCaseServiceName } from "../utils/getCaseServiceName";
 import { CaseService } from "../CaseService/types";
+import { OrbitCaseService, SESCaseService } from "../CaseService/types/CaseService";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
@@ -47,27 +48,49 @@ export class SubmitService {
     const formFields = flattenQuestions(questions);
     const answers = answersHashMap(formFields);
     const { pay, type } = metadata;
-    const reference = metadata?.pay?.reference ?? this.generateId();
+    let reference = metadata?.pay?.reference ?? this.generateId();
+    let orbitReference;
     const caseServiceName = getCaseServiceName(type);
+
     if (pay) {
       pay.total = fees?.total;
     }
 
     try {
-      const caseService: CaseService = this[caseServiceName];
-      const processQueueData = caseService.buildProcessQueueData({
-        fields: formFields,
-        reference,
-        type,
-        metadata,
-      });
-      const caseProcessJob = await caseService.sendToProcessQueue(processQueueData);
-      this.logger.info({ reference, caseProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
+      const caseService = this.getCaseService(caseServiceName);
+
+      if (this.caseServiceIsOrbitCaseService(caseService)) {
+        orbitReference = await caseService.send(formData);
+
+        this.logger.info({ reference, orbitReference }, `Orbit responded with ${orbitReference}`);
+      }
+
+      if (this.caseServiceIsSESCaseService(caseService)) {
+        const processQueueData = caseService.buildProcessQueueData({
+          fields: formFields,
+          reference,
+          type,
+          metadata,
+        });
+
+        const caseProcessJob = await caseService.sendToProcessQueue(processQueueData);
+        this.logger.info({ reference, caseProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
+      }
 
       const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type, postal: metadata.postal });
 
       this.logger.info({ reference, userProcessJob }, `NOTIFY_PROCESS job queued successfully for ${reference}`);
     } catch (e) {
+      if (e.name === "ORBIT") {
+        /**
+         * Rethrown application errors will be caught by {@link errorHandler}, which will respond to
+         * the client (forms-worker) with a http error, and will keep the job in an error or retry state.
+         * It cannot be handled like SES Cases, since we are relying on Orbit's case reference.
+         *
+         */
+        throw e;
+      }
+
       /**
        * Even though the data did not queue correctly, the user's data is safe in the /queue database, so we can respond with the reference number.
        * The reference number is returned so that the user can get support / get refunds etc. The user's submission should be retried.
@@ -78,8 +101,25 @@ export class SubmitService {
       );
     }
 
+    /**
+     * This reference is shown to the user
+     */
     return {
       reference,
     };
+  }
+
+  getCaseService(name: keyof ExpressCaseServices) {
+    return this[name];
+  }
+
+  caseServiceIsOrbitCaseService(caseService: CaseService): caseService is OrbitCaseService {
+    return caseService instanceof MarriageCaseService;
+  }
+
+  caseServiceIsSESCaseService(caseService: CaseService): caseService is SESCaseService {
+    return (
+      caseService instanceof CertifyCopyCaseService || caseService instanceof RequestDocumentCaseService || caseService instanceof ConsularLetterCaseService
+    );
   }
 }

@@ -8,7 +8,6 @@ import { isFieldType } from "../../../../utils";
 import { getPostForCertifyCopy } from "../../utils/getPost";
 import { CertifyCopyProcessQueueData, PaymentData } from "../types";
 import { PaymentViewModel } from "../utils/PaymentViewModel";
-import { CaseService } from "../types";
 import { reorderSectionsWithNewName } from "../utils/reorderSectionsWithNewName";
 import { order, remap } from "./mappings";
 import { createRemapper } from "../utils/createRemapper";
@@ -16,8 +15,9 @@ import { CertifyCopyProcessQueueDataInput } from "../types";
 import { getPostEmailAddress } from "../../utils/getPostEmailAddress";
 import { QueueService } from "../../QueueService";
 import logger, { Logger } from "pino";
+import { SESCaseService } from "../types/CaseService";
 
-export class CertifyCopyCaseService implements CaseService {
+export class CertifyCopyCaseService implements SESCaseService {
   logger: Logger;
   queueService: QueueService;
   templates: {

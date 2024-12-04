@@ -17,7 +17,7 @@
 /**
  * Category of the error - this is likely to match the service it came from
  */
-export type ErrorTypes = "WEBHOOK" | "SES" | "NOTIFY" | "QUEUE" | "GENERIC";
+export type ErrorTypes = "WEBHOOK" | "SES" | "NOTIFY" | "QUEUE" | "ORBIT" | "GENERIC";
 
 /**
  * Error code for the matching ErrorType.
@@ -26,13 +26,14 @@ type WebhookErrorCode = "VALIDATION";
 type SESErrorCode = "MISSING_ANSWER" | "PROCESS_VALIDATION" | "UNKNOWN";
 type NotifyErrorCode = "PROCESS_VALIDATION" | "UNKNOWN";
 type QueueErrorCode = "SES_PROCESS_ERROR" | "NOTIFY_PROCESS_ERROR" | "NOTIFY_SEND_ERROR" | "SES_SEND_ERROR";
+type OrbitErrorCode = "ORBIT_ERROR";
 
 type GenericErrorCode = "UNKNOWN" | "RATE_LIMIT_EXCEEDED";
 
 /**
  * Union of all the different ErrorCode.
  */
-export type ErrorCode = WebhookErrorCode | SESErrorCode | NotifyErrorCode | QueueErrorCode | GenericErrorCode;
+export type ErrorCode = WebhookErrorCode | SESErrorCode | NotifyErrorCode | QueueErrorCode | OrbitErrorCode | GenericErrorCode;
 
 /**
  * {@ErrorRecord} uses `Record`, which means every key passed into the generic, must be implemented
@@ -68,12 +69,17 @@ const QUEUE: ErrorRecord<QueueErrorCode> = {
   SES_SEND_ERROR: "unable to queue SES_SEND_ERROR",
 };
 
+const ORBIT: ErrorRecord<OrbitErrorCode> = {
+  ORBIT_ERROR: "orbit error from case mgmt",
+};
+
 type ErrorRecords = {
   WEBHOOK: typeof WEBHOOK;
   SES: typeof SES;
   NOTIFY: typeof NOTIFY;
   QUEUE: typeof QUEUE;
   GENERIC: typeof GENERIC;
+  ORBIT: typeof ORBIT;
 };
 export const ERRORS: ErrorRecords = {
   WEBHOOK,
@@ -81,4 +87,5 @@ export const ERRORS: ErrorRecords = {
   NOTIFY,
   QUEUE,
   GENERIC,
+  ORBIT,
 };
