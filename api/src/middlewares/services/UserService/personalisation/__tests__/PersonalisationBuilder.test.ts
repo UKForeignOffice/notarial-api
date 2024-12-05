@@ -29,8 +29,7 @@ test("buildJobData should return the correct personalisation for an in-person em
   expect(personalisation).toEqual({
     firstName: "foo",
     additionalDocs: "",
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
-    cabsV3BookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=67&service=13",
+    bookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=67&service=13",
     civilPartnership: false,
     country: "Turkey",
     localRequirements: "",
@@ -92,7 +91,7 @@ test("getPostalAdditionalContext returns additionalContext correctly", () => {
       "partner‘s proof any previous marriages or civil partnerships have ended ",
       "proof of permanent address if you live outside of Italy",
     ],
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
+    bookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=33&service=10",
     civilPartnership: true,
     cniDelivery: true,
     duration: "6 months",
@@ -106,7 +105,7 @@ test("getPostalAdditionalContext returns additionalContext correctly", () => {
     additionalDocs: [
       "a piece of paper with the Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities)",
     ],
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10",
+    bookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=132&service=10",
     civilPartnership: false,
     cniDelivery: false,
     duration: "3 to 12 months (check with the person conducting your ceremony)",
@@ -118,7 +117,7 @@ test("getPostalAdditionalContext returns additionalContext correctly", () => {
 
   expect(getPostalAdditionalContext("Poland", "cni")).toStrictEqual({
     additionalDocs: "",
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10",
+    bookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=40&service=10",
     civilPartnership: false,
     cniDelivery: true,
     duration: "6 months",
@@ -217,7 +216,7 @@ test("buildJobData should return the correct personalisation for a certify a cop
   expect(personalisation).toEqual({
     firstName: "test",
     post: "the British Embassy Bangkok",
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=53&service=9",
+    bookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=53&service=9",
     reference: "1234",
   });
 });
