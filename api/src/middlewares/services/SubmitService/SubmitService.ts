@@ -47,7 +47,7 @@ export class SubmitService {
     const formFields = flattenQuestions(questions);
     const answers = answersHashMap(formFields);
     const { pay, type } = metadata;
-    const reference = metadata?.pay?.reference ?? this.generateId();
+    const reference = metadata?.externalReference ?? metadata?.internalReference ?? metadata?.pay?.reference ?? this.generateId();
     const caseServiceName = getCaseServiceName(type);
     if (pay) {
       pay.total = fees?.total;
