@@ -47,7 +47,7 @@ export class SubmitService {
     const formFields = flattenQuestions(questions);
     const answers = answersHashMap(formFields);
     const { pay, type } = metadata;
-    const reference = metadata?.pay?.reference ?? this.generateId();
+    const reference = metadata?.externalReference ?? metadata?.internalReference ?? metadata?.pay?.reference ?? this.generateId();
     const caseServiceName = getCaseServiceName(type);
     if (pay) {
       pay.total = fees?.total;
@@ -61,8 +61,12 @@ export class SubmitService {
         type,
         metadata,
       });
-      const caseProcessJob = await caseService.sendToProcessQueue(processQueueData);
-      this.logger.info({ reference, caseProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
+
+      // only email case team when there is no external reference (i.e. from Orbit) indicating a submission failure there
+      if (!metadata?.externalReference) {
+        const caseProcessJob = await caseService.sendToProcessQueue(processQueueData);
+        this.logger.info({reference, caseProcessJob}, `SES_PROCESS job queued successfully for ${reference}`);
+      }
 
       const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type, postal: metadata.postal });
 

@@ -19,7 +19,7 @@ const questionSchema = joi.object().keys({
 const webhookOutputSchema = joi.object().keys({
   name: joi.string().required(),
   questions: joi.array().items(questionSchema).required(),
-  fees: joi.object().optional(),
+  fees: joi.object().optional().allow(null),
   metadata: joi.object({
     pay: joi
       .object({
