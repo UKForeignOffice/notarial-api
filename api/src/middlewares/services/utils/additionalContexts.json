@@ -261,13 +261,17 @@
       "the British Consulate-General Rio de Janeiro": {
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=59&service=8"
       },
-      "the British Consulate-General Sao Paulo": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=76&service=8" },
+      "the British Consulate-General Sao Paulo": {
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=76&service=8"
+      },
       "the British Embassy Baghdad": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=98&service=9" },
       "the British Consulate General Erbil": {
         "bookingLink": "https://www.contact.service.csd.fcdo.gov.uk/written-enquiry/iraq/british-consulate-general-erbil"
       },
       "the British Embassy Ankara": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=93&service=9" },
-      "the British Consulate General Istanbul": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=67&service=9" },
+      "the British Consulate General Istanbul": {
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=67&service=9"
+      },
       "the British Embassy Abu Dhabi": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=89&service=18" },
       "the British Embassy Dubai": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=112&service=18" },
       "the British Embassy Hanoi": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=115&service=9" },
@@ -749,7 +753,9 @@
         "civilPartnership": false,
         "duration": "3 months",
         "postal": false,
-        "additionalDocs": "",
+        "additionalDocs": [
+          "proof of identity (British passport, copy of birth certificate), residence permit, evidence of local address (delivered at ‘fokontany’) and evidence of the termination of any previous marriages "
+        ],
         "cniDelivery": false,
         "localRequirements": ""
       },
@@ -758,7 +764,7 @@
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=199&service=40",
         "postAddress": "",
         "civilPartnership": false,
-        "duration": "6 months",
+        "duration": "",
         "postal": false,
         "additionalDocs": "",
         "cniDelivery": false,
@@ -942,7 +948,7 @@
       },
       "Slovenia": {
         "post": "the British Embassy Ljubljana",
-        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=26&service=13",
+        "bookingLink": "mailto:Consular.slovenia@fcdo.gov.uk",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "6 months",
@@ -1596,7 +1602,9 @@
       "the British Nationals Assistance Office Goa": {
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=194&service=18"
       },
-      "the British High Commission New Delhi": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=181&service=18" },
+      "the British High Commission New Delhi": {
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=181&service=18"
+      },
       "the British Deputy High Commission Kolkata": {
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=86&service=18"
       },
