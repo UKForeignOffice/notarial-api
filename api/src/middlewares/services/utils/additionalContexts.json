@@ -281,9 +281,9 @@
       "the British Consulate General Ho Chi Minh City": {
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=64&service=9"
       },
-      "British Consulate General Shanghai:": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8" },
-      "British Embassy Beijing": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=100&service=8" },
-      "British Consulate General Guangzhou": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8" }
+      "the British Consulate General Shanghai:": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8" },
+      "the British Embassy Beijing": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=100&service=8" },
+      "the British Consulate General Guangzhou": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8" }
     }
   },
   "marriage": {
@@ -1493,6 +1493,7 @@
       "Thailand": {
         "postal": "TRUE",
         "delivery": "Your document will be posted to your chosen address in Thailand. You'll be charged an additional £2 for postage.",
+
         "post": "the British Embassy Bangkok"
       },
       "United Arab Emirates": {
