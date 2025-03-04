@@ -56,6 +56,9 @@
         "post": "the British Embassy Santiago",
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=143&service=9"
       },
+      "China": {
+        "postal": "FALSE"
+      },
       "Colombia": {
         "postal": "FALSE",
         "post": "the British Embassy Bogotá",
@@ -277,7 +280,10 @@
       "the British Embassy Hanoi": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=115&service=9" },
       "the British Consulate General Ho Chi Minh City": {
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=64&service=9"
-      }
+      },
+      "British Consulate General Shanghai:": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8" },
+      "British Embassy Beijing": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=100&service=8" },
+      "British Consulate General Guangzhou": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8" }
     }
   },
   "marriage": {
