@@ -46,11 +46,19 @@ const template = `
             <h4>{{@key}}</h4>
             <ul>
                 {{#each this}}
-                    {{#if this.answer}}
-                        <li>{{this.title}}: {{this.answer}}</li>
+                    {{#if (eq this.title "Can our partner contact you for feedback to help improve this service?")}}
+                        {{#if this.answer}}
+                            {{#if (eq this.answer true)}}
+                                <li>{{this.title}}: {{this.answer}}</li> <!-- Show true if the answer is true -->
+                            {{else}}
+                                <li>{{this.title}}: false</li> <!-- Show false in all other cases -->
+                            {{/if}}
                         {{else}}
-                            {{#if (eq this.title "Can our partner contact you for feedback to help improve this service?")}}
-                            <li>{{this.answer}}: false</li>
+                            <li>{{this.title}}: false</li> <!-- Show false if no answer is provided -->
+                        {{/if}}
+                    {{else}}
+                        {{#if this.answer}}
+                            <li>{{this.title}}: {{this.answer}}</li>
                         {{/if}}
                     {{/if}}
                 {{/each}}
