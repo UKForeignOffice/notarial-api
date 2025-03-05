@@ -50,7 +50,7 @@ const template = `
                         <li>{{this.title}}: {{this.answer}}</li>
                         {{else}}
                             {{#if (eq this.title "Can our partner contact you for feedback to help improve this service?")}}
-                            <li>{{this.answer}}: "false"</li>
+                            <li>{{this.answer}}: false</li>
                         {{/if}}
                     {{/if}}
                 {{/each}}
