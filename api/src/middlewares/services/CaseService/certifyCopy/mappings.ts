@@ -12,7 +12,7 @@ export const remap = {
   post: "information.post",
   typeOfDoc: "information.typeOfDocument",
   applicationType: "information.applicationType",
-  numCertifiedCopies: "information.numCertifiedCopies"
+  numCertifiedCopies: "information.numCertifiedCopies",
 
   phoneNumber: "contactDetails.phoneNumber",
   emailAddress: "contactDetails.emailAddress",
