@@ -73,10 +73,14 @@ export class CertifyCopyCaseService implements CaseService {
     const reordered = reorderer(remapped);
 
     const country = getAnswerOrThrow(information, "country");
+
+    const numCertifiedCopies = getAnswerOrThrow(information, "numCertifiedCopies");
+
     const post = getPostForCertifyCopy(country, information.post?.answer);
     return this.templates.SES({
       post,
       reference,
+      numCertifiedCopies,
       payment,
       country,
       questions: reordered,
