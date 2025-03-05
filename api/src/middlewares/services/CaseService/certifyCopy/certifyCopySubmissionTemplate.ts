@@ -46,7 +46,7 @@ const template = `
             <h4>{{@key}}</h4>
             <ul>
                 {{#each this}}
-                    {{#if (or (neq this.answer null) (eq this.answer false))}}
+                    {{#if this.answer}}
                         <li>{{this.title}}: {{this.answer}}</li>
                     {{/if}}
                 {{/each}}
