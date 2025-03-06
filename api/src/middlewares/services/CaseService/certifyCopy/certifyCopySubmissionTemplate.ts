@@ -49,12 +49,12 @@ const template = `
                     {{#if (eq this.title "Can our partner contact you for feedback to help improve this service?")}}
                         {{#if this.answer}}
                             {{#if (eq this.answer true)}}
-                                <li>{{this.title}}: {{this.answer}}</li> <!-- Show true if the answer is true -->
+                                <li>{{this.title}}: {{this.answer}}</li>
                             {{else}}
-                                <li>{{this.title}}: false</li> <!-- Show false in all other cases -->
+                                <li>{{this.title}}: false</li>
                             {{/if}}
                         {{else}}
-                            <li>{{this.title}}: false</li> <!-- Show false if no answer is provided -->
+                            <li>{{this.title}}: false</li>
                         {{/if}}
                     {{else}}
                         {{#if this.answer}}
