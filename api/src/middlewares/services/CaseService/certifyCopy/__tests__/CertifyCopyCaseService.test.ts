@@ -30,7 +30,7 @@ const paymentViewModel: PaymentData = {
 };
 
 test("getEmailBody renders certify copy email correctly", () => {
-  const emailBody = certifyCopyCaseService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" });
+  const emailBody = certifyCopyCaseService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234", numCertifiedCopies: "2" });
   expect(emailBody).toContain("<li>First name: test</li>");
   expect(emailBody).toContain("certifying a copy of a document");
 });
