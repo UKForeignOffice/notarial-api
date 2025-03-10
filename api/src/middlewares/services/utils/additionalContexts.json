@@ -50,7 +50,13 @@
         "postAddress": "British Embassy La Paz\nAvenida Arce No. 2732\nLa Paz\nBolivia"
       },
       "Brazil": { "postal": "FALSE" },
-      "Bulgaria": { "postal": "TRUE", "post": "the British Embassy Sofia", "postAddress": "\nBritish Embassy Sofia\n9, Moskovska St\n1000 Sofia\nBulgaria" },
+      "Bulgaria": {
+        "postal": "TRUE",
+        "post": "the British Embassy Sofia",
+        "deliveryRequired": false,
+        "delivery": "Arrange collection of your passport and certified copy through a prepaid courier.",
+        "postAddress": "\nBritish Embassy Sofia\n9, Moskovska St\n1000 Sofia\nBulgaria"
+      },
       "Chile": {
         "postal": "FALSE",
         "post": "the British Embassy Santiago",
