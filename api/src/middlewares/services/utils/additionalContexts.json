@@ -198,7 +198,13 @@
         "post": "the British Embassy Warsaw",
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=40&service=9"
       },
-      "Romania": { "postal": "TRUE", "postAddress": "British Embassy Bucharest\n24 Jules Michelet\n010463 Bucharest\nRomania" },
+      "Romania": {
+        "postal": "TRUE",
+        "post": "the British Embassy Bucharest",
+        "deliveryRequired": false,
+        "delivery": "You'll get an email to tell you when your document is ready – usually within 5 working days. You can then pay for a courier and arrange for them to collect your document and passport.",
+        "postAddress": "British Embassy Bucharest\n24 Jules Michelet\n010463 Bucharest\nRomania"
+      },
       "Russia": {
         "postal": "FALSE",
         "post": "the British Embassy Moscow",
