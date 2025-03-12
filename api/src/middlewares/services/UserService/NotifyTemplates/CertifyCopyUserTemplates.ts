@@ -28,9 +28,9 @@ export class CertifyCopyUserTemplates implements UserTemplateGroup {
       const country = answers["country"] as string;
       const postal = additionalContexts?.certifyCopy?.countries[country]?.postal;
       let isPostalApplication: boolean;
-      if (postal === true) {
+      if (postal === "TRUE") {
         isPostalApplication = true;
-      } else if (postal === false) {
+      } else if (postal === "FALSE") {
         isPostalApplication = false;
       } else if (postal === "HYBRID") {
         isPostalApplication = answers.applicationType === "postal";
