@@ -50,7 +50,14 @@
         "postAddress": "British Embassy La Paz\nAvenida Arce No. 2732\nLa Paz\nBolivia"
       },
       "Brazil": { "postal": "FALSE" },
-      "Bulgaria": { "postal": "TRUE", "post": "the British Embassy Sofia", "postAddress": "\nBritish Embassy Sofia\n9, Moskovska St\n1000 Sofia\nBulgaria" },
+      "Bulgaria": {
+        "postal": "TRUE",
+        "post": "the British Embassy Sofia",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9",
+        "deliveryRequired": false,
+        "delivery": "Arrange collection of your passport and certified copy through a prepaid courier.",
+        "postAddress": "\nBritish Embassy Sofia\n9, Moskovska St\n1000 Sofia\nBulgaria"
+      },
       "Chile": {
         "postal": "FALSE",
         "post": "the British Embassy Santiago",
@@ -192,7 +199,14 @@
         "post": "the British Embassy Warsaw",
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=40&service=9"
       },
-      "Romania": { "postal": "TRUE", "postAddress": "British Embassy Bucharest\n24 Jules Michelet\n010463 Bucharest\nRomania" },
+      "Romania": {
+        "postal": "TRUE",
+        "post": "the British Embassy Bucharest",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9",
+        "deliveryRequired": false,
+        "delivery": "You'll get an email to tell you when your document is ready – usually within 5 working days. You can then pay for a courier and arrange for them to collect your document and passport.",
+        "postAddress": "British Embassy Bucharest\n24 Jules Michelet\n010463 Bucharest\nRomania"
+      },
       "Russia": {
         "postal": "FALSE",
         "post": "the British Embassy Moscow",
@@ -281,7 +295,7 @@
       "the British Consulate General Ho Chi Minh City": {
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=64&service=9"
       },
-      "the British Consulate General Shanghai:": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8" },
+      "the British Consulate General Shanghai": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8" },
       "the British Embassy Beijing": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=100&service=8" },
       "the British Consulate General Guangzhou": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8" }
     }
