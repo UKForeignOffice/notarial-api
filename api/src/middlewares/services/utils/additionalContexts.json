@@ -295,7 +295,7 @@
       "the British Consulate General Ho Chi Minh City": {
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=64&service=9"
       },
-      "the British Consulate General Shanghai:": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8" },
+      "the British Consulate General Shanghai": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8" },
       "the British Embassy Beijing": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=100&service=8" },
       "the British Consulate General Guangzhou": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8" }
     }
