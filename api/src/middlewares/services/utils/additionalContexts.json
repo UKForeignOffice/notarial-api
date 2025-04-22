@@ -148,6 +148,11 @@
         "post": "the British Embassy Riga",
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=32&service=9"
       },
+      "Lebanon": {
+        "postal": "FALSE",
+        "post": "the British Embassy Beirut",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=101&service=8"
+      },
       "Lithuania": {
         "postal": "FALSE",
         "post": "the British Embassy Vilnius",
@@ -225,7 +230,7 @@
       "South Korea": {
         "postal": "FALSE",
         "post": "the British Embassy Seoul",
-        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=146&service=9"
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=146&service=8"
       },
       "Sweden": {
         "postal": "HYBRID",
