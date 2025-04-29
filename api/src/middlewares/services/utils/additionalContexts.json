@@ -771,6 +771,21 @@
         "cniDelivery": false,
         "localRequirements": ""
       },
+      "Macao": {
+        "post": "the British Consulate General Hong Kong (for Macao)",
+        "bookingLink": "mailto:hongkong.consularescalations@fcdo.gov.uk",
+        "postAddress": "",
+        "civilPartnership": "",
+        "eligibility": "",
+        "duration": "",
+        "additionalDocs": "",
+        "downloads": "",
+        "cniDeliveryContext": "",
+        "otherInfoNoDocs": "",
+        "otherInfoUKCNI": "",
+        "travelledAlreadyText": "",
+        "otherInfo": ""
+      },
       "Madagascar": {
         "post": "The British Embassy in Antananarivo",
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=94&service=40",
