@@ -775,16 +775,12 @@
         "post": "the British Consulate General Hong Kong (for Macao)",
         "bookingLink": "mailto:hongkong.consularescalations@fcdo.gov.uk",
         "postAddress": "",
-        "civilPartnership": "",
-        "eligibility": "",
-        "duration": "",
+        "civilPartnership": false,
+        "duration": "3 months",
+        "postal": false,
         "additionalDocs": "",
-        "downloads": "",
-        "cniDeliveryContext": "",
-        "otherInfoNoDocs": "",
-        "otherInfoUKCNI": "",
-        "travelledAlreadyText": "",
-        "otherInfo": ""
+        "cniDelivery": false,
+        "localRequirements": ""
       },
       "Madagascar": {
         "post": "The British Embassy in Antananarivo",
@@ -1223,14 +1219,6 @@
       "Liberia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Libya": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Liechtenstein": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-      "Macao": {
-        "civilPartnership": false,
-        "duration": "3 months",
-        "postal": false,
-        "additionalDocs": "",
-        "cniDelivery": false,
-        "localRequirements": "\nThere’s no British embassy or consulate to get documents to prove you’re eligible to marry in Macao. You’ll need to travel to the British Consulate General Hong Kong for your appointment to get a marital status affirmation. "
-      },
       "Malawi": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Malaysia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Maldives": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
