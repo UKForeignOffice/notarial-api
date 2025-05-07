@@ -285,3 +285,19 @@ workflows:
             branches:
               only:
                 - deploy-test
+
+      - deploy:
+          name: deploy-preprod
+          namespace: fco-forms-preprod
+          context:
+            - VPN
+            - AWS
+          requires:
+            - publish-api
+            - publish-worker
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              only:
+                - deploy-preprod
