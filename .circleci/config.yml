@@ -211,6 +211,11 @@ jobs:
           aws-region: eu-west-2
           install-kubectl: true
 
+      - aws-eks/update-kubeconfig-with-authenticator:
+          cluster-name: fco-forms-preprod
+          aws-region: eu-west-2
+          install-kubectl: true
+
       - kubernetes/update-container-image:
           namespace: << parameters.namespace >>
           container-image-updates: notarial-api=204473099916.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-api:$DOCKER_TAG
@@ -247,6 +252,7 @@ workflows:
             branches:
               only:
                 - deploy-test
+                - deploy-preprod
           context:
             - VPN
             - AWS_MGMT
@@ -259,6 +265,7 @@ workflows:
             branches:
               only:
                 - deploy-test
+                - deploy-preprod
           context:
             - VPN
             - AWS_MGMT
