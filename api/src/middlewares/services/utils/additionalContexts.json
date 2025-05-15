@@ -1006,7 +1006,7 @@
       },
       "Spain": {
         "post": "the British Consulate General Madrid",
-        "bookingLink": "",
+        "bookingLink": "mailto:madrid.consularescalations@fcdo.gov.uk",
         "postAddress": "\nBritish Consulate General Madrid \nNotarial Services \nTorre Emperador Castellana \nPaseo de la Castellana 259D \n28046 Madrid",
         "civilPartnership": false,
         "duration": "3 or 6 months (check with the person conducting your ceremony)",
@@ -1510,7 +1510,7 @@
         "postal": "TRUE",
         "delivery": "Your document will be posted to your chosen address in Spain. You'll be charged an additional £13 for postage.",
         "post": "the British Consulate General Madrid",
-        "bookingLink": ""
+        "bookingLink": "mailto:madrid.consularescalations@fcdo.gov.uk"
       },
       "Thailand": {
         "postal": "TRUE",
