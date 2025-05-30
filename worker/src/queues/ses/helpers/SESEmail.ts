@@ -47,7 +47,7 @@ export async function attachFilesToMessage(attachments: FormField[], messageInst
     messageInstance.attach({
       filename: `${attachment.title}.${FileMimeType[contentType]}`,
       contentType,
-      data: data.toString("base64"),
+      data: Buffer.from(data, 'base64'),
     });
   }
   return messageInstance;
