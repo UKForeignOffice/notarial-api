@@ -44,11 +44,10 @@ export async function attachFilesToMessage(attachments: FormField[], messageInst
   for (const attachment of attachments) {
     const url = attachment.answer as string;
     const { contentType, data } = await fileService.getFile(url);
-    messageInstance.addAttachment({
+    messageInstance.attach({
       filename: `${attachment.title}.${FileMimeType[contentType]}`,
       contentType,
-      data,
-      encoding: "base64",
+      data: Buffer.from(data, 'base64'),
     });
   }
   return messageInstance;
