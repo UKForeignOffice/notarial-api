@@ -38,7 +38,7 @@ export async function sesSendHandler([job]: Job<SESJob>[]) {
   const emailCommand = new SendEmailCommand({
     Content: {
       Raw: {
-        Data: Buffer.from((await message).asRaw()),
+        Data: Buffer.from(message.asRaw()),
       },
     },
   });

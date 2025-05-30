@@ -1,3 +1,4 @@
+import { createMimeMessage, MIMEMessage } from "mimetext";
 import config from "config";
 import { FormField } from "../types";
 import FileService from "./FileService";
@@ -15,14 +16,7 @@ const logger = pino().child({
 
 logger.info({ SENDER_NAME, SENDER_EMAIL_ADDRESS, RECIPIENT }, "SES emails configured");
 
-async function getMimeText() {
-  const mimetext = await import("mimetext");
-  return mimetext;
-}
-
-export async function createMessageWithText(subject: string, body: string) {
-  const { createMimeMessage } = await getMimeText();
-
+export function createMessageWithText(subject: string, body: string) {
   const message = createMimeMessage();
 
   message.setSender({
@@ -40,7 +34,7 @@ export async function createMessageWithText(subject: string, body: string) {
   return message;
 }
 
-export async function attachFilesToMessage(attachments: FormField[], messageInstance: any) {
+export async function attachFilesToMessage(attachments: FormField[], messageInstance: MIMEMessage) {
   for (const attachment of attachments) {
     const url = attachment.answer as string;
     const { contentType, data } = await fileService.getFile(url);
