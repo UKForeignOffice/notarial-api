@@ -207,7 +207,7 @@ jobs:
             if [ "<<pipeline.git.tag>>" == "" ]; then echo 'export DOCKER_TAG="<<pipeline.git.revision>>"' >> $BASH_ENV; else echo 'export DOCKER_TAG="<<pipeline.git.tag>>"' >> $BASH_ENV; fi
 
       - aws-eks/update-kubeconfig-with-authenticator:
-          cluster-name: fco-forms-preprod
+          cluster-name: fco-forms-test
           aws-region: eu-west-2
           install-kubectl: true
 
