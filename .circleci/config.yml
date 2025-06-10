@@ -219,7 +219,7 @@ jobs:
       - run:
           name: Ensure namespace exists
           command: |
-          kubectl get namespace << parameters.namespace >> || kubectl create namespace << parameters.namespace >>
+            kubectl get namespace << parameters.namespace >> || kubectl create namespace << parameters.namespace >>
 
       - kubernetes/update-container-image:
           namespace: << parameters.namespace >>
