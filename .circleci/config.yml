@@ -216,6 +216,11 @@ jobs:
           aws-region: eu-west-2
           install-kubectl: true
 
+      - run:
+          name: Ensure namespace exists
+          command: |
+          kubectl get namespace << parameters.namespace >> || kubectl create namespace << parameters.namespace >>
+
       - kubernetes/update-container-image:
           namespace: << parameters.namespace >>
           container-image-updates: notarial-api=204473099916.dkr.ecr.eu-west-2.amazonaws.com/fco/notarial-api:$DOCKER_TAG
