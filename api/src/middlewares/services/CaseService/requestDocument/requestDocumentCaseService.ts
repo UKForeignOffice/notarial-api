@@ -101,7 +101,11 @@ export class RequestDocumentCaseService implements CaseService {
       attachments: fields.filter((field) => {
         if (!isFieldType("file")(field)) return false;
 
-        if (field.key === "form21") {
+        if (
+          field.key === "form21" ||
+          field.key === "donorUkPassport" ||
+          field.key === "recipientUkPassport"
+        ) {
           return typeof field.answer === "string" && field.answer.trim() !== "";
         }
 
