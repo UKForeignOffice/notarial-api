@@ -98,7 +98,12 @@ export class RequestDocumentCaseService implements CaseService {
     return {
       subject: `Prepare a document application, ${answers.serviceType}, ${post} – ${reference}`,
       body: emailBody,
-      attachments: fields.filter(isFieldType("file")),
+      attachments: fields.filter(
+        (field) =>
+          isFieldType("file")(field) &&
+          typeof field.answer === "string" &&
+          field.answer.trim() !== ""
+      ),
       reference,
       metadata: {
         reference,
