@@ -3,7 +3,7 @@ Albania	the British Embassy Tirana	https://www.manage-consular-appointment.servi
 Algeria	the British Embassy Algiers	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=91&service=10	DLAlgiersConsularSectionprotect@fco.gov.uk	
 Angola	the British Embassy Luanda	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=126&service=13	Luanda.Consular@fcdo.gov.uk	
 Armenia	the British Embassy Yerevan	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=157&service=4	consular.yerevan@fco.gov.uk	
-Austria	the British Embassy Vienna	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=38&service=14	AustriaConsular@fcdo.gov.uk
+Austria	the British Embassy Vienna	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=38&service=14	AustriaConsular@fcdo.gov.uk	
 Azerbaijan	the British Embassy Baku	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=99&service=13	baku.consularescalations@fcdo.gov.uk	
 Bahrain	the British Embassy Manama	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=127&service=10	assistance.bahrain@fcdo.gov.uk	
 Belarus	the British Embassy Minsk	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=130&service=13	Consular.enquiriesminsk@fcdo.gov.uk	
@@ -15,10 +15,10 @@ Brazil	the British Consulate-General Sao Paulo	https://www.manage-consular-appoi
 Bulgaria	the British Embassy Sofia	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9	Consular.sofia@fcdo.gov.uk	<br>British Embassy Sofia <br>9, Moskovska St <br>1000 Sofia <br>Bulgaria
 Cambodia	the British Embassy Phnom Penh	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=135&service=13	ConsularEmailEscalations.PhnomPenh@fcdo.gov.uk	
 Central African Republic	the British Embassy Kinshasa (for Central African Republic)	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=122&service=10	Consular.Kinshasa@fcdo.gov.uk	
-China	the British Consulate General Shanghai	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8	ConsularSection.Shanghai@fcdo.gov.uk
-China	the British Embassy Beijing	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=100&service=8	beijing.consularescalations@fco.gov.uk
-China	the British Consulate General Guangzhou	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8	guangzhou.consularescalations@fcdo.gov.uk
-Colombia	the British Embassy Bogotá	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=13	Bogota.Escalations@fcdo.gov.uk
+China	the British Consulate General Shanghai	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8	ConsularSection.Shanghai@fcdo.gov.uk	
+China	the British Embassy Beijing	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=100&service=8	beijing.consularescalations@fco.gov.uk	
+China	the British Consulate General Guangzhou	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8	guangzhou.consularescalations@fcdo.gov.uk	
+Colombia	the British Embassy Bogotá	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=13	Bogota.Escalations@fcdo.gov.uk	
 Congo	the British Embassy Kinshasa (for Congo)	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=122&service=10	Consular.Kinshasa@fcdo.gov.uk	
 Costa Rica	the British Embassy San Jose	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=141&service=13	SanJose.Escalations@fcdo.gov.uk	
 Croatia	the British Embassy Zagreb	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=41&service=4	Consular.croatia@fcdo.gov.uk	<br>British Embassy Zagreb <br>Ivana Lučića 4 <br>10000 Zagreb <br>Croatia
@@ -53,8 +53,8 @@ Lebanon	the British Embassy Beirut	https://www.manage-consular-appointment.servi
 Lithuania	the British Embassy Vilnius	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=39&service=10	Consular.vilnius@fcdo.gov.uk	
 Luxembourg	the British Embassy Luxembourg	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=27&service=13	consularsection.luxembourg@fco.gov.uk	
 Hong Kong	the British Consulate General Hong Kong (for Macao)	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=65&service=13	hongkong.consularescalations@fcdo.gov.uk	
-Macao	the British Consulate General Hong Kong (for Macao)	mailto:hongkong.consularescalations@fcdo.gov.uk	hongkong.consularescalations@fcdo.gov.uk
-Madagascar	The British Embassy in Antananarivo	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=94&service=40	consular.mada@fcdo.gov.uk
+Macao	the British Consulate General Hong Kong (for Macao)	mailto:hongkong.consularescalations@fcdo.gov.uk	hongkong.consularescalations@fcdo.gov.uk	
+Madagascar	The British Embassy in Antananarivo	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=94&service=40	consular.mada@fcdo.gov.uk	
 Mali	the British Embassy Bamako	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=199&service=40	Consular.Bamako@fcdo.gov.uk	
 Mauritania	the British Embassy Nouakchott	https://www.gov.uk/world/organisations/british-embassy-nouakchott#contact-us	Nouakchott.ExternalEnquiries@fcdo.gov.uk	
 Mexico	the British Embassy Mexico City	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=129&service=10	MexicoCity.escalations@fcdo.gov.uk	
@@ -69,7 +69,7 @@ Peru	the British Embassy Lima	https://www.manage-consular-appointment.service.go
 Poland	the British Embassy Warsaw	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=40&service=10	Warsaw.consularsection@fcdo.gov.uk	<br>Consular Section <br>British Embassy <br>ul. Kawalerii 12 <br>00-468 Warsaw <br>Mazowieckie
 Philippines	the British Embassy Manila	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=128&service=13	Manila.consular@fco.gov.uk	
 Qatar	the British Embassy Doha	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=111&service=32	Consular.Doha@fcdo.gov.uk	
-Romania	the British Embassy Bucharest   https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9 Bucharest.consular@fcdo.gov.uk	<br>British Embassy Bucharest <br>24 Jules Michelet <br>010463 Bucharest <br>Romania
+Romania	the British Embassy Bucharest	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9	Bucharest.consular@fcdo.gov.uk	<br>British Embassy Bucharest <br>24 Jules Michelet <br>010463 Bucharest <br>Romania
 Russia	the British Embassy Moscow	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=132&service=10	russia.escalations@fcdo.gov.uk	<br>British Embassy Moscow <br>121099 Moscow <br>Luhansk People’s Republic Square 1 <br> <br>(for postal purposes only)
 Russia	the British Consulate General Ekaterinburg	mailto:BritishConsulate.Ekaterinburg@ukinrussia.info	BritishConsulate.Ekaterinburg@ukinrussia.info	<br>British Consulate-General Ekaterinburg <br>620075 Ekaterinburg <br>15A, Gogol Street
 Saudi Arabia	the British Embassy Riyadh	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=140&service=10	riyadhconsularenquiryescalation@fcdo.gov.uk	
@@ -78,7 +78,7 @@ Senegal	the British Embassy Dakar	https://www.manage-consular-appointment.servic
 Serbia	the British Embassy Belgrade	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=102&service=10	Belgrade.Consular@fcdo.gov.uk	
 Slovenia	the British Embassy Ljubljana	mailto:Consular.slovenia@fcdo.gov.uk	Consular.slovenia@fcdo.gov.uk	
 South Korea	the British Embassy Seoul	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=146&service=10	Consular.Seoul@fcdo.gov.uk	
-Spain	the British Consulate General Madrid		mailto:madrid.consularescalations@fcdo.gov.uk 	<br>British Consulate General Madrid <br>Notarial Services <br>Torre Emperador Castellana <br>Paseo de la Castellana 259D <br>28046 Madrid
+Spain	the British Consulate General Madrid	mailto:madrid.consularescalations@fcdo.gov.uk	madrid.consularescalations@fcdo.gov.uk 	<br>British Consulate General Madrid <br>Notarial Services <br>Torre Emperador Castellana <br>Paseo de la Castellana 259D <br>28046 Madrid
 Sweden	the British Embassy Stockholm	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=35&service=4	Stockholm.consular@fcdo.gov.uk	<br>British Embassy Consular Section <br>Box 27819 <br>Skarpögatan 8 <br>115 93 Stockholm
 Tajikistan	the British Embassy Dushanbe	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=113&service=10	Dushanbe.reception@fcdo.gov.uk	
 The Occupied Palestinian Territories	the British Consulate General Jerusalem	https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=69&service=13	Jerusalem.Consular@fcdo.gov.uk	
