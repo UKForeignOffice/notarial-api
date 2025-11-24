@@ -182,6 +182,11 @@
         "post": "the British Embassy Oslo",
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=28&service=8"
       },
+      "Palestine": {
+        "postal": "FALSE",
+        "post": "the British Consulate General Jerusalem",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=69&service=9"
+      },
       "Panama": {
         "postal": "FALSE",
         "post": "the British Embassy Panama City",
@@ -246,11 +251,6 @@
         "post": "the British Embassy Bangkok",
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=53&service=9",
         "postAddress": "Consular Services\nBritish Embassy Bangkok\nAIA Sathorn Tower\nFloor 12A\n11/1 South Sathorn Road\nSathorn\nBangkok\n10120"
-      },
-      "The Occupied Palestinian Territories": {
-        "postal": "FALSE",
-        "post": "the British Consulate General Jerusalem",
-        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=69&service=9"
       },
       "Tunisia": {
         "postal": "FALSE",
@@ -907,6 +907,17 @@
         "cniDelivery": false,
         "localRequirements": ""
       },
+      "Palestine": {
+        "post": "the British Consulate General Jerusalem",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=69&service=13",
+        "postAddress": "",
+        "civilPartnership": false,
+        "duration": "3 months",
+        "postal": false,
+        "additionalDocs": "",
+        "cniDelivery": false,
+        "localRequirements": ""
+      },
       "Peru": {
         "post": "the British Embassy Lima",
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=125&service=13",
@@ -1037,17 +1048,6 @@
         "postAddress": "",
         "civilPartnership": false,
         "duration": "1 month",
-        "postal": false,
-        "additionalDocs": "",
-        "cniDelivery": false,
-        "localRequirements": ""
-      },
-      "The Occupied Palestinian Territories": {
-        "post": "the British Consulate General Jerusalem",
-        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=69&service=13",
-        "postAddress": "",
-        "civilPartnership": false,
-        "duration": "3 months",
         "postal": false,
         "additionalDocs": "",
         "cniDelivery": false,
