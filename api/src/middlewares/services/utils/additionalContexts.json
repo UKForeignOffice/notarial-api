@@ -63,9 +63,7 @@
         "post": "the British Embassy Santiago",
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=143&service=9"
       },
-      "China": {
-        "postal": "FALSE"
-      },
+      "China": { "postal": "FALSE" },
       "Colombia": {
         "postal": "FALSE",
         "post": "the British Embassy Bogotá",
@@ -300,9 +298,13 @@
       "the British Consulate General Ho Chi Minh City": {
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=64&service=9"
       },
-      "the British Consulate General Shanghai": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8" },
+      "the British Consulate General Shanghai": {
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8"
+      },
       "the British Embassy Beijing": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=100&service=8" },
-      "the British Consulate General Guangzhou": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8" }
+      "the British Consulate General Guangzhou": {
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8"
+      }
     }
   },
   "marriage": {
@@ -421,7 +423,7 @@
       },
       "Bulgaria": {
         "post": "the British Embassy Sofia",
-        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=34&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9",
         "postAddress": "\nBritish Embassy Sofia \n9, Moskovska St \n1000 Sofia \nBulgaria",
         "civilPartnership": false,
         "duration": "6 months",
@@ -780,7 +782,7 @@
         "postal": false,
         "additionalDocs": "",
         "cniDelivery": false,
-        "localRequirements": ""
+        "localRequirements": "\nThere’s no British embassy or consulate to get documents to prove you’re eligible to marry in Macao. You’ll need to travel to the British Consulate General Hong Kong for your appointment to get a marital status affirmation. "
       },
       "Madagascar": {
         "post": "The British Embassy in Antananarivo",
@@ -962,13 +964,13 @@
       },
       "Romania": {
         "post": "the British Embassy Bucharest",
-        "bookingLink": "",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9",
         "postAddress": "\nBritish Embassy Bucharest \n24 Jules Michelet \n010463 Bucharest \nRomania",
         "civilPartnership": false,
         "duration": "3 months",
         "postal": true,
         "additionalDocs": "",
-        "cniDelivery": true,
+        "cniDelivery": false,
         "localRequirements": ""
       },
       "Senegal": {
@@ -1401,6 +1403,21 @@
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=76&service=13",
         "postAddress": ""
       },
+      "the British Consulate General Shanghai": {
+        "post": "the British Consulate General Shanghai",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8",
+        "postAddress": ""
+      },
+      "the British Embassy Beijing": {
+        "post": "the British Embassy Beijing",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=100&service=8",
+        "postAddress": ""
+      },
+      "the British Consulate General Guangzhou": {
+        "post": "the British Consulate General Guangzhou",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8",
+        "postAddress": ""
+      },
       "the British Embassy Athens": {
         "post": "the British Embassy Athens",
         "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=15&service=11",
@@ -1515,7 +1532,6 @@
       "Thailand": {
         "postal": "TRUE",
         "delivery": "Your document will be posted to your chosen address in Thailand. You'll be charged an additional £2 for postage.",
-
         "post": "the British Embassy Bangkok"
       },
       "United Arab Emirates": {
