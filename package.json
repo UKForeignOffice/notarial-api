@@ -33,7 +33,8 @@
   },
   "resolutions": {
     "follow-redirects": "1.15.4",
-    "ip": "2.0.1"
+    "ip": "2.0.1",
+    "jws": "^3.2.3"
   },
   "release": {
     "branches": [
