@@ -34,7 +34,9 @@
   "resolutions": {
     "follow-redirects": "1.15.4",
     "ip": "2.0.1",
-    "jws": "^3.2.3"
+    "jws": "^3.2.3",
+    "diff": "^5.2.1",
+    "tar": "^7.5.4"
   },
   "release": {
     "branches": [
