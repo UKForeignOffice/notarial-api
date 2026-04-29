@@ -15,7 +15,7 @@ jobs:
     <<: *defaults
 
     docker:
-      - image: cimg/node:18.15.0-browsers
+      - image: cimg/node:22.22.2-browsers
 
     environment:
       NODE_ENV: "test"
