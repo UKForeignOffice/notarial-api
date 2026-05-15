@@ -12,7 +12,7 @@ The following elements can be updated as part of the upload:
 | post.bookingLink          | Dynamic Content  | Used to display the booking link on the confirmation email            | Will only be populated if there is more than one post in the specified country that offers the specified service |
 
 ## How to use
-make sure have Node >=18 installed.
+make sure have Node >=24 installed.
 
 If this is your first time using this package, run `yarn install`.
 
