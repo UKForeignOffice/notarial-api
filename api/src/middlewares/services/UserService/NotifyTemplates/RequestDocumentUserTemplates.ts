@@ -51,6 +51,7 @@ export class RequestDocumentUserTemplates implements UserTemplateGroup {
   getAdoptionTemplateName(country: string) {
     const countryMap: { [key: string]: GenericRequestDocumentTemplates } = {
       India: "courier",
+      Portugal: "posted",
       Vietnam: "appointment",
       Spain: "posted",
       "United Arab Emirates": "appointment",
