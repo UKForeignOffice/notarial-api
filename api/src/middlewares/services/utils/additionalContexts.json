@@ -1523,6 +1523,12 @@
         "customText": "<p class=\"govuk-body\">Your sworn statement must be on stamped paper. Speak to your lawyer about this.</p>",
         "country": "India"
       },
+      "Portugal": {
+        "postal": "TRUE",
+        "delivery": "Your document will be posted to your chosen address in Portugal. You'll be charged an additional £3.50 for postage.",
+        "post": "the British Embassy Lisbon",
+        "bookingLink": "mailto:madrid.consularescalations@fcdo.gov.uk"
+      },
       "Spain": {
         "postal": "TRUE",
         "delivery": "Your document will be posted to your chosen address in Spain. You'll be charged an additional £13 for postage.",
