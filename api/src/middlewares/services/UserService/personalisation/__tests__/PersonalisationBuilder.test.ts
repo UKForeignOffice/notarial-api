@@ -29,7 +29,7 @@ test("buildJobData should return the correct personalisation for an in-person em
   expect(personalisation).toEqual({
     firstName: "foo",
     additionalDocs: "",
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
+    bookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=67&service=13",
     civilPartnership: false,
     country: "Turkey",
     localRequirements: "",
@@ -75,7 +75,7 @@ test("buildJobData should return the correct personalisation for Spain when the 
     countryIsItalyAndDoesNotLiveInItaly: false,
     countryIsItalyAndPartnerHadPreviousMarriage: false,
     localRequirements:
-      "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application.",
+      "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards.\nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application.",
     civilPartnership: false,
     reference: "1234",
     postAddress: "",
@@ -91,11 +91,11 @@ test("getPostalAdditionalContext returns additionalContext correctly", () => {
       "partner‘s proof any previous marriages or civil partnerships have ended ",
       "proof of permanent address if you live outside of Italy",
     ],
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
+    bookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=33&service=10",
     civilPartnership: true,
     cniDelivery: true,
     duration: "6 months",
-    localRequirements: `\nA CNI is equivalent to a ‘Nulla Osta’ in Italy. `,
+    localRequirements: `\nA CNI is equivalent to a ‘Nulla Osta’ in Italy.`,
     post: "the British Embassy Rome",
     postAddress: `\nBritish Embassy Rome \nVia XX Settembre 80/a \n00187 Rome \nItaly`,
     postal: true,
@@ -105,7 +105,7 @@ test("getPostalAdditionalContext returns additionalContext correctly", () => {
     additionalDocs: [
       "a piece of paper with the Russian spelling of your full name as you want it to appear on your CNI (it needs to be consistent across all the documents you submit to the Russian authorities)",
     ],
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10",
+    bookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=132&service=10",
     civilPartnership: false,
     cniDelivery: false,
     duration: "3 to 12 months (check with the person conducting your ceremony)",
@@ -117,7 +117,7 @@ test("getPostalAdditionalContext returns additionalContext correctly", () => {
 
   expect(getPostalAdditionalContext("Poland", "cni")).toStrictEqual({
     additionalDocs: "",
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10",
+    bookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=40&service=10",
     civilPartnership: false,
     cniDelivery: true,
     duration: "6 months",
@@ -215,8 +215,8 @@ test("buildJobData should return the correct personalisation for a certify a cop
 
   expect(personalisation).toEqual({
     firstName: "test",
-    post: "the British Consulate General Ho Chi Minh City",
-    bookingLink: "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=64&service=13",
+    post: "the British Embassy Bangkok",
+    bookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=53&service=9",
     reference: "1234",
   });
 });

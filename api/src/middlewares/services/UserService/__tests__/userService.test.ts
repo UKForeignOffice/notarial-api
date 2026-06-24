@@ -70,14 +70,23 @@ describe("sendEmailToUser - Marriage templates", () => {
 
 describe("sendEmailToUser - certifyCopy", () => {
   test.each`
-    label                 | answers                                         | template
-    ${"adult - inPerson"} | ${{ over16: true }}                             | ${"certify-copy-adult-template"}
-    ${"adult - postal"}   | ${{ over16: true, applicationType: "postal" }}  | ${"certify-copy-adult-postal-template"}
-    ${"child - inPerson"} | ${{ over16: false }}                            | ${"certify-copy-child-template"}
-    ${"adult - postal"}   | ${{ over16: false, applicationType: "postal" }} | ${"certify-copy-child-postal-template"}
+    label                 | answers                                                            | template
+    ${"adult - inPerson"} | ${{ over18: true, country: "Greece" }}                             | ${"certify-copy-adult-template"}
+    ${"adult - postal"}   | ${{ over18: true, applicationType: "postal", country: "Greece" }}  | ${"certify-copy-adult-postal-template"}
+    ${"child - inPerson"} | ${{ over18: false, country: "Greece" }}                            | ${"certify-copy-child-template"}
+    ${"child - postal"}   | ${{ over18: false, applicationType: "postal", country: "Greece" }} | ${"certify-copy-child-postal-template"}
   `(`$template is returned for $label`, async ({ answers, template }) => {
     const metadata = { reference: "ref", type: "certifyCopy" };
-    await userService.sendEmailToUser({ answers, metadata });
+
+    const additionalContexts = {
+      certifyCopy: {
+        countries: {
+          Greece: { postal: "HYBRID" },
+        },
+      },
+    };
+
+    await userService.sendEmailToUser({ answers, metadata, additionalContexts });
 
     expect(sendEmailSpy).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -114,10 +123,10 @@ describe("sendEmailToUser - requestDocument", () => {
     );
   });
 
-  describe("No objection certificate to adopt a child", () => {
+  describe("letter of no objection to adopt a child", () => {
     const baseAnswers = {
       firstName: "test",
-      serviceType: "No objection certificate to adopt a child",
+      serviceType: "letter of no objection to adopt a child",
     };
 
     const metadata = { reference: "ref", type: "requestDocument" };
@@ -165,7 +174,7 @@ describe("sendEmailToUser - requestDocument", () => {
     `(`$country with defaulted posts`, ({ country, expectedPost, template }) => {
       const answers = {
         firstName: "test",
-        serviceType: "No objection certificate to adopt a child",
+        serviceType: "letter of no objection to adopt a child",
         applicationCountry: country,
       };
 

@@ -34,17 +34,17 @@ export function createMessageWithText(subject: string, body: string) {
   return message;
 }
 
-export async function attachFilesToMessage(attachments: FormField[], message: MIMEMessage) {
+export async function attachFilesToMessage(attachments: FormField[], messageInstance: MIMEMessage) {
   for (const attachment of attachments) {
     const url = attachment.answer as string;
     const { contentType, data } = await fileService.getFile(url);
-    message.addAttachment({
+    messageInstance.addAttachment({
       filename: `${attachment.title}.${FileMimeType[contentType]}`,
       contentType,
       data: data.toString("base64"),
     });
   }
-  return message;
+  return messageInstance;
 }
 
 export const FileMimeType = {

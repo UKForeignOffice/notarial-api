@@ -5,7 +5,7 @@ import { getPostForRequestDocument } from "../../../../utils/getPost";
 import { getPostAddressForRequestDocument } from "../../../../utils/getPostAddressForRequestDocument";
 import { getBookingLinkForRequestDocument } from "../../../../utils/getBookingLinkForRequestDocument";
 
-export function requestDocumentPersonalisationBuilder(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
+export function RequestDocumentPersonalisationBuilder(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type?: FormType }) {
   if (!answers) {
     throw new ApplicationError("WEBHOOK", "VALIDATION", 500, "Fields are empty");
   }
@@ -15,7 +15,7 @@ export function requestDocumentPersonalisationBuilder(answers: AnswersHashMap, m
   const post = getPostForRequestDocument(serviceType, applicationCountry, answersPost);
 
   const postAddress = getPostAddressForRequestDocument(serviceType);
-  const bookingLink = getBookingLinkForRequestDocument(post);
+  const bookingLink = getBookingLinkForRequestDocument(post, serviceType);
 
   return {
     post,

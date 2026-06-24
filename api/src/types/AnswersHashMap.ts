@@ -15,4 +15,9 @@ export type RequestDocumentAnswersHashmap = {
   post?: string;
 } & Record<string, string | boolean>;
 
-export type AnswersHashMap = MarriageAnswersHashMap | CertifyCopyAnswersHashmap | RequestDocumentAnswersHashmap;
+export type ConsularLetterAnswersHashmap = {
+  letterChoice: string;
+  hasDeceasedsPassport: boolean;
+} & Record<string, string | boolean>;
+
+export type AnswersHashMap = MarriageAnswersHashMap | CertifyCopyAnswersHashmap | RequestDocumentAnswersHashmap | ConsularLetterAnswersHashmap;

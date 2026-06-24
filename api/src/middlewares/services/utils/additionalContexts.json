@@ -1,41 +1,309 @@
 {
   "certifyCopy": {
     "countries": {
+      "Albania": {
+        "postal": "FALSE",
+        "post": "the British Embassy Tirana",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=151&service=9"
+      },
+      "Algeria": {
+        "postal": "FALSE",
+        "post": "the British Embassy Algiers",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=91&service=9"
+      },
+      "Angola": {
+        "postal": "FALSE",
+        "post": "the British Embassy Luanda",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=126&service=9"
+      },
+      "Argentina": {
+        "postal": "FALSE",
+        "post": "the British Embassy Buenos Aires",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=106&service=9"
+      },
+      "Armenia": {
+        "postal": "FALSE",
+        "post": "the British Embassy Yerevan",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=157&service=9"
+      },
+      "Austria": {
+        "postal": "FALSE",
+        "localInfoNoService": "<p class=\"govuk-body\">If you need to certify a copy of a UK passport for a United States tax return you can <a class=\"govuk-link\" href=\"/certify-a-copy/check-eligibility-and-documents?beforeYouStart.applyingForUSTaxReturn=true&beforeYouStart.country=Austria\">apply online</a>to the British Embassy Vienna. At your appointment you'll need written confirmation that you're making a tax return in the US.</p>",
+        "localInfo": "<p class=\"govuk-body\">The British Embassy Vienna can only certify a copy of a UK passport to be used for United States tax returns. At your appointment you'll need written confirmation that you're making a tax return in the US.</p>",
+        "post": "the British Embassy Vienna",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=38&service=9"
+      },
+      "Azerbaijan": {
+        "postal": "FALSE",
+        "post": "the British Embassy Baku",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=99&service=9"
+      },
+      "Belarus": {
+        "postal": "FALSE",
+        "post": "the British Embassy Minsk",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=130&service=9"
+      },
+      "Bolivia": {
+        "postal": "HYBRID",
+        "post": "the British Embassy La Paz",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=124&service=9",
+        "postAddress": "British Embassy La Paz\nAvenida Arce No. 2732\nLa Paz\nBolivia"
+      },
+      "Brazil": { "postal": "FALSE" },
       "Bulgaria": {
         "postal": "TRUE",
         "post": "the British Embassy Sofia",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9",
+        "deliveryRequired": false,
+        "delivery": "Arrange collection of your passport and certified copy through a prepaid courier.",
         "postAddress": "\nBritish Embassy Sofia\n9, Moskovska St\n1000 Sofia\nBulgaria"
       },
+      "Chile": {
+        "postal": "FALSE",
+        "post": "the British Embassy Santiago",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=143&service=9"
+      },
+      "China": { "postal": "FALSE" },
+      "Colombia": {
+        "postal": "FALSE",
+        "post": "the British Embassy Bogotá",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9"
+      },
+      "Costa Rica": {
+        "postal": "FALSE",
+        "post": "the British Embassy San Jose",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=141&service=9"
+      },
+      "Czechia": {
+        "postal": "FALSE",
+        "post": "the British Embassy Prague",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=30&service=8"
+      },
+      "Democratic Republic of the Congo": {
+        "postal": "FALSE",
+        "post": "the British Embassy Kinshasa",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=122&service=18"
+      },
+      "Denmark": {
+        "postal": "FALSE",
+        "post": "the British Embassy Copenhagen",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=22&service=9"
+      },
+      "Ecuador": {
+        "postal": "FALSE",
+        "post": "the British Embassy Quito",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=138&service=9"
+      },
+      "Ethiopia": {
+        "postal": "FALSE",
+        "post": "the British Embassy Addis Ababa",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=90&service=9"
+      },
+      "Germany": {
+        "postal": "FALSE",
+        "post": "the British Embassy Berlin",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=16&service=9"
+      },
       "Greece": {
+        "postal": "HYBRID",
         "post": "the British Embassy Athens",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=15&service=8",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=15&service=8",
         "postAddress": "\nBritish Embassy Athens\n1, Ploutarchou str\n106 75 Athens\nGreece"
       },
+      "Iceland": {
+        "postal": "FALSE",
+        "post": "the British Embassy Reykjavik",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=31&service=9"
+      },
+      "Iran": {
+        "postal": "FALSE",
+        "post": "the British Embassy Tehran",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=149&service=9"
+      },
+      "Iraq": { "postal": "FALSE" },
+      "Japan": {
+        "postal": "FALSE",
+        "post": "the British Embassy Tokyo",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=152&service=9"
+      },
+      "Jordan": {
+        "postal": "FALSE",
+        "post": "the British Embassy Amman",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=92&service=8"
+      },
       "Kosovo": {
+        "postal": "FALSE",
         "post": "the British Embassy Tirana (for Kosovo)",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=137&service=9",
-        "localInfo": "\nThe British Embassy Pristina is unable to certify copies of passports. You will need to post the passport to the British Embassy Tirana to receive a certified copy."
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=137&service=9"
+      },
+      "Kyrgyzstan": {
+        "postal": "FALSE",
+        "post": "the British Embassy Bishkek",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=103&service=9"
+      },
+      "Latvia": {
+        "postal": "FALSE",
+        "post": "the British Embassy Riga",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=32&service=9"
+      },
+      "Lebanon": {
+        "postal": "FALSE",
+        "post": "the British Embassy Beirut",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=101&service=8"
+      },
+      "Lithuania": {
+        "postal": "FALSE",
+        "post": "the British Embassy Vilnius",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=39&service=9"
+      },
+      "Mexico": {
+        "postal": "FALSE",
+        "post": "the British Embassy Mexico City",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=129&service=18"
+      },
+      "Mongolia": {
+        "postal": "FALSE",
+        "post": "the British Embassy Ulaanbaatar",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=154&service=9"
+      },
+      "Montenegro": {
+        "postal": "FALSE",
+        "post": "the British Embassy Podgorica",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=136&service=9"
+      },
+      "Netherlands": {
+        "postal": "FALSE",
+        "post": "the British Embassy The Hague",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=37&service=9"
+      },
+      "North Macedonia": { "postal": "FALSE", "post": "the British Embassy Skopje", "bookingLink": "mailto:consular.skopje@fcdo.gov.uk" },
+      "Norway": {
+        "postal": "FALSE",
+        "post": "the British Embassy Oslo",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=28&service=8"
+      },
+      "Palestine": {
+        "postal": "FALSE",
+        "post": "the British Consulate General Jerusalem",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=69&service=9"
+      },
+      "Panama": {
+        "postal": "FALSE",
+        "post": "the British Embassy Panama City",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=134&service=18"
+      },
+      "Peru": {
+        "postal": "FALSE",
+        "post": "the British Embassy Lima",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=125&service=9"
+      },
+      "Philippines": {
+        "postal": "FALSE",
+        "post": "the British Embassy Manila",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=128&service=9"
+      },
+      "Poland": {
+        "postal": "FALSE",
+        "post": "the British Embassy Warsaw",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=40&service=9"
+      },
+      "Romania": {
+        "postal": "TRUE",
+        "post": "the British Embassy Bucharest",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9",
+        "deliveryRequired": false,
+        "delivery": "You'll get an email to tell you when your document is ready – usually within 5 working days. You can then pay for a courier and arrange for them to collect your document and passport.",
+        "postAddress": "British Embassy Bucharest\n24 Jules Michelet\n010463 Bucharest\nRomania"
+      },
+      "Russia": {
+        "postal": "FALSE",
+        "post": "the British Embassy Moscow",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=132&service=9"
+      },
+      "Senegal": {
+        "postal": "FALSE",
+        "post": "the British Embassy Dakar",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=110&service=9"
+      },
+      "Serbia": {
+        "postal": "FALSE",
+        "post": "the British Embassy Belgrade",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=102&service=9"
+      },
+      "South Korea": {
+        "postal": "FALSE",
+        "post": "the British Embassy Seoul",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=146&service=8"
       },
       "Sweden": {
+        "postal": "HYBRID",
         "post": "the British Embassy Stockholm",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=35&service=4",
-        "postAddress": "\nBritish Embassy Consular Section\nBox 27819\nSkarpögatan 8\n115 93 Stockholm"
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=35&service=9",
+        "postAddress": "British Embassy Consular Section\nBox 27819\nSkarpögatan 8\n115 93 Stockholm"
+      },
+      "Switzerland": {
+        "postal": "FALSE",
+        "post": "the British Embassy Berne",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=17&service=9"
       },
       "Thailand": {
+        "postal": "HYBRID",
         "post": "the British Embassy Bangkok",
-        "localInfo": "\nDo not use this service if you need a certified copy of your passport to open a bank account. The British Embassy Bangkok cannot certify copies of passports for this purpose.",
-        "postAddress": "\nConsular Services<br>British Embassy Bangkok\nAIA Sathorn Tower\nFloor 12A\n11/1 South Sathorn Road\nSathorn\nBangkok\n10120",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=53&service=9"
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=53&service=9",
+        "postAddress": "Consular Services\nBritish Embassy Bangkok\nAIA Sathorn Tower\nFloor 12A\n11/1 South Sathorn Road\nSathorn\nBangkok\n10120"
       },
-      "United States": {
+      "Tunisia": {
         "postal": "FALSE",
-        "localInfoNoService": "<p class=\"govuk-body\">A certified copy of British passports for Internal Revenue Service (IRS) Individual Tax Payer Identification Number purposes (ITIN) should be obtained through an <a class=\"govuk-link\" href=\"https://www.irs.gov/help/tac-locations-where-in-person-document-verification-is-provided\">IRS taxpayer assistance centre</a>.</p><p class=\"govuk-body\">If the IRS is unable to certify a copy of your passport, you can <a class=\"govuk-link\" href=\"/certify-a-copy/type-of-document\">request a certified copy from a British embassy or consulate</a>. You will need written confirmation from the IRS that they are unable to certify a copy of your passport at a specified location. Written confirmation from a third party, such as a company preparing taxes on your behalf, will not be accepted.</p>",
-        "localInfo": "<p class=\"govuk-body\">At your appointment, you will need written confirmation from the IRS that they are unable to certify a copy of your passport at a specified location. Written confirmation from a third party, such as a company preparing taxes on your behalf, will not be accepted.</p>"
+        "post": "the British Embassy Tunis",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=153&service=9"
       },
-      "Vietnam": {
+      "Turkey": { "postal": "FALSE" },
+      "Turkmenistan": {
         "postal": "FALSE",
-        "post": "the British Consulate General Ho Chi Minh City",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=64&service=13"
+        "post": "the British Embassy Ashgabat",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=95&service=9"
+      },
+      "United States": { "postal": "FALSE", "post": "the British Embassy Washington", "bookingLink": "" },
+      "Uruguay": {
+        "postal": "FALSE",
+        "post": "British Embassy Montevideo",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=131&service=9"
+      },
+      "Venezuela": {
+        "postal": "FALSE",
+        "post": "the British Embassy Caracas",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=108&service=8"
+      },
+      "Vietnam": { "postal": "FALSE" }
+    },
+    "posts": {
+      "the British Embassy Brasilia": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=105&service=9" },
+      "the British Consulate-General Rio de Janeiro": {
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=59&service=8"
+      },
+      "the British Consulate-General Sao Paulo": {
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=76&service=8"
+      },
+      "the British Embassy Baghdad": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=98&service=9" },
+      "the British Consulate General Erbil": {
+        "bookingLink": "https://www.contact.service.csd.fcdo.gov.uk/written-enquiry/iraq/british-consulate-general-erbil"
+      },
+      "the British Embassy Ankara": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=93&service=9" },
+      "the British Consulate General Istanbul": {
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=67&service=9"
+      },
+      "the British Embassy Abu Dhabi": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=89&service=18" },
+      "the British Embassy Dubai": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=112&service=18" },
+      "the British Embassy Hanoi": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=115&service=9" },
+      "the British Consulate General Ho Chi Minh City": {
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=64&service=9"
+      },
+      "the British Consulate General Shanghai": {
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8"
+      },
+      "the British Embassy Beijing": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=100&service=8" },
+      "the British Consulate General Guangzhou": {
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8"
       }
     }
   },
@@ -43,18 +311,18 @@
     "countries": {
       "Albania": {
         "post": "the British Embassy Tirana",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=151&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=151&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
         "postal": false,
         "additionalDocs": "",
         "cniDelivery": false,
-        "localRequirements": " \nAlbanian authorities will ask for your birth certificate. This will be retained by the authorities so you should provide a [certified copy from a local notary](https://www.gov.uk/guidance/find-a-notary-abroad). If the authorities ask for your original birth certificate, explain that they are only issued once in the UK. You can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea53e49b9c0597fdafa8f/Albania_-_standard_letter_-_birth_certificate.pdf) to help you.  \nAlbanian authorities may ask you to provide a vërtetim banimi (proof of address template). If you live in the UK you can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea57da3c2a28abb50cd58/Albania_-_standard_letter_-_proof_of_address.pdf) to help you explain that there’s no equivalent document in the UK."
+        "localRequirements": "\nAlbanian authorities will ask for your birth certificate. This will be retained by the authorities so you should provide a [certified copy from a local notary](https://www.gov.uk/guidance/find-a-notary-abroad). If the authorities ask for your original birth certificate, explain that they are only issued once in the UK. You can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea53e49b9c0597fdafa8f/Albania_-_standard_letter_-_birth_certificate.pdf) to help you.\nAlbanian authorities may ask you to provide a vërtetim banimi (proof of address template). If you live in the UK you can use this [standard letter](https://assets.publishing.service.gov.uk/media/668ea57da3c2a28abb50cd58/Albania_-_standard_letter_-_proof_of_address.pdf) to help you explain that there’s no equivalent document in the UK."
       },
       "Algeria": {
         "post": "the British Embassy Algiers",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=91&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=91&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -63,20 +331,9 @@
         "cniDelivery": false,
         "localRequirements": "\nThe Algerian government has issued guidance for [foreign nationals wishing to get married in Algeria](https://www.interieur.gov.dz/index.php/fr/%C3%A9trangers-en-alg%C3%A9rie/mariage-mixte/17-etranger-en-algerie.html). This is called a ‘mixed marriage‘ and there are [specific documents](https://www.interieur.gov.dz/index.php/fr/%C3%A9trangers-en-alg%C3%A9rie/mariage-mixte.html) you need to submit."
       },
-      "Andorra": {
-        "post": "the British Consulate General Barcelona",
-        "bookingLink": "",
-        "postAddress": "\nBritish Consulate General Barcelona \nAvda Diagonal 477–13 \n08036 Barcelona",
-        "civilPartnership": true,
-        "duration": "",
-        "postal": false,
-        "additionalDocs": "",
-        "cniDelivery": false,
-        "localRequirements": ""
-      },
       "Angola": {
         "post": "the British Embassy Luanda",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=126&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=126&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -87,7 +344,7 @@
       },
       "Armenia": {
         "post": "the British Embassy Yerevan",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=157&service=4",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=157&service=4",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -98,7 +355,7 @@
       },
       "Austria": {
         "post": "the British Embassy Vienna",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=38&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=38&service=14",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "6 months",
@@ -111,7 +368,7 @@
       },
       "Azerbaijan": {
         "post": "the British Embassy Baku",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=99&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=99&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -122,7 +379,7 @@
       },
       "Bahrain": {
         "post": "the British Embassy Manama",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=127&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=127&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -133,7 +390,7 @@
       },
       "Belarus": {
         "post": "the British Embassy Minsk",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=130&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=130&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -144,7 +401,7 @@
       },
       "Bolivia": {
         "post": "the British Embassy La Paz",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=124&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=124&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -155,7 +412,7 @@
       },
       "Bosnia and Herzegovina": {
         "post": "the British Embassy Sarajevo",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=145&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=145&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -166,7 +423,7 @@
       },
       "Bulgaria": {
         "post": "the British Embassy Sofia",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=34&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9",
         "postAddress": "\nBritish Embassy Sofia \n9, Moskovska St \n1000 Sofia \nBulgaria",
         "civilPartnership": false,
         "duration": "6 months",
@@ -179,7 +436,7 @@
       },
       "Cambodia": {
         "post": "the British Embassy Phnom Penh",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=135&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=135&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -190,7 +447,7 @@
       },
       "Central African Republic": {
         "post": "the British Embassy Kinshasa (for Central African Republic)",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=122&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=122&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "",
@@ -201,7 +458,7 @@
       },
       "Colombia": {
         "post": "the British Embassy Bogotá",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=104&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=13",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "3 months",
@@ -212,7 +469,7 @@
       },
       "Congo": {
         "post": "the British Embassy Kinshasa (for Congo)",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=122&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=122&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "",
@@ -223,7 +480,7 @@
       },
       "Costa Rica": {
         "post": "the British Embassy San Jose",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=141&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=141&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -234,18 +491,18 @@
       },
       "Croatia": {
         "post": "the British Embassy Zagreb",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=41&service=4",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=41&service=4",
         "postAddress": "\nBritish Embassy Zagreb \nIvana Lučića 4 \n10000 Zagreb \nCroatia",
         "civilPartnership": false,
         "duration": "3 months",
         "postal": true,
         "additionalDocs": "",
         "cniDelivery": true,
-        "localRequirements": "\nThe CNI and the certificate of custom law will be issued in Croatian. You’ll need to get both certified by the Ministry of Foreign and European Affairs in Zagreb before they‘ll be accepted by your registrar.  \nYou’ll also need to give the registrar a [legalised (apostilled)](https://www.gov.uk/get-document-legalised) and [translated](https://find-a-professional-service-abroad.service.csd.fcdo.gov.uk/find/translators-interpreters) birth certificate. If your name is different on your birth certificate and your passport the local registrar will ask for evidence of your name change, for example deed poll or previous marriage certificate."
+        "localRequirements": "\nThe CNI and the certificate of custom law will be issued in Croatian. You’ll need to get both certified by the Ministry of Foreign and European Affairs in Zagreb before they‘ll be accepted by your registrar.\nYou’ll also need to give the registrar a [legalised (apostilled)](https://www.gov.uk/get-document-legalised) and [translated](https://find-a-professional-service-abroad.service.csd.fcdo.gov.uk/find/translators-interpreters) birth certificate. If your name is different on your birth certificate and your passport the local registrar will ask for evidence of your name change, for example deed poll or previous marriage certificate."
       },
       "Cuba": {
         "post": "the British Embassy Havana",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=117&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=117&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -256,7 +513,7 @@
       },
       "Democratic Republic of the Congo": {
         "post": "the British Embassy Kinshasa",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=122&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=122&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -267,7 +524,7 @@
       },
       "Ecuador": {
         "post": "the British Embassy Quito",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=138&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=138&service=13",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "3 months",
@@ -278,7 +535,7 @@
       },
       "Egypt": {
         "post": "the British Embassy Cairo",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=107&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=107&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "1 month",
@@ -300,7 +557,7 @@
       },
       "Estonia": {
         "post": "the British Embassy Tallinn",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=36&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=36&service=10",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "6 months",
@@ -313,7 +570,7 @@
       },
       "Ethiopia": {
         "post": "the British Embassy Addis Ababa",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=90&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=90&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -324,13 +581,13 @@
       },
       "Finland": {
         "post": "the British Embassy Helsinki",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=24&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=24&service=13",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "around 3 months (check with local marriage authorities)",
         "postal": false,
         "additionalDocs": [
-          "residence permit card issued by Finnish Immigration Service (or equivalent for the country you live in) ",
+          "residence permit card issued by Finnish Immigration Service (or equivalent for the country you live in) – this serves as your proof of address",
           "partner‘s DVV certificate (this can also be their proof of address)"
         ],
         "cniDelivery": false,
@@ -338,7 +595,7 @@
       },
       "Guatemala": {
         "post": "the British Embassy Guatemala City",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=114&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=114&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -371,7 +628,7 @@
       },
       "Iran": {
         "post": "the British Embassy Tehran",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=149&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=149&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -382,7 +639,7 @@
       },
       "Italy": {
         "post": "the British Embassy Rome",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=33&service=10",
         "postAddress": "\nBritish Embassy Rome \nVia XX Settembre 80/a \n00187 Rome \nItaly",
         "civilPartnership": true,
         "duration": "6 months",
@@ -393,22 +650,22 @@
           "proof of permanent address if you live outside of Italy"
         ],
         "cniDelivery": true,
-        "localRequirements": "\nA CNI is equivalent to a ‘Nulla Osta’ in Italy. "
+        "localRequirements": "\nA CNI is equivalent to a ‘Nulla Osta’ in Italy."
       },
       "Jordan": {
         "post": "the British Embassy Amman",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=92&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=92&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "at least 6 months",
         "postal": false,
         "additionalDocs": "",
         "cniDelivery": false,
-        "localRequirements": "\nThe marital status affirmation you’ll swear will be slightly different depending on your type of marriage. \nFor Islamic marriages at the Sharia Court, you’ll swear a single declaration document to prove you’re allowed to marry or a single divorced declaration document if you’re divorced. \nFor Christian marriages, you’ll swear a marital status affidavit. \nBefore your appointment, the British Embassy Amman will contact you to ask which document you need."
+        "localRequirements": "\nThe marital status affirmation you’ll swear will be slightly different depending on your type of marriage. \nFor Islamic marriages at the Sharia Court, you’ll swear a single declaration document to prove you’re allowed to marry or a single divorced declaration document if you’re divorced.\nFor Christian marriages, you’ll swear a marital status affidavit.\nBefore your appointment, the British Embassy Amman will contact you to ask which document you need."
       },
       "Kazakhstan": {
         "post": "the British Embassy Astana",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=97&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=97&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -419,7 +676,7 @@
       },
       "Kosovo": {
         "post": "the British Embassy Pristina",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=137&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=137&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -430,7 +687,7 @@
       },
       "Kuwait": {
         "post": "the British Embassy Kuwait",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=123&service=4",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=123&service=4",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "",
@@ -441,7 +698,7 @@
       },
       "Kyrgyzstan": {
         "post": "the British Embassy Bishkek",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=103&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=103&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -452,7 +709,7 @@
       },
       "Laos": {
         "post": "the British Embassy Vientiane",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=155&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=155&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "12 months",
@@ -463,7 +720,7 @@
       },
       "Latvia": {
         "post": "the British Embassy Riga",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=32&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=32&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -474,7 +731,7 @@
       },
       "Lebanon": {
         "post": "the British Embassy Beirut",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=101&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=101&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -485,7 +742,7 @@
       },
       "Lithuania": {
         "post": "the British Embassy Vilnius",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=39&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=39&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -496,7 +753,7 @@
       },
       "Luxembourg": {
         "post": "the British Embassy Luxembourg",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=27&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=27&service=13",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "",
@@ -507,7 +764,7 @@
       },
       "Hong Kong": {
         "post": "the British Consulate General Hong Kong (for Macao)",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=65&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=65&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "",
@@ -516,12 +773,36 @@
         "cniDelivery": false,
         "localRequirements": ""
       },
-      "Mali": {
-        "post": "the British Embassy Bamako",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=199&service=40",
+      "Macao": {
+        "post": "the British Consulate General Hong Kong (for Macao)",
+        "bookingLink": "mailto:hongkong.consularescalations@fcdo.gov.uk",
         "postAddress": "",
         "civilPartnership": false,
-        "duration": "6 months",
+        "duration": "3 months",
+        "postal": false,
+        "additionalDocs": "",
+        "cniDelivery": false,
+        "localRequirements": "\nThere’s no British embassy or consulate to get documents to prove you’re eligible to marry in Macao. You’ll need to travel to the British Consulate General Hong Kong for your appointment to get a marital status affirmation. "
+      },
+      "Madagascar": {
+        "post": "The British Embassy in Antananarivo",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=94&service=40",
+        "postAddress": "",
+        "civilPartnership": false,
+        "duration": "3 months",
+        "postal": false,
+        "additionalDocs": [
+          "proof of identity (British passport, copy of birth certificate), residence permit, evidence of local address (delivered at ‘fokontany’) and evidence of the termination of any previous marriages "
+        ],
+        "cniDelivery": false,
+        "localRequirements": ""
+      },
+      "Mali": {
+        "post": "the British Embassy Bamako",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=199&service=40",
+        "postAddress": "",
+        "civilPartnership": false,
+        "duration": "",
         "postal": false,
         "additionalDocs": "",
         "cniDelivery": false,
@@ -540,7 +821,7 @@
       },
       "Mexico": {
         "post": "the British Embassy Mexico City",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=129&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=129&service=10",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "",
@@ -551,7 +832,7 @@
       },
       "Moldova": {
         "post": "the British Embassy Chisinau",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=109&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=109&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -562,7 +843,7 @@
       },
       "Mongolia": {
         "post": "the British Embassy Ulaanbaatar",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=154&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=154&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -573,7 +854,7 @@
       },
       "Montenegro": {
         "post": "the British Embassy Podgorica",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=136&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=136&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -584,7 +865,7 @@
       },
       "Nepal": {
         "post": "the British Embassy Kathmandu",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=120&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=120&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -606,7 +887,7 @@
       },
       "Norway": {
         "post": "the British Embassy Oslo",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=28&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=28&service=13",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "3 months",
@@ -617,7 +898,7 @@
       },
       "Oman": {
         "post": "the British Embassy Muscat",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=133&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=133&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -626,9 +907,20 @@
         "cniDelivery": false,
         "localRequirements": ""
       },
+      "Palestine": {
+        "post": "the British Consulate General Jerusalem",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=69&service=13",
+        "postAddress": "",
+        "civilPartnership": false,
+        "duration": "3 months",
+        "postal": false,
+        "additionalDocs": "",
+        "cniDelivery": false,
+        "localRequirements": ""
+      },
       "Peru": {
         "post": "the British Embassy Lima",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=125&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=125&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -639,7 +931,7 @@
       },
       "Poland": {
         "post": "the British Embassy Warsaw",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=40&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=40&service=10",
         "postAddress": "\nConsular Section \nBritish Embassy \nul. Kawalerii 12 \n00-468 Warsaw \nMazowieckie",
         "civilPartnership": false,
         "duration": "6 months",
@@ -650,7 +942,7 @@
       },
       "Philippines": {
         "post": "the British Embassy Manila",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=128&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=128&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -661,7 +953,7 @@
       },
       "Qatar": {
         "post": "the British Embassy Doha",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=111&service=32",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=111&service=32",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -672,29 +964,18 @@
       },
       "Romania": {
         "post": "the British Embassy Bucharest",
-        "bookingLink": "",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9",
         "postAddress": "\nBritish Embassy Bucharest \n24 Jules Michelet \n010463 Bucharest \nRomania",
         "civilPartnership": false,
         "duration": "3 months",
         "postal": true,
-        "additionalDocs": "",
-        "cniDelivery": true,
-        "localRequirements": ""
-      },
-      "San Marino": {
-        "post": "the British Embassy Rome (for San Marino)",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=33&service=10",
-        "postAddress": "\nBritish Embassy Rome \nVia XX Settembre 80/a \n00187 Rome \nItaly",
-        "civilPartnership": true,
-        "duration": "",
-        "postal": false,
         "additionalDocs": "",
         "cniDelivery": false,
         "localRequirements": ""
       },
       "Senegal": {
         "post": "the British Embassy Dakar",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=110&service=4",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=110&service=4",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -705,7 +986,7 @@
       },
       "Serbia": {
         "post": "the British Embassy Belgrade",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=102&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=102&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -716,7 +997,7 @@
       },
       "Slovenia": {
         "post": "the British Embassy Ljubljana",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=26&service=13",
+        "bookingLink": "mailto:Consular.slovenia@fcdo.gov.uk",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "6 months",
@@ -727,7 +1008,7 @@
       },
       "South Korea": {
         "post": "the British Embassy Seoul",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=146&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=146&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -738,7 +1019,7 @@
       },
       "Spain": {
         "post": "the British Consulate General Madrid",
-        "bookingLink": "",
+        "bookingLink": "mailto:madrid.consularescalations@fcdo.gov.uk",
         "postAddress": "\nBritish Consulate General Madrid \nNotarial Services \nTorre Emperador Castellana \nPaseo de la Castellana 259D \n28046 Madrid",
         "civilPartnership": false,
         "duration": "3 or 6 months (check with the person conducting your ceremony)",
@@ -748,11 +1029,11 @@
           "if you live in Spain, use your registration certificate for the town hall register (padrón municipal) as proof of address"
         ],
         "cniDelivery": true,
-        "localRequirements": "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards.  \nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application."
+        "localRequirements": "\nYou must apply for your documents 3 months before your civil registry appointment, or your wedding date if you’re holding a religious ceremony first and registering the marriage at the civil registry afterwards.\nOnce the British Consulate General Madrid gets your correct documents in the post, you should get your documents within 30 working days. Your application cannot be processed any faster, even if your civil registry appointment or wedding date is closer. \nThe British Consulate General Madrid is unable to provide updates on the status of your application."
       },
       "Sweden": {
         "post": "the British Embassy Stockholm",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=35&service=4",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=35&service=4",
         "postAddress": "\nBritish Embassy Consular Section \nBox 27819 \nSkarpögatan 8 \n115 93 Stockholm",
         "civilPartnership": true,
         "duration": "3 months",
@@ -763,7 +1044,7 @@
       },
       "Tajikistan": {
         "post": "the British Embassy Dushanbe",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=113&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=113&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "1 month",
@@ -772,20 +1053,9 @@
         "cniDelivery": false,
         "localRequirements": ""
       },
-      "The Occupied Palestinian Territories": {
-        "post": "the British Consulate General Jerusalem",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=69&service=13",
-        "postAddress": "",
-        "civilPartnership": false,
-        "duration": "3 months",
-        "postal": false,
-        "additionalDocs": "",
-        "cniDelivery": false,
-        "localRequirements": ""
-      },
       "Tunisia": {
         "post": "the British Embassy Tunis",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=153&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=153&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -796,7 +1066,7 @@
       },
       "Turkmenistan": {
         "post": "the British Embassy Ashgabat",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=95&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=95&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -807,7 +1077,7 @@
       },
       "Uzbekistan": {
         "post": "the British Embassy Tashkent",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=147&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=147&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -818,7 +1088,7 @@
       },
       "Venezuela": {
         "post": "the British Embassy Caracas",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=108&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=108&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -829,6 +1099,7 @@
       },
       "Afghanistan": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "American Samoa": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+      "Andorra": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Anguilla": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Antigua and Barbuda": {
         "civilPartnership": false,
@@ -950,15 +1221,6 @@
       "Liberia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Libya": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Liechtenstein": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-      "Macao": {
-        "civilPartnership": false,
-        "duration": "3 months",
-        "postal": false,
-        "additionalDocs": "",
-        "cniDelivery": false,
-        "localRequirements": "\nThere’s no British embassy or consulate to get documents to prove you’re eligible to marry in Macao. You’ll need to travel to the British Consulate General Hong Kong for your appointment to get a marital status affirmation. "
-      },
-      "Madagascar": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Malawi": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Malaysia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Maldives": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
@@ -1003,6 +1265,7 @@
       },
       "Rwanda": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Samoa": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+      "San Marino": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Sao Tome and Principe": {
         "civilPartnership": false,
         "duration": "",
@@ -1114,7 +1377,7 @@
         "civilPartnership": false,
         "duration": "3 or 6 months (check with the local People‘s Committee)",
         "postal": false,
-        "additionalDocs": ["partner‘s birth certificate"],
+        "additionalDocs": "",
         "cniDelivery": false,
         "localRequirements": "\nYour proof that a previous marriage has ended, for example, your decree absolute or partner‘s death certificate, must be legalised if they were issued in the UK. You need to [apply for legalisation](https://www.gov.uk/get-document-legalised) separately. "
       },
@@ -1127,57 +1390,72 @@
     "posts": {
       "the British Embassy Brasilia": {
         "post": "the British Embassy Brasilia",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=105&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=105&service=13",
         "postAddress": ""
       },
       "the British Consulate-General Rio de Janeiro": {
         "post": "the British Consulate-General Rio de Janeiro",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=59&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=59&service=13",
         "postAddress": ""
       },
       "the British Consulate-General Sao Paulo": {
         "post": "the British Consulate-General Sao Paulo",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=76&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=76&service=13",
+        "postAddress": ""
+      },
+      "the British Consulate General Shanghai": {
+        "post": "the British Consulate General Shanghai",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8",
+        "postAddress": ""
+      },
+      "the British Embassy Beijing": {
+        "post": "the British Embassy Beijing",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=100&service=8",
+        "postAddress": ""
+      },
+      "the British Consulate General Guangzhou": {
+        "post": "the British Consulate General Guangzhou",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8",
         "postAddress": ""
       },
       "the British Embassy Athens": {
         "post": "the British Embassy Athens",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=15&service=11",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=15&service=11",
         "postAddress": ""
       },
       "the British Vice Consulate Corfu": {
         "post": "the British Vice Consulate Corfu",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=45&service=11",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=45&service=11",
         "postAddress": ""
       },
       "the British Vice Consulate Crete": {
         "post": "the British Vice Consulate Crete",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=46&service=11",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=46&service=11",
         "postAddress": ""
       },
       "the British Vice Consulate Rhodes": {
         "post": "the British Vice Consulate Rhodes",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=48&service=11",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=48&service=11",
         "postAddress": ""
       },
       "the British Honorary Vice Consulate Zakynthos": {
         "post": "the British Honorary Vice Consulate Zakynthos",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=49&service=11",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=49&service=11",
         "postAddress": ""
       },
       "the British Embassy Jakarta": {
         "post": "the British Embassy Jakarta",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=118&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=118&service=13",
         "postAddress": ""
       },
       "the British Consulate Bali": {
         "post": "the British Consulate Bali",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=55&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=55&service=13",
         "postAddress": ""
       },
       "the British Embassy Moscow": {
         "post": "the British Embassy Moscow",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=132&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=132&service=10",
         "postAddress": "\nBritish Embassy Moscow \n121099 Moscow \nLuhansk People’s Republic Square 1 \n \n(for postal purposes only)"
       },
       "the British Consulate General Ekaterinburg": {
@@ -1187,52 +1465,52 @@
       },
       "the British Embassy Riyadh": {
         "post": "the British Embassy Riyadh",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=140&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=140&service=10",
         "postAddress": ""
       },
       "the British Consulate General Jeddah": {
         "post": "the British Consulate General Jeddah",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=68&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=68&service=10",
         "postAddress": ""
       },
       "the British Embassy Ankara": {
         "post": "the British Embassy Ankara",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=93&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=93&service=13",
         "postAddress": ""
       },
       "the British Consulate General Istanbul": {
         "post": "the British Consulate General Istanbul",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=67&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=67&service=13",
         "postAddress": ""
       },
       "the British Consulate Izmir": {
         "post": "the British Consulate Izmir",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=81&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=81&service=13",
         "postAddress": ""
       },
       "the British Vice Consulate Antalya": {
         "post": "the British Vice Consulate Antalya",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=196&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=196&service=13",
         "postAddress": ""
       },
       "the British Embassy Abu Dhabi": {
         "post": "the British Embassy Abu Dhabi",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=89&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=89&service=13",
         "postAddress": ""
       },
       "the British Embassy Dubai": {
         "post": "the British Embassy Dubai",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=112&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=112&service=13",
         "postAddress": ""
       },
       "the British Embassy Hanoi": {
         "post": "the British Embassy Hanoi",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=115&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=115&service=13",
         "postAddress": ""
       },
       "the British Consulate General Ho Chi Minh City": {
         "post": "the British Consulate General Ho Chi Minh City",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=64&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=64&service=13",
         "postAddress": ""
       }
     }
@@ -1249,7 +1527,7 @@
         "postal": "TRUE",
         "delivery": "Your document will be posted to your chosen address in Spain. You'll be charged an additional £13 for postage.",
         "post": "the British Consulate General Madrid",
-        "bookingLink": ""
+        "bookingLink": "mailto:madrid.consularescalations@fcdo.gov.uk"
       },
       "Thailand": {
         "postal": "TRUE",
@@ -1273,14 +1551,14 @@
         "customText": "<p class=\"govuk-body\">To get a criminal record certificate you’ll need a letter from the British Embassy Mexico City requesting a criminal background check from Mexican authorities. The Mexican authorities are responsible for the process – the embassy cannot provide the certificate directly.</p>",
         "postal": "FALSE",
         "post": "the British Embassy Mexico City",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=129&service=18"
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=129&service=18"
       },
       "Democratic Republic of the Congo - consular certificate": {
         "name": "consular certificate (attestation consulaire)",
         "customText": "<p class=\"govuk-body\">You might need a consular certificate so that you can work or renew your residency permit in the Democratic Republic of Congo.</p>",
         "postal": "FALSE",
         "post": "the British Embassy Kinshasa",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=122&service=18"
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=122&service=18"
       },
       "India - organ transplant letter": {
         "name": "organ transplant letter",
@@ -1291,14 +1569,14 @@
       },
       "India - letter to access Indian state or national archives": {
         "name": "letter to access Indian state or national archives",
-        "delivery":  "Arrange for your document to be collected by a prepaid courier during <a class=\"govuk-link\" href=\"https://www.gov.uk/world/embassies\">high commission or office opening hours</a>.",
+        "delivery": "Arrange for your document to be collected by a prepaid courier during <a class=\"govuk-link\" href=\"https://www.gov.uk/world/embassies\">high commission or office opening hours</a>.",
         "additionalEvidence": "<li>letter from the college, university or institution saying what your research is</li>",
         "postal": "TRUE",
         "country": "India"
       },
       "India - letter of introduction for admission to an Indian university": {
         "name": "letter of introduction for admission to an Indian university",
-        "delivery":  "Arrange for your document to be collected by a prepaid courier during <a class=\"govuk-link\" href=\"https://www.gov.uk/world/embassies\">high commission or office opening hours</a>.",
+        "delivery": "Arrange for your document to be collected by a prepaid courier during <a class=\"govuk-link\" href=\"https://www.gov.uk/world/embassies\">high commission or office opening hours</a>.",
         "additionalEvidence": "<li>completed university application form</li>",
         "postal": "TRUE",
         "country": "India"
@@ -1308,8 +1586,8 @@
         "customText": "<p class=\"govuk-body\">You’ll need a DVLA  ‘check code’ to share with the British Embassy Panama City. They’ll use the information to check your UK driving licence.</p><p class=\"govuk-body\">To get a check code:</p><ol class=\"govuk-list govuk-list--number\"><li><a class=\"govuk-link\" href=\"https://www.gov.uk/view-driving-licence\">Go to DVLA to view your driving licence information</a> – you’ll need to enter your driving licence number, National Insurance number and postcode.</li><li>Click on the ‘get your check code’ tab.</li><li>Select ‘print’ or ‘print or save’ (this may be different depending on which device you’re using).</li><li>Download a DVLA licence summary – you’ll need the first page of the summary for this service, which includes the code and last 8 numbers of your driving licence number </li></ol><p class=\"govuk-body\">The check code is valid for 21 days and can only be used once, so get the code when you’re ready to apply and do not use it anywhere else.</p>",
         "additionalEvidence": "<li><a class=\"govuk-link\" href=\"https://www.gov.uk/view-driving-licence\">DVLA licence summary</a></li>",
         "postal": "FALSE",
-        "post":  "the British Embassy Panama City",
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=134&service=18"
+        "post": "the British Embassy Panama City",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=134&service=18"
       },
       "Thailand - letter supporting Thai citizenship": {
         "name": "letter supporting Thai citizenship",
@@ -1350,7 +1628,7 @@
         "customText": "<p class=\"govuk-body\">You’ll need an appointment at the British Consulate General Barcelona to make an affirmation of your marital status and collect your certificate. Your MSC will cost £100 –  £50 to make the affirmation and £50 to issue the certificate.</p><p class=\"govuk-body\">You can only get an MSC to register a cohabitation arrangement (unió estable de parella) if you live in Andorra.</p>",
         "postal": "FALSE",
         "post": "the British Consulate General Barcelona (for Andorra)",
-        "bookingLink":  "mailto:BarcelonaConsularEscalations@fcdo.gov.uk"
+        "bookingLink": "mailto:BarcelonaConsularEscalations@fcdo.gov.uk"
       },
       "Vietnam - letter to support a permanent residency application": {
         "name": "letter to support a permanent residency application",
@@ -1361,35 +1639,29 @@
     },
     "posts": {
       "the British Deputy High Commission Chennai": {
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=84&service=18"
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=84&service=18"
       },
       "the British Deputy High Commission Mumbai": {
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=88&service=18"
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=88&service=18"
       },
       "the British Nationals Assistance Office Goa": {
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=194&service=18"
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=194&service=18"
       },
       "the British High Commission New Delhi": {
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=181&service=18"
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=181&service=18"
       },
       "the British Deputy High Commission Kolkata": {
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=86&service=18"
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=86&service=18"
       },
       "the British Deputy High Commission Chandigarh": {
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=200&service=18"
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=200&service=18"
       },
-      "the British Embassy Hanoi": {
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=115&service=9"
-      },
+      "the British Embassy Hanoi": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=115&service=9" },
       "the British Consulate General Ho Chi Minh City": {
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=64&service=9"
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=64&service=9"
       },
-      "the British Embassy Abu Dhabi": {
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=89&service=18"
-      },
-      "the British Embassy Dubai":  {
-        "bookingLink": "https://www.book-consular-appointment.service.gov.uk/TimeSelection?location=112&service=18"
-      }
+      "the British Embassy Abu Dhabi": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=89&service=18" },
+      "the British Embassy Dubai": { "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=112&service=18" }
     }
   }
 }

@@ -34,6 +34,7 @@ export const remap = {
   "permanentAddress.country": "permanentAddress.country",
 
   docLanguage: "certificate.docLanguage",
+  customLawCertType: "certificate.typeOfCertificate",
 
   mscReason: "reason.reason",
   reasonForLetter: "reason.reason",

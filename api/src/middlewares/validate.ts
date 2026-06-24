@@ -19,7 +19,6 @@ const questionSchema = joi.object().keys({
 const webhookOutputSchema = joi.object().keys({
   name: joi.string().required(),
   questions: joi.array().items(questionSchema).required(),
-  fees: joi.object().optional(),
   metadata: joi.object({
     pay: joi
       .object({
@@ -28,7 +27,7 @@ const webhookOutputSchema = joi.object().keys({
         reference: joi.string().optional(),
       })
       .optional(),
-    type: joi.string().valid("affirmation", "cni", "exchange", "certifyCopy", "requestDocument").trim(),
+    type: joi.string().valid("affirmation", "cni", "exchange", "certifyCopy", "requestDocument", "consularLetter").trim(),
   }),
 });
 export function validationHandler(req: Request, _res: Response, next: NextFunction) {

@@ -2,25 +2,41 @@ import logger, { Logger } from "pino";
 import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
 import { UserService } from "../UserService";
-import { MarriageCaseService, RequestDocumentCaseService, CertifyCopyCaseService } from "../CaseService";
+import { MarriageCaseService, RequestDocumentCaseService, CertifyCopyCaseService, ConsularLetterCaseService } from "../CaseService";
 import { getCaseServiceName } from "../utils/getCaseServiceName";
 import { CaseService } from "../CaseService/types";
 const { customAlphabet } = require("nanoid");
 
 const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
+
+type InjectedServices = {
+  userService: UserService;
+  marriageCaseService: MarriageCaseService;
+  certifyCopyCaseService: CertifyCopyCaseService;
+  requestDocumentCaseService: RequestDocumentCaseService;
+  consularLetterCaseService: ConsularLetterCaseService;
+};
+type SubmitServiceOptions = InjectedServices & {
+  /**
+   * Add any other constructor options here
+   */
+};
+
 export class SubmitService {
   logger: Logger;
   userService: UserService;
   marriageCaseService: MarriageCaseService;
   certifyCopyCaseService: CertifyCopyCaseService;
   requestDocumentCaseService: RequestDocumentCaseService;
+  consularLetterCaseService: ConsularLetterCaseService;
 
-  constructor({ userService, marriageCaseService, certifyCopyCaseService, requestDocumentCaseService }) {
+  constructor(options: SubmitServiceOptions) {
     this.logger = logger().child({ service: "Submit" });
-    this.userService = userService;
-    this.marriageCaseService = marriageCaseService;
-    this.certifyCopyCaseService = certifyCopyCaseService;
-    this.requestDocumentCaseService = requestDocumentCaseService;
+    this.userService = options.userService;
+    this.marriageCaseService = options.marriageCaseService;
+    this.certifyCopyCaseService = options.certifyCopyCaseService;
+    this.requestDocumentCaseService = options.requestDocumentCaseService;
+    this.consularLetterCaseService = options.consularLetterCaseService;
   }
   generateId() {
     return nanoid();
@@ -31,7 +47,7 @@ export class SubmitService {
     const formFields = flattenQuestions(questions);
     const answers = answersHashMap(formFields);
     const { pay, type } = metadata;
-    const reference = metadata?.pay?.reference ?? this.generateId();
+    const reference = formData['reference'] ?? metadata?.pay?.reference ?? fees?.paymentReference ?? this.generateId();
     const caseServiceName = getCaseServiceName(type);
     if (pay) {
       pay.total = fees?.total;
@@ -45,8 +61,12 @@ export class SubmitService {
         type,
         metadata,
       });
-      const caseProcessJob = await caseService.sendToProcessQueue(processQueueData);
-      this.logger.info({ reference, caseProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
+
+      // only email case team when there is no Orbit reference indicating a submission failure there
+      if (!formData['orbitReference']) {
+        const caseProcessJob = await caseService.sendToProcessQueue(processQueueData);
+        this.logger.info({reference, caseProcessJob}, `SES_PROCESS job queued successfully for ${reference}`);
+      }
 
       const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type, postal: metadata.postal });
 

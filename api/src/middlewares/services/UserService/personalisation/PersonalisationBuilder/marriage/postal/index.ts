@@ -18,7 +18,7 @@ export function getPostalAdditionalContext(country: string, post?: string) {
 }
 
 export function buildPostalPersonalisation(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: MarriageFormType }) {
-  const isSuccessfulPayment = metadata.payment?.state?.status === "success" ?? false;
+  const isSuccessfulPayment = metadata.payment?.state?.status === "success";
   const country = answers["country"] as string;
   const post = answers["post"] as string;
   const userHadPreviousMarriage = answers.maritalStatus !== "Never married";

@@ -61,8 +61,8 @@ export class CertifyCopyCaseService implements CaseService {
     return await this.queueService.sendToQueue("SES_SEND", jobData);
   }
 
-  getEmailBody(data: { fields: FormField[]; payment?: PaymentData; reference: string }) {
-    const { fields, payment, reference } = data;
+  getEmailBody(data: { fields: FormField[]; payment?: PaymentData; reference: string; numCertifiedCopies: string }) {
+    const { fields, payment, reference, numCertifiedCopies } = data;
 
     const remapFields = createRemapper(remap);
     const remapped = remapFields(fields);
@@ -73,10 +73,12 @@ export class CertifyCopyCaseService implements CaseService {
     const reordered = reorderer(remapped);
 
     const country = getAnswerOrThrow(information, "country");
+
     const post = getPostForCertifyCopy(country, information.post?.answer);
     return this.templates.SES({
       post,
       reference,
+      numCertifiedCopies,
       payment,
       country,
       questions: reordered,
@@ -96,7 +98,8 @@ export class CertifyCopyCaseService implements CaseService {
     }
 
     const country = answers.country as string;
-    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference });
+    const numCertifiedCopies = answers.numCertifiedCopies as string;
+    const emailBody = this.getEmailBody({ fields, payment: paymentViewModel, reference, numCertifiedCopies });
     const post = getPostForCertifyCopy(country, answers.post as string);
     const onCompleteJob = this.getPostAlertData(country, post, reference);
     return {
@@ -140,6 +143,9 @@ export class CertifyCopyCaseService implements CaseService {
   }
 
   private static createTemplate(template: string) {
+        handlebars.registerHelper('eq', function (a, b) {
+            return a === b;
+        });
     return handlebars.compile(template);
   }
 }

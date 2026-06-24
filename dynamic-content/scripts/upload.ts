@@ -39,6 +39,11 @@ function uploadContent(
       const contentFamily = contentType === "content" ? "countries" : helpers.determineBookingContentFamily(rowObjects, curr);
       const relevantFields = helpers.getRelevantFields(curr, fileConstants.relevant);
       const contentSubject = contentFamily === "countries" ? curr.country : curr.post;
+
+      if (!contentSubject) {
+        return acc;
+      }
+
       const setPath = `${contentFamily}.${contentSubject}`;
       const currentFields = _.get(acc, setPath) ?? {};
       _.set(acc, setPath, { ...currentFields, ...relevantFields });

@@ -36,7 +36,7 @@ export default class FileService {
     try {
       const { headers, data } = await axios.get<Buffer>(url, { responseType: "arraybuffer", responseEncoding: "base64" });
       return {
-        contentType: headers["content-type"],
+        contentType: headers["content-type"] as string,
         data,
       };
     } catch (err: AxiosError | Error | any) {

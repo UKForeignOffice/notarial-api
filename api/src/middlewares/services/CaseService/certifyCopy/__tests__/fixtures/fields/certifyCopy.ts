@@ -137,6 +137,12 @@ export const certifyCopy: {
       title: "Declaration",
       answer: true,
     },
+    {
+      key: "numCertifiedCopies",
+      type: "number",
+      title: "Number of copies needed?",
+      answer: "2",
+    },
   ],
   reorder: {
     information: {
@@ -260,6 +266,13 @@ export const certifyCopy: {
         answer: false,
         category: "feedback",
       },
+    },
+    numCertifiedCopies: {
+      key: "numCertifiedCopies",
+      type: "number",
+      title: "Number of copies needed?",
+      answer: "2",
+      category: null,
     },
     declaration: {
       key: "declaration",

@@ -25,6 +25,7 @@ const template = `
 </ul>
 
 <h3>Fees:</h3>
+<p>Number of copies requested - {{numCertifiedCopies}}</p>
 <ul>
     <li>Paid: {{payment.status}}</li>
     <li>
@@ -45,7 +46,21 @@ const template = `
             <h4>{{@key}}</h4>
             <ul>
                 {{#each this}}
-                <li>{{this.title}}: {{this.answer}}</li>
+                    {{#if (eq this.title "Can our partner contact you for feedback to help improve this service?")}}
+                        {{#if this.answer}}
+                            {{#if (eq this.answer true)}}
+                                <li>{{this.title}}: {{this.answer}}</li>
+                            {{else}}
+                                <li>{{this.title}}: false</li>
+                            {{/if}}
+                        {{else}}
+                            <li>{{this.title}}: false</li>
+                        {{/if}}
+                    {{else}}
+                        {{#if this.answer}}
+                            <li>{{this.title}}: {{this.answer}}</li>
+                        {{/if}}
+                    {{/if}}
                 {{/each}}
             </ul>
         {{/if}}

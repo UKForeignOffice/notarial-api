@@ -1,7 +1,7 @@
 import { UserTemplateGroup } from "./UserTemplateGroup";
 import { RequestDocumentAnswersHashmap } from "../../../../types/AnswersHashMap";
 import config from "config";
-import { requestDocumentPersonalisationBuilder } from "../personalisation/PersonalisationBuilder/requestDocument";
+import { RequestDocumentPersonalisationBuilder } from "../personalisation/PersonalisationBuilder/requestDocument";
 
 export class RequestDocumentUserTemplates implements UserTemplateGroup {
   templates: Record<RequestDocumentDocumentTemplateKeys, string>;
@@ -37,7 +37,7 @@ export class RequestDocumentUserTemplates implements UserTemplateGroup {
     const documentType = requestDocAnswers.serviceType;
     let template;
 
-    if (documentType === "No objection certificate to adopt a child") {
+    if (documentType === "letter of no objection to adopt a child") {
       const country = requestDocAnswers.applicationCountry;
       const adoptionTemplateName = this.getAdoptionTemplateName(country!);
       template = this.templates[adoptionTemplateName];
@@ -45,7 +45,7 @@ export class RequestDocumentUserTemplates implements UserTemplateGroup {
 
     template ??= this.templates[documentType];
 
-    return { personalisationBuilder: requestDocumentPersonalisationBuilder, template };
+    return { personalisationBuilder: RequestDocumentPersonalisationBuilder, template };
   }
 
   getAdoptionTemplateName(country: string) {
