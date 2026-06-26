@@ -19,11 +19,11 @@ export class UserService {
   /**
    * Stores the user's answers in the queue for processing.
    */
-  async sendToProcessQueue(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean }) {
+  async sendToProcessQueue(answers: AnswersHashMap, metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean; source?: string }) {
     return await this.queueService.sendToQueue("NOTIFY_PROCESS", { answers, metadata });
   }
 
-  async sendEmailToUser(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean } }) {
+  async sendEmailToUser(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean; source?: string } }) {
     const { answers, metadata } = data;
     const { reference } = metadata;
 
