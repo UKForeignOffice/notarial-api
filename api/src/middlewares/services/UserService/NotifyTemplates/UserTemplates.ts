@@ -25,7 +25,7 @@ export class UserTemplates {
     }
   }
 
-  getTemplate(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean } }) {
+  getTemplate(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean; source?: string } }) {
     const { type } = data.metadata;
 
     if (this.isMarriageFormType(type)) {
