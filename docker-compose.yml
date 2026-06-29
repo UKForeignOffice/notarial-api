@@ -1,21 +1,40 @@
-version: "3.9"
 services:
   api:
-    depends_on: [postgres]
+    depends_on:
+      postgres:
+        condition: service_healthy
     env_file:
       - api/.env
+    ports:
+      - "9000:9000"
     environment:
-      - QUEUE_DATABASE_URL=postgres://user:root@postgres:5432/notarial
+      - QUEUE_URL=postgres://user:root@postgres:5432/notarial
     build:
       context: .
       dockerfile: api/Dockerfile
+
   worker:
-    depends_on: [postgres]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      api:
+        condition: service_started
     environment:
       - NOTIFY_API_KEY=${NOTIFY_API_KEY:-}
-      - QUEUE_URL=postgres://user:root@postgres:5432/notarial
+      - ARCHIVE_FAILED_AFTER_DAYS=90
+      - DELETE_ARCHIVED_AFTER_DAYS=7
+      - SUBMISSION_ADDRESS=${SUBMISSION_ADDRESS:-noreply@prove-eligibility-foreign-government.forms.fcodev.org.uk}
+      - SENDER_EMAIL_ADDRESS=noreply@prove-eligibility-foreign-government.forms.fcodev.org.uk
+      - QUEUE_DRAIN_SCHEMA=pgboss_v10
       - QUEUE_SCHEMA=pgboss_v10
-      - QUEUE_DRAIN_SCHEMA=pgboss
+      - NODE_ENV=development
+      - QUEUE_URL=postgres://user:root@postgres:5432/notarial
+      - SES_SENDER_NAME=Getting Married Abroad Service
+      - NOTARIAL_API_CREATE_SES_EMAIL_URL=http://host.docker.internal:9000/forms/emails/ses
+      - NOTARIAL_API_CREATE_NOTIFY_EMAIL_URL=http://host.docker.internal:9000/forms/emails/notify
+      - FILES_ALLOWED_ORIGINS=["http://host.docker.internal:9004", "http://host.docker.internal:3030"]
+      - MONITOR_STATE_INTERVAL_IN_SECONDS=60
+      - NOTIFY_FAILURE_CHECK_SCHEDULE=9 * * * *
     build:
       context: .
       dockerfile: worker/Dockerfile
@@ -31,3 +50,9 @@ services:
       POSTGRES_DB: notarial
       POSTGRES_PASSWORD: root
       POSTGRES_USER: user
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d notarial"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 5s

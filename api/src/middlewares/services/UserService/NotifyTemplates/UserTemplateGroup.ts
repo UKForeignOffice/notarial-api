@@ -3,7 +3,7 @@ import { FormType, PayMetadata } from "../../../../types/FormDataBody";
 
 type getTemplateParams = {
   answers: AnswersHashMap;
-  metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean };
+  metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean; source?: string };
 };
 
 type Builder = (

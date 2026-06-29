@@ -8,15 +8,24 @@ import { UserTemplateGroup } from "./UserTemplateGroup";
 
 export class MarriageUserTemplates implements UserTemplateGroup {
   templates: {
-    affirmation: Record<PostalVariant, string>;
+    affirmation: {
+      simplified: Record<PostalVariant, string>;
+      legacy: Record<PostalVariant, string>;
+    };
     exchange: Record<PostalVariant, string>;
     cni: Record<CNISubGroup, Record<PostalVariant, string>>;
   };
   constructor() {
     this.templates = {
       affirmation: {
-        inPerson: config.get<string>("Notify.Template.affirmationUserConfirmation"),
-        postal: config.get<string>("Notify.Template.affirmationUserConfirmation"),
+        simplified: {
+          inPerson: config.get<string>("Notify.Template.affirmationUserConfirmationSimplified"),
+          postal: config.get<string>("Notify.Template.affirmationUserConfirmationSimplified"),
+        },
+        legacy: {
+          inPerson: config.get<string>("Notify.Template.affirmationUserConfirmation"),
+          postal: config.get<string>("Notify.Template.affirmationUserConfirmation"),
+        },
       },
       cni: {
         cni: {
@@ -39,7 +48,7 @@ export class MarriageUserTemplates implements UserTemplateGroup {
     };
   }
 
-  getTemplate(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean } }) {
+  getTemplate(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean; source?: string } }) {
     const { answers, metadata } = data;
     const { type } = data.metadata;
 
@@ -51,13 +60,31 @@ export class MarriageUserTemplates implements UserTemplateGroup {
     if (type === "cni") {
       const serviceSubtype = (answers.service ?? "cni") as MarriageFormType;
       template = this.templates.cni[serviceSubtype][postalVariant];
+    } else if (type === "affirmation") {
+      const isSimplified = metadata.source === "simplified-marriage-v1";
+      template = this.templates.affirmation[isSimplified ? "simplified" : "legacy"][postalVariant];
+    } else {
+      template = this.templates.exchange[postalVariant];
     }
-
-    template ??= this.templates[type][postalVariant];
 
     const personalisationBuilder = getPersonalisationBuilder(type);
 
-    builder ??= personalisationBuilder[postalVariant];
+    builder = personalisationBuilder[postalVariant];
+
+    // Only the simplified affirmation template uses a `duration` placeholder.
+    // Wrap the shared builder to append it without affecting other templates.
+    if (type === "affirmation" && metadata.source === "simplified-marriage-v1") {
+      const baseBuilder = builder;
+      builder = (answers: AnswersHashMap, meta: { reference: string; payment?: PayMetadata; type?: FormType }) => {
+        const personalisation = baseBuilder(answers, meta);
+        const country = answers.country as string;
+        const countryContext = additionalContexts.marriage.countries[country];
+        return {
+          ...personalisation,
+          duration: countryContext?.duration || "3 months",
+        };
+      };
+    }
 
     return {
       template,
