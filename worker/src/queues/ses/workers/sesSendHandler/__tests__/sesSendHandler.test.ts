@@ -19,7 +19,7 @@ jest.mock("../../../helpers/sesClient", () => ({
 jest.mock("./../sendAlertToPost");
 
 test("sesSendHandler throws an File application error if attachments are empty", async () => {
-  await expect(
+  expect(
     sesSend.sesSendHandler([
       {
         data: {
