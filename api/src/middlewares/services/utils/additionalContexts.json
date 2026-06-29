@@ -311,7 +311,7 @@
     "countries": {
       "Albania": {
         "post": "the British Embassy Tirana",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=151&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=151&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -322,7 +322,7 @@
       },
       "Algeria": {
         "post": "the British Embassy Algiers",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=91&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=91&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -333,7 +333,7 @@
       },
       "Angola": {
         "post": "the British Embassy Luanda",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=126&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=126&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -344,7 +344,7 @@
       },
       "Armenia": {
         "post": "the British Embassy Yerevan",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=157&service=4",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=157&service=4",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -355,7 +355,7 @@
       },
       "Austria": {
         "post": "the British Embassy Vienna",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=38&service=14",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=38&service=14",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "6 months",
@@ -368,7 +368,7 @@
       },
       "Azerbaijan": {
         "post": "the British Embassy Baku",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=99&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=99&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -379,7 +379,7 @@
       },
       "Bahrain": {
         "post": "the British Embassy Manama",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=127&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=127&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -390,7 +390,7 @@
       },
       "Belarus": {
         "post": "the British Embassy Minsk",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=130&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=130&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -401,7 +401,7 @@
       },
       "Bolivia": {
         "post": "the British Embassy La Paz",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=124&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=124&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -412,7 +412,7 @@
       },
       "Bosnia and Herzegovina": {
         "post": "the British Embassy Sarajevo",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=145&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=145&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -423,7 +423,7 @@
       },
       "Bulgaria": {
         "post": "the British Embassy Sofia",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=104&service=9",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9",
         "postAddress": "\nBritish Embassy Sofia \n9, Moskovska St \n1000 Sofia \nBulgaria",
         "civilPartnership": false,
         "duration": "6 months",
@@ -436,7 +436,7 @@
       },
       "Cambodia": {
         "post": "the British Embassy Phnom Penh",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=135&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=135&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -447,7 +447,7 @@
       },
       "Central African Republic": {
         "post": "the British Embassy Kinshasa (for Central African Republic)",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=122&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=122&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "",
@@ -458,7 +458,7 @@
       },
       "Colombia": {
         "post": "the British Embassy Bogotá",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=104&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=13",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "3 months",
@@ -469,7 +469,7 @@
       },
       "Congo": {
         "post": "the British Embassy Kinshasa (for Congo)",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=122&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=122&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "",
@@ -480,7 +480,7 @@
       },
       "Costa Rica": {
         "post": "the British Embassy San Jose",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=141&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=141&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -491,7 +491,7 @@
       },
       "Croatia": {
         "post": "the British Embassy Zagreb",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=41&service=4",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=41&service=4",
         "postAddress": "\nBritish Embassy Zagreb \nIvana Lučića 4 \n10000 Zagreb \nCroatia",
         "civilPartnership": false,
         "duration": "3 months",
@@ -502,7 +502,7 @@
       },
       "Cuba": {
         "post": "the British Embassy Havana",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=117&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=117&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -513,7 +513,7 @@
       },
       "Democratic Republic of the Congo": {
         "post": "the British Embassy Kinshasa",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=122&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=122&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -524,7 +524,7 @@
       },
       "Ecuador": {
         "post": "the British Embassy Quito",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=138&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=138&service=13",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "3 months",
@@ -535,7 +535,7 @@
       },
       "Egypt": {
         "post": "the British Embassy Cairo",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=107&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=107&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "1 month",
@@ -557,7 +557,7 @@
       },
       "Estonia": {
         "post": "the British Embassy Tallinn",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=36&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=36&service=10",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "6 months",
@@ -570,7 +570,7 @@
       },
       "Ethiopia": {
         "post": "the British Embassy Addis Ababa",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=90&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=90&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -581,7 +581,7 @@
       },
       "Finland": {
         "post": "the British Embassy Helsinki",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=24&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=24&service=13",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "around 3 months (check with local marriage authorities)",
@@ -595,7 +595,7 @@
       },
       "Guatemala": {
         "post": "the British Embassy Guatemala City",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=114&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=114&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -628,7 +628,7 @@
       },
       "Iran": {
         "post": "the British Embassy Tehran",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=149&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=149&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -639,7 +639,7 @@
       },
       "Italy": {
         "post": "the British Embassy Rome",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=33&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=33&service=10",
         "postAddress": "\nBritish Embassy Rome \nVia XX Settembre 80/a \n00187 Rome \nItaly",
         "civilPartnership": true,
         "duration": "6 months",
@@ -654,7 +654,7 @@
       },
       "Jordan": {
         "post": "the British Embassy Amman",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=92&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=92&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "at least 6 months",
@@ -665,7 +665,7 @@
       },
       "Kazakhstan": {
         "post": "the British Embassy Astana",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=97&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=97&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -676,7 +676,7 @@
       },
       "Kosovo": {
         "post": "the British Embassy Pristina",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=137&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=137&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -687,7 +687,7 @@
       },
       "Kuwait": {
         "post": "the British Embassy Kuwait",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=123&service=4",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=123&service=4",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "",
@@ -698,7 +698,7 @@
       },
       "Kyrgyzstan": {
         "post": "the British Embassy Bishkek",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=103&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=103&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -709,7 +709,7 @@
       },
       "Laos": {
         "post": "the British Embassy Vientiane",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=155&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=155&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "12 months",
@@ -720,7 +720,7 @@
       },
       "Latvia": {
         "post": "the British Embassy Riga",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=32&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=32&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -731,7 +731,7 @@
       },
       "Lebanon": {
         "post": "the British Embassy Beirut",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=101&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=101&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -742,7 +742,7 @@
       },
       "Lithuania": {
         "post": "the British Embassy Vilnius",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=39&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=39&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -753,7 +753,7 @@
       },
       "Luxembourg": {
         "post": "the British Embassy Luxembourg",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=27&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=27&service=13",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "",
@@ -764,7 +764,7 @@
       },
       "Hong Kong": {
         "post": "the British Consulate General Hong Kong (for Macao)",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=65&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=65&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "",
@@ -786,7 +786,7 @@
       },
       "Madagascar": {
         "post": "The British Embassy in Antananarivo",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=94&service=40",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=94&service=40",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -799,7 +799,7 @@
       },
       "Mali": {
         "post": "the British Embassy Bamako",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=199&service=40",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=199&service=40",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "",
@@ -821,7 +821,7 @@
       },
       "Mexico": {
         "post": "the British Embassy Mexico City",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=129&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=129&service=10",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "",
@@ -832,7 +832,7 @@
       },
       "Moldova": {
         "post": "the British Embassy Chisinau",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=109&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=109&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -843,7 +843,7 @@
       },
       "Mongolia": {
         "post": "the British Embassy Ulaanbaatar",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=154&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=154&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -854,7 +854,7 @@
       },
       "Montenegro": {
         "post": "the British Embassy Podgorica",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=136&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=136&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -865,7 +865,7 @@
       },
       "Nepal": {
         "post": "the British Embassy Kathmandu",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=120&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=120&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -887,7 +887,7 @@
       },
       "Norway": {
         "post": "the British Embassy Oslo",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=28&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=28&service=13",
         "postAddress": "",
         "civilPartnership": true,
         "duration": "3 months",
@@ -898,7 +898,7 @@
       },
       "Oman": {
         "post": "the British Embassy Muscat",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=133&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=133&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -909,7 +909,7 @@
       },
       "Palestine": {
         "post": "the British Consulate General Jerusalem",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=69&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=69&service=13",
         "civilPartnership": false,
         "duration": "3 months",
         "postal": false,
@@ -918,7 +918,7 @@
       },
       "Peru": {
         "post": "the British Embassy Lima",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=125&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=125&service=13",
         "civilPartnership": false,
         "duration": "3 months",
         "postal": false,
@@ -928,7 +928,7 @@
       },
       "Poland": {
         "post": "the British Embassy Warsaw",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=40&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=40&service=10",
         "postAddress": "\nConsular Section \nBritish Embassy \nul. Kawalerii 12 \n00-468 Warsaw \nMazowieckie",
         "civilPartnership": false,
         "duration": "6 months",
@@ -939,7 +939,7 @@
       },
       "Philippines": {
         "post": "the British Embassy Manila",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=128&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=128&service=13",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -950,7 +950,7 @@
       },
       "Qatar": {
         "post": "the British Embassy Doha",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=111&service=32",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=111&service=32",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -961,7 +961,7 @@
       },
       "Romania": {
         "post": "the British Embassy Bucharest",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=104&service=9",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=104&service=9",
         "postAddress": "\nBritish Embassy Bucharest \n24 Jules Michelet \n010463 Bucharest \nRomania",
         "civilPartnership": false,
         "duration": "3 months",
@@ -972,7 +972,7 @@
       },
       "Senegal": {
         "post": "the British Embassy Dakar",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=110&service=4",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=110&service=4",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -983,7 +983,7 @@
       },
       "Serbia": {
         "post": "the British Embassy Belgrade",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=102&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=102&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -1005,7 +1005,7 @@
       },
       "South Korea": {
         "post": "the British Embassy Seoul",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=146&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=146&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -1030,7 +1030,7 @@
       },
       "Sweden": {
         "post": "the British Embassy Stockholm",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=35&service=4",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=35&service=4",
         "postAddress": "\nBritish Embassy Consular Section \nBox 27819 \nSkarpögatan 8 \n115 93 Stockholm",
         "civilPartnership": true,
         "duration": "3 months",
@@ -1041,7 +1041,7 @@
       },
       "Tajikistan": {
         "post": "the British Embassy Dushanbe",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=113&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=113&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "1 month",
@@ -1052,7 +1052,7 @@
       },
       "Tunisia": {
         "post": "the British Embassy Tunis",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=153&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=153&service=13",
         "civilPartnership": false,
         "duration": "6 months",
         "postal": false,
@@ -1062,7 +1062,7 @@
       },
       "Turkmenistan": {
         "post": "the British Embassy Ashgabat",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=95&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=95&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -1073,7 +1073,7 @@
       },
       "Uzbekistan": {
         "post": "the British Embassy Tashkent",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=147&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=147&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -1084,7 +1084,7 @@
       },
       "Venezuela": {
         "post": "the British Embassy Caracas",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=108&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=108&service=10",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -1386,72 +1386,72 @@
     "posts": {
       "the British Embassy Brasilia": {
         "post": "the British Embassy Brasilia",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=105&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=105&service=13",
         "postAddress": ""
       },
       "the British Consulate-General Rio de Janeiro": {
         "post": "the British Consulate-General Rio de Janeiro",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=59&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=59&service=13",
         "postAddress": ""
       },
       "the British Consulate-General Sao Paulo": {
         "post": "the British Consulate-General Sao Paulo",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=76&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=76&service=13",
         "postAddress": ""
       },
       "the British Consulate General Shanghai": {
         "post": "the British Consulate General Shanghai",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=77&service=8",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=77&service=8",
         "postAddress": ""
       },
       "the British Embassy Beijing": {
         "post": "the British Embassy Beijing",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=100&service=8",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=100&service=8",
         "postAddress": ""
       },
       "the British Consulate General Guangzhou": {
         "post": "the British Consulate General Guangzhou",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=63&service=8",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=63&service=8",
         "postAddress": ""
       },
       "the British Embassy Athens": {
         "post": "the British Embassy Athens",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=15&service=11",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=15&service=11",
         "postAddress": ""
       },
       "the British Vice Consulate Corfu": {
         "post": "the British Vice Consulate Corfu",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=45&service=11",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=45&service=11",
         "postAddress": ""
       },
       "the British Vice Consulate Crete": {
         "post": "the British Vice Consulate Crete",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=46&service=11",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=46&service=11",
         "postAddress": ""
       },
       "the British Vice Consulate Rhodes": {
         "post": "the British Vice Consulate Rhodes",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=48&service=11",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=48&service=11",
         "postAddress": ""
       },
       "the British Honorary Vice Consulate Zakynthos": {
         "post": "the British Honorary Vice Consulate Zakynthos",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=49&service=11",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=49&service=11",
         "postAddress": ""
       },
       "the British Embassy Jakarta": {
         "post": "the British Embassy Jakarta",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=118&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=118&service=13",
         "postAddress": ""
       },
       "the British Consulate Bali": {
         "post": "the British Consulate Bali",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=55&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=55&service=13",
         "postAddress": ""
       },
       "the British Embassy Moscow": {
         "post": "the British Embassy Moscow",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=132&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=132&service=10",
         "postAddress": "\nBritish Embassy Moscow \n121099 Moscow \nLuhansk People’s Republic Square 1 \n \n(for postal purposes only)"
       },
       "the British Consulate General Ekaterinburg": {
@@ -1461,52 +1461,52 @@
       },
       "the British Embassy Riyadh": {
         "post": "the British Embassy Riyadh",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=140&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=140&service=10",
         "postAddress": ""
       },
       "the British Consulate General Jeddah": {
         "post": "the British Consulate General Jeddah",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=68&service=10",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=68&service=10",
         "postAddress": ""
       },
       "the British Embassy Ankara": {
         "post": "the British Embassy Ankara",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=93&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=93&service=13",
         "postAddress": ""
       },
       "the British Consulate General Istanbul": {
         "post": "the British Consulate General Istanbul",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=67&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=67&service=13",
         "postAddress": ""
       },
       "the British Consulate Izmir": {
         "post": "the British Consulate Izmir",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=81&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=81&service=13",
         "postAddress": ""
       },
       "the British Vice Consulate Antalya": {
         "post": "the British Vice Consulate Antalya",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=196&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=196&service=13",
         "postAddress": ""
       },
       "the British Embassy Abu Dhabi": {
         "post": "the British Embassy Abu Dhabi",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=89&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=89&service=13",
         "postAddress": ""
       },
       "the British Embassy Dubai": {
         "post": "the British Embassy Dubai",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=112&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=112&service=13",
         "postAddress": ""
       },
       "the British Embassy Hanoi": {
         "post": "the British Embassy Hanoi",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=115&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=115&service=13",
         "postAddress": ""
       },
       "the British Consulate General Ho Chi Minh City": {
         "post": "the British Consulate General Ho Chi Minh City",
-        "bookingLink": "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=64&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=64&service=13",
         "postAddress": ""
       }
     }
