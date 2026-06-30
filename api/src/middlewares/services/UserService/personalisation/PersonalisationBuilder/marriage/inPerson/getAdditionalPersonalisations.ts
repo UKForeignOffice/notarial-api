@@ -9,9 +9,13 @@ export const personalisationTypeMap: Record<MarriageFormType, PersonalisationFun
   exchange: getExchangePersonalisations,
 };
 
+function hasNoPreviousMarriage(maritalStatus: unknown) {
+  return maritalStatus === "Never married" || maritalStatus === "Single";
+}
+
 export function getAffirmationPersonalisations(fields: AnswersHashMap) {
   return {
-    previouslyMarried: fields.maritalStatus !== "Never married",
+    previouslyMarried: !hasNoPreviousMarriage(fields.maritalStatus),
     religious: fields.oathType === "Religious",
   };
 }
@@ -20,7 +24,7 @@ export function getCNIPersonalisations(fields: AnswersHashMap) {
   return {
     livesInCountry: fields.livesInCountry === true,
     livesAbroad: !fields.livesInCountry,
-    previouslyMarried: fields.maritalStatus !== "Never married",
+    previouslyMarried: !hasNoPreviousMarriage(fields.maritalStatus),
     religious: fields.oathType === "Religious",
     croatiaCertNeeded: fields.certRequired === true,
     countryIsItaly: fields.country === "Italy",
