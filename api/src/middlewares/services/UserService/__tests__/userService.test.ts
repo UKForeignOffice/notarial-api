@@ -126,6 +126,33 @@ describe("sendEmailToUser - Marriage templates", () => {
       })
     );
   });
+
+  test("affirmation - simplified adds previousNames for deed poll YesMoreThanOnce", async () => {
+    await userService.sendEmailToUser({
+      answers: {
+        firstName: "test",
+        emailAddress: "test@example.com",
+        country: "Italy",
+        nameChangedByMarriage: "no",
+        nameChangedByDeedPoll: "YesMoreThanOnce",
+      },
+      metadata: {
+        type: "affirmation",
+        source: "simplified-marriage-v1",
+        reference: "ref",
+      },
+    });
+
+    expect(sendEmailSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        options: expect.objectContaining({
+          personalisation: expect.objectContaining({
+            previousNames: true,
+          }),
+        }),
+      })
+    );
+  });
 });
 
 describe("sendEmailToUser - certifyCopy", () => {

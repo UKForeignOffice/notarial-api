@@ -113,6 +113,10 @@ export class MarriageUserTemplates implements UserTemplateGroup {
     }
 
     const normalised = value.trim().toLowerCase();
-    return normalised === "once" || normalised === "name changed more than once";
+    return (
+      normalised === "once" ||
+      normalised === "name changed more than once" ||
+      normalised === "yesmorethanonce"
+    );
   }
 }
