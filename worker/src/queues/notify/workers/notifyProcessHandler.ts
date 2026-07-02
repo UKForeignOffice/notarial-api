@@ -16,7 +16,7 @@ const logger = pino().child({
 const CREATE_NOTIFY_EMAIL_URL = config.get<string>("NotarialApi.createNotifyEmailUrl");
 type NotifyParseJob = {
   answers: any;
-  metadata: { reference: string; payment?: PayMetadata; type: string };
+  metadata: { reference: string; payment?: PayMetadata; type: string; source?: string };
 };
 /**
  * When a "NOTIFY_PARSE" event is detected, this worker simply POSTs the data back to the notarial-api/forms/emails/user

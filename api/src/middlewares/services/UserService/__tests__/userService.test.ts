@@ -5,6 +5,7 @@ jest.mock("config", () => ({
   get(setting) {
     const templates = {
       "Notify.Template.affirmationUserConfirmation": "affirmation-template",
+      "Notify.Template.affirmationUserConfirmationSimplified": "affirmation-simplified-template",
       "Notify.Template.cniUserConfirmation": "cni-template",
       "Notify.Template.cniUserPostalConfirmation": "cni-postal-template",
       "Notify.Template.mscUserConfirmation": "msc-template",
@@ -47,8 +48,9 @@ beforeEach(() => {
 
 describe("sendEmailToUser - Marriage templates", () => {
   test.each`
-    label                                         | answers                     | metadata                               | template
-    ${"affirmation"}                              | ${{}}                       | ${{ type: "affirmation" }}             | ${"affirmation-template"}
+    label                                         | answers                     | metadata                                                              | template
+    ${"affirmation - legacy"}                     | ${{}}                       | ${{ type: "affirmation" }}                                            | ${"affirmation-template"}
+    ${"affirmation - simplified"}                 | ${{}}                       | ${{ type: "affirmation", source: "simplified-marriage-v1" }}          | ${"affirmation-simplified-template"}
     ${"exchange - inPerson"}                      | ${{}}                       | ${{ type: "exchange" }}                | ${"exchange-template"}
     ${"exchange - postal"}                        | ${{}}                       | ${{ type: "exchange", postal: true }}  | ${"exchange-postal-template"}
     ${"exchange - croatia"}                       | ${{ country: "Croatia" }}   | ${{ type: "exchange" }}                | ${"exchange-template"}
