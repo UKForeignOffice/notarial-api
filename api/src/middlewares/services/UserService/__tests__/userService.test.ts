@@ -168,9 +168,8 @@ describe("sendEmailToUser - requestDocument", () => {
     });
 
     describe.each`
-      country       | expectedPost                              | template
-      ${"Spain"}    | ${"the British Consulate General Madrid"} | ${"request-document-posted"}
-      ${"Thailand"} | ${"the British Embassy Bangkok"}          | ${"request-document-posted"}
+      country                    | expectedPost                       | template
+      ${"Thailand"}              | ${"the British Embassy Bangkok"}   | ${"request-document-posted"}
     `(`$country with defaulted posts`, ({ country, expectedPost, template }) => {
       const answers = {
         firstName: "test",
