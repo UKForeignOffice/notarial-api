@@ -7,6 +7,7 @@ const connectionString = config.get<string>("Queue.url");
 const logger = pino().child({
   method: "Consumer",
 });
+//
 const MINUTE_IN_S = 60;
 const HOUR_IN_S = MINUTE_IN_S * 60;
 const DAY_IN_S = HOUR_IN_S * 24;
