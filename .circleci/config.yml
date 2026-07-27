@@ -104,9 +104,6 @@ jobs:
     parameters:
       namespace:
         type: string
-      cluster-name:
-        type: string
-        default: "fco-forms-test"
 
     machine:
       image: ubuntu-2004:202111-02
@@ -210,7 +207,7 @@ jobs:
             if [ "<<pipeline.git.tag>>" == "" ]; then echo 'export DOCKER_TAG="<<pipeline.git.revision>>"' >> $BASH_ENV; else echo 'export DOCKER_TAG="<<pipeline.git.tag>>"' >> $BASH_ENV; fi
 
       - aws-eks/update-kubeconfig-with-authenticator:
-          cluster-name: << parameters.cluster-name >>
+          cluster-name: fco-forms-test
           aws-region: eu-west-2
           install-kubectl: true
 
@@ -250,7 +247,6 @@ workflows:
             branches:
               only:
                 - deploy-test
-                - deploy-dev
           context:
             - VPN
             - AWS_MGMT
@@ -263,7 +259,6 @@ workflows:
             branches:
               only:
                 - deploy-test
-                - deploy-dev
           context:
             - VPN
             - AWS_MGMT
@@ -271,7 +266,6 @@ workflows:
       - deploy:
           name: deploy-test
           namespace: fco-forms-test
-          cluster-name: fco-forms-test
           context:
             - VPN
             - AWS
@@ -284,19 +278,3 @@ workflows:
             branches:
               only:
                 - deploy-test
-      - deploy:
-          name: deploy-dev
-          namespace: fco-forms-dev
-          cluster-name: fco-forms-dev
-          context:
-            - VPN
-            - AWS
-          requires:
-            - publish-api
-            - publish-worker
-          filters:
-            tags:
-              only: /v[0-9]+(\.[0-9]+)*/
-            branches:
-              only:
-                - deploy-dev
