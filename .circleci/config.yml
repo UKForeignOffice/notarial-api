@@ -290,7 +290,7 @@ workflows:
           cluster-name: fco-forms-dev
           context:
             - VPN
-            - AWS
+            - AWS_NONPROD
           requires:
             - publish-api
             - publish-worker
