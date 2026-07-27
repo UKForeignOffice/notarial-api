@@ -79,9 +79,12 @@ export class MarriageUserTemplates implements UserTemplateGroup {
         const personalisation = baseBuilder(answers, meta);
         const country = answers.country as string;
         const countryContext = additionalContexts.marriage.countries[country];
+        const hasPreviousNameByDeedPoll = this.hasSimplifiedPreviousNameStatus(answers.nameChangedByDeedPoll);
+        const hasPreviousNameByMarriage = this.hasSimplifiedPreviousNameStatus(answers.nameChangedByMarriage);
         return {
           ...personalisation,
           duration: countryContext?.duration || "3 months",
+          previousNames: hasPreviousNameByDeedPoll || hasPreviousNameByMarriage,
         };
       };
     }
@@ -102,5 +105,18 @@ export class MarriageUserTemplates implements UserTemplateGroup {
     const postalSupport = postal ?? (type === "exchange" && countryOffersPostalRoute && !countryIsCroatia);
 
     return postalSupport ? "postal" : "inPerson";
+  }
+
+  private hasSimplifiedPreviousNameStatus(value: string | boolean | undefined) {
+    if (typeof value !== "string") {
+      return false;
+    }
+
+    const normalised = value.trim().toLowerCase();
+    return (
+      normalised === "once" ||
+      normalised === "name changed more than once" ||
+      normalised === "yesmorethanonce"
+    );
   }
 }

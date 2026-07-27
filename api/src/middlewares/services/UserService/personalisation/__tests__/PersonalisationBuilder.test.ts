@@ -172,6 +172,18 @@ test("getAffirmationPersonalisations returns the correct personalisations given 
   });
 });
 
+test("getAffirmationPersonalisations treats simplified 'Single' as not previously married", () => {
+  const answers = {
+    maritalStatus: "Single",
+    oathType: "Non-religious",
+  };
+
+  expect(getAffirmationPersonalisations(answers)).toStrictEqual({
+    previouslyMarried: false,
+    religious: false,
+  });
+});
+
 test("getCNIPersonalisations returns the correct personalisations given all positive answers", () => {
   const answers = {
     livesInCountry: true,
@@ -208,6 +220,17 @@ test("getCNIPersonalisations returns the correct personalisations given all nega
     religious: false,
     countryIsItaly: false,
   });
+});
+
+test("buildPostalPersonalisation treats simplified 'Single' as no previous marriage", () => {
+  const answers = {
+    ...marriageAnswers,
+    maritalStatus: "Single",
+  };
+
+  const personalisation = buildPostalPersonalisation(answers, { reference: "1234", type: "cni" });
+
+  expect(personalisation.userHadPreviousMarriage).toBe(false);
 });
 
 test("buildJobData should return the correct personalisation for a certify a copy in-person email", () => {
