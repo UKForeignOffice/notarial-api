@@ -134,7 +134,7 @@
       "Kosovo": {
         "postal": "FALSE",
         "post": "the British Embassy Tirana (for Kosovo)",
-        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=137&service=9"
+        "bookingLink": "mailto:pristina.consular@fcdo.gov.uk"
       },
       "Kyrgyzstan": {
         "postal": "FALSE",
@@ -676,7 +676,7 @@
       },
       "Kosovo": {
         "post": "the British Embassy Pristina",
-        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=137&service=10",
+        "bookingLink": "mailto:pristina.consular@fcdo.gov.uk",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -720,7 +720,7 @@
       },
       "Latvia": {
         "post": "the British Embassy Riga",
-        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=32&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=32&service=14",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
@@ -1518,12 +1518,6 @@
         "delivery": "You will be notified when you need to arrange for your document to be collected by a prepaid courier during <a class=\"govuk-link\" href=\"https://www.gov.uk/world/embassies\">high commission or office opening hours</a>",
         "customText": "<p class=\"govuk-body\">Your sworn statement must be on stamped paper. Speak to your lawyer about this.</p>",
         "country": "India"
-      },
-      "Spain": {
-        "postal": "TRUE",
-        "delivery": "Your document will be posted to your chosen address in Spain. You'll be charged an additional £13 for postage.",
-        "post": "the British Consulate General Madrid",
-        "bookingLink": "mailto:madrid.consularescalations@fcdo.gov.uk"
       },
       "Thailand": {
         "postal": "TRUE",
