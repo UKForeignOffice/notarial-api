@@ -5,6 +5,7 @@ jest.mock("config", () => ({
   get(setting) {
     const templates = {
       "Notify.Template.affirmationUserConfirmation": "affirmation-template",
+      "Notify.Template.affirmationUserConfirmationSimplified": "affirmation-simplified-template",
       "Notify.Template.cniUserConfirmation": "cni-template",
       "Notify.Template.cniUserPostalConfirmation": "cni-postal-template",
       "Notify.Template.mscUserConfirmation": "msc-template",
@@ -47,8 +48,9 @@ beforeEach(() => {
 
 describe("sendEmailToUser - Marriage templates", () => {
   test.each`
-    label                                         | answers                     | metadata                               | template
-    ${"affirmation"}                              | ${{}}                       | ${{ type: "affirmation" }}             | ${"affirmation-template"}
+    label                                         | answers                     | metadata                                                              | template
+    ${"affirmation - legacy"}                     | ${{}}                       | ${{ type: "affirmation" }}                                            | ${"affirmation-template"}
+    ${"affirmation - simplified"}                 | ${{}}                       | ${{ type: "affirmation", source: "simplified-marriage-v1" }}          | ${"affirmation-simplified-template"}
     ${"exchange - inPerson"}                      | ${{}}                       | ${{ type: "exchange" }}                | ${"exchange-template"}
     ${"exchange - postal"}                        | ${{}}                       | ${{ type: "exchange", postal: true }}  | ${"exchange-postal-template"}
     ${"exchange - croatia"}                       | ${{ country: "Croatia" }}   | ${{ type: "exchange" }}                | ${"exchange-template"}
@@ -63,6 +65,91 @@ describe("sendEmailToUser - Marriage templates", () => {
     expect(sendEmailSpy).toHaveBeenCalledWith(
       expect.objectContaining({
         template,
+      })
+    );
+  });
+
+  test("affirmation - simplified adds previousNames when either name-change path exists", async () => {
+    await userService.sendEmailToUser({
+      answers: {
+        firstName: "test",
+        emailAddress: "test@example.com",
+        country: "Italy",
+        nameChangedByMarriage: "name changed more than once",
+        nameChangedByDeedPoll: "false",
+        previousNameByMarriage: "No",
+        previousNameByDeedPoll: "No",
+      },
+      metadata: {
+        type: "affirmation",
+        source: "simplified-marriage-v1",
+        reference: "ref",
+      },
+    });
+
+    expect(sendEmailSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        options: expect.objectContaining({
+          personalisation: expect.objectContaining({
+            previousNames: true,
+          }),
+        }),
+      })
+    );
+  });
+
+  test("affirmation - simplified does not add previousNames for explicit negative values", async () => {
+    await userService.sendEmailToUser({
+      answers: {
+        firstName: "test",
+        emailAddress: "test@example.com",
+        country: "Italy",
+        nameChangedByMarriage: "No",
+        nameChangedByDeedPoll: "false",
+        previousNameByMarriage: "No",
+        previousNameByDeedPoll: "Old Name",
+      },
+      metadata: {
+        type: "affirmation",
+        source: "simplified-marriage-v1",
+        reference: "ref",
+      },
+    });
+
+    expect(sendEmailSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        options: expect.objectContaining({
+          personalisation: expect.objectContaining({
+            previousNames: false,
+          }),
+        }),
+      })
+    );
+  });
+
+  test("affirmation - simplified adds previousNames for deed poll YesMoreThanOnce", async () => {
+    await userService.sendEmailToUser({
+      answers: {
+        firstName: "test",
+        emailAddress: "test@example.com",
+        country: "Italy",
+        nameChangedByMarriage: "no",
+        nameChangedByDeedPoll: "YesMoreThanOnce",
+      },
+      metadata: {
+        type: "affirmation",
+        source: "simplified-marriage-v1",
+        reference: "ref",
+      },
+    });
+
+    expect(sendEmailSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        options: expect.objectContaining({
+          personalisation: expect.objectContaining({
+            previousNames: true,
+          }),
+        }),
       })
     );
   });

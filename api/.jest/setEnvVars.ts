@@ -7,6 +7,7 @@ process.env.PAY_ACCOUNT_TRANSACTIONS_URL = "https://selfservice.payments.service
 process.env.SUBMISSION_EMAIL_ADDRESS = "pye@cautionyourblast.com";
 process.env.POST_EMAILS = '{"the British Embassy Tirana": "pye+albania@cautionyourblast.com", "the British Embassy Rome": "pye+rome@cautionyourblast.com"}';
 process.env.NOTIFY_TEMPLATE_AFFIRMATION_USER_CONFIRMATION = "ABC";
+process.env.NOTIFY_TEMPLATE_AFFIRMATION_USER_CONFIRMATION_SIMPLIFIED = "ABC";
 process.env.NOTIFY_TEMPLATE_CNI_USER_CONFIRMATION = "ABC";
 process.env.NOTIFY_TEMPLATE_CNI_USER_POSTAL_CONFIRMATION = "ABC";
 process.env.NOTIFY_TEMPLATE_EXCHANGE_USER_CONFIRMATION = "ABC";
