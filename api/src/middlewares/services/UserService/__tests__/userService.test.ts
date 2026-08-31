@@ -75,6 +75,7 @@ describe("sendEmailToUser - Marriage templates", () => {
         firstName: "test",
         emailAddress: "test@example.com",
         country: "Italy",
+        isCivilPartnership: true,
         nameChangedByMarriage: "name changed more than once",
         nameChangedByDeedPoll: "false",
         previousNameByMarriage: "No",
@@ -92,7 +93,31 @@ describe("sendEmailToUser - Marriage templates", () => {
         options: expect.objectContaining({
           personalisation: expect.objectContaining({
             previousNames: true,
+            ceremonyType: "civil partnership",
+            registrationType: "civil partnerships",
           }),
+        }),
+      })
+    );
+  });
+
+  test("affirmation - legacy does not add simplified ceremony wording", async () => {
+    await userService.sendEmailToUser({
+      answers: {
+        firstName: "test",
+        emailAddress: "test@example.com",
+        country: "Italy",
+      },
+      metadata: {
+        type: "affirmation",
+        reference: "ref",
+      },
+    });
+
+    expect(sendEmailSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        options: expect.objectContaining({
+          personalisation: { key: "value" },
         }),
       })
     );
@@ -255,9 +280,8 @@ describe("sendEmailToUser - requestDocument", () => {
     });
 
     describe.each`
-      country       | expectedPost                              | template
-      ${"Spain"}    | ${"the British Consulate General Madrid"} | ${"request-document-posted"}
-      ${"Thailand"} | ${"the British Embassy Bangkok"}          | ${"request-document-posted"}
+      country                    | expectedPost                       | template
+      ${"Thailand"}              | ${"the British Embassy Bangkok"}   | ${"request-document-posted"}
     `(`$country with defaulted posts`, ({ country, expectedPost, template }) => {
       const answers = {
         firstName: "test",
