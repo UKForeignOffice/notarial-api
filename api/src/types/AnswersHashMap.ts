@@ -2,6 +2,7 @@ import { MarriageTemplateType } from "../middlewares/services/utils/types";
 
 export type MarriageAnswersHashMap = {
   service?: MarriageTemplateType;
+  isCivilPartnership?: boolean;
   [key: string]: string | boolean | undefined;
 };
 
