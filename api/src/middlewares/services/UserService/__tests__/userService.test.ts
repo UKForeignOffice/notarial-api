@@ -98,6 +98,55 @@ describe("sendEmailToUser - Marriage templates", () => {
     );
   });
 
+  test("affirmation - simplified adds civil partnership ceremony wording", async () => {
+    await userService.sendEmailToUser({
+      answers: {
+        firstName: "test",
+        emailAddress: "test@example.com",
+        country: "Italy",
+        isCivilPartnership: "true",
+      },
+      metadata: {
+        type: "affirmation",
+        source: "simplified-marriage-v1",
+        reference: "ref",
+      },
+    });
+
+    expect(sendEmailSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        options: expect.objectContaining({
+          personalisation: expect.objectContaining({
+            ceremonyType: "civil partnership",
+            registrationType: "civil partnerships",
+          }),
+        }),
+      })
+    );
+  });
+
+  test("affirmation - legacy does not add simplified ceremony wording", async () => {
+    await userService.sendEmailToUser({
+      answers: {
+        firstName: "test",
+        emailAddress: "test@example.com",
+        country: "Italy",
+      },
+      metadata: {
+        type: "affirmation",
+        reference: "ref",
+      },
+    });
+
+    expect(sendEmailSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        options: expect.objectContaining({
+          personalisation: { key: "value" },
+        }),
+      })
+    );
+  });
+
   test("affirmation - simplified does not add previousNames for explicit negative values", async () => {
     await userService.sendEmailToUser({
       answers: {
