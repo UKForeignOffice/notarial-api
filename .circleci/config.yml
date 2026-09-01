@@ -149,6 +149,15 @@ jobs:
           command: |
             echo $VPN_CLIENT_CONFIG | base64 --decode > /tmp/config.ovpn
 
+            echo "VPN profile connection settings:"
+            grep -E '^(remote|proto)[[:space:]]' /tmp/config.ovpn || true
+            if grep -q '^<cert>' /tmp/config.ovpn; then
+              echo "VPN client certificate validity:"
+              awk '/^<cert>/{capture=1;next}/^<\/cert>/{capture=0}capture' /tmp/config.ovpn | openssl x509 -noout -dates || true
+            else
+              echo "VPN profile does not contain an inline client certificate"
+            fi
+
             if grep -q auth-user-pass /tmp/config.ovpn; then
               if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then
                 echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"
@@ -187,15 +196,31 @@ jobs:
                 echo $IP
             done
 
-            "${vpn_command[@]}" > /tmp/openvpn.log
+            "${vpn_command[@]}" > /tmp/openvpn.log 2>&1
 
       - run:
           name: Wait for the connection to be established and check IP
           command: |
-            until [ -f /tmp/openvpn.log ] && [ "$(grep -c "Initialization Sequence Completed" /tmp/openvpn.log)" != 0 ]; do
+            for attempt in $(seq 1 40); do
+              if [ -f /tmp/openvpn.log ] && grep -q "Initialization Sequence Completed" /tmp/openvpn.log; then
+                break
+              fi
+
+              if [ -f /tmp/openvpn.log ] && ! pgrep -x openvpn > /dev/null; then
+                echo "OpenVPN exited before connecting:"
+                tail -100 /tmp/openvpn.log
+                exit 1
+              fi
+
               echo "Attempting to connect to VPN server..."
-              sleep 3;
+              sleep 3
             done
+
+            if ! grep -q "Initialization Sequence Completed" /tmp/openvpn.log; then
+              echo "OpenVPN did not connect within two minutes:"
+              tail -100 /tmp/openvpn.log
+              exit 1
+            fi
 
             printf "\nVPN connected\n"
             printf "\nPublic IP is now $(curl checkip.amazonaws.com)\n"
