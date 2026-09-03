@@ -1,13 +1,24 @@
 import logger, { Logger } from "pino";
+import { randomInt } from "crypto";
 import { FormDataBody } from "../../../types";
 import { answersHashMap, flattenQuestions } from "../helpers";
 import { UserService } from "../UserService";
 import { MarriageCaseService, RequestDocumentCaseService, CertifyCopyCaseService, ConsularLetterCaseService } from "../CaseService";
 import { getCaseServiceName } from "../utils/getCaseServiceName";
 import { CaseService } from "../CaseService/types";
-const { customAlphabet } = require("nanoid");
 
-const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_", 10);
+const referenceAlphabet = "1234567890ABCDEFGHIJKLMNPQRSTUVWXYZ-_";
+const referenceLength = 10;
+
+const generateReferenceId = () => {
+  let reference = "";
+
+  for (let i = 0; i < referenceLength; i += 1) {
+    reference += referenceAlphabet[randomInt(referenceAlphabet.length)];
+  }
+
+  return reference;
+};
 
 type InjectedServices = {
   userService: UserService;
@@ -39,7 +50,7 @@ export class SubmitService {
     this.consularLetterCaseService = options.consularLetterCaseService;
   }
   generateId() {
-    return nanoid();
+    return generateReferenceId();
   }
 
   async submitForm(formData: FormDataBody) {
