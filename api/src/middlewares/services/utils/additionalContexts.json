@@ -134,7 +134,7 @@
       "Kosovo": {
         "postal": "FALSE",
         "post": "the British Embassy Tirana (for Kosovo)",
-        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=137&service=9"
+        "bookingLink": "mailto:pristina.consular@fcdo.gov.uk"
       },
       "Kyrgyzstan": {
         "postal": "FALSE",
@@ -676,7 +676,7 @@
       },
       "Kosovo": {
         "post": "the British Embassy Pristina",
-        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=137&service=10",
+        "bookingLink": "mailto:pristina.consular@fcdo.gov.uk",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "3 months",
@@ -720,7 +720,7 @@
       },
       "Latvia": {
         "post": "the British Embassy Riga",
-        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=32&service=13",
+        "bookingLink": "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=32&service=14",
         "postAddress": "",
         "civilPartnership": false,
         "duration": "6 months",
