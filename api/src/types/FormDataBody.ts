@@ -28,7 +28,6 @@ export type PayMetadata = {
 export interface FormDataBody {
   name: string;
   questions: FormQuestion[];
-  isCivilPartnership?: boolean;
   metadata: {
     paymentSkipped: boolean;
     type: FormType;

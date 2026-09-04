@@ -45,12 +45,7 @@ export class SubmitService {
   async submitForm(formData: FormDataBody) {
     const { questions = [], metadata, fees } = formData;
     const formFields = flattenQuestions(questions);
-    const answers = {
-      ...answersHashMap(formFields),
-      ...(metadata.source === "simplified-marriage-v1" && {
-        isCivilPartnership: formData.isCivilPartnership ?? false,
-      }),
-    };
+    const answers = answersHashMap(formFields);
     const { pay, type } = metadata;
     const reference = formData['reference'] ?? metadata?.pay?.reference ?? fees?.paymentReference ?? this.generateId();
     const caseServiceName = getCaseServiceName(type);

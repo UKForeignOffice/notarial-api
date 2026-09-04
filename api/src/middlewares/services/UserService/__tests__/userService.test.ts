@@ -75,7 +75,7 @@ describe("sendEmailToUser - Marriage templates", () => {
         firstName: "test",
         emailAddress: "test@example.com",
         country: "Italy",
-        isCivilPartnership: true,
+        isCivilPartnership: "true",
         nameChangedByMarriage: "name changed more than once",
         nameChangedByDeedPoll: "false",
         previousNameByMarriage: "No",

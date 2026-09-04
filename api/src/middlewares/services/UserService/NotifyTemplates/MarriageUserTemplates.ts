@@ -81,7 +81,7 @@ export class MarriageUserTemplates implements UserTemplateGroup {
         const countryContext = additionalContexts.marriage.countries[country];
         const hasPreviousNameByDeedPoll = this.hasSimplifiedPreviousNameStatus(answers.nameChangedByDeedPoll);
         const hasPreviousNameByMarriage = this.hasSimplifiedPreviousNameStatus(answers.nameChangedByMarriage);
-        const isCivilPartnership = answers.isCivilPartnership === true;
+        const isCivilPartnership = String(answers.isCivilPartnership) === "true";
         return {
           ...personalisation,
           duration: countryContext?.duration || "3 months",
