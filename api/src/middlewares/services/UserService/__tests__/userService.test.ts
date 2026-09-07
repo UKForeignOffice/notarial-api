@@ -75,7 +75,6 @@ describe("sendEmailToUser - Marriage templates", () => {
         firstName: "test",
         emailAddress: "test@example.com",
         country: "Italy",
-        isCivilPartnership: "true",
         nameChangedByMarriage: "name changed more than once",
         nameChangedByDeedPoll: "false",
         previousNameByMarriage: "No",
@@ -93,6 +92,31 @@ describe("sendEmailToUser - Marriage templates", () => {
         options: expect.objectContaining({
           personalisation: expect.objectContaining({
             previousNames: true,
+          }),
+        }),
+      })
+    );
+  });
+
+  test("affirmation - simplified adds civil partnership ceremony wording", async () => {
+    await userService.sendEmailToUser({
+      answers: {
+        firstName: "test",
+        emailAddress: "test@example.com",
+        country: "Italy",
+        isCivilPartnership: "true",
+      },
+      metadata: {
+        type: "affirmation",
+        source: "simplified-marriage-v1",
+        reference: "ref",
+      },
+    });
+
+    expect(sendEmailSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        options: expect.objectContaining({
+          personalisation: expect.objectContaining({
             ceremonyType: "civil partnership",
             registrationType: "civil partnerships",
           }),
