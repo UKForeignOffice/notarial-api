@@ -30,13 +30,16 @@ export class QueueService {
       NOTIFY_SEND: new QueueConfig("NOTIFY_SEND"),
       NOTIFY_PROCESS: new QueueConfig("NOTIFY_PROCESS"),
     };
-    boss.start().then(async () => {
-      this.logger.info("Creating queues");
-      await this.createQueues();
-    }).catch((err) => {
-      this.logger.error({ err }, "Queue startup failed");
-      throw err;
-    });
+    boss
+      .start()
+      .then(async () => {
+        this.logger.info("Creating queues");
+        await this.createQueues();
+      })
+      .catch((err) => {
+        this.logger.error({ err }, "Queue startup failed");
+        throw err;
+      });
   }
 
   async createQueueWithRetry(queueName: string) {

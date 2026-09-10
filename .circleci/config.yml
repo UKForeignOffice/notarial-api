@@ -15,7 +15,7 @@ jobs:
     <<: *defaults
 
     docker:
-      - image: cimg/node:24.0-browsers
+      - image: cimg/node:24.11-browsers
 
     environment:
       NODE_ENV: "test"
@@ -29,27 +29,33 @@ jobs:
 
       - restore_cache:
           keys:
-            - v1-deps-{{ checksum "yarn.lock" }}
-            - v1-deps-
+            - v2-npm-{{ checksum "package-lock.json" }}
+            - v2-npm-
 
-      - run: yarn install
+      - run:
+          name: Install dependencies without lifecycle scripts
+          command: npm ci --ignore-scripts=true
+
+      - run:
+          name: Audit dependencies
+          command: npm run security
 
       - run:
           name: Lint
-          command: yarn lint
+          command: npm run lint
 
       - run:
           name: Run tests
-          command: yarn test
+          command: npm test
 
       - run:
           name: build
-          command: yarn workspaces foreach run build
+          command: npm run build
 
       - save_cache:
-          key: v1-deps-{{ checksum "yarn.lock" }}
+          key: v2-npm-{{ checksum "package-lock.json" }}
           paths:
-            - node_modules
+            - ~/.npm
 
   publish:
     <<: *defaults

@@ -1,0 +1,23 @@
+# Dependencies and generated files
+**/node_modules/**
+**/coverage/**
+**/generated/**
+**/*.generated.*
+
+# Documentation
+**/*.md
+
+# YAML configuration
+**/*.yml
+
+# JSON configuration
+**/*.json
+
+# Lockfiles
+package-lock.json
+npm-shrinkwrap.json
+yarn.lock
+
+# Build output
+**/dist/**
+**/build/**

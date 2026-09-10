@@ -6,21 +6,21 @@ The API should parse user's data, render email templates etc.
 
 ## Prerequisites
 1. A node version manager, like [nvm](https://formulae.brew.sh/formula/nvm), or [n](https://github.com/tj/n)
-2. node 20.x.x
-3. yarn >= v1.22. This project uses yarn 3. Yarn v1.22 will load the correct version of yarn by looking at [.yarnrc](./../.yarnrc.yml) and [.yarn](./../yarn)
+2. node 24.x.x
+3. npm 11 or later
 4. Docker >= 3.9 - [Install docker engine](https://docs.docker.com/engine/install/) 
 
 ## Getting started
-You can get this repo up and running in two ways; either via `node` and `yarn` directly, or via Docker.
+You can get this repo up and running in two ways; either via `node` and `npm` directly, or via Docker.
 
-### Getting started with Node and Yarn
-You will need node >=18 in order to run the server locally using node.
+### Getting started with Node and npm
+You will need node 24 in order to run the server locally using node.
 
 To start the server from the root of the project, run the following commands:
 ```
-yarn install
-yarn api build
-yarn api start:local
+npm ci --ignore-scripts=true
+npm run api -- build
+npm run api -- start:local
 ```
 These commands will build the project dependencies, compile the initial build of the api workspace, and run the workspace in local mode (allowing watching for changes).
 

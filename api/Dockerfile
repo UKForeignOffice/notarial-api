@@ -14,10 +14,10 @@ RUN apk update && \
 FROM base AS build
 WORKDIR /usr/src/app
 COPY . .
-RUN yarn workspaces focus @notarialapi/api
-RUN yarn api build
+RUN npm ci --ignore-scripts=true --workspace @notarialapi/api --include-workspace-root
+RUN npm run build --workspace @notarialapi/api
 # reinstall only production deps
-RUN yarn workspaces focus @notarialapi/api --production
+RUN npm prune --omit=dev
 
 
 # ----------------------------
@@ -27,7 +27,6 @@ RUN yarn workspaces focus @notarialapi/api --production
 FROM node:24-alpine AS dist
 WORKDIR /usr/dist/app
 RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/include/node
-COPY .yarn .yarn
 COPY --from=build /usr/src/app/node_modules node_modules
 COPY --from=build /usr/src/app/api/config config
 COPY --from=build /usr/src/app/api/dist dist

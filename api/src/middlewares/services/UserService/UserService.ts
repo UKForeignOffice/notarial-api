@@ -23,7 +23,10 @@ export class UserService {
     return await this.queueService.sendToQueue("NOTIFY_PROCESS", { answers, metadata });
   }
 
-  async sendEmailToUser(data: { answers: AnswersHashMap; metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean; source?: string } }) {
+  async sendEmailToUser(data: {
+    answers: AnswersHashMap;
+    metadata: { reference: string; payment?: PayMetadata; type: FormType; postal?: boolean; source?: string };
+  }) {
     const { answers, metadata } = data;
     const { reference } = metadata;
 

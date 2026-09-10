@@ -48,17 +48,17 @@ beforeEach(() => {
 
 describe("sendEmailToUser - Marriage templates", () => {
   test.each`
-    label                                         | answers                     | metadata                                                              | template
-    ${"affirmation - legacy"}                     | ${{}}                       | ${{ type: "affirmation" }}                                            | ${"affirmation-template"}
-    ${"affirmation - simplified"}                 | ${{}}                       | ${{ type: "affirmation", source: "simplified-marriage-v1" }}          | ${"affirmation-simplified-template"}
-    ${"exchange - inPerson"}                      | ${{}}                       | ${{ type: "exchange" }}                | ${"exchange-template"}
-    ${"exchange - postal"}                        | ${{}}                       | ${{ type: "exchange", postal: true }}  | ${"exchange-postal-template"}
-    ${"exchange - croatia"}                       | ${{ country: "Croatia" }}   | ${{ type: "exchange" }}                | ${"exchange-template"}
-    ${"exchange - postal"}                        | ${{}}                       | ${{ type: "exchange", postal: false }} | ${"exchange-template"}
-    ${"cni - defaults to cni"}                    | ${{}}                       | ${{ type: "cni" }}                     | ${"cni-template"}
-    ${"cni - country supports postal / delivery"} | ${{ country: "Bulgaria" }}  | ${{ type: "cni", postal: true }}       | ${"cni-postal-template"}
-    ${"cni - msc"}                                | ${{ service: "msc" }}       | ${{ type: "cni" }}                     | ${"msc-template"}
-    ${"cni - defaults to cni"}                    | ${{ service: "cniAndMsc" }} | ${{ type: "cni" }}                     | ${"cni-msc-template"}
+    label                                         | answers                     | metadata                                                     | template
+    ${"affirmation - legacy"}                     | ${{}}                       | ${{ type: "affirmation" }}                                   | ${"affirmation-template"}
+    ${"affirmation - simplified"}                 | ${{}}                       | ${{ type: "affirmation", source: "simplified-marriage-v1" }} | ${"affirmation-simplified-template"}
+    ${"exchange - inPerson"}                      | ${{}}                       | ${{ type: "exchange" }}                                      | ${"exchange-template"}
+    ${"exchange - postal"}                        | ${{}}                       | ${{ type: "exchange", postal: true }}                        | ${"exchange-postal-template"}
+    ${"exchange - croatia"}                       | ${{ country: "Croatia" }}   | ${{ type: "exchange" }}                                      | ${"exchange-template"}
+    ${"exchange - postal"}                        | ${{}}                       | ${{ type: "exchange", postal: false }}                       | ${"exchange-template"}
+    ${"cni - defaults to cni"}                    | ${{}}                       | ${{ type: "cni" }}                                           | ${"cni-template"}
+    ${"cni - country supports postal / delivery"} | ${{ country: "Bulgaria" }}  | ${{ type: "cni", postal: true }}                             | ${"cni-postal-template"}
+    ${"cni - msc"}                                | ${{ service: "msc" }}       | ${{ type: "cni" }}                                           | ${"msc-template"}
+    ${"cni - defaults to cni"}                    | ${{ service: "cniAndMsc" }} | ${{ type: "cni" }}                                           | ${"cni-msc-template"}
   `(`$template is returned for $label`, async ({ answers, metadata, template }) => {
     await userService.sendEmailToUser({ answers, metadata });
 
@@ -304,8 +304,8 @@ describe("sendEmailToUser - requestDocument", () => {
     });
 
     describe.each`
-      country                    | expectedPost                       | template
-      ${"Thailand"}              | ${"the British Embassy Bangkok"}   | ${"request-document-posted"}
+      country       | expectedPost                     | template
+      ${"Thailand"} | ${"the British Embassy Bangkok"} | ${"request-document-posted"}
     `(`$country with defaulted posts`, ({ country, expectedPost, template }) => {
       const answers = {
         firstName: "test",
