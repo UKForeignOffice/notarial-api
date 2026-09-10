@@ -41,9 +41,9 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
-    "build": "yarn tsc",
+    "build": "tsc",
     "start": "node dist/index.js",
-    "start:local": "yarn tsc --watch & node --watch dist/index.js",
+    "start:local": "tsc --watch & node --watch dist/index.js",
     "test": "jest --coverage",
     "test:update": "jest --updateSnapshot",
     "test:watch": "jest --coverage --watch"

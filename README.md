@@ -4,7 +4,7 @@ This ia a monorepo used for the notarial services apis, which power the [prove y
 ## Prerequisites
 1. A node version manager, like [nvm](https://formulae.brew.sh/formula/nvm), or [n](https://github.com/tj/n)
 2. node 24.x.x
-3. yarn >= v1.22. This project uses yarn 3. Yarn v1.22 will load the correct version of yarn by looking at [.yarnrc](./.yarnrc.yml) and [.yarn](./yarn)
+3. npm 11 or later
 4. Docker >= 3.9 - [Install docker engine](https://docs.docker.com/engine/install/)
 
 
@@ -45,9 +45,20 @@ at the same time. If you are running postgres from this repo, you do not need to
 
 
 1. If you wish to send emails locally, you will need to authenticate your terminal with AWS. (`formsawsauth prod`)
-2. Start the api `yarn api start:local`
-3. start the worker `NOTIFY_API_KEY=".." yarn worker start:local`
+2. Start the api `npm run api -- start:local`
+3. start the worker `NOTIFY_API_KEY=".." npm run worker -- start:local`
 4. Send a post request to `http://localhost:9000/forms`, use the payload found in `notarial-api/api/src/middlewares/services/UserService/personalisation/__tests__/fixtures/marriageTestData.ts`, or run the form runner locally, with the webhook configured to `http://localhost:9000/forms`. 
+
+### Dependency security
+
+- Commit `.npmrc` and `package-lock.json` so installs use the reviewed dependency graph and repository security settings.
+- Use `npm ci --ignore-scripts=true` for ordinary installs and CI. Dependency lifecycle scripts are disabled by default.
+- Use `npm install` only when intentionally changing dependencies, then review the `package-lock.json` diff.
+- Run application builds explicitly with `npm run build` after dependencies are installed.
+- Run `npm run security` for the full audit or `npm run security:production` for the production dependency gate used by CI.
+- The `qs@6.16.0` override addresses current Express 4 advisories and crosses Express's declared `~6.15.1` range. Verify API tests before changing or removing it.
+
+The production dependency audit is clean. The full audit still reports development and release-tool findings that require major upgrades to `@typescript-eslint` and `semantic-release`; these should be handled separately from this live security-control change. A clean install also reports deprecated packages through the current ESLint, Jest, Supertest and pg-boss toolchains. Review those parent-package upgrades before removing the transitive packages individually.
 
 
 ### Formatting

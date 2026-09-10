@@ -2,6 +2,7 @@
   "name": "notarial-api",
   "version": "1.0.6",
   "private": true,
+  "engineStrict": true,
   "engines": {
     "node": "24.x"
   },
@@ -11,11 +12,14 @@
     "dynamic-content"
   ],
   "scripts": {
-    "api": "yarn workspace @notarialapi/api",
-    "worker": "yarn workspace @notarialapi/worker",
-    "dynamic-content": "yarn workspace @notarialapi/dynamic-content",
-    "lint": "yarn workspaces foreach run lint",
-    "test": "yarn workspaces foreach run test",
+    "api": "npm run --workspace @notarialapi/api",
+    "worker": "npm run --workspace @notarialapi/worker",
+    "dynamic-content": "npm run --workspace @notarialapi/dynamic-content",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm test --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "security": "npm audit --audit-level=moderate",
+    "security:production": "npm audit --omit=dev --audit-level=moderate",
     "release": "semantic-release"
   },
   "devDependencies": {
@@ -29,18 +33,12 @@
     "prettier": "^3.8.3",
     "semantic-release": "^22.0.12"
   },
-  "packageManager": "yarn@3.6.4",
   "dependencies": {
     "dotenv": "^16.6.1",
     "handlebars": "^4.7.9"
   },
-  "resolutions": {
-    "follow-redirects": "1.15.4",
-    "ip": "2.0.1",
-    "jws": "^3.2.3",
-    "diff": "^5.2.1",
-    "tar": "^7.5.4",
-    "@smithy/core": "^3.24.1"
+  "overrides": {
+    "qs": "6.16.0"
   },
   "release": {
     "branches": [
