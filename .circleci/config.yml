@@ -15,7 +15,7 @@ jobs:
     <<: *defaults
 
     docker:
-      - image: cimg/node:24.0-browsers
+      - image: cimg/node:24.11-browsers
 
     environment:
       NODE_ENV: "test"
@@ -29,16 +29,16 @@ jobs:
 
       - restore_cache:
           keys:
-          - v2-npm-{{ checksum "package-lock.json" }}
-          - v2-npm-
+            - v2-npm-{{ checksum "package-lock.json" }}
+            - v2-npm-
 
-        - run:
+      - run:
           name: Install dependencies without lifecycle scripts
           command: npm ci --ignore-scripts=true
 
-          - run:
-            name: Audit production dependencies
-            command: npm run security:production
+      - run:
+          name: Audit dependencies
+          command: npm run security
 
       - run:
           name: Lint

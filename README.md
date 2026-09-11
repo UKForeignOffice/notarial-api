@@ -55,10 +55,10 @@ at the same time. If you are running postgres from this repo, you do not need to
 - Use `npm ci --ignore-scripts=true` for ordinary installs and CI. Dependency lifecycle scripts are disabled by default.
 - Use `npm install` only when intentionally changing dependencies, then review the `package-lock.json` diff.
 - Run application builds explicitly with `npm run build` after dependencies are installed.
-- Run `npm run security` for the full audit or `npm run security:production` for the production dependency gate used by CI.
+- Run `npm run security` for the full audit used by CI or `npm run security:production` to check production dependencies only.
 - The `qs@6.16.0` override addresses current Express 4 advisories and crosses Express's declared `~6.15.1` range. Verify API tests before changing or removing it.
 
-The production dependency audit is clean. The full audit still reports development and release-tool findings that require major upgrades to `@typescript-eslint` and `semantic-release`; these should be handled separately from this live security-control change. A clean install also reports deprecated packages through the current ESLint, Jest, Supertest and pg-boss toolchains. Review those parent-package upgrades before removing the transitive packages individually.
+A clean install reports deprecated packages through the current ESLint, Jest, Supertest and pg-boss toolchains. Review those parent-package upgrades before removing the transitive packages individually.
 
 
 ### Formatting
