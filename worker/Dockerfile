@@ -14,10 +14,10 @@ RUN apk update && \
 FROM base AS build
 WORKDIR /usr/src/app
 COPY . .
-RUN yarn workspaces focus @notarialapi/worker
-RUN yarn worker build
+RUN npm ci --ignore-scripts=true --workspace @notarialapi/worker --include-workspace-root
+RUN npm run build --workspace @notarialapi/worker
 # reinstall only production deps
-RUN yarn workspaces focus @notarialapi/worker --production
+RUN npm prune --omit=dev --ignore-scripts=true
 
 
 # ----------------------------
@@ -26,7 +26,6 @@ RUN yarn workspaces focus @notarialapi/worker --production
 # In this layer we copy the built output from stage 2, ensuring the docker image is as light as possible
 FROM base AS dist
 WORKDIR /usr/dist/app
-COPY .yarn .yarn
 COPY --from=build /usr/src/app/node_modules node_modules
 COPY --from=build /usr/src/app/worker/config config
 COPY --from=build /usr/src/app/worker/dist dist
