@@ -2599,7 +2599,7 @@ __metadata:
     eslint-config-prettier: ^9.1.2
     eslint-plugin-prettier: ^5.5.5
     express: ^5.1.0
-    express-rate-limit: ^7.5.1
+    express-rate-limit: ^8.7.0
     handlebars: ^4.7.9
     jest: ^29.7.0
     jest-mock-extended: ^3.0.7
@@ -5529,12 +5529,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-rate-limit@npm:^7.5.1":
-  version: 7.5.1
-  resolution: "express-rate-limit@npm:7.5.1"
+"express-rate-limit@npm:^8.7.0":
+  version: 8.7.0
+  resolution: "express-rate-limit@npm:8.7.0"
+  dependencies:
+    debug: ^4.4.3
+    ip-address: ^10.2.0
   peerDependencies:
     express: ">= 4.11"
-  checksum: 544fdd576a846a7d3ed0203a011cec6d65ad8e5eab58dbe045a0bdefd119060c140c38b327e32713b56342cc901a3ca5c99f13cce4ceee08408e775ec4742c16
+  checksum: d7e3c593c722ab56446d2164520b8d617321c70bce251da4dfaa8e8211d467eb877ee9e5fec63e4525c611795ed1a60b3fd75ed5d32f816cfb6e0553ce0ef039
   languageName: node
   linkType: hard
 
@@ -6480,6 +6483,13 @@ __metadata:
   version: 10.1.0
   resolution: "ip-address@npm:10.1.0"
   checksum: 76b1abcdf52a32e2e05ca1f202f3a8ab8547e5651a9233781b330271bd7f1a741067748d71c4cbb9d9906d9f1fa69e7ddc8b4a11130db4534fdab0e908c84e0d
+  languageName: node
+  linkType: hard
+
+"ip-address@npm:^10.2.0":
+  version: 10.7.2
+  resolution: "ip-address@npm:10.7.2"
+  checksum: 4b734e61a63e4301221fb5e1cd8a4a7e44114a80268825799c54fbd3df13bc536acc3e0b4129bec2ee860e26985faf370b00a2ac9bdab05d1f61698315395fdd
   languageName: node
   linkType: hard
 
