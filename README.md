@@ -4,7 +4,7 @@ This ia a monorepo used for the notarial services apis, which power the [prove y
 ## Prerequisites
 1. A node version manager, like [nvm](https://formulae.brew.sh/formula/nvm), or [n](https://github.com/tj/n)
 2. node 24.x.x
-3. yarn >= v1.22. This project uses yarn 3. Yarn v1.22 will load the correct version of yarn by looking at [.yarnrc](./.yarnrc.yml) and [.yarn](./yarn)
+3. npm 11 or later
 4. Docker >= 3.9 - [Install docker engine](https://docs.docker.com/engine/install/)
 
 
@@ -45,13 +45,35 @@ at the same time. If you are running postgres from this repo, you do not need to
 
 
 1. If you wish to send emails locally, you will need to authenticate your terminal with AWS. (`formsawsauth prod`)
-2. Start the api `yarn api start:local`
-3. start the worker `NOTIFY_API_KEY=".." yarn worker start:local`
+2. Start the api `npm run api -- start:local`
+3. start the worker `NOTIFY_API_KEY=".." npm run worker -- start:local`
 4. Send a post request to `http://localhost:9000/forms`, use the payload found in `notarial-api/api/src/middlewares/services/UserService/personalisation/__tests__/fixtures/marriageTestData.ts`, or run the form runner locally, with the webhook configured to `http://localhost:9000/forms`. 
 
+### Dependency security
 
-### Formatting
-This project uses ESLint and Prettier to ensure consistent formatting. It is recommended that you add and turn on the prettier plugin for your IDE, and reformat on save.
+- Commit `.npmrc` and `package-lock.json`.
+- Use `npm ci` for ordinary installs and CI.
+- `ignore-scripts=true` blocks dependency lifecycle scripts during install.
+- Use `npm install` only when intentionally changing dependencies, then review the lockfile diff.
+
+### Code Quality
+
+This project uses ESLint for linting and Prettier for formatting. The pipeline runs linting on build and stops on failure.
+
+**Available commands:**
+
+- `npm run format` — Run formatting and fix issues
+- `npm run lint` — Run linting
+
+### Code Security
+
+This project runs package vulnerability scanning. The pipeline runs this on build and stops on failure.
+
+**Available commands:**
+
+- `npm run security` — Run package vulnerability scan
+
+---
 
 
 ## CI/CD

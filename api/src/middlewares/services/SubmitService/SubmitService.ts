@@ -58,7 +58,7 @@ export class SubmitService {
     const formFields = flattenQuestions(questions);
     const answers = answersHashMap(formFields);
     const { pay, type } = metadata;
-    const reference = formData['reference'] ?? metadata?.pay?.reference ?? fees?.paymentReference ?? this.generateId();
+    const reference = formData["reference"] ?? metadata?.pay?.reference ?? fees?.paymentReference ?? this.generateId();
     const caseServiceName = getCaseServiceName(type);
     if (pay) {
       pay.total = fees?.total;
@@ -74,12 +74,18 @@ export class SubmitService {
       });
 
       // only email case team when there is no Orbit reference indicating a submission failure there
-      if (!formData['orbitReference']) {
+      if (!formData["orbitReference"]) {
         const caseProcessJob = await caseService.sendToProcessQueue(processQueueData);
-        this.logger.info({reference, caseProcessJob}, `SES_PROCESS job queued successfully for ${reference}`);
+        this.logger.info({ reference, caseProcessJob }, `SES_PROCESS job queued successfully for ${reference}`);
       }
 
-      const userProcessJob = await this.userService.sendToProcessQueue(answers, { reference, payment: metadata.pay, type, postal: metadata.postal, source: metadata.source });
+      const userProcessJob = await this.userService.sendToProcessQueue(answers, {
+        reference,
+        payment: metadata.pay,
+        type,
+        postal: metadata.postal,
+        source: metadata.source,
+      });
 
       this.logger.info({ reference, userProcessJob }, `NOTIFY_PROCESS job queued successfully for ${reference}`);
     } catch (e) {

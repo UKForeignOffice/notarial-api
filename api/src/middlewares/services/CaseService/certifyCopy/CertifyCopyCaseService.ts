@@ -143,9 +143,9 @@ export class CertifyCopyCaseService implements CaseService {
   }
 
   private static createTemplate(template: string) {
-        handlebars.registerHelper('eq', function (a, b) {
-            return a === b;
-        });
+    handlebars.registerHelper("eq", function (a, b) {
+      return a === b;
+    });
     return handlebars.compile(template);
   }
 }

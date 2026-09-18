@@ -23,28 +23,28 @@ export class CertifyCopyUserTemplates implements UserTemplateGroup {
     };
   }
 
-   getTemplate(data) {
-      const answers = data.answers as CertifyCopyAnswersHashmap;
-      const country = answers["country"] as string;
-      const postal = additionalContexts?.certifyCopy?.countries[country]?.postal;
-      let isPostalApplication: boolean;
-      if (postal === "TRUE") {
-        isPostalApplication = true;
-      } else if (postal === "FALSE") {
-        isPostalApplication = false;
-      } else if (postal === "HYBRID") {
-        isPostalApplication = answers.applicationType === "postal";
-      } else {
-        isPostalApplication = false;
-      }
-      const postalVariant: PostalVariant = isPostalApplication ? "postal" : "inPerson";
-      const isAdult = answers.over18 || false;
-      const userTypeVariant = isAdult ? "adult" : "child";
-      const personalisationBuilder = CertifyCopyPersonalisationBuilder[postalVariant];
-
-      return {
-        template: this.templates[userTypeVariant][postalVariant],
-        personalisationBuilder,
-      };
+  getTemplate(data) {
+    const answers = data.answers as CertifyCopyAnswersHashmap;
+    const country = answers["country"] as string;
+    const postal = additionalContexts?.certifyCopy?.countries[country]?.postal;
+    let isPostalApplication: boolean;
+    if (postal === "TRUE") {
+      isPostalApplication = true;
+    } else if (postal === "FALSE") {
+      isPostalApplication = false;
+    } else if (postal === "HYBRID") {
+      isPostalApplication = answers.applicationType === "postal";
+    } else {
+      isPostalApplication = false;
     }
+    const postalVariant: PostalVariant = isPostalApplication ? "postal" : "inPerson";
+    const isAdult = answers.over18 || false;
+    const userTypeVariant = isAdult ? "adult" : "child";
+    const personalisationBuilder = CertifyCopyPersonalisationBuilder[postalVariant];
+
+    return {
+      template: this.templates[userTypeVariant][postalVariant],
+      personalisationBuilder,
+    };
+  }
 }
