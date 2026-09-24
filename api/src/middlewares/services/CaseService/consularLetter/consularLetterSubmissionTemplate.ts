@@ -21,7 +21,6 @@ const template = `
 
 <ul>
     <li>Reference: {{ reference }}</li>
-    <li>Applicant is next of kin: {{ applicantIsNok }}</li>
 </ul>
 
 

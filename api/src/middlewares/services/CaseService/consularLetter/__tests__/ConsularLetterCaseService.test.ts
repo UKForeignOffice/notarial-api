@@ -2,7 +2,7 @@ import { consularLetterTestData } from "./fixtures";
 import { ConsularLetterCaseService } from "../ConsularLetterCaseService";
 import "pg-boss";
 import { flattenQuestions } from "../../../helpers";
-import { isNotFieldType } from "../../../../../utils";
+import { isFieldType } from "../../../../../utils";
 import { PayMetadata } from "../../../../../types/FormDataBody";
 import * as fields from "./fixtures/fields";
 import { ApplicationError } from "../../../../../ApplicationError";
@@ -17,7 +17,7 @@ const queueService = {
 const consularLetterCaseService = new ConsularLetterCaseService({ queueService });
 
 const formFields = flattenQuestions(consularLetterTestData.questions);
-const allOtherFields = formFields.filter(isNotFieldType("file"));
+const fileFields = formFields.filter(isFieldType("file"));
 const paymentViewModel: PaymentData = {
   id: "govuk-pay-id",
   status: "success",
@@ -29,10 +29,31 @@ const paymentViewModel: PaymentData = {
   total: "100",
 };
 
-test("getEmailBody renders certify copy email correctly", () => {
-  const emailBody = consularLetterCaseService.getEmailBody({ fields: allOtherFields, payment: paymentViewModel, reference: "1234" });
+test("getEmailBody renders the submitted Thailand application details", () => {
+  const emailBody = consularLetterCaseService.getEmailBody({ fields: formFields, payment: paymentViewModel, reference: "1234" });
+  const contactDetails = emailBody.split("<h4>Contact details</h4>")[1]?.split("</ul>")[0] ?? "";
+  const nokDetails = emailBody.split("<h4>Details of deceased’s family</h4>")[1]?.split("</ul>")[0] ?? "";
   expect(emailBody).toContain("<li>First name: test</li>");
   expect(emailBody).toContain("preparing a letter to release a body");
+  expect(emailBody).toContain("Family member: false");
+  expect(emailBody).toContain("Appointed by the deceased’s family: true");
+  expect(emailBody).toContain("Passport of person who died: true");
+  expect(emailBody).toContain("How to receive consular letter: Post");
+  expect(emailBody).toContain("Contact preference: Email");
+  expect(emailBody).toContain("Relationship to deceased if other: A friend");
+  expect(emailBody).toContain("<h4>Application details</h4>");
+  expect(contactDetails).toContain("<li>Email address: applicant@test.com</li>");
+  expect(contactDetails).toContain("<li>Phone number: +66 1234 567890</li>");
+  expect(emailBody).toContain("<h4>Details of deceased’s family</h4>");
+  expect(nokDetails).toContain("<li>Email address of the deceased’s family: nok@test.com</li>");
+  expect(nokDetails).toContain("<li>Phone number of the deceased’s family: +44 1234 567890</li>");
+  expect(emailBody).toContain("<h4>Contact details</h4>");
+  expect(emailBody).toContain("<h4>Company address</h4>");
+  expect(emailBody).toContain("<h4>Delivery details</h4>");
+  expect(emailBody).toContain("<h4>Feedback</h4>");
+  expect(emailBody).not.toContain("Applicant is next of kin");
+  expect(emailBody).not.toContain("UK passport of person who died:");
+  expect(emailBody).not.toContain("https://document-upload-endpoint");
 });
 
 test("sendEmail returns a jobId", async () => {
@@ -72,7 +93,7 @@ test("sendEmail throws ApplicationError when no jobId is returned", async () => 
 
 test("buildJobData returns an object with subject, body, attachments and reference", async () => {
   const result = consularLetterCaseService.buildJobData({
-    fields: allOtherFields,
+    fields: formFields,
     payment: consularLetterTestData.metadata.pay,
     reference: "1234",
     metadata: {
@@ -90,7 +111,7 @@ test("buildJobData returns an object with subject, body, attachments and referen
     onComplete: {
       queue: "NOTIFY_SEND",
     },
-    attachments: [],
+    attachments: fileFields,
     metadata: {
       reference: "1234",
       type: "consularLetter",

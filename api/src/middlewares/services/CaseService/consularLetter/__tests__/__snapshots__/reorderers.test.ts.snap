@@ -2,86 +2,46 @@
 
 exports[`consularLetter is successfully remapped 1`] = `
 {
-  "Applicant's details": undefined,
-  "Contact details": {
-    "emailAddress": {
-      "answer": "test@test.com",
-      "category": "nextOfKinDetails",
-      "key": "emailAddress",
-      "title": "Email address of the next of kin",
-      "type": "text",
+  "Applicant's details": {
+    "applicantsRelationshipToDeceased": {
+      "answer": "Other",
+      "category": "yourDetails",
+      "key": "relationshipToDeceased",
+      "title": "Relationship of family member",
+      "type": "list",
     },
-    "phoneNumber": {
-      "answer": "+44 1234 567890",
-      "category": "nextOfKinDetails",
-      "key": "phoneNumber",
-      "title": "Phone number of the next of kin",
-      "type": "text",
-    },
-  },
-  "Delivery address": {
-    "addressLine1": {
-      "answer": "test",
-      "category": "delivery",
-      "key": "addressLine1",
-      "title": "Address line 1",
-      "type": "text",
-    },
-    "addressLine2": {
-      "answer": null,
-      "category": "delivery",
-      "key": "addressLine2",
-      "title": "Address line 2",
-      "type": "text",
-    },
-    "addressLine3": {
-      "answer": null,
-      "category": "delivery",
-      "key": "addressLine3",
-      "title": "Address line 3",
-      "type": "text",
-    },
-    "postcodeOrZipCode": {
-      "answer": "test",
-      "category": "delivery",
-      "key": "postcode",
-      "title": "ZIP or Postcode",
-      "type": "text",
-    },
-    "townOrCity": {
-      "answer": "test",
-      "category": "delivery",
-      "key": "townOrCity",
-      "title": "Town or city",
+    "applicantsRelationshipToDeceasedIfOther": {
+      "answer": "A friend",
+      "category": "yourDetails",
+      "key": "RelationshipToDeceasedOther",
+      "title": "Relationship to deceased if other",
       "type": "text",
     },
   },
-  "Details of the deceased": {
-    "middleName": {
-      "answer": null,
-      "category": "deceasedsDetails",
-      "key": "deceasedMiddleName",
-      "title": "Middle name",
-      "type": "text",
+  "Application details": {
+    "appointedByDeceasedFamily": {
+      "answer": true,
+      "category": "checkBeforeYouStart",
+      "key": "isAppointedByNok",
+      "title": "Appointed by the deceased’s family",
+      "type": "list",
     },
-    "surname": {
-      "answer": "test",
-      "category": "deceasedsDetails",
-      "key": "deceasedSurname",
-      "title": "Surname",
-      "type": "text",
-    },
-  },
-  "Feedback consent": {
-    "feedbackConsent": {
+    "familyMember": {
       "answer": false,
-      "category": "feedback",
-      "key": "feedbackConsent",
-      "title": "Can our partner contact you for feedback to help improve this service?",
+      "category": "checkBeforeYouStart",
+      "key": "nextOfKin",
+      "title": "Family member",
+      "type": "list",
+    },
+    "hasDeceasedsPassport": {
+      "answer": true,
+      "category": "documents",
+      "key": "hasDeceasedsPassport",
+      "title": "Passport of person who died",
       "type": "list",
     },
   },
-  "Funeral director company address": {
+  "Company address": {
     "addressLine1": {
       "answer": "test",
       "category": "yourDetails",
@@ -125,12 +85,79 @@ exports[`consularLetter is successfully remapped 1`] = `
       "type": "text",
     },
   },
-  "Next of kin's details": {
+  "Contact details": {
+    "emailAddress": {
+      "answer": "applicant@test.com",
+      "category": "contact",
+      "key": "emailAddress",
+      "title": "Email address",
+      "type": "text",
+    },
+    "phoneNumber": {
+      "answer": "+66 1234 567890",
+      "category": "contact",
+      "key": "phoneNumber",
+      "title": "Phone number",
+      "type": "text",
+    },
+  },
+  "Delivery details": {
+    "addressLine1": {
+      "answer": "test",
+      "category": "delivery",
+      "key": "addressLine1",
+      "title": "Address line 1",
+      "type": "text",
+    },
+    "addressLine2": {
+      "answer": null,
+      "category": "delivery",
+      "key": "addressLine2",
+      "title": "Address line 2",
+      "type": "text",
+    },
+    "addressLine3": {
+      "answer": null,
+      "category": "delivery",
+      "key": "addressLine3",
+      "title": "Address line 3",
+      "type": "text",
+    },
+    "letterChoice": {
+      "answer": "Post",
+      "category": "delivery",
+      "key": "letterChoice",
+      "title": "How to receive consular letter",
+      "type": "list",
+    },
+    "postcodeOrZipCode": {
+      "answer": "test",
+      "category": "delivery",
+      "key": "postcode",
+      "title": "ZIP or Postcode",
+      "type": "text",
+    },
+    "townOrCity": {
+      "answer": "test",
+      "category": "delivery",
+      "key": "townOrCity",
+      "title": "Town or city",
+      "type": "text",
+    },
+  },
+  "Details of deceased’s family": {
+    "applicantsPassportOrThaiIdNumber": {
+      "answer": "1234567899",
+      "category": "nextOfKinDetails",
+      "key": "travelPassportNo",
+      "title": "Passport number of deceased’s family",
+      "type": "text",
+    },
     "applicantsRelationshipToDeceased": {
       "answer": "Other",
       "category": "nextOfKinDetails",
       "key": "relationshipToDeceased",
-      "title": "Relationship of next of kin",
+      "title": "Relationship of deceased’s family",
       "type": "list",
     },
     "applicantsRelationshipToDeceasedIfOther": {
@@ -138,6 +165,13 @@ exports[`consularLetter is successfully remapped 1`] = `
       "category": "nextOfKinDetails",
       "key": "relationshipToDeceasedOther",
       "title": "Relationship to deceased if other",
+      "type": "text",
+    },
+    "emailAddress": {
+      "answer": "nok@test.com",
+      "category": "nextOfKinDetails",
+      "key": "nokEmailAddress",
+      "title": "Email address of the deceased’s family",
       "type": "text",
     },
     "firstName": {
@@ -154,12 +188,51 @@ exports[`consularLetter is successfully remapped 1`] = `
       "title": "Middle name",
       "type": "text",
     },
+    "phoneNumber": {
+      "answer": "+44 1234 567890",
+      "category": "nextOfKinDetails",
+      "key": "nokPhoneNumber",
+      "title": "Phone number of the deceased’s family",
+      "type": "text",
+    },
     "surname": {
       "answer": "tes",
       "category": "nextOfKinDetails",
       "key": "surname",
       "title": "Surname",
       "type": "text",
+    },
+  },
+  "Details of the deceased": {
+    "middleName": {
+      "answer": null,
+      "category": "deceasedsDetails",
+      "key": "deceasedMiddleName",
+      "title": "Middle name",
+      "type": "text",
+    },
+    "surname": {
+      "answer": "test",
+      "category": "deceasedsDetails",
+      "key": "deceasedSurname",
+      "title": "Surname",
+      "type": "text",
+    },
+  },
+  "Feedback": {
+    "contactPreference": {
+      "answer": "Email",
+      "category": "feedback",
+      "key": "feedbackContactPref",
+      "title": "Contact preference",
+      "type": "list",
+    },
+    "feedbackConsent": {
+      "answer": false,
+      "category": "feedback",
+      "key": "feedbackConsent",
+      "title": "Can our partner contact you for feedback to help improve this service?",
+      "type": "list",
     },
   },
 }

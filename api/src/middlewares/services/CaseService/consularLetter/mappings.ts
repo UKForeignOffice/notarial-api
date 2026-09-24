@@ -1,16 +1,19 @@
 export const order = {
+  applicationDetails: "Application details",
   applicantDetails: "Applicant's details",
-  nokDetails: "Next of kin's details",
-  companyDetails: "Funeral director company address",
+  nokDetails: "Details of deceased’s family",
+  companyDetails: "Company address",
   deceasedDetails: "Details of the deceased",
-  deliveryAddress: "Delivery address",
+  deliveryDetails: "Delivery details",
   contactDetails: "Contact details",
-  feedbackConsent: "Feedback consent",
+  feedback: "Feedback",
 };
 
 export const remap = {
   post: "information.post",
-  nextOfKin: "information.applicantIsNextOfKin",
+  nextOfKin: "applicationDetails.familyMember",
+  isAppointedByNok: "applicationDetails.appointedByDeceasedFamily",
+  hasDeceasedsPassport: "applicationDetails.hasDeceasedsPassport",
 
   phoneNumber: "contactDetails.phoneNumber",
   emailAddress: "contactDetails.emailAddress",
@@ -19,7 +22,7 @@ export const remap = {
   "yourDetails.middleName": "applicantDetails.middleName",
   "yourDetails.surname": "applicantDetails.surname",
   "yourDetails.relationshipToDeceased": "applicantDetails.applicantsRelationshipToDeceased",
-  "yourDetails.relationshipToDeceasedOther": "applicantDetails.applicantsRelationshipToDeceasedIfOther",
+  "yourDetails.RelationshipToDeceasedOther": "applicantDetails.applicantsRelationshipToDeceasedIfOther",
   "yourDetails.applicantPassportOrThaiID": "applicantDetails.applicantsPassportOrThaiIdNumber",
 
   "nextOfKinDetails.firstName": "nokDetails.firstName",
@@ -47,11 +50,13 @@ export const remap = {
   deceasedPlaceOfDeath: "deceasedDetails.placeOfDeath",
   deceasedDateOfDeath: "deceasedDetails.dateOfDeath",
 
-  addressLine1: "deliveryAddress.addressLine1",
-  addressLine2: "deliveryAddress.addressLine2",
-  addressLine3: "deliveryAddress.addressLine3",
-  townOrCity: "deliveryAddress.townOrCity",
-  postcode: "deliveryAddress.postcodeOrZipCode",
+  letterChoice: "deliveryDetails.letterChoice",
+  addressLine1: "deliveryDetails.addressLine1",
+  addressLine2: "deliveryDetails.addressLine2",
+  addressLine3: "deliveryDetails.addressLine3",
+  townOrCity: "deliveryDetails.townOrCity",
+  postcode: "deliveryDetails.postcodeOrZipCode",
 
-  feedbackConsent: "feedbackConsent.feedbackConsent",
+  feedbackConsent: "feedback.feedbackConsent",
+  feedbackContactPref: "feedback.contactPreference",
 };

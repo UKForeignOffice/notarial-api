@@ -2,6 +2,45 @@
 
 exports[`consularLetter is successfully remapped 1`] = `
 {
+  "applicantDetails": {
+    "applicantsRelationshipToDeceased": {
+      "answer": "Other",
+      "category": "yourDetails",
+      "key": "relationshipToDeceased",
+      "title": "Relationship of family member",
+      "type": "list",
+    },
+    "applicantsRelationshipToDeceasedIfOther": {
+      "answer": "A friend",
+      "category": "yourDetails",
+      "key": "RelationshipToDeceasedOther",
+      "title": "Relationship to deceased if other",
+      "type": "text",
+    },
+  },
+  "applicationDetails": {
+    "appointedByDeceasedFamily": {
+      "answer": true,
+      "category": "checkBeforeYouStart",
+      "key": "isAppointedByNok",
+      "title": "Appointed by the deceased’s family",
+      "type": "list",
+    },
+    "familyMember": {
+      "answer": false,
+      "category": "checkBeforeYouStart",
+      "key": "nextOfKin",
+      "title": "Family member",
+      "type": "list",
+    },
+    "hasDeceasedsPassport": {
+      "answer": true,
+      "category": "documents",
+      "key": "hasDeceasedsPassport",
+      "title": "Passport of person who died",
+      "type": "list",
+    },
+  },
   "companyDetails": {
     "addressLine1": {
       "answer": "test",
@@ -48,17 +87,17 @@ exports[`consularLetter is successfully remapped 1`] = `
   },
   "contactDetails": {
     "emailAddress": {
-      "answer": "test@test.com",
-      "category": "nextOfKinDetails",
+      "answer": "applicant@test.com",
+      "category": "contact",
       "key": "emailAddress",
-      "title": "Email address of the next of kin",
+      "title": "Email address",
       "type": "text",
     },
     "phoneNumber": {
-      "answer": "+44 1234 567890",
-      "category": "nextOfKinDetails",
+      "answer": "+66 1234 567890",
+      "category": "contact",
       "key": "phoneNumber",
-      "title": "Phone number of the next of kin",
+      "title": "Phone number",
       "type": "text",
     },
   },
@@ -66,7 +105,7 @@ exports[`consularLetter is successfully remapped 1`] = `
     "answer": "https://document-upload-endpoint",
     "category": "documents",
     "key": "deaceasedsPassport",
-    "title": "Passport of the next of kin",
+    "title": "Passport of the deceased’s family",
     "type": "file",
   },
   "deceasedDetails": {
@@ -134,7 +173,7 @@ exports[`consularLetter is successfully remapped 1`] = `
     "title": "Proof of death",
     "type": "file",
   },
-  "deliveryAddress": {
+  "deliveryDetails": {
     "addressLine1": {
       "answer": "test",
       "category": "delivery",
@@ -156,6 +195,13 @@ exports[`consularLetter is successfully remapped 1`] = `
       "title": "Address line 3",
       "type": "text",
     },
+    "letterChoice": {
+      "answer": "Post",
+      "category": "delivery",
+      "key": "letterChoice",
+      "title": "How to receive consular letter",
+      "type": "list",
+    },
     "postcodeOrZipCode": {
       "answer": "test",
       "category": "delivery",
@@ -171,7 +217,14 @@ exports[`consularLetter is successfully remapped 1`] = `
       "type": "text",
     },
   },
-  "feedbackConsent": {
+  "feedback": {
+    "contactPreference": {
+      "answer": "Email",
+      "category": "feedback",
+      "key": "feedbackContactPref",
+      "title": "Contact preference",
+      "type": "list",
+    },
     "feedbackConsent": {
       "answer": false,
       "category": "feedback",
@@ -180,49 +233,19 @@ exports[`consularLetter is successfully remapped 1`] = `
       "type": "list",
     },
   },
-  "hasDeceasedsPassport": {
-    "answer": true,
-    "category": "documents",
-    "key": "hasDeceasedsPassport",
-    "title": "Passport of person who died",
-    "type": "list",
-  },
-  "information": {
-    "applicantIsNextOfKin": {
-      "answer": false,
-      "category": "checkBeforeYouStart",
-      "key": "nextOfKin",
-      "title": "Next of kin",
-      "type": "list",
-    },
-  },
-  "isAppointedByNok": {
-    "answer": true,
-    "category": "checkBeforeYouStart",
-    "key": "isAppointedByNok",
-    "title": "Applicant is funeral director",
-    "type": "list",
-  },
-  "letterChoice": {
-    "answer": "Post",
-    "category": "delivery",
-    "key": "letterChoice",
-    "title": "How to receive consular letter",
-    "type": "list",
-  },
   "nokDetails": {
     "applicantsPassportOrThaiIdNumber": {
       "answer": "1234567899",
       "category": "nextOfKinDetails",
       "key": "travelPassportNo",
-      "title": "Passport number of the next of kin",
+      "title": "Passport number of deceased’s family",
       "type": "text",
     },
     "applicantsRelationshipToDeceased": {
       "answer": "Other",
       "category": "nextOfKinDetails",
       "key": "relationshipToDeceased",
-      "title": "Relationship of next of kin",
+      "title": "Relationship of deceased’s family",
       "type": "list",
     },
     "applicantsRelationshipToDeceasedIfOther": {
@@ -230,6 +253,13 @@ exports[`consularLetter is successfully remapped 1`] = `
       "category": "nextOfKinDetails",
       "key": "relationshipToDeceasedOther",
       "title": "Relationship to deceased if other",
+      "type": "text",
+    },
+    "emailAddress": {
+      "answer": "nok@test.com",
+      "category": "nextOfKinDetails",
+      "key": "nokEmailAddress",
+      "title": "Email address of the deceased’s family",
       "type": "text",
     },
     "firstName": {
@@ -246,6 +276,13 @@ exports[`consularLetter is successfully remapped 1`] = `
       "title": "Middle name",
       "type": "text",
     },
+    "phoneNumber": {
+      "answer": "+44 1234 567890",
+      "category": "nextOfKinDetails",
+      "key": "nokPhoneNumber",
+      "title": "Phone number of the deceased’s family",
+      "type": "text",
+    },
     "surname": {
       "answer": "tes",
       "category": "nextOfKinDetails",
@@ -258,7 +295,7 @@ exports[`consularLetter is successfully remapped 1`] = `
     "answer": "https://document-upload-endpoint",
     "category": "documents",
     "key": "proofOfRelationship",
-    "title": "Proof of relationship of next of kin",
+    "title": "Proof of relationship of deceased’s family",
     "type": "file",
   },
   "writtenAuthorisation": {
