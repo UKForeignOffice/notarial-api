@@ -25,9 +25,10 @@ RUN npm ci --omit=dev --ignore-scripts=true --workspace @notarialapi/api --inclu
 # Build stage
 # In this layer we copy the built output from stage 2, ensuring the docker image is as light as possible
 FROM node:24-alpine AS dist
-WORKDIR /usr/dist/app
+WORKDIR /usr/dist/app/api
 RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/include/node
-COPY --from=build /usr/src/app/node_modules node_modules
+COPY --from=build /usr/src/app/node_modules /usr/dist/app/node_modules
+COPY --from=build /usr/src/app/api/node_modules node_modules
 COPY --from=build /usr/src/app/api/config config
 COPY --from=build /usr/src/app/api/dist dist
 
