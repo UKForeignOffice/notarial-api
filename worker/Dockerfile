@@ -17,7 +17,7 @@ COPY . .
 RUN npm ci --ignore-scripts=true --workspace @notarialapi/worker --include-workspace-root
 RUN npm run build --workspace @notarialapi/worker
 #  reinstall only production deps
-RUN npm prune --omit=dev
+RUN npm ci --omit=dev --ignore-scripts=true --workspace @notarialapi/worker --include-workspace-root
 
 
 # ----------------------------
