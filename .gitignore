@@ -1,8 +1,6 @@
 **/node_modules
-package-lock.json
+.yarn/
 .idea
-.yarn/cache
-.yarn/install-state.gz
 **/dist
 **/.env
 coverage
