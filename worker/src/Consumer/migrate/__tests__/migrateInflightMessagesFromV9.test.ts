@@ -28,8 +28,8 @@ test("migrateInflightMessagesFromV9 calls ROLLBACK is called if transaction fail
     .mockRejectedValue(new Error("DB error"));
 
   await expect(migrateInflightMessagesFromV9("test", "pgboss")).rejects.toThrow();
-  expect(pool.connect).toBeCalled();
-  expect(pool.query).toBeCalledTimes(3);
+  expect(pool.connect).toHaveBeenCalled();
+  expect(pool.query).toHaveBeenCalledTimes(3);
   expect(pool.query.mock.calls[0]).toStrictEqual(["BEGIN"]);
   expect(pool.query.mock.calls[1][0]).toContain("INSERT INTO pgboss_test.job");
   expect(pool.query).toHaveBeenCalledWith("ROLLBACK");
@@ -41,8 +41,8 @@ test("migrateInflightMessagesFromV9 calls COMMIT is called if queries succeed", 
   pool.query.mockResolvedValue();
 
   await migrateInflightMessagesFromV9("test", "pgboss");
-  expect(pool.connect).toBeCalled();
-  expect(pool.query).toBeCalledTimes(4);
+  expect(pool.connect).toHaveBeenCalled();
+  expect(pool.query).toHaveBeenCalledTimes(4);
   expect(pool.query.mock.calls[0]).toStrictEqual(["BEGIN"]);
   expect(pool.query.mock.calls[1][0]).toContain("INSERT INTO pgboss_test.job");
   expect(pool.query).toHaveBeenCalledWith("COMMIT");
