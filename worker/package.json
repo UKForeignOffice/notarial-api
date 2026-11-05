@@ -44,7 +44,7 @@
     "axios": "^1.18.0",
     "config": "^3.3.12",
     "dotenv": "^16.6.1",
-    "mimetext": "3.0.16",
+    "mimetext": "3.0.28",
     "notifications-node-client": "^8.4.0",
     "pg": "^8.20.0",
     "pg-boss": "^10.1.3",
