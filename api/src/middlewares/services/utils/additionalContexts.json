@@ -1120,7 +1120,7 @@
       "Benin": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Bermuda": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Bhutan": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-      "Bonaire, St Eustatius and Saba": {
+      "Bonaire, Sint Eustatius and Saba": {
         "civilPartnership": false,
         "duration": "",
         "postal": false,
@@ -1236,7 +1236,7 @@
       "Mozambique": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Myanmar (Burma)": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Namibia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-      "Nauru": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+      "Naoero": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false },
       "Netherlands": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "New Caledonia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "New Zealand": { "civilPartnership": true, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
@@ -1285,6 +1285,7 @@
       "Seychelles": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Sierra Leone": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Singapore": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
+      "Sint Maarten": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Slovakia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Solomon Islands": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "Somalia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
@@ -1310,7 +1311,6 @@
       },
       "St Kitts and Nevis": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "St Lucia": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
-      "St Maarten": { "civilPartnership": false, "duration": "", "postal": false, "additionalDocs": "", "cniDelivery": false, "localRequirements": "" },
       "St Pierre and Miquelon": {
         "civilPartnership": false,
         "duration": "",
