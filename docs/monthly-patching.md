@@ -2,6 +2,29 @@
 
 Add a dated section after each month's dependency review. Record resolved versions, the reason for each change, and any findings left for follow-up.
 
+## 2026-11-26
+
+| Dependency (lockfile) | From | To | Why |
+| --- | --- | --- | --- |
+| `eslint` | 10.14.0 | 10.15.0 | Use the compatible release whose minimatch dependency is fixed for the globparts amplification advisory. |
+| `@typescript-eslint/parser`, `@typescript-eslint/eslint-plugin`, and synchronized `@typescript-eslint/*` internals | 8.72.1 | 8.74.0 | Keep the parser/plugin family aligned; the updated TypeScript-estree route requires fixed minimatch 11. |
+| `@eslint/config-array` | 0.23.5 | 0.23.6 | Required by ESLint 10.15.0; its minimatch range now admits the fixed major. |
+| `minimatch` on ESLint and TypeScript-ESLint routes | 10.2.6 (shared) | 11.0.9 (nested) | Fix the lint dependency paths without overriding unrelated Jest, coverage, or npm-bundled parents. |
+| `@isaacs/nonrecursive-glob-match` | not present | 1.1.0 | New transitive dependency of minimatch 11.0.9. |
+
+No package manifests changed; their existing ranges admitted these versions. The lockfile update was limited to this lint dependency tree and its required transitive packages.
+
+The privacy-sanitized full-lock npm audit changed from **58 affected-package entries** to **51** (all moderate; 0 low, high, or critical). These are affected package entries, not distinct CVEs; the two remaining advisory IDs are **1244013 / GHSA-3g3m-2fjr-6pw4** (`glob`) and **1244623 / GHSA-g3hv-75wg-m249** (`minimatch`). The production audit remains at **0**. OSV scanned **1,063** package name/version entries from the sanitized full workspace lock and reported **5** affected name/version entries under those same two advisories. The full lock included npm's 143 bundled package locations and optional platform packages; the production OSV scan covered 198 package entries and reported none.
+
+| Advisory | Remaining affected locked versions | Deferred scope |
+| --- | --- | --- |
+| 1244013 / GHSA-3g3m-2fjr-6pw4 (`glob` cancellation bypass) | `glob` 10.5.0 and 13.0.6 | Jest/coverage and the npm release-tool bundle still require these majors; compatible patched parent releases are not available. |
+| 1244623 / GHSA-g3hv-75wg-m249 (`minimatch` globparts DoS) | `minimatch` 9.0.9, 10.2.5, and 10.2.6 | Jest/coverage and npm-bundled parents still require v9/v10. The lint routes now use 11.0.9; no global cross-major override was applied. |
+
+The previously listed `deepmerge` 4.3.1 finding (1243505 / GHSA-gcqx-w48m-w2h4) was withdrawn on 2026-11-16 and is no longer considered a vulnerability; it was not changed as part of this patch.
+
+`npm ci --ignore-scripts --audit=false` passed. Baseline and post-patch `npm test` both passed **29 suites, 166 tests, and 16 snapshots**. `npm run lint`, `npm run build`, and API/worker TypeScript checks passed. The broader source lint still reports the same **53** API formatting errors as baseline, and the dynamic-content TypeScript check still reports TS6053 for the pre-existing missing `dynamic-content/index.ts`; neither was changed. The full development audit remains nonzero because the two deferred advisory families remain. E2E, container images, and runtime/base-image findings were outside this dependency patch's scope.
+
 ## 2026-11-05
 
 | Dependency (lockfile) | From | To | Why |
