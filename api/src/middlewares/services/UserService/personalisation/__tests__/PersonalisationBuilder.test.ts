@@ -54,8 +54,7 @@ describe("in-person marriage booking links", () => {
 
   test.each([
     ["production", "https://www.manage-consular-appointment.service.gov.uk"],
-    ["test", "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs"],
-    ["staging", "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs"],
+    ["development", "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs"],
     [undefined, "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs"],
   ])("uses the correct country booking link for NODE_ENV %s", (nodeEnv, baseUrl) => {
     if (nodeEnv === undefined) {
