@@ -58,6 +58,8 @@ It will generate an email body to be sent via SES. The attachments are not added
 ### POST `/forms/emails/notify`
 This route is used to parse the user's data to generate the confirmation email for the user. The request will come from the NOTIFY_PROCESS job.
 
+For in-person marriage confirmations, CABS booking links use the live service when `NODE_ENV` is `production` and the CABS sandbox otherwise. Other booking links are unchanged.
+
 
 ### Environment variables
 

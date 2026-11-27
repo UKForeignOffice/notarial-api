@@ -30,12 +30,19 @@ export function buildInPersonPersonalisation(answers: AnswersHashMap, metadata: 
   const getAdditionalDocs = getAdditionalDocsForCountry[country];
 
   const additionalDocs = getAdditionalDocs?.(answers, additionalContext, metadata) ?? additionalContext.additionalDocs;
+  const bookingLink =
+    process.env.NODE_ENV === "production"
+      ? additionalContext.bookingLink
+      : additionalContext.bookingLink?.replace(
+          /^https:\/\/www\.manage-consular-appointment\.service\.gov\.uk(?=\/|\?|#|$)/,
+          "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs"
+        );
 
   return {
     firstName: answers.firstName,
     post: getPostForMarriage(country, post),
     country,
-    bookingLink: additionalContext.bookingLink,
+    bookingLink,
     localRequirements: additionalContext.localRequirements ?? "",
     civilPartnership: additionalContext.civilPartnership,
     reference: metadata.reference,
