@@ -14,8 +14,8 @@ The following elements can be updated as part of the upload:
 ## How to use
 make sure have Node >=24 installed.
 
-If this is your first time using this package, run `yarn install`.
+If this is your first time using this package, run `npm ci --ignore-scripts=true` from the repository root.
 
 Next, drop the updated csv into the csv directory. If the csv file relates to general dynamic content, name the csv using the name `content`, or `booking-links` if the csv relates to booking links updates.
 
-Once this is all done, run `yarn dynamic-content upload`, to update the content. Once updated, you will be shown a message confirming the upload was successful, at which point you can push the updates in the `api/src/middlewares/services/EmailService/additionalContexts.json`.
+Once this is all done, run `npm run dynamic-content -- upload`, to update the content. Once updated, you will be shown a message confirming the upload was successful, at which point you can push the updates in the `api/src/middlewares/services/EmailService/additionalContexts.json`.

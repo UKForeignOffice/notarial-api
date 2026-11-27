@@ -56,5 +56,5 @@ test("sesSendHandler calls sendAlertToPost", async () => {
   };
   await sesSend.sesSendHandler([job]);
   expect(sesSendHelper.sendAlertToPost).toHaveBeenCalled();
-  expect(sesSendHelper.sendAlertToPost).toBeCalledWith("job-id", job.data.onComplete);
+  expect(sesSendHelper.sendAlertToPost).toHaveBeenCalledWith("job-id", job.data.onComplete);
 });

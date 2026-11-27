@@ -4,32 +4,34 @@ import { ApplicationError } from "../../../../ApplicationError";
 import { CaseService } from "../../../../middlewares/services/CaseService/types";
 import { getCaseServiceName } from "../../../../middlewares/services/utils/getCaseServiceName";
 
-const schema = joi.object({
-  fields: joi
-    .array()
-    .items(
-      joi.object().keys({
-        key: joi.string().required(),
-        type: joi.string().required(),
-        title: joi.string().optional(),
-        answer: joi.any().optional(),
-      })
-    )
-    .required(),
-  metadata: {
-    reference: joi.string().required(),
-    type: joi.string().valid("affirmation", "cni", "exchange", "certifyCopy", "requestDocument", "consularLetter"),
-    payment: joi.object(),
-  },
-});
+const schema = joi
+  .object({
+    fields: joi
+      .array()
+      .items(
+        joi.object().keys({
+          key: joi.string().required(),
+          type: joi.string().required(),
+          title: joi.string().optional(),
+          answer: joi.any().optional(),
+        })
+      )
+      .required(),
+    metadata: {
+      reference: joi.string().required(),
+      type: joi.string().valid("affirmation", "cni", "exchange", "certifyCopy", "requestDocument", "consularLetter"),
+      payment: joi.object(),
+    },
+  })
+  .required();
 
 export function validate(req: Request, _res: Response, next: NextFunction) {
-  const result = schema.validate(req.body, { abortEarly: false, allowUnknown: true });
+  const result = schema.validate(req.body ?? {}, { abortEarly: false, allowUnknown: true });
   if (result.error) {
     const message = `The supplied form data is invalid: ${result.error.details.map((error) => error.message).join(",")}`;
-    next(new ApplicationError("SES", "PROCESS_VALIDATION", 400, message));
+    return next(new ApplicationError("SES", "PROCESS_VALIDATION", 400, message));
   }
-  next();
+  return next();
 }
 
 export async function post(req: Request, res: Response, next: NextFunction) {
