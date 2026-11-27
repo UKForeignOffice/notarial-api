@@ -29,7 +29,7 @@ test("buildJobData should return the correct personalisation for an in-person em
   expect(personalisation).toEqual({
     firstName: "foo",
     additionalDocs: "",
-    bookingLink: "https://www.manage-consular-appointment.service.gov.uk/s/appointment-booking?location=67&service=13",
+    bookingLink: "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs/s/appointment-booking?location=67&service=13",
     civilPartnership: false,
     country: "Turkey",
     localRequirements: "",
@@ -38,6 +38,50 @@ test("buildJobData should return the correct personalisation for an in-person em
     previouslyMarried: false,
     reference: "1234",
     religious: false,
+  });
+});
+
+describe("in-person marriage booking links", () => {
+  const originalNodeEnv = process.env.NODE_ENV;
+
+  afterEach(() => {
+    if (originalNodeEnv === undefined) {
+      delete process.env.NODE_ENV;
+    } else {
+      process.env.NODE_ENV = originalNodeEnv;
+    }
+  });
+
+  test.each([
+    ["production", "https://www.manage-consular-appointment.service.gov.uk"],
+    ["test", "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs"],
+    ["staging", "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs"],
+    [undefined, "https://fcdo-consular--ecsysint2.sandbox.my.site.com/cabs"],
+  ])("uses the correct country booking link for NODE_ENV %s", (nodeEnv, baseUrl) => {
+    if (nodeEnv === undefined) {
+      delete process.env.NODE_ENV;
+    } else {
+      process.env.NODE_ENV = nodeEnv;
+    }
+
+    const personalisation = MarriagePersonalisationBuilder.inPerson(
+      { ...marriageAnswers, country: "Azerbaijan", post: undefined },
+      { type: "affirmation", reference: "1234" }
+    );
+    expect(personalisation.bookingLink).toBe(`${baseUrl}/s/appointment-booking?location=99&service=13`);
+  });
+
+  test.each([
+    ["El Salvador", "mailto:Guatemala.Escalations@fcdo.gov.uk"],
+    ["Mauritania", "https://www.gov.uk/world/organisations/british-embassy-nouakchott#contact-us"],
+    ["Afghanistan", undefined],
+  ])("preserves non-CABS or missing booking links for %s", (country, bookingLink) => {
+    process.env.NODE_ENV = "test";
+    const personalisation = MarriagePersonalisationBuilder.inPerson(
+      { ...marriageAnswers, country, post: undefined },
+      { type: "affirmation", reference: "1234" }
+    );
+    expect(personalisation.bookingLink).toBe(bookingLink);
   });
 });
 
